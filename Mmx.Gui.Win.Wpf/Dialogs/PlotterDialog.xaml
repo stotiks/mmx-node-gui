@@ -1,0 +1,84 @@
+﻿<ui:ContentDialog
+    x:Class="Mmx.Gui.Win.Wpf.Dialogs.PlotterDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Closing="ContentDialog_Closing"
+>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox 
+            Grid.Row="0"
+            x:Name="TextBoxLog"
+            Text="{Binding LogTxt}"
+            HorizontalAlignment="Stretch"
+            IsReadOnly="True"
+            FontFamily="Lucida Sans Typewriter"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            TextChanged="TextBoxLog_TextChanged">
+        </TextBox>
+
+        <Grid Grid.Row="1" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button 
+                x:Name="PauseButton"
+                Grid.Column="0" 
+                HorizontalAlignment="Stretch"
+                Content="Pause"/>
+
+            <Button
+                x:Name="StopButton"
+                Grid.Column="1" 
+                HorizontalAlignment="Stretch"
+                Margin="5,0,5,0"
+                IsEnabled="{Binding ElementName=StopButton, Path=IsEnabled}"
+                Content="Stop">
+                <ui:FlyoutService.Flyout>
+                    <ui:Flyout x:Name="Flyout1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock 
+                                Grid.Row="0"
+                                Style="{StaticResource BaseTextBlockStyle}"
+                                Text="Do you want to continue?"
+                                Margin="0,0,0,12" />
+                            
+                            <Button 
+                                Grid.Row="1"
+                                x:Name="StopButtonConfirm"
+                                HorizontalAlignment="Stretch"
+                                Content="Yes, stop plotting"/>
+                        </Grid>
+                    </ui:Flyout>
+                </ui:FlyoutService.Flyout>
+            </Button>
+
+            <Button 
+                x:Name="CloseButton"
+                Grid.Column="2" 
+                HorizontalAlignment="Stretch"
+                Style="{StaticResource AccentButtonStyle}"
+                Content="Close"
+                Click="CloseButton_Click"/>
+
+
+        </Grid>
+
+    </Grid>
+    
+</ui:ContentDialog>

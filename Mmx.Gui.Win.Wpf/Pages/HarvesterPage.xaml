@@ -1,0 +1,127 @@
+﻿<Page 
+    x:Class="Mmx.Gui.Win.Wpf.Pages.HarvesterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:common="clr-namespace:Mmx.Gui.Win.Common;assembly=Mmx.Gui.Win.Common"
+    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Pages"
+    
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="MmxGui"
+    lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
+
+    mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="800"
+    Loaded="OnLoaded">
+    
+    <Page.Resources>
+        <DataTemplate x:Key="BasicListViewTemplate">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock 
+                    Grid.Column="0"
+                    Text="{Binding Path, Mode=OneTime}"
+                    Margin="0,5,0,5" />
+
+                <!--<Button 
+                    Grid.Column="1"
+                    Tag="{Binding ., Mode=OneTime}"
+                   
+                    Click="delButton_Click">
+                    <Button.Content>
+                        <ui:FontIcon Glyph="&#xE74D;"/>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="{DynamicResource SystemControlErrorTextForegroundBrush}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>-->
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Margin="25,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock  
+            Grid.Row="0"
+            Text="{lex:Loc Harvester_Title}"
+            Style="{StaticResource TitleTextBlockStyle}"
+            FontSize="28"
+            Margin="0,8,0,12" />
+
+        <ScrollViewer Grid.Row="1">
+            <ui:SimpleStackPanel Width="450" HorizontalAlignment="Left">
+                <ui:CommandBar 
+                    x:Name="DirCommandBar"
+                    HorizontalAlignment="Stretch">
+
+                    <ui:AppBarButton 
+                        Icon="Add" 
+                        Label="{lex:Loc Harvester_Add}"
+                        Click="AddButton_Click"/>
+
+                    <ui:AppBarButton
+                        Icon="Remove" 
+                        Label="{lex:Loc Harvester_Remove}"
+                        IsEnabled="{Binding Source={x:Reference DirListView}, Path=SelectedItems.Count}"
+                        Tag="{Binding Source={x:Reference DirListView}, Path=SelectedItem}"
+                        Click="DelButton_Click"/>
+
+                    <ui:CommandBar.SecondaryCommands>
+                        <ui:AppBarButton
+                            Icon="Refresh" 
+                            Label="{lex:Loc Harvester_Reload}" 
+                            Click="ReloadHarvesterButton_Click"/>
+                    </ui:CommandBar.SecondaryCommands>
+                    
+                </ui:CommandBar>
+                <ui:ListView
+                    x:Name="DirListView"
+                    ItemTemplate="{StaticResource BasicListViewTemplate}"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                    Width="450"
+                    Height="400"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ui:ListView>
+
+            </ui:SimpleStackPanel>
+        </ScrollViewer>        
+    </Grid>
+</Page>

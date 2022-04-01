@@ -1,0 +1,8 @@
+/.vs
+/obj
+/bin
+/packages
+*.bak
+bin
+obj
+*.user

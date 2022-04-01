@@ -1,0 +1,2 @@
+
+fetch('/wapi/node/exit');

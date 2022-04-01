@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Harvester_Title" xml:space="preserve">
+    <value>Harvester</value>
+    <comment>menu</comment>
+  </data>
+  <data name="Plotter_Title" xml:space="preserve">
+    <value>Plotter</value>
+    <comment>menu</comment>
+  </data>
+  <data name="Settings_Title" xml:space="preserve">
+    <value>Settings</value>
+    <comment>menu</comment>
+  </data>
+  <data name="Node_Title" xml:space="preserve">
+    <value>Node</value>
+    <comment>menu</comment>
+  </data>
+  <data name="Settings_ShowConsole" xml:space="preserve">
+    <value>Show Console</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_PowerManagement" xml:space="preserve">
+    <value>Power Management</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_ShowInNotifitation" xml:space="preserve">
+    <value>Show in notification area</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_CloseToNotification" xml:space="preserve">
+    <value>Close to notification area</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_StartOnStartup" xml:space="preserve">
+    <value>Start on Windows start up</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_StartMinimized" xml:space="preserve">
+    <value>Start minimized</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_ConfirmationOnExit" xml:space="preserve">
+    <value>Confirmation on exit</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_InhibitSystemSleep" xml:space="preserve">
+    <value>Inhibit system sleep</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_Debug" xml:space="preserve">
+    <value>Debug</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_MinimizeToNotification" xml:space="preserve">
+    <value>Minimize to notification area</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Plotter_rmulti2" xml:space="preserve">
+    <value>Thread multiplier for P2</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_threads" xml:space="preserve">
+    <value>Number of threads</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_tmpdir" xml:space="preserve">
+    <value>Temporary directory</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_tmpdir2" xml:space="preserve">
+    <value>Temporary directory 2 [RAM]</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_stagedir" xml:space="preserve">
+    <value>Stage directory to write plot file</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_tmptoggle" xml:space="preserve">
+    <value>Alternate tmpdir/tmpdir2</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_waitforcopy" xml:space="preserve">
+    <value>Wait for copy to start next plot</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_Start" xml:space="preserve">
+    <value>Start</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_size" xml:space="preserve">
+    <value>K size</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_finaldir" xml:space="preserve">
+    <value>Final directory to copy plot in parallel</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_DirectoriesTab" xml:space="preserve">
+    <value>Directories</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_directout" xml:space="preserve">
+    <value>Create plot directly in finaldir</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_PerfomanceTab" xml:space="preserve">
+    <value>Perfomance</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_contract" xml:space="preserve">
+    <value>Pool Contract Address (62 chars)</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_poolkey" xml:space="preserve">
+    <value>Pool Public Key (48 bytes)</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_KeysTab" xml:space="preserve">
+    <value>Keys</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_buckets" xml:space="preserve">
+    <value>Number of buckets</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_buckets3" xml:space="preserve">
+    <value>Number of buckets for phase 3+4</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_farmerkey" xml:space="preserve">
+    <value>Farmer Public Key (48 bytes)</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_nftplot" xml:space="preserve">
+    <value>Create NFT plot</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_count" xml:space="preserve">
+    <value>Number of plots to create</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="harvesterPlots" xml:space="preserve">
+    <value>Load plots from:</value>
+    <comment>harverster</comment>
+  </data>
+  <data name="Harvester_Remove" xml:space="preserve">
+    <value>Remove</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_Add" xml:space="preserve">
+    <value>Add</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Plotter_GeneralTab" xml:space="preserve">
+    <value>General</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_ThreadsHeader" xml:space="preserve">
+    <value>Threads</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_BucketsHeader" xml:space="preserve">
+    <value>Buckets</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>Language</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_Theme" xml:space="preserve">
+    <value>Theme</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_StartUp" xml:space="preserve">
+    <value>Start up</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_NotificationArea" xml:space="preserve">
+    <value>Notification area</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Plotter_SizeHeader" xml:space="preserve">
+    <value>Plot size</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_priority" xml:space="preserve">
+    <value>Priority</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_ProcessHeader" xml:space="preserve">
+    <value>Process</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Harvester_Reload" xml:space="preserve">
+    <value>Reload Harvester</value>
+    <comment>harvester</comment>
+  </data>
+</root>

@@ -1,0 +1,33 @@
+﻿<Application 
+    x:Class="Mmx.Gui.Win.Wpf.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    StartupUri="MainWindow.xaml"
+    xmlns:ui="http://schemas.modernwpf.com/2019">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources>
+                    <ui:ThemeResources.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <sys:Double x:Key="ContentDialogMaxWidth">1700</sys:Double>
+                        </ResourceDictionary>
+
+                        <ResourceDictionary x:Key="Dark">
+                            <sys:Double x:Key="ContentDialogMaxWidth">1700</sys:Double>
+                        </ResourceDictionary>
+
+                        <ResourceDictionary x:Key="HighContrast">
+                            <sys:Double x:Key="ContentDialogMaxWidth">1700</sys:Double>
+                        </ResourceDictionary>
+                    </ui:ThemeResources.ThemeDictionaries>
+                </ui:ThemeResources>
+                <ui:XamlControlsResources />
+                <!-- Other merged dictionaries here -->
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Other app resources here -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
