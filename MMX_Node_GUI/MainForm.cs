@@ -16,8 +16,6 @@ namespace MMX_GUI
     {
         private const String url = "http://127.0.0.1:11380/gui/";
 
-        private Process process;
-
         public MainForm()
         {
             InitializeComponent();
@@ -31,39 +29,11 @@ namespace MMX_GUI
 
         private void StartNode()
         {
-            process = new Process();
-            process.StartInfo.WorkingDirectory = "C:\\Program Files\\MMX\\";
-            process.StartInfo.FileName = "C:\\Program Files\\MMX\\run_node.cmd";
-            process.StartInfo.UseShellExecute = false;
-            process.EnableRaisingEvents = true;
-            //process.OutputDataReceived += (sender1, args) => WriteTextSafe(args.Data);
-            process.Exited += new EventHandler(nodeProcess_HasExited);
-
-            process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
-
-            if (false)
-            { 
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.RedirectStandardError = true;
-            }
-
-            WriteProcessLog(String.Format("{0} {1}\r\n", process.StartInfo.FileName, process.StartInfo.Arguments));
-            process.Start();
-
-            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-        }
-
-        private void WriteProcessLog(string text)
-        {
-            Console.WriteLine(text);
-        }
-
-        private void nodeProcess_HasExited(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.WorkingDirectory = "C:\\Program Files\\MMX\\";
+            psi.FileName = "C:\\Program Files\\MMX\\run_node.cmd";
+            consoleControl1.StartProcess(psi);
+            //consoleControl1.StartProcess("cmd", null);
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -89,32 +59,15 @@ namespace MMX_GUI
 
             if (dialogResult == DialogResult.No) e.Cancel = true;
 
-            if (ProcessExtensions.IsRunning(process))
+            if (consoleControl1.IsProcessRunning)
             {
-                process.CloseMainWindow();
+                //consoleControl1.ProcessInterface.Process.CloseMainWindow();
+                consoleControl1.StopProcess();
             }
+
         }
+
     }
 
 
-    public static class ProcessExtensions
-    {
-        public static bool IsRunning(this Process process)
-        {
-            if (process == null)
-            {
-                return false;
-            }
-
-            try
-            {
-                Process.GetProcessById(process.Id);
-            }
-            catch (ArgumentException)
-            {
-                return false;
-            }
-            return true;
-        }
-    }
 }

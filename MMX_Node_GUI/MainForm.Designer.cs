@@ -33,15 +33,18 @@ namespace MMX_GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.consoleControl1 = new ConsoleControl.ConsoleControl();
             this.SuspendLayout();
             // 
             // chromiumWebBrowser1
             // 
             this.chromiumWebBrowser1.ActivateBrowserOnCreation = false;
-            this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chromiumWebBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 0);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1008, 661);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1008, 492);
             this.chromiumWebBrowser1.TabIndex = 0;
             // 
             // notifyIcon1
@@ -50,11 +53,23 @@ namespace MMX_GUI
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // consoleControl1
+            // 
+            this.consoleControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.consoleControl1.IsInputEnabled = true;
+            this.consoleControl1.Location = new System.Drawing.Point(0, 498);
+            this.consoleControl1.Name = "consoleControl1";
+            this.consoleControl1.SendKeyboardCommandsToProcess = false;
+            this.consoleControl1.ShowDiagnostics = false;
+            this.consoleControl1.Size = new System.Drawing.Size(1008, 163);
+            this.consoleControl1.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 661);
+            this.Controls.Add(this.consoleControl1);
             this.Controls.Add(this.chromiumWebBrowser1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 700);
@@ -72,6 +87,7 @@ namespace MMX_GUI
 
         private CefSharp.WinForms.ChromiumWebBrowser chromiumWebBrowser1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private ConsoleControl.ConsoleControl consoleControl1;
     }
 }
 
