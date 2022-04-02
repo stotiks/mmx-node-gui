@@ -1,6 +1,7 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -28,6 +29,13 @@ namespace MMX_GUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Length > 1)
+            {
+                MessageBox.Show("Another instance of this program is already running. Cannot proceed further.", "Warning!");
+                return;
+            }
+
             Application.Run(new MainForm());
         }
 
