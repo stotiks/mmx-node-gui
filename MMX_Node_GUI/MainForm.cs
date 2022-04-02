@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MMX_NODE_GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,14 @@ namespace MMX_GUI
     public partial class MainForm : Form
     {
         private const String url = "http://127.0.0.1:11380/gui/";
+        private ConsoleForm consoleForm;
+        private ConsoleControl.ConsoleControl consoleControl;
 
         public MainForm()
         {
+            consoleForm = new ConsoleForm();
+            consoleControl = consoleForm.consoleControl1;
+
             InitializeComponent();
         }
 
@@ -32,8 +38,10 @@ namespace MMX_GUI
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.WorkingDirectory = "C:\\Program Files\\MMX\\";
             psi.FileName = "C:\\Program Files\\MMX\\run_node.cmd";
-            consoleControl1.StartProcess(psi);
-            //consoleControl1.StartProcess("cmd", null);
+
+            consoleControl.InternalRichTextBox.HideSelection = false;
+            consoleControl.StartProcess(psi);
+
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -59,14 +67,19 @@ namespace MMX_GUI
 
             if (dialogResult == DialogResult.No) e.Cancel = true;
 
-            if (consoleControl1.IsProcessRunning)
-            {
-                //consoleControl1.ProcessInterface.Process.CloseMainWindow();
-                consoleControl1.StopProcess();
-            }
+            consoleControl.StopProcess();
 
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            consoleForm.Show();
+        }
     }
 
 
