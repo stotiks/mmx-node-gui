@@ -335,7 +335,7 @@ namespace MMX_GUI
             // 
             this.wikiToolStripMenuItem.Name = "wikiToolStripMenuItem";
             this.wikiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.wikiToolStripMenuItem.Text = "Wki";
+            this.wikiToolStripMenuItem.Text = "Wiki";
             this.wikiToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
