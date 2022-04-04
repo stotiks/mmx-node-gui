@@ -83,8 +83,14 @@ namespace MMX_GUI
 
         private async Task ExitNodeAsync() 
         {
-            var result =  await client.PostAsync(exitUri, null);
-            Console.WriteLine(result);
+            try
+            {
+                var result = await client.PostAsync(exitUri, null);
+                //Console.WriteLine(result);
+            } catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
