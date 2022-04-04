@@ -60,15 +60,15 @@ namespace MMX_GUI
             if (this.WindowState == FormWindowState.Minimized)
             {
                 Hide();
-                notifyIcon1.Visible = true;
+                //notifyIcon1.Visible = true;
             }
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void notifyIcon1_MouseDoubleClick(object sender, EventArgs e)
         {
             Show();
             this.WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
+            //notifyIcon1.Visible = false;
         }
         
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -106,6 +106,7 @@ namespace MMX_GUI
         {
             consoleForm.Show();
         }
+
     }
 
 
