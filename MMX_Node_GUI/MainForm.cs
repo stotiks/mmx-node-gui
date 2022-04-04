@@ -43,8 +43,12 @@ namespace MMX_GUI
         private void StartNode()
         {
             ProcessStartInfo psi = new ProcessStartInfo();
-            psi.WorkingDirectory = "C:\\Program Files\\MMX\\";
-            psi.FileName = psi.WorkingDirectory + "\\run_node.cmd";
+            var exePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+#if DEBUG
+            exePath = "C:\\Program Files\\MMX";
+#endif
+            psi.WorkingDirectory = exePath;
+            psi.FileName = exePath + "\\run_node.cmd";
 
             consoleControl.InternalRichTextBox.HideSelection = false;
             consoleControl.StartProcess(psi);
