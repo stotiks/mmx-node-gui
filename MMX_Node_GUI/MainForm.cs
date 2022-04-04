@@ -77,11 +77,15 @@ namespace MMX_GUI
                                                         System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
                                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (dialogResult == DialogResult.No) e.Cancel = true;
-
-            chromiumWebBrowser1.LoadUrl("about:blank");
-            Task.Run(async () => await ExitNodeAsync()).Wait();
-            consoleControl.StopProcess();
+            if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            } else
+            {
+                chromiumWebBrowser1.LoadUrl("about:blank");
+                Task.Run(async () => await ExitNodeAsync()).Wait();
+                consoleControl.StopProcess();
+            }
 
         }
 
