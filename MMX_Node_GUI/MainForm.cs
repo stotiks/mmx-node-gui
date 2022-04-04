@@ -116,6 +116,11 @@ namespace MMX_GUI
         {
             Process.Start("https://github.com/madMAx43v3r/mmx-node/wiki");
         }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chromiumWebBrowser1.LoadUrl(guiUri.ToString());
+        }
     }
 
 
