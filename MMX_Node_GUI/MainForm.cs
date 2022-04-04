@@ -107,6 +107,15 @@ namespace MMX_GUI
             consoleForm.Show();
         }
 
+        private void githubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/madMAx43v3r/mmx-node");
+        }
+
+        private void wikiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/madMAx43v3r/mmx-node/wiki");
+        }
     }
 
 
