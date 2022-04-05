@@ -28,10 +28,11 @@ namespace MMX_GUI
 
         public MainForm()
         {
+            InitializeComponent();
+
             consoleForm = new ConsoleForm();
             consoleControl = consoleForm.consoleControl1;
-
-            InitializeComponent();
+            consoleControl.InternalRichTextBox.HideSelection = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,18 +42,15 @@ namespace MMX_GUI
         }
 
         private void StartNode()
-        {
-            ProcessStartInfo psi = new ProcessStartInfo();
+        {            
             var exePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 #if DEBUG
             exePath = "C:\\Program Files\\MMX";
 #endif
+            ProcessStartInfo psi = new ProcessStartInfo();
             psi.WorkingDirectory = exePath;
             psi.FileName = exePath + "\\run_node.cmd";
-
-            consoleControl.InternalRichTextBox.HideSelection = false;
             consoleControl.StartProcess(psi);
-
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
