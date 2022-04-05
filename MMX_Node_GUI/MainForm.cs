@@ -123,6 +123,11 @@ namespace MMX_GUI
         {
             chromiumWebBrowser1.LoadUrl(guiUri.ToString());
         }
+
+        private void discordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://discord.gg/tCwevssVmY");
+        }
     }
 
 
