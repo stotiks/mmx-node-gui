@@ -124,7 +124,7 @@ namespace MMX_GUI
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(724, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -311,14 +311,14 @@ namespace MMX_GUI
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // showConsoleToolStripMenuItem
             // 
             this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
-            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.showConsoleToolStripMenuItem.Text = "Console";
             this.showConsoleToolStripMenuItem.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
             // 
@@ -364,19 +364,19 @@ namespace MMX_GUI
             this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 24);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(724, 637);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1064, 717);
             this.chromiumWebBrowser1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 661);
+            this.ClientSize = new System.Drawing.Size(1064, 741);
             this.Controls.Add(this.chromiumWebBrowser1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(718, 678);
+            this.MinimumSize = new System.Drawing.Size(1080, 780);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MMX Node";

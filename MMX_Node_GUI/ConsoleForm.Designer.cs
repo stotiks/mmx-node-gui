@@ -41,16 +41,17 @@ namespace MMX_NODE_GUI
             this.consoleControl1.Name = "consoleControl1";
             this.consoleControl1.SendKeyboardCommandsToProcess = false;
             this.consoleControl1.ShowDiagnostics = false;
-            this.consoleControl1.Size = new System.Drawing.Size(800, 450);
+            this.consoleControl1.Size = new System.Drawing.Size(784, 461);
             this.consoleControl1.TabIndex = 2;
             // 
             // ConsoleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.consoleControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(800, 500);
             this.Name = "ConsoleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Console";
