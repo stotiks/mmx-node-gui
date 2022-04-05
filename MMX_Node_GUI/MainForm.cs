@@ -109,6 +109,11 @@ namespace MMX_GUI
             consoleForm.Show();
         }
 
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chromiumWebBrowser1.LoadUrl(guiUri.ToString());
+        }
+
         private void githubToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/madMAx43v3r/mmx-node");
@@ -119,14 +124,14 @@ namespace MMX_GUI
             Process.Start("https://github.com/madMAx43v3r/mmx-node/wiki");
         }
 
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            chromiumWebBrowser1.LoadUrl(guiUri.ToString());
-        }
-
         private void discordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://discord.gg/tCwevssVmY");
+        }
+
+        private void explorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://94.130.47.147/recent");        
         }
     }
 
