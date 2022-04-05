@@ -51,7 +51,7 @@ namespace MMX_NODE_GUI
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.consoleControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(800, 500);
+            this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "ConsoleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Console";
