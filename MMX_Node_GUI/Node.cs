@@ -64,8 +64,18 @@ namespace MMX_NODE_GUI
         public void Stop()
         {
             OnBeforeStop();
+
             Task.Run(async () => await ExitAsync()).Wait();
+
+            var delay = 500;
+            var timeout = 10000;
+            while(consoleControl.IsProcessRunning && timeout >= 0)
+            {
+                timeout -= delay;
+                Task.Delay(delay).Wait();
+            }
             consoleControl.StopProcess();
+
             OnStop();
         }
 

@@ -20,7 +20,7 @@ namespace MMX_GUI
             node = new Node(consoleForm.consoleControl);
 
             node.Started += new EventHandler(refreshToolStripMenuItem_Click);
-            //node.BeforeStop += new EventHandler(...);
+            node.BeforeStop += new EventHandler((object sender, EventArgs e) => CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString()));
 
             InitializeComponent();
         }
