@@ -11,13 +11,11 @@ namespace MMX_GUI
 
     public partial class MainForm : Form
     {
-        private readonly ConsoleForm consoleForm;
         private readonly Node node;
        
         public MainForm()
         {
-            consoleForm = new ConsoleForm();
-            node = new Node(consoleForm.consoleControl);
+            node = new Node();
 
             node.Started += new EventHandler(refreshToolStripMenuItem_Click);
             node.BeforeStop += new EventHandler((object sender, EventArgs e) => CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString()));
@@ -67,11 +65,6 @@ namespace MMX_GUI
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            consoleForm.Show();
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)

@@ -19,25 +19,52 @@ namespace MMX_NODE_GUI
         public event EventHandler Stoped;
 
         private static readonly HttpClient client = new HttpClient();
-        private readonly ConsoleControl.ConsoleControl consoleControl;
+        private readonly Process process = new Process();
 
-        public Node(ConsoleControl.ConsoleControl consoleControl)
+        public Node()
         {
-            this.consoleControl = consoleControl;
         }
 
         public void Start()
         {
+
             var exePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 #if DEBUG
             exePath = "C:\\Program Files\\MMX";
 #endif
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.WorkingDirectory = exePath;
-            psi.FileName = exePath + "\\run_node.cmd";
-            consoleControl.StartProcess(psi);
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            processStartInfo.WorkingDirectory = exePath;
+            processStartInfo.FileName = exePath + "\\run_node.cmd";
 
-            Task.Run(async () => {
+            processStartInfo.UseShellExecute = false;
+            //processStartInfo.ErrorDialog = false;
+            processStartInfo.CreateNoWindow = true;
+            //processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            //if (false)
+            //{
+            //    processStartInfo.RedirectStandardError = true;                
+            //    processStartInfo.RedirectStandardOutput = true;
+            //    processStartInfo.RedirectStandardInput = false;
+            //}
+            
+            process.EnableRaisingEvents = true;
+            process.StartInfo = processStartInfo;
+
+            process.Exited += BeforeStop;
+            process.Exited += Stoped;            
+
+            process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
+            process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
+            
+            process.Start();
+
+            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
+            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
+
+
+            Task.Run(async () =>
+            {
                 while (true)
                 {
                     try
@@ -49,7 +76,7 @@ namespace MMX_NODE_GUI
                             break;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         //Console.WriteLine(e);
                     }
@@ -59,6 +86,11 @@ namespace MMX_NODE_GUI
 
                 OnStart();
             });
+
+        }
+        private void WriteProcessLog(string text)
+        {
+            Console.WriteLine(text);
         }
 
         public void Stop()
@@ -69,12 +101,16 @@ namespace MMX_NODE_GUI
 
             var delay = 500;
             var timeout = 10000;
-            while(consoleControl.IsProcessRunning && timeout >= 0)
+            while(!process.HasExited && timeout >= 0)
             {
                 timeout -= delay;
                 Task.Delay(delay).Wait();
             }
-            consoleControl.StopProcess();
+
+            if (!process.HasExited)
+            {
+                process.Kill();
+            }
 
             OnStop();
         }
@@ -86,9 +122,9 @@ namespace MMX_NODE_GUI
                 var result = await client.PostAsync(exitUri, null);
                 //Console.WriteLine(result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
             }
         }
 

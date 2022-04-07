@@ -60,15 +60,14 @@ namespace MMX_GUI
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.explorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
-            this.explorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -89,31 +88,29 @@ namespace MMX_GUI
             this.toolStripSeparator6,
             this.exitToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 76);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
-            this.toolStripMenuItem1.Text = "Console";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(114, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(100, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -304,8 +301,7 @@ namespace MMX_GUI
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshToolStripMenuItem,
-            this.showConsoleToolStripMenuItem});
+            this.refreshToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -313,16 +309,9 @@ namespace MMX_GUI
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
-            // showConsoleToolStripMenuItem
-            // 
-            this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
-            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.showConsoleToolStripMenuItem.Text = "Console";
-            this.showConsoleToolStripMenuItem.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -351,6 +340,13 @@ namespace MMX_GUI
             this.wikiToolStripMenuItem.Text = "Wiki";
             this.wikiToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
             // 
+            // explorerToolStripMenuItem
+            // 
+            this.explorerToolStripMenuItem.Name = "explorerToolStripMenuItem";
+            this.explorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.explorerToolStripMenuItem.Text = "Explorer";
+            this.explorerToolStripMenuItem.Click += new System.EventHandler(this.explorerToolStripMenuItem_Click);
+            // 
             // discordToolStripMenuItem
             // 
             this.discordToolStripMenuItem.Name = "discordToolStripMenuItem";
@@ -375,26 +371,19 @@ namespace MMX_GUI
             this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 24);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1064, 717);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1064, 687);
             this.chromiumWebBrowser1.TabIndex = 0;
-            // 
-            // explorerToolStripMenuItem
-            // 
-            this.explorerToolStripMenuItem.Name = "explorerToolStripMenuItem";
-            this.explorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.explorerToolStripMenuItem.Text = "Explorer";
-            this.explorerToolStripMenuItem.Click += new System.EventHandler(this.explorerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 741);
+            this.ClientSize = new System.Drawing.Size(1064, 711);
             this.Controls.Add(this.chromiumWebBrowser1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1080, 780);
+            this.MinimumSize = new System.Drawing.Size(1080, 750);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MMX Node";
@@ -438,7 +427,6 @@ namespace MMX_GUI
         private System.Windows.Forms.ToolStripMenuItem wikiToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
         private CefSharp.WinForms.ChromiumWebBrowser chromiumWebBrowser1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
