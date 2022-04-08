@@ -25,10 +25,18 @@ namespace MMX_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString());
-            node.Start();
+            chromiumWebBrowser1.FrameLoadEnd += StartNode;
+            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString());          
         }
 
+        private void StartNode(object sender, CefSharp.FrameLoadEndEventArgs e)
+        {
+            if (e.Frame.IsMain)
+            {
+                chromiumWebBrowser1.FrameLoadEnd -= StartNode;
+                node.Start();
+            }
+        }
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
