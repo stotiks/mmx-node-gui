@@ -27,7 +27,43 @@ namespace MMX_NODE_GUI
 
         public void Start()
         {
+            var executed = false;
 
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        var result = await client.GetAsync(checkUri);
+                        //Console.WriteLine(result);
+                        if (result.StatusCode == HttpStatusCode.OK)
+                        {
+                            break;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        //Console.WriteLine(e);
+                    }
+
+                    if(!executed)
+                    {
+                        executed = true;
+                        StartProcess();
+                    }
+
+                    Console.WriteLine("Waiting node...");
+                    await Task.Delay(500);
+                }
+
+                OnStart();
+            });
+
+        }
+
+        private void StartProcess()
+        {
             var exePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 #if DEBUG
             exePath = "C:\\Program Files\\MMX";
@@ -47,47 +83,22 @@ namespace MMX_NODE_GUI
             //    processStartInfo.RedirectStandardOutput = true;
             //    processStartInfo.RedirectStandardInput = false;
             //}
-            
+
             process.EnableRaisingEvents = true;
             process.StartInfo = processStartInfo;
 
             process.Exited += BeforeStop;
-            process.Exited += Stoped;            
+            process.Exited += Stoped;
 
             process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
             process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
-            
+
             process.Start();
 
             if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
-
-
-            Task.Run(async () =>
-            {
-                while (true)
-                {
-                    try
-                    {
-                        var result = await client.GetAsync(checkUri);
-                        //Console.WriteLine(result);
-                        if (result.StatusCode == HttpStatusCode.OK)
-                        {
-                            break;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        //Console.WriteLine(e);
-                    }
-                    Console.WriteLine("Waiting node...");
-                    await Task.Delay(500);
-                }
-
-                OnStart();
-            });
-
         }
+
         private void WriteProcessLog(string text)
         {
             Console.WriteLine(text);
