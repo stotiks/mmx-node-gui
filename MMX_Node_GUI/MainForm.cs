@@ -11,6 +11,11 @@ namespace MMX_GUI
 
     public partial class MainForm : Form
     {
+        private const string gitHubUrl = "https://github.com/madMAx43v3r/mmx-node";
+        private const string wikiUrl = "https://github.com/madMAx43v3r/mmx-node/wiki";
+        private const string discordUrl = "https://discord.gg/tCwevssVmY";
+        private const string explorerUrl = "http://94.130.47.147/recent";
+
         private readonly Node node;
        
         public MainForm()
@@ -82,22 +87,22 @@ namespace MMX_GUI
 
         private void githubToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/madMAx43v3r/mmx-node");
+            Process.Start(gitHubUrl);
         }
 
         private void wikiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/madMAx43v3r/mmx-node/wiki");
+            Process.Start(wikiUrl);
         }
 
         private void discordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://discord.gg/tCwevssVmY");
+            Process.Start(discordUrl);
         }
 
         private void explorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("http://94.130.47.147/recent");        
+            Process.Start(explorerUrl);        
         }
 
         private string GetLoadingHtml()
