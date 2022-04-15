@@ -19,7 +19,7 @@ namespace MMX_NODE_GUI
         public event EventHandler Stoped;
 
         private static readonly HttpClient client = new HttpClient();
-        private readonly Process process = new Process();
+        private Process process;
 
         public Node()
         {
@@ -83,7 +83,7 @@ namespace MMX_NODE_GUI
             //    processStartInfo.RedirectStandardOutput = true;
             //    processStartInfo.RedirectStandardInput = false;
             //}
-
+            process = new Process();
             process.EnableRaisingEvents = true;
             process.StartInfo = processStartInfo;
 
@@ -110,17 +110,20 @@ namespace MMX_NODE_GUI
 
             Task.Run(async () => await ExitAsync()).Wait();
 
-            var delay = 500;
-            var timeout = 10000;
-            while(!process.HasExited && timeout >= 0)
+            if (process != null)
             {
-                timeout -= delay;
-                Task.Delay(delay).Wait();
-            }
+                var delay = 500;
+                var timeout = 10000;
+                while (!process.HasExited && timeout >= 0)
+                {
+                    timeout -= delay;
+                    Task.Delay(delay).Wait();
+                }
 
-            if (!process.HasExited)
-            {
-                process.Kill();
+                if (!process.HasExited)
+                {
+                    process.Kill();
+                }
             }
 
             OnStop();
