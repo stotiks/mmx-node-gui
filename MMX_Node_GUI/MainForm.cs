@@ -42,13 +42,6 @@ namespace MMX_NODE_GUI
             if (Properties.Settings.Default.startMinimized)
             {
                 this.WindowState = FormWindowState.Minimized;
-                if (Properties.Settings.Default.minimizeToNotification)
-                {
-                    BeginInvoke(new MethodInvoker(delegate
-                    {
-                        Hide();
-                    }));
-                }
             }
 
             chromiumWebBrowser1.FrameLoadEnd += StartNode;
@@ -68,7 +61,10 @@ namespace MMX_NODE_GUI
         {
             if (MinimizeToNotification && this.WindowState == FormWindowState.Minimized)
             {
-                Hide();
+                BeginInvoke(new MethodInvoker(delegate
+                {
+                    Hide();
+                }));
                 //notifyIcon1.Visible = true;
             }
         }
