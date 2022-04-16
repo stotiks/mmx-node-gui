@@ -20,6 +20,7 @@ namespace MMX_NODE_GUI
 
         private static readonly HttpClient client = new HttpClient();
         private Process process;
+        private bool processStarted = false;
 
         public Node()
         {
@@ -93,7 +94,7 @@ namespace MMX_NODE_GUI
             process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
             process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
 
-            process.Start();
+            processStarted = process.Start();
 
             if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
@@ -110,7 +111,7 @@ namespace MMX_NODE_GUI
 
             Task.Run(async () => await ExitAsync()).Wait();
 
-            if (process != null)
+            if (process != null && processStarted)
             {
                 var delay = 500;
                 var timeout = 10000;
