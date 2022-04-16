@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
-namespace MMX_GUI
+namespace MMX_NODE_GUI
 {
     static class Program
     {

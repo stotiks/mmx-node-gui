@@ -1,12 +1,11 @@
-﻿using MMX_NODE_GUI;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace MMX_GUI
+namespace MMX_NODE_GUI
 {
 
     public partial class MainForm : Form
@@ -17,7 +16,24 @@ namespace MMX_GUI
         private const string explorerUrl = "http://94.130.47.147/recent";
 
         private readonly Node node;
-       
+        private bool disableCloseToNotification = false;
+
+        public bool closeToNotification 
+        { 
+            get 
+            {
+                return Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.closeToNotification && !disableCloseToNotification;
+            } 
+        }
+
+        public bool minimizeToNotification 
+        { 
+            get
+            {
+                return Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.minimizeToNotification;
+            }
+        }
+
         public MainForm()
         {
             node = new Node();
@@ -26,10 +42,27 @@ namespace MMX_GUI
             node.BeforeStop += new EventHandler((object sender, EventArgs e) => CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString()));
 
             InitializeComponent();
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            notifyIcon1.Visible = Properties.Settings.Default.showInNotifitation;
+
+            if (Properties.Settings.Default.startMinimized)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                if (Properties.Settings.Default.minimizeToNotification)
+                {
+                    BeginInvoke(new MethodInvoker(delegate
+                    {
+                        Hide();
+                    }));
+                }
+            }
+
             chromiumWebBrowser1.FrameLoadEnd += StartNode;
             CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString());          
         }
@@ -45,7 +78,7 @@ namespace MMX_GUI
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (minimizeToNotification && this.WindowState == FormWindowState.Minimized)
             {
                 Hide();
                 //notifyIcon1.Visible = true;
@@ -61,22 +94,32 @@ namespace MMX_GUI
         
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Do you want to close the application", 
-                                                        System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
-                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (dialogResult == DialogResult.No)
+            if (sender is MainForm && closeToNotification)
             {
+                this.WindowState = FormWindowState.Minimized;
                 e.Cancel = true;
-            } else
-            {
-                node.Stop();
+                return;
             }
 
+            if (Properties.Settings.Default.confirmationOnExit && e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to close the application",
+                                                            System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
+                                                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            node.Stop();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            disableCloseToNotification = true;
             Close();
         }
 
@@ -115,6 +158,14 @@ namespace MMX_GUI
                 return reader.ReadToEnd();
             }
         }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new OptionsForm().ShowDialog();
+
+            notifyIcon1.Visible = Properties.Settings.Default.showInNotifitation;
+        }
+
     }
 
 
