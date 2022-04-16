@@ -18,21 +18,9 @@ namespace MMX_NODE_GUI
         private readonly Node node;
         private bool disableCloseToNotification = false;
 
-        public bool closeToNotification 
-        { 
-            get 
-            {
-                return Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.closeToNotification && !disableCloseToNotification;
-            } 
-        }
+        public bool CloseToNotification => Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.closeToNotification && !disableCloseToNotification;
 
-        public bool minimizeToNotification 
-        { 
-            get
-            {
-                return Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.minimizeToNotification;
-            }
-        }
+        public bool MinimizeToNotification => Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.minimizeToNotification;
 
         public MainForm()
         {
@@ -64,7 +52,7 @@ namespace MMX_NODE_GUI
             }
 
             chromiumWebBrowser1.FrameLoadEnd += StartNode;
-            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString());          
+            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString());
         }
 
         private void StartNode(object sender, CefSharp.FrameLoadEndEventArgs e)
@@ -78,7 +66,7 @@ namespace MMX_NODE_GUI
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            if (minimizeToNotification && this.WindowState == FormWindowState.Minimized)
+            if (MinimizeToNotification && this.WindowState == FormWindowState.Minimized)
             {
                 Hide();
                 //notifyIcon1.Visible = true;
@@ -91,10 +79,10 @@ namespace MMX_NODE_GUI
             this.WindowState = FormWindowState.Normal;
             //notifyIcon1.Visible = false;
         }
-        
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (sender is MainForm && closeToNotification)
+            if (CloseToNotification)
             {
                 this.WindowState = FormWindowState.Minimized;
                 e.Cancel = true;
@@ -145,7 +133,7 @@ namespace MMX_NODE_GUI
 
         private void explorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(explorerUrl);        
+            Process.Start(explorerUrl);
         }
 
         private string GetLoadingHtml()

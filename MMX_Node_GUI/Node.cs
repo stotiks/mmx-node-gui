@@ -48,7 +48,7 @@ namespace MMX_NODE_GUI
                         //Console.WriteLine(e);
                     }
 
-                    if(!executed)
+                    if (!executed)
                     {
                         executed = true;
                         StartProcess();
@@ -145,7 +145,7 @@ namespace MMX_NODE_GUI
 
 
         private void OnStart()
-        { 
+        {
             if (Started != null)
             {
                 Started(this, EventArgs.Empty);

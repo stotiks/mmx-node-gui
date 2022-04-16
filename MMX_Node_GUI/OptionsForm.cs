@@ -8,7 +8,7 @@ namespace MMX_NODE_GUI
     public partial class OptionsForm : Form
     {
         public OptionsForm()
-        {            
+        {
             InitializeComponent();
             showInNotifitationCheckBox.Location = new Point(groupBox2.Location.X + 5, groupBox2.Location.Y);
             showInNotifitationCheckBox.BringToFront();
@@ -34,10 +34,10 @@ namespace MMX_NODE_GUI
             Properties.Settings.Default.startOnStartup = startOnStartupCheckBox.Checked;
             Properties.Settings.Default.startMinimized = startMinimizedCheckBox.Checked;
             Properties.Settings.Default.confirmationOnExit = confirmationOnExitCheckBox.Checked;
-                        
+
             Properties.Settings.Default.showInNotifitation = showInNotifitationCheckBox.Checked;
             Properties.Settings.Default.minimizeToNotification = minimizeToNotificationCheckBox.Checked;
-            Properties.Settings.Default.closeToNotification = closeToNotificationCheckBox.Checked;            
+            Properties.Settings.Default.closeToNotification = closeToNotificationCheckBox.Checked;
 
             Properties.Settings.Default.Save();
 
@@ -72,7 +72,7 @@ namespace MMX_NODE_GUI
                 {
                     registryKey.DeleteValue(appName);
                 }
-  
+
             }
         }
     }
