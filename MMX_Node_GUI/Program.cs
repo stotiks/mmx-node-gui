@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using static MMX_NODE_GUI.NativeMethods;
 
 namespace MMX_NODE_GUI
 {
@@ -36,7 +37,22 @@ namespace MMX_NODE_GUI
                 return;
             }
 
+            ApplyPowerManagementSettings();
+
             Application.Run(new MainForm());
+        }
+
+        internal static void ApplyPowerManagementSettings()
+        {
+            if (Properties.Settings.Default.inhibitSystemSleep)
+            {
+                SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS | EXECUTION_STATE.ES_SYSTEM_REQUIRED | EXECUTION_STATE.ES_AWAYMODE_REQUIRED);
+            }
+            else
+            {
+                SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
+            }
+
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]

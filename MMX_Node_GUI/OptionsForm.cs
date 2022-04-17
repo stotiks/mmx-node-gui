@@ -10,7 +10,7 @@ namespace MMX_NODE_GUI
         public OptionsForm()
         {
             InitializeComponent();
-            showInNotifitationCheckBox.Location = new Point(groupBox2.Location.X + 5, groupBox2.Location.Y);
+            showInNotifitationCheckBox.Location = new Point(showInNotifitationGroupBox.Location.X + 5, showInNotifitationGroupBox.Location.Y);
             showInNotifitationCheckBox.BringToFront();
 
             startOnStartupCheckBox.Checked = Properties.Settings.Default.startOnStartup;
@@ -21,7 +21,10 @@ namespace MMX_NODE_GUI
             minimizeToNotificationCheckBox.Checked = Properties.Settings.Default.minimizeToNotification;
             closeToNotificationCheckBox.Checked = Properties.Settings.Default.closeToNotification;
 
-            groupBox2.Enabled = showInNotifitationCheckBox.Checked;
+            showInNotifitationGroupBox.Enabled = showInNotifitationCheckBox.Checked;
+
+            inhibitSystemSleepCheckBox.Checked = Properties.Settings.Default.inhibitSystemSleep;
+            
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -39,8 +42,11 @@ namespace MMX_NODE_GUI
             Properties.Settings.Default.minimizeToNotification = minimizeToNotificationCheckBox.Checked;
             Properties.Settings.Default.closeToNotification = closeToNotificationCheckBox.Checked;
 
+            Properties.Settings.Default.inhibitSystemSleep = inhibitSystemSleepCheckBox.Checked;
+
             Properties.Settings.Default.Save();
 
+            Program.ApplyPowerManagementSettings();
             RegisterInStartup(Properties.Settings.Default.startOnStartup);
         }
 
@@ -52,7 +58,7 @@ namespace MMX_NODE_GUI
 
         private void showInNotifitationCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            groupBox2.Enabled = showInNotifitationCheckBox.Checked;
+            showInNotifitationGroupBox.Enabled = showInNotifitationCheckBox.Checked;
         }
 
 

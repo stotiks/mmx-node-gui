@@ -94,5 +94,17 @@ namespace MMX_NODE_GUI.Properties {
                 this["closeToNotification"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool inhibitSystemSleep {
+            get {
+                return ((bool)(this["inhibitSystemSleep"]));
+            }
+            set {
+                this["inhibitSystemSleep"] = value;
+            }
+        }
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsForm));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DesktopGroupBox = new System.Windows.Forms.GroupBox();
+            this.showInNotifitationGroupBox = new System.Windows.Forms.GroupBox();
             this.minimizeToNotificationCheckBox = new System.Windows.Forms.CheckBox();
             this.closeToNotificationCheckBox = new System.Windows.Forms.CheckBox();
             this.startMinimizedCheckBox = new System.Windows.Forms.CheckBox();
@@ -39,40 +39,42 @@
             this.showInNotifitationCheckBox = new System.Windows.Forms.CheckBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.powerManagementGroupBox = new System.Windows.Forms.GroupBox();
+            this.inhibitSystemSleepCheckBox = new System.Windows.Forms.CheckBox();
+            this.DesktopGroupBox.SuspendLayout();
+            this.showInNotifitationGroupBox.SuspendLayout();
+            this.powerManagementGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // DesktopGroupBox
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DesktopGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.startMinimizedCheckBox);
-            this.groupBox1.Controls.Add(this.startOnStartupCheckBox);
-            this.groupBox1.Controls.Add(this.confirmationOnExitCheckBox);
-            this.groupBox1.Controls.Add(this.showInNotifitationCheckBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(760, 181);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Desktop";
+            this.DesktopGroupBox.Controls.Add(this.showInNotifitationGroupBox);
+            this.DesktopGroupBox.Controls.Add(this.startMinimizedCheckBox);
+            this.DesktopGroupBox.Controls.Add(this.startOnStartupCheckBox);
+            this.DesktopGroupBox.Controls.Add(this.confirmationOnExitCheckBox);
+            this.DesktopGroupBox.Controls.Add(this.showInNotifitationCheckBox);
+            this.DesktopGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.DesktopGroupBox.Name = "DesktopGroupBox";
+            this.DesktopGroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.DesktopGroupBox.Size = new System.Drawing.Size(460, 187);
+            this.DesktopGroupBox.TabIndex = 4;
+            this.DesktopGroupBox.TabStop = false;
+            this.DesktopGroupBox.Text = "Desktop";
             // 
-            // groupBox2
+            // showInNotifitationGroupBox
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.showInNotifitationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.minimizeToNotificationCheckBox);
-            this.groupBox2.Controls.Add(this.closeToNotificationCheckBox);
-            this.groupBox2.Location = new System.Drawing.Point(9, 91);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(742, 68);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
+            this.showInNotifitationGroupBox.Controls.Add(this.minimizeToNotificationCheckBox);
+            this.showInNotifitationGroupBox.Controls.Add(this.closeToNotificationCheckBox);
+            this.showInNotifitationGroupBox.Location = new System.Drawing.Point(9, 91);
+            this.showInNotifitationGroupBox.Name = "showInNotifitationGroupBox";
+            this.showInNotifitationGroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.showInNotifitationGroupBox.Size = new System.Drawing.Size(442, 80);
+            this.showInNotifitationGroupBox.TabIndex = 8;
+            this.showInNotifitationGroupBox.TabStop = false;
             // 
             // minimizeToNotificationCheckBox
             // 
@@ -127,7 +129,7 @@
             // showInNotifitationCheckBox
             // 
             this.showInNotifitationCheckBox.AutoSize = true;
-            this.showInNotifitationCheckBox.Location = new System.Drawing.Point(297, 68);
+            this.showInNotifitationCheckBox.Location = new System.Drawing.Point(237, 68);
             this.showInNotifitationCheckBox.Name = "showInNotifitationCheckBox";
             this.showInNotifitationCheckBox.Size = new System.Drawing.Size(142, 17);
             this.showInNotifitationCheckBox.TabIndex = 11;
@@ -138,7 +140,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(697, 426);
+            this.cancelButton.Location = new System.Drawing.Point(397, 276);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 6;
@@ -149,7 +151,7 @@
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(616, 426);
+            this.okButton.Location = new System.Drawing.Point(316, 276);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 7;
@@ -157,41 +159,68 @@
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
+            // powerManagementGroupBox
+            // 
+            this.powerManagementGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.powerManagementGroupBox.Controls.Add(this.inhibitSystemSleepCheckBox);
+            this.powerManagementGroupBox.Location = new System.Drawing.Point(12, 205);
+            this.powerManagementGroupBox.Name = "powerManagementGroupBox";
+            this.powerManagementGroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.powerManagementGroupBox.Size = new System.Drawing.Size(460, 62);
+            this.powerManagementGroupBox.TabIndex = 8;
+            this.powerManagementGroupBox.TabStop = false;
+            this.powerManagementGroupBox.Text = "Power Management";
+            // 
+            // inhibitSystemSleepCheckBox
+            // 
+            this.inhibitSystemSleepCheckBox.AutoSize = true;
+            this.inhibitSystemSleepCheckBox.Location = new System.Drawing.Point(9, 22);
+            this.inhibitSystemSleepCheckBox.Name = "inhibitSystemSleepCheckBox";
+            this.inhibitSystemSleepCheckBox.Size = new System.Drawing.Size(117, 17);
+            this.inhibitSystemSleepCheckBox.TabIndex = 0;
+            this.inhibitSystemSleepCheckBox.Text = "Inhibit system sleep";
+            this.inhibitSystemSleepCheckBox.UseVisualStyleBackColor = true;
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(484, 311);
+            this.Controls.Add(this.powerManagementGroupBox);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.DesktopGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 500);
+            this.MinimumSize = new System.Drawing.Size(500, 350);
             this.Name = "OptionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.DesktopGroupBox.ResumeLayout(false);
+            this.DesktopGroupBox.PerformLayout();
+            this.showInNotifitationGroupBox.ResumeLayout(false);
+            this.showInNotifitationGroupBox.PerformLayout();
+            this.powerManagementGroupBox.ResumeLayout(false);
+            this.powerManagementGroupBox.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox DesktopGroupBox;
         private System.Windows.Forms.CheckBox confirmationOnExitCheckBox;
         private System.Windows.Forms.CheckBox startMinimizedCheckBox;
         private System.Windows.Forms.CheckBox startOnStartupCheckBox;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox showInNotifitationGroupBox;
         private System.Windows.Forms.CheckBox minimizeToNotificationCheckBox;
         private System.Windows.Forms.CheckBox closeToNotificationCheckBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.CheckBox showInNotifitationCheckBox;
+        private System.Windows.Forms.GroupBox powerManagementGroupBox;
+        private System.Windows.Forms.CheckBox inhibitSystemSleepCheckBox;
     }
 }
