@@ -92,6 +92,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PowerManagement.cs" />
     <Compile Include="FormExtensions.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

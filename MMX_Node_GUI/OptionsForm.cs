@@ -46,7 +46,7 @@ namespace MMX_NODE_GUI
 
             Properties.Settings.Default.Save();
 
-            Program.ApplyPowerManagementSettings();
+            PowerManagement.ApplyPowerManagementSettings();
             RegisterInStartup(Properties.Settings.Default.startOnStartup);
         }
 
