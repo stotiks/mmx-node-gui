@@ -1,12 +1,20 @@
 ﻿using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
 {
     public partial class OptionsForm : Form
     {
+        private static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");
+        private static string configPath = MMX_HOME + @"\config\local";
+        private static string harvesterConfigPath = configPath + @"\Harvester.json";
+        private JObject harvesterConfig;
+
         public OptionsForm()
         {
             InitializeComponent();
@@ -24,7 +32,22 @@ namespace MMX_NODE_GUI
             showInNotifitationGroupBox.Enabled = showInNotifitationCheckBox.Checked;
 
             inhibitSystemSleepCheckBox.Checked = Properties.Settings.Default.inhibitSystemSleep;
-            
+
+
+            string harvesterJson = File.ReadAllText(harvesterConfigPath);
+            harvesterConfig = JObject.Parse(harvesterJson);
+
+            int num_threads = harvesterConfig.Value<int>("num_threads");
+            int reload_interval = harvesterConfig.Value<int>("reload_interval");
+            JArray plot_dirs = harvesterConfig.Value<JArray>("plot_dirs");
+
+            for(int i = 0; i < plot_dirs.Count; i++)
+            {
+                listBox1.Items.Add(plot_dirs[i]);
+            }
+
+            reloadInvervalNumericUpDown.Value = reload_interval / 60;
+            numThreadsNumericUpDown.Value = num_threads;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -48,6 +71,17 @@ namespace MMX_NODE_GUI
 
             PowerManagement.ApplyPowerManagementSettings();
             RegisterInStartup(Properties.Settings.Default.startOnStartup);
+
+            harvesterConfig["num_threads"] = (int) numThreadsNumericUpDown.Value;
+            harvesterConfig["reload_interval"] = (int) reloadInvervalNumericUpDown.Value * 60;
+
+            ((JArray)harvesterConfig["plot_dirs"]).Clear();
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                ((JArray)harvesterConfig["plot_dirs"]).Add(listBox1.Items[i].ToString());
+            }
+            File.WriteAllText(harvesterConfigPath, harvesterConfig.ToString());
+
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -80,6 +114,54 @@ namespace MMX_NODE_GUI
                 }
 
             }
+        }
+
+
+        private Color[] TColors = { Color.Salmon, Color.White, Color.LightBlue };
+
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // get ref to this page
+            TabPage tp = ((TabControl)sender).TabPages[e.Index];
+
+            using (Brush br = new SolidBrush(TColors[e.Index]))
+            {
+                Rectangle rect = e.Bounds;
+                e.Graphics.FillRectangle(br, e.Bounds);
+
+                rect.Offset(1, 1);
+                TextRenderer.DrawText(e.Graphics, tp.Text,
+                       tp.Font, rect, tp.ForeColor);
+
+                // draw the border
+                rect = e.Bounds;
+                rect.Offset(0, 1);
+                rect.Inflate(0, -1);
+
+                // ControlDark looks right for the border
+                using (Pen p = new Pen(SystemColors.ControlDark))
+                {
+                    e.Graphics.DrawRectangle(p, rect);
+                }
+
+                if (e.State == DrawItemState.Selected) e.DrawFocusRectangle();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                listBox1.Items.Add(dialog.FileName);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Remove(listBox1.SelectedItem);
         }
     }
 }
