@@ -33,11 +33,10 @@
             this.okButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.harvesterTabPage = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numThreadsNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.reloadInvervalNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.plotDirListBox = new System.Windows.Forms.ListBox();
             this.desktopTabPage = new System.Windows.Forms.TabPage();
             this.showInNotifitationGroupBox = new System.Windows.Forms.GroupBox();
             this.minimizeToNotificationCheckBox = new System.Windows.Forms.CheckBox();
@@ -48,12 +47,9 @@
             this.showInNotifitationCheckBox = new System.Windows.Forms.CheckBox();
             this.powerManagenetTabPage = new System.Windows.Forms.TabPage();
             this.inhibitSystemSleepCheckBox = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numThreadsNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reloadInvervalNumericUpDown)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.desktopTabPage.SuspendLayout();
             this.showInNotifitationGroupBox.SuspendLayout();
             this.powerManagenetTabPage.SuspendLayout();
@@ -99,13 +95,7 @@
             // 
             // harvesterTabPage
             // 
-            this.harvesterTabPage.Controls.Add(this.button2);
-            this.harvesterTabPage.Controls.Add(this.button1);
-            this.harvesterTabPage.Controls.Add(this.listBox1);
-            this.harvesterTabPage.Controls.Add(this.label2);
-            this.harvesterTabPage.Controls.Add(this.numThreadsNumericUpDown);
-            this.harvesterTabPage.Controls.Add(this.label1);
-            this.harvesterTabPage.Controls.Add(this.reloadInvervalNumericUpDown);
+            this.harvesterTabPage.Controls.Add(this.groupBox1);
             this.harvesterTabPage.Location = new System.Drawing.Point(4, 22);
             this.harvesterTabPage.Name = "harvesterTabPage";
             this.harvesterTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -114,72 +104,51 @@
             this.harvesterTabPage.Text = "Harvester";
             this.harvesterTabPage.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // groupBox1
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Controls.Add(this.removeButton);
+            this.groupBox1.Controls.Add(this.addButton);
+            this.groupBox1.Controls.Add(this.plotDirListBox);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(458, 276);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Load plots from (node restart required):";
+            // 
+            // removeButton
+            // 
+            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeButton.Location = new System.Drawing.Point(378, 48);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.TabIndex = 9;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton.Location = new System.Drawing.Point(378, 19);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 8;
+            this.addButton.Text = "Add...";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // plotDirListBox
+            // 
+            this.plotDirListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(9, 97);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(368, 173);
-            this.listBox1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Number of threads:";
-            // 
-            // numThreadsNumericUpDown
-            // 
-            this.numThreadsNumericUpDown.Location = new System.Drawing.Point(118, 32);
-            this.numThreadsNumericUpDown.Maximum = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
-            this.numThreadsNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numThreadsNumericUpDown.Name = "numThreadsNumericUpDown";
-            this.numThreadsNumericUpDown.Size = new System.Drawing.Size(65, 20);
-            this.numThreadsNumericUpDown.TabIndex = 2;
-            this.numThreadsNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Reload interval (min):";
-            // 
-            // reloadInvervalNumericUpDown
-            // 
-            this.reloadInvervalNumericUpDown.Location = new System.Drawing.Point(118, 6);
-            this.reloadInvervalNumericUpDown.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.reloadInvervalNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.reloadInvervalNumericUpDown.Name = "reloadInvervalNumericUpDown";
-            this.reloadInvervalNumericUpDown.Size = new System.Drawing.Size(65, 20);
-            this.reloadInvervalNumericUpDown.TabIndex = 0;
+            this.plotDirListBox.FormattingEnabled = true;
+            this.plotDirListBox.Location = new System.Drawing.Point(5, 19);
+            this.plotDirListBox.Name = "plotDirListBox";
+            this.plotDirListBox.Size = new System.Drawing.Size(368, 251);
+            this.plotDirListBox.TabIndex = 7;
             // 
             // desktopTabPage
             // 
@@ -290,29 +259,6 @@
             this.inhibitSystemSleepCheckBox.Text = "Inhibit system sleep";
             this.inhibitSystemSleepCheckBox.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(383, 97);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Add...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(383, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,9 +276,7 @@
             this.Text = "Options";
             this.tabControl1.ResumeLayout(false);
             this.harvesterTabPage.ResumeLayout(false);
-            this.harvesterTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numThreadsNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reloadInvervalNumericUpDown)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.desktopTabPage.ResumeLayout(false);
             this.desktopTabPage.PerformLayout();
             this.showInNotifitationGroupBox.ResumeLayout(false);
@@ -358,12 +302,9 @@
         private System.Windows.Forms.CheckBox showInNotifitationCheckBox;
         private System.Windows.Forms.CheckBox inhibitSystemSleepCheckBox;
         private System.Windows.Forms.TabPage harvesterTabPage;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numThreadsNumericUpDown;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown reloadInvervalNumericUpDown;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.ListBox plotDirListBox;
     }
 }

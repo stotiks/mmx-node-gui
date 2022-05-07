@@ -43,11 +43,8 @@ namespace MMX_NODE_GUI
 
             for(int i = 0; i < plot_dirs.Count; i++)
             {
-                listBox1.Items.Add(plot_dirs[i]);
+                plotDirListBox.Items.Add(plot_dirs[i]);
             }
-
-            reloadInvervalNumericUpDown.Value = reload_interval / 60;
-            numThreadsNumericUpDown.Value = num_threads;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -72,13 +69,10 @@ namespace MMX_NODE_GUI
             PowerManagement.ApplyPowerManagementSettings();
             RegisterInStartup(Properties.Settings.Default.startOnStartup);
 
-            harvesterConfig["num_threads"] = (int) numThreadsNumericUpDown.Value;
-            harvesterConfig["reload_interval"] = (int) reloadInvervalNumericUpDown.Value * 60;
-
             ((JArray)harvesterConfig["plot_dirs"]).Clear();
-            for (int i = 0; i < listBox1.Items.Count; i++)
+            for (int i = 0; i < plotDirListBox.Items.Count; i++)
             {
-                ((JArray)harvesterConfig["plot_dirs"]).Add(listBox1.Items[i].ToString());
+                ((JArray)harvesterConfig["plot_dirs"]).Add(plotDirListBox.Items[i].ToString());
             }
             File.WriteAllText(harvesterConfigPath, harvesterConfig.ToString());
 
@@ -148,20 +142,21 @@ namespace MMX_NODE_GUI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                listBox1.Items.Add(dialog.FileName);
+                plotDirListBox.Items.Add(dialog.FileName);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void removeButton_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Remove(listBox1.SelectedItem);
+            plotDirListBox.Items.Remove(plotDirListBox.SelectedItem);
         }
+
     }
 }
