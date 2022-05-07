@@ -15,7 +15,9 @@ namespace MMX_NODE_GUI
         private const string discordUrl = "https://discord.gg/tCwevssVmY";
         private const string explorerUrl = "http://94.130.47.147/recent";
 
-        private readonly Node node;
+        static private string loadingHtml = GetResource("loading.html");
+
+        private readonly Node node = new Node();
         private bool disableCloseToNotification = false;
 
         public bool CloseToNotification => Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.closeToNotification && !disableCloseToNotification;
@@ -24,10 +26,9 @@ namespace MMX_NODE_GUI
 
         public MainForm()
         {
-            node = new Node();
 
             node.Started += new EventHandler(refreshToolStripMenuItem_Click);
-            node.BeforeStop += new EventHandler((object sender, EventArgs e) => CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString()));
+            node.BeforeStop += new EventHandler((object sender, EventArgs e) => CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, loadingHtml, Node.baseUri.ToString()));
 
             InitializeComponent();
 
@@ -44,7 +45,7 @@ namespace MMX_NODE_GUI
             }
 
             chromiumWebBrowser1.FrameLoadEnd += StartNode;
-            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, GetLoadingHtml(), Node.baseUri.ToString());
+            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, loadingHtml, Node.baseUri.ToString());
         }
 
         private void StartNode(object sender, CefSharp.FrameLoadEndEventArgs e)
@@ -131,10 +132,10 @@ namespace MMX_NODE_GUI
             Process.Start(explorerUrl);
         }
 
-        private string GetLoadingHtml()
+        private static string GetResource(string resName)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("loading.html"));
+            string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resName));
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             using (StreamReader reader = new StreamReader(stream))
             {

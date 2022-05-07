@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
 {
-    class Node
+    public class Node
     {
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
-        private static readonly Uri exitUri = new Uri(baseUri, "/wapi/node/exit");
-        private static readonly Uri checkUri = new Uri(baseUri, "/api/router/get_peer_info");
+        static private readonly Uri exitUri = new Uri(baseUri, "/wapi/node/exit");
+        static private readonly Uri checkUri = new Uri(baseUri, "/api/router/get_peer_info");
 
         public event EventHandler Started;
         public event EventHandler BeforeStop;
@@ -126,6 +126,8 @@ namespace MMX_NODE_GUI
                     process.Kill();
                 }
             }
+
+            processStarted = false;
 
             OnStop();
         }
