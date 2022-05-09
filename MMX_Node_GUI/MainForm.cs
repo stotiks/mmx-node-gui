@@ -147,7 +147,7 @@ namespace MMX_NODE_GUI
         {
             new OptionsForm().ShowDialog();
 
-            notifyIcon1.Visible = Properties.Settings.Default.showInNotifitation;
+            //notifyIcon1.Visible = Properties.Settings.Default.showInNotifitation;
         }
 
     }

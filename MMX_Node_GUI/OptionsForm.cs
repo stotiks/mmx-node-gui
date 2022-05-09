@@ -10,9 +10,6 @@ namespace MMX_NODE_GUI
 {
     public partial class OptionsForm : Form
     {
-        private static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");
-        private static string configPath = MMX_HOME + @"\config\local";
-        private static string harvesterConfigPath = configPath + @"\Harvester.json";
         private JObject harvesterConfig;
 
         public OptionsForm()
@@ -34,11 +31,11 @@ namespace MMX_NODE_GUI
             inhibitSystemSleepCheckBox.Checked = Properties.Settings.Default.inhibitSystemSleep;
 
 
-            string harvesterJson = File.ReadAllText(harvesterConfigPath);
+            string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
             harvesterConfig = JObject.Parse(harvesterJson);
 
-            int num_threads = harvesterConfig.Value<int>("num_threads");
-            int reload_interval = harvesterConfig.Value<int>("reload_interval");
+            //int num_threads = harvesterConfig.Value<int>("num_threads");
+            //int reload_interval = harvesterConfig.Value<int>("reload_interval");
             JArray plot_dirs = harvesterConfig.Value<JArray>("plot_dirs");
 
             for(int i = 0; i < plot_dirs.Count; i++)
@@ -74,7 +71,7 @@ namespace MMX_NODE_GUI
             {
                 ((JArray)harvesterConfig["plot_dirs"]).Add(plotDirListBox.Items[i].ToString());
             }
-            File.WriteAllText(harvesterConfigPath, harvesterConfig.ToString());
+            File.WriteAllText(Node.harvesterConfigPath, harvesterConfig.ToString());
 
         }
 

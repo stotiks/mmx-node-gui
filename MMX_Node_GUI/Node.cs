@@ -9,6 +9,11 @@ namespace MMX_NODE_GUI
 {
     public class Node
     {
+
+        public static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");
+        public static string configPath = MMX_HOME + @"\config\local";
+        public static string harvesterConfigPath = configPath + @"\Harvester.json";
+
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
         static private readonly Uri exitUri = new Uri(baseUri, "/wapi/node/exit");
