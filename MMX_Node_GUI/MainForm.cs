@@ -1,6 +1,9 @@
-﻿using System;
+﻿using CefSharp;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -8,16 +11,14 @@ using System.Windows.Forms;
 namespace MMX_NODE_GUI
 {
 
-    public partial class MainForm : Form
+    public partial class MainForm : MaterialForm
     {
         private const string gitHubUrl = "https://github.com/madMAx43v3r/mmx-node";
         private const string wikiUrl = "https://github.com/madMAx43v3r/mmx-node/wiki";
         private const string discordUrl = "https://discord.gg/tCwevssVmY";
         private const string explorerUrl = "http://94.130.47.147/recent";
 
-        static private string loadingHtml = GetResource("loading.html");
 
-        private readonly Node node = new Node();
         private bool disableCloseToNotification = false;
 
         public bool CloseToNotification => Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.closeToNotification && !disableCloseToNotification;
@@ -26,35 +27,40 @@ namespace MMX_NODE_GUI
 
         public MainForm()
         {
-
-            node.Started += new EventHandler(refreshToolStripMenuItem_Click);
-            node.BeforeStop += new EventHandler((object sender, EventArgs e) => CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, loadingHtml, Node.baseUri.ToString()));
+            InitializeSkinManager();
 
             InitializeComponent();
 
+            InitializeNode();
+
+            InitializeSettings();
+
+            InitializeHarvester();
+
+            InitializePlotter();
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void InitializeSkinManager()
+        {
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.Blue200, TextShade.WHITE);
+            //this.FormStyle = FormStyles.ActionBar_None;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
             notifyIcon1.Visible = Properties.Settings.Default.showInNotifitation;
 
             if (Properties.Settings.Default.startMinimized)
             {
-                this.WindowState = FormWindowState.Minimized;
+                WindowState = FormWindowState.Minimized;
             }
 
-            chromiumWebBrowser1.FrameLoadEnd += StartNode;
-            CefSharp.WebBrowserExtensions.LoadHtml(chromiumWebBrowser1, loadingHtml, Node.baseUri.ToString());
-        }
-
-        private void StartNode(object sender, CefSharp.FrameLoadEndEventArgs e)
-        {
-            if (e.Frame.IsMain)
-            {
-                chromiumWebBrowser1.FrameLoadEnd -= StartNode;
-                node.Start();
-            }
+            NodeMainForm_Load();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -65,51 +71,53 @@ namespace MMX_NODE_GUI
                 {
                     Hide();
                 }));
-                //notifyIcon1.Visible = true;
             }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, EventArgs e)
         {
             Show();
-            this.WindowState = FormWindowState.Normal;
-            //notifyIcon1.Visible = false;
+            WindowState = FormWindowState.Normal;
         }
 
+        bool closePending = false;
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (closePending) return;
+
             if (CloseToNotification)
             {
-                this.WindowState = FormWindowState.Minimized;
+                WindowState = FormWindowState.Minimized;
                 e.Cancel = true;
                 return;
             }
 
             if (Properties.Settings.Default.confirmationOnExit && e.CloseReason == CloseReason.UserClosing)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to close the application",
-                                                            System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
-                                                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MaterialDialog materialDialog = new MaterialDialog(this, 
+                                                                   Assembly.GetExecutingAssembly().GetName().Name,
+                                                                   "Do you want to close the application?", 
+                                                                   "No", true, "Yes");
+                DialogResult dialogResult = materialDialog.ShowDialog(this);
 
-                if (dialogResult == DialogResult.No)
+                if (dialogResult == DialogResult.OK)
                 {
                     e.Cancel = true;
                     return;
                 }
             }
 
+            closePending = true;
+            chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
+            nodeTabPage.Show();
             node.Stop();
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             disableCloseToNotification = true;
             Close();
-        }
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            chromiumWebBrowser1.LoadUrl(Node.guiUri.ToString());
         }
 
         private void githubToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,22 +140,18 @@ namespace MMX_NODE_GUI
             Process.Start(explorerUrl);
         }
 
-        private static string GetResource(string resName)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resName));
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
+            Cef.Shutdown();
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        public IEnumerable<Control> GetAll(Control control, Type type)
         {
-            new OptionsForm().ShowDialog();
+            var controls = control.Controls.Cast<Control>();
 
-            //notifyIcon1.Visible = Properties.Settings.Default.showInNotifitation;
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
         }
 
     }

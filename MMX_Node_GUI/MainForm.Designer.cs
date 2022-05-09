@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace MMX_NODE_GUI
 {
     partial class MainForm
@@ -36,40 +38,63 @@ namespace MMX_NODE_GUI
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.explorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.discordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
+            this.nodeTabPage = new System.Windows.Forms.TabPage();
+            this.MenuMaterialTabControl = new MaterialSkin.Controls.MaterialTabControl();
+            this.harvesterTabPage = new System.Windows.Forms.TabPage();
+            this.removePlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.addPlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.plotFoldersMaterialListBox = new MaterialSkin.Controls.MaterialListBox();
+            this.plotterTabPage = new System.Windows.Forms.TabPage();
+            this.materialMultiLineTextBox21 = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            this.countMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.keysTabPage = new System.Windows.Forms.TabPage();
+            this.farmerkeyMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.nftplotMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.contractMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.poolkeyMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.perfomanceTabPage = new System.Windows.Forms.TabPage();
+            this.foldersTabPage = new System.Windows.Forms.TabPage();
+            this.tmpdirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.tmpdir2MaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.stagedirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.directoutMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.stagedirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.tmptoggleMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.tmpdirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.waitforcopyMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.tmpdir2MaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.countMaterialNumericUpDown1 = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.startMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.sizeMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.finaldirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.settingsTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.inhibitSystemSleepMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.confirmationOnExitMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.startMinimizedMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.startOnStartupMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.showInNotifitationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.showInNotifitationGroupBox = new System.Windows.Forms.GroupBox();
+            this.closeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.menuIconList = new System.Windows.Forms.ImageList(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.MenuMaterialTabControl.SuspendLayout();
+            this.harvesterTabPage.SuspendLayout();
+            this.plotterTabPage.SuspendLayout();
+            this.materialTabControl1.SuspendLayout();
+            this.keysTabPage.SuspendLayout();
+            this.foldersTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown1)).BeginInit();
+            this.settingsTabPage.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.showInNotifitationGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -108,293 +133,895 @@ namespace MMX_NODE_GUI
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // menuStrip1
+            // nodeTabPage
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1064, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.nodeTabPage.ImageKey = "database-sync.png";
+            this.nodeTabPage.Location = new System.Drawing.Point(4, 31);
+            this.nodeTabPage.Name = "nodeTabPage";
+            this.nodeTabPage.Size = new System.Drawing.Size(1056, 613);
+            this.nodeTabPage.TabIndex = 0;
+            this.nodeTabPage.Text = "Node";
             // 
-            // fileToolStripMenuItem
+            // MenuMaterialTabControl
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.toolStripSeparator,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.printToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.MenuMaterialTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MenuMaterialTabControl.Controls.Add(this.nodeTabPage);
+            this.MenuMaterialTabControl.Controls.Add(this.harvesterTabPage);
+            this.MenuMaterialTabControl.Controls.Add(this.plotterTabPage);
+            this.MenuMaterialTabControl.Controls.Add(this.settingsTabPage);
+            this.MenuMaterialTabControl.Depth = 0;
+            this.MenuMaterialTabControl.ImageList = this.menuIconList;
+            this.MenuMaterialTabControl.Location = new System.Drawing.Point(3, 64);
+            this.MenuMaterialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MenuMaterialTabControl.Multiline = true;
+            this.MenuMaterialTabControl.Name = "MenuMaterialTabControl";
+            this.MenuMaterialTabControl.SelectedIndex = 0;
+            this.MenuMaterialTabControl.Size = new System.Drawing.Size(1064, 648);
+            this.MenuMaterialTabControl.TabIndex = 4;
             // 
-            // newToolStripMenuItem
+            // harvesterTabPage
             // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Visible = false;
+            this.harvesterTabPage.Controls.Add(this.removePlotFolderMaterialButton);
+            this.harvesterTabPage.Controls.Add(this.addPlotFolderMaterialButton);
+            this.harvesterTabPage.Controls.Add(this.plotFoldersMaterialListBox);
+            this.harvesterTabPage.ImageKey = "tractor.png";
+            this.harvesterTabPage.Location = new System.Drawing.Point(4, 31);
+            this.harvesterTabPage.Name = "harvesterTabPage";
+            this.harvesterTabPage.Padding = new System.Windows.Forms.Padding(10);
+            this.harvesterTabPage.Size = new System.Drawing.Size(1056, 613);
+            this.harvesterTabPage.TabIndex = 3;
+            this.harvesterTabPage.Text = "Harvester";
             // 
-            // openToolStripMenuItem
+            // removePlotFolderMaterialButton
             // 
-            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "&Open";
-            this.openToolStripMenuItem.Visible = false;
+            this.removePlotFolderMaterialButton.AutoSize = false;
+            this.removePlotFolderMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.removePlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.removePlotFolderMaterialButton.Depth = 0;
+            this.removePlotFolderMaterialButton.HighEmphasis = false;
+            this.removePlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_remove;
+            this.removePlotFolderMaterialButton.Location = new System.Drawing.Point(502, 58);
+            this.removePlotFolderMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.removePlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.removePlotFolderMaterialButton.Name = "removePlotFolderMaterialButton";
+            this.removePlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.removePlotFolderMaterialButton.Size = new System.Drawing.Size(111, 36);
+            this.removePlotFolderMaterialButton.TabIndex = 3;
+            this.removePlotFolderMaterialButton.Text = "Remove";
+            this.removePlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.removePlotFolderMaterialButton.UseAccentColor = false;
+            this.removePlotFolderMaterialButton.UseVisualStyleBackColor = true;
+            this.removePlotFolderMaterialButton.Click += new System.EventHandler(this.removePlotFolderMaterialButton_Click);
             // 
-            // toolStripSeparator
+            // addPlotFolderMaterialButton
             // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
-            this.toolStripSeparator.Visible = false;
+            this.addPlotFolderMaterialButton.AutoSize = false;
+            this.addPlotFolderMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.addPlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.addPlotFolderMaterialButton.Depth = 0;
+            this.addPlotFolderMaterialButton.HighEmphasis = false;
+            this.addPlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_plus;
+            this.addPlotFolderMaterialButton.Location = new System.Drawing.Point(502, 10);
+            this.addPlotFolderMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.addPlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.addPlotFolderMaterialButton.Name = "addPlotFolderMaterialButton";
+            this.addPlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.addPlotFolderMaterialButton.Size = new System.Drawing.Size(111, 36);
+            this.addPlotFolderMaterialButton.TabIndex = 2;
+            this.addPlotFolderMaterialButton.Text = "Add";
+            this.addPlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.addPlotFolderMaterialButton.UseAccentColor = false;
+            this.addPlotFolderMaterialButton.UseVisualStyleBackColor = true;
+            this.addPlotFolderMaterialButton.Click += new System.EventHandler(this.addPlotFolderMaterialButton_Click);
             // 
-            // saveToolStripMenuItem
+            // plotFoldersMaterialListBox
             // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
-            this.saveToolStripMenuItem.Visible = false;
+            this.plotFoldersMaterialListBox.BackColor = System.Drawing.Color.White;
+            this.plotFoldersMaterialListBox.BorderColor = System.Drawing.Color.LightGray;
+            this.plotFoldersMaterialListBox.Depth = 0;
+            this.plotFoldersMaterialListBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.plotFoldersMaterialListBox.Location = new System.Drawing.Point(10, 10);
+            this.plotFoldersMaterialListBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.plotFoldersMaterialListBox.Name = "plotFoldersMaterialListBox";
+            this.plotFoldersMaterialListBox.SelectedIndex = -1;
+            this.plotFoldersMaterialListBox.SelectedItem = null;
+            this.plotFoldersMaterialListBox.Size = new System.Drawing.Size(485, 331);
+            this.plotFoldersMaterialListBox.TabIndex = 1;
             // 
-            // saveAsToolStripMenuItem
+            // plotterTabPage
             // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveAsToolStripMenuItem.Text = "Save &As";
-            this.saveAsToolStripMenuItem.Visible = false;
+            this.plotterTabPage.Controls.Add(this.materialMultiLineTextBox21);
+            this.plotterTabPage.Controls.Add(this.countMaterialLabel);
+            this.plotterTabPage.Controls.Add(this.materialTabControl1);
+            this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
+            this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown1);
+            this.plotterTabPage.Controls.Add(this.materialTabSelector1);
+            this.plotterTabPage.Controls.Add(this.startMaterialButton);
+            this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
+            this.plotterTabPage.Controls.Add(this.sizeMaterialLabel);
+            this.plotterTabPage.Controls.Add(this.finaldirMaterialTextBox2);
+            this.plotterTabPage.ImageKey = "harddisk-plus.png";
+            this.plotterTabPage.Location = new System.Drawing.Point(4, 31);
+            this.plotterTabPage.Name = "plotterTabPage";
+            this.plotterTabPage.Padding = new System.Windows.Forms.Padding(10);
+            this.plotterTabPage.Size = new System.Drawing.Size(1056, 613);
+            this.plotterTabPage.TabIndex = 4;
+            this.plotterTabPage.Text = "Plotter";
             // 
-            // toolStripSeparator1
+            // materialMultiLineTextBox21
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            this.toolStripSeparator1.Visible = false;
+            this.materialMultiLineTextBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialMultiLineTextBox21.AnimateReadOnly = false;
+            this.materialMultiLineTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialMultiLineTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialMultiLineTextBox21.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.materialMultiLineTextBox21.Depth = 0;
+            this.materialMultiLineTextBox21.HideSelection = true;
+            this.materialMultiLineTextBox21.Location = new System.Drawing.Point(10, 439);
+            this.materialMultiLineTextBox21.MaxLength = 32767;
+            this.materialMultiLineTextBox21.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialMultiLineTextBox21.Name = "materialMultiLineTextBox21";
+            this.materialMultiLineTextBox21.PasswordChar = '\0';
+            this.materialMultiLineTextBox21.ReadOnly = true;
+            this.materialMultiLineTextBox21.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.materialMultiLineTextBox21.SelectedText = "";
+            this.materialMultiLineTextBox21.SelectionLength = 0;
+            this.materialMultiLineTextBox21.SelectionStart = 0;
+            this.materialMultiLineTextBox21.ShortcutsEnabled = true;
+            this.materialMultiLineTextBox21.Size = new System.Drawing.Size(977, 161);
+            this.materialMultiLineTextBox21.TabIndex = 26;
+            this.materialMultiLineTextBox21.TabStop = false;
+            this.materialMultiLineTextBox21.Text = "materialMultiLineTextBox21";
+            this.materialMultiLineTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.materialMultiLineTextBox21.UseSystemPasswordChar = false;
             // 
-            // printToolStripMenuItem
+            // countMaterialLabel
             // 
-            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
-            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.printToolStripMenuItem.Text = "&Print";
-            this.printToolStripMenuItem.Visible = false;
+            this.countMaterialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countMaterialLabel.AutoSize = true;
+            this.countMaterialLabel.Depth = 0;
+            this.countMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.countMaterialLabel.Location = new System.Drawing.Point(515, 86);
+            this.countMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.countMaterialLabel.Name = "countMaterialLabel";
+            this.countMaterialLabel.Size = new System.Drawing.Size(180, 19);
+            this.countMaterialLabel.TabIndex = 16;
+            this.countMaterialLabel.Text = "Number of plots to create";
             // 
-            // printPreviewToolStripMenuItem
+            // materialTabControl1
             // 
-            this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
-            this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
-            this.printPreviewToolStripMenuItem.Visible = false;
+            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTabControl1.Controls.Add(this.keysTabPage);
+            this.materialTabControl1.Controls.Add(this.perfomanceTabPage);
+            this.materialTabControl1.Controls.Add(this.foldersTabPage);
+            this.materialTabControl1.Depth = 0;
+            this.materialTabControl1.Location = new System.Drawing.Point(10, 187);
+            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabControl1.Multiline = true;
+            this.materialTabControl1.Name = "materialTabControl1";
+            this.materialTabControl1.SelectedIndex = 0;
+            this.materialTabControl1.Size = new System.Drawing.Size(977, 250);
+            this.materialTabControl1.TabIndex = 25;
             // 
-            // toolStripSeparator2
+            // keysTabPage
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            this.toolStripSeparator2.Visible = false;
+            this.keysTabPage.Controls.Add(this.farmerkeyMaterialTextBox2);
+            this.keysTabPage.Controls.Add(this.nftplotMaterialSwitch);
+            this.keysTabPage.Controls.Add(this.contractMaterialTextBox2);
+            this.keysTabPage.Controls.Add(this.poolkeyMaterialTextBox2);
+            this.keysTabPage.Location = new System.Drawing.Point(4, 22);
+            this.keysTabPage.Name = "keysTabPage";
+            this.keysTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.keysTabPage.Size = new System.Drawing.Size(969, 224);
+            this.keysTabPage.TabIndex = 0;
+            this.keysTabPage.Text = "Keys";
             // 
-            // exitToolStripMenuItem
+            // farmerkeyMaterialTextBox2
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.farmerkeyMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.farmerkeyMaterialTextBox2.AnimateReadOnly = false;
+            this.farmerkeyMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.farmerkeyMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.farmerkeyMaterialTextBox2.Depth = 0;
+            this.farmerkeyMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.farmerkeyMaterialTextBox2.HideSelection = true;
+            this.farmerkeyMaterialTextBox2.LeadingIcon = null;
+            this.farmerkeyMaterialTextBox2.Location = new System.Drawing.Point(6, 6);
+            this.farmerkeyMaterialTextBox2.MaxLength = 32767;
+            this.farmerkeyMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.farmerkeyMaterialTextBox2.Name = "farmerkeyMaterialTextBox2";
+            this.farmerkeyMaterialTextBox2.PasswordChar = '\0';
+            this.farmerkeyMaterialTextBox2.PrefixSuffixText = null;
+            this.farmerkeyMaterialTextBox2.ReadOnly = false;
+            this.farmerkeyMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.farmerkeyMaterialTextBox2.SelectedText = "";
+            this.farmerkeyMaterialTextBox2.SelectionLength = 0;
+            this.farmerkeyMaterialTextBox2.SelectionStart = 0;
+            this.farmerkeyMaterialTextBox2.ShortcutsEnabled = true;
+            this.farmerkeyMaterialTextBox2.Size = new System.Drawing.Size(957, 48);
+            this.farmerkeyMaterialTextBox2.TabIndex = 0;
+            this.farmerkeyMaterialTextBox2.TabStop = false;
+            this.farmerkeyMaterialTextBox2.Text = "farmerkeyMaterialTextBox2";
+            this.farmerkeyMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.farmerkeyMaterialTextBox2.TrailingIcon = null;
+            this.farmerkeyMaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // editToolStripMenuItem
+            // nftplotMaterialSwitch
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.selectAllToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
-            this.editToolStripMenuItem.Visible = false;
+            this.nftplotMaterialSwitch.AutoSize = true;
+            this.nftplotMaterialSwitch.Depth = 0;
+            this.nftplotMaterialSwitch.Location = new System.Drawing.Point(6, 57);
+            this.nftplotMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.nftplotMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.nftplotMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.nftplotMaterialSwitch.Name = "nftplotMaterialSwitch";
+            this.nftplotMaterialSwitch.Ripple = true;
+            this.nftplotMaterialSwitch.Size = new System.Drawing.Size(211, 37);
+            this.nftplotMaterialSwitch.TabIndex = 10;
+            this.nftplotMaterialSwitch.Text = "nftplotMaterialSwitch";
+            this.nftplotMaterialSwitch.UseVisualStyleBackColor = true;
             // 
-            // undoToolStripMenuItem
+            // contractMaterialTextBox2
             // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.undoToolStripMenuItem.Text = "&Undo";
+            this.contractMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contractMaterialTextBox2.AnimateReadOnly = false;
+            this.contractMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.contractMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.contractMaterialTextBox2.Depth = 0;
+            this.contractMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.contractMaterialTextBox2.HideSelection = true;
+            this.contractMaterialTextBox2.LeadingIcon = null;
+            this.contractMaterialTextBox2.Location = new System.Drawing.Point(6, 157);
+            this.contractMaterialTextBox2.MaxLength = 32767;
+            this.contractMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.contractMaterialTextBox2.Name = "contractMaterialTextBox2";
+            this.contractMaterialTextBox2.PasswordChar = '\0';
+            this.contractMaterialTextBox2.PrefixSuffixText = null;
+            this.contractMaterialTextBox2.ReadOnly = false;
+            this.contractMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.contractMaterialTextBox2.SelectedText = "";
+            this.contractMaterialTextBox2.SelectionLength = 0;
+            this.contractMaterialTextBox2.SelectionStart = 0;
+            this.contractMaterialTextBox2.ShortcutsEnabled = true;
+            this.contractMaterialTextBox2.Size = new System.Drawing.Size(957, 48);
+            this.contractMaterialTextBox2.TabIndex = 2;
+            this.contractMaterialTextBox2.TabStop = false;
+            this.contractMaterialTextBox2.Text = "contractMaterialTextBox2";
+            this.contractMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.contractMaterialTextBox2.TrailingIcon = null;
+            this.contractMaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // redoToolStripMenuItem
+            // poolkeyMaterialTextBox2
             // 
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.redoToolStripMenuItem.Text = "&Redo";
+            this.poolkeyMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.poolkeyMaterialTextBox2.AnimateReadOnly = false;
+            this.poolkeyMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.poolkeyMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.poolkeyMaterialTextBox2.Depth = 0;
+            this.poolkeyMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.poolkeyMaterialTextBox2.HideSelection = true;
+            this.poolkeyMaterialTextBox2.LeadingIcon = null;
+            this.poolkeyMaterialTextBox2.Location = new System.Drawing.Point(6, 103);
+            this.poolkeyMaterialTextBox2.MaxLength = 32767;
+            this.poolkeyMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.poolkeyMaterialTextBox2.Name = "poolkeyMaterialTextBox2";
+            this.poolkeyMaterialTextBox2.PasswordChar = '\0';
+            this.poolkeyMaterialTextBox2.PrefixSuffixText = null;
+            this.poolkeyMaterialTextBox2.ReadOnly = false;
+            this.poolkeyMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.poolkeyMaterialTextBox2.SelectedText = "";
+            this.poolkeyMaterialTextBox2.SelectionLength = 0;
+            this.poolkeyMaterialTextBox2.SelectionStart = 0;
+            this.poolkeyMaterialTextBox2.ShortcutsEnabled = true;
+            this.poolkeyMaterialTextBox2.Size = new System.Drawing.Size(957, 48);
+            this.poolkeyMaterialTextBox2.TabIndex = 1;
+            this.poolkeyMaterialTextBox2.TabStop = false;
+            this.poolkeyMaterialTextBox2.Text = "poolkeyMaterialTextBox2";
+            this.poolkeyMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.poolkeyMaterialTextBox2.TrailingIcon = null;
+            this.poolkeyMaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // toolStripSeparator3
+            // perfomanceTabPage
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.perfomanceTabPage.Location = new System.Drawing.Point(4, 22);
+            this.perfomanceTabPage.Name = "perfomanceTabPage";
+            this.perfomanceTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.perfomanceTabPage.Size = new System.Drawing.Size(969, 224);
+            this.perfomanceTabPage.TabIndex = 2;
+            this.perfomanceTabPage.Text = "Perfomance";
+            this.perfomanceTabPage.UseVisualStyleBackColor = true;
             // 
-            // cutToolStripMenuItem
+            // foldersTabPage
             // 
-            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
-            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cutToolStripMenuItem.Text = "Cu&t";
+            this.foldersTabPage.Controls.Add(this.tmpdirMaterialTextBox2);
+            this.foldersTabPage.Controls.Add(this.tmpdir2MaterialTextBox2);
+            this.foldersTabPage.Controls.Add(this.stagedirMaterialTextBox2);
+            this.foldersTabPage.Controls.Add(this.directoutMaterialSwitch);
+            this.foldersTabPage.Controls.Add(this.stagedirMaterialButton);
+            this.foldersTabPage.Controls.Add(this.tmptoggleMaterialSwitch);
+            this.foldersTabPage.Controls.Add(this.tmpdirMaterialButton);
+            this.foldersTabPage.Controls.Add(this.waitforcopyMaterialSwitch);
+            this.foldersTabPage.Controls.Add(this.tmpdir2MaterialButton);
+            this.foldersTabPage.Location = new System.Drawing.Point(4, 22);
+            this.foldersTabPage.Name = "foldersTabPage";
+            this.foldersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.foldersTabPage.Size = new System.Drawing.Size(969, 224);
+            this.foldersTabPage.TabIndex = 1;
+            this.foldersTabPage.Text = "Folders";
             // 
-            // copyToolStripMenuItem
+            // tmpdirMaterialTextBox2
             // 
-            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
+            this.tmpdirMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tmpdirMaterialTextBox2.AnimateReadOnly = false;
+            this.tmpdirMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tmpdirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.tmpdirMaterialTextBox2.Depth = 0;
+            this.tmpdirMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tmpdirMaterialTextBox2.HideSelection = true;
+            this.tmpdirMaterialTextBox2.LeadingIcon = null;
+            this.tmpdirMaterialTextBox2.Location = new System.Drawing.Point(6, 6);
+            this.tmpdirMaterialTextBox2.MaxLength = 32767;
+            this.tmpdirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.tmpdirMaterialTextBox2.Name = "tmpdirMaterialTextBox2";
+            this.tmpdirMaterialTextBox2.PasswordChar = '\0';
+            this.tmpdirMaterialTextBox2.PrefixSuffixText = null;
+            this.tmpdirMaterialTextBox2.ReadOnly = false;
+            this.tmpdirMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tmpdirMaterialTextBox2.SelectedText = "";
+            this.tmpdirMaterialTextBox2.SelectionLength = 0;
+            this.tmpdirMaterialTextBox2.SelectionStart = 0;
+            this.tmpdirMaterialTextBox2.ShortcutsEnabled = true;
+            this.tmpdirMaterialTextBox2.Size = new System.Drawing.Size(521, 48);
+            this.tmpdirMaterialTextBox2.TabIndex = 3;
+            this.tmpdirMaterialTextBox2.TabStop = false;
+            this.tmpdirMaterialTextBox2.Tag = "tmpdir";
+            this.tmpdirMaterialTextBox2.Text = "tmpdirMaterialTextBox2";
+            this.tmpdirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tmpdirMaterialTextBox2.TrailingIcon = null;
+            this.tmpdirMaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // pasteToolStripMenuItem
+            // tmpdir2MaterialTextBox2
             // 
-            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
-            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
+            this.tmpdir2MaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tmpdir2MaterialTextBox2.AnimateReadOnly = false;
+            this.tmpdir2MaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tmpdir2MaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.tmpdir2MaterialTextBox2.Depth = 0;
+            this.tmpdir2MaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tmpdir2MaterialTextBox2.HideSelection = true;
+            this.tmpdir2MaterialTextBox2.LeadingIcon = null;
+            this.tmpdir2MaterialTextBox2.Location = new System.Drawing.Point(6, 60);
+            this.tmpdir2MaterialTextBox2.MaxLength = 32767;
+            this.tmpdir2MaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.tmpdir2MaterialTextBox2.Name = "tmpdir2MaterialTextBox2";
+            this.tmpdir2MaterialTextBox2.PasswordChar = '\0';
+            this.tmpdir2MaterialTextBox2.PrefixSuffixText = null;
+            this.tmpdir2MaterialTextBox2.ReadOnly = false;
+            this.tmpdir2MaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tmpdir2MaterialTextBox2.SelectedText = "";
+            this.tmpdir2MaterialTextBox2.SelectionLength = 0;
+            this.tmpdir2MaterialTextBox2.SelectionStart = 0;
+            this.tmpdir2MaterialTextBox2.ShortcutsEnabled = true;
+            this.tmpdir2MaterialTextBox2.Size = new System.Drawing.Size(521, 48);
+            this.tmpdir2MaterialTextBox2.TabIndex = 4;
+            this.tmpdir2MaterialTextBox2.TabStop = false;
+            this.tmpdir2MaterialTextBox2.Text = "tmpdir2MaterialTextBox2";
+            this.tmpdir2MaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tmpdir2MaterialTextBox2.TrailingIcon = null;
+            this.tmpdir2MaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // toolStripSeparator4
+            // stagedirMaterialTextBox2
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.stagedirMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.stagedirMaterialTextBox2.AnimateReadOnly = false;
+            this.stagedirMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stagedirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.stagedirMaterialTextBox2.Depth = 0;
+            this.stagedirMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.stagedirMaterialTextBox2.HideSelection = true;
+            this.stagedirMaterialTextBox2.LeadingIcon = null;
+            this.stagedirMaterialTextBox2.Location = new System.Drawing.Point(6, 114);
+            this.stagedirMaterialTextBox2.MaxLength = 32767;
+            this.stagedirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.stagedirMaterialTextBox2.Name = "stagedirMaterialTextBox2";
+            this.stagedirMaterialTextBox2.PasswordChar = '\0';
+            this.stagedirMaterialTextBox2.PrefixSuffixText = null;
+            this.stagedirMaterialTextBox2.ReadOnly = false;
+            this.stagedirMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.stagedirMaterialTextBox2.SelectedText = "";
+            this.stagedirMaterialTextBox2.SelectionLength = 0;
+            this.stagedirMaterialTextBox2.SelectionStart = 0;
+            this.stagedirMaterialTextBox2.ShortcutsEnabled = true;
+            this.stagedirMaterialTextBox2.Size = new System.Drawing.Size(521, 48);
+            this.stagedirMaterialTextBox2.TabIndex = 6;
+            this.stagedirMaterialTextBox2.TabStop = false;
+            this.stagedirMaterialTextBox2.Text = "stagedirMaterialTextBox2";
+            this.stagedirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.stagedirMaterialTextBox2.TrailingIcon = null;
+            this.stagedirMaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // selectAllToolStripMenuItem
+            // directoutMaterialSwitch
             // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.selectAllToolStripMenuItem.Text = "Select &All";
+            this.directoutMaterialSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.directoutMaterialSwitch.Depth = 0;
+            this.directoutMaterialSwitch.Location = new System.Drawing.Point(625, 104);
+            this.directoutMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.directoutMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.directoutMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.directoutMaterialSwitch.Name = "directoutMaterialSwitch";
+            this.directoutMaterialSwitch.Ripple = true;
+            this.directoutMaterialSwitch.Size = new System.Drawing.Size(284, 37);
+            this.directoutMaterialSwitch.TabIndex = 9;
+            this.directoutMaterialSwitch.Text = "directoutMaterialSwitch";
+            this.directoutMaterialSwitch.UseVisualStyleBackColor = true;
             // 
-            // toolsToolStripMenuItem
+            // stagedirMaterialButton
             // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshToolStripMenuItem,
-            this.optionsToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
+            this.stagedirMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.stagedirMaterialButton.AutoSize = false;
+            this.stagedirMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.stagedirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.stagedirMaterialButton.Depth = 0;
+            this.stagedirMaterialButton.HighEmphasis = true;
+            this.stagedirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.stagedirMaterialButton.Location = new System.Drawing.Point(530, 114);
+            this.stagedirMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.stagedirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.stagedirMaterialButton.Name = "stagedirMaterialButton";
+            this.stagedirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.stagedirMaterialButton.Size = new System.Drawing.Size(48, 48);
+            this.stagedirMaterialButton.TabIndex = 21;
+            this.stagedirMaterialButton.Tag = "tmpdir";
+            this.stagedirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.stagedirMaterialButton.UseAccentColor = false;
+            this.stagedirMaterialButton.UseVisualStyleBackColor = true;
+            this.stagedirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // refreshToolStripMenuItem
+            // tmptoggleMaterialSwitch
             // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.refreshToolStripMenuItem.Text = "&Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.tmptoggleMaterialSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tmptoggleMaterialSwitch.Depth = 0;
+            this.tmptoggleMaterialSwitch.Location = new System.Drawing.Point(625, 67);
+            this.tmptoggleMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.tmptoggleMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tmptoggleMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tmptoggleMaterialSwitch.Name = "tmptoggleMaterialSwitch";
+            this.tmptoggleMaterialSwitch.Ripple = true;
+            this.tmptoggleMaterialSwitch.Size = new System.Drawing.Size(284, 37);
+            this.tmptoggleMaterialSwitch.TabIndex = 8;
+            this.tmptoggleMaterialSwitch.Text = "tmptoggleMaterialSwitch";
+            this.tmptoggleMaterialSwitch.UseVisualStyleBackColor = true;
             // 
-            // optionsToolStripMenuItem
+            // tmpdirMaterialButton
             // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            this.tmpdirMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tmpdirMaterialButton.AutoSize = false;
+            this.tmpdirMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tmpdirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.tmpdirMaterialButton.Depth = 0;
+            this.tmpdirMaterialButton.HighEmphasis = true;
+            this.tmpdirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.tmpdirMaterialButton.Location = new System.Drawing.Point(530, 6);
+            this.tmpdirMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tmpdirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tmpdirMaterialButton.Name = "tmpdirMaterialButton";
+            this.tmpdirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.tmpdirMaterialButton.Size = new System.Drawing.Size(48, 48);
+            this.tmpdirMaterialButton.TabIndex = 11;
+            this.tmpdirMaterialButton.Tag = "tmpdir";
+            this.tmpdirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.tmpdirMaterialButton.UseAccentColor = false;
+            this.tmpdirMaterialButton.UseVisualStyleBackColor = true;
+            this.tmpdirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // helpToolStripMenuItem
+            // waitforcopyMaterialSwitch
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.githubToolStripMenuItem,
-            this.wikiToolStripMenuItem,
-            this.explorerToolStripMenuItem,
-            this.discordToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
+            this.waitforcopyMaterialSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.waitforcopyMaterialSwitch.Depth = 0;
+            this.waitforcopyMaterialSwitch.Location = new System.Drawing.Point(625, 30);
+            this.waitforcopyMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.waitforcopyMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.waitforcopyMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.waitforcopyMaterialSwitch.Name = "waitforcopyMaterialSwitch";
+            this.waitforcopyMaterialSwitch.Ripple = true;
+            this.waitforcopyMaterialSwitch.Size = new System.Drawing.Size(284, 37);
+            this.waitforcopyMaterialSwitch.TabIndex = 7;
+            this.waitforcopyMaterialSwitch.Text = "waitforcopyMaterialSwitch";
+            this.waitforcopyMaterialSwitch.UseVisualStyleBackColor = true;
             // 
-            // githubToolStripMenuItem
+            // tmpdir2MaterialButton
             // 
-            this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.githubToolStripMenuItem.Text = "GitHub";
-            this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
+            this.tmpdir2MaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tmpdir2MaterialButton.AutoSize = false;
+            this.tmpdir2MaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tmpdir2MaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.tmpdir2MaterialButton.Depth = 0;
+            this.tmpdir2MaterialButton.HighEmphasis = true;
+            this.tmpdir2MaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.tmpdir2MaterialButton.Location = new System.Drawing.Point(530, 60);
+            this.tmpdir2MaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tmpdir2MaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tmpdir2MaterialButton.Name = "tmpdir2MaterialButton";
+            this.tmpdir2MaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.tmpdir2MaterialButton.Size = new System.Drawing.Size(48, 48);
+            this.tmpdir2MaterialButton.TabIndex = 20;
+            this.tmpdir2MaterialButton.Tag = "tmpdir";
+            this.tmpdir2MaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.tmpdir2MaterialButton.UseAccentColor = false;
+            this.tmpdir2MaterialButton.UseVisualStyleBackColor = true;
+            this.tmpdir2MaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // wikiToolStripMenuItem
+            // sizeMaterialNumericUpDown
             // 
-            this.wikiToolStripMenuItem.Name = "wikiToolStripMenuItem";
-            this.wikiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.wikiToolStripMenuItem.Text = "Wiki";
-            this.wikiToolStripMenuItem.Click += new System.EventHandler(this.wikiToolStripMenuItem_Click);
+            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.sizeMaterialNumericUpDown.Location = new System.Drawing.Point(10, 70);
+            this.sizeMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
+            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            34,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
+            this.sizeMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
+            this.sizeMaterialNumericUpDown.TabIndex = 13;
+            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
-            // explorerToolStripMenuItem
+            // countMaterialNumericUpDown1
             // 
-            this.explorerToolStripMenuItem.Name = "explorerToolStripMenuItem";
-            this.explorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.explorerToolStripMenuItem.Text = "Explorer";
-            this.explorerToolStripMenuItem.Click += new System.EventHandler(this.explorerToolStripMenuItem_Click);
+            this.countMaterialNumericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countMaterialNumericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
+            this.countMaterialNumericUpDown1.Location = new System.Drawing.Point(704, 70);
+            this.countMaterialNumericUpDown1.Margin = new System.Windows.Forms.Padding(0);
+            this.countMaterialNumericUpDown1.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.countMaterialNumericUpDown1.MaximumSize = new System.Drawing.Size(999, 0);
+            this.countMaterialNumericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.countMaterialNumericUpDown1.MinimumSize = new System.Drawing.Size(48, 48);
+            this.countMaterialNumericUpDown1.Name = "countMaterialNumericUpDown1";
+            this.countMaterialNumericUpDown1.Size = new System.Drawing.Size(96, 48);
+            this.countMaterialNumericUpDown1.TabIndex = 15;
+            this.countMaterialNumericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             // 
-            // discordToolStripMenuItem
+            // materialTabSelector1
             // 
-            this.discordToolStripMenuItem.Name = "discordToolStripMenuItem";
-            this.discordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.discordToolStripMenuItem.Text = "Discord";
-            this.discordToolStripMenuItem.Click += new System.EventHandler(this.discordToolStripMenuItem_Click);
+            this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.materialTabSelector1.Depth = 0;
+            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTabSelector1.Location = new System.Drawing.Point(10, 133);
+            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector1.Name = "materialTabSelector1";
+            this.materialTabSelector1.Size = new System.Drawing.Size(977, 48);
+            this.materialTabSelector1.TabIndex = 24;
+            this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // toolStripSeparator5
+            // startMaterialButton
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.startMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.startMaterialButton.AutoSize = false;
+            this.startMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.startMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.startMaterialButton.Depth = 0;
+            this.startMaterialButton.HighEmphasis = true;
+            this.startMaterialButton.Icon = null;
+            this.startMaterialButton.Location = new System.Drawing.Point(829, 76);
+            this.startMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.startMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.startMaterialButton.Name = "startMaterialButton";
+            this.startMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.startMaterialButton.Size = new System.Drawing.Size(158, 36);
+            this.startMaterialButton.TabIndex = 18;
+            this.startMaterialButton.Text = "Start";
+            this.startMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.startMaterialButton.UseAccentColor = false;
+            this.startMaterialButton.UseVisualStyleBackColor = true;
             // 
-            // aboutToolStripMenuItem
+            // finaldirMaterialButton
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "&About...";
+            this.finaldirMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.finaldirMaterialButton.AutoSize = false;
+            this.finaldirMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.finaldirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.finaldirMaterialButton.Depth = 0;
+            this.finaldirMaterialButton.HighEmphasis = true;
+            this.finaldirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.finaldirMaterialButton.Location = new System.Drawing.Point(990, 10);
+            this.finaldirMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.finaldirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.finaldirMaterialButton.Name = "finaldirMaterialButton";
+            this.finaldirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.finaldirMaterialButton.Size = new System.Drawing.Size(48, 48);
+            this.finaldirMaterialButton.TabIndex = 14;
+            this.finaldirMaterialButton.Tag = "tmpdir";
+            this.finaldirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.finaldirMaterialButton.UseAccentColor = false;
+            this.finaldirMaterialButton.UseVisualStyleBackColor = true;
+            this.finaldirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // chromiumWebBrowser1
+            // sizeMaterialLabel
             // 
-            this.chromiumWebBrowser1.ActivateBrowserOnCreation = false;
-            this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 24);
-            this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1064, 687);
-            this.chromiumWebBrowser1.TabIndex = 0;
+            this.sizeMaterialLabel.AutoSize = true;
+            this.sizeMaterialLabel.Depth = 0;
+            this.sizeMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.sizeMaterialLabel.Location = new System.Drawing.Point(114, 86);
+            this.sizeMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.sizeMaterialLabel.Name = "sizeMaterialLabel";
+            this.sizeMaterialLabel.Size = new System.Drawing.Size(43, 19);
+            this.sizeMaterialLabel.TabIndex = 19;
+            this.sizeMaterialLabel.Text = "K size";
+            // 
+            // finaldirMaterialTextBox2
+            // 
+            this.finaldirMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.finaldirMaterialTextBox2.AnimateReadOnly = false;
+            this.finaldirMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.finaldirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.finaldirMaterialTextBox2.Depth = 0;
+            this.finaldirMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.finaldirMaterialTextBox2.HideSelection = true;
+            this.finaldirMaterialTextBox2.LeadingIcon = null;
+            this.finaldirMaterialTextBox2.Location = new System.Drawing.Point(10, 10);
+            this.finaldirMaterialTextBox2.MaxLength = 32767;
+            this.finaldirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.finaldirMaterialTextBox2.Name = "finaldirMaterialTextBox2";
+            this.finaldirMaterialTextBox2.PasswordChar = '\0';
+            this.finaldirMaterialTextBox2.PrefixSuffixText = null;
+            this.finaldirMaterialTextBox2.ReadOnly = false;
+            this.finaldirMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.finaldirMaterialTextBox2.SelectedText = "";
+            this.finaldirMaterialTextBox2.SelectionLength = 0;
+            this.finaldirMaterialTextBox2.SelectionStart = 0;
+            this.finaldirMaterialTextBox2.ShortcutsEnabled = true;
+            this.finaldirMaterialTextBox2.Size = new System.Drawing.Size(977, 48);
+            this.finaldirMaterialTextBox2.TabIndex = 5;
+            this.finaldirMaterialTextBox2.TabStop = false;
+            this.finaldirMaterialTextBox2.Text = "finaldirMaterialTextBox2";
+            this.finaldirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.finaldirMaterialTextBox2.TrailingIcon = null;
+            this.finaldirMaterialTextBox2.UseSystemPasswordChar = false;
+            // 
+            // settingsTabPage
+            // 
+            this.settingsTabPage.Controls.Add(this.groupBox2);
+            this.settingsTabPage.Controls.Add(this.confirmationOnExitMaterialSwitch);
+            this.settingsTabPage.Controls.Add(this.startMinimizedMaterialSwitch);
+            this.settingsTabPage.Controls.Add(this.startOnStartupMaterialSwitch);
+            this.settingsTabPage.Controls.Add(this.showInNotifitationMaterialSwitch);
+            this.settingsTabPage.Controls.Add(this.showInNotifitationGroupBox);
+            this.settingsTabPage.ImageKey = "cog.png";
+            this.settingsTabPage.Location = new System.Drawing.Point(4, 31);
+            this.settingsTabPage.Name = "settingsTabPage";
+            this.settingsTabPage.Padding = new System.Windows.Forms.Padding(10);
+            this.settingsTabPage.Size = new System.Drawing.Size(1056, 613);
+            this.settingsTabPage.TabIndex = 2;
+            this.settingsTabPage.Text = "GUI Settings";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.inhibitSystemSleepMaterialSwitch);
+            this.groupBox2.Location = new System.Drawing.Point(13, 262);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(30, 15, 10, 10);
+            this.groupBox2.Size = new System.Drawing.Size(973, 76);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Power Management";
+            // 
+            // inhibitSystemSleepMaterialSwitch
+            // 
+            this.inhibitSystemSleepMaterialSwitch.AutoSize = true;
+            this.inhibitSystemSleepMaterialSwitch.Depth = 0;
+            this.inhibitSystemSleepMaterialSwitch.Location = new System.Drawing.Point(30, 29);
+            this.inhibitSystemSleepMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.inhibitSystemSleepMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.inhibitSystemSleepMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.inhibitSystemSleepMaterialSwitch.Name = "inhibitSystemSleepMaterialSwitch";
+            this.inhibitSystemSleepMaterialSwitch.Ripple = true;
+            this.inhibitSystemSleepMaterialSwitch.Size = new System.Drawing.Size(198, 37);
+            this.inhibitSystemSleepMaterialSwitch.TabIndex = 11;
+            this.inhibitSystemSleepMaterialSwitch.Text = "Inhibit system sleep";
+            this.inhibitSystemSleepMaterialSwitch.UseVisualStyleBackColor = true;
+            this.inhibitSystemSleepMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // confirmationOnExitMaterialSwitch
+            // 
+            this.confirmationOnExitMaterialSwitch.AutoSize = true;
+            this.confirmationOnExitMaterialSwitch.Depth = 0;
+            this.confirmationOnExitMaterialSwitch.Location = new System.Drawing.Point(10, 81);
+            this.confirmationOnExitMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.confirmationOnExitMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.confirmationOnExitMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.confirmationOnExitMaterialSwitch.Name = "confirmationOnExitMaterialSwitch";
+            this.confirmationOnExitMaterialSwitch.Ripple = true;
+            this.confirmationOnExitMaterialSwitch.Size = new System.Drawing.Size(202, 37);
+            this.confirmationOnExitMaterialSwitch.TabIndex = 13;
+            this.confirmationOnExitMaterialSwitch.Text = "Confirmation on exit";
+            this.confirmationOnExitMaterialSwitch.UseVisualStyleBackColor = true;
+            this.confirmationOnExitMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // startMinimizedMaterialSwitch
+            // 
+            this.startMinimizedMaterialSwitch.AutoSize = true;
+            this.startMinimizedMaterialSwitch.Depth = 0;
+            this.startMinimizedMaterialSwitch.Location = new System.Drawing.Point(10, 44);
+            this.startMinimizedMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.startMinimizedMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.startMinimizedMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.startMinimizedMaterialSwitch.Name = "startMinimizedMaterialSwitch";
+            this.startMinimizedMaterialSwitch.Ripple = true;
+            this.startMinimizedMaterialSwitch.Size = new System.Drawing.Size(170, 37);
+            this.startMinimizedMaterialSwitch.TabIndex = 12;
+            this.startMinimizedMaterialSwitch.Text = "Start minimized";
+            this.startMinimizedMaterialSwitch.UseVisualStyleBackColor = true;
+            this.startMinimizedMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // startOnStartupMaterialSwitch
+            // 
+            this.startOnStartupMaterialSwitch.AutoSize = true;
+            this.startOnStartupMaterialSwitch.Depth = 0;
+            this.startOnStartupMaterialSwitch.Location = new System.Drawing.Point(10, 10);
+            this.startOnStartupMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.startOnStartupMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.startOnStartupMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.startOnStartupMaterialSwitch.Name = "startOnStartupMaterialSwitch";
+            this.startOnStartupMaterialSwitch.Ripple = true;
+            this.startOnStartupMaterialSwitch.Size = new System.Drawing.Size(241, 37);
+            this.startOnStartupMaterialSwitch.TabIndex = 11;
+            this.startOnStartupMaterialSwitch.Text = "Start on Windows start up";
+            this.startOnStartupMaterialSwitch.UseVisualStyleBackColor = true;
+            this.startOnStartupMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // showInNotifitationMaterialSwitch
+            // 
+            this.showInNotifitationMaterialSwitch.AutoSize = true;
+            this.showInNotifitationMaterialSwitch.Depth = 0;
+            this.showInNotifitationMaterialSwitch.Location = new System.Drawing.Point(374, 84);
+            this.showInNotifitationMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.showInNotifitationMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.showInNotifitationMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.showInNotifitationMaterialSwitch.Name = "showInNotifitationMaterialSwitch";
+            this.showInNotifitationMaterialSwitch.Ripple = true;
+            this.showInNotifitationMaterialSwitch.Size = new System.Drawing.Size(243, 37);
+            this.showInNotifitationMaterialSwitch.TabIndex = 16;
+            this.showInNotifitationMaterialSwitch.Text = "Show in notification area  ";
+            this.showInNotifitationMaterialSwitch.UseVisualStyleBackColor = true;
+            this.showInNotifitationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // showInNotifitationGroupBox
+            // 
+            this.showInNotifitationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.showInNotifitationGroupBox.Controls.Add(this.closeToNotificationMaterialSwitch);
+            this.showInNotifitationGroupBox.Controls.Add(this.minimizeToNotificationMaterialSwitch);
+            this.showInNotifitationGroupBox.Location = new System.Drawing.Point(13, 137);
+            this.showInNotifitationGroupBox.Name = "showInNotifitationGroupBox";
+            this.showInNotifitationGroupBox.Padding = new System.Windows.Forms.Padding(30, 15, 10, 10);
+            this.showInNotifitationGroupBox.Size = new System.Drawing.Size(973, 119);
+            this.showInNotifitationGroupBox.TabIndex = 14;
+            this.showInNotifitationGroupBox.TabStop = false;
+            // 
+            // closeToNotificationMaterialSwitch
+            // 
+            this.closeToNotificationMaterialSwitch.AutoSize = true;
+            this.closeToNotificationMaterialSwitch.Depth = 0;
+            this.closeToNotificationMaterialSwitch.Location = new System.Drawing.Point(30, 65);
+            this.closeToNotificationMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.closeToNotificationMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.closeToNotificationMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.closeToNotificationMaterialSwitch.Name = "closeToNotificationMaterialSwitch";
+            this.closeToNotificationMaterialSwitch.Ripple = true;
+            this.closeToNotificationMaterialSwitch.Size = new System.Drawing.Size(235, 37);
+            this.closeToNotificationMaterialSwitch.TabIndex = 7;
+            this.closeToNotificationMaterialSwitch.Text = "Close to notification area";
+            this.closeToNotificationMaterialSwitch.UseVisualStyleBackColor = true;
+            this.closeToNotificationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // minimizeToNotificationMaterialSwitch
+            // 
+            this.minimizeToNotificationMaterialSwitch.AutoSize = true;
+            this.minimizeToNotificationMaterialSwitch.Depth = 0;
+            this.minimizeToNotificationMaterialSwitch.Location = new System.Drawing.Point(30, 28);
+            this.minimizeToNotificationMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.minimizeToNotificationMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.minimizeToNotificationMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.minimizeToNotificationMaterialSwitch.Name = "minimizeToNotificationMaterialSwitch";
+            this.minimizeToNotificationMaterialSwitch.Ripple = true;
+            this.minimizeToNotificationMaterialSwitch.Size = new System.Drawing.Size(261, 37);
+            this.minimizeToNotificationMaterialSwitch.TabIndex = 6;
+            this.minimizeToNotificationMaterialSwitch.Text = "Minimize to notification area";
+            this.minimizeToNotificationMaterialSwitch.UseVisualStyleBackColor = true;
+            this.minimizeToNotificationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            // 
+            // menuIconList
+            // 
+            this.menuIconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("menuIconList.ImageStream")));
+            this.menuIconList.TransparentColor = System.Drawing.Color.Transparent;
+            this.menuIconList.Images.SetKeyName(0, "cog.png");
+            this.menuIconList.Images.SetKeyName(1, "database-sync.png");
+            this.menuIconList.Images.SetKeyName(2, "tractor.png");
+            this.menuIconList.Images.SetKeyName(3, "harddisk-plus.png");
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(3, 715);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1064, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 711);
-            this.Controls.Add(this.chromiumWebBrowser1);
-            this.Controls.Add(this.menuStrip1);
+            this.ClientSize = new System.Drawing.Size(1070, 740);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.MenuMaterialTabControl);
+            this.DrawerShowIconsWhenHidden = true;
+            this.DrawerTabControl = this.MenuMaterialTabControl;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1080, 750);
+            this.MinimumSize = new System.Drawing.Size(1070, 678);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MMX Node";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MenuMaterialTabControl.ResumeLayout(false);
+            this.harvesterTabPage.ResumeLayout(false);
+            this.plotterTabPage.ResumeLayout(false);
+            this.plotterTabPage.PerformLayout();
+            this.materialTabControl1.ResumeLayout(false);
+            this.keysTabPage.ResumeLayout(false);
+            this.keysTabPage.PerformLayout();
+            this.foldersTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown1)).EndInit();
+            this.settingsTabPage.ResumeLayout(false);
+            this.settingsTabPage.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.showInNotifitationGroupBox.ResumeLayout(false);
+            this.showInNotifitationGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,42 +1029,55 @@ namespace MMX_NODE_GUI
 
         #endregion
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem githubToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wikiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private CefSharp.WinForms.ChromiumWebBrowser chromiumWebBrowser1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem discordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem explorerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.TabPage nodeTabPage;
+        private MaterialSkin.Controls.MaterialTabControl MenuMaterialTabControl;
+        private System.Windows.Forms.ImageList menuIconList;
+        private System.Windows.Forms.TabPage settingsTabPage;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MaterialSkin.Controls.MaterialSwitch inhibitSystemSleepMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch confirmationOnExitMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch startMinimizedMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch startOnStartupMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch showInNotifitationMaterialSwitch;
+        private System.Windows.Forms.GroupBox showInNotifitationGroupBox;
+        private MaterialSkin.Controls.MaterialSwitch closeToNotificationMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch minimizeToNotificationMaterialSwitch;
+        private System.Windows.Forms.TabPage harvesterTabPage;
+        private MaterialSkin.Controls.MaterialListBox plotFoldersMaterialListBox;
+        private MaterialSkin.Controls.MaterialButton removePlotFolderMaterialButton;
+        private MaterialSkin.Controls.MaterialButton addPlotFolderMaterialButton;
+        private MaterialSkin.Controls.MaterialTextBox2 finaldirMaterialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox2 tmpdir2MaterialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox2 tmpdirMaterialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox2 stagedirMaterialTextBox2;
+        private MaterialSkin.Controls.MaterialSwitch directoutMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch tmptoggleMaterialSwitch;
+        private MaterialSkin.Controls.MaterialSwitch waitforcopyMaterialSwitch;
+        private MaterialSkin.Controls.MaterialButton tmpdirMaterialButton;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private MaterialNumericUpDown sizeMaterialNumericUpDown;
+        private MaterialSkin.Controls.MaterialButton finaldirMaterialButton;
+        private MaterialNumericUpDown countMaterialNumericUpDown1;
+        private MaterialSkin.Controls.MaterialLabel countMaterialLabel;
+        private MaterialSkin.Controls.MaterialButton startMaterialButton;
+        private MaterialSkin.Controls.MaterialLabel sizeMaterialLabel;
+        private MaterialSkin.Controls.MaterialButton stagedirMaterialButton;
+        private MaterialSkin.Controls.MaterialButton tmpdir2MaterialButton;
+        private System.Windows.Forms.TabPage plotterTabPage;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private System.Windows.Forms.TabPage keysTabPage;
+        private MaterialSkin.Controls.MaterialTextBox2 farmerkeyMaterialTextBox2;
+        private MaterialSkin.Controls.MaterialSwitch nftplotMaterialSwitch;
+        private MaterialSkin.Controls.MaterialTextBox2 contractMaterialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox2 poolkeyMaterialTextBox2;
+        private System.Windows.Forms.TabPage foldersTabPage;
+        private System.Windows.Forms.TabPage perfomanceTabPage;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 materialMultiLineTextBox21;
     }
 }
 
