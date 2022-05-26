@@ -10,15 +10,22 @@ namespace MMX_NODE_GUI
     public class MMXBoundObject
     {
         public MMXBoundObject()
-        {
-            _message = "Hi hosted webpage!";
+        {           
         }
-        private String _message;
-        public string MyProperty
+
+/*        private string _password;
+        public string Password
         {
-            get { return _message; }
-            set { _message = value; }
-        }
+            get
+            {                
+                return _password;
+            }
+            set
+            {
+                _password = value;
+            }
+        }*/
+
         public void MyMethod(String message)
         {
             MessageBox.Show("Message from webpage:\n" + message, "Hosting .NET Application", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

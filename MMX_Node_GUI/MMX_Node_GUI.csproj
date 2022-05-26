@@ -81,6 +81,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -172,10 +173,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="html\loading.html" />
     <None Include="icons\folder-plus.png" />
     <None Include="icons\folder-remove.png" />
     <None Include="icons\folder.png" />
+    <EmbeddedResource Include="html\loading.html" />
+    <EmbeddedResource Include="html\login.js" />
+    <EmbeddedResource Include="html\logout.js" />
     <Content Include="mmx.ico" />
   </ItemGroup>
   <ItemGroup>

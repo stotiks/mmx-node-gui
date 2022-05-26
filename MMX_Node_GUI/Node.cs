@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Management;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -18,11 +20,24 @@ namespace MMX_NODE_GUI
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
         static private readonly Uri exitUri = new Uri(baseUri, "/wapi/node/exit");
-        static private readonly Uri checkUri = new Uri(baseUri, "/api/router/get_peer_info");
+        static private readonly Uri checkUri = new Uri(baseUri, "/server/session");
 
         public event EventHandler Started;
         public event EventHandler BeforeStop;
         public event EventHandler Stoped;
+
+        internal static string GetPassword()
+        {
+            string password = "";
+
+            try {
+                password = File.ReadAllText(MMX_HOME + @"\PASSWD").Trim(); 
+            } catch (FileNotFoundException e)
+            {
+            }
+
+            return password;
+        }
 
         private static readonly HttpClient client = new HttpClient();
         private Process process;
@@ -34,55 +49,65 @@ namespace MMX_NODE_GUI
 
         public void Start()
         {
-            var executed = false;
+            StartProcess();
 
-            Task.Run(async () =>
-            {
-                while (true)
-                {
-                    try
-                    {
-                        var result = await client.GetAsync(checkUri);
-                        //Console.WriteLine(result);
-                        if (result.StatusCode == HttpStatusCode.OK)
+            /*            var executed = false;
+
+                        Task.Run(async () =>
                         {
-                            break;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        //Console.WriteLine(e);
-                    }
+                            while (true)
+                            {
+                                try
+                                {
+                                    var result = await client.GetAsync(checkUri);
+                                    //Console.WriteLine(result);
+                                    if (result.StatusCode == HttpStatusCode.OK)
+                                    {                            
+                                        var responseBody = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
+                                        Console.WriteLine(responseBody);
+                                        if (responseBody.Contains("mmx-admin"))
+                                        {
+                                            break;
+                                        }
+                                    }
 
-                    if (!executed)
-                    {
-                        executed = true;
-                        StartProcess();
-                    }
+                                }
+                                catch (Exception)
+                                {
+                                    //Console.WriteLine(e);
+                                }
 
-                    Console.WriteLine("Waiting node...");
-                    await Task.Delay(500);
-                }
+                                if (!executed)
+                                {
+                                    executed = true;
+                                    StartProcess();
+                                }
 
-                OnStart();
-            });
+                                Console.WriteLine("Waiting node...");
+                                await Task.Delay(500);
+                            }
 
+                            OnStart();
+                        });
+            */
         }
 
         private void StartProcess()
         {
-            var exePath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            var exePath = Path.GetDirectoryName(Application.ExecutablePath);
+
 #if DEBUG
             //exePath = @"C:\Program Files\MMX";
-            exePath = @"C:\dev\mmx\MMX_TEST";
+            exePath = @"C:\dev\mmx\MMX_TEST6";
 #endif
+
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = exePath;
             processStartInfo.FileName = exePath + "\\run_node.cmd";
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = false;
-            processStartInfo.CreateNoWindow = true;
+            //processStartInfo.CreateNoWindow = true;
             //processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             //if (false)
@@ -91,6 +116,9 @@ namespace MMX_NODE_GUI
             //    processStartInfo.RedirectStandardOutput = true;
             //    processStartInfo.RedirectStandardInput = false;
             //}
+
+
+
             process = new Process();
             process.EnableRaisingEvents = true;
             process.StartInfo = processStartInfo;
@@ -116,7 +144,7 @@ namespace MMX_NODE_GUI
         {
             OnBeforeStop();
 
-            Task.Run(async () => await ExitAsync()).Wait();
+            //Task.Run(async () => await ExitAsync()).Wait();          
 
             if (process != null && processStarted)
             {
@@ -130,7 +158,8 @@ namespace MMX_NODE_GUI
 
                 if (!process.HasExited)
                 {
-                    process.Kill();
+                    //process.Kill();
+                    KillProcessAndChildren(process.Id);
                 }
             }
 
@@ -176,7 +205,30 @@ namespace MMX_NODE_GUI
                 Stoped(this, EventArgs.Empty);
             }
         }
-
+        private static void KillProcessAndChildren(int pid)
+        {
+            // Cannot close 'system idle process'.
+            if (pid == 0)
+            {
+                return;
+            }
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher
+                    ("Select * From Win32_Process Where ParentProcessID=" + pid);
+            ManagementObjectCollection moc = searcher.Get();
+            foreach (ManagementObject mo in moc)
+            {
+                KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
+            }
+            try
+            {
+                Process proc = Process.GetProcessById(pid);
+                proc.Kill();
+            }
+            catch (ArgumentException)
+            {
+                // Process already exited.
+            }
+        }
 
     }
 }

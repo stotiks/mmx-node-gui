@@ -2,10 +2,9 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
@@ -108,10 +107,11 @@ namespace MMX_NODE_GUI
             }
 
             closePending = true;
-            chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
-            nodeTabPage.Show();
-            node.Stop();
 
+            Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(logoutHtml, Node.baseUri.ToString())).Wait();     
+            nodeTabPage.Show();
+            Task.Delay(1000).Wait();
+            node.Stop();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,20 +138,6 @@ namespace MMX_NODE_GUI
         private void explorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start(explorerUrl);
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Cef.Shutdown();
-        }
-
-        public IEnumerable<Control> GetAll(Control control, Type type)
-        {
-            var controls = control.Controls.Cast<Control>();
-
-            return controls.SelectMany(ctrl => GetAll(ctrl, type))
-                                      .Concat(controls)
-                                      .Where(c => c.GetType() == type);
         }
 
     }

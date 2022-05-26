@@ -12,7 +12,12 @@ namespace MMX_NODE_GUI
 {
     public partial class MainForm
     {
+        static private string loginJS = GetResource("login.js"); 
+        static private string logoutJS = GetResource("logout.js");
         static private string loadingHtml = GetResource("loading.html");
+        static private string jsString = "//javascript";
+        static private string loginHtml = loadingHtml.Replace(jsString, loginJS.Replace("_mmx_password_", Node.GetPassword()));
+        static private string logoutHtml = loadingHtml.Replace(jsString, logoutJS);
 
         ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser()
         {
@@ -26,32 +31,31 @@ namespace MMX_NODE_GUI
         private void InitializeNode()
         {
 
-            // alert(window.bound.myProperty);
+            // alert(window.mmx.myProperty);
             // var message = "message"
-            // window.bound.postMessage(message);
+            // window.mmx.postMessage(message);
 
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
-            chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", new MMXBoundObject(), isAsync: false, options: BindingOptions.DefaultBinder);
+
+            var boundObject = new MMXBoundObject();
+            //boundObject.Password = Node.GetPassword();
+
+            chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", boundObject, isAsync: false, options: BindingOptions.DefaultBinder);
 
             chromiumWebBrowser.MenuHandler = new SearchContextMenuHandler();
+            
 
             nodeTabPage.Controls.Add(chromiumWebBrowser);
-            node.Started += OpenGUIUri;
+            //node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
             //node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
 
         }
 
         private void NodeMainForm_Load()
         {
-            Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(loadingHtml, Node.baseUri.ToString())).Wait();
+            Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString())).Wait();            
             node.Start();
-        }
-
-
-        private void OpenGUIUri(object sender, EventArgs e)
-        {
-            chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
         }
 
         public class SearchContextMenuHandler : IContextMenuHandler
