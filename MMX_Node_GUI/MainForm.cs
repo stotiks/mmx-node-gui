@@ -91,9 +91,9 @@ namespace MMX_NODE_GUI
 
             if (Properties.Settings.Default.confirmationOnExit && e.CloseReason == CloseReason.UserClosing)
             {
-                MaterialDialog materialDialog = new MaterialDialog(this, 
+                MaterialDialog materialDialog = new MaterialDialog(this,
                                                                    Assembly.GetExecutingAssembly().GetName().Name,
-                                                                   "Do you want to close the application?", 
+                                                                   "Do you want to close the application?",
                                                                    "No", true, "Yes");
                 DialogResult dialogResult = materialDialog.ShowDialog(this);
 
@@ -134,8 +134,5 @@ namespace MMX_NODE_GUI
         {
             Process.Start(explorerUrl);
         }
-
     }
-
-
 }

@@ -1,10 +1,6 @@
-﻿using MaterialSkin.Controls;
-using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
@@ -87,11 +83,26 @@ namespace MMX_NODE_GUI
             nftplotMaterialSwitch.DataBindings.Add("Text", plotterOptions.nftplot, "Description");
 
 
-            countMaterialNumericUpDown1.DataBindings.Add("Value", plotterOptions.count, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            countMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.count, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
             countMaterialLabel.DataBindings.Add("Text", plotterOptions.count, "Description");
 
             sizeMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.size, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
             sizeMaterialLabel.DataBindings.Add("Text", plotterOptions.size, "Description");
+
+            //------
+            threadsMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.threads, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            threadsMaterialLabel.DataBindings.Add("Text", plotterOptions.threads, "Description");
+
+            rmulti2MaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.rmulti2, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            rmulti2MaterialLabel.DataBindings.Add("Text", plotterOptions.rmulti2, "Description");
+
+            bucketsMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.buckets, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            bucketsMaterialLabel.DataBindings.Add("Text", plotterOptions.buckets, "Description");
+
+            buckets3MaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.buckets3, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            buckets3MaterialLabel.DataBindings.Add("Text", plotterOptions.buckets3, "Description");
+
+
 
             //------
             materialMultiLineTextBox21.DataBindings.Add("Text", plotterOptions, "PloterArgs");

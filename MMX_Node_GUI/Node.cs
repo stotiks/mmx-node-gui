@@ -35,6 +35,7 @@ namespace MMX_NODE_GUI
             }
             catch (FileNotFoundException e)
             {
+                Console.WriteLine(e.Message);
             }
 
             return password;

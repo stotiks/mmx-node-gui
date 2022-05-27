@@ -41,6 +41,7 @@ namespace MMX_NODE_GUI
             this.nodeTabPage = new System.Windows.Forms.TabPage();
             this.MenuMaterialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.harvesterTabPage = new System.Windows.Forms.TabPage();
+            this.harvesterPlotsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.removePlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.addPlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.plotFoldersMaterialListBox = new MaterialSkin.Controls.MaterialListBox();
@@ -54,7 +55,7 @@ namespace MMX_NODE_GUI
             this.contractMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.poolkeyMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.perfomanceTabPage = new System.Windows.Forms.TabPage();
-            this.foldersTabPage = new System.Windows.Forms.TabPage();
+            this.directoriesTabPage = new System.Windows.Forms.TabPage();
             this.tmpdirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.tmpdir2MaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.stagedirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
@@ -64,8 +65,6 @@ namespace MMX_NODE_GUI
             this.tmpdirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.waitforcopyMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.tmpdir2MaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.countMaterialNumericUpDown1 = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.startMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
@@ -83,19 +82,33 @@ namespace MMX_NODE_GUI
             this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.menuIconList = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.threadsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.rmulti2MaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.bucketsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.buckets3MaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.rmulti2MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.threadsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.buckets3MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.bucketsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.contextMenuStrip1.SuspendLayout();
             this.MenuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
             this.plotterTabPage.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.keysTabPage.SuspendLayout();
-            this.foldersTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown1)).BeginInit();
+            this.perfomanceTabPage.SuspendLayout();
+            this.directoriesTabPage.SuspendLayout();
             this.settingsTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.showInNotifitationGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -164,7 +177,7 @@ namespace MMX_NODE_GUI
             // 
             // harvesterTabPage
             // 
-            this.harvesterTabPage.Controls.Add(this.materialLabel1);
+            this.harvesterTabPage.Controls.Add(this.harvesterPlotsMaterialLabel);
             this.harvesterTabPage.Controls.Add(this.removePlotFolderMaterialButton);
             this.harvesterTabPage.Controls.Add(this.addPlotFolderMaterialButton);
             this.harvesterTabPage.Controls.Add(this.plotFoldersMaterialListBox);
@@ -175,6 +188,18 @@ namespace MMX_NODE_GUI
             this.harvesterTabPage.Size = new System.Drawing.Size(1056, 613);
             this.harvesterTabPage.TabIndex = 3;
             this.harvesterTabPage.Text = "Harvester";
+            // 
+            // harvesterPlotsMaterialLabel
+            // 
+            this.harvesterPlotsMaterialLabel.AutoSize = true;
+            this.harvesterPlotsMaterialLabel.Depth = 0;
+            this.harvesterPlotsMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.harvesterPlotsMaterialLabel.Location = new System.Drawing.Point(10, 10);
+            this.harvesterPlotsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.harvesterPlotsMaterialLabel.Name = "harvesterPlotsMaterialLabel";
+            this.harvesterPlotsMaterialLabel.Size = new System.Drawing.Size(278, 19);
+            this.harvesterPlotsMaterialLabel.TabIndex = 4;
+            this.harvesterPlotsMaterialLabel.Text = "Load plots from (node restart required):";
             // 
             // removePlotFolderMaterialButton
             // 
@@ -224,7 +249,7 @@ namespace MMX_NODE_GUI
             this.plotFoldersMaterialListBox.BorderColor = System.Drawing.Color.LightGray;
             this.plotFoldersMaterialListBox.Depth = 0;
             this.plotFoldersMaterialListBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.plotFoldersMaterialListBox.Location = new System.Drawing.Point(13, 32);
+            this.plotFoldersMaterialListBox.Location = new System.Drawing.Point(10, 32);
             this.plotFoldersMaterialListBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.plotFoldersMaterialListBox.Name = "plotFoldersMaterialListBox";
             this.plotFoldersMaterialListBox.SelectedIndex = -1;
@@ -238,7 +263,7 @@ namespace MMX_NODE_GUI
             this.plotterTabPage.Controls.Add(this.countMaterialLabel);
             this.plotterTabPage.Controls.Add(this.materialTabControl1);
             this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
-            this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown1);
+            this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown);
             this.plotterTabPage.Controls.Add(this.materialTabSelector1);
             this.plotterTabPage.Controls.Add(this.startMaterialButton);
             this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
@@ -300,7 +325,7 @@ namespace MMX_NODE_GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialTabControl1.Controls.Add(this.keysTabPage);
             this.materialTabControl1.Controls.Add(this.perfomanceTabPage);
-            this.materialTabControl1.Controls.Add(this.foldersTabPage);
+            this.materialTabControl1.Controls.Add(this.directoriesTabPage);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(10, 187);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -433,31 +458,38 @@ namespace MMX_NODE_GUI
             // 
             // perfomanceTabPage
             // 
+            this.perfomanceTabPage.Controls.Add(this.buckets3MaterialLabel);
+            this.perfomanceTabPage.Controls.Add(this.bucketsMaterialLabel);
+            this.perfomanceTabPage.Controls.Add(this.rmulti2MaterialLabel);
+            this.perfomanceTabPage.Controls.Add(this.threadsMaterialLabel);
+            this.perfomanceTabPage.Controls.Add(this.rmulti2MaterialNumericUpDown);
+            this.perfomanceTabPage.Controls.Add(this.threadsMaterialNumericUpDown);
+            this.perfomanceTabPage.Controls.Add(this.buckets3MaterialNumericUpDown);
+            this.perfomanceTabPage.Controls.Add(this.bucketsMaterialNumericUpDown);
             this.perfomanceTabPage.Location = new System.Drawing.Point(4, 22);
             this.perfomanceTabPage.Name = "perfomanceTabPage";
             this.perfomanceTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.perfomanceTabPage.Size = new System.Drawing.Size(969, 224);
             this.perfomanceTabPage.TabIndex = 2;
             this.perfomanceTabPage.Text = "Perfomance";
-            this.perfomanceTabPage.UseVisualStyleBackColor = true;
             // 
-            // foldersTabPage
+            // directoriesTabPage
             // 
-            this.foldersTabPage.Controls.Add(this.tmpdirMaterialTextBox2);
-            this.foldersTabPage.Controls.Add(this.tmpdir2MaterialTextBox2);
-            this.foldersTabPage.Controls.Add(this.stagedirMaterialTextBox2);
-            this.foldersTabPage.Controls.Add(this.directoutMaterialSwitch);
-            this.foldersTabPage.Controls.Add(this.stagedirMaterialButton);
-            this.foldersTabPage.Controls.Add(this.tmptoggleMaterialSwitch);
-            this.foldersTabPage.Controls.Add(this.tmpdirMaterialButton);
-            this.foldersTabPage.Controls.Add(this.waitforcopyMaterialSwitch);
-            this.foldersTabPage.Controls.Add(this.tmpdir2MaterialButton);
-            this.foldersTabPage.Location = new System.Drawing.Point(4, 22);
-            this.foldersTabPage.Name = "foldersTabPage";
-            this.foldersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.foldersTabPage.Size = new System.Drawing.Size(969, 224);
-            this.foldersTabPage.TabIndex = 1;
-            this.foldersTabPage.Text = "Folders";
+            this.directoriesTabPage.Controls.Add(this.tmpdirMaterialTextBox2);
+            this.directoriesTabPage.Controls.Add(this.tmpdir2MaterialTextBox2);
+            this.directoriesTabPage.Controls.Add(this.stagedirMaterialTextBox2);
+            this.directoriesTabPage.Controls.Add(this.directoutMaterialSwitch);
+            this.directoriesTabPage.Controls.Add(this.stagedirMaterialButton);
+            this.directoriesTabPage.Controls.Add(this.tmptoggleMaterialSwitch);
+            this.directoriesTabPage.Controls.Add(this.tmpdirMaterialButton);
+            this.directoriesTabPage.Controls.Add(this.waitforcopyMaterialSwitch);
+            this.directoriesTabPage.Controls.Add(this.tmpdir2MaterialButton);
+            this.directoriesTabPage.Location = new System.Drawing.Point(4, 22);
+            this.directoriesTabPage.Name = "directoriesTabPage";
+            this.directoriesTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.directoriesTabPage.Size = new System.Drawing.Size(969, 224);
+            this.directoriesTabPage.TabIndex = 1;
+            this.directoriesTabPage.Text = "Directories";
             // 
             // tmpdirMaterialTextBox2
             // 
@@ -663,59 +695,6 @@ namespace MMX_NODE_GUI
             this.tmpdir2MaterialButton.UseAccentColor = false;
             this.tmpdir2MaterialButton.UseVisualStyleBackColor = true;
             this.tmpdir2MaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
-            // 
-            // sizeMaterialNumericUpDown
-            // 
-            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.sizeMaterialNumericUpDown.Location = new System.Drawing.Point(10, 70);
-            this.sizeMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
-            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            34,
-            0,
-            0,
-            0});
-            this.sizeMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
-            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.sizeMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
-            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
-            this.sizeMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
-            this.sizeMaterialNumericUpDown.TabIndex = 13;
-            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // countMaterialNumericUpDown1
-            // 
-            this.countMaterialNumericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.countMaterialNumericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
-            this.countMaterialNumericUpDown1.Location = new System.Drawing.Point(704, 70);
-            this.countMaterialNumericUpDown1.Margin = new System.Windows.Forms.Padding(0);
-            this.countMaterialNumericUpDown1.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.countMaterialNumericUpDown1.MaximumSize = new System.Drawing.Size(999, 0);
-            this.countMaterialNumericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.countMaterialNumericUpDown1.MinimumSize = new System.Drawing.Size(48, 48);
-            this.countMaterialNumericUpDown1.Name = "countMaterialNumericUpDown1";
-            this.countMaterialNumericUpDown1.Size = new System.Drawing.Size(96, 48);
-            this.countMaterialNumericUpDown1.TabIndex = 15;
-            this.countMaterialNumericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             // 
             // materialTabSelector1
             // 
@@ -989,17 +968,214 @@ namespace MMX_NODE_GUI
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // materialLabel1
+            // materialLabel2
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(13, 10);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(278, 19);
-            this.materialLabel1.TabIndex = 4;
-            this.materialLabel1.Text = "Load plots from (node restart required):";
+            this.threadsMaterialLabel.AutoSize = true;
+            this.threadsMaterialLabel.Depth = 0;
+            this.threadsMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.threadsMaterialLabel.Location = new System.Drawing.Point(102, 16);
+            this.threadsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.threadsMaterialLabel.Name = "materialLabel2";
+            this.threadsMaterialLabel.Size = new System.Drawing.Size(107, 19);
+            this.threadsMaterialLabel.TabIndex = 29;
+            this.threadsMaterialLabel.Text = "materialLabel2";
+            // 
+            // materialLabel3
+            // 
+            this.rmulti2MaterialLabel.AutoSize = true;
+            this.rmulti2MaterialLabel.Depth = 0;
+            this.rmulti2MaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.rmulti2MaterialLabel.Location = new System.Drawing.Point(102, 72);
+            this.rmulti2MaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rmulti2MaterialLabel.Name = "materialLabel3";
+            this.rmulti2MaterialLabel.Size = new System.Drawing.Size(107, 19);
+            this.rmulti2MaterialLabel.TabIndex = 30;
+            this.rmulti2MaterialLabel.Text = "materialLabel3";
+            // 
+            // materialLabel4
+            // 
+            this.bucketsMaterialLabel.AutoSize = true;
+            this.bucketsMaterialLabel.Depth = 0;
+            this.bucketsMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.bucketsMaterialLabel.Location = new System.Drawing.Point(539, 16);
+            this.bucketsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.bucketsMaterialLabel.Name = "materialLabel4";
+            this.bucketsMaterialLabel.Size = new System.Drawing.Size(107, 19);
+            this.bucketsMaterialLabel.TabIndex = 31;
+            this.bucketsMaterialLabel.Text = "materialLabel4";
+            // 
+            // materialLabel5
+            // 
+            this.buckets3MaterialLabel.AutoSize = true;
+            this.buckets3MaterialLabel.Depth = 0;
+            this.buckets3MaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.buckets3MaterialLabel.Location = new System.Drawing.Point(539, 72);
+            this.buckets3MaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buckets3MaterialLabel.Name = "materialLabel5";
+            this.buckets3MaterialLabel.Size = new System.Drawing.Size(107, 19);
+            this.buckets3MaterialLabel.TabIndex = 32;
+            this.buckets3MaterialLabel.Text = "materialLabel5";
+            // 
+            // rmulti2NumericUpDown
+            // 
+            this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.rmulti2MaterialNumericUpDown.Location = new System.Drawing.Point(3, 60);
+            this.rmulti2MaterialNumericUpDown.LogValue = false;
+            this.rmulti2MaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
+            this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.rmulti2MaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.rmulti2MaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.rmulti2MaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.rmulti2MaterialNumericUpDown.Name = "rmulti2NumericUpDown";
+            this.rmulti2MaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
+            this.rmulti2MaterialNumericUpDown.TabIndex = 28;
+            this.rmulti2MaterialNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // threadsNumericUpDown
+            // 
+            this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.threadsMaterialNumericUpDown.Location = new System.Drawing.Point(3, 6);
+            this.threadsMaterialNumericUpDown.LogValue = false;
+            this.threadsMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
+            this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            128,
+            0,
+            0,
+            0});
+            this.threadsMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.threadsMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.threadsMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.threadsMaterialNumericUpDown.Name = "threadsNumericUpDown";
+            this.threadsMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
+            this.threadsMaterialNumericUpDown.TabIndex = 27;
+            this.threadsMaterialNumericUpDown.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            // 
+            // buckets3NumericUpDown
+            // 
+            this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.buckets3MaterialNumericUpDown.Location = new System.Drawing.Point(435, 60);
+            this.buckets3MaterialNumericUpDown.LogValue = true;
+            this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.buckets3MaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.buckets3MaterialNumericUpDown.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.buckets3MaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.buckets3MaterialNumericUpDown.Name = "buckets3NumericUpDown";
+            this.buckets3MaterialNumericUpDown.Size = new System.Drawing.Size(98, 48);
+            this.buckets3MaterialNumericUpDown.TabIndex = 1;
+            this.buckets3MaterialNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            // 
+            // bucketsNumericUpDown
+            // 
+            this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.bucketsMaterialNumericUpDown.Location = new System.Drawing.Point(435, 6);
+            this.bucketsMaterialNumericUpDown.LogValue = true;
+            this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.bucketsMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.bucketsMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.bucketsMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.bucketsMaterialNumericUpDown.Name = "bucketsNumericUpDown";
+            this.bucketsMaterialNumericUpDown.Size = new System.Drawing.Size(98, 48);
+            this.bucketsMaterialNumericUpDown.TabIndex = 0;
+            this.bucketsMaterialNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            // 
+            // sizeMaterialNumericUpDown
+            // 
+            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.sizeMaterialNumericUpDown.Location = new System.Drawing.Point(10, 70);
+            this.sizeMaterialNumericUpDown.LogValue = false;
+            this.sizeMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
+            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            34,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
+            this.sizeMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
+            this.sizeMaterialNumericUpDown.TabIndex = 13;
+            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // countMaterialNumericUpDown
+            // 
+            this.countMaterialNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.countMaterialNumericUpDown.Location = new System.Drawing.Point(704, 70);
+            this.countMaterialNumericUpDown.LogValue = false;
+            this.countMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
+            this.countMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.countMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
+            this.countMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.countMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
+            this.countMaterialNumericUpDown.Name = "countMaterialNumericUpDown";
+            this.countMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
+            this.countMaterialNumericUpDown.TabIndex = 15;
+            this.countMaterialNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             // 
             // MainForm
             // 
@@ -1027,15 +1203,21 @@ namespace MMX_NODE_GUI
             this.materialTabControl1.ResumeLayout(false);
             this.keysTabPage.ResumeLayout(false);
             this.keysTabPage.PerformLayout();
-            this.foldersTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown1)).EndInit();
+            this.perfomanceTabPage.ResumeLayout(false);
+            this.perfomanceTabPage.PerformLayout();
+            this.directoriesTabPage.ResumeLayout(false);
             this.settingsTabPage.ResumeLayout(false);
             this.settingsTabPage.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.showInNotifitationGroupBox.ResumeLayout(false);
             this.showInNotifitationGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1075,7 +1257,7 @@ namespace MMX_NODE_GUI
         private System.Windows.Forms.StatusStrip statusStrip1;
         private MaterialNumericUpDown sizeMaterialNumericUpDown;
         private MaterialSkin.Controls.MaterialButton finaldirMaterialButton;
-        private MaterialNumericUpDown countMaterialNumericUpDown1;
+        private MaterialNumericUpDown countMaterialNumericUpDown;
         private MaterialSkin.Controls.MaterialLabel countMaterialLabel;
         private MaterialSkin.Controls.MaterialButton startMaterialButton;
         private MaterialSkin.Controls.MaterialLabel sizeMaterialLabel;
@@ -1089,10 +1271,18 @@ namespace MMX_NODE_GUI
         private MaterialSkin.Controls.MaterialSwitch nftplotMaterialSwitch;
         private MaterialSkin.Controls.MaterialTextBox2 contractMaterialTextBox2;
         private MaterialSkin.Controls.MaterialTextBox2 poolkeyMaterialTextBox2;
-        private System.Windows.Forms.TabPage foldersTabPage;
+        private System.Windows.Forms.TabPage directoriesTabPage;
         private System.Windows.Forms.TabPage perfomanceTabPage;
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 materialMultiLineTextBox21;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel harvesterPlotsMaterialLabel;
+        private MaterialNumericUpDown bucketsMaterialNumericUpDown;
+        private MaterialNumericUpDown threadsMaterialNumericUpDown;
+        private MaterialNumericUpDown buckets3MaterialNumericUpDown;
+        private MaterialNumericUpDown rmulti2MaterialNumericUpDown;
+        private MaterialSkin.Controls.MaterialLabel buckets3MaterialLabel;
+        private MaterialSkin.Controls.MaterialLabel bucketsMaterialLabel;
+        private MaterialSkin.Controls.MaterialLabel rmulti2MaterialLabel;
+        private MaterialSkin.Controls.MaterialLabel threadsMaterialLabel;
     }
 }
 
