@@ -29,7 +29,7 @@ namespace MMX_NODE_GUI
 
         private void InitializeNode()
         {
-
+            Node.Activate();
             // alert(window.mmx.myProperty);
             // var message = "message"
             // window.mmx.postMessage(message);

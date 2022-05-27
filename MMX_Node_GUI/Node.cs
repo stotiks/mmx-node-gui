@@ -11,6 +11,14 @@ namespace MMX_NODE_GUI
 {
     public class Node
     {
+        public static string
+#if !DEBUG
+        exePath = Path.GetDirectoryName(Application.ExecutablePath);
+
+#else
+        //exePath = @"C:\Program Files\MMX";
+        exePath = @"C:\dev\mmx\MMX_TEST6";
+#endif
 
         public static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");
         public static string configPath = MMX_HOME + @"\config\local";
@@ -22,6 +30,7 @@ namespace MMX_NODE_GUI
         static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
         public event EventHandler BeforeStarted;
+
         public event EventHandler Started;
         public event EventHandler BeforeStop;
         public event EventHandler Stoped;
@@ -92,15 +101,24 @@ namespace MMX_NODE_GUI
         }
 
 
-        private void StartProcess()
+        internal static void Activate()
         {
-            var exePath = Path.GetDirectoryName(Application.ExecutablePath);
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            processStartInfo.WorkingDirectory = exePath;
+            processStartInfo.FileName = exePath + "\\activate.cmd";
+            processStartInfo.UseShellExecute = false;
+            processStartInfo.CreateNoWindow = true;
 
-#if DEBUG
-            //exePath = @"C:\Program Files\MMX";
-            exePath = @"C:\dev\mmx\MMX_TEST6";
-#endif
+            Process process = new Process();
+            process.EnableRaisingEvents = true;
+            process.StartInfo = processStartInfo;
 
+            process.Start();
+            process.WaitForExit();
+        }
+
+        private void StartProcess()
+        {            
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = exePath;
             processStartInfo.FileName = exePath + "\\run_node.cmd";
