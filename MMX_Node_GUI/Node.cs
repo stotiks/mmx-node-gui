@@ -21,6 +21,7 @@ namespace MMX_NODE_GUI
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
         static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
+        public event EventHandler BeforeStarted;
         public event EventHandler Started;
         public event EventHandler BeforeStop;
         public event EventHandler Stoped;
@@ -71,6 +72,7 @@ namespace MMX_NODE_GUI
 
         public void Start()
         {
+            OnBeforeStarted();
 
             if (!IsRunning)
             {
@@ -88,6 +90,7 @@ namespace MMX_NODE_GUI
 
             OnStart();
         }
+
 
         private void StartProcess()
         {
@@ -174,6 +177,14 @@ namespace MMX_NODE_GUI
             processStarted = false;
 
             OnStop();
+        }
+
+        private void OnBeforeStarted()
+        {
+            if (BeforeStarted != null)
+            {
+                BeforeStarted(this, EventArgs.Empty);
+            }
         }
 
         private void OnStart()

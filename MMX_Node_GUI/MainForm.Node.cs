@@ -48,12 +48,14 @@ namespace MMX_NODE_GUI
             nodeTabPage.Controls.Add(chromiumWebBrowser);
 
             //node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
-            //node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
+
+            node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
 
             node.Started += (sender, e) =>
             {
                 string loginHtml = loadingHtml.Replace(jsString, loginJS.Replace("_mmx_password_", Node.GetPassword()));
-                chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString()).Wait();
+                //chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString()).Wait();
+                chromiumWebBrowser.LoadHtml(loginHtml, Node.baseUri.ToString());
             };
 
             node.BeforeStop += (sender, e) =>
@@ -65,8 +67,7 @@ namespace MMX_NODE_GUI
 
         private void MainForm_Node_Load()
         {
-            //Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString())).Wait();            
-            node.Start();
+            Task.Run(() => node.Start());
         }
 
         private void MainForm_Node_FormClosing()
