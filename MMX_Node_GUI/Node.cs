@@ -19,8 +19,7 @@ namespace MMX_NODE_GUI
 
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
-        static private readonly Uri exitUri = new Uri(baseUri, "/wapi/node/exit");
-        static private readonly Uri checkUri = new Uri(baseUri, "/server/session");
+        static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
         public event EventHandler Started;
         public event EventHandler BeforeStop;
@@ -30,9 +29,11 @@ namespace MMX_NODE_GUI
         {
             string password = "";
 
-            try {
-                password = File.ReadAllText(MMX_HOME + @"\PASSWD").Trim(); 
-            } catch (FileNotFoundException e)
+            try
+            {
+                password = File.ReadAllText(MMX_HOME + @"\PASSWD").Trim();
+            }
+            catch (FileNotFoundException e)
             {
             }
 
@@ -47,49 +48,35 @@ namespace MMX_NODE_GUI
         {
         }
 
+        public bool IsRunning
+        {
+            get {
+                var task = Task.Run(CheckRunning);
+                task.Wait();
+                return task.Result;
+            }
+        }
+
+        private async Task<bool> CheckRunning()
+        {
+            try
+            {
+                var result = await client.GetAsync(sessionUri);
+                return true;
+            } catch (Exception) {}
+
+            return false;
+        }
+
         public void Start()
         {
-            StartProcess();
 
-            /*            var executed = false;
+            if (!IsRunning)
+            {
+                StartProcess();
+            }
 
-                        Task.Run(async () =>
-                        {
-                            while (true)
-                            {
-                                try
-                                {
-                                    var result = await client.GetAsync(checkUri);
-                                    //Console.WriteLine(result);
-                                    if (result.StatusCode == HttpStatusCode.OK)
-                                    {                            
-                                        var responseBody = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
-                                        Console.WriteLine(responseBody);
-                                        if (responseBody.Contains("mmx-admin"))
-                                        {
-                                            break;
-                                        }
-                                    }
-
-                                }
-                                catch (Exception)
-                                {
-                                    //Console.WriteLine(e);
-                                }
-
-                                if (!executed)
-                                {
-                                    executed = true;
-                                    StartProcess();
-                                }
-
-                                Console.WriteLine("Waiting node...");
-                                await Task.Delay(500);
-                            }
-
-                            OnStart();
-                        });
-            */
+            OnStart();
         }
 
         private void StartProcess()
@@ -107,7 +94,11 @@ namespace MMX_NODE_GUI
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = false;
-            //processStartInfo.CreateNoWindow = true;
+
+#if !DEBUG
+            processStartInfo.CreateNoWindow = true;
+#endif
+
             //processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             //if (false)
@@ -123,11 +114,11 @@ namespace MMX_NODE_GUI
             process.EnableRaisingEvents = true;
             process.StartInfo = processStartInfo;
 
-            process.Exited += BeforeStop;
-            process.Exited += Stoped;
+            //process.Exited += BeforeStop;
+            //process.Exited += Stoped;
 
-            process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
-            process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
+            //process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
+            //process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
 
             processStarted = process.Start();
 
@@ -144,12 +135,11 @@ namespace MMX_NODE_GUI
         {
             OnBeforeStop();
 
-            //Task.Run(async () => await ExitAsync()).Wait();          
+            var delay = 100;
+            var timeout = 10000;
 
             if (process != null && processStarted)
             {
-                var delay = 500;
-                var timeout = 10000;
                 while (!process.HasExited && timeout >= 0)
                 {
                     timeout -= delay;
@@ -162,25 +152,19 @@ namespace MMX_NODE_GUI
                     KillProcessAndChildren(process.Id);
                 }
             }
+            else
+            {
+                while (IsRunning && timeout >= 0)
+                {
+                    timeout -= delay;
+                    Task.Delay(delay).Wait();
+                }
+            }
 
             processStarted = false;
 
             OnStop();
         }
-
-        private async Task ExitAsync()
-        {
-            try
-            {
-                var result = await client.PostAsync(exitUri, null);
-                //Console.WriteLine(result);
-            }
-            catch (Exception)
-            {
-                //Console.WriteLine(e);
-            }
-        }
-
 
         private void OnStart()
         {

@@ -1,10 +1,8 @@
-﻿using CefSharp;
-using MaterialSkin;
+﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
@@ -59,7 +57,7 @@ namespace MMX_NODE_GUI
                 WindowState = FormWindowState.Minimized;
             }
 
-            NodeMainForm_Load();
+            MainForm_Node_Load();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -108,10 +106,7 @@ namespace MMX_NODE_GUI
 
             closePending = true;
 
-            Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(logoutHtml, Node.baseUri.ToString())).Wait();     
-            nodeTabPage.Show();
-            Task.Delay(1000).Wait();
-            node.Stop();
+            MainForm_Node_FormClosing();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

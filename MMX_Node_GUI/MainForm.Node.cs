@@ -47,15 +47,28 @@ namespace MMX_NODE_GUI
             
 
             nodeTabPage.Controls.Add(chromiumWebBrowser);
+
             //node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
             //node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
 
+            node.Started += (sender, e) => chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString()).Wait();
+            node.BeforeStop += (sender, e) =>
+            {                
+                chromiumWebBrowser.LoadHtmlAsync(logoutHtml, Node.baseUri.ToString()).Wait();
+            };
+
         }
 
-        private void NodeMainForm_Load()
+        private void MainForm_Node_Load()
         {
-            Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString())).Wait();            
+            //Task.Run(async () => await chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString())).Wait();            
             node.Start();
+        }
+
+        private void MainForm_Node_FormClosing()
+        {
+            nodeTabPage.Show();
+            node.Stop();
         }
 
         public class SearchContextMenuHandler : IContextMenuHandler
