@@ -76,6 +76,15 @@ namespace MMX_NODE_GUI
                 StartProcess();
             }
 
+            var delay = 100;
+            var timeout = 2000;
+
+            while (IsRunning && timeout >= 0)
+            {
+                timeout -= delay;
+                Task.Delay(delay).Wait();
+            }
+
             OnStart();
         }
 

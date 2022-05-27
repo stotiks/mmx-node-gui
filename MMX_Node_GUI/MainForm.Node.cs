@@ -16,7 +16,6 @@ namespace MMX_NODE_GUI
         static private string logoutJS = GetResource("logout.js");
         static private string loadingHtml = GetResource("loading.html");
         static private string jsString = "//javascript";
-        static private string loginHtml = loadingHtml.Replace(jsString, loginJS.Replace("_mmx_password_", Node.GetPassword()));
         static private string logoutHtml = loadingHtml.Replace(jsString, logoutJS);
 
         ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser()
@@ -51,7 +50,12 @@ namespace MMX_NODE_GUI
             //node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
             //node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
 
-            node.Started += (sender, e) => chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString()).Wait();
+            node.Started += (sender, e) =>
+            {
+                string loginHtml = loadingHtml.Replace(jsString, loginJS.Replace("_mmx_password_", Node.GetPassword()));
+                chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString()).Wait();
+            };
+
             node.BeforeStop += (sender, e) =>
             {                
                 chromiumWebBrowser.LoadHtmlAsync(logoutHtml, Node.baseUri.ToString()).Wait();
