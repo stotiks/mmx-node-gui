@@ -83,6 +83,7 @@ namespace MMX_NODE_GUI
             this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.menuIconList = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.MenuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
@@ -163,6 +164,7 @@ namespace MMX_NODE_GUI
             // 
             // harvesterTabPage
             // 
+            this.harvesterTabPage.Controls.Add(this.materialLabel1);
             this.harvesterTabPage.Controls.Add(this.removePlotFolderMaterialButton);
             this.harvesterTabPage.Controls.Add(this.addPlotFolderMaterialButton);
             this.harvesterTabPage.Controls.Add(this.plotFoldersMaterialListBox);
@@ -182,7 +184,7 @@ namespace MMX_NODE_GUI
             this.removePlotFolderMaterialButton.Depth = 0;
             this.removePlotFolderMaterialButton.HighEmphasis = false;
             this.removePlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_remove;
-            this.removePlotFolderMaterialButton.Location = new System.Drawing.Point(502, 58);
+            this.removePlotFolderMaterialButton.Location = new System.Drawing.Point(505, 80);
             this.removePlotFolderMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.removePlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.removePlotFolderMaterialButton.Name = "removePlotFolderMaterialButton";
@@ -203,7 +205,7 @@ namespace MMX_NODE_GUI
             this.addPlotFolderMaterialButton.Depth = 0;
             this.addPlotFolderMaterialButton.HighEmphasis = false;
             this.addPlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_plus;
-            this.addPlotFolderMaterialButton.Location = new System.Drawing.Point(502, 10);
+            this.addPlotFolderMaterialButton.Location = new System.Drawing.Point(505, 32);
             this.addPlotFolderMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addPlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.addPlotFolderMaterialButton.Name = "addPlotFolderMaterialButton";
@@ -222,7 +224,7 @@ namespace MMX_NODE_GUI
             this.plotFoldersMaterialListBox.BorderColor = System.Drawing.Color.LightGray;
             this.plotFoldersMaterialListBox.Depth = 0;
             this.plotFoldersMaterialListBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.plotFoldersMaterialListBox.Location = new System.Drawing.Point(10, 10);
+            this.plotFoldersMaterialListBox.Location = new System.Drawing.Point(13, 32);
             this.plotFoldersMaterialListBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.plotFoldersMaterialListBox.Name = "plotFoldersMaterialListBox";
             this.plotFoldersMaterialListBox.SelectedIndex = -1;
@@ -987,6 +989,18 @@ namespace MMX_NODE_GUI
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(13, 10);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(278, 19);
+            this.materialLabel1.TabIndex = 4;
+            this.materialLabel1.Text = "Load plots from (node restart required):";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1007,6 +1021,7 @@ namespace MMX_NODE_GUI
             this.contextMenuStrip1.ResumeLayout(false);
             this.MenuMaterialTabControl.ResumeLayout(false);
             this.harvesterTabPage.ResumeLayout(false);
+            this.harvesterTabPage.PerformLayout();
             this.plotterTabPage.ResumeLayout(false);
             this.plotterTabPage.PerformLayout();
             this.materialTabControl1.ResumeLayout(false);
@@ -1077,6 +1092,7 @@ namespace MMX_NODE_GUI
         private System.Windows.Forms.TabPage foldersTabPage;
         private System.Windows.Forms.TabPage perfomanceTabPage;
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 materialMultiLineTextBox21;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }
 
