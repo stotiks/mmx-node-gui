@@ -2,22 +2,19 @@
 using System.Diagnostics;
 using System.IO;
 using System.Management;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
 {
     public class Node
     {
-        public static string
+        public static string workingDirectory =
 #if !DEBUG
-        exePath = Path.GetDirectoryName(Application.ExecutablePath);
-
+    		Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
 #else
-        //exePath = @"C:\Program Files\MMX";
-        exePath = @"C:\dev\mmx\MMX_TEST6";
+        	//@"C:\Program Files\MMX";
+			@"C:\dev\mmx\MMX_TEST6";
 #endif
 
         public static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");
@@ -103,25 +100,28 @@ namespace MMX_NODE_GUI
 
         internal static void Activate()
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo();
-            processStartInfo.WorkingDirectory = exePath;
-            processStartInfo.FileName = exePath + "\\activate.cmd";
-            processStartInfo.UseShellExecute = false;
-            processStartInfo.CreateNoWindow = true;
+            if(!Directory.Exists(configPath))
+            {
+                ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                processStartInfo.WorkingDirectory = workingDirectory;
+                processStartInfo.FileName = workingDirectory + @"\activate.cmd";
+                processStartInfo.UseShellExecute = false;
+                processStartInfo.CreateNoWindow = true;
 
-            Process process = new Process();
-            process.EnableRaisingEvents = true;
-            process.StartInfo = processStartInfo;
+                Process process = new Process();
+                process.EnableRaisingEvents = true;
+                process.StartInfo = processStartInfo;
 
-            process.Start();
-            process.WaitForExit();
+                process.Start();
+                process.WaitForExit();
+            }
         }
 
         private void StartProcess()
         {            
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
-            processStartInfo.WorkingDirectory = exePath;
-            processStartInfo.FileName = exePath + "\\run_node.cmd";
+            processStartInfo.WorkingDirectory = workingDirectory;
+            processStartInfo.FileName = workingDirectory + @"\run_node.cmd";
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = false;
