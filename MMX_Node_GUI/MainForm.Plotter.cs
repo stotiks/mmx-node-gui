@@ -11,6 +11,11 @@ namespace MMX_NODE_GUI
 
         private void InitializePlotter()
         {
+
+#if !DEBUG
+            this.MenuMaterialTabControl.Controls.Remove(this.plotterTabPage);
+#endif
+
             farmerkeyMaterialTextBox2.DataBindings.Add("Text", plotterOptions.farmerkey, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
             farmerkeyMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.farmerkey, "Description");
 
