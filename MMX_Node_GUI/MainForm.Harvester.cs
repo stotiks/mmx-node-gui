@@ -12,17 +12,27 @@ namespace MMX_NODE_GUI
 
         private void InitializeHarvester()
         {
-            string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
-            harvesterConfig = JObject.Parse(harvesterJson);
 
-            //int num_threads = harvesterConfig.Value<int>("num_threads");
-            //int reload_interval = harvesterConfig.Value<int>("reload_interval");
-            JArray plot_dirs = harvesterConfig.Value<JArray>("plot_dirs");
+            this.MenuMaterialTabControl.SelectedIndexChanged += new System.EventHandler(this.MenuMaterialTabControl_SelectedIndexChanged);
+        }
 
-            for (int i = 0; i < plot_dirs.Count; i++)
+        private void MenuMaterialTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.MenuMaterialTabControl.SelectedTab == harvesterTabPage)
             {
-                var item = new MaterialListBoxItem(plot_dirs[i].ToString());
-                plotFoldersMaterialListBox.Items.Add(item);
+                string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
+                harvesterConfig = JObject.Parse(harvesterJson);
+
+                //int num_threads = harvesterConfig.Value<int>("num_threads");
+                //int reload_interval = harvesterConfig.Value<int>("reload_interval");
+                JArray plot_dirs = harvesterConfig.Value<JArray>("plot_dirs");
+
+                plotFoldersMaterialListBox.Items.Clear();
+                for (int i = 0; i < plot_dirs.Count; i++)
+                {
+                    var item = new MaterialListBoxItem(plot_dirs[i].ToString());
+                    plotFoldersMaterialListBox.Items.Add(item);
+                }
             }
         }
 
