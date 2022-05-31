@@ -178,7 +178,6 @@
     <None Include="icons\folder-remove.png" />
     <None Include="icons\folder.png" />
     <EmbeddedResource Include="html\loading.html" />
-    <EmbeddedResource Include="html\login.js" />
     <EmbeddedResource Include="html\logout.js" />
     <Content Include="mmx.ico" />
   </ItemGroup>

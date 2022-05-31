@@ -1,4 +1,5 @@
 ﻿using CefSharp;
+using CefSharp.Handler;
 using CefSharp.WinForms;
 using System.Drawing;
 using System.IO;
@@ -11,7 +12,6 @@ namespace MMX_NODE_GUI
 {
     public partial class MainForm
     {
-        static private string loginJS = GetResource("login.js"); 
         static private string logoutJS = GetResource("logout.js");
         static private string loadingHtml = GetResource("loading.html");
         static private string jsString = "//javascript";
@@ -28,7 +28,6 @@ namespace MMX_NODE_GUI
 
         private void InitializeNode()
         {
-            Node.Activate();
             // alert(window.mmx.myProperty);
             // var message = "message"
             // window.mmx.postMessage(message);
@@ -42,25 +41,45 @@ namespace MMX_NODE_GUI
             chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", boundObject, isAsync: false, options: BindingOptions.DefaultBinder);
 
             chromiumWebBrowser.MenuHandler = new SearchContextMenuHandler();
-            
+
+            chromiumWebBrowser.RequestHandler = new CustomRequestHandler();
 
             nodeTabPage.Controls.Add(chromiumWebBrowser);
 
-            //node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
+            node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
 
             node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
 
-            node.Started += (sender, e) =>
-            {
-                string loginHtml = loadingHtml.Replace(jsString, loginJS.Replace("_mmx_password_", Node.GetPassword()));
-                //chromiumWebBrowser.LoadHtmlAsync(loginHtml, Node.baseUri.ToString()).Wait();
-                chromiumWebBrowser.LoadHtml(loginHtml, Node.baseUri.ToString());
-            };
+            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
-            node.BeforeStop += (sender, e) =>
-            {                
-                chromiumWebBrowser.LoadHtmlAsync(logoutHtml, Node.baseUri.ToString()).Wait();
-            };
+        }
+
+        public class CustomResourceRequestHandler : ResourceRequestHandler
+        {
+
+            protected override CefReturnValue OnBeforeResourceLoad(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback)
+            {
+                var headers = request.Headers;
+                headers["x-api-token"] = Node.XToken;
+                request.Headers = headers;
+
+                return CefReturnValue.Continue;
+            }
+        }
+
+        public class CustomRequestHandler : RequestHandler
+        {
+            protected override IResourceRequestHandler GetResourceRequestHandler(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, bool isNavigation, bool isDownload, string requestInitiator, ref bool disableDefaultHandling)
+            {
+                if (request.Url == Node.baseUri.ToString())
+                {
+                    return base.GetResourceRequestHandler(chromiumWebBrowser, browser, frame, request, isNavigation, isDownload, requestInitiator, ref disableDefaultHandling);
+                }
+                else
+                {
+                    return new CustomResourceRequestHandler();
+                }
+            }
 
         }
 

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -21,10 +24,17 @@ namespace MMX_NODE_GUI
         public static string configPath = MMX_HOME + @"\config\local";
         public static string harvesterConfigPath = configPath + @"\Harvester.json";
         public static string plotterConfigPath = configPath + @"\Plotter.json";
+        public static string httpServerConfigPath = configPath + @"\HttpServer.json";
+        
+        public static string activateCMDPath = workingDirectory + @"\activate.cmd";
+        public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd";
 
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
         static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
+
+        static Random random = new Random();
+        private static string xToken = GetRandomHexNumber(64);
 
         public event EventHandler BeforeStarted;
 
@@ -32,31 +42,16 @@ namespace MMX_NODE_GUI
         public event EventHandler BeforeStop;
         public event EventHandler Stoped;
 
-        internal static string GetPassword()
-        {
-            string password = "";
-
-            try
-            {
-                password = File.ReadAllText(MMX_HOME + @"\PASSWD").Trim();
-            }
-            catch (FileNotFoundException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return password;
-        }
 
         private static readonly HttpClient client = new HttpClient();
         private Process process;
         private bool processStarted = false;
 
         public Node()
-        {
+        {            
         }
 
-        public bool IsRunning
+        public static bool IsRunning
         {
             get {
                 var task = Task.Run(CheckRunning);
@@ -65,7 +60,7 @@ namespace MMX_NODE_GUI
             }
         }
 
-        private async Task<bool> CheckRunning()
+        private static async Task<bool> CheckRunning()
         {
             try
             {
@@ -79,6 +74,8 @@ namespace MMX_NODE_GUI
         public void Start()
         {
             OnBeforeStarted();
+
+            Node.Activate();
 
             if (!IsRunning)
             {
@@ -98,13 +95,24 @@ namespace MMX_NODE_GUI
         }
 
 
+
+        public static string GetRandomHexNumber(int digits)
+        {
+            byte[] buffer = new byte[digits / 2];
+            random.NextBytes(buffer);
+            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            if (digits % 2 == 0)
+                return result;
+            return result + random.Next(16).ToString("X");
+        }
+
         internal static void Activate()
         {
             if(!Directory.Exists(configPath))
             {
                 ProcessStartInfo processStartInfo = new ProcessStartInfo();
                 processStartInfo.WorkingDirectory = workingDirectory;
-                processStartInfo.FileName = workingDirectory + @"\activate.cmd";
+                processStartInfo.FileName = activateCMDPath;
                 processStartInfo.UseShellExecute = false;
                 processStartInfo.CreateNoWindow = true;
 
@@ -115,13 +123,62 @@ namespace MMX_NODE_GUI
                 process.Start();
                 process.WaitForExit();
             }
+
+            InitXToken();
+        }
+
+        public static string XToken
+        {
+            get
+            {
+                return xToken;
+            }
+        }
+
+        static private void InitXToken()
+        {
+            string json = "{}";
+            try
+            {
+                json = File.ReadAllText(Node.httpServerConfigPath);
+            }
+            catch
+            {
+                //System.Console.WriteLine(@"config not found");
+            }
+
+            dynamic httpServerConfig = JsonConvert.DeserializeObject(json);
+            if (IsRunning)
+            {
+                var map = httpServerConfig["token_map"];
+
+                foreach (JProperty prop in map.Properties())
+                {
+                    if(prop.Value.ToString() == "ADMIN")
+                    {
+                        xToken = prop.Name;
+                        break;
+                    }                    
+                }
+            }
+            else
+            {
+                dynamic jObject = new JObject();
+                var role = "ADMIN";
+                var token = XToken;
+                jObject.Add(token, role);
+                httpServerConfig["token_map"] = jObject;
+
+                json = JsonConvert.SerializeObject(httpServerConfig, Formatting.Indented);
+                File.WriteAllText(Node.httpServerConfigPath, json);
+            }
         }
 
         private void StartProcess()
         {            
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = workingDirectory;
-            processStartInfo.FileName = workingDirectory + @"\run_node.cmd";
+            processStartInfo.FileName = runNodeCMDPath;
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = false;
