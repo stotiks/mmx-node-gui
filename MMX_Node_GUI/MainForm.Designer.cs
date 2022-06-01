@@ -48,7 +48,7 @@ namespace MMX_NODE_GUI
             this.plotterTabPage = new System.Windows.Forms.TabPage();
             this.materialMultiLineTextBox21 = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.countMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.plotterSettingsMaterialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.keysTabPage = new System.Windows.Forms.TabPage();
             this.farmerkeyMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.nftplotMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
@@ -75,7 +75,7 @@ namespace MMX_NODE_GUI
             this.tmpdir2MaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.plotterSettingsMaterialTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
             this.startMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.sizeMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -98,7 +98,7 @@ namespace MMX_NODE_GUI
             this.MenuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
             this.plotterTabPage.SuspendLayout();
-            this.materialTabControl1.SuspendLayout();
+            this.plotterSettingsMaterialTabControl.SuspendLayout();
             this.keysTabPage.SuspendLayout();
             this.perfomanceTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).BeginInit();
@@ -264,10 +264,10 @@ namespace MMX_NODE_GUI
             // 
             this.plotterTabPage.Controls.Add(this.materialMultiLineTextBox21);
             this.plotterTabPage.Controls.Add(this.countMaterialLabel);
-            this.plotterTabPage.Controls.Add(this.materialTabControl1);
+            this.plotterTabPage.Controls.Add(this.plotterSettingsMaterialTabControl);
             this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
             this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown);
-            this.plotterTabPage.Controls.Add(this.materialTabSelector1);
+            this.plotterTabPage.Controls.Add(this.plotterSettingsMaterialTabSelector);
             this.plotterTabPage.Controls.Add(this.startMaterialButton);
             this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
             this.plotterTabPage.Controls.Add(this.sizeMaterialLabel);
@@ -321,21 +321,21 @@ namespace MMX_NODE_GUI
             this.countMaterialLabel.TabIndex = 16;
             this.countMaterialLabel.Text = "Number of plots to create";
             // 
-            // materialTabControl1
+            // plotterSettingsMaterialTabControl
             // 
-            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.plotterSettingsMaterialTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabControl1.Controls.Add(this.keysTabPage);
-            this.materialTabControl1.Controls.Add(this.perfomanceTabPage);
-            this.materialTabControl1.Controls.Add(this.directoriesTabPage);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(10, 187);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Multiline = true;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(977, 250);
-            this.materialTabControl1.TabIndex = 25;
+            this.plotterSettingsMaterialTabControl.Controls.Add(this.keysTabPage);
+            this.plotterSettingsMaterialTabControl.Controls.Add(this.perfomanceTabPage);
+            this.plotterSettingsMaterialTabControl.Controls.Add(this.directoriesTabPage);
+            this.plotterSettingsMaterialTabControl.Depth = 0;
+            this.plotterSettingsMaterialTabControl.Location = new System.Drawing.Point(10, 187);
+            this.plotterSettingsMaterialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.plotterSettingsMaterialTabControl.Multiline = true;
+            this.plotterSettingsMaterialTabControl.Name = "plotterSettingsMaterialTabControl";
+            this.plotterSettingsMaterialTabControl.SelectedIndex = 0;
+            this.plotterSettingsMaterialTabControl.Size = new System.Drawing.Size(977, 250);
+            this.plotterSettingsMaterialTabControl.TabIndex = 25;
             // 
             // keysTabPage
             // 
@@ -907,20 +907,20 @@ namespace MMX_NODE_GUI
             0,
             -2147483648});
             // 
-            // materialTabSelector1
+            // plotterSettingsMaterialTabSelector
             // 
-            this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.plotterSettingsMaterialTabSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
-            this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
-            this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTabSelector1.Location = new System.Drawing.Point(10, 133);
-            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(977, 48);
-            this.materialTabSelector1.TabIndex = 24;
-            this.materialTabSelector1.Text = "materialTabSelector1";
+            this.plotterSettingsMaterialTabSelector.BaseTabControl = this.plotterSettingsMaterialTabControl;
+            this.plotterSettingsMaterialTabSelector.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.plotterSettingsMaterialTabSelector.Depth = 0;
+            this.plotterSettingsMaterialTabSelector.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.plotterSettingsMaterialTabSelector.Location = new System.Drawing.Point(10, 133);
+            this.plotterSettingsMaterialTabSelector.MouseState = MaterialSkin.MouseState.HOVER;
+            this.plotterSettingsMaterialTabSelector.Name = "plotterSettingsMaterialTabSelector";
+            this.plotterSettingsMaterialTabSelector.Size = new System.Drawing.Size(977, 48);
+            this.plotterSettingsMaterialTabSelector.TabIndex = 24;
+            this.plotterSettingsMaterialTabSelector.Text = "materialTabSelector1";
             // 
             // startMaterialButton
             // 
@@ -1233,7 +1233,7 @@ namespace MMX_NODE_GUI
             this.harvesterTabPage.PerformLayout();
             this.plotterTabPage.ResumeLayout(false);
             this.plotterTabPage.PerformLayout();
-            this.materialTabControl1.ResumeLayout(false);
+            this.plotterSettingsMaterialTabControl.ResumeLayout(false);
             this.keysTabPage.ResumeLayout(false);
             this.keysTabPage.PerformLayout();
             this.perfomanceTabPage.ResumeLayout(false);
@@ -1299,8 +1299,8 @@ namespace MMX_NODE_GUI
         private MaterialSkin.Controls.MaterialButton stagedirMaterialButton;
         private MaterialSkin.Controls.MaterialButton tmpdir2MaterialButton;
         private System.Windows.Forms.TabPage plotterTabPage;
-        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private MaterialSkin.Controls.MaterialTabSelector plotterSettingsMaterialTabSelector;
+        private MaterialSkin.Controls.MaterialTabControl plotterSettingsMaterialTabControl;
         private System.Windows.Forms.TabPage keysTabPage;
         private MaterialSkin.Controls.MaterialTextBox2 farmerkeyMaterialTextBox2;
         private MaterialSkin.Controls.MaterialSwitch nftplotMaterialSwitch;

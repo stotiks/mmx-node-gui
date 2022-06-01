@@ -190,6 +190,7 @@ namespace MMX_NODE_GUI
         {
             if (ControlInvokeRequired(MenuMaterialTabControl, () => CopyKeysToPlotter(json))) return;
             MenuMaterialTabControl.SelectTab(plotterTabPage);
+            plotterSettingsMaterialTabControl.SelectedTab = keysTabPage;
 
             dynamic keys = JsonConvert.DeserializeObject(json);
             farmerkeyMaterialTextBox2.Text = keys["farmer_public_key"];
