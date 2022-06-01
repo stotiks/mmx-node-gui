@@ -939,6 +939,7 @@ namespace MMX_NODE_GUI
             this.startMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.startMaterialButton.UseAccentColor = false;
             this.startMaterialButton.UseVisualStyleBackColor = true;
+            this.startMaterialButton.Click += new System.EventHandler(this.startMaterialButton_Click);
             // 
             // finaldirMaterialButton
             // 

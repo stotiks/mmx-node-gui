@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -110,7 +111,7 @@ namespace MMX_NODE_GUI
 
 
             //------
-            materialMultiLineTextBox21.DataBindings.Add("Text", plotterOptions, "PloterArgs");
+            materialMultiLineTextBox21.DataBindings.Add("Text", plotterOptions, "PlotterCmd");
 
         }
 
@@ -150,6 +151,20 @@ namespace MMX_NODE_GUI
             {
                 textBox.Text = FixDir(dialog.FileName);
             }
+        }
+
+        private void startMaterialButton_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            processStartInfo.WorkingDirectory = Node.workingDirectory;
+            processStartInfo.FileName = plotterOptions.PlotterExe;
+            processStartInfo.Arguments = plotterOptions.PlotterArguments;
+
+            var process = new Process();
+            process.EnableRaisingEvents = true;
+            process.StartInfo = processStartInfo;
+
+            var processStarted = process.Start();
         }
 
     }

@@ -213,7 +213,7 @@ namespace MMX_NODE_GUI
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                PropertyChanged(this, new PropertyChangedEventArgs("PloterArgs"));
+                PropertyChanged(this, new PropertyChangedEventArgs("PlotterCmd"));
                 Save();
             }
         }
@@ -277,18 +277,32 @@ namespace MMX_NODE_GUI
 
         }
 
-        public string PloterArgs
+        public string PlotterCmd
         {
             get
             {
-                var plotterEXE = "mmx_plot.exe";
-                if(size.Value > 32) 
+                return string.Format("{0} {1}", PlotterExe, PlotterArguments);
+            }
+        }
+
+        public string PlotterExe
+        {
+            get {
+                var exe = "mmx_plot.exe";
+                if (size.Value > 32)
                 {
-                    plotterEXE = "mmx_plot_k34.exe";
+                    exe = "mmx_plot_k34.exe";
                 }
 
-                var result = plotterEXE;
+                return exe;
+            }
+        }
 
+        public string PlotterArguments
+        {
+            get
+            {
+                var result = "";
                 foreach (FieldInfo field in GetType().GetFields())
                 {
                     var fieldType = field.FieldType;
@@ -315,7 +329,6 @@ namespace MMX_NODE_GUI
                 return result;
             }
         }
-
     }
 
 
