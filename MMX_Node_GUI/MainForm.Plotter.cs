@@ -1,4 +1,6 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using MaterialSkin.Controls;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -182,6 +184,20 @@ namespace MMX_NODE_GUI
 
             var processStarted = process.Start();
             startMaterialButton.Enabled = false;
+        }
+
+        internal void CopyKeysToPlotter(string json)
+        {
+            if (ControlInvokeRequired(MenuMaterialTabControl, () => CopyKeysToPlotter(json))) return;
+            MenuMaterialTabControl.SelectTab(plotterTabPage);
+
+            dynamic keys = JsonConvert.DeserializeObject(json);
+            farmerkeyMaterialTextBox2.Text = keys["farmer_public_key"];
+            nftplotMaterialSwitch.Checked = false;
+            poolkeyMaterialTextBox2.Text = keys["pool_public_key"];
+
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Keys copied succesfully", "OK", true);
+            SnackBarMessage.Show(this);
         }
 
     }

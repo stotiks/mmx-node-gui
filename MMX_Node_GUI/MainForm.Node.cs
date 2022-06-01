@@ -35,7 +35,7 @@ namespace MMX_NODE_GUI
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
 
-            var boundObject = new MMXBoundObject();
+            var boundObject = new MMXBoundObject(this);
             //boundObject.Password = Node.GetPassword();
 
             chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", boundObject, isAsync: false, options: BindingOptions.DefaultBinder);

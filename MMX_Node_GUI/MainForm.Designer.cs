@@ -1216,6 +1216,7 @@ namespace MMX_NODE_GUI
             this.ClientSize = new System.Drawing.Size(1070, 740);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuMaterialTabControl);
+            this.DrawerHighlightWithAccent = false;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.MenuMaterialTabControl;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
