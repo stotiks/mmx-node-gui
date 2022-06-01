@@ -90,7 +90,7 @@ namespace MMX_NODE_GUI
         {
             Name = "r",
             LongName = "threads",
-            Value = 16,
+            Value = Environment.ProcessorCount,
             Description = "Number of threads"
         };
 
