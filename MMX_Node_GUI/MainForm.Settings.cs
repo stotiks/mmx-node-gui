@@ -31,6 +31,13 @@ namespace MMX_NODE_GUI
 
             inhibitSystemSleepMaterialSwitch.DataBindings.Add("Checked", Properties.Settings.Default, "inhibitSystemSleep", true, DataSourceUpdateMode.OnPropertyChanged);
             inhibitSystemSleepMaterialSwitch.CheckStateChanged += new EventHandler((object sender, EventArgs e) => PowerManagement.ApplyPowerManagementSettings() );
+
+            showConsoleMaterialSwitch.DataBindings.Add("Checked", Properties.Settings.Default, "showConsole", true, DataSourceUpdateMode.OnPropertyChanged);
+
+#if !DEBUG
+            debugGroupBox.Enabled = false;
+#endif
+
         }
 
 

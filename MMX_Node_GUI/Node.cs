@@ -183,9 +183,11 @@ namespace MMX_NODE_GUI
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = false;
 
-#if !DEBUG
-            processStartInfo.CreateNoWindow = true;
-#endif
+            if (!Properties.Settings.Default.showConsole)
+            {
+                processStartInfo.CreateNoWindow = true;
+            }
+            
 
             //processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
