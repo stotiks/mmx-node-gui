@@ -153,6 +153,20 @@ namespace MMX_NODE_GUI
             }
         }
 
+        public bool ControlInvokeRequired(Control c, Action a)
+        {
+            if (c.InvokeRequired) c.Invoke(new MethodInvoker(delegate { a(); }));
+            else return false;
+
+            return true;
+        }
+
+        public void EnableStartButton()
+        {
+            if (ControlInvokeRequired(startMaterialButton, () => EnableStartButton())) return;
+            startMaterialButton.Enabled = true;
+        }
+
         private void startMaterialButton_Click(object sender, EventArgs e)
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
@@ -164,7 +178,10 @@ namespace MMX_NODE_GUI
             process.EnableRaisingEvents = true;
             process.StartInfo = processStartInfo;
 
+            process.Exited += (sender1, e1) => EnableStartButton();
+
             var processStarted = process.Start();
+            startMaterialButton.Enabled = false;
         }
 
     }
