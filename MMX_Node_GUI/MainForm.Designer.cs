@@ -43,6 +43,8 @@ namespace MMX_NODE_GUI
             this.harvesterTabPage = new System.Windows.Forms.TabPage();
             this.harvesterPlotsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.plotFoldersMaterialListBox = new MaterialSkin.Controls.MaterialListBox();
+            this.removePlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.addPlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.plotterTabPage = new System.Windows.Forms.TabPage();
             this.materialMultiLineTextBox21 = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.countMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -68,12 +70,16 @@ namespace MMX_NODE_GUI
             this.directoutMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.tmptoggleMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.waitforcopyMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.stagedirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.tmpdirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.tmpdir2MaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.plotterSettingsMaterialTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
             this.startMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.sizeMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.finaldirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.langMaterialComboBox = new MaterialSkin.Controls.MaterialComboBox();
             this.debugGroupBox = new System.Windows.Forms.GroupBox();
@@ -89,12 +95,6 @@ namespace MMX_NODE_GUI
             this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.menuIconList = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.removePlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.addPlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.stagedirMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.tmpdirMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.tmpdir2MaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.contextMenuStrip1.SuspendLayout();
             this.MenuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
@@ -117,34 +117,34 @@ namespace MMX_NODE_GUI
             // 
             // notifyIcon1
             // 
-            resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem,
             this.toolStripSeparator6,
             this.exitToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // showToolStripMenuItem
             // 
-            resources.ApplyResources(this.showToolStripMenuItem, "showToolStripMenuItem");
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            resources.ApplyResources(this.showToolStripMenuItem, "showToolStripMenuItem");
             this.showToolStripMenuItem.Click += new System.EventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // toolStripSeparator6
             // 
-            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             this.toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
             // exitToolStripMenuItem1
             // 
-            resources.ApplyResources(this.exitToolStripMenuItem1, "exitToolStripMenuItem1");
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            resources.ApplyResources(this.exitToolStripMenuItem1, "exitToolStripMenuItem1");
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // nodeTabPage
@@ -168,11 +168,11 @@ namespace MMX_NODE_GUI
             // 
             // harvesterTabPage
             // 
-            resources.ApplyResources(this.harvesterTabPage, "harvesterTabPage");
             this.harvesterTabPage.Controls.Add(this.harvesterPlotsMaterialLabel);
             this.harvesterTabPage.Controls.Add(this.plotFoldersMaterialListBox);
             this.harvesterTabPage.Controls.Add(this.removePlotFolderMaterialButton);
             this.harvesterTabPage.Controls.Add(this.addPlotFolderMaterialButton);
+            resources.ApplyResources(this.harvesterTabPage, "harvesterTabPage");
             this.harvesterTabPage.Name = "harvesterTabPage";
             // 
             // harvesterPlotsMaterialLabel
@@ -184,18 +184,47 @@ namespace MMX_NODE_GUI
             // 
             // plotFoldersMaterialListBox
             // 
-            resources.ApplyResources(this.plotFoldersMaterialListBox, "plotFoldersMaterialListBox");
             this.plotFoldersMaterialListBox.BackColor = System.Drawing.Color.White;
             this.plotFoldersMaterialListBox.BorderColor = System.Drawing.Color.LightGray;
             this.plotFoldersMaterialListBox.Depth = 0;
+            resources.ApplyResources(this.plotFoldersMaterialListBox, "plotFoldersMaterialListBox");
             this.plotFoldersMaterialListBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.plotFoldersMaterialListBox.Name = "plotFoldersMaterialListBox";
             this.plotFoldersMaterialListBox.SelectedIndex = -1;
             this.plotFoldersMaterialListBox.SelectedItem = null;
             // 
+            // removePlotFolderMaterialButton
+            // 
+            resources.ApplyResources(this.removePlotFolderMaterialButton, "removePlotFolderMaterialButton");
+            this.removePlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.removePlotFolderMaterialButton.Depth = 0;
+            this.removePlotFolderMaterialButton.HighEmphasis = false;
+            this.removePlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_remove;
+            this.removePlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.removePlotFolderMaterialButton.Name = "removePlotFolderMaterialButton";
+            this.removePlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.removePlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.removePlotFolderMaterialButton.UseAccentColor = false;
+            this.removePlotFolderMaterialButton.UseVisualStyleBackColor = true;
+            this.removePlotFolderMaterialButton.Click += new System.EventHandler(this.removePlotFolderMaterialButton_Click);
+            // 
+            // addPlotFolderMaterialButton
+            // 
+            resources.ApplyResources(this.addPlotFolderMaterialButton, "addPlotFolderMaterialButton");
+            this.addPlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.addPlotFolderMaterialButton.Depth = 0;
+            this.addPlotFolderMaterialButton.HighEmphasis = false;
+            this.addPlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_plus;
+            this.addPlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.addPlotFolderMaterialButton.Name = "addPlotFolderMaterialButton";
+            this.addPlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.addPlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            this.addPlotFolderMaterialButton.UseAccentColor = false;
+            this.addPlotFolderMaterialButton.UseVisualStyleBackColor = true;
+            this.addPlotFolderMaterialButton.Click += new System.EventHandler(this.addPlotFolderMaterialButton_Click);
+            // 
             // plotterTabPage
             // 
-            resources.ApplyResources(this.plotterTabPage, "plotterTabPage");
             this.plotterTabPage.Controls.Add(this.materialMultiLineTextBox21);
             this.plotterTabPage.Controls.Add(this.countMaterialLabel);
             this.plotterTabPage.Controls.Add(this.plotterSettingsMaterialTabControl);
@@ -206,6 +235,7 @@ namespace MMX_NODE_GUI
             this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
             this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown);
             this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
+            resources.ApplyResources(this.plotterTabPage, "plotterTabPage");
             this.plotterTabPage.Name = "plotterTabPage";
             // 
             // materialMultiLineTextBox21
@@ -251,11 +281,11 @@ namespace MMX_NODE_GUI
             // 
             // keysTabPage
             // 
-            resources.ApplyResources(this.keysTabPage, "keysTabPage");
             this.keysTabPage.Controls.Add(this.farmerkeyMaterialTextBox2);
             this.keysTabPage.Controls.Add(this.nftplotMaterialSwitch);
             this.keysTabPage.Controls.Add(this.contractMaterialTextBox2);
             this.keysTabPage.Controls.Add(this.poolkeyMaterialTextBox2);
+            resources.ApplyResources(this.keysTabPage, "keysTabPage");
             this.keysTabPage.Name = "keysTabPage";
             // 
             // farmerkeyMaterialTextBox2
@@ -336,7 +366,6 @@ namespace MMX_NODE_GUI
             // 
             // perfomanceTabPage
             // 
-            resources.ApplyResources(this.perfomanceTabPage, "perfomanceTabPage");
             this.perfomanceTabPage.Controls.Add(this.buckets3MaterialLabel);
             this.perfomanceTabPage.Controls.Add(this.bucketsMaterialLabel);
             this.perfomanceTabPage.Controls.Add(this.rmulti2MaterialLabel);
@@ -345,6 +374,7 @@ namespace MMX_NODE_GUI
             this.perfomanceTabPage.Controls.Add(this.threadsMaterialNumericUpDown);
             this.perfomanceTabPage.Controls.Add(this.buckets3MaterialNumericUpDown);
             this.perfomanceTabPage.Controls.Add(this.bucketsMaterialNumericUpDown);
+            resources.ApplyResources(this.perfomanceTabPage, "perfomanceTabPage");
             this.perfomanceTabPage.Name = "perfomanceTabPage";
             // 
             // buckets3MaterialLabel
@@ -377,8 +407,8 @@ namespace MMX_NODE_GUI
             // 
             // rmulti2MaterialNumericUpDown
             // 
-            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
             this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
             this.rmulti2MaterialNumericUpDown.LogValue = false;
             this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
             16,
@@ -399,8 +429,8 @@ namespace MMX_NODE_GUI
             // 
             // threadsMaterialNumericUpDown
             // 
-            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
             this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
             this.threadsMaterialNumericUpDown.LogValue = false;
             this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
             128,
@@ -421,8 +451,8 @@ namespace MMX_NODE_GUI
             // 
             // buckets3MaterialNumericUpDown
             // 
-            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
             this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
             this.buckets3MaterialNumericUpDown.LogValue = true;
             this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
             1024,
@@ -443,8 +473,8 @@ namespace MMX_NODE_GUI
             // 
             // bucketsMaterialNumericUpDown
             // 
-            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
             this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
             this.bucketsMaterialNumericUpDown.LogValue = true;
             this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
             1024,
@@ -465,7 +495,6 @@ namespace MMX_NODE_GUI
             // 
             // directoriesTabPage
             // 
-            resources.ApplyResources(this.directoriesTabPage, "directoriesTabPage");
             this.directoriesTabPage.Controls.Add(this.tmpdirMaterialTextBox2);
             this.directoriesTabPage.Controls.Add(this.tmpdir2MaterialTextBox2);
             this.directoriesTabPage.Controls.Add(this.stagedirMaterialTextBox2);
@@ -475,6 +504,7 @@ namespace MMX_NODE_GUI
             this.directoriesTabPage.Controls.Add(this.stagedirMaterialButton);
             this.directoriesTabPage.Controls.Add(this.tmpdirMaterialButton);
             this.directoriesTabPage.Controls.Add(this.tmpdir2MaterialButton);
+            resources.ApplyResources(this.directoriesTabPage, "directoriesTabPage");
             this.directoriesTabPage.Name = "directoriesTabPage";
             // 
             // tmpdirMaterialTextBox2
@@ -574,6 +604,54 @@ namespace MMX_NODE_GUI
             this.waitforcopyMaterialSwitch.Ripple = true;
             this.waitforcopyMaterialSwitch.UseVisualStyleBackColor = true;
             // 
+            // stagedirMaterialButton
+            // 
+            resources.ApplyResources(this.stagedirMaterialButton, "stagedirMaterialButton");
+            this.stagedirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.stagedirMaterialButton.Depth = 0;
+            this.stagedirMaterialButton.HighEmphasis = true;
+            this.stagedirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.stagedirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.stagedirMaterialButton.Name = "stagedirMaterialButton";
+            this.stagedirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.stagedirMaterialButton.Tag = "tmpdir";
+            this.stagedirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.stagedirMaterialButton.UseAccentColor = false;
+            this.stagedirMaterialButton.UseVisualStyleBackColor = true;
+            this.stagedirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
+            // 
+            // tmpdirMaterialButton
+            // 
+            resources.ApplyResources(this.tmpdirMaterialButton, "tmpdirMaterialButton");
+            this.tmpdirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.tmpdirMaterialButton.Depth = 0;
+            this.tmpdirMaterialButton.HighEmphasis = true;
+            this.tmpdirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.tmpdirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tmpdirMaterialButton.Name = "tmpdirMaterialButton";
+            this.tmpdirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.tmpdirMaterialButton.Tag = "tmpdir";
+            this.tmpdirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.tmpdirMaterialButton.UseAccentColor = false;
+            this.tmpdirMaterialButton.UseVisualStyleBackColor = true;
+            this.tmpdirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
+            // 
+            // tmpdir2MaterialButton
+            // 
+            resources.ApplyResources(this.tmpdir2MaterialButton, "tmpdir2MaterialButton");
+            this.tmpdir2MaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.tmpdir2MaterialButton.Depth = 0;
+            this.tmpdir2MaterialButton.HighEmphasis = true;
+            this.tmpdir2MaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.tmpdir2MaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tmpdir2MaterialButton.Name = "tmpdir2MaterialButton";
+            this.tmpdir2MaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.tmpdir2MaterialButton.Tag = "tmpdir";
+            this.tmpdir2MaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.tmpdir2MaterialButton.UseAccentColor = false;
+            this.tmpdir2MaterialButton.UseVisualStyleBackColor = true;
+            this.tmpdir2MaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
+            // 
             // plotterSettingsMaterialTabSelector
             // 
             resources.ApplyResources(this.plotterSettingsMaterialTabSelector, "plotterSettingsMaterialTabSelector");
@@ -629,8 +707,8 @@ namespace MMX_NODE_GUI
             // 
             // sizeMaterialNumericUpDown
             // 
-            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
             this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
             this.sizeMaterialNumericUpDown.LogValue = false;
             this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
             34,
@@ -671,9 +749,24 @@ namespace MMX_NODE_GUI
             0,
             -2147483648});
             // 
+            // finaldirMaterialButton
+            // 
+            resources.ApplyResources(this.finaldirMaterialButton, "finaldirMaterialButton");
+            this.finaldirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.finaldirMaterialButton.Depth = 0;
+            this.finaldirMaterialButton.HighEmphasis = true;
+            this.finaldirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.finaldirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.finaldirMaterialButton.Name = "finaldirMaterialButton";
+            this.finaldirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.finaldirMaterialButton.Tag = "tmpdir";
+            this.finaldirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.finaldirMaterialButton.UseAccentColor = false;
+            this.finaldirMaterialButton.UseVisualStyleBackColor = true;
+            this.finaldirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
+            // 
             // settingsTabPage
             // 
-            resources.ApplyResources(this.settingsTabPage, "settingsTabPage");
             this.settingsTabPage.Controls.Add(this.langMaterialComboBox);
             this.settingsTabPage.Controls.Add(this.debugGroupBox);
             this.settingsTabPage.Controls.Add(this.groupBox2);
@@ -682,11 +775,11 @@ namespace MMX_NODE_GUI
             this.settingsTabPage.Controls.Add(this.startOnStartupMaterialSwitch);
             this.settingsTabPage.Controls.Add(this.showInNotifitationMaterialSwitch);
             this.settingsTabPage.Controls.Add(this.showInNotifitationGroupBox);
+            resources.ApplyResources(this.settingsTabPage, "settingsTabPage");
             this.settingsTabPage.Name = "settingsTabPage";
             // 
             // langMaterialComboBox
             // 
-            resources.ApplyResources(this.langMaterialComboBox, "langMaterialComboBox");
             this.langMaterialComboBox.AutoResize = false;
             this.langMaterialComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.langMaterialComboBox.Depth = 0;
@@ -694,6 +787,7 @@ namespace MMX_NODE_GUI
             this.langMaterialComboBox.DropDownHeight = 174;
             this.langMaterialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.langMaterialComboBox.DropDownWidth = 121;
+            resources.ApplyResources(this.langMaterialComboBox, "langMaterialComboBox");
             this.langMaterialComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.langMaterialComboBox.FormattingEnabled = true;
             this.langMaterialComboBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -824,100 +918,6 @@ namespace MMX_NODE_GUI
             // 
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
-            // 
-            // removePlotFolderMaterialButton
-            // 
-            resources.ApplyResources(this.removePlotFolderMaterialButton, "removePlotFolderMaterialButton");
-            this.removePlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.removePlotFolderMaterialButton.Depth = 0;
-            this.removePlotFolderMaterialButton.HighEmphasis = false;
-            this.removePlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_remove;
-            this.removePlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.removePlotFolderMaterialButton.Name = "removePlotFolderMaterialButton";
-            this.removePlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.removePlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.removePlotFolderMaterialButton.UseAccentColor = false;
-            this.removePlotFolderMaterialButton.UseVisualStyleBackColor = true;
-            this.removePlotFolderMaterialButton.Click += new System.EventHandler(this.removePlotFolderMaterialButton_Click);
-            // 
-            // addPlotFolderMaterialButton
-            // 
-            resources.ApplyResources(this.addPlotFolderMaterialButton, "addPlotFolderMaterialButton");
-            this.addPlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.addPlotFolderMaterialButton.Depth = 0;
-            this.addPlotFolderMaterialButton.HighEmphasis = false;
-            this.addPlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_plus;
-            this.addPlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.addPlotFolderMaterialButton.Name = "addPlotFolderMaterialButton";
-            this.addPlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.addPlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.addPlotFolderMaterialButton.UseAccentColor = false;
-            this.addPlotFolderMaterialButton.UseVisualStyleBackColor = true;
-            this.addPlotFolderMaterialButton.Click += new System.EventHandler(this.addPlotFolderMaterialButton_Click);
-            // 
-            // stagedirMaterialButton
-            // 
-            resources.ApplyResources(this.stagedirMaterialButton, "stagedirMaterialButton");
-            this.stagedirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.stagedirMaterialButton.Depth = 0;
-            this.stagedirMaterialButton.HighEmphasis = true;
-            this.stagedirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.stagedirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.stagedirMaterialButton.Name = "stagedirMaterialButton";
-            this.stagedirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.stagedirMaterialButton.Tag = "tmpdir";
-            this.stagedirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.stagedirMaterialButton.UseAccentColor = false;
-            this.stagedirMaterialButton.UseVisualStyleBackColor = true;
-            this.stagedirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
-            // 
-            // tmpdirMaterialButton
-            // 
-            resources.ApplyResources(this.tmpdirMaterialButton, "tmpdirMaterialButton");
-            this.tmpdirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.tmpdirMaterialButton.Depth = 0;
-            this.tmpdirMaterialButton.HighEmphasis = true;
-            this.tmpdirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.tmpdirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tmpdirMaterialButton.Name = "tmpdirMaterialButton";
-            this.tmpdirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.tmpdirMaterialButton.Tag = "tmpdir";
-            this.tmpdirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.tmpdirMaterialButton.UseAccentColor = false;
-            this.tmpdirMaterialButton.UseVisualStyleBackColor = true;
-            this.tmpdirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
-            // 
-            // tmpdir2MaterialButton
-            // 
-            resources.ApplyResources(this.tmpdir2MaterialButton, "tmpdir2MaterialButton");
-            this.tmpdir2MaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.tmpdir2MaterialButton.Depth = 0;
-            this.tmpdir2MaterialButton.HighEmphasis = true;
-            this.tmpdir2MaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.tmpdir2MaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tmpdir2MaterialButton.Name = "tmpdir2MaterialButton";
-            this.tmpdir2MaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.tmpdir2MaterialButton.Tag = "tmpdir";
-            this.tmpdir2MaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.tmpdir2MaterialButton.UseAccentColor = false;
-            this.tmpdir2MaterialButton.UseVisualStyleBackColor = true;
-            this.tmpdir2MaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
-            // 
-            // finaldirMaterialButton
-            // 
-            resources.ApplyResources(this.finaldirMaterialButton, "finaldirMaterialButton");
-            this.finaldirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.finaldirMaterialButton.Depth = 0;
-            this.finaldirMaterialButton.HighEmphasis = true;
-            this.finaldirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.finaldirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.finaldirMaterialButton.Name = "finaldirMaterialButton";
-            this.finaldirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.finaldirMaterialButton.Tag = "tmpdir";
-            this.finaldirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.finaldirMaterialButton.UseAccentColor = false;
-            this.finaldirMaterialButton.UseVisualStyleBackColor = true;
-            this.finaldirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
             // MainForm
             // 
