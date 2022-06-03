@@ -3907,7 +3907,7 @@
     <value>Показать консоль</value>
   </data>
   <data name="sizeMaterialLabel.Text" xml:space="preserve">
-    <value>K размер</value>
+    <value>Размер (K)</value>
   </data>
   <data name="perfomanceTabPage.Text" xml:space="preserve">
     <value>Производительность</value>
