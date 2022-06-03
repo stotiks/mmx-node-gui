@@ -13,14 +13,6 @@ namespace MMX_NODE_GUI
         public string Name { get; set; }
         public string LongName { get; set; }
 
-        private string _description;
-
-        public string Description
-        {
-            get { return _description; }
-            set { _description = value; NotifyPropertyChanged(); }
-        }
-
         private T _value;
         public T Value
         {
@@ -68,88 +60,77 @@ namespace MMX_NODE_GUI
         {
             Name = "n",
             LongName = "count",
-            Value = -1,
-            Description = "Number of plots to create"
+            Value = -1
         };
 
         public Item<int> size = new Item<int>
         {
             Name = "k",
             LongName = "size",
-            Value = 32,
-            Description = "K size"
+            Value = 32
         };
 
         public Item<int> port = new Item<int>
         {
             Name = "x",
             LongName = "port",
-            Value = 11337,
-            Description = "Network port"
+            Value = 11337
         };
 
         public Item<int> threads = new Item<int>
         {
             Name = "r",
             LongName = "threads",
-            Value = Environment.ProcessorCount,
-            Description = "Number of threads"
+            Value = Environment.ProcessorCount
         };
 
         public Item<int> buckets = new Item<int>
         {
             Name = "u",
             LongName = "buckets",
-            Value = 256,
-            Description = "Number of buckets"
+            Value = 256
         };
 
         public Item<int> buckets3 = new Item<int>
         {
             Name = "v",
             LongName = "buckets3",
-            Value = 256,
-            Description = "Number of buckets for phase 3+4"
+            Value = 256
         };
 
         public Item<int> rmulti2 = new Item<int>
         {
             Name = "K",
             LongName = "rmulti2",
-            Value = 1,
-            Description = "Thread multiplier for P2"
+            Value = 1
         };
 
         public Item<string> tmpdir = new Item<string>
         {
             Name = "t",
             LongName = "tmpdir",
-            Value = "",
-            Description = "Temporary directory, needs ~220 GiB"
+            Value = ""
         };
 
         public Item<string> tmpdir2 = new Item<string>
         {
             Name = "2",
             LongName = "tmpdir2",
-            Value = "",
-            Description = "Temporary directory 2, needs ~110 GiB [RAM]"
+            Value = ""
         };
 
         public Item<string> finaldir = new Item<string>
         {
             Name = "d",
             LongName = "finaldir",
-            Value = "",
-            Description = "Final directory to copy plot in parallel"
+            Value = ""
         };
 
         public Item<string> stagedir = new Item<string>
         {
             Name = "s",
             LongName = "stagedir",
-            Value = "",
-            Description = "Stage directory to write plot file"
+            Value = ""
         };
 
 
@@ -157,40 +138,35 @@ namespace MMX_NODE_GUI
         {
             Name = "p",
             LongName = "poolkey",
-            Value = "",
-            Description = "Pool Public Key (48 bytes)"
+            Value = ""
         };
 
         public Item<string> contract = new Item<string>
         {
             Name = "c",
             LongName = "contract",
-            Value = "",
-            Description = "Pool Contract Address (62 chars)"
+            Value = ""
         };
 
         public Item<string> farmerkey = new Item<string>
         {
             Name = "f",
             LongName = "farmerkey",
-            Value = "",
-            Description = "Farmer Public Key (48 bytes)"
+            Value = ""
         };
 
         public Item<bool> waitforcopy = new Item<bool>
         {
             Name = "w",
             LongName = "waitforcopy",
-            Value = false,
-            Description = "Wait for copy to start next plot"
+            Value = false
         };
 
         public Item<bool> tmptoggle = new Item<bool>
         {
             Name = "G",
             LongName = "tmptoggle",
-            Value = false,
-            Description = "Alternate tmpdir/tmpdir2"
+            Value = false
         };
 
         public Item<bool> directout = new Item<bool>
@@ -198,15 +174,13 @@ namespace MMX_NODE_GUI
             Name = "D",
             LongName = "directout",
             Value = false,
-            Description = "Create plot directly in finaldir"
         };
 
         public Item<bool> nftplot = new Item<bool>
         {
             Name = "nftplot",
             LongName = "nftplot",
-            Value = false,
-            Description = "Create NFT plot"
+            Value = false
         };
 
         public event PropertyChangedEventHandler PropertyChanged;

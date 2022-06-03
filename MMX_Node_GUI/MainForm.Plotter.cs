@@ -16,13 +16,8 @@ namespace MMX_NODE_GUI
         {
 
             farmerkeyMaterialTextBox2.DataBindings.Add("Text", plotterOptions.farmerkey, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //farmerkeyMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.farmerkey, "Description");
-
             poolkeyMaterialTextBox2.DataBindings.Add("Text", plotterOptions.poolkey, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //poolkeyMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.poolkey, "Description");
-
             contractMaterialTextBox2.DataBindings.Add("Text", plotterOptions.contract, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //contractMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.contract, "Description");
 
             Binding ogPlotBind = new Binding("Enabled", plotterOptions.nftplot, "Value");
             ogPlotBind.Format += SwitchBool;
@@ -31,7 +26,6 @@ namespace MMX_NODE_GUI
 
             contractMaterialTextBox2.DataBindings.Add("Enabled", plotterOptions.nftplot, "Value");
 
-
             //------
 
             Binding tmpdirBind = new Binding("Text", plotterOptions.tmpdir, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -39,8 +33,6 @@ namespace MMX_NODE_GUI
             tmpdirBind.Parse += FixDir2;
             tmpdirMaterialTextBox2.DataBindings.Add(tmpdirBind);
 
-            //tmpdirMaterialTextBox2.DataBindings.Add("Text", plotterOptions.tmpdir, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //tmpdirMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.tmpdir, "Description");
             tmpdirMaterialButton.Tag = tmpdirMaterialTextBox2;
 
 
@@ -49,8 +41,6 @@ namespace MMX_NODE_GUI
             tmpdir2Bind.Parse += FixDir2;
             tmpdir2MaterialTextBox2.DataBindings.Add(tmpdir2Bind);
 
-            //tmpdir2MaterialTextBox2.DataBindings.Add("Text", plotterOptions.tmpdir2, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //tmpdir2MaterialTextBox2.DataBindings.Add("Hint", plotterOptions.tmpdir2, "Description");
             tmpdir2MaterialButton.Tag = tmpdir2MaterialTextBox2;
 
 
@@ -59,56 +49,31 @@ namespace MMX_NODE_GUI
             finaldirBind.Parse += FixDir2;
             finaldirMaterialTextBox2.DataBindings.Add(finaldirBind);
 
-            //finaldirMaterialTextBox2.DataBindings.Add("Text", plotterOptions.finaldir, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //finaldirMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.finaldir, "Description");
             finaldirMaterialButton.Tag = finaldirMaterialTextBox2;
+
 
             Binding stagedirBind = new Binding("Text", plotterOptions.stagedir, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
             stagedirBind.Format += FixDir2;
             stagedirBind.Parse += FixDir2;
             stagedirMaterialTextBox2.DataBindings.Add(stagedirBind);
 
-            //stagedirMaterialTextBox2.DataBindings.Add("Text", plotterOptions.stagedir, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //stagedirMaterialTextBox2.DataBindings.Add("Hint", plotterOptions.stagedir, "Description");
-            stagedirMaterialButton.Tag = stagedirMaterialTextBox2;
 
+            stagedirMaterialButton.Tag = stagedirMaterialTextBox2;
 
             //------
             waitforcopyMaterialSwitch.DataBindings.Add("Checked", plotterOptions.waitforcopy, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //waitforcopyMaterialSwitch.DataBindings.Add("Text", plotterOptions.waitforcopy, "Description");
-
             tmptoggleMaterialSwitch.DataBindings.Add("Checked", plotterOptions.tmptoggle, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-           // tmptoggleMaterialSwitch.DataBindings.Add("Text", plotterOptions.tmptoggle, "Description");
-
             directoutMaterialSwitch.DataBindings.Add("Checked", plotterOptions.directout, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //directoutMaterialSwitch.DataBindings.Add("Text", plotterOptions.directout, "Description");
-
             nftplotMaterialSwitch.DataBindings.Add("Checked", plotterOptions.nftplot, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //nftplotMaterialSwitch.DataBindings.Add("Text", plotterOptions.nftplot, "Description");
-
 
             countMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.count, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //countMaterialLabel.DataBindings.Add("Text", plotterOptions.count, "Description");
-
             sizeMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.size, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //sizeMaterialLabel.DataBindings.Add("Text", plotterOptions.size, "Description");
 
             //------
             threadsMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.threads, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //threadsMaterialLabel.DataBindings.Add("Text", plotterOptions.threads, "Description");
-
             rmulti2MaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.rmulti2, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //rmulti2MaterialLabel.DataBindings.Add("Text", plotterOptions.rmulti2, "Description");
-
             bucketsMaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.buckets, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //bucketsMaterialLabel.DataBindings.Add("Text", plotterOptions.buckets, "Description");
-            //bucketsMaterialLabel.DataBindings.Add("Text", plotterOptions.buckets, "Description");
-
             buckets3MaterialNumericUpDown.DataBindings.Add("Value", plotterOptions.buckets3, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
-            //buckets3MaterialLabel.DataBindings.Add("Text", plotterOptions.buckets3, "Description");
-
-
-
             //------
             materialMultiLineTextBox21.DataBindings.Add("Text", plotterOptions, "PlotterCmd");
 
