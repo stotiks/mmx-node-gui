@@ -3774,4 +3774,7 @@
   <data name="startMinimizedMaterialSwitch.Text" xml:space="preserve">
     <value>Iniciar minimizado</value>
   </data>
+  <data name="minimizeToNotificationMaterialSwitch.Text" xml:space="preserve">
+    <value>Minimizar al area de notificación</value>
+  </data>
 </root>
