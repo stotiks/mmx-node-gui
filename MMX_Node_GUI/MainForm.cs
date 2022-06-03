@@ -151,7 +151,7 @@ namespace MMX_NODE_GUI
         private Dictionary<string, string> launguages = new Dictionary<string, string>(){
             { "en", "English" },
             { "ru", "Русский" },
-            { "es", "Español" }
+            { "uk", "Українська" }
         };
 
 
@@ -186,15 +186,15 @@ namespace MMX_NODE_GUI
 
                     foreach (DictionaryEntry entry in entries)
                     {
-                        if (!entry.Value.GetType().Equals(typeof(string))) return;
+                        if (!entry.Value.GetType().Equals(typeof(string))) continue;
 
                         string Key = entry.Key.ToString(),
                                Value = (string)entry.Value;
 
                         try
                         {
-                            Control c = Controls.Find(Key, true).SingleOrDefault();
-                            if (c != null && !(c is MaterialTextBox2))
+                            Control c = this.Controls.Find(Key, true).SingleOrDefault();
+                            if (c != null && !(c is MaterialTextBox2 || c is MaterialMultiLineTextBox2))
                             {
                                 c.Text = Value;
                             }
@@ -212,7 +212,7 @@ namespace MMX_NODE_GUI
 
                     foreach (DictionaryEntry entry in entries2)
                     {
-                        if (!entry.Value.GetType().Equals(typeof(string))) return;
+                        if (!entry.Value.GetType().Equals(typeof(string))) continue;
 
                         string Key = entry.Key.ToString(),
                                Value = (string)entry.Value;
@@ -239,7 +239,9 @@ namespace MMX_NODE_GUI
 
         private void langMaterialComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var lang = langMaterialComboBox.SelectedValue.ToString();
+            var selected = langMaterialComboBox.SelectedValue;
+            string lang = selected != null ? selected.ToString() : "en";
+
             this.Culture = new CultureInfo(lang);
             saveSettings(sender, e);
         }
