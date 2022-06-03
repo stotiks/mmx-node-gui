@@ -3963,4 +3963,10 @@
   <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
     <value>Множитель потоков для P2</value>
   </data>
+  <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
+    <value>Промежуточная директория для участка</value>
+  </data>
+  <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
+    <value>Создавать NFT участок</value>
+  </data>
 </root>
