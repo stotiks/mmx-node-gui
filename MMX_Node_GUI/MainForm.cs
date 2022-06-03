@@ -150,7 +150,8 @@ namespace MMX_NODE_GUI
         // --------------------------------------------------------------------------------
         private Dictionary<string, string> launguages = new Dictionary<string, string>(){
             { "en", "English" },
-            { "ru", "Русский" }
+            { "ru", "Русский" },
+            { "es", "Español" }
         };
 
 

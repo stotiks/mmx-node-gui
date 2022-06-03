@@ -134,6 +134,7 @@
   </data>
   <data name="directoriesTabPage.Text" xml:space="preserve">
     <value>Directories</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;sizeMaterialLabel.Parent" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -146,6 +147,7 @@
   </data>
   <data name="exitToolStripMenuItem1.Text" xml:space="preserve">
     <value>Exit</value>
+    <comment>main</comment>
   </data>
   <data name="&gt;&gt;settingsTabPage.Parent" xml:space="preserve">
     <value>MenuMaterialTabControl</value>
@@ -161,6 +163,7 @@
   </data>
   <data name="showConsoleMaterialSwitch.Text" xml:space="preserve">
     <value>Show Console</value>
+    <comment>options</comment>
   </data>
   <data name="&gt;&gt;tmpdirMaterialTextBox2.Name" xml:space="preserve">
     <value>tmpdirMaterialTextBox2</value>
@@ -233,6 +236,7 @@
   </data>
   <data name="plotterTabPage.Text" xml:space="preserve">
     <value>Plotter</value>
+    <comment>menu</comment>
   </data>
   <data name="debugGroupBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>973, 92</value>
@@ -461,6 +465,7 @@
   </data>
   <data name="inhibitSystemSleepMaterialSwitch.Text" xml:space="preserve">
     <value>Inhibit system sleep</value>
+    <comment>options</comment>
   </data>
   <data name="notifyIcon1.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -536,6 +541,7 @@
   </data>
   <data name="addPlotFolderMaterialButton.Text" xml:space="preserve">
     <value>Add</value>
+    <comment>harvester</comment>
   </data>
   <data name="&gt;&gt;plotterTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -593,6 +599,7 @@
   </data>
   <data name="poolkeyMaterialTextBox2.Hint" xml:space="preserve">
     <value>Pool Public Key (48 bytes)</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;countMaterialLabel.Parent" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -2428,12 +2435,15 @@
   </data>
   <data name="closeToNotificationMaterialSwitch.Text" xml:space="preserve">
     <value>Close to notification area</value>
+    <comment>options</comment>
   </data>
   <data name="confirmationOnExitMaterialSwitch.Text" xml:space="preserve">
     <value>Confirmation on exit</value>
+    <comment>options</comment>
   </data>
   <data name="tmptoggleMaterialSwitch.Text" xml:space="preserve">
     <value>Alternate tmpdir/tmpdir2</value>
+    <comment>plotter</comment>
   </data>
   <data name="tmptoggleMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
     <value>625, 67</value>
@@ -2497,12 +2507,14 @@
   </data>
   <data name="tmpdir2MaterialTextBox2.Hint" xml:space="preserve">
     <value>Temporary directory 2 [RAM]</value>
+    <comment>plotter</comment>
   </data>
   <data name="countMaterialNumericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="showToolStripMenuItem.Text" xml:space="preserve">
     <value>Show</value>
+    <comment>main</comment>
   </data>
   <data name="&gt;&gt;poolkeyMaterialTextBox2.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
@@ -2569,6 +2581,7 @@
   </data>
   <data name="finaldirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Final directory to copy plot in parallel</value>
+    <comment>plotter</comment>
   </data>
   <data name="farmerkeyMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2596,6 +2609,7 @@
   </data>
   <data name="startOnStartupMaterialSwitch.Text" xml:space="preserve">
     <value>Start on Windows start up</value>
+    <comment>options</comment>
   </data>
   <data name="&gt;&gt;harvesterTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2629,6 +2643,7 @@
   </data>
   <data name="settingsTabPage.Text" xml:space="preserve">
     <value>GUI Settings</value>
+    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;menuIconList.Name" xml:space="preserve">
     <value>menuIconList</value>
@@ -2662,6 +2677,7 @@
   </data>
   <data name="buckets3MaterialLabel.Text" xml:space="preserve">
     <value>Number of buckets for phase 3+4</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2716,6 +2732,7 @@
   </data>
   <data name="tmpdirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Temporary directory</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;waitforcopyMaterialSwitch.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
@@ -2755,6 +2772,7 @@
   </data>
   <data name="notifyIcon1.Text" xml:space="preserve">
     <value>MMX Node</value>
+    
   </data>
   <data name="stagedirMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -2782,6 +2800,7 @@
   </data>
   <data name="bucketsMaterialLabel.Text" xml:space="preserve">
     <value>Number of buckets</value>
+    <comment>plotter</comment>
   </data>
   <data name="langMaterialComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -2821,6 +2840,7 @@
   </data>
   <data name="debugGroupBox.Text" xml:space="preserve">
     <value>Debug</value>
+    <comment>options</comment>
   </data>
   <data name="plotterTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 31</value>
@@ -2833,9 +2853,11 @@
   </data>
   <data name="harvesterTabPage.Text" xml:space="preserve">
     <value>Harvester</value>
+    <comment>menu</comment>
   </data>
   <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
     <value>Create NFT plot</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;nodeTabPage.Parent" xml:space="preserve">
     <value>MenuMaterialTabControl</value>
@@ -2878,6 +2900,7 @@
   </data>
   <data name="contractMaterialTextBox2.Hint" xml:space="preserve">
     <value>Pool Contract Address (62 chars)</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;threadsMaterialNumericUpDown.Name" xml:space="preserve">
     <value>threadsMaterialNumericUpDown</value>
@@ -2905,6 +2928,7 @@
   </data>
   <data name="perfomanceTabPage.Text" xml:space="preserve">
     <value>Perfomance</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;sizeMaterialNumericUpDown.Parent" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -2947,6 +2971,7 @@
   </data>
   <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
     <value>Thread multiplier for P2</value>
+    <comment>plotter</comment>
   </data>
   <data name="bucketsMaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 48</value>
@@ -2974,6 +2999,7 @@
   </data>
   <data name="keysTabPage.Text" xml:space="preserve">
     <value>Keys</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;finaldirMaterialButton.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -3052,6 +3078,7 @@
   </data>
   <data name="showInNotifitationMaterialSwitch.Text" xml:space="preserve">
     <value>Show in notification area</value>
+    <comment>options</comment>
   </data>
   <data name="&gt;&gt;settingsTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3085,6 +3112,7 @@
   </data>
   <data name="sizeMaterialLabel.Text" xml:space="preserve">
     <value>K size</value>
+    <comment>plotter</comment>
   </data>
   <data name="keysTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>969, 224</value>
@@ -3142,6 +3170,7 @@
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Power Management</value>
+    <comment>options</comment>
   </data>
   <data name="&gt;&gt;debugGroupBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3160,6 +3189,7 @@
   </data>
   <data name="minimizeToNotificationMaterialSwitch.Text" xml:space="preserve">
     <value>Minimize to notification area</value>
+    <comment>options</comment>
   </data>
   <data name="settingsTabPage.ImageKey" xml:space="preserve">
     <value>cog.png</value>
@@ -3373,6 +3403,7 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>MMX Node</value>
+    
   </data>
   <data name="&gt;&gt;bucketsMaterialNumericUpDown.Type" xml:space="preserve">
     <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
@@ -3442,9 +3473,11 @@
   </data>
   <data name="directoutMaterialSwitch.Text" xml:space="preserve">
     <value>Create plot directly in finaldir</value>
+    <comment>plotter</comment>
   </data>
   <data name="farmerkeyMaterialTextBox2.Hint" xml:space="preserve">
     <value>Farmer Public Key (48 bytes)</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;confirmationOnExitMaterialSwitch.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
@@ -3484,6 +3517,7 @@
   </data>
   <data name="waitforcopyMaterialSwitch.Text" xml:space="preserve">
     <value>Wait for copy to start next plot</value>
+    <comment>plotter</comment>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>973, 81</value>
@@ -3505,6 +3539,7 @@
   </data>
   <data name="startMaterialButton.Text" xml:space="preserve">
     <value>Start</value>
+    <comment>plotter</comment>
   </data>
   <data name="directoutMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
     <value>625, 104</value>
@@ -3523,6 +3558,7 @@
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
     <value>Load plots from (node restart required):</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;nodeTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3604,6 +3640,7 @@
   </data>
   <data name="nodeTabPage.Text" xml:space="preserve">
     <value>Node</value>
+    <comment>menu</comment>
   </data>
   <data name="tmpdir2MaterialButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>530, 60</value>
@@ -3715,6 +3752,7 @@
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Number of plots to create</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;perfomanceTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3727,6 +3765,7 @@
   </data>
   <data name="startMinimizedMaterialSwitch.Text" xml:space="preserve">
     <value>Start minimized</value>
+    <comment>options</comment>
   </data>
   <data name="nodeTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 31</value>
@@ -3736,6 +3775,7 @@
   </data>
   <data name="removePlotFolderMaterialButton.Text" xml:space="preserve">
     <value>Remove</value>
+    <comment>harvester</comment>
   </data>
   <data name="&gt;&gt;countMaterialNumericUpDown.Name" xml:space="preserve">
     <value>countMaterialNumericUpDown</value>
@@ -3751,6 +3791,7 @@
   </data>
   <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Stage directory to write plot file</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5619,6 +5660,7 @@
   </data>
   <data name="threadsMaterialLabel.Text" xml:space="preserve">
     <value>Number of threads</value>
+    <comment>plotter</comment>
   </data>
   <data name="tmptoggleMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
