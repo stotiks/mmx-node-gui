@@ -1,8 +1,15 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
 using System.Reflection;
+using System.Resources;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
@@ -35,6 +42,8 @@ namespace MMX_NODE_GUI
             InitializeHarvester();
 
             InitializePlotter();
+
+            InitializeLoc();
 
         }
 
@@ -78,6 +87,8 @@ namespace MMX_NODE_GUI
         }
 
         bool closePending = false;
+        private CultureInfo culture;
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (closePending) return;
@@ -136,5 +147,100 @@ namespace MMX_NODE_GUI
         }
 
 
+        // --------------------------------------------------------------------------------
+        private Dictionary<string, string> launguages = new Dictionary<string, string>(){
+            {"en", "English"},
+            {"ru", "Русский"}
+        };
+
+
+        private void InitializeLoc()
+        {
+            langMaterialComboBox.DisplayMember = "Value";
+            langMaterialComboBox.ValueMember = "Key";
+            langMaterialComboBox.DataSource = new BindingSource(launguages, null);
+
+            this.Culture = new CultureInfo(Properties.Settings.Default.langCode);
+        }
+
+
+        /// <summary>
+        /// Current culture of this form
+        /// </summary>
+        [Browsable(false)]
+        [Description("Current culture of this form")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public CultureInfo Culture
+        {
+            get { return this.culture; }
+            set
+            {
+                if (this.culture != value)
+                {
+                    ResourceSet resourceSet = new ComponentResourceManager(GetType()).GetResourceSet(value, true, true);
+                    IEnumerable<DictionaryEntry> entries = resourceSet
+                        .Cast<DictionaryEntry>()
+                        .Where(x => x.Key.ToString().Contains(".Text"))
+                        .Select(x => { x.Key = x.Key.ToString().Replace(">", "").Split('.')[0]; return x; });
+
+                    foreach (DictionaryEntry entry in entries)
+                    {
+                        if (!entry.Value.GetType().Equals(typeof(string))) return;
+
+                        string Key = entry.Key.ToString(),
+                               Value = (string)entry.Value;
+
+                        try
+                        {
+                            Control c = Controls.Find(Key, true).SingleOrDefault();
+                            if (c != null && !(c is MaterialTextBox2))
+                            {
+                                c.Text = Value;
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Control {0} is null in form {1}!", Key, GetType().Name);
+                        }
+                    }
+
+                    IEnumerable<DictionaryEntry> entries2 = resourceSet
+                        .Cast<DictionaryEntry>()
+                        .Where(x => x.Key.ToString().Contains(".Hint"))
+                        .Select(x => { x.Key = x.Key.ToString().Replace(">", "").Split('.')[0]; return x; });
+
+                    foreach (DictionaryEntry entry in entries2)
+                    {
+                        if (!entry.Value.GetType().Equals(typeof(string))) return;
+
+                        string Key = entry.Key.ToString(),
+                               Value = (string)entry.Value;
+
+                        try
+                        {
+                            Control c = Controls.Find(Key, true).SingleOrDefault();
+                            if (c is MaterialTextBox2)
+                            {
+                                (c as MaterialTextBox2).Hint = Value;
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Control {0} is null in form {1}!", Key, GetType().Name);
+                        }
+                    }
+
+                    this.culture = value;
+                    //this.OnCultureChanged();
+                }
+            }
+        }
+
+        private void langMaterialComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var lang = langMaterialComboBox.SelectedValue.ToString();
+            this.Culture = new CultureInfo(lang);
+            saveSettings(sender, e);
+        }
     }
 }

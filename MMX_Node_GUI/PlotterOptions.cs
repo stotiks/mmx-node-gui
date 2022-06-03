@@ -1,14 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MMX_NODE_GUI
 {
@@ -16,7 +12,14 @@ namespace MMX_NODE_GUI
     {
         public string Name { get; set; }
         public string LongName { get; set; }
-        public string Description { get; set; }
+
+        private string _description;
+
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; NotifyPropertyChanged(); }
+        }
 
         private T _value;
         public T Value
@@ -24,7 +27,6 @@ namespace MMX_NODE_GUI
             get { return _value; }
             set { _value = value; NotifyPropertyChanged(); }
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

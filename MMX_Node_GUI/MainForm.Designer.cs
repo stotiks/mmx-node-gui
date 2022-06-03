@@ -42,9 +42,9 @@ namespace MMX_NODE_GUI
             this.MenuMaterialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.harvesterTabPage = new System.Windows.Forms.TabPage();
             this.harvesterPlotsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.plotFoldersMaterialListBox = new MaterialSkin.Controls.MaterialListBox();
             this.removePlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.addPlotFolderMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.plotFoldersMaterialListBox = new MaterialSkin.Controls.MaterialListBox();
             this.plotterTabPage = new System.Windows.Forms.TabPage();
             this.materialMultiLineTextBox21 = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.countMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -68,19 +68,20 @@ namespace MMX_NODE_GUI
             this.tmpdir2MaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.stagedirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.directoutMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
-            this.stagedirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.tmptoggleMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
-            this.tmpdirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.waitforcopyMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
+            this.stagedirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.tmpdirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.tmpdir2MaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.plotterSettingsMaterialTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
             this.startMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.sizeMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.finaldirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
+            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
+            this.langMaterialComboBox = new MaterialSkin.Controls.MaterialComboBox();
             this.debugGroupBox = new System.Windows.Forms.GroupBox();
             this.showConsoleMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -117,9 +118,7 @@ namespace MMX_NODE_GUI
             // notifyIcon1
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "MMX Node";
-            this.notifyIcon1.Visible = true;
+            resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // contextMenuStrip1
@@ -129,97 +128,81 @@ namespace MMX_NODE_GUI
             this.toolStripSeparator6,
             this.exitToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 54);
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.showToolStripMenuItem.Text = "Show";
+            resources.ApplyResources(this.showToolStripMenuItem, "showToolStripMenuItem");
             this.showToolStripMenuItem.Click += new System.EventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(100, 6);
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
-            this.exitToolStripMenuItem1.Text = "Exit";
+            resources.ApplyResources(this.exitToolStripMenuItem1, "exitToolStripMenuItem1");
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // nodeTabPage
             // 
-            this.nodeTabPage.ImageKey = "database-sync.png";
-            this.nodeTabPage.Location = new System.Drawing.Point(4, 31);
+            resources.ApplyResources(this.nodeTabPage, "nodeTabPage");
             this.nodeTabPage.Name = "nodeTabPage";
-            this.nodeTabPage.Size = new System.Drawing.Size(1056, 613);
-            this.nodeTabPage.TabIndex = 0;
-            this.nodeTabPage.Text = "Node";
             // 
             // MenuMaterialTabControl
             // 
-            this.MenuMaterialTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.MenuMaterialTabControl, "MenuMaterialTabControl");
             this.MenuMaterialTabControl.Controls.Add(this.nodeTabPage);
             this.MenuMaterialTabControl.Controls.Add(this.harvesterTabPage);
             this.MenuMaterialTabControl.Controls.Add(this.plotterTabPage);
             this.MenuMaterialTabControl.Controls.Add(this.settingsTabPage);
             this.MenuMaterialTabControl.Depth = 0;
             this.MenuMaterialTabControl.ImageList = this.menuIconList;
-            this.MenuMaterialTabControl.Location = new System.Drawing.Point(3, 64);
             this.MenuMaterialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.MenuMaterialTabControl.Multiline = true;
             this.MenuMaterialTabControl.Name = "MenuMaterialTabControl";
             this.MenuMaterialTabControl.SelectedIndex = 0;
-            this.MenuMaterialTabControl.Size = new System.Drawing.Size(1064, 648);
-            this.MenuMaterialTabControl.TabIndex = 4;
             // 
             // harvesterTabPage
             // 
             this.harvesterTabPage.Controls.Add(this.harvesterPlotsMaterialLabel);
+            this.harvesterTabPage.Controls.Add(this.plotFoldersMaterialListBox);
             this.harvesterTabPage.Controls.Add(this.removePlotFolderMaterialButton);
             this.harvesterTabPage.Controls.Add(this.addPlotFolderMaterialButton);
-            this.harvesterTabPage.Controls.Add(this.plotFoldersMaterialListBox);
-            this.harvesterTabPage.ImageKey = "tractor.png";
-            this.harvesterTabPage.Location = new System.Drawing.Point(4, 31);
+            resources.ApplyResources(this.harvesterTabPage, "harvesterTabPage");
             this.harvesterTabPage.Name = "harvesterTabPage";
-            this.harvesterTabPage.Padding = new System.Windows.Forms.Padding(10);
-            this.harvesterTabPage.Size = new System.Drawing.Size(1056, 613);
-            this.harvesterTabPage.TabIndex = 3;
-            this.harvesterTabPage.Text = "Harvester";
             // 
             // harvesterPlotsMaterialLabel
             // 
-            this.harvesterPlotsMaterialLabel.AutoSize = true;
+            resources.ApplyResources(this.harvesterPlotsMaterialLabel, "harvesterPlotsMaterialLabel");
             this.harvesterPlotsMaterialLabel.Depth = 0;
-            this.harvesterPlotsMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.harvesterPlotsMaterialLabel.Location = new System.Drawing.Point(10, 10);
             this.harvesterPlotsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.harvesterPlotsMaterialLabel.Name = "harvesterPlotsMaterialLabel";
-            this.harvesterPlotsMaterialLabel.Size = new System.Drawing.Size(278, 19);
-            this.harvesterPlotsMaterialLabel.TabIndex = 4;
-            this.harvesterPlotsMaterialLabel.Text = "Load plots from (node restart required):";
+            // 
+            // plotFoldersMaterialListBox
+            // 
+            this.plotFoldersMaterialListBox.BackColor = System.Drawing.Color.White;
+            this.plotFoldersMaterialListBox.BorderColor = System.Drawing.Color.LightGray;
+            this.plotFoldersMaterialListBox.Depth = 0;
+            resources.ApplyResources(this.plotFoldersMaterialListBox, "plotFoldersMaterialListBox");
+            this.plotFoldersMaterialListBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.plotFoldersMaterialListBox.Name = "plotFoldersMaterialListBox";
+            this.plotFoldersMaterialListBox.SelectedIndex = -1;
+            this.plotFoldersMaterialListBox.SelectedItem = null;
             // 
             // removePlotFolderMaterialButton
             // 
-            this.removePlotFolderMaterialButton.AutoSize = false;
-            this.removePlotFolderMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.removePlotFolderMaterialButton, "removePlotFolderMaterialButton");
             this.removePlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.removePlotFolderMaterialButton.Depth = 0;
             this.removePlotFolderMaterialButton.HighEmphasis = false;
             this.removePlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_remove;
-            this.removePlotFolderMaterialButton.Location = new System.Drawing.Point(505, 80);
-            this.removePlotFolderMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.removePlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.removePlotFolderMaterialButton.Name = "removePlotFolderMaterialButton";
             this.removePlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.removePlotFolderMaterialButton.Size = new System.Drawing.Size(111, 36);
-            this.removePlotFolderMaterialButton.TabIndex = 3;
-            this.removePlotFolderMaterialButton.Text = "Remove";
             this.removePlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             this.removePlotFolderMaterialButton.UseAccentColor = false;
             this.removePlotFolderMaterialButton.UseVisualStyleBackColor = true;
@@ -227,70 +210,42 @@ namespace MMX_NODE_GUI
             // 
             // addPlotFolderMaterialButton
             // 
-            this.addPlotFolderMaterialButton.AutoSize = false;
-            this.addPlotFolderMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.addPlotFolderMaterialButton, "addPlotFolderMaterialButton");
             this.addPlotFolderMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.addPlotFolderMaterialButton.Depth = 0;
             this.addPlotFolderMaterialButton.HighEmphasis = false;
             this.addPlotFolderMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder_plus;
-            this.addPlotFolderMaterialButton.Location = new System.Drawing.Point(505, 32);
-            this.addPlotFolderMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addPlotFolderMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.addPlotFolderMaterialButton.Name = "addPlotFolderMaterialButton";
             this.addPlotFolderMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.addPlotFolderMaterialButton.Size = new System.Drawing.Size(111, 36);
-            this.addPlotFolderMaterialButton.TabIndex = 2;
-            this.addPlotFolderMaterialButton.Text = "Add";
             this.addPlotFolderMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             this.addPlotFolderMaterialButton.UseAccentColor = false;
             this.addPlotFolderMaterialButton.UseVisualStyleBackColor = true;
             this.addPlotFolderMaterialButton.Click += new System.EventHandler(this.addPlotFolderMaterialButton_Click);
-            // 
-            // plotFoldersMaterialListBox
-            // 
-            this.plotFoldersMaterialListBox.BackColor = System.Drawing.Color.White;
-            this.plotFoldersMaterialListBox.BorderColor = System.Drawing.Color.LightGray;
-            this.plotFoldersMaterialListBox.Depth = 0;
-            this.plotFoldersMaterialListBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.plotFoldersMaterialListBox.Location = new System.Drawing.Point(10, 32);
-            this.plotFoldersMaterialListBox.MouseState = MaterialSkin.MouseState.HOVER;
-            this.plotFoldersMaterialListBox.Name = "plotFoldersMaterialListBox";
-            this.plotFoldersMaterialListBox.SelectedIndex = -1;
-            this.plotFoldersMaterialListBox.SelectedItem = null;
-            this.plotFoldersMaterialListBox.Size = new System.Drawing.Size(485, 331);
-            this.plotFoldersMaterialListBox.TabIndex = 1;
             // 
             // plotterTabPage
             // 
             this.plotterTabPage.Controls.Add(this.materialMultiLineTextBox21);
             this.plotterTabPage.Controls.Add(this.countMaterialLabel);
             this.plotterTabPage.Controls.Add(this.plotterSettingsMaterialTabControl);
-            this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
-            this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown);
             this.plotterTabPage.Controls.Add(this.plotterSettingsMaterialTabSelector);
             this.plotterTabPage.Controls.Add(this.startMaterialButton);
-            this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
             this.plotterTabPage.Controls.Add(this.sizeMaterialLabel);
             this.plotterTabPage.Controls.Add(this.finaldirMaterialTextBox2);
-            this.plotterTabPage.ImageKey = "harddisk-plus.png";
-            this.plotterTabPage.Location = new System.Drawing.Point(4, 31);
+            this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
+            this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
+            this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown);
+            resources.ApplyResources(this.plotterTabPage, "plotterTabPage");
             this.plotterTabPage.Name = "plotterTabPage";
-            this.plotterTabPage.Padding = new System.Windows.Forms.Padding(10);
-            this.plotterTabPage.Size = new System.Drawing.Size(1056, 613);
-            this.plotterTabPage.TabIndex = 4;
-            this.plotterTabPage.Text = "Plotter";
             // 
             // materialMultiLineTextBox21
             // 
-            this.materialMultiLineTextBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.materialMultiLineTextBox21, "materialMultiLineTextBox21");
             this.materialMultiLineTextBox21.AnimateReadOnly = false;
-            this.materialMultiLineTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.materialMultiLineTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.materialMultiLineTextBox21.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.materialMultiLineTextBox21.Depth = 0;
             this.materialMultiLineTextBox21.HideSelection = true;
-            this.materialMultiLineTextBox21.Location = new System.Drawing.Point(10, 478);
             this.materialMultiLineTextBox21.MaxLength = 32767;
             this.materialMultiLineTextBox21.MouseState = MaterialSkin.MouseState.OUT;
             this.materialMultiLineTextBox21.Name = "materialMultiLineTextBox21";
@@ -301,41 +256,28 @@ namespace MMX_NODE_GUI
             this.materialMultiLineTextBox21.SelectionLength = 0;
             this.materialMultiLineTextBox21.SelectionStart = 0;
             this.materialMultiLineTextBox21.ShortcutsEnabled = true;
-            this.materialMultiLineTextBox21.Size = new System.Drawing.Size(977, 122);
-            this.materialMultiLineTextBox21.TabIndex = 26;
             this.materialMultiLineTextBox21.TabStop = false;
-            this.materialMultiLineTextBox21.Text = "materialMultiLineTextBox21";
             this.materialMultiLineTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.materialMultiLineTextBox21.UseSystemPasswordChar = false;
             // 
             // countMaterialLabel
             // 
-            this.countMaterialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.countMaterialLabel.AutoSize = true;
+            resources.ApplyResources(this.countMaterialLabel, "countMaterialLabel");
             this.countMaterialLabel.Depth = 0;
-            this.countMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.countMaterialLabel.Location = new System.Drawing.Point(515, 86);
             this.countMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.countMaterialLabel.Name = "countMaterialLabel";
-            this.countMaterialLabel.Size = new System.Drawing.Size(180, 19);
-            this.countMaterialLabel.TabIndex = 16;
-            this.countMaterialLabel.Text = "Number of plots to create";
             // 
             // plotterSettingsMaterialTabControl
             // 
-            this.plotterSettingsMaterialTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.plotterSettingsMaterialTabControl, "plotterSettingsMaterialTabControl");
             this.plotterSettingsMaterialTabControl.Controls.Add(this.keysTabPage);
             this.plotterSettingsMaterialTabControl.Controls.Add(this.perfomanceTabPage);
             this.plotterSettingsMaterialTabControl.Controls.Add(this.directoriesTabPage);
             this.plotterSettingsMaterialTabControl.Depth = 0;
-            this.plotterSettingsMaterialTabControl.Location = new System.Drawing.Point(10, 187);
             this.plotterSettingsMaterialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.plotterSettingsMaterialTabControl.Multiline = true;
             this.plotterSettingsMaterialTabControl.Name = "plotterSettingsMaterialTabControl";
             this.plotterSettingsMaterialTabControl.SelectedIndex = 0;
-            this.plotterSettingsMaterialTabControl.Size = new System.Drawing.Size(977, 250);
-            this.plotterSettingsMaterialTabControl.TabIndex = 25;
             // 
             // keysTabPage
             // 
@@ -343,117 +285,81 @@ namespace MMX_NODE_GUI
             this.keysTabPage.Controls.Add(this.nftplotMaterialSwitch);
             this.keysTabPage.Controls.Add(this.contractMaterialTextBox2);
             this.keysTabPage.Controls.Add(this.poolkeyMaterialTextBox2);
-            this.keysTabPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.keysTabPage, "keysTabPage");
             this.keysTabPage.Name = "keysTabPage";
-            this.keysTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.keysTabPage.Size = new System.Drawing.Size(969, 224);
-            this.keysTabPage.TabIndex = 0;
-            this.keysTabPage.Text = "Keys";
             // 
             // farmerkeyMaterialTextBox2
             // 
-            this.farmerkeyMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.farmerkeyMaterialTextBox2, "farmerkeyMaterialTextBox2");
             this.farmerkeyMaterialTextBox2.AnimateReadOnly = false;
-            this.farmerkeyMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.farmerkeyMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.farmerkeyMaterialTextBox2.Depth = 0;
-            this.farmerkeyMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.farmerkeyMaterialTextBox2.HideSelection = true;
             this.farmerkeyMaterialTextBox2.LeadingIcon = null;
-            this.farmerkeyMaterialTextBox2.Location = new System.Drawing.Point(6, 6);
             this.farmerkeyMaterialTextBox2.MaxLength = 32767;
             this.farmerkeyMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.farmerkeyMaterialTextBox2.Name = "farmerkeyMaterialTextBox2";
             this.farmerkeyMaterialTextBox2.PasswordChar = '\0';
-            this.farmerkeyMaterialTextBox2.PrefixSuffixText = null;
             this.farmerkeyMaterialTextBox2.ReadOnly = false;
-            this.farmerkeyMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.farmerkeyMaterialTextBox2.SelectedText = "";
             this.farmerkeyMaterialTextBox2.SelectionLength = 0;
             this.farmerkeyMaterialTextBox2.SelectionStart = 0;
             this.farmerkeyMaterialTextBox2.ShortcutsEnabled = true;
-            this.farmerkeyMaterialTextBox2.Size = new System.Drawing.Size(957, 48);
-            this.farmerkeyMaterialTextBox2.TabIndex = 0;
             this.farmerkeyMaterialTextBox2.TabStop = false;
-            this.farmerkeyMaterialTextBox2.Text = "farmerkeyMaterialTextBox2";
             this.farmerkeyMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.farmerkeyMaterialTextBox2.TrailingIcon = null;
             this.farmerkeyMaterialTextBox2.UseSystemPasswordChar = false;
             // 
             // nftplotMaterialSwitch
             // 
-            this.nftplotMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.nftplotMaterialSwitch, "nftplotMaterialSwitch");
             this.nftplotMaterialSwitch.Depth = 0;
-            this.nftplotMaterialSwitch.Location = new System.Drawing.Point(6, 57);
-            this.nftplotMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.nftplotMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.nftplotMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.nftplotMaterialSwitch.Name = "nftplotMaterialSwitch";
             this.nftplotMaterialSwitch.Ripple = true;
-            this.nftplotMaterialSwitch.Size = new System.Drawing.Size(211, 37);
-            this.nftplotMaterialSwitch.TabIndex = 1;
-            this.nftplotMaterialSwitch.Text = "nftplotMaterialSwitch";
             this.nftplotMaterialSwitch.UseVisualStyleBackColor = true;
             // 
             // contractMaterialTextBox2
             // 
-            this.contractMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.contractMaterialTextBox2, "contractMaterialTextBox2");
             this.contractMaterialTextBox2.AnimateReadOnly = false;
-            this.contractMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.contractMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.contractMaterialTextBox2.Depth = 0;
-            this.contractMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.contractMaterialTextBox2.HideSelection = true;
             this.contractMaterialTextBox2.LeadingIcon = null;
-            this.contractMaterialTextBox2.Location = new System.Drawing.Point(6, 157);
             this.contractMaterialTextBox2.MaxLength = 32767;
             this.contractMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.contractMaterialTextBox2.Name = "contractMaterialTextBox2";
             this.contractMaterialTextBox2.PasswordChar = '\0';
-            this.contractMaterialTextBox2.PrefixSuffixText = null;
             this.contractMaterialTextBox2.ReadOnly = false;
-            this.contractMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contractMaterialTextBox2.SelectedText = "";
             this.contractMaterialTextBox2.SelectionLength = 0;
             this.contractMaterialTextBox2.SelectionStart = 0;
             this.contractMaterialTextBox2.ShortcutsEnabled = true;
-            this.contractMaterialTextBox2.Size = new System.Drawing.Size(957, 48);
-            this.contractMaterialTextBox2.TabIndex = 3;
             this.contractMaterialTextBox2.TabStop = false;
-            this.contractMaterialTextBox2.Text = "contractMaterialTextBox2";
             this.contractMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.contractMaterialTextBox2.TrailingIcon = null;
             this.contractMaterialTextBox2.UseSystemPasswordChar = false;
             // 
             // poolkeyMaterialTextBox2
             // 
-            this.poolkeyMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.poolkeyMaterialTextBox2, "poolkeyMaterialTextBox2");
             this.poolkeyMaterialTextBox2.AnimateReadOnly = false;
-            this.poolkeyMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.poolkeyMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.poolkeyMaterialTextBox2.Depth = 0;
-            this.poolkeyMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.poolkeyMaterialTextBox2.HideSelection = true;
             this.poolkeyMaterialTextBox2.LeadingIcon = null;
-            this.poolkeyMaterialTextBox2.Location = new System.Drawing.Point(6, 103);
             this.poolkeyMaterialTextBox2.MaxLength = 32767;
             this.poolkeyMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.poolkeyMaterialTextBox2.Name = "poolkeyMaterialTextBox2";
             this.poolkeyMaterialTextBox2.PasswordChar = '\0';
-            this.poolkeyMaterialTextBox2.PrefixSuffixText = null;
             this.poolkeyMaterialTextBox2.ReadOnly = false;
-            this.poolkeyMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.poolkeyMaterialTextBox2.SelectedText = "";
             this.poolkeyMaterialTextBox2.SelectionLength = 0;
             this.poolkeyMaterialTextBox2.SelectionStart = 0;
             this.poolkeyMaterialTextBox2.ShortcutsEnabled = true;
-            this.poolkeyMaterialTextBox2.Size = new System.Drawing.Size(957, 48);
-            this.poolkeyMaterialTextBox2.TabIndex = 2;
             this.poolkeyMaterialTextBox2.TabStop = false;
-            this.poolkeyMaterialTextBox2.Text = "poolkeyMaterialTextBox2";
             this.poolkeyMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.poolkeyMaterialTextBox2.TrailingIcon = null;
             this.poolkeyMaterialTextBox2.UseSystemPasswordChar = false;
@@ -468,82 +374,53 @@ namespace MMX_NODE_GUI
             this.perfomanceTabPage.Controls.Add(this.threadsMaterialNumericUpDown);
             this.perfomanceTabPage.Controls.Add(this.buckets3MaterialNumericUpDown);
             this.perfomanceTabPage.Controls.Add(this.bucketsMaterialNumericUpDown);
-            this.perfomanceTabPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.perfomanceTabPage, "perfomanceTabPage");
             this.perfomanceTabPage.Name = "perfomanceTabPage";
-            this.perfomanceTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.perfomanceTabPage.Size = new System.Drawing.Size(969, 224);
-            this.perfomanceTabPage.TabIndex = 2;
-            this.perfomanceTabPage.Text = "Perfomance";
             // 
             // buckets3MaterialLabel
             // 
-            this.buckets3MaterialLabel.AutoSize = true;
+            resources.ApplyResources(this.buckets3MaterialLabel, "buckets3MaterialLabel");
             this.buckets3MaterialLabel.Depth = 0;
-            this.buckets3MaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.buckets3MaterialLabel.Location = new System.Drawing.Point(539, 72);
             this.buckets3MaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.buckets3MaterialLabel.Name = "buckets3MaterialLabel";
-            this.buckets3MaterialLabel.Size = new System.Drawing.Size(107, 19);
-            this.buckets3MaterialLabel.TabIndex = 32;
-            this.buckets3MaterialLabel.Text = "materialLabel5";
             // 
             // bucketsMaterialLabel
             // 
-            this.bucketsMaterialLabel.AutoSize = true;
+            resources.ApplyResources(this.bucketsMaterialLabel, "bucketsMaterialLabel");
             this.bucketsMaterialLabel.Depth = 0;
-            this.bucketsMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.bucketsMaterialLabel.Location = new System.Drawing.Point(539, 16);
             this.bucketsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.bucketsMaterialLabel.Name = "bucketsMaterialLabel";
-            this.bucketsMaterialLabel.Size = new System.Drawing.Size(107, 19);
-            this.bucketsMaterialLabel.TabIndex = 31;
-            this.bucketsMaterialLabel.Text = "materialLabel4";
             // 
             // rmulti2MaterialLabel
             // 
-            this.rmulti2MaterialLabel.AutoSize = true;
+            resources.ApplyResources(this.rmulti2MaterialLabel, "rmulti2MaterialLabel");
             this.rmulti2MaterialLabel.Depth = 0;
-            this.rmulti2MaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.rmulti2MaterialLabel.Location = new System.Drawing.Point(102, 72);
             this.rmulti2MaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.rmulti2MaterialLabel.Name = "rmulti2MaterialLabel";
-            this.rmulti2MaterialLabel.Size = new System.Drawing.Size(107, 19);
-            this.rmulti2MaterialLabel.TabIndex = 30;
-            this.rmulti2MaterialLabel.Text = "materialLabel3";
             // 
             // threadsMaterialLabel
             // 
-            this.threadsMaterialLabel.AutoSize = true;
+            resources.ApplyResources(this.threadsMaterialLabel, "threadsMaterialLabel");
             this.threadsMaterialLabel.Depth = 0;
-            this.threadsMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.threadsMaterialLabel.Location = new System.Drawing.Point(102, 16);
             this.threadsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.threadsMaterialLabel.Name = "threadsMaterialLabel";
-            this.threadsMaterialLabel.Size = new System.Drawing.Size(107, 19);
-            this.threadsMaterialLabel.TabIndex = 29;
-            this.threadsMaterialLabel.Text = "materialLabel2";
             // 
             // rmulti2MaterialNumericUpDown
             // 
             this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.rmulti2MaterialNumericUpDown.Location = new System.Drawing.Point(3, 60);
+            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
             this.rmulti2MaterialNumericUpDown.LogValue = false;
-            this.rmulti2MaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
             this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
             16,
             0,
             0,
             0});
-            this.rmulti2MaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
             this.rmulti2MaterialNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.rmulti2MaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
             this.rmulti2MaterialNumericUpDown.Name = "rmulti2MaterialNumericUpDown";
-            this.rmulti2MaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
-            this.rmulti2MaterialNumericUpDown.TabIndex = 1;
             this.rmulti2MaterialNumericUpDown.Value = new decimal(new int[] {
             2,
             0,
@@ -553,24 +430,19 @@ namespace MMX_NODE_GUI
             // threadsMaterialNumericUpDown
             // 
             this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.threadsMaterialNumericUpDown.Location = new System.Drawing.Point(3, 6);
+            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
             this.threadsMaterialNumericUpDown.LogValue = false;
-            this.threadsMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
             this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
             128,
             0,
             0,
             0});
-            this.threadsMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
             this.threadsMaterialNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.threadsMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
             this.threadsMaterialNumericUpDown.Name = "threadsMaterialNumericUpDown";
-            this.threadsMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
-            this.threadsMaterialNumericUpDown.TabIndex = 0;
             this.threadsMaterialNumericUpDown.Value = new decimal(new int[] {
             16,
             0,
@@ -580,23 +452,19 @@ namespace MMX_NODE_GUI
             // buckets3MaterialNumericUpDown
             // 
             this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.buckets3MaterialNumericUpDown.Location = new System.Drawing.Point(435, 60);
+            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
             this.buckets3MaterialNumericUpDown.LogValue = true;
             this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
             1024,
             0,
             0,
             0});
-            this.buckets3MaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
             this.buckets3MaterialNumericUpDown.Minimum = new decimal(new int[] {
             16,
             0,
             0,
             0});
-            this.buckets3MaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
             this.buckets3MaterialNumericUpDown.Name = "buckets3MaterialNumericUpDown";
-            this.buckets3MaterialNumericUpDown.Size = new System.Drawing.Size(98, 48);
-            this.buckets3MaterialNumericUpDown.TabIndex = 3;
             this.buckets3MaterialNumericUpDown.Value = new decimal(new int[] {
             256,
             0,
@@ -606,23 +474,19 @@ namespace MMX_NODE_GUI
             // bucketsMaterialNumericUpDown
             // 
             this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.bucketsMaterialNumericUpDown.Location = new System.Drawing.Point(435, 6);
+            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
             this.bucketsMaterialNumericUpDown.LogValue = true;
             this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
             1024,
             0,
             0,
             0});
-            this.bucketsMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
             this.bucketsMaterialNumericUpDown.Minimum = new decimal(new int[] {
             16,
             0,
             0,
             0});
-            this.bucketsMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
             this.bucketsMaterialNumericUpDown.Name = "bucketsMaterialNumericUpDown";
-            this.bucketsMaterialNumericUpDown.Size = new System.Drawing.Size(98, 48);
-            this.bucketsMaterialNumericUpDown.TabIndex = 2;
             this.bucketsMaterialNumericUpDown.Value = new decimal(new int[] {
             256,
             0,
@@ -635,244 +499,244 @@ namespace MMX_NODE_GUI
             this.directoriesTabPage.Controls.Add(this.tmpdir2MaterialTextBox2);
             this.directoriesTabPage.Controls.Add(this.stagedirMaterialTextBox2);
             this.directoriesTabPage.Controls.Add(this.directoutMaterialSwitch);
-            this.directoriesTabPage.Controls.Add(this.stagedirMaterialButton);
             this.directoriesTabPage.Controls.Add(this.tmptoggleMaterialSwitch);
-            this.directoriesTabPage.Controls.Add(this.tmpdirMaterialButton);
             this.directoriesTabPage.Controls.Add(this.waitforcopyMaterialSwitch);
+            this.directoriesTabPage.Controls.Add(this.stagedirMaterialButton);
+            this.directoriesTabPage.Controls.Add(this.tmpdirMaterialButton);
             this.directoriesTabPage.Controls.Add(this.tmpdir2MaterialButton);
-            this.directoriesTabPage.Location = new System.Drawing.Point(4, 22);
+            resources.ApplyResources(this.directoriesTabPage, "directoriesTabPage");
             this.directoriesTabPage.Name = "directoriesTabPage";
-            this.directoriesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.directoriesTabPage.Size = new System.Drawing.Size(969, 224);
-            this.directoriesTabPage.TabIndex = 1;
-            this.directoriesTabPage.Text = "Directories";
             // 
             // tmpdirMaterialTextBox2
             // 
-            this.tmpdirMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tmpdirMaterialTextBox2, "tmpdirMaterialTextBox2");
             this.tmpdirMaterialTextBox2.AnimateReadOnly = false;
-            this.tmpdirMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tmpdirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.tmpdirMaterialTextBox2.Depth = 0;
-            this.tmpdirMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.tmpdirMaterialTextBox2.HideSelection = true;
             this.tmpdirMaterialTextBox2.LeadingIcon = null;
-            this.tmpdirMaterialTextBox2.Location = new System.Drawing.Point(6, 6);
             this.tmpdirMaterialTextBox2.MaxLength = 32767;
             this.tmpdirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.tmpdirMaterialTextBox2.Name = "tmpdirMaterialTextBox2";
             this.tmpdirMaterialTextBox2.PasswordChar = '\0';
-            this.tmpdirMaterialTextBox2.PrefixSuffixText = null;
             this.tmpdirMaterialTextBox2.ReadOnly = false;
-            this.tmpdirMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tmpdirMaterialTextBox2.SelectedText = "";
             this.tmpdirMaterialTextBox2.SelectionLength = 0;
             this.tmpdirMaterialTextBox2.SelectionStart = 0;
             this.tmpdirMaterialTextBox2.ShortcutsEnabled = true;
-            this.tmpdirMaterialTextBox2.Size = new System.Drawing.Size(521, 48);
-            this.tmpdirMaterialTextBox2.TabIndex = 0;
             this.tmpdirMaterialTextBox2.TabStop = false;
             this.tmpdirMaterialTextBox2.Tag = "tmpdir";
-            this.tmpdirMaterialTextBox2.Text = "tmpdirMaterialTextBox2";
             this.tmpdirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.tmpdirMaterialTextBox2.TrailingIcon = null;
             this.tmpdirMaterialTextBox2.UseSystemPasswordChar = false;
             // 
             // tmpdir2MaterialTextBox2
             // 
-            this.tmpdir2MaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tmpdir2MaterialTextBox2, "tmpdir2MaterialTextBox2");
             this.tmpdir2MaterialTextBox2.AnimateReadOnly = false;
-            this.tmpdir2MaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tmpdir2MaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.tmpdir2MaterialTextBox2.Depth = 0;
-            this.tmpdir2MaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.tmpdir2MaterialTextBox2.HideSelection = true;
             this.tmpdir2MaterialTextBox2.LeadingIcon = null;
-            this.tmpdir2MaterialTextBox2.Location = new System.Drawing.Point(6, 60);
             this.tmpdir2MaterialTextBox2.MaxLength = 32767;
             this.tmpdir2MaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.tmpdir2MaterialTextBox2.Name = "tmpdir2MaterialTextBox2";
             this.tmpdir2MaterialTextBox2.PasswordChar = '\0';
-            this.tmpdir2MaterialTextBox2.PrefixSuffixText = null;
             this.tmpdir2MaterialTextBox2.ReadOnly = false;
-            this.tmpdir2MaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tmpdir2MaterialTextBox2.SelectedText = "";
             this.tmpdir2MaterialTextBox2.SelectionLength = 0;
             this.tmpdir2MaterialTextBox2.SelectionStart = 0;
             this.tmpdir2MaterialTextBox2.ShortcutsEnabled = true;
-            this.tmpdir2MaterialTextBox2.Size = new System.Drawing.Size(521, 48);
-            this.tmpdir2MaterialTextBox2.TabIndex = 2;
             this.tmpdir2MaterialTextBox2.TabStop = false;
-            this.tmpdir2MaterialTextBox2.Text = "tmpdir2MaterialTextBox2";
             this.tmpdir2MaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.tmpdir2MaterialTextBox2.TrailingIcon = null;
             this.tmpdir2MaterialTextBox2.UseSystemPasswordChar = false;
             // 
             // stagedirMaterialTextBox2
             // 
-            this.stagedirMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.stagedirMaterialTextBox2, "stagedirMaterialTextBox2");
             this.stagedirMaterialTextBox2.AnimateReadOnly = false;
-            this.stagedirMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.stagedirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.stagedirMaterialTextBox2.Depth = 0;
-            this.stagedirMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.stagedirMaterialTextBox2.HideSelection = true;
             this.stagedirMaterialTextBox2.LeadingIcon = null;
-            this.stagedirMaterialTextBox2.Location = new System.Drawing.Point(6, 114);
             this.stagedirMaterialTextBox2.MaxLength = 32767;
             this.stagedirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.stagedirMaterialTextBox2.Name = "stagedirMaterialTextBox2";
             this.stagedirMaterialTextBox2.PasswordChar = '\0';
-            this.stagedirMaterialTextBox2.PrefixSuffixText = null;
             this.stagedirMaterialTextBox2.ReadOnly = false;
-            this.stagedirMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.stagedirMaterialTextBox2.SelectedText = "";
             this.stagedirMaterialTextBox2.SelectionLength = 0;
             this.stagedirMaterialTextBox2.SelectionStart = 0;
             this.stagedirMaterialTextBox2.ShortcutsEnabled = true;
-            this.stagedirMaterialTextBox2.Size = new System.Drawing.Size(521, 48);
-            this.stagedirMaterialTextBox2.TabIndex = 4;
             this.stagedirMaterialTextBox2.TabStop = false;
-            this.stagedirMaterialTextBox2.Text = "stagedirMaterialTextBox2";
             this.stagedirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.stagedirMaterialTextBox2.TrailingIcon = null;
             this.stagedirMaterialTextBox2.UseSystemPasswordChar = false;
             // 
             // directoutMaterialSwitch
             // 
-            this.directoutMaterialSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.directoutMaterialSwitch, "directoutMaterialSwitch");
             this.directoutMaterialSwitch.Depth = 0;
-            this.directoutMaterialSwitch.Location = new System.Drawing.Point(625, 104);
-            this.directoutMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.directoutMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.directoutMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.directoutMaterialSwitch.Name = "directoutMaterialSwitch";
             this.directoutMaterialSwitch.Ripple = true;
-            this.directoutMaterialSwitch.Size = new System.Drawing.Size(284, 37);
-            this.directoutMaterialSwitch.TabIndex = 8;
-            this.directoutMaterialSwitch.Text = "directoutMaterialSwitch";
             this.directoutMaterialSwitch.UseVisualStyleBackColor = true;
+            // 
+            // tmptoggleMaterialSwitch
+            // 
+            resources.ApplyResources(this.tmptoggleMaterialSwitch, "tmptoggleMaterialSwitch");
+            this.tmptoggleMaterialSwitch.Depth = 0;
+            this.tmptoggleMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tmptoggleMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tmptoggleMaterialSwitch.Name = "tmptoggleMaterialSwitch";
+            this.tmptoggleMaterialSwitch.Ripple = true;
+            this.tmptoggleMaterialSwitch.UseVisualStyleBackColor = true;
+            // 
+            // waitforcopyMaterialSwitch
+            // 
+            resources.ApplyResources(this.waitforcopyMaterialSwitch, "waitforcopyMaterialSwitch");
+            this.waitforcopyMaterialSwitch.Depth = 0;
+            this.waitforcopyMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.waitforcopyMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.waitforcopyMaterialSwitch.Name = "waitforcopyMaterialSwitch";
+            this.waitforcopyMaterialSwitch.Ripple = true;
+            this.waitforcopyMaterialSwitch.UseVisualStyleBackColor = true;
             // 
             // stagedirMaterialButton
             // 
-            this.stagedirMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.stagedirMaterialButton.AutoSize = false;
-            this.stagedirMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.stagedirMaterialButton, "stagedirMaterialButton");
             this.stagedirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.stagedirMaterialButton.Depth = 0;
             this.stagedirMaterialButton.HighEmphasis = true;
             this.stagedirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.stagedirMaterialButton.Location = new System.Drawing.Point(530, 114);
-            this.stagedirMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.stagedirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.stagedirMaterialButton.Name = "stagedirMaterialButton";
             this.stagedirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.stagedirMaterialButton.Size = new System.Drawing.Size(48, 48);
-            this.stagedirMaterialButton.TabIndex = 5;
             this.stagedirMaterialButton.Tag = "tmpdir";
             this.stagedirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
             this.stagedirMaterialButton.UseAccentColor = false;
             this.stagedirMaterialButton.UseVisualStyleBackColor = true;
             this.stagedirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // tmptoggleMaterialSwitch
-            // 
-            this.tmptoggleMaterialSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmptoggleMaterialSwitch.Depth = 0;
-            this.tmptoggleMaterialSwitch.Location = new System.Drawing.Point(625, 67);
-            this.tmptoggleMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
-            this.tmptoggleMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tmptoggleMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tmptoggleMaterialSwitch.Name = "tmptoggleMaterialSwitch";
-            this.tmptoggleMaterialSwitch.Ripple = true;
-            this.tmptoggleMaterialSwitch.Size = new System.Drawing.Size(284, 37);
-            this.tmptoggleMaterialSwitch.TabIndex = 7;
-            this.tmptoggleMaterialSwitch.Text = "tmptoggleMaterialSwitch";
-            this.tmptoggleMaterialSwitch.UseVisualStyleBackColor = true;
-            // 
             // tmpdirMaterialButton
             // 
-            this.tmpdirMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmpdirMaterialButton.AutoSize = false;
-            this.tmpdirMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.tmpdirMaterialButton, "tmpdirMaterialButton");
             this.tmpdirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.tmpdirMaterialButton.Depth = 0;
             this.tmpdirMaterialButton.HighEmphasis = true;
             this.tmpdirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.tmpdirMaterialButton.Location = new System.Drawing.Point(530, 6);
-            this.tmpdirMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.tmpdirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.tmpdirMaterialButton.Name = "tmpdirMaterialButton";
             this.tmpdirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.tmpdirMaterialButton.Size = new System.Drawing.Size(48, 48);
-            this.tmpdirMaterialButton.TabIndex = 1;
             this.tmpdirMaterialButton.Tag = "tmpdir";
             this.tmpdirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
             this.tmpdirMaterialButton.UseAccentColor = false;
             this.tmpdirMaterialButton.UseVisualStyleBackColor = true;
             this.tmpdirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // waitforcopyMaterialSwitch
-            // 
-            this.waitforcopyMaterialSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.waitforcopyMaterialSwitch.Depth = 0;
-            this.waitforcopyMaterialSwitch.Location = new System.Drawing.Point(625, 30);
-            this.waitforcopyMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
-            this.waitforcopyMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.waitforcopyMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
-            this.waitforcopyMaterialSwitch.Name = "waitforcopyMaterialSwitch";
-            this.waitforcopyMaterialSwitch.Ripple = true;
-            this.waitforcopyMaterialSwitch.Size = new System.Drawing.Size(284, 37);
-            this.waitforcopyMaterialSwitch.TabIndex = 6;
-            this.waitforcopyMaterialSwitch.Text = "waitforcopyMaterialSwitch";
-            this.waitforcopyMaterialSwitch.UseVisualStyleBackColor = true;
-            // 
             // tmpdir2MaterialButton
             // 
-            this.tmpdir2MaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tmpdir2MaterialButton.AutoSize = false;
-            this.tmpdir2MaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.tmpdir2MaterialButton, "tmpdir2MaterialButton");
             this.tmpdir2MaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.tmpdir2MaterialButton.Depth = 0;
             this.tmpdir2MaterialButton.HighEmphasis = true;
             this.tmpdir2MaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.tmpdir2MaterialButton.Location = new System.Drawing.Point(530, 60);
-            this.tmpdir2MaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.tmpdir2MaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.tmpdir2MaterialButton.Name = "tmpdir2MaterialButton";
             this.tmpdir2MaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.tmpdir2MaterialButton.Size = new System.Drawing.Size(48, 48);
-            this.tmpdir2MaterialButton.TabIndex = 3;
             this.tmpdir2MaterialButton.Tag = "tmpdir";
             this.tmpdir2MaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
             this.tmpdir2MaterialButton.UseAccentColor = false;
             this.tmpdir2MaterialButton.UseVisualStyleBackColor = true;
             this.tmpdir2MaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
+            // plotterSettingsMaterialTabSelector
+            // 
+            resources.ApplyResources(this.plotterSettingsMaterialTabSelector, "plotterSettingsMaterialTabSelector");
+            this.plotterSettingsMaterialTabSelector.BaseTabControl = this.plotterSettingsMaterialTabControl;
+            this.plotterSettingsMaterialTabSelector.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.plotterSettingsMaterialTabSelector.Depth = 0;
+            this.plotterSettingsMaterialTabSelector.MouseState = MaterialSkin.MouseState.HOVER;
+            this.plotterSettingsMaterialTabSelector.Name = "plotterSettingsMaterialTabSelector";
+            // 
+            // startMaterialButton
+            // 
+            resources.ApplyResources(this.startMaterialButton, "startMaterialButton");
+            this.startMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.startMaterialButton.Depth = 0;
+            this.startMaterialButton.HighEmphasis = true;
+            this.startMaterialButton.Icon = null;
+            this.startMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.startMaterialButton.Name = "startMaterialButton";
+            this.startMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.startMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.startMaterialButton.UseAccentColor = false;
+            this.startMaterialButton.UseVisualStyleBackColor = true;
+            this.startMaterialButton.Click += new System.EventHandler(this.startMaterialButton_Click);
+            // 
+            // sizeMaterialLabel
+            // 
+            resources.ApplyResources(this.sizeMaterialLabel, "sizeMaterialLabel");
+            this.sizeMaterialLabel.Depth = 0;
+            this.sizeMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.sizeMaterialLabel.Name = "sizeMaterialLabel";
+            // 
+            // finaldirMaterialTextBox2
+            // 
+            resources.ApplyResources(this.finaldirMaterialTextBox2, "finaldirMaterialTextBox2");
+            this.finaldirMaterialTextBox2.AnimateReadOnly = false;
+            this.finaldirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.finaldirMaterialTextBox2.Depth = 0;
+            this.finaldirMaterialTextBox2.HideSelection = true;
+            this.finaldirMaterialTextBox2.LeadingIcon = null;
+            this.finaldirMaterialTextBox2.MaxLength = 32767;
+            this.finaldirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
+            this.finaldirMaterialTextBox2.Name = "finaldirMaterialTextBox2";
+            this.finaldirMaterialTextBox2.PasswordChar = '\0';
+            this.finaldirMaterialTextBox2.ReadOnly = false;
+            this.finaldirMaterialTextBox2.SelectedText = "";
+            this.finaldirMaterialTextBox2.SelectionLength = 0;
+            this.finaldirMaterialTextBox2.SelectionStart = 0;
+            this.finaldirMaterialTextBox2.ShortcutsEnabled = true;
+            this.finaldirMaterialTextBox2.TabStop = false;
+            this.finaldirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.finaldirMaterialTextBox2.TrailingIcon = null;
+            this.finaldirMaterialTextBox2.UseSystemPasswordChar = false;
+            // 
+            // finaldirMaterialButton
+            // 
+            resources.ApplyResources(this.finaldirMaterialButton, "finaldirMaterialButton");
+            this.finaldirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.finaldirMaterialButton.Depth = 0;
+            this.finaldirMaterialButton.HighEmphasis = true;
+            this.finaldirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
+            this.finaldirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.finaldirMaterialButton.Name = "finaldirMaterialButton";
+            this.finaldirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.finaldirMaterialButton.Tag = "tmpdir";
+            this.finaldirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.finaldirMaterialButton.UseAccentColor = false;
+            this.finaldirMaterialButton.UseVisualStyleBackColor = true;
+            this.finaldirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
+            // 
             // sizeMaterialNumericUpDown
             // 
             this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.sizeMaterialNumericUpDown.Location = new System.Drawing.Point(10, 70);
+            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
             this.sizeMaterialNumericUpDown.LogValue = false;
-            this.sizeMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
             this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
             34,
             0,
             0,
             0});
-            this.sizeMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
             this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
             30,
             0,
             0,
             0});
-            this.sizeMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
             this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
-            this.sizeMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
-            this.sizeMaterialNumericUpDown.TabIndex = 2;
             this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
             30,
             0,
@@ -881,136 +745,29 @@ namespace MMX_NODE_GUI
             // 
             // countMaterialNumericUpDown
             // 
-            this.countMaterialNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.countMaterialNumericUpDown, "countMaterialNumericUpDown");
             this.countMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.countMaterialNumericUpDown.Location = new System.Drawing.Point(704, 70);
             this.countMaterialNumericUpDown.LogValue = false;
-            this.countMaterialNumericUpDown.Margin = new System.Windows.Forms.Padding(0);
             this.countMaterialNumericUpDown.Maximum = new decimal(new int[] {
             999,
             0,
             0,
             0});
-            this.countMaterialNumericUpDown.MaximumSize = new System.Drawing.Size(999, 0);
             this.countMaterialNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
-            this.countMaterialNumericUpDown.MinimumSize = new System.Drawing.Size(48, 48);
             this.countMaterialNumericUpDown.Name = "countMaterialNumericUpDown";
-            this.countMaterialNumericUpDown.Size = new System.Drawing.Size(96, 48);
-            this.countMaterialNumericUpDown.TabIndex = 3;
             this.countMaterialNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
             // 
-            // plotterSettingsMaterialTabSelector
-            // 
-            this.plotterSettingsMaterialTabSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.plotterSettingsMaterialTabSelector.BaseTabControl = this.plotterSettingsMaterialTabControl;
-            this.plotterSettingsMaterialTabSelector.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
-            this.plotterSettingsMaterialTabSelector.Depth = 0;
-            this.plotterSettingsMaterialTabSelector.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.plotterSettingsMaterialTabSelector.Location = new System.Drawing.Point(10, 133);
-            this.plotterSettingsMaterialTabSelector.MouseState = MaterialSkin.MouseState.HOVER;
-            this.plotterSettingsMaterialTabSelector.Name = "plotterSettingsMaterialTabSelector";
-            this.plotterSettingsMaterialTabSelector.Size = new System.Drawing.Size(977, 48);
-            this.plotterSettingsMaterialTabSelector.TabIndex = 24;
-            this.plotterSettingsMaterialTabSelector.Text = "materialTabSelector1";
-            // 
-            // startMaterialButton
-            // 
-            this.startMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.startMaterialButton.AutoSize = false;
-            this.startMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.startMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.startMaterialButton.Depth = 0;
-            this.startMaterialButton.HighEmphasis = true;
-            this.startMaterialButton.Icon = null;
-            this.startMaterialButton.Location = new System.Drawing.Point(829, 76);
-            this.startMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.startMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.startMaterialButton.Name = "startMaterialButton";
-            this.startMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.startMaterialButton.Size = new System.Drawing.Size(158, 36);
-            this.startMaterialButton.TabIndex = 4;
-            this.startMaterialButton.Text = "Start";
-            this.startMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.startMaterialButton.UseAccentColor = false;
-            this.startMaterialButton.UseVisualStyleBackColor = true;
-            this.startMaterialButton.Click += new System.EventHandler(this.startMaterialButton_Click);
-            // 
-            // finaldirMaterialButton
-            // 
-            this.finaldirMaterialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.finaldirMaterialButton.AutoSize = false;
-            this.finaldirMaterialButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.finaldirMaterialButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.finaldirMaterialButton.Depth = 0;
-            this.finaldirMaterialButton.HighEmphasis = true;
-            this.finaldirMaterialButton.Icon = global::MMX_NODE_GUI.Properties.Resources.folder;
-            this.finaldirMaterialButton.Location = new System.Drawing.Point(990, 10);
-            this.finaldirMaterialButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.finaldirMaterialButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.finaldirMaterialButton.Name = "finaldirMaterialButton";
-            this.finaldirMaterialButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.finaldirMaterialButton.Size = new System.Drawing.Size(48, 48);
-            this.finaldirMaterialButton.TabIndex = 14;
-            this.finaldirMaterialButton.Tag = "tmpdir";
-            this.finaldirMaterialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.finaldirMaterialButton.UseAccentColor = false;
-            this.finaldirMaterialButton.UseVisualStyleBackColor = true;
-            this.finaldirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
-            // 
-            // sizeMaterialLabel
-            // 
-            this.sizeMaterialLabel.AutoSize = true;
-            this.sizeMaterialLabel.Depth = 0;
-            this.sizeMaterialLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.sizeMaterialLabel.Location = new System.Drawing.Point(114, 86);
-            this.sizeMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.sizeMaterialLabel.Name = "sizeMaterialLabel";
-            this.sizeMaterialLabel.Size = new System.Drawing.Size(43, 19);
-            this.sizeMaterialLabel.TabIndex = 19;
-            this.sizeMaterialLabel.Text = "K size";
-            // 
-            // finaldirMaterialTextBox2
-            // 
-            this.finaldirMaterialTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.finaldirMaterialTextBox2.AnimateReadOnly = false;
-            this.finaldirMaterialTextBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.finaldirMaterialTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.finaldirMaterialTextBox2.Depth = 0;
-            this.finaldirMaterialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.finaldirMaterialTextBox2.HideSelection = true;
-            this.finaldirMaterialTextBox2.LeadingIcon = null;
-            this.finaldirMaterialTextBox2.Location = new System.Drawing.Point(10, 10);
-            this.finaldirMaterialTextBox2.MaxLength = 32767;
-            this.finaldirMaterialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.finaldirMaterialTextBox2.Name = "finaldirMaterialTextBox2";
-            this.finaldirMaterialTextBox2.PasswordChar = '\0';
-            this.finaldirMaterialTextBox2.PrefixSuffixText = null;
-            this.finaldirMaterialTextBox2.ReadOnly = false;
-            this.finaldirMaterialTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.finaldirMaterialTextBox2.SelectedText = "";
-            this.finaldirMaterialTextBox2.SelectionLength = 0;
-            this.finaldirMaterialTextBox2.SelectionStart = 0;
-            this.finaldirMaterialTextBox2.ShortcutsEnabled = true;
-            this.finaldirMaterialTextBox2.Size = new System.Drawing.Size(977, 48);
-            this.finaldirMaterialTextBox2.TabIndex = 1;
-            this.finaldirMaterialTextBox2.TabStop = false;
-            this.finaldirMaterialTextBox2.Text = "finaldirMaterialTextBox2";
-            this.finaldirMaterialTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.finaldirMaterialTextBox2.TrailingIcon = null;
-            this.finaldirMaterialTextBox2.UseSystemPasswordChar = false;
-            // 
             // settingsTabPage
             // 
+            this.settingsTabPage.Controls.Add(this.langMaterialComboBox);
             this.settingsTabPage.Controls.Add(this.debugGroupBox);
             this.settingsTabPage.Controls.Add(this.groupBox2);
             this.settingsTabPage.Controls.Add(this.confirmationOnExitMaterialSwitch);
@@ -1018,179 +775,135 @@ namespace MMX_NODE_GUI
             this.settingsTabPage.Controls.Add(this.startOnStartupMaterialSwitch);
             this.settingsTabPage.Controls.Add(this.showInNotifitationMaterialSwitch);
             this.settingsTabPage.Controls.Add(this.showInNotifitationGroupBox);
-            this.settingsTabPage.ImageKey = "cog.png";
-            this.settingsTabPage.Location = new System.Drawing.Point(4, 31);
+            resources.ApplyResources(this.settingsTabPage, "settingsTabPage");
             this.settingsTabPage.Name = "settingsTabPage";
-            this.settingsTabPage.Padding = new System.Windows.Forms.Padding(10);
-            this.settingsTabPage.Size = new System.Drawing.Size(1056, 613);
-            this.settingsTabPage.TabIndex = 2;
-            this.settingsTabPage.Text = "GUI Settings";
+            // 
+            // langMaterialComboBox
+            // 
+            this.langMaterialComboBox.AutoResize = false;
+            this.langMaterialComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.langMaterialComboBox.Depth = 0;
+            this.langMaterialComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.langMaterialComboBox.DropDownHeight = 174;
+            this.langMaterialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.langMaterialComboBox.DropDownWidth = 121;
+            resources.ApplyResources(this.langMaterialComboBox, "langMaterialComboBox");
+            this.langMaterialComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.langMaterialComboBox.FormattingEnabled = true;
+            this.langMaterialComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.langMaterialComboBox.Name = "langMaterialComboBox";
+            this.langMaterialComboBox.StartIndex = 0;
+            this.langMaterialComboBox.SelectedIndexChanged += new System.EventHandler(this.langMaterialComboBox_SelectedIndexChanged);
             // 
             // debugGroupBox
             // 
-            this.debugGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.debugGroupBox, "debugGroupBox");
             this.debugGroupBox.Controls.Add(this.showConsoleMaterialSwitch);
-            this.debugGroupBox.Location = new System.Drawing.Point(13, 349);
             this.debugGroupBox.Name = "debugGroupBox";
-            this.debugGroupBox.Size = new System.Drawing.Size(973, 92);
-            this.debugGroupBox.TabIndex = 17;
             this.debugGroupBox.TabStop = false;
-            this.debugGroupBox.Text = "Debug";
             // 
             // showConsoleMaterialSwitch
             // 
-            this.showConsoleMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.showConsoleMaterialSwitch, "showConsoleMaterialSwitch");
             this.showConsoleMaterialSwitch.Depth = 0;
-            this.showConsoleMaterialSwitch.Location = new System.Drawing.Point(30, 33);
-            this.showConsoleMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.showConsoleMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.showConsoleMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.showConsoleMaterialSwitch.Name = "showConsoleMaterialSwitch";
             this.showConsoleMaterialSwitch.Ripple = true;
-            this.showConsoleMaterialSwitch.Size = new System.Drawing.Size(159, 37);
-            this.showConsoleMaterialSwitch.TabIndex = 18;
-            this.showConsoleMaterialSwitch.Text = "Show Console";
             this.showConsoleMaterialSwitch.UseVisualStyleBackColor = true;
-            this.showConsoleMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.showConsoleMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.inhibitSystemSleepMaterialSwitch);
-            this.groupBox2.Location = new System.Drawing.Point(13, 262);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(30, 15, 10, 10);
-            this.groupBox2.Size = new System.Drawing.Size(973, 81);
-            this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Power Management";
             // 
             // inhibitSystemSleepMaterialSwitch
             // 
-            this.inhibitSystemSleepMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.inhibitSystemSleepMaterialSwitch, "inhibitSystemSleepMaterialSwitch");
             this.inhibitSystemSleepMaterialSwitch.Depth = 0;
-            this.inhibitSystemSleepMaterialSwitch.Location = new System.Drawing.Point(30, 29);
-            this.inhibitSystemSleepMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.inhibitSystemSleepMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.inhibitSystemSleepMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.inhibitSystemSleepMaterialSwitch.Name = "inhibitSystemSleepMaterialSwitch";
             this.inhibitSystemSleepMaterialSwitch.Ripple = true;
-            this.inhibitSystemSleepMaterialSwitch.Size = new System.Drawing.Size(198, 37);
-            this.inhibitSystemSleepMaterialSwitch.TabIndex = 11;
-            this.inhibitSystemSleepMaterialSwitch.Text = "Inhibit system sleep";
             this.inhibitSystemSleepMaterialSwitch.UseVisualStyleBackColor = true;
-            this.inhibitSystemSleepMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.inhibitSystemSleepMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // confirmationOnExitMaterialSwitch
             // 
-            this.confirmationOnExitMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.confirmationOnExitMaterialSwitch, "confirmationOnExitMaterialSwitch");
             this.confirmationOnExitMaterialSwitch.Depth = 0;
-            this.confirmationOnExitMaterialSwitch.Location = new System.Drawing.Point(10, 81);
-            this.confirmationOnExitMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.confirmationOnExitMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.confirmationOnExitMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.confirmationOnExitMaterialSwitch.Name = "confirmationOnExitMaterialSwitch";
             this.confirmationOnExitMaterialSwitch.Ripple = true;
-            this.confirmationOnExitMaterialSwitch.Size = new System.Drawing.Size(202, 37);
-            this.confirmationOnExitMaterialSwitch.TabIndex = 13;
-            this.confirmationOnExitMaterialSwitch.Text = "Confirmation on exit";
             this.confirmationOnExitMaterialSwitch.UseVisualStyleBackColor = true;
-            this.confirmationOnExitMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.confirmationOnExitMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // startMinimizedMaterialSwitch
             // 
-            this.startMinimizedMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.startMinimizedMaterialSwitch, "startMinimizedMaterialSwitch");
             this.startMinimizedMaterialSwitch.Depth = 0;
-            this.startMinimizedMaterialSwitch.Location = new System.Drawing.Point(10, 44);
-            this.startMinimizedMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.startMinimizedMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.startMinimizedMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.startMinimizedMaterialSwitch.Name = "startMinimizedMaterialSwitch";
             this.startMinimizedMaterialSwitch.Ripple = true;
-            this.startMinimizedMaterialSwitch.Size = new System.Drawing.Size(170, 37);
-            this.startMinimizedMaterialSwitch.TabIndex = 12;
-            this.startMinimizedMaterialSwitch.Text = "Start minimized";
             this.startMinimizedMaterialSwitch.UseVisualStyleBackColor = true;
-            this.startMinimizedMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.startMinimizedMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // startOnStartupMaterialSwitch
             // 
-            this.startOnStartupMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.startOnStartupMaterialSwitch, "startOnStartupMaterialSwitch");
             this.startOnStartupMaterialSwitch.Depth = 0;
-            this.startOnStartupMaterialSwitch.Location = new System.Drawing.Point(10, 10);
-            this.startOnStartupMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.startOnStartupMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.startOnStartupMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.startOnStartupMaterialSwitch.Name = "startOnStartupMaterialSwitch";
             this.startOnStartupMaterialSwitch.Ripple = true;
-            this.startOnStartupMaterialSwitch.Size = new System.Drawing.Size(241, 37);
-            this.startOnStartupMaterialSwitch.TabIndex = 11;
-            this.startOnStartupMaterialSwitch.Text = "Start on Windows start up";
             this.startOnStartupMaterialSwitch.UseVisualStyleBackColor = true;
-            this.startOnStartupMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.startOnStartupMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // showInNotifitationMaterialSwitch
             // 
-            this.showInNotifitationMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.showInNotifitationMaterialSwitch, "showInNotifitationMaterialSwitch");
             this.showInNotifitationMaterialSwitch.Depth = 0;
-            this.showInNotifitationMaterialSwitch.Location = new System.Drawing.Point(374, 84);
-            this.showInNotifitationMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.showInNotifitationMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.showInNotifitationMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.showInNotifitationMaterialSwitch.Name = "showInNotifitationMaterialSwitch";
             this.showInNotifitationMaterialSwitch.Ripple = true;
-            this.showInNotifitationMaterialSwitch.Size = new System.Drawing.Size(243, 37);
-            this.showInNotifitationMaterialSwitch.TabIndex = 16;
-            this.showInNotifitationMaterialSwitch.Text = "Show in notification area  ";
             this.showInNotifitationMaterialSwitch.UseVisualStyleBackColor = true;
-            this.showInNotifitationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.showInNotifitationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // showInNotifitationGroupBox
             // 
-            this.showInNotifitationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.showInNotifitationGroupBox, "showInNotifitationGroupBox");
             this.showInNotifitationGroupBox.Controls.Add(this.closeToNotificationMaterialSwitch);
             this.showInNotifitationGroupBox.Controls.Add(this.minimizeToNotificationMaterialSwitch);
-            this.showInNotifitationGroupBox.Location = new System.Drawing.Point(13, 137);
             this.showInNotifitationGroupBox.Name = "showInNotifitationGroupBox";
-            this.showInNotifitationGroupBox.Padding = new System.Windows.Forms.Padding(30, 15, 10, 10);
-            this.showInNotifitationGroupBox.Size = new System.Drawing.Size(973, 119);
-            this.showInNotifitationGroupBox.TabIndex = 14;
             this.showInNotifitationGroupBox.TabStop = false;
             // 
             // closeToNotificationMaterialSwitch
             // 
-            this.closeToNotificationMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.closeToNotificationMaterialSwitch, "closeToNotificationMaterialSwitch");
             this.closeToNotificationMaterialSwitch.Depth = 0;
-            this.closeToNotificationMaterialSwitch.Location = new System.Drawing.Point(30, 65);
-            this.closeToNotificationMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.closeToNotificationMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.closeToNotificationMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.closeToNotificationMaterialSwitch.Name = "closeToNotificationMaterialSwitch";
             this.closeToNotificationMaterialSwitch.Ripple = true;
-            this.closeToNotificationMaterialSwitch.Size = new System.Drawing.Size(235, 37);
-            this.closeToNotificationMaterialSwitch.TabIndex = 7;
-            this.closeToNotificationMaterialSwitch.Text = "Close to notification area";
             this.closeToNotificationMaterialSwitch.UseVisualStyleBackColor = true;
-            this.closeToNotificationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.closeToNotificationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // minimizeToNotificationMaterialSwitch
             // 
-            this.minimizeToNotificationMaterialSwitch.AutoSize = true;
+            resources.ApplyResources(this.minimizeToNotificationMaterialSwitch, "minimizeToNotificationMaterialSwitch");
             this.minimizeToNotificationMaterialSwitch.Depth = 0;
-            this.minimizeToNotificationMaterialSwitch.Location = new System.Drawing.Point(30, 28);
-            this.minimizeToNotificationMaterialSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.minimizeToNotificationMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.minimizeToNotificationMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.minimizeToNotificationMaterialSwitch.Name = "minimizeToNotificationMaterialSwitch";
             this.minimizeToNotificationMaterialSwitch.Ripple = true;
-            this.minimizeToNotificationMaterialSwitch.Size = new System.Drawing.Size(261, 37);
-            this.minimizeToNotificationMaterialSwitch.TabIndex = 6;
-            this.minimizeToNotificationMaterialSwitch.Text = "Minimize to notification area";
             this.minimizeToNotificationMaterialSwitch.UseVisualStyleBackColor = true;
-            this.minimizeToNotificationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettingsMaterialSwitch_CheckStateChanged);
+            this.minimizeToNotificationMaterialSwitch.CheckStateChanged += new System.EventHandler(this.saveSettings);
             // 
             // menuIconList
             // 
@@ -1203,27 +916,19 @@ namespace MMX_NODE_GUI
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(3, 715);
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1064, 22);
-            this.statusStrip1.TabIndex = 5;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 740);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuMaterialTabControl);
             this.DrawerHighlightWithAccent = false;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.MenuMaterialTabControl;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1070, 678);
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MMX Node";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
@@ -1320,6 +1025,7 @@ namespace MMX_NODE_GUI
         private MaterialSkin.Controls.MaterialLabel threadsMaterialLabel;
         private System.Windows.Forms.GroupBox debugGroupBox;
         private MaterialSkin.Controls.MaterialSwitch showConsoleMaterialSwitch;
+        private MaterialSkin.Controls.MaterialComboBox langMaterialComboBox;
     }
 }
 

@@ -118,5 +118,17 @@ namespace MMX_NODE_GUI.Properties {
                 this["showConsole"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        public string langCode {
+            get {
+                return ((string)(this["langCode"]));
+            }
+            set {
+                this["langCode"] = value;
+            }
+        }
     }
 }
