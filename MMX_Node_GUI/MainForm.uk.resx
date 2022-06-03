@@ -133,19 +133,19 @@
     <value>Плоттер</value>
   </data>
   <data name="settingsTabPage.Text" xml:space="preserve">
-    <value>Налаштування графічного інтерфейсу</value>
+    <value>Налаштування</value>
   </data>
   <data name="nodeTabPage.Text" xml:space="preserve">
-    <value>(Вузол) or (Нода)</value>
+    <value>Вузол</value>
   </data>
   <data name="harvesterTabPage.Text" xml:space="preserve">
     <value>Ферма</value>
   </data>
   <data name="closeToNotificationMaterialSwitch.Text" xml:space="preserve">
-    <value>Закрити область сповіщення</value>
+    <value>При закритті згортати в область сповіщень</value>
   </data>
   <data name="showInNotifitationMaterialSwitch.Text" xml:space="preserve">
-    <value>Показати область сповіщення</value>
+    <value>Показувати в області сповіщень</value>
   </data>
   <data name="startMinimizedMaterialSwitch.Text" xml:space="preserve">
     <value>Запускати згорнутим</value>
