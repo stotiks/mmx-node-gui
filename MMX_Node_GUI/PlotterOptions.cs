@@ -17,7 +17,10 @@ namespace MMX_NODE_GUI
         public T Value
         {
             get { return _value; }
-            set { _value = value; NotifyPropertyChanged(); }
+            set { 
+                _value = value; 
+                NotifyPropertyChanged(); 
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -133,6 +136,26 @@ namespace MMX_NODE_GUI
             Value = ""
         };
 
+        public Item<bool> waitforcopy = new Item<bool>
+        {
+            Name = "w",
+            LongName = "waitforcopy",
+            Value = false
+        };
+
+        public Item<bool> tmptoggle = new Item<bool>
+        {
+            Name = "G",
+            LongName = "tmptoggle",
+            Value = false
+        };
+
+        public Item<bool> directout = new Item<bool>
+        {
+            Name = "D",
+            LongName = "directout",
+            Value = false,
+        };
 
         public Item<string> poolkey = new Item<string>
         {
@@ -155,26 +178,6 @@ namespace MMX_NODE_GUI
             Value = ""
         };
 
-        public Item<bool> waitforcopy = new Item<bool>
-        {
-            Name = "w",
-            LongName = "waitforcopy",
-            Value = false
-        };
-
-        public Item<bool> tmptoggle = new Item<bool>
-        {
-            Name = "G",
-            LongName = "tmptoggle",
-            Value = false
-        };
-
-        public Item<bool> directout = new Item<bool>
-        {
-            Name = "D",
-            LongName = "directout",
-            Value = false,
-        };
 
         public Item<bool> nftplot = new Item<bool>
         {
