@@ -2898,7 +2898,7 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="stagedirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 36</value>
+    <value>48, 48</value>
   </data>
   <data name="stagedirMaterialButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2934,7 +2934,7 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="tmpdirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 36</value>
+    <value>48, 48</value>
   </data>
   <data name="tmpdirMaterialButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2970,7 +2970,7 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="tmpdir2MaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 36</value>
+    <value>48, 48</value>
   </data>
   <data name="tmpdir2MaterialButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3180,6 +3180,42 @@
   <data name="&gt;&gt;finaldirMaterialTextBox2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="finaldirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="finaldirMaterialButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="finaldirMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="finaldirMaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="finaldirMaterialButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>990, 10</value>
+  </data>
+  <data name="finaldirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="finaldirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
+  </data>
+  <data name="finaldirMaterialButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;finaldirMaterialButton.Name" xml:space="preserve">
+    <value>finaldirMaterialButton</value>
+  </data>
+  <data name="&gt;&gt;finaldirMaterialButton.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;finaldirMaterialButton.Parent" xml:space="preserve">
+    <value>plotterTabPage</value>
+  </data>
+  <data name="&gt;&gt;finaldirMaterialButton.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="sizeMaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 70</value>
   </data>
@@ -3208,7 +3244,7 @@
     <value>plotterTabPage</value>
   </data>
   <data name="&gt;&gt;sizeMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="countMaterialNumericUpDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3241,42 +3277,6 @@
     <value>plotterTabPage</value>
   </data>
   <data name="&gt;&gt;countMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="finaldirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="finaldirMaterialButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="finaldirMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="finaldirMaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="finaldirMaterialButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>990, 10</value>
-  </data>
-  <data name="finaldirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="finaldirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 36</value>
-  </data>
-  <data name="finaldirMaterialButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.Name" xml:space="preserve">
-    <value>finaldirMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
   <data name="plotterTabPage.ImageKey" xml:space="preserve">
@@ -3740,7 +3740,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABm
-        EAAAAk1TRnQBSQFMAgEBBAEAAXwBDgF8AQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        EAAAAk1TRnQBSQFMAgEBBAEAAZQBDgGUAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
         AwABMAMAAQEBAAEgBgABSP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wBnAAH/gwAB/wMAAf9sAAMSARgDAAH/AwAB/wMA
         Af8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMAAf8DAAH/AwAB/wMA
@@ -5647,6 +5647,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4AcAAMADAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACA
         AQAAgAEAAIABAACAAQAAwAMAAOAHAAD//wAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1070, 678</value>

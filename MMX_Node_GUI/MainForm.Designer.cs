@@ -59,10 +59,6 @@ namespace MMX_NODE_GUI
             this.bucketsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.rmulti2MaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.threadsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.rmulti2MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.threadsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.buckets3MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.bucketsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.directoriesTabPage = new System.Windows.Forms.TabPage();
             this.tmpdirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.tmpdir2MaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
@@ -77,8 +73,6 @@ namespace MMX_NODE_GUI
             this.startMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.sizeMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.finaldirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
-            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.langMaterialComboBox = new MaterialSkin.Controls.MaterialComboBox();
@@ -95,6 +89,12 @@ namespace MMX_NODE_GUI
             this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.menuIconList = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.rmulti2MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.threadsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.buckets3MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.bucketsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.contextMenuStrip1.SuspendLayout();
             this.MenuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
@@ -102,17 +102,17 @@ namespace MMX_NODE_GUI
             this.plotterSettingsMaterialTabControl.SuspendLayout();
             this.keysTabPage.SuspendLayout();
             this.perfomanceTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).BeginInit();
             this.directoriesTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).BeginInit();
             this.settingsTabPage.SuspendLayout();
             this.debugGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.showInNotifitationGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -232,9 +232,9 @@ namespace MMX_NODE_GUI
             this.plotterTabPage.Controls.Add(this.startMaterialButton);
             this.plotterTabPage.Controls.Add(this.sizeMaterialLabel);
             this.plotterTabPage.Controls.Add(this.finaldirMaterialTextBox2);
+            this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
             this.plotterTabPage.Controls.Add(this.sizeMaterialNumericUpDown);
             this.plotterTabPage.Controls.Add(this.countMaterialNumericUpDown);
-            this.plotterTabPage.Controls.Add(this.finaldirMaterialButton);
             resources.ApplyResources(this.plotterTabPage, "plotterTabPage");
             this.plotterTabPage.Name = "plotterTabPage";
             // 
@@ -404,94 +404,6 @@ namespace MMX_NODE_GUI
             this.threadsMaterialLabel.Depth = 0;
             this.threadsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.threadsMaterialLabel.Name = "threadsMaterialLabel";
-            // 
-            // rmulti2MaterialNumericUpDown
-            // 
-            this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
-            this.rmulti2MaterialNumericUpDown.LogValue = false;
-            this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.rmulti2MaterialNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.rmulti2MaterialNumericUpDown.Name = "rmulti2MaterialNumericUpDown";
-            this.rmulti2MaterialNumericUpDown.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // threadsMaterialNumericUpDown
-            // 
-            this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
-            this.threadsMaterialNumericUpDown.LogValue = false;
-            this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
-            this.threadsMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.threadsMaterialNumericUpDown.Name = "threadsMaterialNumericUpDown";
-            this.threadsMaterialNumericUpDown.Value = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            // 
-            // buckets3MaterialNumericUpDown
-            // 
-            this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
-            this.buckets3MaterialNumericUpDown.LogValue = true;
-            this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.buckets3MaterialNumericUpDown.Minimum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.buckets3MaterialNumericUpDown.Name = "buckets3MaterialNumericUpDown";
-            this.buckets3MaterialNumericUpDown.Value = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
-            // 
-            // bucketsMaterialNumericUpDown
-            // 
-            this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
-            this.bucketsMaterialNumericUpDown.LogValue = true;
-            this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.bucketsMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.bucketsMaterialNumericUpDown.Name = "bucketsMaterialNumericUpDown";
-            this.bucketsMaterialNumericUpDown.Value = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
             // 
             // directoriesTabPage
             // 
@@ -705,50 +617,6 @@ namespace MMX_NODE_GUI
             this.finaldirMaterialTextBox2.TrailingIcon = null;
             this.finaldirMaterialTextBox2.UseSystemPasswordChar = false;
             // 
-            // sizeMaterialNumericUpDown
-            // 
-            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
-            this.sizeMaterialNumericUpDown.LogValue = false;
-            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            34,
-            0,
-            0,
-            0});
-            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
-            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // countMaterialNumericUpDown
-            // 
-            resources.ApplyResources(this.countMaterialNumericUpDown, "countMaterialNumericUpDown");
-            this.countMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.countMaterialNumericUpDown.LogValue = false;
-            this.countMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.countMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.countMaterialNumericUpDown.Name = "countMaterialNumericUpDown";
-            this.countMaterialNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            // 
             // finaldirMaterialButton
             // 
             resources.ApplyResources(this.finaldirMaterialButton, "finaldirMaterialButton");
@@ -919,6 +787,138 @@ namespace MMX_NODE_GUI
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
+            // rmulti2MaterialNumericUpDown
+            // 
+            this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
+            this.rmulti2MaterialNumericUpDown.LogValue = false;
+            this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.rmulti2MaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.rmulti2MaterialNumericUpDown.Name = "rmulti2MaterialNumericUpDown";
+            this.rmulti2MaterialNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // threadsMaterialNumericUpDown
+            // 
+            this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
+            this.threadsMaterialNumericUpDown.LogValue = false;
+            this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            128,
+            0,
+            0,
+            0});
+            this.threadsMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.threadsMaterialNumericUpDown.Name = "threadsMaterialNumericUpDown";
+            this.threadsMaterialNumericUpDown.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            // 
+            // buckets3MaterialNumericUpDown
+            // 
+            this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
+            this.buckets3MaterialNumericUpDown.LogValue = true;
+            this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.buckets3MaterialNumericUpDown.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.buckets3MaterialNumericUpDown.Name = "buckets3MaterialNumericUpDown";
+            this.buckets3MaterialNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            // 
+            // bucketsMaterialNumericUpDown
+            // 
+            this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
+            this.bucketsMaterialNumericUpDown.LogValue = true;
+            this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.bucketsMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.bucketsMaterialNumericUpDown.Name = "bucketsMaterialNumericUpDown";
+            this.bucketsMaterialNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            // 
+            // sizeMaterialNumericUpDown
+            // 
+            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
+            this.sizeMaterialNumericUpDown.LogValue = false;
+            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            34,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
+            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // countMaterialNumericUpDown
+            // 
+            resources.ApplyResources(this.countMaterialNumericUpDown, "countMaterialNumericUpDown");
+            this.countMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.countMaterialNumericUpDown.LogValue = false;
+            this.countMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.countMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.countMaterialNumericUpDown.Name = "countMaterialNumericUpDown";
+            this.countMaterialNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -943,13 +943,7 @@ namespace MMX_NODE_GUI
             this.keysTabPage.PerformLayout();
             this.perfomanceTabPage.ResumeLayout(false);
             this.perfomanceTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).EndInit();
             this.directoriesTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).EndInit();
             this.settingsTabPage.ResumeLayout(false);
             this.settingsTabPage.PerformLayout();
             this.debugGroupBox.ResumeLayout(false);
@@ -958,6 +952,12 @@ namespace MMX_NODE_GUI
             this.groupBox2.PerformLayout();
             this.showInNotifitationGroupBox.ResumeLayout(false);
             this.showInNotifitationGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
