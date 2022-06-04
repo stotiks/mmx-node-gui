@@ -2220,7 +2220,7 @@
     <value>No</value>
   </data>
   <data name="tmpdirMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 48</value>
+    <value>908, 48</value>
   </data>
   <data name="tmpdirMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2260,7 +2260,7 @@
     <value>No</value>
   </data>
   <data name="tmpdir2MaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 48</value>
+    <value>908, 48</value>
   </data>
   <data name="tmpdir2MaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2300,7 +2300,7 @@
     <value>No</value>
   </data>
   <data name="stagedirMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 48</value>
+    <value>908, 48</value>
   </data>
   <data name="stagedirMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2410,6 +2410,9 @@
   <data name="&gt;&gt;waitforcopyMaterialSwitch.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="stagedirMaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="stagedirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -2446,6 +2449,9 @@
   <data name="&gt;&gt;stagedirMaterialButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="tmpdirMaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="tmpdirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -2482,6 +2488,9 @@
   <data name="&gt;&gt;tmpdirMaterialButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="tmpdir2MaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="tmpdir2MaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -3171,6 +3180,9 @@
   <data name="&gt;&gt;finaldirMaterialTextBox2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="finaldirMaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="finaldirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -3761,30 +3773,30 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAM
-        FgAAAk1TRnQBSQFMAgEBBQEAAaQBDgGkAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
-        AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0MBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMmAeIDFAEb
-        /wBVAAM1AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/Ax0B6v8ATQADQQG1
+        FgAAAk1TRnQBSQFMAgEBBQEAAawBDgGsAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0cBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMzAeIDFAEb
+        /wBVAAM2AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AygB6v8ATQADSwG1
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMIAQr/AEEA
-        A0UBmAMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        A0sBmAMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
         AwAB//8APQADDgESAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMcAez/ADkAAwoB+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMnAez/ADkAAw8B+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMUARv/ADEABAIDAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AycB4f8AMQADQQF6AwAB/wMA
+        Af8DAAH/AwAB/wsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AzQB4f8AMQADQwF6AwAB/wMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af//ADEAAzMB1AMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH//wAxAAMKAfkDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8AMQADGQHtAwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADEAA0MBrgMA
+        Af//ADEAA0EB1AMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH//wAxAAMPAfkDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8AMQADIgHtAwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADEAA00BrgMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
         Af8DAAH/AwAB/wMAAf//ADEAAyYBOQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADgAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DQwGH/wA1AANEAZkDAAH/
+        AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DRwGH/wA1AANLAZkDAAH/
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//AEAA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DNQFX/wA9AAMEAQUDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wM+Abv/AEUAAwQBBQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wNFAZj/AFEAA0QBmQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwoB+QMP
-        ART/AF0AAyYBOQNDAa0DFwHuAwgB+gMzAdQDQQF6BAL/AP8A/wD/AP8A/wB1AAH/gwAB/wMAAf9sAAMS
+        Af8DNgFX/wA9AAMEAQUDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wNKAbv/AEUAAwQBBQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wNLAZj/AFEAA0sBmQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/Aw8B+QMP
+        ART/AF0AAyYBOQNNAa0DIQHuAwwB+gNBAdQDQwF6BAL/AP8A/wD/AP8A/wB1AAH/gwAB/wMAAf9sAAMS
         ARgDAAH/AwAB/wMAAf8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DXQHsNAADOQFfAwAB/wMAAf8DAAH/AwAB/wMAAf9AAAM9
         AWcDQQH5AwAB/wMAAf8DAAH/AwAB/wMAAf8IAANXAbwDAAH/AwAB/wMAAf8DAAH/fwAB/wMAAf8XAAH/
