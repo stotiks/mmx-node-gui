@@ -2197,6 +2197,355 @@
   <data name="plotterSettingsMaterialTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="tmpdirMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tmpdirMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tmpdirMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 16px</value>
+  </data>
+  <data name="tmpdirMaterialTextBox2.Hint" xml:space="preserve">
+    <value>Temporary directory</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="tmpdirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="tmpdirMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="tmpdirMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="tmpdirMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 48</value>
+  </data>
+  <data name="tmpdirMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialTextBox2.Name" xml:space="preserve">
+    <value>tmpdirMaterialTextBox2</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialTextBox2.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialTextBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 16px</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.Hint" xml:space="preserve">
+    <value>Temporary directory 2 [RAM]</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 60</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="tmpdir2MaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 48</value>
+  </data>
+  <data name="tmpdir2MaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Name" xml:space="preserve">
+    <value>tmpdir2MaterialTextBox2</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialTextBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 16px</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
+    <value>Stage directory to write plot file</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="stagedirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 114</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="stagedirMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 48</value>
+  </data>
+  <data name="stagedirMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialTextBox2.Name" xml:space="preserve">
+    <value>stagedirMaterialTextBox2</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialTextBox2.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialTextBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="directoutMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="directoutMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 239</value>
+  </data>
+  <data name="directoutMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="directoutMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 37</value>
+  </data>
+  <data name="directoutMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="directoutMaterialSwitch.Text" xml:space="preserve">
+    <value>Create plot directly in finaldir</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="&gt;&gt;directoutMaterialSwitch.Name" xml:space="preserve">
+    <value>directoutMaterialSwitch</value>
+  </data>
+  <data name="&gt;&gt;directoutMaterialSwitch.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;directoutMaterialSwitch.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;directoutMaterialSwitch.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tmptoggleMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="tmptoggleMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 202</value>
+  </data>
+  <data name="tmptoggleMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tmptoggleMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 37</value>
+  </data>
+  <data name="tmptoggleMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tmptoggleMaterialSwitch.Text" xml:space="preserve">
+    <value>Alternate tmpdir/tmpdir2</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="&gt;&gt;tmptoggleMaterialSwitch.Name" xml:space="preserve">
+    <value>tmptoggleMaterialSwitch</value>
+  </data>
+  <data name="&gt;&gt;tmptoggleMaterialSwitch.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tmptoggleMaterialSwitch.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;tmptoggleMaterialSwitch.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="waitforcopyMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="waitforcopyMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 165</value>
+  </data>
+  <data name="waitforcopyMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="waitforcopyMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 37</value>
+  </data>
+  <data name="waitforcopyMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="waitforcopyMaterialSwitch.Text" xml:space="preserve">
+    <value>Wait for copy to start next plot</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="&gt;&gt;waitforcopyMaterialSwitch.Name" xml:space="preserve">
+    <value>waitforcopyMaterialSwitch</value>
+  </data>
+  <data name="&gt;&gt;waitforcopyMaterialSwitch.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;waitforcopyMaterialSwitch.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;waitforcopyMaterialSwitch.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="stagedirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="stagedirMaterialButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="stagedirMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="stagedirMaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="stagedirMaterialButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>530, 114</value>
+  </data>
+  <data name="stagedirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="stagedirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 36</value>
+  </data>
+  <data name="stagedirMaterialButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialButton.Name" xml:space="preserve">
+    <value>stagedirMaterialButton</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialButton.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialButton.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;stagedirMaterialButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tmpdirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tmpdirMaterialButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tmpdirMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tmpdirMaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="tmpdirMaterialButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>530, 6</value>
+  </data>
+  <data name="tmpdirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="tmpdirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 36</value>
+  </data>
+  <data name="tmpdirMaterialButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialButton.Name" xml:space="preserve">
+    <value>tmpdirMaterialButton</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialButton.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialButton.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;tmpdirMaterialButton.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tmpdir2MaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tmpdir2MaterialButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tmpdir2MaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tmpdir2MaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="tmpdir2MaterialButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>530, 60</value>
+  </data>
+  <data name="tmpdir2MaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="tmpdir2MaterialButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 36</value>
+  </data>
+  <data name="tmpdir2MaterialButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialButton.Name" xml:space="preserve">
+    <value>tmpdir2MaterialButton</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialButton.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialButton.Parent" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;tmpdir2MaterialButton.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="directoriesTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="directoriesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="directoriesTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>969, 288</value>
+  </data>
+  <data name="directoriesTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="directoriesTabPage.Text" xml:space="preserve">
+    <value>Directories</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="&gt;&gt;directoriesTabPage.Name" xml:space="preserve">
+    <value>directoriesTabPage</value>
+  </data>
+  <data name="&gt;&gt;directoriesTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;directoriesTabPage.Parent" xml:space="preserve">
+    <value>plotterSettingsMaterialTabControl</value>
+  </data>
+  <data name="&gt;&gt;directoriesTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="farmerkeyMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -2377,7 +2726,7 @@
     <value>plotterSettingsMaterialTabControl</value>
   </data>
   <data name="&gt;&gt;keysTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="buckets3MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2655,371 +3004,13 @@
     <value>plotterSettingsMaterialTabControl</value>
   </data>
   <data name="&gt;&gt;perfomanceTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Temporary directory</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="tmpdirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="tmpdirMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 48</value>
-  </data>
-  <data name="tmpdirMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.Name" xml:space="preserve">
-    <value>tmpdirMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.Hint" xml:space="preserve">
-    <value>Temporary directory 2 [RAM]</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 60</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="tmpdir2MaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 48</value>
-  </data>
-  <data name="tmpdir2MaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Name" xml:space="preserve">
-    <value>tmpdir2MaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Stage directory to write plot file</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="stagedirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 114</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="stagedirMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 48</value>
-  </data>
-  <data name="stagedirMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.Name" xml:space="preserve">
-    <value>stagedirMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="directoutMaterialSwitch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="directoutMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="directoutMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 104</value>
-  </data>
-  <data name="directoutMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="directoutMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 37</value>
-  </data>
-  <data name="directoutMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="directoutMaterialSwitch.Text" xml:space="preserve">
-    <value>Create plot directly in finaldir</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.Name" xml:space="preserve">
-    <value>directoutMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 67</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 37</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tmptoggleMaterialSwitch.Text" xml:space="preserve">
-    <value>Alternate tmpdir/tmpdir2</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.Name" xml:space="preserve">
-    <value>tmptoggleMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 30</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 37</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="waitforcopyMaterialSwitch.Text" xml:space="preserve">
-    <value>Wait for copy to start next plot</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.Name" xml:space="preserve">
-    <value>waitforcopyMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="stagedirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="stagedirMaterialButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="stagedirMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="stagedirMaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="stagedirMaterialButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 114</value>
-  </data>
-  <data name="stagedirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="stagedirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="stagedirMaterialButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.Name" xml:space="preserve">
-    <value>stagedirMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tmpdirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="tmpdirMaterialButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tmpdirMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tmpdirMaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tmpdirMaterialButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 6</value>
-  </data>
-  <data name="tmpdirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="tmpdirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="tmpdirMaterialButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.Name" xml:space="preserve">
-    <value>tmpdirMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tmpdir2MaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="tmpdir2MaterialButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tmpdir2MaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tmpdir2MaterialButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tmpdir2MaterialButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 60</value>
-  </data>
-  <data name="tmpdir2MaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="tmpdir2MaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="tmpdir2MaterialButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.Name" xml:space="preserve">
-    <value>tmpdir2MaterialButton</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="directoriesTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="directoriesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="directoriesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>969, 224</value>
-  </data>
-  <data name="directoriesTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="directoriesTabPage.Text" xml:space="preserve">
-    <value>Directories</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Name" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Parent" xml:space="preserve">
-    <value>plotterSettingsMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="plotterSettingsMaterialTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 187</value>
   </data>
   <data name="plotterSettingsMaterialTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>977, 250</value>
+    <value>977, 314</value>
   </data>
   <data name="plotterSettingsMaterialTabControl.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -3199,7 +3190,7 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="finaldirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
+    <value>48, 36</value>
   </data>
   <data name="finaldirMaterialButton.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -3740,7 +3731,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABm
-        EAAAAk1TRnQBSQFMAgEBBAEAAZQBDgGUAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        EAAAAk1TRnQBSQFMAgEBBAEAAZwBDgGcAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
         AwABMAMAAQEBAAEgBgABSP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wBnAAH/gwAB/wMAAf9sAAMSARgDAAH/AwAB/wMA
         Af8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMAAf8DAAH/AwAB/wMA
@@ -5647,9 +5638,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4AcAAMADAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACA
         AQAAgAEAAIABAACAAQAAwAMAAOAHAAD//wAA
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1070, 678</value>
