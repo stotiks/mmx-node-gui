@@ -3,6 +3,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
 {
@@ -13,12 +14,17 @@ namespace MMX_NODE_GUI
         private void InitializeHarvester()
         {
 
-            this.MenuMaterialTabControl.SelectedIndexChanged += new System.EventHandler(this.MenuMaterialTabControl_SelectedIndexChanged);
+            this.menuMaterialTabControl.SelectedIndexChanged += new System.EventHandler(this.MenuMaterialTabControl_SelectedIndexChanged);
+        }
+
+        private void IsNotNull(object sender, ConvertEventArgs e)
+        {
+            e.Value = e.Value != null && (int)e.Value >= 0 ? true : false;
         }
 
         private void MenuMaterialTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.MenuMaterialTabControl.SelectedTab == harvesterTabPage)
+            if (this.menuMaterialTabControl.SelectedTab == harvesterTabPage)
             {
                 string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
                 harvesterConfig = JObject.Parse(harvesterJson);
@@ -43,8 +49,10 @@ namespace MMX_NODE_GUI
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                var item = new MaterialListBoxItem(dialog.FileName);
+                var dirName = dialog.FileName;
+                var item = new MaterialListBoxItem(dirName);
                 plotFoldersMaterialListBox.Items.Add(item);
+                Node.AddPlotDir(dirName);
 
                 SaveHavesterConfig();
             }
@@ -52,6 +60,14 @@ namespace MMX_NODE_GUI
 
         private void removePlotFolderMaterialButton_Click(object sender, EventArgs e)
         {
+            if (plotFoldersMaterialListBox.SelectedItem == null)
+            {
+                return;
+            }
+
+            var dirName = plotFoldersMaterialListBox.SelectedItem.Text;
+            Node.RemovePlotDir(dirName);
+
             plotFoldersMaterialListBox.Items.Remove(plotFoldersMaterialListBox.SelectedItem);
             SaveHavesterConfig();
         }

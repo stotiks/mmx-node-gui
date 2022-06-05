@@ -33,8 +33,9 @@ namespace MMX_NODE_GUI
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
         static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
-        static Random random = new Random();
-        private static string xToken = GetRandomHexNumber(64);
+        private static string _xApiToken = GetRandomHexNumber(64);
+        public static string XApiTokenName = "x-api-token";
+
 
         public event EventHandler BeforeStarted;
 
@@ -47,9 +48,52 @@ namespace MMX_NODE_GUI
         private Process process;
         private bool processStarted = false;
 
-        public Node()
-        {            
+
+        static Node()
+        {
+            client.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
         }
+
+        public Node()
+        {
+        }
+
+        internal static void RemovePlotDir(string dirName)
+        { 
+            var task = Task.Run(async () =>
+            {
+                dynamic data = new JObject();
+                data.path = dirName;
+
+                var myContent = JsonConvert.SerializeObject(data);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                var res = await client.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
+                var res2 = await client.GetAsync(baseUri + "api/harvester/reload");
+            });
+
+            //task.Wait();
+
+        }
+
+        internal static void AddPlotDir(string dirName)
+        {
+
+            var task = Task.Run(async () =>
+            {
+                dynamic data = new JObject();
+                data.path = dirName;
+
+                var myContent = JsonConvert.SerializeObject(data);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                var res = await client.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
+                var res2 = await client.GetAsync(baseUri + "api/harvester/reload");
+            });
+
+            //task.Wait();
+        }
+
 
         public static bool IsRunning
         {
@@ -94,11 +138,10 @@ namespace MMX_NODE_GUI
             OnStart();
         }
 
-
-
         public static string GetRandomHexNumber(int digits)
         {
             byte[] buffer = new byte[digits / 2];
+            Random random = new Random();
             random.NextBytes(buffer);
             string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
             if (digits % 2 == 0)
@@ -127,11 +170,18 @@ namespace MMX_NODE_GUI
             InitXToken();
         }
 
-        public static string XToken
+        public static string XApiToken
         {
             get
             {
-                return xToken;
+                return _xApiToken;
+            }
+
+            set
+            {
+                _xApiToken = value;
+                client.DefaultRequestHeaders.Remove(XApiTokenName);
+                client.DefaultRequestHeaders.Add(XApiTokenName, _xApiToken);
             }
         }
 
@@ -148,6 +198,7 @@ namespace MMX_NODE_GUI
             }
 
             dynamic httpServerConfig = JsonConvert.DeserializeObject(json);
+
             if (IsRunning)
             {
                 var map = httpServerConfig["token_map"];
@@ -156,7 +207,7 @@ namespace MMX_NODE_GUI
                 {
                     if(prop.Value.ToString() == "ADMIN")
                     {
-                        xToken = prop.Name;
+                        XApiToken = prop.Name;
                         break;
                     }                    
                 }
@@ -165,7 +216,7 @@ namespace MMX_NODE_GUI
             {
                 dynamic jObject = new JObject();
                 var role = "ADMIN";
-                var token = XToken;
+                var token = XApiToken;
                 jObject.Add(token, role);
                 httpServerConfig["token_map"] = jObject;
 

@@ -124,6 +124,21 @@
     <value>130, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="showToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 22</value>
+  </data>
+  <data name="showToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 6</value>
+  </data>
+  <data name="exitToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 22</value>
+  </data>
+  <data name="exitToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 54</value>
   </data>
@@ -1915,21 +1930,6 @@
   <data name="notifyIcon1.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="showToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="showToolStripMenuItem.Text" xml:space="preserve">
-    <value>Show</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 6</value>
-  </data>
-  <data name="exitToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="exitToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
   <data name="nodeTabPage.ImageKey" xml:space="preserve">
     <value>database-sync.png</value>
   </data>
@@ -1952,13 +1952,13 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nodeTabPage.Parent" xml:space="preserve">
-    <value>MenuMaterialTabControl</value>
+    <value>menuMaterialTabControl</value>
   </data>
   <data name="&gt;&gt;nodeTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MenuMaterialTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="menuMaterialTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -2115,442 +2115,10 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;harvesterTabPage.Parent" xml:space="preserve">
-    <value>MenuMaterialTabControl</value>
+    <value>menuMaterialTabControl</value>
   </data>
   <data name="&gt;&gt;harvesterTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox21.Name" xml:space="preserve">
-    <value>materialMultiLineTextBox21</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox21.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialMultiLineTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox21.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox21.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;countMaterialLabel.Name" xml:space="preserve">
-    <value>countMaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;countMaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;countMaterialLabel.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;countMaterialLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Name" xml:space="preserve">
-    <value>plotterSettingsMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabSelector.Name" xml:space="preserve">
-    <value>plotterSettingsMaterialTabSelector</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabSelector.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabSelector, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabSelector.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabSelector.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;startMaterialButton.Name" xml:space="preserve">
-    <value>startMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;startMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;startMaterialButton.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;startMaterialButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialLabel.Name" xml:space="preserve">
-    <value>sizeMaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialLabel.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialTextBox2.Name" xml:space="preserve">
-    <value>finaldirMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialTextBox2.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.Name" xml:space="preserve">
-    <value>finaldirMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;finaldirMaterialButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialNumericUpDown.Name" xml:space="preserve">
-    <value>sizeMaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;sizeMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;countMaterialNumericUpDown.Name" xml:space="preserve">
-    <value>countMaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;countMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;countMaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;countMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="plotterTabPage.ImageKey" xml:space="preserve">
-    <value>harddisk-plus.png</value>
-  </data>
-  <data name="plotterTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 31</value>
-  </data>
-  <data name="plotterTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="plotterTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 613</value>
-  </data>
-  <data name="plotterTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="plotterTabPage.Text" xml:space="preserve">
-    <value>Plotter</value>
-  </data>
-  <data name="&gt;&gt;plotterTabPage.Name" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;plotterTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plotterTabPage.Parent" xml:space="preserve">
-    <value>MenuMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;plotterTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;langMaterialComboBox.Name" xml:space="preserve">
-    <value>langMaterialComboBox</value>
-  </data>
-  <data name="&gt;&gt;langMaterialComboBox.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialComboBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;langMaterialComboBox.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;langMaterialComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;debugGroupBox.Name" xml:space="preserve">
-    <value>debugGroupBox</value>
-  </data>
-  <data name="&gt;&gt;debugGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;debugGroupBox.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;debugGroupBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;confirmationOnExitMaterialSwitch.Name" xml:space="preserve">
-    <value>confirmationOnExitMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;confirmationOnExitMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;confirmationOnExitMaterialSwitch.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;confirmationOnExitMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;startMinimizedMaterialSwitch.Name" xml:space="preserve">
-    <value>startMinimizedMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;startMinimizedMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;startMinimizedMaterialSwitch.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;startMinimizedMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;startOnStartupMaterialSwitch.Name" xml:space="preserve">
-    <value>startOnStartupMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;startOnStartupMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;startOnStartupMaterialSwitch.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;startOnStartupMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationMaterialSwitch.Name" xml:space="preserve">
-    <value>showInNotifitationMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationMaterialSwitch.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.Name" xml:space="preserve">
-    <value>showInNotifitationGroupBox</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="settingsTabPage.ImageKey" xml:space="preserve">
-    <value>cog.png</value>
-  </data>
-  <data name="settingsTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 31</value>
-  </data>
-  <data name="settingsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="settingsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 613</value>
-  </data>
-  <data name="settingsTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="settingsTabPage.Text" xml:space="preserve">
-    <value>GUI Settings</value>
-  </data>
-  <data name="&gt;&gt;settingsTabPage.Name" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;settingsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;settingsTabPage.Parent" xml:space="preserve">
-    <value>MenuMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;settingsTabPage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="aboutTabPage.ImageKey" xml:space="preserve">
-    <value>information.png</value>
-  </data>
-  <data name="aboutTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 31</value>
-  </data>
-  <data name="aboutTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="aboutTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 613</value>
-  </data>
-  <data name="aboutTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="aboutTabPage.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="&gt;&gt;aboutTabPage.Name" xml:space="preserve">
-    <value>aboutTabPage</value>
-  </data>
-  <data name="&gt;&gt;aboutTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;aboutTabPage.Parent" xml:space="preserve">
-    <value>MenuMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;aboutTabPage.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <metadata name="menuIconList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>285, 17</value>
-  </metadata>
-  <data name="menuIconList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAM
-        FgAAAk1TRnQBSQFMAgEBBQEAAdQBDgHUAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
-        AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0kBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNSAeIDFAEb
-        /wBVAAM2AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A0gB6v8ATQADVgG1
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMIAQr/AEEA
-        A04BmAMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB//8APQADDgESAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wNHAez/ADkAAx4B+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMUARv/ADEABAIDAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A1YB4f8AMQADRAF6AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af//ADEAA1sB1AMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH//wAxAAMeAfkDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8AMQADRQHtAwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADEAA1UBrgMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf//ADEAAyYBOQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADgAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DSQGH/wA1AANPAZkDAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//AEAA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DNgFX/wA9AAMEAQUDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wNZAbv/AEUAAwQBBQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wNOAZj/AFEAA08BmQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/Ax4B+QMP
-        ART/AF0AAyYBOQNVAa0DQgHuAxwB+gNbAdQDRAF6BAL/AP8A/wD/AP8A/wB1AAH/gwAB/wMAAf9sAAMS
-        ARgDAAH/AwAB/wMAAf8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DXQHsNAADOQFfAwAB/wMAAf8DAAH/AwAB/wMAAf9AAAM9
-        AWcDQQH5AwAB/wMAAf8DAAH/AwAB/wMAAf8IAANXAbwDAAH/AwAB/wMAAf8DAAH/fwAB/wMAAf8XAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf80AANTAaYDAAH/AwAB/wMAAf8DAAH/AwAB/zgA
-        Ay0BRQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DRgF9BAADHwEsAwAB/wNEAXoHAAH/CAADWgH1
-        FAADWQHDAwAB/wMAAf8DAAH/AwAB/wMYASEYAANdAc8DAAH/AwAB/wMAAf8DFAEbEwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DYAHjA0wBkQMAAf8DAAH/AwAB/wMAAf8gAANb
-        AdgDAAH/A1wB2QMPARQDXwHlAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMzAVADPAFmAwAB/wMA
-        Af8DBgEHHAADHAEnAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DDwEUBAADXwHVAwAB/xAA
-        AysBQgMAAf8QAANZAe8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DGgEkEAADPwFtAwAB/wNDAXcDEwEa
-        A0EB+QMAAf8TAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsAAf8DAAH/AwAB/wMXAR8EAAQB
-        A2EB6wMAAf8DAAH/HAADEQEWAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wNaAfIcAANaAfIDAAH/AwAB/wNOAZgDBQEGGAADSAH2AwAB/xAA
-        AwoBDQMAAf8MAAMtAUYDAAH/AwAB/wMwAUsIAANeAfADAAH/AwAB/xAAA2AB8wMAAf8IAAMTARoDAAH/
-        HwAB/wMAAf8XAAH/AwAB/wMAAf8IAAMSARcDAAH/AwAB/wMAAf8cAAMrAfwDAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMkATQbAAH/
-        A1gBuiQAA04BlANcAfgQAANWAbMDAAH/DAADWwHYAwAB/wNaAccTAAH/AwAB/xAAA10ByQMAAf8IAAND
-        AXcDAAH/HwAB/wMAAf8QAAMvAUkDAAH/AwAB/wNJAYgLAAH/AwAB/wMAAf8DAAH/GAADLwFJAwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wNdAeoDIwEyAwkBDANGAX4DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/xgAA1sB2AgAAz0BZwNBAfkDAAH/AwAB/wMAAf8DAAH/A10B0RMAAf8DCQELA1YBsgMA
-        Af8DTQGTDAADWgH1AwAB/wNLAYwTAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/GwAB/wMAAf8bAAH/CAADWgH1AwAB/wMAAf8DAAH/AwAB/xwAA2AB4wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/A1QBqxAABAEDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DJgE4GAADCgENAy0BRQMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/BAELAAH/AwAB/wMAAf8DAAH/A04BlBAAA1EBoQMA
-        Af8DAAH/DAADMAFLAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/zQAAygBOwNdAewEAANYAbcDWAG6A1EBpAMAAf8DAAH/AwAB/yAAA0sBjQMAAf8DAAH/AwAB/wMA
-        Af8YAANGAX4DAAH/AwAB/wMAAf8DAAH/AwMBBBwAAxwBJwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wNIAfYPAAH/HAAEAQMAAf8DAAH/AwAB/wNMAY4DWgHHAwAB/wMAAf8DWQHBCwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/GAADGQEjAwkBCwMyAU8QAANbAdgDQwF3AzYBVwNT
-        AfQIAANiAe4DAAH/AwAB/ycAAf8DAAH/AwAB/wMAAf8YAAMLAQ4DAAH/AwAB/wMAAf8DWgH1IAADWgHy
-        AwAB/wMAAf8DTgGYAwUBBkgAAyoBPwMAAf8DAAH/AwAB/wMAAf8DAAH/A1kB7w8AAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/xsAAf8DAAH/A1wB1hAABAEDXgHtAwAB/wwAAwoBDQMAAf8DAAH/
-        JwAB/wMAAf8DAAH/AwAB/xgAAyIBMQMAAf8DAAH/AwAB/wNbAeQjAAH/A1gBujQAAwQBBScAAf8DAAH/
-        A1wB2QMsAUMTAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A1oB8gMcAScbAAH/AwAB/wMmATkvAAH/
-        AwAB/xwAAw8BFAMAAf8DAAH/AwAB/wMAAf8DAAH/AwoBDRQAA10B6gMAAf8DAAH/AwAB/wMAAf8DWAG4
-        HAADWwHYCAADPQFnA0EB+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DWgG/AwkBDAQAAwUBBicA
-        Af8DAAH/GwAB/wMAAf83AAH/AwAB/wQBEAADYAHjAwAB/xcAAf8DAAH/GAADJgE4AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMKAQ0MAANUAasDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DXAH4GAADCgEN
-        Ay0BRQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNeAeIrAAH/
-        AwAB/xsAAf8DAAH/NwAB/wMAAf8DDgESEAADMAFLA2AB4xcAAf8DAAH/HwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A1sBxRgA
-        AxsBJQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        A1wB+CcAAf8DAAH/FAADEgEYAwAB/wNRAfc3AAH/AwAB/wNGAYAvAAH/AwAB/xwAA1ABnAMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        HAADWgHyAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/JwAB/wMAAf8UAANGAYADAAH/A04BlzcAAf8DAAH/AwAB/ygAAz8BbQMAAf8DAAH/IwAB/wMA
-        Af8DAAH/A00B+gMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNC
-        AXQcAANWAbADAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8nAAH/AwAB/xQAA2EB5gMAAf8DIgExNwAB/wMAAf8DAAH/A1IBoCAAAwQBBQMAAf8DAAH/
-        AwAB/yAAAyoBQANSAagEAQQAAwwBDwNlAfEDAAH/AwAB/wMAAf8DAAH/AwAB/wNFAXwIAAMrAUEDXwHl
-        JAADTQH6AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wM2
-        AVcnAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf87AAH/AwAB/wMAAf8DAAH/A1EBohgA
-        AxIBFwMAAf8DAAH/AwAB/wMAAf80AANHAYIDAAH/AwAB/wMAAf8DAAH/AwAB/zwAA0oBigMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DZQHxAwkBDCsAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/zsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNKAYsDGAEhAwwBDwMzAVEDYAHo
-        AwAB/wMAAf8DAAH/AwAB/wMAAf80AAMoATwDAAH/AwAB/wMAAf8DAAH/AwAB/0QAAwoBDQNFAXwDXQHM
-        A2IB7gNBAfkDXgHdA1EBpAMxAU2QAANVAawDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf87AAH/AwAB/wMAAf8DAAH/A1cBvPgAA1UBrAMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNaAfIDHAEn/wD/AP8AEwABQgFN
-        AT4HAAE+AwABKAMAAWADAAEwAwABAQEAAQEFAAFAAQIWAAP/AQAD/wkAA/8JAAH/AQABfwkAAfwBAAE/
-        CQAB+AEAAQ8JAAHwAQABDwkAAeABAAEHCQAB4AEYAQMJAAHAARgBAwkAAcABGAEDCQABwAEYAQMJAAHA
-        ARgBAwkAAcABGAEDCQABwAEAAQMJAAHAAQABAwkAAeABGAEDCQAB4AEYAQcJAAHwAQABBwkAAfABAAEP
-        CQAB+AEAAR8JAAH+AQABPwkAAf8BgAH/CQAD/wkAA/8JABH/Ae8D/wHzA/8BgQP/AYcD/wHzAcABDwH/
-        AYEB/wH+AQMBBwP/AfMB4AEPAf8BgQH/AfgBAgEtAfABPwEHAYABYAEPAfABAAEHAfABAgF5AeABHgEH
-        AYABYQEPAeABAAEHAfABfgF5AcMBHgFnAfMB4wEPAeABAAEDAfMB/gF5AccBngFnAfMBwwEPAcABAAED
-        AfYBAwHBAccBgAEDAfMB9gEPAeABPAEDAfABAQGDAccBAAEDAf8B5AEPAfABfgEHAfABAQHfAcABGAED
-        AfEB4QGPAfgBfgEPAfABfwH/AeABOAEDAfEB4wGPAfgBfgEPAfMB/wHvAfgBeAEDAfEB/wHPAeABPgEH
-        AfYBAAEvAvkB/wHxAecBzwHAARwBAwHwAQABHwL5Af8B8QHnAc8B4AEAAQMB8AEAAQ8B+QHxAf8B8QH/
-        Ac8B4AEAAQcB8AEAAQ8B+QHxAf8B8QH/AY8B8AEAAQcB8AEAAQ8B+QHxAf8B8AH/AQ8B8QEAAc8B+AEA
-        AQ8B+AEDAf8B8AF+AQ8B/wGBAf8B/AEAAR8B+AEDAf8B8AEAAQ8B/wGBAv8BAAT/AfABAAEPAf8BwQf/
-        AfgBAAEPGP8L
-</value>
-  </data>
-  <data name="MenuMaterialTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 64</value>
-  </data>
-  <data name="MenuMaterialTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1064, 648</value>
-  </data>
-  <data name="MenuMaterialTabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;MenuMaterialTabControl.Name" xml:space="preserve">
-    <value>MenuMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;MenuMaterialTabControl.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;MenuMaterialTabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MenuMaterialTabControl.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="materialMultiLineTextBox21.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -2621,6 +2189,171 @@
   <data name="plotterSettingsMaterialTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="farmerkeyMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 16px</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.Hint" xml:space="preserve">
+    <value>Farmer Public Key (48 bytes)</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="farmerkeyMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>957, 48</value>
+  </data>
+  <data name="farmerkeyMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Name" xml:space="preserve">
+    <value>farmerkeyMaterialTextBox2</value>
+  </data>
+  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Parent" xml:space="preserve">
+    <value>keysTabPage</value>
+  </data>
+  <data name="&gt;&gt;farmerkeyMaterialTextBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="nftplotMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="nftplotMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="nftplotMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 57</value>
+  </data>
+  <data name="nftplotMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="nftplotMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 37</value>
+  </data>
+  <data name="nftplotMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
+    <value>Create NFT plot</value>
+  </data>
+  <data name="&gt;&gt;nftplotMaterialSwitch.Name" xml:space="preserve">
+    <value>nftplotMaterialSwitch</value>
+  </data>
+  <data name="&gt;&gt;nftplotMaterialSwitch.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nftplotMaterialSwitch.Parent" xml:space="preserve">
+    <value>keysTabPage</value>
+  </data>
+  <data name="&gt;&gt;nftplotMaterialSwitch.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="contractMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="contractMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="contractMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 16px</value>
+  </data>
+  <data name="contractMaterialTextBox2.Hint" xml:space="preserve">
+    <value>Pool Contract Address (62 chars)</value>
+  </data>
+  <data name="contractMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 157</value>
+  </data>
+  <data name="contractMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="contractMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="contractMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>957, 48</value>
+  </data>
+  <data name="contractMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;contractMaterialTextBox2.Name" xml:space="preserve">
+    <value>contractMaterialTextBox2</value>
+  </data>
+  <data name="&gt;&gt;contractMaterialTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contractMaterialTextBox2.Parent" xml:space="preserve">
+    <value>keysTabPage</value>
+  </data>
+  <data name="&gt;&gt;contractMaterialTextBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 16px</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.Hint" xml:space="preserve">
+    <value>Pool Public Key (48 bytes)</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 103</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="poolkeyMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>957, 48</value>
+  </data>
+  <data name="poolkeyMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;poolkeyMaterialTextBox2.Name" xml:space="preserve">
+    <value>poolkeyMaterialTextBox2</value>
+  </data>
+  <data name="&gt;&gt;poolkeyMaterialTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;poolkeyMaterialTextBox2.Parent" xml:space="preserve">
+    <value>keysTabPage</value>
+  </data>
+  <data name="&gt;&gt;poolkeyMaterialTextBox2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="keysTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="keysTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="keysTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>969, 288</value>
+  </data>
+  <data name="keysTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="keysTabPage.Text" xml:space="preserve">
+    <value>Keys</value>
+  </data>
   <data name="&gt;&gt;keysTabPage.Name" xml:space="preserve">
     <value>keysTabPage</value>
   </data>
@@ -2633,6 +2366,267 @@
   <data name="&gt;&gt;keysTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buckets3MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buckets3MaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 14px</value>
+  </data>
+  <data name="buckets3MaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buckets3MaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>539, 72</value>
+  </data>
+  <data name="buckets3MaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 19</value>
+  </data>
+  <data name="buckets3MaterialLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="buckets3MaterialLabel.Text" xml:space="preserve">
+    <value>Number of buckets for phase 3+4</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialLabel.Name" xml:space="preserve">
+    <value>buckets3MaterialLabel</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialLabel.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialLabel.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bucketsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bucketsMaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 14px</value>
+  </data>
+  <data name="bucketsMaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bucketsMaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>539, 16</value>
+  </data>
+  <data name="bucketsMaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 19</value>
+  </data>
+  <data name="bucketsMaterialLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="bucketsMaterialLabel.Text" xml:space="preserve">
+    <value>Number of buckets</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialLabel.Name" xml:space="preserve">
+    <value>bucketsMaterialLabel</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialLabel.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialLabel.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rmulti2MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rmulti2MaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 14px</value>
+  </data>
+  <data name="rmulti2MaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rmulti2MaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 72</value>
+  </data>
+  <data name="rmulti2MaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 19</value>
+  </data>
+  <data name="rmulti2MaterialLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
+    <value>Thread multiplier for P2</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialLabel.Name" xml:space="preserve">
+    <value>rmulti2MaterialLabel</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialLabel.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialLabel.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="threadsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="threadsMaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 14px</value>
+  </data>
+  <data name="threadsMaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="threadsMaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 16</value>
+  </data>
+  <data name="threadsMaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 19</value>
+  </data>
+  <data name="threadsMaterialLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="threadsMaterialLabel.Text" xml:space="preserve">
+    <value>Number of threads</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialLabel.Name" xml:space="preserve">
+    <value>threadsMaterialLabel</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialLabel.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialLabel.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="rmulti2MaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 60</value>
+  </data>
+  <data name="rmulti2MaterialNumericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="rmulti2MaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>999, 0</value>
+  </data>
+  <data name="rmulti2MaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
+  </data>
+  <data name="rmulti2MaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 48</value>
+  </data>
+  <data name="rmulti2MaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Name" xml:space="preserve">
+    <value>rmulti2MaterialNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Type" xml:space="preserve">
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="threadsMaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="threadsMaterialNumericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="threadsMaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>999, 0</value>
+  </data>
+  <data name="threadsMaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
+  </data>
+  <data name="threadsMaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 48</value>
+  </data>
+  <data name="threadsMaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialNumericUpDown.Name" xml:space="preserve">
+    <value>threadsMaterialNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialNumericUpDown.Type" xml:space="preserve">
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialNumericUpDown.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;threadsMaterialNumericUpDown.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buckets3MaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>435, 60</value>
+  </data>
+  <data name="buckets3MaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>999, 0</value>
+  </data>
+  <data name="buckets3MaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
+  </data>
+  <data name="buckets3MaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 48</value>
+  </data>
+  <data name="buckets3MaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Name" xml:space="preserve">
+    <value>buckets3MaterialNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Type" xml:space="preserve">
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;buckets3MaterialNumericUpDown.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="bucketsMaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>435, 6</value>
+  </data>
+  <data name="bucketsMaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>999, 0</value>
+  </data>
+  <data name="bucketsMaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
+  </data>
+  <data name="bucketsMaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 48</value>
+  </data>
+  <data name="bucketsMaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Name" xml:space="preserve">
+    <value>bucketsMaterialNumericUpDown</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Type" xml:space="preserve">
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Parent" xml:space="preserve">
+    <value>perfomanceTabPage</value>
+  </data>
+  <data name="&gt;&gt;bucketsMaterialNumericUpDown.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="perfomanceTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="perfomanceTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="perfomanceTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>969, 288</value>
+  </data>
+  <data name="perfomanceTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="perfomanceTabPage.Text" xml:space="preserve">
+    <value>Perfomance</value>
+  </data>
   <data name="&gt;&gt;perfomanceTabPage.Name" xml:space="preserve">
     <value>perfomanceTabPage</value>
   </data>
@@ -2644,174 +2638,6 @@
   </data>
   <data name="&gt;&gt;perfomanceTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Name" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Parent" xml:space="preserve">
-    <value>plotterSettingsMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plotterSettingsMaterialTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 187</value>
-  </data>
-  <data name="plotterSettingsMaterialTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>977, 314</value>
-  </data>
-  <data name="plotterSettingsMaterialTabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Name" xml:space="preserve">
-    <value>plotterSettingsMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Parent" xml:space="preserve">
-    <value>plotterTabPage</value>
-  </data>
-  <data name="&gt;&gt;plotterSettingsMaterialTabControl.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.Name" xml:space="preserve">
-    <value>tmpdirMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Name" xml:space="preserve">
-    <value>tmpdir2MaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.Name" xml:space="preserve">
-    <value>stagedirMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.Name" xml:space="preserve">
-    <value>directoutMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;directoutMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.Name" xml:space="preserve">
-    <value>tmptoggleMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmptoggleMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.Name" xml:space="preserve">
-    <value>waitforcopyMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;waitforcopyMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.Name" xml:space="preserve">
-    <value>stagedirMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;stagedirMaterialButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.Name" xml:space="preserve">
-    <value>tmpdirMaterialButton</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdirMaterialButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.Name" xml:space="preserve">
-    <value>tmpdir2MaterialButton</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.Parent" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;tmpdir2MaterialButton.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="directoriesTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="directoriesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="directoriesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>969, 288</value>
-  </data>
-  <data name="directoriesTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="directoriesTabPage.Text" xml:space="preserve">
-    <value>Directories</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Name" xml:space="preserve">
-    <value>directoriesTabPage</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.Parent" xml:space="preserve">
-    <value>plotterSettingsMaterialTabControl</value>
-  </data>
-  <data name="&gt;&gt;directoriesTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="tmpdirMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3137,599 +2963,53 @@
   <data name="&gt;&gt;tmpdir2MaterialButton.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Name" xml:space="preserve">
-    <value>farmerkeyMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.Name" xml:space="preserve">
-    <value>nftplotMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.Name" xml:space="preserve">
-    <value>contractMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.Name" xml:space="preserve">
-    <value>poolkeyMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="keysTabPage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="directoriesTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="keysTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="directoriesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="keysTabPage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="directoriesTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>969, 288</value>
   </data>
-  <data name="keysTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="directoriesTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="keysTabPage.Text" xml:space="preserve">
-    <value>Keys</value>
+  <data name="directoriesTabPage.Text" xml:space="preserve">
+    <value>Directories</value>
   </data>
-  <data name="&gt;&gt;keysTabPage.Name" xml:space="preserve">
-    <value>keysTabPage</value>
+  <data name="&gt;&gt;directoriesTabPage.Name" xml:space="preserve">
+    <value>directoriesTabPage</value>
   </data>
-  <data name="&gt;&gt;keysTabPage.Type" xml:space="preserve">
+  <data name="&gt;&gt;directoriesTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;keysTabPage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;directoriesTabPage.Parent" xml:space="preserve">
     <value>plotterSettingsMaterialTabControl</value>
   </data>
-  <data name="&gt;&gt;keysTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Farmer Public Key (48 bytes)</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="farmerkeyMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>957, 48</value>
-  </data>
-  <data name="farmerkeyMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Name" xml:space="preserve">
-    <value>farmerkeyMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;farmerkeyMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="nftplotMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="nftplotMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="nftplotMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 57</value>
-  </data>
-  <data name="nftplotMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="nftplotMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 37</value>
-  </data>
-  <data name="nftplotMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
-    <value>Create NFT plot</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.Name" xml:space="preserve">
-    <value>nftplotMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;nftplotMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="contractMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="contractMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="contractMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
-  </data>
-  <data name="contractMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Pool Contract Address (62 chars)</value>
-  </data>
-  <data name="contractMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 157</value>
-  </data>
-  <data name="contractMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="contractMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="contractMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>957, 48</value>
-  </data>
-  <data name="contractMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.Name" xml:space="preserve">
-    <value>contractMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;contractMaterialTextBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;directoriesTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="poolkeyMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="plotterSettingsMaterialTabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 187</value>
   </data>
-  <data name="poolkeyMaterialTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
+  <data name="plotterSettingsMaterialTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>977, 314</value>
   </data>
-  <data name="poolkeyMaterialTextBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
+  <data name="plotterSettingsMaterialTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
-  <data name="poolkeyMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Pool Public Key (48 bytes)</value>
-  </data>
-  <data name="poolkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 103</value>
-  </data>
-  <data name="poolkeyMaterialTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="poolkeyMaterialTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="poolkeyMaterialTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>957, 48</value>
-  </data>
-  <data name="poolkeyMaterialTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.Name" xml:space="preserve">
-    <value>poolkeyMaterialTextBox2</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox2, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.Parent" xml:space="preserve">
-    <value>keysTabPage</value>
-  </data>
-  <data name="&gt;&gt;poolkeyMaterialTextBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.Name" xml:space="preserve">
-    <value>buckets3MaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.Name" xml:space="preserve">
-    <value>bucketsMaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.Name" xml:space="preserve">
-    <value>rmulti2MaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.Name" xml:space="preserve">
-    <value>threadsMaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Name" xml:space="preserve">
-    <value>rmulti2MaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.Name" xml:space="preserve">
-    <value>threadsMaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Name" xml:space="preserve">
-    <value>buckets3MaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Name" xml:space="preserve">
-    <value>bucketsMaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="perfomanceTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="perfomanceTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="perfomanceTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>969, 288</value>
-  </data>
-  <data name="perfomanceTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="perfomanceTabPage.Text" xml:space="preserve">
-    <value>Perfomance</value>
-  </data>
-  <data name="&gt;&gt;perfomanceTabPage.Name" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;perfomanceTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;perfomanceTabPage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Name" xml:space="preserve">
     <value>plotterSettingsMaterialTabControl</value>
   </data>
-  <data name="&gt;&gt;perfomanceTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="buckets3MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;plotterSettingsMaterialTabControl.Parent" xml:space="preserve">
+    <value>plotterTabPage</value>
   </data>
-  <data name="buckets3MaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 14px</value>
-  </data>
-  <data name="buckets3MaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buckets3MaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>539, 72</value>
-  </data>
-  <data name="buckets3MaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 19</value>
-  </data>
-  <data name="buckets3MaterialLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="buckets3MaterialLabel.Text" xml:space="preserve">
-    <value>Number of buckets for phase 3+4</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.Name" xml:space="preserve">
-    <value>buckets3MaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="bucketsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bucketsMaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 14px</value>
-  </data>
-  <data name="bucketsMaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bucketsMaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>539, 16</value>
-  </data>
-  <data name="bucketsMaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 19</value>
-  </data>
-  <data name="bucketsMaterialLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="bucketsMaterialLabel.Text" xml:space="preserve">
-    <value>Number of buckets</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.Name" xml:space="preserve">
-    <value>bucketsMaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="rmulti2MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rmulti2MaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 14px</value>
-  </data>
-  <data name="rmulti2MaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rmulti2MaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 72</value>
-  </data>
-  <data name="rmulti2MaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 19</value>
-  </data>
-  <data name="rmulti2MaterialLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
-    <value>Thread multiplier for P2</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.Name" xml:space="preserve">
-    <value>rmulti2MaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;plotterSettingsMaterialTabControl.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="threadsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="threadsMaterialLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 14px</value>
-  </data>
-  <data name="threadsMaterialLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="threadsMaterialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 16</value>
-  </data>
-  <data name="threadsMaterialLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 19</value>
-  </data>
-  <data name="threadsMaterialLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="threadsMaterialLabel.Text" xml:space="preserve">
-    <value>Number of threads</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.Name" xml:space="preserve">
-    <value>threadsMaterialLabel</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="rmulti2MaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 60</value>
-  </data>
-  <data name="rmulti2MaterialNumericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="rmulti2MaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>999, 0</value>
-  </data>
-  <data name="rmulti2MaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="rmulti2MaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 48</value>
-  </data>
-  <data name="rmulti2MaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Name" xml:space="preserve">
-    <value>rmulti2MaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;rmulti2MaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="threadsMaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
-  </data>
-  <data name="threadsMaterialNumericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="threadsMaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>999, 0</value>
-  </data>
-  <data name="threadsMaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="threadsMaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 48</value>
-  </data>
-  <data name="threadsMaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.Name" xml:space="preserve">
-    <value>threadsMaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;threadsMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="buckets3MaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 60</value>
-  </data>
-  <data name="buckets3MaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>999, 0</value>
-  </data>
-  <data name="buckets3MaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="buckets3MaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 48</value>
-  </data>
-  <data name="buckets3MaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Name" xml:space="preserve">
-    <value>buckets3MaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;buckets3MaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="bucketsMaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 6</value>
-  </data>
-  <data name="bucketsMaterialNumericUpDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>999, 0</value>
-  </data>
-  <data name="bucketsMaterialNumericUpDown.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
-  </data>
-  <data name="bucketsMaterialNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 48</value>
-  </data>
-  <data name="bucketsMaterialNumericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Name" xml:space="preserve">
-    <value>bucketsMaterialNumericUpDown</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.Parent" xml:space="preserve">
-    <value>perfomanceTabPage</value>
-  </data>
-  <data name="&gt;&gt;bucketsMaterialNumericUpDown.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="plotterSettingsMaterialTabSelector.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3971,6 +3251,36 @@
   <data name="&gt;&gt;countMaterialNumericUpDown.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="plotterTabPage.ImageKey" xml:space="preserve">
+    <value>harddisk-plus.png</value>
+  </data>
+  <data name="plotterTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 31</value>
+  </data>
+  <data name="plotterTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="plotterTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 613</value>
+  </data>
+  <data name="plotterTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="plotterTabPage.Text" xml:space="preserve">
+    <value>Plotter</value>
+  </data>
+  <data name="&gt;&gt;plotterTabPage.Name" xml:space="preserve">
+    <value>plotterTabPage</value>
+  </data>
+  <data name="&gt;&gt;plotterTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plotterTabPage.Parent" xml:space="preserve">
+    <value>menuMaterialTabControl</value>
+  </data>
+  <data name="&gt;&gt;plotterTabPage.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="langMaterialComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px, style=Bold</value>
   </data>
@@ -4006,6 +3316,27 @@
   </data>
   <data name="debugGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 33</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 37</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="showConsoleMaterialSwitch.Text" xml:space="preserve">
+    <value>Show Console</value>
   </data>
   <data name="&gt;&gt;showConsoleMaterialSwitch.Name" xml:space="preserve">
     <value>showConsoleMaterialSwitch</value>
@@ -4043,41 +3374,29 @@
   <data name="&gt;&gt;debugGroupBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="showConsoleMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="showConsoleMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="showConsoleMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 33</value>
-  </data>
-  <data name="showConsoleMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="showConsoleMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 37</value>
-  </data>
-  <data name="showConsoleMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="showConsoleMaterialSwitch.Text" xml:space="preserve">
-    <value>Show Console</value>
-  </data>
-  <data name="&gt;&gt;showConsoleMaterialSwitch.Name" xml:space="preserve">
-    <value>showConsoleMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;showConsoleMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;showConsoleMaterialSwitch.Parent" xml:space="preserve">
-    <value>debugGroupBox</value>
-  </data>
-  <data name="&gt;&gt;showConsoleMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 29</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 37</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="inhibitSystemSleepMaterialSwitch.Text" xml:space="preserve">
+    <value>Inhibit system sleep</value>
   </data>
   <data name="&gt;&gt;inhibitSystemSleepMaterialSwitch.Name" xml:space="preserve">
     <value>inhibitSystemSleepMaterialSwitch</value>
@@ -4117,39 +3436,6 @@
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 29</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 37</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="inhibitSystemSleepMaterialSwitch.Text" xml:space="preserve">
-    <value>Inhibit system sleep</value>
-  </data>
-  <data name="&gt;&gt;inhibitSystemSleepMaterialSwitch.Name" xml:space="preserve">
-    <value>inhibitSystemSleepMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;inhibitSystemSleepMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;inhibitSystemSleepMaterialSwitch.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;inhibitSystemSleepMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="confirmationOnExitMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4286,54 +3572,6 @@
   <data name="showInNotifitationGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;closeToNotificationMaterialSwitch.Name" xml:space="preserve">
-    <value>closeToNotificationMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;closeToNotificationMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;closeToNotificationMaterialSwitch.Parent" xml:space="preserve">
-    <value>showInNotifitationGroupBox</value>
-  </data>
-  <data name="&gt;&gt;closeToNotificationMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;minimizeToNotificationMaterialSwitch.Name" xml:space="preserve">
-    <value>minimizeToNotificationMaterialSwitch</value>
-  </data>
-  <data name="&gt;&gt;minimizeToNotificationMaterialSwitch.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;minimizeToNotificationMaterialSwitch.Parent" xml:space="preserve">
-    <value>showInNotifitationGroupBox</value>
-  </data>
-  <data name="&gt;&gt;minimizeToNotificationMaterialSwitch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="showInNotifitationGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 198</value>
-  </data>
-  <data name="showInNotifitationGroupBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>30, 15, 10, 10</value>
-  </data>
-  <data name="showInNotifitationGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>973, 119</value>
-  </data>
-  <data name="showInNotifitationGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.Name" xml:space="preserve">
-    <value>showInNotifitationGroupBox</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.Parent" xml:space="preserve">
-    <value>settingsTabPage</value>
-  </data>
-  <data name="&gt;&gt;showInNotifitationGroupBox.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="closeToNotificationMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4399,6 +3637,216 @@
   </data>
   <data name="&gt;&gt;minimizeToNotificationMaterialSwitch.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="showInNotifitationGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 198</value>
+  </data>
+  <data name="showInNotifitationGroupBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>30, 15, 10, 10</value>
+  </data>
+  <data name="showInNotifitationGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>973, 119</value>
+  </data>
+  <data name="showInNotifitationGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;showInNotifitationGroupBox.Name" xml:space="preserve">
+    <value>showInNotifitationGroupBox</value>
+  </data>
+  <data name="&gt;&gt;showInNotifitationGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showInNotifitationGroupBox.Parent" xml:space="preserve">
+    <value>settingsTabPage</value>
+  </data>
+  <data name="&gt;&gt;showInNotifitationGroupBox.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="settingsTabPage.ImageKey" xml:space="preserve">
+    <value>cog.png</value>
+  </data>
+  <data name="settingsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 31</value>
+  </data>
+  <data name="settingsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="settingsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 613</value>
+  </data>
+  <data name="settingsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="settingsTabPage.Text" xml:space="preserve">
+    <value>GUI Settings</value>
+  </data>
+  <data name="&gt;&gt;settingsTabPage.Name" xml:space="preserve">
+    <value>settingsTabPage</value>
+  </data>
+  <data name="&gt;&gt;settingsTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;settingsTabPage.Parent" xml:space="preserve">
+    <value>menuMaterialTabControl</value>
+  </data>
+  <data name="&gt;&gt;settingsTabPage.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="aboutTabPage.ImageKey" xml:space="preserve">
+    <value>information.png</value>
+  </data>
+  <data name="aboutTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 31</value>
+  </data>
+  <data name="aboutTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="aboutTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 613</value>
+  </data>
+  <data name="aboutTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="aboutTabPage.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;aboutTabPage.Name" xml:space="preserve">
+    <value>aboutTabPage</value>
+  </data>
+  <data name="&gt;&gt;aboutTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutTabPage.Parent" xml:space="preserve">
+    <value>menuMaterialTabControl</value>
+  </data>
+  <data name="&gt;&gt;aboutTabPage.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="menuIconList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>285, 17</value>
+  </metadata>
+  <data name="menuIconList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAM
+        FgAAAk1TRnQBSQFMAgEBBQEAAUQBDwFEAQ8BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0kBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNeAeIDFAEb
+        /wBVAAM2AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A10B6v8ATQADVgG1
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMIAQr/AEEA
+        A04BmAMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB//8APQADDgESAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wNdAez/ADkAA0AB+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMUARv/ADEABAIDAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A2IB4f8AMQADRAF6AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af//ADEAA10B1AMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH//wAxAANAAfkDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8AMQADXgHtAwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADEAA1UBrgMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf//ADEAAyYBOQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADgAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DSQGH/wA1AANPAZkDAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//AEAA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DNgFX/wA9AAMEAQUDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wNZAbv/AEUAAwQBBQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wNOAZj/AFEAA08BmQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A0AB+QMP
+        ART/AF0AAyYBOQNVAa0DXQHuAyoB+gNdAdQDRAF6BAL/AP8A/wD/AP8A/wB1AAH/gwAB/wMAAf9sAAMS
+        ARgDAAH/AwAB/wMAAf8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DXQHsNAADOQFfAwAB/wMAAf8DAAH/AwAB/wMAAf9AAAM9
+        AWcDQQH5AwAB/wMAAf8DAAH/AwAB/wMAAf8IAANXAbwDAAH/AwAB/wMAAf8DAAH/fwAB/wMAAf8XAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf80AANTAaYDAAH/AwAB/wMAAf8DAAH/AwAB/zgA
+        Ay0BRQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DRgF9BAADHwEsAwAB/wNEAXoHAAH/CAADWgH1
+        FAADWQHDAwAB/wMAAf8DAAH/AwAB/wMYASEYAANdAc8DAAH/AwAB/wMAAf8DFAEbEwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DYAHjA0wBkQMAAf8DAAH/AwAB/wMAAf8gAANb
+        AdgDAAH/A1wB2QMPARQDXwHlAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMzAVADPAFmAwAB/wMA
+        Af8DBgEHHAADHAEnAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DDwEUBAADXwHVAwAB/xAA
+        AysBQgMAAf8QAANZAe8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DGgEkEAADPwFtAwAB/wNDAXcDEwEa
+        A0EB+QMAAf8TAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsAAf8DAAH/AwAB/wMXAR8EAAQB
+        A2EB6wMAAf8DAAH/HAADEQEWAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wNaAfIcAANaAfIDAAH/AwAB/wNOAZgDBQEGGAADSAH2AwAB/xAA
+        AwoBDQMAAf8MAAMtAUYDAAH/AwAB/wMwAUsIAANeAfADAAH/AwAB/xAAA2AB8wMAAf8IAAMTARoDAAH/
+        HwAB/wMAAf8XAAH/AwAB/wMAAf8IAAMSARcDAAH/AwAB/wMAAf8cAAMrAfwDAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMkATQbAAH/
+        A1gBuiQAA04BlANcAfgQAANWAbMDAAH/DAADWwHYAwAB/wNaAccTAAH/AwAB/xAAA10ByQMAAf8IAAND
+        AXcDAAH/HwAB/wMAAf8QAAMvAUkDAAH/AwAB/wNJAYgLAAH/AwAB/wMAAf8DAAH/GAADLwFJAwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wNdAeoDIwEyAwkBDANGAX4DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/xgAA1sB2AgAAz0BZwNBAfkDAAH/AwAB/wMAAf8DAAH/A10B0RMAAf8DCQELA1YBsgMA
+        Af8DTQGTDAADWgH1AwAB/wNLAYwTAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/GwAB/wMAAf8bAAH/CAADWgH1AwAB/wMAAf8DAAH/AwAB/xwAA2AB4wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/A1QBqxAABAEDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DJgE4GAADCgENAy0BRQMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/BAELAAH/AwAB/wMAAf8DAAH/A04BlBAAA1EBoQMA
+        Af8DAAH/DAADMAFLAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/zQAAygBOwNdAewEAANYAbcDWAG6A1EBpAMAAf8DAAH/AwAB/yAAA0sBjQMAAf8DAAH/AwAB/wMA
+        Af8YAANGAX4DAAH/AwAB/wMAAf8DAAH/AwMBBBwAAxwBJwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wNIAfYPAAH/HAAEAQMAAf8DAAH/AwAB/wNMAY4DWgHHAwAB/wMAAf8DWQHBCwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/GAADGQEjAwkBCwMyAU8QAANbAdgDQwF3AzYBVwNT
+        AfQIAANiAe4DAAH/AwAB/ycAAf8DAAH/AwAB/wMAAf8YAAMLAQ4DAAH/AwAB/wMAAf8DWgH1IAADWgHy
+        AwAB/wMAAf8DTgGYAwUBBkgAAyoBPwMAAf8DAAH/AwAB/wMAAf8DAAH/A1kB7w8AAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/xsAAf8DAAH/A1wB1hAABAEDXgHtAwAB/wwAAwoBDQMAAf8DAAH/
+        JwAB/wMAAf8DAAH/AwAB/xgAAyIBMQMAAf8DAAH/AwAB/wNbAeQjAAH/A1gBujQAAwQBBScAAf8DAAH/
+        A1wB2QMsAUMTAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A1oB8gMcAScbAAH/AwAB/wMmATkvAAH/
+        AwAB/xwAAw8BFAMAAf8DAAH/AwAB/wMAAf8DAAH/AwoBDRQAA10B6gMAAf8DAAH/AwAB/wMAAf8DWAG4
+        HAADWwHYCAADPQFnA0EB+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DWgG/AwkBDAQAAwUBBicA
+        Af8DAAH/GwAB/wMAAf83AAH/AwAB/wQBEAADYAHjAwAB/xcAAf8DAAH/GAADJgE4AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMKAQ0MAANUAasDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DXAH4GAADCgEN
+        Ay0BRQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNeAeIrAAH/
+        AwAB/xsAAf8DAAH/NwAB/wMAAf8DDgESEAADMAFLA2AB4xcAAf8DAAH/HwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A1sBxRgA
+        AxsBJQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        A1wB+CcAAf8DAAH/FAADEgEYAwAB/wNRAfc3AAH/AwAB/wNGAYAvAAH/AwAB/xwAA1ABnAMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        HAADWgHyAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/JwAB/wMAAf8UAANGAYADAAH/A04BlzcAAf8DAAH/AwAB/ygAAz8BbQMAAf8DAAH/IwAB/wMA
+        Af8DAAH/A00B+gMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNC
+        AXQcAANWAbADAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8nAAH/AwAB/xQAA2EB5gMAAf8DIgExNwAB/wMAAf8DAAH/A1IBoCAAAwQBBQMAAf8DAAH/
+        AwAB/yAAAyoBQANSAagEAQQAAwwBDwNlAfEDAAH/AwAB/wMAAf8DAAH/AwAB/wNFAXwIAAMrAUEDXwHl
+        JAADTQH6AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wM2
+        AVcnAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf87AAH/AwAB/wMAAf8DAAH/A1EBohgA
+        AxIBFwMAAf8DAAH/AwAB/wMAAf80AANHAYIDAAH/AwAB/wMAAf8DAAH/AwAB/zwAA0oBigMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DZQHxAwkBDCsAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/zsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNKAYsDGAEhAwwBDwMzAVEDYAHo
+        AwAB/wMAAf8DAAH/AwAB/wMAAf80AAMoATwDAAH/AwAB/wMAAf8DAAH/AwAB/0QAAwoBDQNFAXwDXQHM
+        A2IB7gNBAfkDXgHdA1EBpAMxAU2QAANVAawDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf87AAH/AwAB/wMAAf8DAAH/A1cBvPgAA1UBrAMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNaAfIDHAEn/wD/AP8AEwABQgFN
+        AT4HAAE+AwABKAMAAWADAAEwAwABAQEAAQEFAAFAAQIWAAP/AQAD/wkAA/8JAAH/AQABfwkAAfwBAAE/
+        CQAB+AEAAQ8JAAHwAQABDwkAAeABAAEHCQAB4AEYAQMJAAHAARgBAwkAAcABGAEDCQABwAEYAQMJAAHA
+        ARgBAwkAAcABGAEDCQABwAEAAQMJAAHAAQABAwkAAeABGAEDCQAB4AEYAQcJAAHwAQABBwkAAfABAAEP
+        CQAB+AEAAR8JAAH+AQABPwkAAf8BgAH/CQAD/wkAA/8JABH/Ae8D/wHzA/8BgQP/AYcD/wHzAcABDwH/
+        AYEB/wH+AQMBBwP/AfMB4AEPAf8BgQH/AfgBAgEtAfABPwEHAYABYAEPAfABAAEHAfABAgF5AeABHgEH
+        AYABYQEPAeABAAEHAfABfgF5AcMBHgFnAfMB4wEPAeABAAEDAfMB/gF5AccBngFnAfMBwwEPAcABAAED
+        AfYBAwHBAccBgAEDAfMB9gEPAeABPAEDAfABAQGDAccBAAEDAf8B5AEPAfABfgEHAfABAQHfAcABGAED
+        AfEB4QGPAfgBfgEPAfABfwH/AeABOAEDAfEB4wGPAfgBfgEPAfMB/wHvAfgBeAEDAfEB/wHPAeABPgEH
+        AfYBAAEvAvkB/wHxAecBzwHAARwBAwHwAQABHwL5Af8B8QHnAc8B4AEAAQMB8AEAAQ8B+QHxAf8B8QH/
+        Ac8B4AEAAQcB8AEAAQ8B+QHxAf8B8QH/AY8B8AEAAQcB8AEAAQ8B+QHxAf8B8AH/AQ8B8QEAAc8B+AEA
+        AQ8B+AEDAf8B8AF+AQ8B/wGBAf8B/AEAAR8B+AEDAf8B8AEAAQ8B/wGBAv8BAAT/AfABAAEPAf8BwQf/
+        AfgBAAEPGP8L
+</value>
+  </data>
+  <data name="menuMaterialTabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 64</value>
+  </data>
+  <data name="menuMaterialTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1064, 648</value>
+  </data>
+  <data name="menuMaterialTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;menuMaterialTabControl.Name" xml:space="preserve">
+    <value>menuMaterialTabControl</value>
+  </data>
+  <data name="&gt;&gt;menuMaterialTabControl.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialTabControl, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;menuMaterialTabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuMaterialTabControl.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>409, 17</value>

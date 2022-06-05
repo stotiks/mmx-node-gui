@@ -45,7 +45,7 @@ namespace MMX_NODE_GUI
 
             InitializeLoc();
 
-            this.MenuMaterialTabControl.Controls.Remove(this.aboutTabPage);
+            this.menuMaterialTabControl.Controls.Remove(this.aboutTabPage);
 
         }
 
@@ -243,13 +243,5 @@ namespace MMX_NODE_GUI
             }
         }
 
-        private void langMaterialComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selected = langMaterialComboBox.SelectedValue;
-            string lang = selected != null ? selected.ToString() : "en";
-
-            this.Culture = new CultureInfo(lang);
-            saveSettings(sender, e);
-        }
     }
 }

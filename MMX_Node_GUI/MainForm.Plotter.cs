@@ -151,8 +151,8 @@ namespace MMX_NODE_GUI
 
         internal void CopyKeysToPlotter(string json)
         {
-            if (ControlInvokeRequired(MenuMaterialTabControl, () => CopyKeysToPlotter(json))) return;
-            MenuMaterialTabControl.SelectTab(plotterTabPage);
+            if (ControlInvokeRequired(menuMaterialTabControl, () => CopyKeysToPlotter(json))) return;
+            menuMaterialTabControl.SelectTab(plotterTabPage);
             plotterSettingsMaterialTabControl.SelectedTab = keysTabPage;
 
             dynamic keys = JsonConvert.DeserializeObject(json);

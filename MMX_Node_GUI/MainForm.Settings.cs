@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
@@ -41,6 +42,14 @@ namespace MMX_NODE_GUI
 
         }
 
+        private void langMaterialComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = langMaterialComboBox.SelectedValue;
+            string lang = selected != null ? selected.ToString() : "en";
+
+            this.Culture = new CultureInfo(lang);
+            saveSettings(sender, e);
+        }
 
         private void saveSettings(object sender, EventArgs e)
         {

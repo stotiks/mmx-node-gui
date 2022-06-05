@@ -51,7 +51,7 @@ namespace MMX_NODE_GUI
             protected override CefReturnValue OnBeforeResourceLoad(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback)
             {
                 var headers = request.Headers;
-                headers["x-api-token"] = Node.XToken;
+                headers[Node.XApiTokenName] = Node.XApiToken;
                 request.Headers = headers;
 
                 return CefReturnValue.Continue;
