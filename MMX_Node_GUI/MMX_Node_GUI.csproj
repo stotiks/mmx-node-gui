@@ -215,6 +215,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>(robocopy $(TargetDir) $(TargetDir)\locales "$(TargetName).resources.dll" /CREATE /S /XD locales /IS /IT ) ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+    <PostBuildEvent>(robocopy $(TargetDir) $(TargetDir)\langs "$(TargetName).resources.dll"  /S /XD langs /IS /IT ) ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
 </Project>
