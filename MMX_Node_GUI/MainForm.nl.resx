@@ -190,7 +190,7 @@
     <value>Definitieve map om plot parallel te kopiëren</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>Laad plots van (node opnieuw opstarten vereist):</value>
+    <value>Laad plots van:</value>
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Aantal plots om te maken</value>

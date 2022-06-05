@@ -190,7 +190,7 @@
     <value>Directório final dos Plots criados em paralelo</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>Carregar Plots a partir de (requer que o Node seja reiniciado):</value>
+    <value>Carregar Plots a partir de:</value>
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Número de Plots a criar</value>

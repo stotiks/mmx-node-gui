@@ -190,7 +190,7 @@
     <value>Фінальний каталог для плоту</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>(потрібний перезапуск вузла) Завантажити плоти з:</value>
+    <value>Завантажити плоти з:</value>
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Кількість ділянок для створення</value>

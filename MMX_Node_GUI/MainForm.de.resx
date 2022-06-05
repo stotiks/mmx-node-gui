@@ -190,7 +190,7 @@
     <value>Endgültiges Verzeichnis zum parallelen Kopieren der Plots</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>Lade Plots von (Neustart des Knoten erforderlich):</value>
+    <value>Lade Plots von:</value>
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Anzahl der zu erstellenden Plots</value>

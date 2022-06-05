@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>130, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>130, 17</value>
+  </data>
   <data name="showToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 22</value>
   </data>
@@ -1980,7 +1980,7 @@
     <value>4</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>Load plots from (node restart required):</value>
+    <value>Load plots from:</value>
   </data>
   <data name="&gt;&gt;harvesterPlotsMaterialLabel.Name" xml:space="preserve">
     <value>harvesterPlotsMaterialLabel</value>
@@ -3722,15 +3722,15 @@
   <data name="&gt;&gt;aboutTabPage.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="menuIconList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="menuIconList.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>285, 17</value>
-  </metadata>
+  </data>
   <data name="menuIconList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAM
-        FgAAAk1TRnQBSQFMAgEBBQEAAUQBDwFEAQ8BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAO
+        FgAAAk1TRnQBSQFMAgEBBQEAAUQBDwFIAQ8BGAEAARgBAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFg
         AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0kBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNeAeIDFAEb
         /wBVAAM2AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A10B6v8ATQADVgG1
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMIAQr/AEEA
@@ -3824,7 +3824,7 @@
         AfYBAAEvAvkB/wHxAecBzwHAARwBAwHwAQABHwL5Af8B8QHnAc8B4AEAAQMB8AEAAQ8B+QHxAf8B8QH/
         Ac8B4AEAAQcB8AEAAQ8B+QHxAf8B8QH/AY8B8AEAAQcB8AEAAQ8B+QHxAf8B8AH/AQ8B8QEAAc8B+AEA
         AQ8B+AEDAf8B8AF+AQ8B/wGBAf8B/AEAAR8B+AEDAf8B8AEAAQ8B/wGBAv8BAAT/AfABAAEPAf8BwQf/
-        AfgBAAEPGP8L
+        AfgBAAEPGP8WAAs=
 </value>
   </data>
   <data name="menuMaterialTabControl.Location" type="System.Drawing.Point, System.Drawing">
@@ -3848,9 +3848,9 @@
   <data name="&gt;&gt;menuMaterialTabControl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>409, 17</value>
-  </metadata>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 715</value>
   </data>
@@ -3875,12 +3875,12 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.TrayLargeIcon" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
