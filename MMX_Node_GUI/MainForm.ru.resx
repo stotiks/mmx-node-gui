@@ -1897,8 +1897,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABm
-        EAAAAk1TRnQBSQFMAgEBBAEAAeABDQHgAQ0BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABo
+        EAAAAk1TRnQBSQFMAgEBBAEAAeABDQHkAQ0BGAEAARgBAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFg
         AwABMAMAAQEBAAEgBgABSP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wBnAAH/gwAB/wMAAf9sAAMSARgDAAH/AwAB/wMA
         Af8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMAAf8DAAH/AwAB/wMA
@@ -1968,7 +1968,7 @@
         AvkB/wHxAecBzwHAARwBAwHwAQABHwL5Af8B8QHnAc8B4AEAAQMB8AEAAQ8B+QHxAf8B8QH/Ac8B4AEA
         AQcB8AEAAQ8B+QHxAf8B8QH/AY8B8AEAAQcB8AEAAQ8B+QHxAf8B8AH/AQ8B8QEAAc8B+AEAAQ8B+AED
         Af8B8AF+AQ8B/wGBAf8B/AEAAR8B+AEDAf8B8AEAAQ8B/wGBAv8BAAT/AfABAAEPAf8BwQf/AfgBAAEP
-        GP8L
+        GP8WAAs=
 </value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -3955,10 +3955,10 @@
     <value>Конечная папка</value>
   </data>
   <data name="farmerkeyMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Открытый ключ фермера (48 байт)</value>
+    <value>Публичный ключ фермера (48 байт)</value>
   </data>
   <data name="poolkeyMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Открытый ключ пула (48 байт)</value>
+    <value>Публичный ключ пула (48 байт)</value>
   </data>
   <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
     <value>Множитель потоков для P2</value>
