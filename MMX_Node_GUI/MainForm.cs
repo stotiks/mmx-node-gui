@@ -45,6 +45,8 @@ namespace MMX_NODE_GUI
 
             InitializeLoc();
 
+            this.MenuMaterialTabControl.Controls.Remove(this.aboutTabPage);
+
         }
 
         private void InitializeSkinManager()
@@ -150,7 +152,10 @@ namespace MMX_NODE_GUI
         // --------------------------------------------------------------------------------
         private Dictionary<string, string> launguages = new Dictionary<string, string>(){
             { "en", "English" },
+            //{ "es", "Español" },
+            { "de", "Deutsch" },
             { "nl", "Nederlands"},
+            { "pt", "Português" },
             { "ru", "Русский" },
             { "uk", "Українська" },
         };

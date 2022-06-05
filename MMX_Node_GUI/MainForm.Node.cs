@@ -28,28 +28,19 @@ namespace MMX_NODE_GUI
 
         private void InitializeNode()
         {
-            // alert(window.mmx.myProperty);
-            // var message = "message"
-            // window.mmx.postMessage(message);
-
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
 
             var boundObject = new MMXBoundObject(this);
-            //boundObject.Password = Node.GetPassword();
-
             chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", boundObject, isAsync: false, options: BindingOptions.DefaultBinder);
 
             chromiumWebBrowser.MenuHandler = new SearchContextMenuHandler();
-
             chromiumWebBrowser.RequestHandler = new CustomRequestHandler();
 
             nodeTabPage.Controls.Add(chromiumWebBrowser);
 
             node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
-
             node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
-
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
         }

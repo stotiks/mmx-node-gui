@@ -272,9 +272,9 @@ namespace MMX_NODE_GUI
             // plotterSettingsMaterialTabControl
             // 
             resources.ApplyResources(this.plotterSettingsMaterialTabControl, "plotterSettingsMaterialTabControl");
-            this.plotterSettingsMaterialTabControl.Controls.Add(this.directoriesTabPage);
             this.plotterSettingsMaterialTabControl.Controls.Add(this.keysTabPage);
             this.plotterSettingsMaterialTabControl.Controls.Add(this.perfomanceTabPage);
+            this.plotterSettingsMaterialTabControl.Controls.Add(this.directoriesTabPage);
             this.plotterSettingsMaterialTabControl.Depth = 0;
             this.plotterSettingsMaterialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.plotterSettingsMaterialTabControl.Multiline = true;
@@ -911,7 +911,6 @@ namespace MMX_NODE_GUI
             // 
             resources.ApplyResources(this.aboutTabPage, "aboutTabPage");
             this.aboutTabPage.Name = "aboutTabPage";
-            this.aboutTabPage.UseVisualStyleBackColor = true;
             // 
             // menuIconList
             // 
