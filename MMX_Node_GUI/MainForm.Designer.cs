@@ -364,8 +364,8 @@ namespace MMX_NODE_GUI
             // 
             // directoutMaterialSwitch
             // 
-            this.directoutMaterialSwitch.Depth = 0;
             resources.ApplyResources(this.directoutMaterialSwitch, "directoutMaterialSwitch");
+            this.directoutMaterialSwitch.Depth = 0;
             this.directoutMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.directoutMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.directoutMaterialSwitch.Name = "directoutMaterialSwitch";
@@ -374,8 +374,8 @@ namespace MMX_NODE_GUI
             // 
             // tmptoggleMaterialSwitch
             // 
-            this.tmptoggleMaterialSwitch.Depth = 0;
             resources.ApplyResources(this.tmptoggleMaterialSwitch, "tmptoggleMaterialSwitch");
+            this.tmptoggleMaterialSwitch.Depth = 0;
             this.tmptoggleMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.tmptoggleMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.tmptoggleMaterialSwitch.Name = "tmptoggleMaterialSwitch";
@@ -384,8 +384,8 @@ namespace MMX_NODE_GUI
             // 
             // waitforcopyMaterialSwitch
             // 
-            this.waitforcopyMaterialSwitch.Depth = 0;
             resources.ApplyResources(this.waitforcopyMaterialSwitch, "waitforcopyMaterialSwitch");
+            this.waitforcopyMaterialSwitch.Depth = 0;
             this.waitforcopyMaterialSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.waitforcopyMaterialSwitch.MouseState = MaterialSkin.MouseState.HOVER;
             this.waitforcopyMaterialSwitch.Name = "waitforcopyMaterialSwitch";
@@ -949,6 +949,7 @@ namespace MMX_NODE_GUI
             this.plotterTabPage.PerformLayout();
             this.plotterSettingsMaterialTabControl.ResumeLayout(false);
             this.directoriesTabPage.ResumeLayout(false);
+            this.directoriesTabPage.PerformLayout();
             this.keysTabPage.ResumeLayout(false);
             this.keysTabPage.PerformLayout();
             this.perfomanceTabPage.ResumeLayout(false);

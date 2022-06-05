@@ -2317,6 +2317,9 @@
   <data name="&gt;&gt;stagedirMaterialTextBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="directoutMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="directoutMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2327,7 +2330,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="directoutMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 37</value>
+    <value>260, 37</value>
   </data>
   <data name="directoutMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2348,6 +2351,9 @@
   <data name="&gt;&gt;directoutMaterialSwitch.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="tmptoggleMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="tmptoggleMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2358,7 +2364,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tmptoggleMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 37</value>
+    <value>233, 37</value>
   </data>
   <data name="tmptoggleMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2379,6 +2385,9 @@
   <data name="&gt;&gt;tmptoggleMaterialSwitch.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="waitforcopyMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="waitforcopyMaterialSwitch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2389,7 +2398,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="waitforcopyMaterialSwitch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>284, 37</value>
+    <value>271, 37</value>
   </data>
   <data name="waitforcopyMaterialSwitch.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2410,9 +2419,6 @@
   <data name="&gt;&gt;waitforcopyMaterialSwitch.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="stagedirMaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="stagedirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -2429,7 +2435,7 @@
     <value>917, 114</value>
   </data>
   <data name="stagedirMaterialButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="stagedirMaterialButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 48</value>
@@ -2449,9 +2455,6 @@
   <data name="&gt;&gt;stagedirMaterialButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="tmpdirMaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="tmpdirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -2488,9 +2491,6 @@
   <data name="&gt;&gt;tmpdirMaterialButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="tmpdir2MaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="tmpdir2MaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -3180,9 +3180,6 @@
   <data name="&gt;&gt;finaldirMaterialTextBox2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="finaldirMaterialButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="finaldirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -3773,30 +3770,30 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAM
-        FgAAAk1TRnQBSQFMAgEBBQEAAawBDgGsAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
-        AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0cBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMzAeIDFAEb
-        /wBVAAM2AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AygB6v8ATQADSwG1
+        FgAAAk1TRnQBSQFMAgEBBQEAAcQBDgHEAQ4BGAEAARgBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFg
+        AwABMAMAAQEBAAEgBgABSP8A/wD/ADUAA0kBhwMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNJAeIDFAEb
+        /wBVAAM2AVcDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/Az8B6v8ATQADVgG1
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMIAQr/AEEA
-        A0sBmAMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        A04BmAMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
         AwAB//8APQADDgESAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMnAez/ADkAAw8B+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/
+        AwAB/wMAAf8DAAH/AwAB/wM+Aez/ADkAAxoB+QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMUARv/ADEABAIDAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AzQB4f8AMQADQwF6AwAB/wMA
+        Af8DAAH/AwAB/wsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/A04B4f8AMQADRAF6AwAB/wMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af//ADEAA0EB1AMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8DAAH//wAxAAMPAfkDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsA
-        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8AMQADIgHtAwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADEAA00BrgMA
+        Af//ADEAA1YB1AMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH//wAxAAMaAfkDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wsA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8AMQADOgHtAwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8LAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADEAA1UBrgMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
         Af8DAAH/AwAB/wMAAf//ADEAAyYBOQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ADgAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DRwGH/wA1AANLAZkDAAH/
+        AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DSQGH/wA1AANPAZkDAAH/
         AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/CwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//AEAA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
         Af8DNgFX/wA9AAMEAQUDAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wNKAbv/AEUAAwQBBQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8DAAH/AwAB/wNLAZj/AFEAA0sBmQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/Aw8B+QMP
-        ART/AF0AAyYBOQNNAa0DIQHuAwwB+gNBAdQDQwF6BAL/AP8A/wD/AP8A/wB1AAH/gwAB/wMAAf9sAAMS
+        Af8DAAH/AwAB/wNXAbv/AEUAAwQBBQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wNOAZj/AFEAA08BmQMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AxoB+QMP
+        ART/AF0AAyYBOQNUAa0DOAHuAxgB+gNWAdQDRAF6BAL/AP8A/wD/AP8A/wB1AAH/gwAB/wMAAf9sAAMS
         ARgDAAH/AwAB/wMAAf8DAAH/AwAB/2gAAx4BKwNbAdMDAAH/AwAB/38AAf8DAAH/EAADAwEEAwAB/wMA
         Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DXQHsNAADOQFfAwAB/wMAAf8DAAH/AwAB/wMAAf9AAAM9
         AWcDQQH5AwAB/wMAAf8DAAH/AwAB/wMAAf8IAANXAbwDAAH/AwAB/wMAAf8DAAH/fwAB/wMAAf8XAAH/

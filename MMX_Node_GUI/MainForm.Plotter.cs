@@ -3,6 +3,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace MMX_NODE_GUI
 
         private void InitializePlotter()
         {
-
+                  
             farmerkeyMaterialTextBox2.DataBindings.Add("Text", plotterOptions.farmerkey, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
             poolkeyMaterialTextBox2.DataBindings.Add("Text", plotterOptions.poolkey, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
             contractMaterialTextBox2.DataBindings.Add("Text", plotterOptions.contract, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
