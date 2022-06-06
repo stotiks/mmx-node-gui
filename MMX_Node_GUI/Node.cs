@@ -26,8 +26,8 @@ namespace MMX_NODE_GUI
         public static string plotterConfigPath = configPath + @"\Plotter.json";
         public static string httpServerConfigPath = configPath + @"\HttpServer.json";
         
-        public static string activateCMDPath = workingDirectory + @"\activate.cmd1";
-        public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd1";
+        public static string activateCMDPath = workingDirectory + @"\activate.cmd";
+        public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd";
 
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
@@ -146,27 +146,6 @@ namespace MMX_NODE_GUI
             return result + random.Next(16).ToString("X");
         }
 
-        internal static void Activate()
-        {
-            if(!Directory.Exists(configPath))
-            {
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
-                processStartInfo.WorkingDirectory = workingDirectory;
-                processStartInfo.FileName = activateCMDPath;
-                processStartInfo.UseShellExecute = false;
-                processStartInfo.CreateNoWindow = true;
-
-                Process process = new Process();
-                process.EnableRaisingEvents = true;
-                process.StartInfo = processStartInfo;
-
-                process.Start();
-                process.WaitForExit();
-            }
-
-            InitXToken();
-        }
-
         public static string XApiToken
         {
             get
@@ -222,46 +201,46 @@ namespace MMX_NODE_GUI
             }
         }
 
-        private void StartProcess()
-        {            
+
+        private static Process GetProcess(string cmd)
+        {
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = workingDirectory;
-            processStartInfo.FileName = runNodeCMDPath;
+            processStartInfo.FileName = cmd;
 
             processStartInfo.UseShellExecute = false;
-            //processStartInfo.ErrorDialog = false;
+            //processStartInfo.ErrorDialog = true;
 
             if (!Properties.Settings.Default.showConsole)
             {
                 processStartInfo.CreateNoWindow = true;
             }
-            
 
-            //processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-            //if (false)
-            //{
-            //    processStartInfo.RedirectStandardError = true;                
-            //    processStartInfo.RedirectStandardOutput = true;
-            //    processStartInfo.RedirectStandardInput = false;
-            //}
-
-
-
-            process = new Process();
+            Process process = new Process();
             process.EnableRaisingEvents = true;
             process.StartInfo = processStartInfo;
 
-            //process.Exited += BeforeStop;
-            //process.Exited += Stoped;
+            return process;
+        }
 
-            //process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
-            //process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
 
+        internal static void Activate()
+        {
+            if (!Directory.Exists(configPath))
+            {
+                Process process = GetProcess(activateCMDPath);
+
+                process.Start();
+                process.WaitForExit();
+            }
+
+            InitXToken();
+        }
+
+        private void StartProcess()
+        {
+            process = GetProcess(runNodeCMDPath);
             processStarted = process.Start();
-
-            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
         }
 
         private void WriteProcessLog(string text)
