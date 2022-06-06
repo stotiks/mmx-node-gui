@@ -53,6 +53,7 @@ namespace MMX_NODE_GUI
             }
 
             settings.UserAgent = "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36 (mmx.gui.win)";
+            settings.Locale = Properties.Settings.Default.langCode;
 
             // Make sure you set performDependencyCheck false
             Cef.Initialize(settings, performDependencyCheck: false);

@@ -1,6 +1,7 @@
 ﻿using CefSharp;
 using CefSharp.Handler;
 using CefSharp.WinForms;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -28,9 +29,13 @@ namespace MMX_NODE_GUI
 
         private void InitializeNode()
         {
+
+            chromiumWebBrowser.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
+
+                //IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
+
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
-
             var boundObject = new MMXBoundObject(this);
             chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", boundObject, isAsync: false, options: BindingOptions.DefaultBinder);
 
@@ -44,6 +49,17 @@ namespace MMX_NODE_GUI
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
         }
+
+        private void Browser_IsBrowserInitializedChanged(object sender, EventArgs e)
+        {
+            var browserHost = chromiumWebBrowser.GetBrowser().GetHost();
+            var requestContext = browserHost.RequestContext;
+            string errorMessage = "";
+
+            var x = requestContext.GetAllPreferences(true);
+            requestContext.SetPreference("intl.accept_languages", Properties.Settings.Default.langCode, out errorMessage);
+        }
+
 
         public class CustomResourceRequestHandler : ResourceRequestHandler
         {
@@ -97,7 +113,7 @@ namespace MMX_NODE_GUI
                 model.AddItem(CefMenuCommand.Reload, "Reload");
 #if DEBUG
                 model.AddSeparator();
-                model.AddItem(CefMenuCommand.CustomFirst, "Show DevTools");
+                model.AddItem((CefMenuCommand)26501, "Show DevTools");
 #endif
             }
 
