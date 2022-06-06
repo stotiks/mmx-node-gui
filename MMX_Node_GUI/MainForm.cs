@@ -119,6 +119,5 @@ namespace MMX_NODE_GUI
             Close();
         }
 
-
     }
 }

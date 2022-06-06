@@ -70,6 +70,24 @@ namespace MMX_NODE_GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory added and harvester restarted.
+        /// </summary>
+        internal static string dirAdded {
+            get {
+                return ResourceManager.GetString("dirAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directory removed and harvester restarted.
+        /// </summary>
+        internal static string dirRemoved {
+            get {
+                return ResourceManager.GetString("dirRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap folder {

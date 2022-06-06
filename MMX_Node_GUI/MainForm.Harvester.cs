@@ -1,4 +1,5 @@
 ﻿using MaterialSkin;
+using MaterialSkin.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json.Linq;
 using System;
@@ -50,10 +51,11 @@ namespace MMX_NODE_GUI
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 var dirName = dialog.FileName;
-                var item = new MaterialListBoxItem(dirName);
-                plotFoldersMaterialListBox.Items.Add(item);
-                Node.AddPlotDir(dirName);
 
+                Node.AddPlotDirTask(dirName).ContinueWith(task => ShowSnackBar(Properties.Resources.dirAdded));
+
+                plotFoldersMaterialListBox.Items.Add(new MaterialListBoxItem(dirName));
+               
                 SaveHavesterConfig();
             }
         }
@@ -66,10 +68,18 @@ namespace MMX_NODE_GUI
             }
 
             var dirName = plotFoldersMaterialListBox.SelectedItem.Text;
-            Node.RemovePlotDir(dirName);
+            Node.RemovePlotDirTask(dirName).ContinueWith(task => ShowSnackBar(Properties.Resources.dirRemoved));
 
-            plotFoldersMaterialListBox.Items.Remove(plotFoldersMaterialListBox.SelectedItem);
+            plotFoldersMaterialListBox.Items.Remove(plotFoldersMaterialListBox.SelectedItem);            
+
             SaveHavesterConfig();
+        }
+
+        private void ShowSnackBar(string message)
+        {
+            if (ControlInvokeRequired(this, () => ShowSnackBar(message))) return;
+            var SnackBarMessage = new MaterialSnackBar(message, Properties.Resources.ok, true);
+            SnackBarMessage.Show(this);
         }
 
         private void SaveHavesterConfig()

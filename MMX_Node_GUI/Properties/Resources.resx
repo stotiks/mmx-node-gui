@@ -141,10 +141,18 @@
   </data>
   <data name="keysCopied" xml:space="preserve">
     <value>Keys copied succesfully</value>
-    <comment>main</comment>
+    <comment>plotter</comment>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
     <comment>main</comment>
+  </data>
+  <data name="dirAdded" xml:space="preserve">
+    <value>Directory added and harvester restarted</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="dirRemoved" xml:space="preserve">
+    <value>Directory removed and harvester restarted</value>
+    <comment>harvester</comment>
   </data>
 </root>

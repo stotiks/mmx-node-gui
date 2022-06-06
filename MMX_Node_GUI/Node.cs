@@ -58,9 +58,9 @@ namespace MMX_NODE_GUI
         {
         }
 
-        internal static void RemovePlotDir(string dirName)
+        internal static Task RemovePlotDirTask(string dirName)
         { 
-            var task = Task.Run(async () =>
+            return Task.Run(async () =>
             {
                 dynamic data = new JObject();
                 data.path = dirName;
@@ -72,14 +72,11 @@ namespace MMX_NODE_GUI
                 var res2 = await client.GetAsync(baseUri + "api/harvester/reload");
             });
 
-            //task.Wait();
-
         }
 
-        internal static void AddPlotDir(string dirName)
+        internal static Task AddPlotDirTask(string dirName)
         {
-
-            var task = Task.Run(async () =>
+            return Task.Run(async () =>
             {
                 dynamic data = new JObject();
                 data.path = dirName;
@@ -90,8 +87,6 @@ namespace MMX_NODE_GUI
                 var res = await client.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
                 var res2 = await client.GetAsync(baseUri + "api/harvester/reload");
             });
-
-            //task.Wait();
         }
 
 

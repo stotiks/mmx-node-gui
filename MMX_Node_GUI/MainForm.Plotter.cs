@@ -160,7 +160,7 @@ namespace MMX_NODE_GUI
             nftplotMaterialSwitch.Checked = false;
             poolkeyMaterialTextBox2.Text = keys["pool_public_key"];
 
-            MaterialSnackBar SnackBarMessage = new MaterialSnackBar(Properties.Resources.keysCopied, Properties.Resources.ok, true);
+            var SnackBarMessage = new MaterialSnackBar(Properties.Resources.keysCopied, Properties.Resources.ok, true);
             SnackBarMessage.Show(this);
         }
 
