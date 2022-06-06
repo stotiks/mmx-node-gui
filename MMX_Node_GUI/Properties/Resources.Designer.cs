@@ -145,6 +145,15 @@ namespace MMX_NODE_GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        internal static string reload {
+            get {
+                return ResourceManager.GetString("reload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         internal static string yes {

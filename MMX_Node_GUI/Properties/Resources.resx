@@ -155,4 +155,8 @@
     <value>Directory removed and harvester restarted</value>
     <comment>harvester</comment>
   </data>
+  <data name="reload" xml:space="preserve">
+    <value>Refresh</value>
+    <comment>node</comment>
+  </data>
 </root>

@@ -59,7 +59,7 @@ namespace MMX_NODE_GUI
         }
 
 
-        public class CustomResourceRequestHandler : ResourceRequestHandler
+        public class XApiTokenResourceRequestHandler : ResourceRequestHandler
         {
 
             protected override CefReturnValue OnBeforeResourceLoad(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback)
@@ -76,13 +76,15 @@ namespace MMX_NODE_GUI
         {
             protected override IResourceRequestHandler GetResourceRequestHandler(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, bool isNavigation, bool isDownload, string requestInitiator, ref bool disableDefaultHandling)
             {
-                if (request.Url == Node.baseUri.ToString())
+
+                if ( request.Url.StartsWith(Node.apiUri.ToString()) ||
+                     request.Url.StartsWith(Node.wapiUri.ToString())
+                  )
+                {
+                    return new XApiTokenResourceRequestHandler();
+                } else
                 {
                     return base.GetResourceRequestHandler(chromiumWebBrowser, browser, frame, request, isNavigation, isDownload, requestInitiator, ref disableDefaultHandling);
-                }
-                else
-                {
-                    return new CustomResourceRequestHandler();
                 }
             }
 
@@ -108,7 +110,7 @@ namespace MMX_NODE_GUI
                 //model.AddItem(CefMenuCommand.Back, "Back");
                 //model.AddItem(CefMenuCommand.Forward, "Forward");
                 model.AddSeparator();
-                model.AddItem(CefMenuCommand.Reload, "Reload");
+                model.AddItem(CefMenuCommand.Reload, Properties.Resources.reload);
 #if DEBUG
                 model.AddSeparator();
                 model.AddItem((CefMenuCommand)26501, "Show DevTools");
@@ -119,7 +121,7 @@ namespace MMX_NODE_GUI
                 CefMenuCommand commandId, CefEventFlags eventFlags)
             {
 
-                if (commandId == CefMenuCommand.CustomFirst)
+                if (commandId == (CefMenuCommand)26501)
                 {
                     browserControl.ShowDevTools();
                 }

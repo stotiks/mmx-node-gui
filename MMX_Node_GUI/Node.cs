@@ -31,7 +31,12 @@ namespace MMX_NODE_GUI
 
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
+
+        static public readonly Uri apiUri = new Uri(baseUri, "/api/");
+        static public readonly Uri wapiUri = new Uri(baseUri, "/wapi/");
+
         static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
+
 
         private static string _xApiToken = GetRandomHexNumber(64);
         public static string XApiTokenName = "x-api-token";
