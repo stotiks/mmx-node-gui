@@ -32,8 +32,6 @@ namespace MMX_NODE_GUI
 
             chromiumWebBrowser.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
 
-                //IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
-
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
             var boundObject = new MMXBoundObject(this);
