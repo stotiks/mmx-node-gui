@@ -19,15 +19,15 @@ namespace MMX_NODE_GUI
         	//@"C:\Program Files\MMX";
 			@"C:\dev\mmx\MMX";
 #endif
-
-        public static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");
+        private static string MMX_HOME_ENV = Environment.GetEnvironmentVariable("MMX_HOME");
+        public static string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx") : MMX_HOME_ENV;
         public static string configPath = MMX_HOME + @"\config\local";
         public static string harvesterConfigPath = configPath + @"\Harvester.json";
         public static string plotterConfigPath = configPath + @"\Plotter.json";
         public static string httpServerConfigPath = configPath + @"\HttpServer.json";
         
-        public static string activateCMDPath = workingDirectory + @"\activate.cmd";
-        public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd";
+        public static string activateCMDPath = workingDirectory + @"\activate.cmd1";
+        public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd1";
 
         static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
@@ -105,7 +105,9 @@ namespace MMX_NODE_GUI
             {
                 var result = await client.GetAsync(sessionUri);
                 return true;
-            } catch (Exception) {}
+            } catch (Exception) {
+                Console.WriteLine("Node not running");
+            }
 
             return false;
         }
@@ -189,7 +191,7 @@ namespace MMX_NODE_GUI
             }
             catch
             {
-                //System.Console.WriteLine(@"config not found");
+                Console.WriteLine(@"config not found");
             }
 
             dynamic httpServerConfig = JsonConvert.DeserializeObject(json);
