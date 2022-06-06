@@ -17,7 +17,7 @@ namespace MMX_NODE_GUI
     		Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
 #else
         	//@"C:\Program Files\MMX";
-			@"C:\dev\mmx\MMX_TEST6";
+			@"C:\dev\mmx\MMX";
 #endif
 
         public static string MMX_HOME = Environment.GetEnvironmentVariable("MMX_HOME") == "" ? Environment.GetEnvironmentVariable("MMX_HOME") : (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx");

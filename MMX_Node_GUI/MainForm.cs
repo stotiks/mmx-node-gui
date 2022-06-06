@@ -91,6 +91,12 @@ namespace MMX_NODE_GUI
         bool closePending = false;
         private CultureInfo culture;
 
+        private string GetRString(string key)
+        {
+            var resourceManager = new ResourceManager(GetType());
+            return resourceManager.GetString(key, CultureInfo);
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (closePending) return;
@@ -104,10 +110,17 @@ namespace MMX_NODE_GUI
 
             if (Properties.Settings.Default.confirmationOnExit && e.CloseReason == CloseReason.UserClosing)
             {
+
+                var resourceManager = new ResourceManager(GetType());
+
+                string closeQuestionText = GetRString("closeQuestion.Text");
+                string yesText = GetRString("yes.Text");
+                string noText = GetRString("no.Text");
+
                 MaterialDialog materialDialog = new MaterialDialog(this,
                                                                    Assembly.GetExecutingAssembly().GetName().Name,
-                                                                   "Do you want to close the application?",
-                                                                   "No", true, "Yes");
+                                                                   closeQuestionText,
+                                                                   noText, true, yesText);
                 DialogResult dialogResult = materialDialog.ShowDialog(this);
 
                 if (dialogResult == DialogResult.OK)
@@ -167,7 +180,7 @@ namespace MMX_NODE_GUI
             langMaterialComboBox.ValueMember = "Key";
             langMaterialComboBox.DataSource = new BindingSource(launguages, null);
 
-            this.Culture = new CultureInfo(Properties.Settings.Default.langCode);
+            this.CultureInfo = new CultureInfo(Properties.Settings.Default.langCode);
         }
 
 
@@ -177,7 +190,7 @@ namespace MMX_NODE_GUI
         [Browsable(false)]
         [Description("Current culture of this form")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public CultureInfo Culture
+        public CultureInfo CultureInfo
         {
             get { return this.culture; }
             set

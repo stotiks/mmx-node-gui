@@ -47,7 +47,7 @@ namespace MMX_NODE_GUI
             var selected = langMaterialComboBox.SelectedValue;
             string lang = selected != null ? selected.ToString() : "en";
 
-            this.Culture = new CultureInfo(lang);
+            this.CultureInfo = new CultureInfo(lang);
             saveSettings(sender, e);
         }
 
