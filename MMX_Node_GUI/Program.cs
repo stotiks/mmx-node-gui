@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MMX_NODE_GUI
@@ -23,6 +24,8 @@ namespace MMX_NODE_GUI
         [STAThread]
         static void Main()
         {
+            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
             InitializeCefSharp();
@@ -39,6 +42,16 @@ namespace MMX_NODE_GUI
             PowerManagement.ApplyPowerManagementSettings();
 
             Application.Run(new MainForm());
+        }
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show( e.Exception.Message, "Warning!");
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show( (e.ExceptionObject as Exception).Message , "Warning!");
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
