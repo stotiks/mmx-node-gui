@@ -1909,7 +1909,7 @@
 </value>
   </data>
   <data name="notifyIcon1.Text" xml:space="preserve">
-    <value>MMX Node</value>
+    <value>notifyIcon1.Text</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="notifyIcon1.Visible" type="System.Boolean, mscorlib">
@@ -2588,6 +2588,7 @@
   </data>
   <data name="aboutTabPage.Text" xml:space="preserve">
     <value>About</value>
+    <comment>main</comment>
   </data>
   <data name="&gt;&gt;aboutTabPage.Name" xml:space="preserve">
     <value>aboutTabPage</value>
@@ -2746,7 +2747,7 @@
     <value>4</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>Load plots from (node restart required):</value>
+    <value>Load plots from:</value>
     <comment>plotter</comment>
   </data>
   <data name="plotFoldersMaterialListBox.Font" type="System.Drawing.Font, System.Drawing">
@@ -5746,14 +5747,5 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialForm, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="closeQuestion.Text" xml:space="preserve">
-    <value>Do you want to close the application?</value>
-  </data>
-  <data name="no.Text" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="yes.Text" xml:space="preserve">
-    <value>Yes</value>
   </data>
 </root>

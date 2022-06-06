@@ -46,6 +46,7 @@ namespace MMX_NODE_GUI
             InitializeLoc();
 
             this.menuMaterialTabControl.Controls.Remove(this.aboutTabPage);
+            this.notifyIcon1.Text = this.Text;
 
         }
 
@@ -93,8 +94,7 @@ namespace MMX_NODE_GUI
 
         private string GetRString(string key)
         {
-            var resourceManager = new ResourceManager(GetType());
-            return resourceManager.GetString(key, CultureInfo);
+            return Properties.Resources.ResourceManager.GetString(key, Culture);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -110,17 +110,10 @@ namespace MMX_NODE_GUI
 
             if (Properties.Settings.Default.confirmationOnExit && e.CloseReason == CloseReason.UserClosing)
             {
-
-                var resourceManager = new ResourceManager(GetType());
-
-                string closeQuestionText = GetRString("closeQuestion.Text");
-                string yesText = GetRString("yes.Text");
-                string noText = GetRString("no.Text");
-
                 MaterialDialog materialDialog = new MaterialDialog(this,
-                                                                   Assembly.GetExecutingAssembly().GetName().Name,
-                                                                   closeQuestionText,
-                                                                   noText, true, yesText);
+                                                                   this.Text,
+                                                                   Properties.Resources.closeQuestion,
+                                                                   Properties.Resources.no, true, Properties.Resources.yes);
                 DialogResult dialogResult = materialDialog.ShowDialog(this);
 
                 if (dialogResult == DialogResult.OK)
@@ -180,7 +173,8 @@ namespace MMX_NODE_GUI
             langMaterialComboBox.ValueMember = "Key";
             langMaterialComboBox.DataSource = new BindingSource(launguages, null);
 
-            this.CultureInfo = new CultureInfo(Properties.Settings.Default.langCode);
+            this.Culture = new CultureInfo(Properties.Settings.Default.langCode);
+            CultureChanged += (s, e) => Properties.Resources.Culture = this.Culture;
         }
 
 
@@ -190,7 +184,7 @@ namespace MMX_NODE_GUI
         [Browsable(false)]
         [Description("Current culture of this form")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public CultureInfo CultureInfo
+        public CultureInfo Culture
         {
             get { return this.culture; }
             set
@@ -251,8 +245,18 @@ namespace MMX_NODE_GUI
                     }
 
                     this.culture = value;
-                    //this.OnCultureChanged();
+                    this.OnCultureChanged();
                 }
+            }
+        }
+
+        public event EventHandler CultureChanged;
+
+        private void OnCultureChanged()
+        {
+            if (CultureChanged != null)
+            {
+                CultureChanged(this, EventArgs.Empty);
             }
         }
 

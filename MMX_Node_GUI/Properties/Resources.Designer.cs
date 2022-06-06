@@ -61,6 +61,15 @@ namespace MMX_NODE_GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to close the application?.
+        /// </summary>
+        internal static string closeQuestion {
+            get {
+                return ResourceManager.GetString("closeQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap folder {
@@ -87,6 +96,42 @@ namespace MMX_NODE_GUI.Properties {
             get {
                 object obj = ResourceManager.GetObject("folder-remove", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keys copied succesfully.
+        /// </summary>
+        internal static string keysCopied {
+            get {
+                return ResourceManager.GetString("keysCopied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string no {
+            get {
+                return ResourceManager.GetString("no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string ok {
+            get {
+                return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string yes {
+            get {
+                return ResourceManager.GetString("yes", resourceCulture);
             }
         }
     }
