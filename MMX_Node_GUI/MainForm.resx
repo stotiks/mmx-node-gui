@@ -1920,6 +1920,7 @@
   </data>
   <data name="showToolStripMenuItem.Text" xml:space="preserve">
     <value>Show</value>
+    <comment>main</comment>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 6</value>
@@ -1929,6 +1930,7 @@
   </data>
   <data name="exitToolStripMenuItem1.Text" xml:space="preserve">
     <value>Exit</value>
+    <comment>main</comment>
   </data>
   <data name="nodeTabPage.ImageKey" xml:space="preserve">
     <value>database-sync.png</value>
@@ -1944,6 +1946,7 @@
   </data>
   <data name="nodeTabPage.Text" xml:space="preserve">
     <value>Node</value>
+    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;nodeTabPage.Name" xml:space="preserve">
     <value>nodeTabPage</value>
@@ -2026,6 +2029,7 @@
   </data>
   <data name="harvesterTabPage.Text" xml:space="preserve">
     <value>Harvester</value>
+    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;harvesterTabPage.Name" xml:space="preserve">
     <value>harvesterTabPage</value>
@@ -2089,6 +2093,7 @@
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Number of plots to create</value>
+    <comment>plotter</comment>
   </data>
   <data name="countMaterialLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -2221,6 +2226,7 @@
   </data>
   <data name="startMaterialButton.Text" xml:space="preserve">
     <value>Start</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;startMaterialButton.Name" xml:space="preserve">
     <value>startMaterialButton</value>
@@ -2254,6 +2260,7 @@
   </data>
   <data name="sizeMaterialLabel.Text" xml:space="preserve">
     <value>K size</value>
+    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;sizeMaterialLabel.Name" xml:space="preserve">
     <value>sizeMaterialLabel</value>
@@ -2278,6 +2285,7 @@
   </data>
   <data name="finaldirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Final directory to copy plot in parallel</value>
+    <comment>plotter</comment>
   </data>
   <data name="finaldirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 10</value>
@@ -2422,6 +2430,7 @@
   </data>
   <data name="plotterTabPage.Text" xml:space="preserve">
     <value>Plotter</value>
+    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;plotterTabPage.Name" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -2548,6 +2557,7 @@
   </data>
   <data name="settingsTabPage.Text" xml:space="preserve">
     <value>GUI Settings</value>
+    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;settingsTabPage.Name" xml:space="preserve">
     <value>settingsTabPage</value>
@@ -2736,7 +2746,8 @@
     <value>4</value>
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
-    <value>Load plots from:</value>
+    <value>Load plots from (node restart required):</value>
+    <comment>plotter</comment>
   </data>
   <data name="plotFoldersMaterialListBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Roboto, 16px</value>
@@ -2773,6 +2784,7 @@
   </data>
   <data name="removePlotFolderMaterialButton.Text" xml:space="preserve">
     <value>Remove</value>
+    <comment>harvester</comment>
   </data>
   <data name="addPlotFolderMaterialButton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2797,6 +2809,7 @@
   </data>
   <data name="addPlotFolderMaterialButton.Text" xml:space="preserve">
     <value>Add</value>
+    <comment>harvester</comment>
   </data>
   <data name="&gt;&gt;farmerkeyMaterialTextBox2.Name" xml:space="preserve">
     <value>farmerkeyMaterialTextBox2</value>
@@ -2860,6 +2873,7 @@
   </data>
   <data name="keysTabPage.Text" xml:space="preserve">
     <value>Keys</value>
+    <comment>plotter</comment>
   </data>
   <data name="farmerkeyMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2872,6 +2886,7 @@
   </data>
   <data name="farmerkeyMaterialTextBox2.Hint" xml:space="preserve">
     <value>Farmer Public Key (48 bytes)</value>
+    <comment>plotter</comment>
   </data>
   <data name="farmerkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
@@ -2908,6 +2923,7 @@
   </data>
   <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
     <value>Create NFT plot</value>
+    <comment>plotter</comment>
   </data>
   <data name="contractMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2920,6 +2936,7 @@
   </data>
   <data name="contractMaterialTextBox2.Hint" xml:space="preserve">
     <value>Pool Contract Address (62 chars)</value>
+    <comment>plotter</comment>
   </data>
   <data name="contractMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 157</value>
@@ -2947,6 +2964,7 @@
   </data>
   <data name="poolkeyMaterialTextBox2.Hint" xml:space="preserve">
     <value>Pool Public Key (48 bytes)</value>
+    <comment>plotter</comment>
   </data>
   <data name="poolkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 103</value>
@@ -3073,6 +3091,7 @@
   </data>
   <data name="perfomanceTabPage.Text" xml:space="preserve">
     <value>Perfomance</value>
+    <comment>plotter</comment>
   </data>
   <data name="buckets3MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3094,6 +3113,7 @@
   </data>
   <data name="buckets3MaterialLabel.Text" xml:space="preserve">
     <value>Number of buckets for phase 3+4</value>
+    <comment>plotter</comment>
   </data>
   <data name="bucketsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3115,6 +3135,7 @@
   </data>
   <data name="bucketsMaterialLabel.Text" xml:space="preserve">
     <value>Number of buckets</value>
+    <comment>plotter</comment>
   </data>
   <data name="rmulti2MaterialLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3136,6 +3157,7 @@
   </data>
   <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
     <value>Thread multiplier for P2</value>
+    <comment>plotter</comment>
   </data>
   <data name="threadsMaterialLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3157,6 +3179,7 @@
   </data>
   <data name="threadsMaterialLabel.Text" xml:space="preserve">
     <value>Number of threads</value>
+    <comment>plotter</comment>
   </data>
   <data name="rmulti2MaterialNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 60</value>
@@ -3346,6 +3369,7 @@
   </data>
   <data name="directoriesTabPage.Text" xml:space="preserve">
     <value>Directories</value>
+    <comment>plotter</comment>
   </data>
   <data name="tmpdirMaterialTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3358,6 +3382,7 @@
   </data>
   <data name="tmpdirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Temporary directory</value>
+    <comment>plotter</comment>
   </data>
   <data name="tmpdirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
@@ -3385,6 +3410,7 @@
   </data>
   <data name="tmpdir2MaterialTextBox2.Hint" xml:space="preserve">
     <value>Temporary directory 2 [RAM]</value>
+    <comment>plotter</comment>
   </data>
   <data name="tmpdir2MaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 60</value>
@@ -3412,6 +3438,7 @@
   </data>
   <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Stage directory to write plot file</value>
+    <comment>plotter</comment>
   </data>
   <data name="stagedirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 114</value>
@@ -3448,6 +3475,7 @@
   </data>
   <data name="directoutMaterialSwitch.Text" xml:space="preserve">
     <value>Create plot directly in finaldir</value>
+    <comment>plotter</comment>
   </data>
   <data name="tmptoggleMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3469,6 +3497,7 @@
   </data>
   <data name="tmptoggleMaterialSwitch.Text" xml:space="preserve">
     <value>Alternate tmpdir/tmpdir2</value>
+    <comment>plotter</comment>
   </data>
   <data name="waitforcopyMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3490,6 +3519,7 @@
   </data>
   <data name="waitforcopyMaterialSwitch.Text" xml:space="preserve">
     <value>Wait for copy to start next plot</value>
+    <comment>plotter</comment>
   </data>
   <data name="stagedirMaterialButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3610,6 +3640,7 @@
   </data>
   <data name="debugGroupBox.Text" xml:space="preserve">
     <value>Debug</value>
+    <comment>options</comment>
   </data>
   <data name="showConsoleMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3631,6 +3662,7 @@
   </data>
   <data name="showConsoleMaterialSwitch.Text" xml:space="preserve">
     <value>Show Console</value>
+    <comment>options</comment>
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3661,6 +3693,7 @@
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Power Management</value>
+    <comment>options</comment>
   </data>
   <data name="inhibitSystemSleepMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3682,6 +3715,7 @@
   </data>
   <data name="inhibitSystemSleepMaterialSwitch.Text" xml:space="preserve">
     <value>Inhibit system sleep</value>
+    <comment>options</comment>
   </data>
   <data name="confirmationOnExitMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3703,6 +3737,7 @@
   </data>
   <data name="confirmationOnExitMaterialSwitch.Text" xml:space="preserve">
     <value>Confirmation on exit</value>
+    <comment>options</comment>
   </data>
   <data name="startMinimizedMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3724,6 +3759,7 @@
   </data>
   <data name="startMinimizedMaterialSwitch.Text" xml:space="preserve">
     <value>Start minimized</value>
+    <comment>options</comment>
   </data>
   <data name="startOnStartupMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3745,6 +3781,7 @@
   </data>
   <data name="startOnStartupMaterialSwitch.Text" xml:space="preserve">
     <value>Start on Windows start up</value>
+    <comment>options</comment>
   </data>
   <data name="showInNotifitationMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3766,6 +3803,7 @@
   </data>
   <data name="showInNotifitationMaterialSwitch.Text" xml:space="preserve">
     <value>Show in notification area</value>
+    <comment>options</comment>
   </data>
   <data name="showInNotifitationGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3826,6 +3864,7 @@
   </data>
   <data name="closeToNotificationMaterialSwitch.Text" xml:space="preserve">
     <value>Close to notification area</value>
+    <comment>options</comment>
   </data>
   <data name="minimizeToNotificationMaterialSwitch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3847,6 +3886,7 @@
   </data>
   <data name="minimizeToNotificationMaterialSwitch.Text" xml:space="preserve">
     <value>Minimize to notification area</value>
+    <comment>options</comment>
   </data>
   <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>409, 17</value>
