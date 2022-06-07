@@ -206,6 +206,11 @@
     <None Include="icons\folder.png" />
     <EmbeddedResource Include="html\loading.html" />
     <EmbeddedResource Include="html\logout.js" />
+    <None Include="icons\cog.png" />
+    <None Include="icons\database-sync.png" />
+    <None Include="icons\information.png" />
+    <None Include="icons\tractor.png" />
+    <None Include="icons\harddisk-plus.png" />
     <Content Include="mmx.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MMX_NODE_GUI
 {
@@ -22,8 +23,12 @@ namespace MMX_NODE_GUI
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+
+
+    static void Main()
         {
+            //NativeMethods.AllocConsole();
+
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
@@ -46,12 +51,12 @@ namespace MMX_NODE_GUI
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            MessageBox.Show( e.Exception.Message, "Warning!");
+            MessageBox.Show( e.Exception.ToString(), "Warning!");
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBox.Show( (e.ExceptionObject as Exception).Message , "Warning!");
+            MessageBox.Show( (e.ExceptionObject as Exception).ToString(), "Warning!");
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]

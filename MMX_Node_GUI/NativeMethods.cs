@@ -21,6 +21,10 @@ namespace MMX_NODE_GUI
         [DllImport("kernel32.dll")]
         public static extern EXECUTION_STATE SetThreadExecutionState(EXECUTION_STATE esFlags);
 
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool AllocConsole();
+
     }
     
 }

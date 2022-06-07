@@ -94,8 +94,8 @@ namespace MMX_NODE_GUI
             this.closeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.aboutTabPage = new System.Windows.Forms.TabPage();
-            this.menuIconList = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.menuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
@@ -162,7 +162,6 @@ namespace MMX_NODE_GUI
             this.menuMaterialTabControl.Controls.Add(this.settingsTabPage);
             this.menuMaterialTabControl.Controls.Add(this.aboutTabPage);
             this.menuMaterialTabControl.Depth = 0;
-            this.menuMaterialTabControl.ImageList = this.menuIconList;
             this.menuMaterialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.menuMaterialTabControl.Multiline = true;
             this.menuMaterialTabControl.Name = "menuMaterialTabControl";
@@ -912,20 +911,16 @@ namespace MMX_NODE_GUI
             resources.ApplyResources(this.aboutTabPage, "aboutTabPage");
             this.aboutTabPage.Name = "aboutTabPage";
             // 
-            // menuIconList
-            // 
-            this.menuIconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("menuIconList.ImageStream")));
-            this.menuIconList.TransparentColor = System.Drawing.Color.Transparent;
-            this.menuIconList.Images.SetKeyName(0, "cog.png");
-            this.menuIconList.Images.SetKeyName(1, "database-sync.png");
-            this.menuIconList.Images.SetKeyName(2, "tractor.png");
-            this.menuIconList.Images.SetKeyName(3, "harddisk-plus.png");
-            this.menuIconList.Images.SetKeyName(4, "information.png");
-            // 
             // statusStrip1
             // 
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.imageList1, "imageList1");
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // MainForm
             // 
@@ -980,7 +975,6 @@ namespace MMX_NODE_GUI
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.TabPage nodeTabPage;
         private MaterialSkin.Controls.MaterialTabControl menuMaterialTabControl;
-        private System.Windows.Forms.ImageList menuIconList;
         private System.Windows.Forms.TabPage settingsTabPage;
         private System.Windows.Forms.GroupBox groupBox2;
         private MaterialSkin.Controls.MaterialSwitch inhibitSystemSleepMaterialSwitch;
@@ -1036,6 +1030,7 @@ namespace MMX_NODE_GUI
         private MaterialSkin.Controls.MaterialSwitch showConsoleMaterialSwitch;
         private MaterialSkin.Controls.MaterialComboBox langMaterialComboBox;
         private System.Windows.Forms.TabPage aboutTabPage;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
