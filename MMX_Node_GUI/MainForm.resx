@@ -1932,8 +1932,8 @@
   <data name="notifyIcon1.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="nodeTabPage.ImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="nodeTabPage.ImageKey" xml:space="preserve">
+    <value>(none)</value>
   </data>
   <data name="nodeTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2096,8 +2096,8 @@
   <data name="&gt;&gt;addPlotFolderMaterialButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="harvesterTabPage.ImageIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="harvesterTabPage.ImageKey" xml:space="preserve">
+    <value>(none)</value>
   </data>
   <data name="harvesterTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2134,7 +2134,7 @@
     <value>None</value>
   </data>
   <data name="materialMultiLineTextBox21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 513</value>
+    <value>10, 522</value>
   </data>
   <data name="materialMultiLineTextBox21.Size" type="System.Drawing.Size, System.Drawing">
     <value>977, 97</value>
@@ -3279,8 +3279,8 @@
   <data name="&gt;&gt;countMaterialNumericUpDown.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="plotterTabPage.ImageIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="plotterTabPage.ImageKey" xml:space="preserve">
+    <value>(none)</value>
   </data>
   <data name="plotterTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3701,6 +3701,9 @@
   <data name="&gt;&gt;showInNotifitationGroupBox.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="settingsTabPage.ImageKey" xml:space="preserve">
+    <value>(none)</value>
+  </data>
   <data name="settingsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -3729,8 +3732,8 @@
   <data name="&gt;&gt;settingsTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="aboutTabPage.ImageIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="aboutTabPage.ImageKey" xml:space="preserve">
+    <value>(none)</value>
   </data>
   <data name="aboutTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

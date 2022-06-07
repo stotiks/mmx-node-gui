@@ -16,37 +16,27 @@ namespace MMX_NODE_GUI
         public bool MinimizeToNotification => Properties.Settings.Default.showInNotifitation && Properties.Settings.Default.minimizeToNotification;
 
         public MainForm()
-        {           
+        {
 
             InitializeSkinManager();
 
             InitializeComponent();
-/*
-            this.imageList1.Images.Add(Properties.Resources.cog);
-            this.imageList1.Images.Add(Properties.Resources.database_sync);
-            this.imageList1.Images.Add(Properties.Resources.tractor);
-            this.imageList1.Images.Add(Properties.Resources.harddisk_plus);
-            this.imageList1.Images.Add(Properties.Resources.information);
 
-            this.imageList1.Images.SetKeyName(0, "cog.png");
-            this.imageList1.Images.SetKeyName(1, "database-sync.png");
-            this.imageList1.Images.SetKeyName(2, "tractor.png");
-            this.imageList1.Images.SetKeyName(3, "harddisk-plus.png");
-            this.imageList1.Images.SetKeyName(4, "information.png");
+
+            this.imageList1.Images.Add("database-sync", Properties.Resources.database_sync);
+            this.imageList1.Images.Add("tractor", Properties.Resources.tractor);
+            this.imageList1.Images.Add("harddisk-plus", Properties.Resources.harddisk_plus);
+            this.imageList1.Images.Add("cog", Properties.Resources.cog);
+            this.imageList1.Images.Add("information", Properties.Resources.information);
 
             menuMaterialTabControl.ImageList = imageList1;
-            menuMaterialTabControl.TabPages[0].ImageKey = "cog.png";
-*/
 
-            /*          
+            menuMaterialTabControl.TabPages[0].ImageKey = "database-sync";
+            menuMaterialTabControl.TabPages[1].ImageKey = "tractor";
+            menuMaterialTabControl.TabPages[2].ImageKey = "harddisk-plus";
+            menuMaterialTabControl.TabPages[3].ImageKey = "cog";
+            menuMaterialTabControl.TabPages[4].ImageKey = "information";
 
-                        this.menuIconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("menuIconList.ImageStream")));
-                        this.menuIconList.TransparentColor = System.Drawing.Color.Transparent;
-                        this.menuIconList.Images.SetKeyName(0, "cog.png");
-                        this.menuIconList.Images.SetKeyName(1, "database-sync.png");
-                        this.menuIconList.Images.SetKeyName(2, "tractor.png");
-                        this.menuIconList.Images.SetKeyName(3, "harddisk-plus.png");
-                        this.menuIconList.Images.SetKeyName(4, "information.png");*/
 
             InitializeNode();
 
