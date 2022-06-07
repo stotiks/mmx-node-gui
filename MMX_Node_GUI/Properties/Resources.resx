@@ -156,7 +156,7 @@
     <comment>harvester</comment>
   </data>
   <data name="reload" xml:space="preserve">
-    <value>Refresh</value>
+    <value>Reload</value>
     <comment>node</comment>
   </data>
 </root>

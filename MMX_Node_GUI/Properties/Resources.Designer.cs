@@ -145,7 +145,7 @@ namespace MMX_NODE_GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh.
+        ///   Looks up a localized string similar to Reload.
         /// </summary>
         internal static string reload {
             get {
