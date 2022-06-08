@@ -16,8 +16,9 @@ namespace MMX_NODE_GUI
 
         private Dictionary<string, string> launguages = new Dictionary<string, string>(){
             { "en", "English" },
-            //{ "es", "Español" },
+            { "id", "Bahasa Indonesia" },
             { "de", "Deutsch" },
+            //{ "es", "Español" },
             { "nl", "Nederlands"},
             { "pt", "Português" },
             { "ru", "Русский" },

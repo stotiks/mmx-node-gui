@@ -1933,7 +1933,7 @@
     <value>True</value>
   </data>
   <data name="nodeTabPage.ImageKey" xml:space="preserve">
-    <value>(none)</value>
+    <value>database-sync.png</value>
   </data>
   <data name="nodeTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2097,7 +2097,7 @@
     <value>3</value>
   </data>
   <data name="harvesterTabPage.ImageKey" xml:space="preserve">
-    <value>(none)</value>
+    <value>tractor.png</value>
   </data>
   <data name="harvesterTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3280,7 +3280,7 @@
     <value>9</value>
   </data>
   <data name="plotterTabPage.ImageKey" xml:space="preserve">
-    <value>(none)</value>
+    <value>harddisk-plus.png</value>
   </data>
   <data name="plotterTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3702,7 +3702,7 @@
     <value>7</value>
   </data>
   <data name="settingsTabPage.ImageKey" xml:space="preserve">
-    <value>(none)</value>
+    <value>cog.png</value>
   </data>
   <data name="settingsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3733,7 +3733,7 @@
     <value>3</value>
   </data>
   <data name="aboutTabPage.ImageKey" xml:space="preserve">
-    <value>(none)</value>
+    <value>information.png</value>
   </data>
   <data name="aboutTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

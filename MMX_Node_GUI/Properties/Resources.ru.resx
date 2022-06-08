@@ -129,4 +129,13 @@
   <data name="keysCopied" xml:space="preserve">
     <value>Ключи скопированы</value>
   </data>
+  <data name="dirAdded" xml:space="preserve">
+    <value>Папка добавлена, комбайн перезапущен</value>
+  </data>
+  <data name="dirRemoved" xml:space="preserve">
+    <value>Папка удалена, комбайн перезапущен</value>
+  </data>
+  <data name="reload" xml:space="preserve">
+    <value>Перезагрузить</value>
+  </data>
 </root>

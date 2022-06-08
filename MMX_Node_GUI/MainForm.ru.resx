@@ -3961,12 +3961,15 @@
     <value>Публичный ключ пула (48 байт)</value>
   </data>
   <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
-    <value>Множитель потоков для P2</value>
+    <value>Множитель потоков для фазы 2</value>
   </data>
   <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Промежуточная директория для участка</value>
   </data>
   <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
     <value>Создавать NFT участок</value>
+  </data>
+  <data name="aboutTabPage.Text" xml:space="preserve">
+    <value>О программе</value>
   </data>
 </root>

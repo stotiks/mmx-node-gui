@@ -176,7 +176,7 @@ namespace MMX_NODE_GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string ok {
             get {
@@ -200,6 +200,15 @@ namespace MMX_NODE_GUI.Properties {
             get {
                 object obj = ResourceManager.GetObject("tractor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string translator {
+            get {
+                return ResourceManager.GetString("translator", resourceCulture);
             }
         }
         

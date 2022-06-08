@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,65 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="folder-remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\folder-remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="folder-plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\folder-plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="closeQuestion" xml:space="preserve">
-    <value>Do you want to close the application?</value>
-    <comment>main</comment>
-  </data>
-  <data name="yes" xml:space="preserve">
-    <value>Yes</value>
-    <comment>main</comment>
-  </data>
-  <data name="no" xml:space="preserve">
-    <value>No</value>
-    <comment>main</comment>
-  </data>
-  <data name="keysCopied" xml:space="preserve">
-    <value>Keys copied succesfully</value>
-    <comment>plotter</comment>
-  </data>
-  <data name="ok" xml:space="preserve">
-    <value>OK</value>
-    <comment>main</comment>
-  </data>
-  <data name="dirAdded" xml:space="preserve">
-    <value>Directory added and harvester restarted</value>
-    <comment>harvester</comment>
-  </data>
-  <data name="dirRemoved" xml:space="preserve">
-    <value>Directory removed and harvester restarted</value>
-    <comment>harvester</comment>
-  </data>
-  <data name="reload" xml:space="preserve">
-    <value>Reload</value>
-    <comment>node</comment>
-  </data>
-  <data name="cog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\cog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="database_sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\database-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="harddisk_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\harddisk-plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tractor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\tractor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="translator" xml:space="preserve">
-    <value />
-    <comment>!!!!</comment>
+    <value>@Defo#5147</value>
   </data>
 </root>
