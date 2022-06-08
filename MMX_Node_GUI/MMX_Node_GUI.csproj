@@ -172,6 +172,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
+    <EmbeddedResource Include="Properties\Resources.uk.resx" />
     <None Include="app.manifest" />
     <Compile Include="MainForm.Node.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
