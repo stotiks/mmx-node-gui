@@ -15,7 +15,7 @@ namespace MMX_NODE_GUI
     {
 
         // The subfolder, where the cefsharp files will be moved to
-        private static string cefSubFolder = "cefsharp";
+        private static string cefSubFolder = @"gui\cefsharp";
         // If the assembly resolver loads cefsharp from another folder, set this to true
         private static bool resolved = false;
 
