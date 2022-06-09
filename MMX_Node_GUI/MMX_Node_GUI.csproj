@@ -222,6 +222,7 @@
     <None Include="icons\information.png" />
     <None Include="icons\tractor.png" />
     <None Include="icons\harddisk-plus.png" />
+    <EmbeddedResource Include="html\waitStart.js" />
     <Content Include="mmx.ico" />
   </ItemGroup>
   <ItemGroup>

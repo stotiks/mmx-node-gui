@@ -14,9 +14,11 @@ namespace MMX_NODE_GUI
     public partial class MainForm
     {
         static private string logoutJS = GetResource("logout.js");
+        static private string waitStartJS = GetResource("waitStart.js");
         static private string loadingHtml = GetResource("loading.html");
         static private string jsString = "//javascript";
         static private string logoutHtml = loadingHtml.Replace(jsString, logoutJS);
+        static private string waitStartHtml = loadingHtml.Replace(jsString, waitStartJS);
 
         ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser()
         {
@@ -42,8 +44,8 @@ namespace MMX_NODE_GUI
 
             nodeTabPage.Controls.Add(chromiumWebBrowser);
 
-            node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
-            node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(loadingHtml, Node.baseUri.ToString());
+            //node.Started += (sender, e) => chromiumWebBrowser.LoadUrl(Node.guiUri.ToString());
+            node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(waitStartHtml, Node.baseUri.ToString());
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
         }
