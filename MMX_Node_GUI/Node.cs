@@ -178,28 +178,25 @@ namespace MMX_NODE_GUI
                 Console.WriteLine(@"config not found");
             }
 
-            dynamic httpServerConfig = JsonConvert.DeserializeObject(json);
+            JObject httpServerConfig = JsonConvert.DeserializeObject<JObject>(json);
+            var tokenMap = httpServerConfig.GetValue("token_map");
 
             if (IsRunning)
             {
-                var map = httpServerConfig["token_map"];
-
-                foreach (JProperty prop in map.Properties())
-                {
-                    if(prop.Value.ToString() == "ADMIN")
-                    {
-                        XApiToken = prop.Name;
-                        break;
-                    }                    
-                }
+                XApiToken = (tokenMap.First as JProperty).Name;
             }
             else
             {
-                dynamic jObject = new JObject();
-                var role = "ADMIN";
-                var token = XApiToken;
-                jObject.Add(token, role);
-                httpServerConfig["token_map"] = jObject;
+                var property = new JProperty(XApiToken, "ADMIN");
+
+                if (tokenMap == null) {
+                    var jObject = new JObject();
+                    jObject.Add(property);
+                    httpServerConfig["token_map"] = jObject;
+                } else
+                {
+                    (tokenMap.First as JProperty).Replace(property);
+                }
 
                 json = JsonConvert.SerializeObject(httpServerConfig, Formatting.Indented);
                 File.WriteAllText(Node.httpServerConfigPath, json);
