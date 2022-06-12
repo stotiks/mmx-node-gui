@@ -34,7 +34,16 @@ namespace MMX_NODE_GUI
             inhibitSystemSleepMaterialSwitch.CheckStateChanged += new EventHandler((object sender, EventArgs e) => PowerManagement.ApplyPowerManagementSettings() );
 
             showConsoleMaterialSwitch.DataBindings.Add("Checked", Properties.Settings.Default, "showConsole", true, DataSourceUpdateMode.OnPropertyChanged);
+            
+
+            langMaterialComboBox.DisplayMember = "Value";
+            langMaterialComboBox.ValueMember = "Key";
+            langMaterialComboBox.DataSource = new BindingSource(launguages, null);
+
             langMaterialComboBox.DataBindings.Add("SelectedValue", Properties.Settings.Default, "langCode", true, DataSourceUpdateMode.OnPropertyChanged);
+
+
+            langMaterialComboBox.SelectedIndexChanged += langMaterialComboBox_SelectedIndexChanged;
 
 #if !DEBUG
             debugGroupBox.Enabled = false;

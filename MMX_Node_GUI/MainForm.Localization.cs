@@ -28,9 +28,7 @@ namespace MMX_NODE_GUI
 
         private void InitializeLocalization()
         {
-            langMaterialComboBox.DisplayMember = "Value";
-            langMaterialComboBox.ValueMember = "Key";
-            langMaterialComboBox.DataSource = new BindingSource(launguages, null);
+
 
             this.Culture = new CultureInfo(Properties.Settings.Default.langCode);
             Properties.Resources.Culture = this.Culture;

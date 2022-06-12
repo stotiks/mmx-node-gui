@@ -32,8 +32,6 @@ namespace MMX_NODE_GUI
         private void InitializeNode()
         {
 
-            chromiumWebBrowser.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
-
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
             var boundObject = new MMXBoundObject(this);
@@ -49,17 +47,6 @@ namespace MMX_NODE_GUI
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
         }
-
-        private void Browser_IsBrowserInitializedChanged(object sender, EventArgs e)
-        {
-            var browserHost = chromiumWebBrowser.GetBrowser().GetHost();
-            var requestContext = browserHost.RequestContext;
-            string errorMessage = "";
-
-            var x = requestContext.GetAllPreferences(true);
-            requestContext.SetPreference("intl.accept_languages", Properties.Settings.Default.langCode, out errorMessage);
-        }
-
 
         public class XApiTokenResourceRequestHandler : ResourceRequestHandler
         {

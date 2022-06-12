@@ -22,6 +22,7 @@ namespace MMX_NODE_GUI
 
             InitializeComponent();
 
+            InitializeLocalization();
 
             this.imageList1.Images.Add("database-sync", Properties.Resources.database_sync);
             this.imageList1.Images.Add("tractor", Properties.Resources.tractor);
@@ -46,7 +47,7 @@ namespace MMX_NODE_GUI
 
             InitializePlotter();
 
-            InitializeLocalization();
+
 
             this.notifyIcon1.Text = this.Text;
 

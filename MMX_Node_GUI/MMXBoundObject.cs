@@ -16,18 +16,13 @@ namespace MMX_NODE_GUI
             mainForm = form;
         }
 
-/*        private string _password;
-        public string Password
+        public string Locale
         {
             get
-            {                
-                return _password;
-            }
-            set
             {
-                _password = value;
+                return Properties.Settings.Default.langCode;
             }
-        }*/
+        }
 
         public void PostMessage(String message)
         {

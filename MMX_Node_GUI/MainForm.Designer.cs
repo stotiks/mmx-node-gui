@@ -794,7 +794,6 @@ namespace MMX_NODE_GUI
             this.langMaterialComboBox.MouseState = MaterialSkin.MouseState.OUT;
             this.langMaterialComboBox.Name = "langMaterialComboBox";
             this.langMaterialComboBox.StartIndex = 0;
-            this.langMaterialComboBox.SelectedIndexChanged += new System.EventHandler(this.langMaterialComboBox_SelectedIndexChanged);
             // 
             // debugGroupBox
             // 
