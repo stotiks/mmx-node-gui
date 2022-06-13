@@ -179,23 +179,49 @@ namespace MMX_NODE_GUI
             }
 
             JObject httpServerConfig = JsonConvert.DeserializeObject<JObject>(json);
-            var tokenMap = httpServerConfig.GetValue("token_map");
+            var tokenMap = httpServerConfig["token_map"] as JObject;
+            JProperty firstAdminToken = null;
+
+            if (tokenMap != null)
+            { 
+                foreach (JProperty prop in tokenMap.Properties())
+                {
+                    if (prop.Value.ToString() == "ADMIN")
+                    {
+                        firstAdminToken = prop;
+                        break;
+                    }
+                }
+            }
 
             if (IsRunning)
             {
-                XApiToken = (tokenMap.First as JProperty).Name;
+                if (firstAdminToken != null) 
+                {
+                    XApiToken = firstAdminToken.Name;
+                } else
+                {
+                    //throw new Exception("Can not get XApiToken");
+                }
             }
             else
             {
                 var property = new JProperty(XApiToken, "ADMIN");
 
-                if (tokenMap == null) {
-                    var jObject = new JObject();
-                    jObject.Add(property);
-                    httpServerConfig["token_map"] = jObject;
+                if (firstAdminToken == null) {
+                    if(tokenMap == null)
+                    {
+                        var jObject = new JObject();
+                        jObject.Add(property);
+                        httpServerConfig["token_map"] = jObject;
+                    } else
+                    {
+                        tokenMap.Add(property);
+                    }
+                    
                 } else
                 {
-                    (tokenMap.First as JProperty).Replace(property);
+                    firstAdminToken.Replace(property);
                 }
 
                 json = JsonConvert.SerializeObject(httpServerConfig, Formatting.Indented);
