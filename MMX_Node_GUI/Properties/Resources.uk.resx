@@ -120,4 +120,28 @@
   <data name="translator" xml:space="preserve">
     <value>アレクサンダー, B.Y.M.</value>
   </data>
+  <data name="dirRemoved" xml:space="preserve">
+    <value>Папку видалено, комбайн перезавантажено</value>
+  </data>
+  <data name="dirAdded" xml:space="preserve">
+    <value>Папку додано, комбайн перезавантажено</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Добре</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>Ні</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Так</value>
+  </data>
+  <data name="closeQuestion" xml:space="preserve">
+    <value>Бажаєте закрити додаток?</value>
+  </data>
+  <data name="reload" xml:space="preserve">
+    <value>Перезавантажити</value>
+  </data>
+  <data name="keysCopied" xml:space="preserve">
+    <value>Ключі скопійовані</value>
+  </data>
 </root>

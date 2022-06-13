@@ -133,19 +133,19 @@
     <value>Плоттер</value>
   </data>
   <data name="settingsTabPage.Text" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>Налаштування GUI</value>
   </data>
   <data name="nodeTabPage.Text" xml:space="preserve">
     <value>Вузол</value>
   </data>
   <data name="harvesterTabPage.Text" xml:space="preserve">
-    <value>Ферма</value>
+    <value>Комбайн</value>
   </data>
   <data name="closeToNotificationMaterialSwitch.Text" xml:space="preserve">
-    <value>При закритті згортати в область сповіщень</value>
+    <value>При закритті згортати в область повідомлень</value>
   </data>
   <data name="showInNotifitationMaterialSwitch.Text" xml:space="preserve">
-    <value>Показувати в області сповіщень</value>
+    <value>Показувати в області повідомлень</value>
   </data>
   <data name="startMinimizedMaterialSwitch.Text" xml:space="preserve">
     <value>Запускати згорнутим</value>
@@ -166,10 +166,10 @@
     <value>Показати консоль</value>
   </data>
   <data name="minimizeToNotificationMaterialSwitch.Text" xml:space="preserve">
-    <value>Згорнути до області сповіщень</value>
+    <value>Згорнути до області повідомлень</value>
   </data>
   <data name="startOnStartupMaterialSwitch.Text" xml:space="preserve">
-    <value>Вмикати при запуску Windows</value>
+    <value>Запускати при старті Windows</value>
   </data>
   <data name="tmpdir2MaterialTextBox2.Hint" xml:space="preserve">
     <value>Тимчасовий каталог 2 (Бажано для RAM)</value>
@@ -199,10 +199,10 @@
     <value>Почати</value>
   </data>
   <data name="directoriesTabPage.Text" xml:space="preserve">
-    <value>Директорії</value>
+    <value>Папки</value>
   </data>
   <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
-    <value>Створити NFT плоти</value>
+    <value>Створити NFT плот</value>
   </data>
   <data name="keysTabPage.Text" xml:space="preserve">
     <value>Ключі</value>
@@ -223,7 +223,7 @@
     <value>Продуктивність</value>
   </data>
   <data name="directoutMaterialSwitch.Text" xml:space="preserve">
-    <value>Створення плота безпосередньо у фінальную директорію</value>
+    <value>Створення плоту безпосередньо у фінальную директорію</value>
   </data>
   <data name="tmptoggleMaterialSwitch.Text" xml:space="preserve">
     <value>Альтернатива tmpdir/tmpdir2</value>
@@ -232,9 +232,12 @@
     <value>Щоб розпочати новий плот, дочекайтесь копіювання</value>
   </data>
   <data name="sizeMaterialLabel.Text" xml:space="preserve">
-    <value>Розмір плота (K)</value>
+    <value>Розмір плоту (K)</value>
   </data>
   <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
-    <value>Проміжна директорія для запису файлів плота</value>
+    <value>Проміжна директорія для запису файлів плоту</value>
+  </data>
+  <data name="aboutTabPage.Text" xml:space="preserve">
+    <value>Про програму</value>
   </data>
 </root>
