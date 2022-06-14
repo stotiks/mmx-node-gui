@@ -1,12 +1,9 @@
 ﻿
 function checkNodeStart() {
-    fetch('/api/node/').then((response) => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Something went wrong');
-    }).then((responseJson) => {
-        var check = responseJson.includes('get_height')
+    fetch('/wapi/node/').then(
+        (response) => response.text()
+    ).then((data) => {
+        var check = data.indexOf('node/info') >=0
         if (check) {
             window.location = '/gui/';
         } else {
