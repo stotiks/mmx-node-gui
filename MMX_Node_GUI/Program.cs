@@ -26,11 +26,12 @@ namespace MMX_NODE_GUI
 
 
     static void Main()
-        {
+    {
             //NativeMethods.AllocConsole();
 
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
             InitializeCefSharp();
@@ -51,12 +52,12 @@ namespace MMX_NODE_GUI
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            MessageBox.Show( e.Exception.ToString(), "Warning!");
+            MessageBox.Show( e.Exception.ToString(), "Warning! ThreadException");
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBox.Show( (e.ExceptionObject as Exception).ToString(), "Warning!");
+            MessageBox.Show( (e.ExceptionObject as Exception).ToString(), "Warning! UnhandledException");
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
