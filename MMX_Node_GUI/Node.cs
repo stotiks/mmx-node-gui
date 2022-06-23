@@ -356,12 +356,14 @@ namespace MMX_NODE_GUI
             {
                 KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
             }
+
             try
             {
-                Process proc = Process.GetProcessById(pid);
-                proc.Kill();
+                Process process = Process.GetProcessById(pid);
+                process.Kill();
+                process.WaitForExit();
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
                 // Process already exited.
             }
