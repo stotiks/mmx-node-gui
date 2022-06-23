@@ -30,18 +30,12 @@ namespace MMX_NODE_GUI
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-/*            
-            if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Length > 1)
-            {
-                MessageBox.Show("Another instance of this program is already running. Cannot proceed further.", "Warning!");
-                return;
-            }
-*/
-
             if (!SingleInstance.Start())
             {
-                MessageBox.Show("Another instance of this program is already running.", "Warning!");
-                SingleInstance.ShowFirstInstance();
+                if(!SingleInstance.ShowFirstInstance())
+                {
+                    MessageBox.Show("Another instance of this program is already running by other user", "Warning!");
+                }
                 return;
             }
 
@@ -55,7 +49,6 @@ namespace MMX_NODE_GUI
 
             Application.Run(new MainForm());
 
-            SingleInstance.Stop();
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
