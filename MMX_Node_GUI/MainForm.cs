@@ -131,6 +131,17 @@ namespace MMX_NODE_GUI
             disableCloseToNotification = true;
             Close();
         }
+        
+        protected override void WndProc(ref Message message)
+        {
+            if (message.Msg == SingleInstance.WM_SHOWFIRSTINSTANCE)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+                NativeMethods.SetForegroundWindow(this.Handle);
+            }
+            base.WndProc(ref message);
+        }
 
     }
 }

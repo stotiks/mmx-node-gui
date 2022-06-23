@@ -23,31 +23,39 @@ namespace MMX_NODE_GUI
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-
-
-    static void Main()
-    {
+        static void Main()
+        {
             //NativeMethods.AllocConsole();
 
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            
-            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
-            InitializeCefSharp();
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
+/*            
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Length > 1)
             {
                 MessageBox.Show("Another instance of this program is already running. Cannot proceed further.", "Warning!");
                 return;
             }
+*/
+
+            if (!SingleInstance.Start())
+            {
+                MessageBox.Show("Another instance of this program is already running.", "Warning!");
+                SingleInstance.ShowFirstInstance();
+                return;
+            }
+
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            InitializeCefSharp();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
             PowerManagement.ApplyPowerManagementSettings();
 
             Application.Run(new MainForm());
+
+            SingleInstance.Stop();
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
