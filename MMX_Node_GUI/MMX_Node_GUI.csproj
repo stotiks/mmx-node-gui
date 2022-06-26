@@ -163,6 +163,9 @@
     <EmbeddedResource Include="MainForm.uk.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.zh.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MaterialNumericUpDown.resx">
       <DependentUpon>MaterialNumericUpDown.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +180,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
     <EmbeddedResource Include="Properties\Resources.uk.resx" />
+    <EmbeddedResource Include="Properties\Resources.zh.resx" />
     <None Include="app.manifest" />
     <Compile Include="MainForm.Node.cs">
       <DependentUpon>MainForm.cs</DependentUpon>

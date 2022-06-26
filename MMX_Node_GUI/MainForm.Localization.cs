@@ -23,6 +23,7 @@ namespace MMX_NODE_GUI
             { "pt", "Português" },
             { "ru", "Русский" },
             { "uk", "Українська" },
+            { "zh", "简体中文" },
         };
 
 
