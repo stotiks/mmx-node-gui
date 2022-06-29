@@ -46,6 +46,11 @@ namespace MMX_NODE_GUI
             node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(waitStartHtml, Node.baseUri.ToString());
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
+            if(!string.IsNullOrEmpty(Node.GetVersion()))
+            {
+                this.Text += " v" + Node.GetVersion();
+            }
+            
         }
 
         public class XApiTokenResourceRequestHandler : ResourceRequestHandler

@@ -16,8 +16,8 @@ namespace MMX_NODE_GUI
 #if !DEBUG
     		Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
 #else
-        	//@"C:\Program Files\MMX";
-			@"C:\dev\mmx\MMX";
+            //@"C:\Program Files\MMX";
+            @"C:\dev\mmx\MMX";
 #endif
         private static string MMX_HOME_ENV = Environment.GetEnvironmentVariable("MMX_HOME");
         public static string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx") : MMX_HOME_ENV;
@@ -25,22 +25,22 @@ namespace MMX_NODE_GUI
         public static string harvesterConfigPath = configPath + @"\Harvester.json";
         public static string plotterConfigPath = configPath + @"\Plotter.json";
         public static string httpServerConfigPath = configPath + @"\HttpServer.json";
-        
+
         public static string activateCMDPath = workingDirectory + @"\activate.cmd";
         public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd";
+        public static string mmxNodeEXEPath = workingDirectory + @"\mmx_node.exe";
 
-        static public readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
-        static public readonly Uri guiUri = new Uri(baseUri, "/gui/");
+        public static readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
+        public static readonly Uri guiUri = new Uri(baseUri, "/gui/");
 
-        static public readonly Uri apiUri = new Uri(baseUri, "/api/");
-        static public readonly Uri wapiUri = new Uri(baseUri, "/wapi/");
+        public static readonly Uri apiUri = new Uri(baseUri, "/api/");
+        public static readonly Uri wapiUri = new Uri(baseUri, "/wapi/");
 
-        static private readonly Uri sessionUri = new Uri(baseUri, "/server/session");
+        private static readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
 
         private static string _xApiToken = GetRandomHexNumber(64);
-        public static string XApiTokenName = "x-api-token";
-
+        public static readonly string XApiTokenName = "x-api-token";
 
         public event EventHandler BeforeStarted;
 
@@ -53,10 +53,26 @@ namespace MMX_NODE_GUI
         private Process process;
         private bool processStarted = false;
 
+        private static string _version;
+        public static string GetVersion()
+        {
+            if(_version == null)
+            {
+                _version = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductVersion;
+            }
+            return _version;
+        }
 
         static Node()
         {
             client.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
+
+            var versionInfo = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath);
+            var v1 = versionInfo.ProductMajorPart;
+            var v2 = versionInfo.ProductMinorPart;
+            var v3 = versionInfo.ProductBuildPart;
+            var v4 = versionInfo.ProductPrivatePart;
+
         }
 
         public Node()
@@ -64,7 +80,7 @@ namespace MMX_NODE_GUI
         }
 
         internal static Task RemovePlotDirTask(string dirName)
-        { 
+        {
             return Task.Run(async () =>
             {
                 dynamic data = new JObject();
@@ -97,7 +113,8 @@ namespace MMX_NODE_GUI
 
         public static bool IsRunning
         {
-            get {
+            get
+            {
                 var task = Task.Run(CheckRunning);
                 task.Wait();
                 return task.Result;
@@ -110,7 +127,9 @@ namespace MMX_NODE_GUI
             {
                 var result = await client.GetAsync(sessionUri);
                 return true;
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 Console.WriteLine("Node not running");
             }
 
@@ -183,7 +202,7 @@ namespace MMX_NODE_GUI
             JProperty firstAdminToken = null;
 
             if (tokenMap != null)
-            { 
+            {
                 foreach (JProperty prop in tokenMap.Properties())
                 {
                     if (prop.Value.ToString() == "ADMIN")
@@ -196,10 +215,11 @@ namespace MMX_NODE_GUI
 
             if (IsRunning)
             {
-                if (firstAdminToken != null) 
+                if (firstAdminToken != null)
                 {
                     XApiToken = firstAdminToken.Name;
-                } else
+                }
+                else
                 {
                     //throw new Exception("Can not get XApiToken");
                 }
@@ -208,18 +228,21 @@ namespace MMX_NODE_GUI
             {
                 var property = new JProperty(XApiToken, "ADMIN");
 
-                if (firstAdminToken == null) {
-                    if(tokenMap == null)
+                if (firstAdminToken == null)
+                {
+                    if (tokenMap == null)
                     {
                         var jObject = new JObject();
                         jObject.Add(property);
                         httpServerConfig["token_map"] = jObject;
-                    } else
+                    }
+                    else
                     {
                         tokenMap.Add(property);
                     }
-                    
-                } else
+
+                }
+                else
                 {
                     firstAdminToken.Replace(property);
                 }

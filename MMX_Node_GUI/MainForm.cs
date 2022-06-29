@@ -47,8 +47,6 @@ namespace MMX_NODE_GUI
 
             InitializePlotter();
 
-
-
             this.notifyIcon1.Text = this.Text;
 
             this.menuMaterialTabControl.Controls.Remove(this.aboutTabPage);
