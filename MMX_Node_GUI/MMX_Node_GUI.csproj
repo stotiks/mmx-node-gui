@@ -234,6 +234,11 @@
     <PackageReference Include="CefSharp.WinForms">
       <Version>102.0.100</Version>
     </PackageReference>
+    <PackageReference Include="MSBuilder.GenerateAssemblyInfo">
+      <Version>0.2.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
