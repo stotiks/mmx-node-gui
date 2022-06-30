@@ -1,6 +1,7 @@
 ﻿using CefSharp;
 using CefSharp.Handler;
 using CefSharp.WinForms;
+using MaterialSkin.Controls;
 using System;
 using System.Drawing;
 using System.IO;
@@ -28,6 +29,7 @@ namespace MMX_NODE_GUI
         };
 
         private readonly Node node = new Node();
+        private UpdateChecker updateChecker;
 
         private void InitializeNode()
         {
@@ -46,11 +48,25 @@ namespace MMX_NODE_GUI
             node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(waitStartHtml, Node.baseUri.ToString());
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(logoutHtml, Node.baseUri.ToString());
 
-            if(!string.IsNullOrEmpty(Node.GetVersion()))
+            versionToolStripStatusLabel.Text = Node.VersionTag;
+            versionToolStripStatusLabel.Visible = true;
+
+            node.Started += (sender, e) =>
             {
-                this.Text += " v" + Node.GetVersion();
-            }
-            
+                updateChecker = new UpdateChecker();
+                updateChecker.UpdateAvailable += (o, e1) =>
+                {
+
+                    BeginInvoke(new MethodInvoker(delegate
+                    {
+                        newVersionToolStripStatusLabel.Visible = true;
+                    }));
+
+                };
+                updateChecker.Check();
+            };
+
+
         }
 
         public class XApiTokenResourceRequestHandler : ResourceRequestHandler

@@ -141,5 +141,9 @@ namespace MMX_NODE_GUI
             base.WndProc(ref message);
         }
 
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/stotiks/mmx-node/releases");
+        }
     }
 }

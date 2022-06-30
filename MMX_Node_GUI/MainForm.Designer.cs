@@ -59,10 +59,6 @@ namespace MMX_NODE_GUI
             this.bucketsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.rmulti2MaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.threadsMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.rmulti2MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.threadsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.buckets3MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.bucketsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.directoriesTabPage = new System.Windows.Forms.TabPage();
             this.tmpdirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.tmpdir2MaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
@@ -78,8 +74,6 @@ namespace MMX_NODE_GUI
             this.sizeMaterialLabel = new MaterialSkin.Controls.MaterialLabel();
             this.finaldirMaterialTextBox2 = new MaterialSkin.Controls.MaterialTextBox2();
             this.finaldirMaterialButton = new MaterialSkin.Controls.MaterialButton();
-            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
-            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.langMaterialComboBox = new MaterialSkin.Controls.MaterialComboBox();
             this.debugGroupBox = new System.Windows.Forms.GroupBox();
@@ -95,7 +89,16 @@ namespace MMX_NODE_GUI
             this.minimizeToNotificationMaterialSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.aboutTabPage = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.versionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.newVersionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.rmulti2MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.threadsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.buckets3MaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.bucketsMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.sizeMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
+            this.countMaterialNumericUpDown = new MMX_NODE_GUI.MaterialNumericUpDown();
             this.contextMenuStrip1.SuspendLayout();
             this.menuMaterialTabControl.SuspendLayout();
             this.harvesterTabPage.SuspendLayout();
@@ -103,17 +106,18 @@ namespace MMX_NODE_GUI
             this.plotterSettingsMaterialTabControl.SuspendLayout();
             this.keysTabPage.SuspendLayout();
             this.perfomanceTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).BeginInit();
             this.directoriesTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).BeginInit();
             this.settingsTabPage.SuspendLayout();
             this.debugGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.showInNotifitationGroupBox.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -406,94 +410,6 @@ namespace MMX_NODE_GUI
             this.threadsMaterialLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.threadsMaterialLabel.Name = "threadsMaterialLabel";
             // 
-            // rmulti2MaterialNumericUpDown
-            // 
-            this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
-            this.rmulti2MaterialNumericUpDown.LogValue = false;
-            this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.rmulti2MaterialNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.rmulti2MaterialNumericUpDown.Name = "rmulti2MaterialNumericUpDown";
-            this.rmulti2MaterialNumericUpDown.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // threadsMaterialNumericUpDown
-            // 
-            this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
-            this.threadsMaterialNumericUpDown.LogValue = false;
-            this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
-            this.threadsMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.threadsMaterialNumericUpDown.Name = "threadsMaterialNumericUpDown";
-            this.threadsMaterialNumericUpDown.Value = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            // 
-            // buckets3MaterialNumericUpDown
-            // 
-            this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
-            this.buckets3MaterialNumericUpDown.LogValue = true;
-            this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.buckets3MaterialNumericUpDown.Minimum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.buckets3MaterialNumericUpDown.Name = "buckets3MaterialNumericUpDown";
-            this.buckets3MaterialNumericUpDown.Value = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
-            // 
-            // bucketsMaterialNumericUpDown
-            // 
-            this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
-            this.bucketsMaterialNumericUpDown.LogValue = true;
-            this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.bucketsMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.bucketsMaterialNumericUpDown.Name = "bucketsMaterialNumericUpDown";
-            this.bucketsMaterialNumericUpDown.Value = new decimal(new int[] {
-            256,
-            0,
-            0,
-            0});
-            // 
             // directoriesTabPage
             // 
             this.directoriesTabPage.Controls.Add(this.tmpdirMaterialTextBox2);
@@ -722,50 +638,6 @@ namespace MMX_NODE_GUI
             this.finaldirMaterialButton.UseVisualStyleBackColor = true;
             this.finaldirMaterialButton.Click += new System.EventHandler(this.chooseFolderButton_Click);
             // 
-            // sizeMaterialNumericUpDown
-            // 
-            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
-            this.sizeMaterialNumericUpDown.LogValue = false;
-            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            34,
-            0,
-            0,
-            0});
-            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
-            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // countMaterialNumericUpDown
-            // 
-            resources.ApplyResources(this.countMaterialNumericUpDown, "countMaterialNumericUpDown");
-            this.countMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.countMaterialNumericUpDown.LogValue = false;
-            this.countMaterialNumericUpDown.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.countMaterialNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.countMaterialNumericUpDown.Name = "countMaterialNumericUpDown";
-            this.countMaterialNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            // 
             // settingsTabPage
             // 
             this.settingsTabPage.Controls.Add(this.langMaterialComboBox);
@@ -912,14 +784,168 @@ namespace MMX_NODE_GUI
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newVersionToolStripStatusLabel,
+            this.toolStripStatusLabel1,
+            this.versionToolStripStatusLabel});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
+            // 
+            // versionToolStripStatusLabel
+            // 
+            this.versionToolStripStatusLabel.Name = "versionToolStripStatusLabel";
+            resources.ApplyResources(this.versionToolStripStatusLabel, "versionToolStripStatusLabel");
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.newVersionToolStripStatusLabel.IsLink = true;
+            this.newVersionToolStripStatusLabel.Name = "toolStripStatusLabel2";
+            resources.ApplyResources(this.newVersionToolStripStatusLabel, "toolStripStatusLabel2");
+            this.newVersionToolStripStatusLabel.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
             // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             resources.ApplyResources(this.imageList1, "imageList1");
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            this.toolStripStatusLabel1.Spring = true;
+            // 
+            // rmulti2MaterialNumericUpDown
+            // 
+            this.rmulti2MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.rmulti2MaterialNumericUpDown, "rmulti2MaterialNumericUpDown");
+            this.rmulti2MaterialNumericUpDown.LogValue = false;
+            this.rmulti2MaterialNumericUpDown.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.rmulti2MaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.rmulti2MaterialNumericUpDown.Name = "rmulti2MaterialNumericUpDown";
+            this.rmulti2MaterialNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // threadsMaterialNumericUpDown
+            // 
+            this.threadsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.threadsMaterialNumericUpDown, "threadsMaterialNumericUpDown");
+            this.threadsMaterialNumericUpDown.LogValue = false;
+            this.threadsMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            128,
+            0,
+            0,
+            0});
+            this.threadsMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.threadsMaterialNumericUpDown.Name = "threadsMaterialNumericUpDown";
+            this.threadsMaterialNumericUpDown.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            // 
+            // buckets3MaterialNumericUpDown
+            // 
+            this.buckets3MaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.buckets3MaterialNumericUpDown, "buckets3MaterialNumericUpDown");
+            this.buckets3MaterialNumericUpDown.LogValue = true;
+            this.buckets3MaterialNumericUpDown.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.buckets3MaterialNumericUpDown.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.buckets3MaterialNumericUpDown.Name = "buckets3MaterialNumericUpDown";
+            this.buckets3MaterialNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            // 
+            // bucketsMaterialNumericUpDown
+            // 
+            this.bucketsMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.bucketsMaterialNumericUpDown, "bucketsMaterialNumericUpDown");
+            this.bucketsMaterialNumericUpDown.LogValue = true;
+            this.bucketsMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.bucketsMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.bucketsMaterialNumericUpDown.Name = "bucketsMaterialNumericUpDown";
+            this.bucketsMaterialNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            // 
+            // sizeMaterialNumericUpDown
+            // 
+            this.sizeMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.sizeMaterialNumericUpDown, "sizeMaterialNumericUpDown");
+            this.sizeMaterialNumericUpDown.LogValue = false;
+            this.sizeMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            34,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.sizeMaterialNumericUpDown.Name = "sizeMaterialNumericUpDown";
+            this.sizeMaterialNumericUpDown.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // countMaterialNumericUpDown
+            // 
+            resources.ApplyResources(this.countMaterialNumericUpDown, "countMaterialNumericUpDown");
+            this.countMaterialNumericUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.countMaterialNumericUpDown.LogValue = false;
+            this.countMaterialNumericUpDown.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.countMaterialNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.countMaterialNumericUpDown.Name = "countMaterialNumericUpDown";
+            this.countMaterialNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             // 
             // MainForm
             // 
@@ -945,14 +971,8 @@ namespace MMX_NODE_GUI
             this.keysTabPage.PerformLayout();
             this.perfomanceTabPage.ResumeLayout(false);
             this.perfomanceTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).EndInit();
             this.directoriesTabPage.ResumeLayout(false);
             this.directoriesTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).EndInit();
             this.settingsTabPage.ResumeLayout(false);
             this.settingsTabPage.PerformLayout();
             this.debugGroupBox.ResumeLayout(false);
@@ -961,6 +981,14 @@ namespace MMX_NODE_GUI
             this.groupBox2.PerformLayout();
             this.showInNotifitationGroupBox.ResumeLayout(false);
             this.showInNotifitationGroupBox.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rmulti2MaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.threadsMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buckets3MaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bucketsMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sizeMaterialNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countMaterialNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1030,6 +1058,9 @@ namespace MMX_NODE_GUI
         private MaterialSkin.Controls.MaterialComboBox langMaterialComboBox;
         private System.Windows.Forms.TabPage aboutTabPage;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripStatusLabel versionToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel newVersionToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

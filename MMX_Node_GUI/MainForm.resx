@@ -129,7 +129,6 @@
   </data>
   <data name="showToolStripMenuItem.Text" xml:space="preserve">
     <value>Show</value>
-    <comment>main</comment>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 6</value>
@@ -139,7 +138,6 @@
   </data>
   <data name="exitToolStripMenuItem1.Text" xml:space="preserve">
     <value>Exit</value>
-    <comment>main</comment>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 54</value>
@@ -1946,7 +1944,6 @@
   </data>
   <data name="nodeTabPage.Text" xml:space="preserve">
     <value>Node</value>
-    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;nodeTabPage.Name" xml:space="preserve">
     <value>nodeTabPage</value>
@@ -1984,7 +1981,6 @@
   </data>
   <data name="harvesterPlotsMaterialLabel.Text" xml:space="preserve">
     <value>Load plots from:</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;harvesterPlotsMaterialLabel.Name" xml:space="preserve">
     <value>harvesterPlotsMaterialLabel</value>
@@ -2045,7 +2041,6 @@
   </data>
   <data name="removePlotFolderMaterialButton.Text" xml:space="preserve">
     <value>Remove</value>
-    <comment>harvester</comment>
   </data>
   <data name="&gt;&gt;removePlotFolderMaterialButton.Name" xml:space="preserve">
     <value>removePlotFolderMaterialButton</value>
@@ -2082,7 +2077,6 @@
   </data>
   <data name="addPlotFolderMaterialButton.Text" xml:space="preserve">
     <value>Add</value>
-    <comment>harvester</comment>
   </data>
   <data name="&gt;&gt;addPlotFolderMaterialButton.Name" xml:space="preserve">
     <value>addPlotFolderMaterialButton</value>
@@ -2113,7 +2107,6 @@
   </data>
   <data name="harvesterTabPage.Text" xml:space="preserve">
     <value>Harvester</value>
-    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;harvesterTabPage.Name" xml:space="preserve">
     <value>harvesterTabPage</value>
@@ -2177,7 +2170,6 @@
   </data>
   <data name="countMaterialLabel.Text" xml:space="preserve">
     <value>Number of plots to create</value>
-    <comment>plotter</comment>
   </data>
   <data name="countMaterialLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -2208,7 +2200,6 @@
   </data>
   <data name="farmerkeyMaterialTextBox2.Hint" xml:space="preserve">
     <value>Farmer Public Key (48 bytes)</value>
-    <comment>plotter</comment>
   </data>
   <data name="farmerkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
@@ -2257,7 +2248,6 @@
   </data>
   <data name="nftplotMaterialSwitch.Text" xml:space="preserve">
     <value>Create NFT plot</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;nftplotMaterialSwitch.Name" xml:space="preserve">
     <value>nftplotMaterialSwitch</value>
@@ -2282,7 +2272,6 @@
   </data>
   <data name="contractMaterialTextBox2.Hint" xml:space="preserve">
     <value>Pool Contract Address (62 chars)</value>
-    <comment>plotter</comment>
   </data>
   <data name="contractMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 157</value>
@@ -2322,7 +2311,6 @@
   </data>
   <data name="poolkeyMaterialTextBox2.Hint" xml:space="preserve">
     <value>Pool Public Key (48 bytes)</value>
-    <comment>plotter</comment>
   </data>
   <data name="poolkeyMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 103</value>
@@ -2365,7 +2353,6 @@
   </data>
   <data name="keysTabPage.Text" xml:space="preserve">
     <value>Keys</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;keysTabPage.Name" xml:space="preserve">
     <value>keysTabPage</value>
@@ -2399,7 +2386,6 @@
   </data>
   <data name="buckets3MaterialLabel.Text" xml:space="preserve">
     <value>Number of buckets for phase 3+4</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;buckets3MaterialLabel.Name" xml:space="preserve">
     <value>buckets3MaterialLabel</value>
@@ -2433,7 +2419,6 @@
   </data>
   <data name="bucketsMaterialLabel.Text" xml:space="preserve">
     <value>Number of buckets</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;bucketsMaterialLabel.Name" xml:space="preserve">
     <value>bucketsMaterialLabel</value>
@@ -2467,7 +2452,6 @@
   </data>
   <data name="rmulti2MaterialLabel.Text" xml:space="preserve">
     <value>Thread multiplier for P2</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;rmulti2MaterialLabel.Name" xml:space="preserve">
     <value>rmulti2MaterialLabel</value>
@@ -2501,7 +2485,6 @@
   </data>
   <data name="threadsMaterialLabel.Text" xml:space="preserve">
     <value>Number of threads</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;threadsMaterialLabel.Name" xml:space="preserve">
     <value>threadsMaterialLabel</value>
@@ -2537,7 +2520,7 @@
     <value>rmulti2MaterialNumericUpDown</value>
   </data>
   <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rmulti2MaterialNumericUpDown.Parent" xml:space="preserve">
     <value>perfomanceTabPage</value>
@@ -2567,7 +2550,7 @@
     <value>threadsMaterialNumericUpDown</value>
   </data>
   <data name="&gt;&gt;threadsMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;threadsMaterialNumericUpDown.Parent" xml:space="preserve">
     <value>perfomanceTabPage</value>
@@ -2594,7 +2577,7 @@
     <value>buckets3MaterialNumericUpDown</value>
   </data>
   <data name="&gt;&gt;buckets3MaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;buckets3MaterialNumericUpDown.Parent" xml:space="preserve">
     <value>perfomanceTabPage</value>
@@ -2621,7 +2604,7 @@
     <value>bucketsMaterialNumericUpDown</value>
   </data>
   <data name="&gt;&gt;bucketsMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bucketsMaterialNumericUpDown.Parent" xml:space="preserve">
     <value>perfomanceTabPage</value>
@@ -2643,7 +2626,6 @@
   </data>
   <data name="perfomanceTabPage.Text" xml:space="preserve">
     <value>Perfomance</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;perfomanceTabPage.Name" xml:space="preserve">
     <value>perfomanceTabPage</value>
@@ -2668,7 +2650,6 @@
   </data>
   <data name="tmpdirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Temporary directory</value>
-    <comment>plotter</comment>
   </data>
   <data name="tmpdirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
@@ -2708,7 +2689,6 @@
   </data>
   <data name="tmpdir2MaterialTextBox2.Hint" xml:space="preserve">
     <value>Temporary directory 2 [RAM]</value>
-    <comment>plotter</comment>
   </data>
   <data name="tmpdir2MaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 60</value>
@@ -2748,7 +2728,6 @@
   </data>
   <data name="stagedirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Stage directory to write plot file</value>
-    <comment>plotter</comment>
   </data>
   <data name="stagedirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 114</value>
@@ -2797,7 +2776,6 @@
   </data>
   <data name="directoutMaterialSwitch.Text" xml:space="preserve">
     <value>Create plot directly in finaldir</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;directoutMaterialSwitch.Name" xml:space="preserve">
     <value>directoutMaterialSwitch</value>
@@ -2831,7 +2809,6 @@
   </data>
   <data name="tmptoggleMaterialSwitch.Text" xml:space="preserve">
     <value>Alternate tmpdir/tmpdir2</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;tmptoggleMaterialSwitch.Name" xml:space="preserve">
     <value>tmptoggleMaterialSwitch</value>
@@ -2865,7 +2842,6 @@
   </data>
   <data name="waitforcopyMaterialSwitch.Text" xml:space="preserve">
     <value>Wait for copy to start next plot</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;waitforcopyMaterialSwitch.Name" xml:space="preserve">
     <value>waitforcopyMaterialSwitch</value>
@@ -3001,7 +2977,6 @@
   </data>
   <data name="directoriesTabPage.Text" xml:space="preserve">
     <value>Directories</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;directoriesTabPage.Name" xml:space="preserve">
     <value>directoriesTabPage</value>
@@ -3092,7 +3067,6 @@
   </data>
   <data name="startMaterialButton.Text" xml:space="preserve">
     <value>Start</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;startMaterialButton.Name" xml:space="preserve">
     <value>startMaterialButton</value>
@@ -3126,7 +3100,6 @@
   </data>
   <data name="sizeMaterialLabel.Text" xml:space="preserve">
     <value>K size</value>
-    <comment>plotter</comment>
   </data>
   <data name="&gt;&gt;sizeMaterialLabel.Name" xml:space="preserve">
     <value>sizeMaterialLabel</value>
@@ -3151,7 +3124,6 @@
   </data>
   <data name="finaldirMaterialTextBox2.Hint" xml:space="preserve">
     <value>Final directory to copy plot in parallel</value>
-    <comment>plotter</comment>
   </data>
   <data name="finaldirMaterialTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 10</value>
@@ -3238,7 +3210,7 @@
     <value>sizeMaterialNumericUpDown</value>
   </data>
   <data name="&gt;&gt;sizeMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sizeMaterialNumericUpDown.Parent" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -3271,7 +3243,7 @@
     <value>countMaterialNumericUpDown</value>
   </data>
   <data name="&gt;&gt;countMaterialNumericUpDown.Type" xml:space="preserve">
-    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MMX_NODE_GUI.MaterialNumericUpDown, MMX Node GUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;countMaterialNumericUpDown.Parent" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -3296,7 +3268,6 @@
   </data>
   <data name="plotterTabPage.Text" xml:space="preserve">
     <value>Plotter</value>
-    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;plotterTabPage.Name" xml:space="preserve">
     <value>plotterTabPage</value>
@@ -3366,7 +3337,6 @@
   </data>
   <data name="showConsoleMaterialSwitch.Text" xml:space="preserve">
     <value>Show Console</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;showConsoleMaterialSwitch.Name" xml:space="preserve">
     <value>showConsoleMaterialSwitch</value>
@@ -3391,7 +3361,6 @@
   </data>
   <data name="debugGroupBox.Text" xml:space="preserve">
     <value>Debug</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;debugGroupBox.Name" xml:space="preserve">
     <value>debugGroupBox</value>
@@ -3428,7 +3397,6 @@
   </data>
   <data name="inhibitSystemSleepMaterialSwitch.Text" xml:space="preserve">
     <value>Inhibit system sleep</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;inhibitSystemSleepMaterialSwitch.Name" xml:space="preserve">
     <value>inhibitSystemSleepMaterialSwitch</value>
@@ -3456,7 +3424,6 @@
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Power Management</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -3490,7 +3457,6 @@
   </data>
   <data name="confirmationOnExitMaterialSwitch.Text" xml:space="preserve">
     <value>Confirmation on exit</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;confirmationOnExitMaterialSwitch.Name" xml:space="preserve">
     <value>confirmationOnExitMaterialSwitch</value>
@@ -3524,7 +3490,6 @@
   </data>
   <data name="startMinimizedMaterialSwitch.Text" xml:space="preserve">
     <value>Start minimized</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;startMinimizedMaterialSwitch.Name" xml:space="preserve">
     <value>startMinimizedMaterialSwitch</value>
@@ -3558,7 +3523,6 @@
   </data>
   <data name="startOnStartupMaterialSwitch.Text" xml:space="preserve">
     <value>Start on Windows start up</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;startOnStartupMaterialSwitch.Name" xml:space="preserve">
     <value>startOnStartupMaterialSwitch</value>
@@ -3592,7 +3556,6 @@
   </data>
   <data name="showInNotifitationMaterialSwitch.Text" xml:space="preserve">
     <value>Show in notification area</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;showInNotifitationMaterialSwitch.Name" xml:space="preserve">
     <value>showInNotifitationMaterialSwitch</value>
@@ -3629,7 +3592,6 @@
   </data>
   <data name="closeToNotificationMaterialSwitch.Text" xml:space="preserve">
     <value>Close to notification area</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;closeToNotificationMaterialSwitch.Name" xml:space="preserve">
     <value>closeToNotificationMaterialSwitch</value>
@@ -3663,7 +3625,6 @@
   </data>
   <data name="minimizeToNotificationMaterialSwitch.Text" xml:space="preserve">
     <value>Minimize to notification area</value>
-    <comment>options</comment>
   </data>
   <data name="&gt;&gt;minimizeToNotificationMaterialSwitch.Name" xml:space="preserve">
     <value>minimizeToNotificationMaterialSwitch</value>
@@ -3718,7 +3679,6 @@
   </data>
   <data name="settingsTabPage.Text" xml:space="preserve">
     <value>GUI Settings</value>
-    <comment>menu</comment>
   </data>
   <data name="&gt;&gt;settingsTabPage.Name" xml:space="preserve">
     <value>settingsTabPage</value>
@@ -3749,7 +3709,6 @@
   </data>
   <data name="aboutTabPage.Text" xml:space="preserve">
     <value>About</value>
-    <comment>main</comment>
   </data>
   <data name="&gt;&gt;aboutTabPage.Name" xml:space="preserve">
     <value>aboutTabPage</value>
@@ -3787,6 +3746,27 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>409, 17</value>
   </metadata>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>New version available</value>
+  </data>
+  <data name="toolStripStatusLabel2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>860, 17</value>
+  </data>
+  <data name="versionToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="versionToolStripStatusLabel.Text" xml:space="preserve">
+    <value>v0.0.0</value>
+  </data>
+  <data name="versionToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 715</value>
   </data>
@@ -5637,11 +5617,29 @@
   <data name="&gt;&gt;exitToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;versionToolStripStatusLabel.Name" xml:space="preserve">
+    <value>versionToolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;versionToolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Name" xml:space="preserve">
+    <value>toolStripStatusLabel2</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;imageList1.Name" xml:space="preserve">
     <value>imageList1</value>
   </data>
   <data name="&gt;&gt;imageList1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

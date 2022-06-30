@@ -49,30 +49,27 @@ namespace MMX_NODE_GUI
         public event EventHandler Stoped;
 
 
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient httpClient = new HttpClient();
         private Process process;
         private bool processStarted = false;
 
-        private static string _version;
-        public static string GetVersion()
-        {
-            if(_version == null)
-            {
-                _version = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductVersion;
-            }
-            return _version;
-        }
+        public static Version Version;
+        public static string VersionTag;
+
 
         static Node()
         {
-            client.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
+            httpClient.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
+            
+            try
+            {
+                var productVersion = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductVersion;
+                Version = new Version(productVersion);
+            } catch {
+                Version = new Version();
+            }
 
-            var versionInfo = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath);
-            var v1 = versionInfo.ProductMajorPart;
-            var v2 = versionInfo.ProductMinorPart;
-            var v3 = versionInfo.ProductBuildPart;
-            var v4 = versionInfo.ProductPrivatePart;
-
+            VersionTag = "v" + Version.ToString();
         }
 
         public Node()
@@ -89,8 +86,8 @@ namespace MMX_NODE_GUI
                 var myContent = JsonConvert.SerializeObject(data);
                 var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
                 var byteContent = new ByteArrayContent(buffer);
-                var res = await client.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
-                var res2 = await client.GetAsync(baseUri + "api/harvester/reload");
+                var res = await httpClient.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
+                var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
             });
 
         }
@@ -105,8 +102,8 @@ namespace MMX_NODE_GUI
                 var myContent = JsonConvert.SerializeObject(data);
                 var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
                 var byteContent = new ByteArrayContent(buffer);
-                var res = await client.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
-                var res2 = await client.GetAsync(baseUri + "api/harvester/reload");
+                var res = await httpClient.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
+                var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
             });
         }
 
@@ -125,7 +122,7 @@ namespace MMX_NODE_GUI
         {
             try
             {
-                var result = await client.GetAsync(sessionUri);
+                var result = await httpClient.GetAsync(sessionUri);
                 return true;
             }
             catch (Exception)
@@ -180,8 +177,8 @@ namespace MMX_NODE_GUI
             set
             {
                 _xApiToken = value;
-                client.DefaultRequestHeaders.Remove(XApiTokenName);
-                client.DefaultRequestHeaders.Add(XApiTokenName, _xApiToken);
+                httpClient.DefaultRequestHeaders.Remove(XApiTokenName);
+                httpClient.DefaultRequestHeaders.Add(XApiTokenName, _xApiToken);
             }
         }
 

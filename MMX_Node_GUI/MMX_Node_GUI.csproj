@@ -137,12 +137,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleInstance.cs" />
+    <Compile Include="UpdateChecker.cs" />
     <Compile Include="WebBrowserExtensions.cs" />
     <EmbeddedResource Include="MainForm.de.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.id.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -259,5 +262,7 @@ ROBOCOPY  $(TargetDir) %25OUT%25\gui\libs Newtonsoft.Json.dll MaterialSkin.dll M
 ROBOCOPY  $(TargetDir)\locales %25OUT%25\gui\cefsharp\locales
 ROBOCOPY  $(TargetDir) %25OUT%25\gui\cefsharp CefSharp.BrowserSubprocess.Core.dll CefSharp.BrowserSubprocess.exe CefSharp.Core.dll CefSharp.Core.Runtime.dll CefSharp.dll CefSharp.WinForms.dll chrome_100_percent.pak chrome_200_percent.pak chrome_elf.dll d3dcompiler_47.dll icudtl.dat libcef.dll libEGL.dll libGLESv2.dll LICENSE.txt resources.pak snapshot_blob.bin v8_context_snapshot.bin vk_swiftshader.dll vk_swiftshader_icd.json vulkan-1.dll
 ) ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+
   </PropertyGroup>
+
 </Project>
