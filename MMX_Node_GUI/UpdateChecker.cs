@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,13 +15,15 @@ namespace MMX_NODE_GUI
 {
     internal class UpdateChecker : INotifyPropertyChanged
     {
-        private static Uri releasesUri = new Uri("https://github.com/stotiks/mmx-node/releases.atom");
+        private static Uri releasesUri = new Uri("https://api.github.com/repos/stotiks/mmx-node/releases");
         private readonly HttpClient httpClient = new HttpClient();
         private readonly Timer timer = new Timer();
         private bool _isUpdateAvailable = false;
 
         public UpdateChecker()
         {
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClient");
+
             timer.Interval = 360000;
             timer.Elapsed += (o, e) => Check();
             timer.AutoReset = true;
@@ -63,15 +67,9 @@ namespace MMX_NODE_GUI
                 {
                     var response = await httpClient.GetAsync(releasesUri);
                     var body = await response.Content.ReadAsStringAsync();
-                    XmlDocument xml = new XmlDocument();
-                    xml.LoadXml(body);
-
-                    var nsmgr = new XmlNamespaceManager(xml.NameTable);
-                    nsmgr.AddNamespace("f", "http://www.w3.org/2005/Atom");
-                    var entry = xml.SelectSingleNode("//f:feed/f:entry", nsmgr);
-                    var versionTag = entry.SelectSingleNode("f:title", nsmgr).InnerText;
-                    var link = entry.SelectSingleNode("f:link", nsmgr).Attributes["href"].Value;
-
+                    JArray releases = JsonConvert.DeserializeObject<JArray>(body);
+                    var lastRelease = releases[0];
+                    var versionTag = lastRelease["tag_name"].ToString();
                     var version = new Version(versionTag.Replace("v", ""));
 
                     if (Node.Version < version)
