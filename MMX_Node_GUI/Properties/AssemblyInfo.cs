@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MMX Node GUI")]
 [assembly: AssemblyDescription("MMX Node GUI")]
 //[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("madMAx43v3r")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MMX Node GUI")]
 [assembly: AssemblyCopyright("madMAx43v3r (C) Copyright 2022")]
 [assembly: AssemblyTrademark("")]
