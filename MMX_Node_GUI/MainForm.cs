@@ -106,6 +106,8 @@ namespace MMX_NODE_GUI
 
             if (Properties.Settings.Default.confirmationOnExit && e.CloseReason == CloseReason.UserClosing)
             {
+                Show();
+                WindowState = FormWindowState.Normal;
                 MaterialDialog materialDialog = new MaterialDialog(this,
                                                                    this.Text,
                                                                    Properties.Resources.closeQuestion,
