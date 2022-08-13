@@ -18,6 +18,8 @@ namespace Mmx.Gui.Win.Wpf
 
         public App()
         {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
             AppDomain.CurrentDomain.AssemblyResolve += CefUtils.CurrentDomain_AssemblyResolve;
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.LanguageCode);
@@ -76,6 +78,11 @@ namespace Mmx.Gui.Win.Wpf
             MainWindow win = Window.GetWindow(App.Current.MainWindow) as MainWindow;
             win.Show();
             win.Restore();
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show((e.ExceptionObject as Exception).ToString(), "Warning! UnhandledException");
         }
     }
 
