@@ -3,6 +3,8 @@ using Mmx.Gui.Win.Common.Properties;
 using System;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
 
@@ -33,8 +35,10 @@ namespace Mmx.Gui.Win.Wpf
                 }
                 Application.Current.Shutdown();
             }
+            //string path = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString();
+            //notifyIcon.Icon = new Icon(Path.Combine(path, @"mmx.ico"));
+            notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
 
-            notifyIcon.Icon = new Icon(@"mmx.ico");
             notifyIcon.Visible = Settings.Default.ShowInNotifitation;
             //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
             notifyIcon.DoubleClick += notifyIcon_Click;
