@@ -43,7 +43,8 @@
             <ui:NavigationViewItem Content="{lex:Loc Node_Title}" Tag="NodePage" Icon="Globe" />
             <ui:NavigationViewItem Content="{lex:Loc Harvester_Title}" Tag="HarvesterPage" Icon="NewFolder" />
             <ui:NavigationViewItem Content="{lex:Loc Plotter_Title}" Icon="Contact" Tag="PlotterPage" />
-            <ui:NavigationViewItemHeader/>
+            <ui:NavigationViewItemHeader Height="50" />
+            <!--ui:NavigationViewItemSeparator/-->
             <ui:NavigationViewItem Content="{lex:Loc Settings_Title}" Icon="Setting" Tag="SettingsPage" />
         </ui:NavigationView.MenuItems>
 

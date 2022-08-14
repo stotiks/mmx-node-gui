@@ -239,7 +239,6 @@ namespace Mmx.Gui.Win.Wpf
             if (Settings.MinimizeToNotification && 
                 WindowState == WindowState.Minimized)
             {
-                //Hide();
                 Dispatcher.BeginInvoke(new MethodInvoker(delegate
                 {
                     Hide();
