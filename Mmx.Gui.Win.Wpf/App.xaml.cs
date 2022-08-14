@@ -35,6 +35,10 @@ namespace Mmx.Gui.Win.Wpf
                 }
                 Application.Current.Shutdown();
             }
+
+            PowerManagement.ApplyPowerManagementSettings(Settings.Default.InhibitSystemSleep);
+
+
             //string path = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString();
             //notifyIcon.Icon = new Icon(Path.Combine(path, @"mmx.ico"));
             notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
