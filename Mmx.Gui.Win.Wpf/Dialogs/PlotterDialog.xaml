@@ -18,7 +18,7 @@
             Text="{Binding LogTxt}"
             HorizontalAlignment="Stretch"
             IsReadOnly="True"
-            FontFamily="Lucida Sans Typewriter"
+            FontFamily="Courier New"
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Auto"
             TextChanged="TextBoxLog_TextChanged">
