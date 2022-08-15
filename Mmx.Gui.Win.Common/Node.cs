@@ -22,15 +22,15 @@ namespace Mmx.Gui.Win.Common
             @"C:\dev\mmx\MMX";
 #endif
         private static string MMX_HOME_ENV = Environment.GetEnvironmentVariable("MMX_HOME");
-        public static string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.mmx") : MMX_HOME_ENV;
-        public static string configPath = MMX_HOME + @"\config\local";
-        public static string harvesterConfigPath = configPath + @"\Harvester.json";
-        public static string plotterConfigPath = configPath + @"\Plotter.json";
-        public static string httpServerConfigPath = configPath + @"\HttpServer.json";
+        public static string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".mmx") : MMX_HOME_ENV;
+        public static string configPath = Path.Combine(MMX_HOME, @"config\local");
+        public static string harvesterConfigPath = Path.Combine(configPath, "Harvester.json");
+        public static string plotterConfigPath = Path.Combine(configPath, "Plotter.json");
+        public static string httpServerConfigPath = Path.Combine(configPath, "HttpServer.json");
 
-        public static string activateCMDPath = workingDirectory + @"\activate.cmd";
-        public static string runNodeCMDPath = workingDirectory + @"\run_node.cmd";
-        public static string mmxNodeEXEPath = workingDirectory + @"\mmx_node.exe";
+        public static string activateCMDPath = Path.Combine(workingDirectory, "activate.cmd");
+        public static string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
+        public static string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
         public static readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         public static readonly Uri guiUri = new Uri(baseUri, "/gui/");
