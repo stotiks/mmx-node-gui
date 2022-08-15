@@ -2,10 +2,7 @@
 {
     public class MMXBoundObject
     {
-        public string Locale
-        {
-            get; set;
-        }
+        public string Locale { get; set; } = Properties.Settings.Default.LanguageCode;
 
         public delegate void CopyKeysToPlotterEventHandler(string json);
 
