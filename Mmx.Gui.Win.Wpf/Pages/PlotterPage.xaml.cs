@@ -18,6 +18,9 @@ namespace Mmx.Gui.Win.Wpf.Pages
         Process process;
 
         private PlotterOptions _plotterOptions = new PlotterOptions();
+        private string logFileName;
+        private string logFolder = Path.Combine(Node.MMX_HOME, "plotter");
+
         public PlotterOptions PlotterOptions { get => _plotterOptions; }
 
         public PlotterPage()
@@ -75,15 +78,23 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
         private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var result = PlotterDialog.ShowAsync(ModernWpf.Controls.ContentDialogPlacement.InPlace);
+            var result = PlotterDialog.ShowAsync(ContentDialogPlacement.InPlace);
+
+            if (!System.IO.Directory.Exists(logFolder)) 
+            {
+                System.IO.Directory.CreateDirectory(logFolder);
+            }
+            logFileName = "ploter_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
 
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = Node.workingDirectory;
             processStartInfo.FileName = Path.Combine(Node.workingDirectory, PlotterOptions.PlotterExe);
             processStartInfo.Arguments = PlotterOptions.PlotterArguments;
 
-            //processStartInfo.FileName = "ping";
-            //processStartInfo.Arguments = "google.com -n 20";
+#if DEBUG
+            processStartInfo.FileName = "ping";
+            processStartInfo.Arguments = "google.com -n 20";
+#endif
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = true;
@@ -137,14 +148,13 @@ namespace Mmx.Gui.Win.Wpf.Pages
             PlotterDialog.PauseButton.IsEnabled = true;
             PlotterDialog.StopButton.IsEnabled = true;
             PlotterDialog.ProcessSuspended = false;
-
-
         }
 
         internal void WriteLog(string value)
         {
             var txt = string.Format("[{0}] {1}\r\n", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), value);
             PlotterDialog.LogTxt += txt;
+            File.AppendAllText(Path.Combine(logFolder, logFileName), txt);
         }
 
     }
