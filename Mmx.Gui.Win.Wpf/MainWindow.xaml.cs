@@ -7,7 +7,6 @@ using Mmx.Gui.Win.Wpf.Pages;
 using ModernWpf.Controls;
 using Newtonsoft.Json;
 using System;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -70,7 +69,10 @@ namespace Mmx.Gui.Win.Wpf
 
             node.Started += (sender, e) =>
             {
-                UpdateChecker.CheckAsync();
+                if (Settings.Default.CheckForUpdates)
+                {
+                    UpdateChecker.CheckAsync();
+                }                
             };
 
             node.StartAsync();

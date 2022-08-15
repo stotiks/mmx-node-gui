@@ -10,7 +10,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
     public partial class SettingsPage : Page
     {
 
-        public Dictionary<string, string> launguages = new Dictionary<string, string>(){
+        private Dictionary<string, string> _launguages = new Dictionary<string, string>(){
             { "en", "English" },
             { "id", "Bahasa Indonesia" },
             { "de", "Deutsch" },
@@ -23,8 +23,20 @@ namespace Mmx.Gui.Win.Wpf.Pages
         };
 
         public Dictionary<string, string> Languages { 
-            get => launguages;
+            get => _launguages;
         }
+
+
+        private Dictionary<int, string> _updateIntervals = new Dictionary<int, string>(){
+            { 60 * 60, "hourly" },
+            { 24 * 60 * 60, "daily" },
+        };
+
+        public Dictionary<int, string> UpdateIntervals
+        {
+            get => _updateIntervals;
+        }
+        
 
         public Array Themes
         {

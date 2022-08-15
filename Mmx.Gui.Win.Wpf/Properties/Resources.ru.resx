@@ -261,4 +261,16 @@
   <data name="Plotter_ProcessHeader" xml:space="preserve">
     <value>Процесс</value>
   </data>
+  <data name="Settings_Update" xml:space="preserve">
+    <value>Обновление</value>
+  </data>
+  <data name="Settings_CheckForUpdates" xml:space="preserve">
+    <value>Проверять наличие обновлений</value>
+  </data>
+  <data name="Settings_UpdateInterval" xml:space="preserve">
+    <value>Интервал обновления</value>
+  </data>
+  <data name="Harvester_Reload" xml:space="preserve">
+    <value>Перезагрузить комбайн</value>
+  </data>
 </root>

@@ -90,6 +90,25 @@
                         IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=InhibitSystemSleep}"/>
                 </GroupBox>
 
+                <GroupBox Header="{lex:Loc Settings_Update}">
+                    <ui:SimpleStackPanel>
+                        <ui:ToggleSwitch
+                            x:Name="CheckForUpdatesToggleSwitch"
+                            Header="{lex:Loc Settings_CheckForUpdates}"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CheckForUpdates}"/>
+
+                        <ComboBox
+                            ui:ControlHelper.Header="{lex:Loc Settings_UpdateInterval}"
+                            ItemsSource="{Binding UpdateIntervals}"
+                            SelectedValuePath="Key"
+                            DisplayMemberPath="Value"
+                            MinWidth="180"
+                            SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=UpdateInterval}"
+                            IsEnabled="{Binding ElementName=CheckForUpdatesToggleSwitch, Path=IsOn}"/>
+                        
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+                
                 <GroupBox Header="{lex:Loc Settings_Debug}">
                     <ui:ToggleSwitch 
                         Header="{lex:Loc Settings_ShowConsole}"

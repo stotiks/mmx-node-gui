@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Mmx.Gui.Win.Common.Properties;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
@@ -20,11 +21,30 @@ namespace Mmx.Gui.Win.Common
         public UpdateChecker()
         {
             httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClient");
-
-            timer.Interval = 60 * 60 * 1000;
+            
             timer.Elapsed += (o, e) => CheckAsync();
             timer.AutoReset = true;
-            timer.Enabled = true;
+
+            timer.Interval = Settings.Default.UpdateInterval * 1000;
+            timer.Enabled = Settings.Default.CheckForUpdates;
+
+            Settings.Default.PropertyChanged += (o, e) =>
+            {
+                if (e.PropertyName == nameof(Settings.Default.UpdateInterval))
+                {
+                    timer.Interval = Settings.Default.UpdateInterval * 1000;
+                }
+
+                if (e.PropertyName == nameof(Settings.Default.CheckForUpdates))
+                {
+                    timer.Enabled = Settings.Default.CheckForUpdates;
+
+                    if(Settings.Default.CheckForUpdates)
+                    {
+                        CheckAsync();
+                    }
+                }
+            };
 
         }
 

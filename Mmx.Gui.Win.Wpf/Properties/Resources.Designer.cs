@@ -367,6 +367,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string Settings_CheckForUpdates {
+            get {
+                return ResourceManager.GetString("Settings_CheckForUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close to notification area.
         /// </summary>
         public static string Settings_CloseToNotification {
@@ -498,6 +507,24 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Settings_Title {
             get {
                 return ResourceManager.GetString("Settings_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Settings_Update {
+            get {
+                return ResourceManager.GetString("Settings_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update interval.
+        /// </summary>
+        public static string Settings_UpdateInterval {
+            get {
+                return ResourceManager.GetString("Settings_UpdateInterval", resourceCulture);
             }
         }
     }

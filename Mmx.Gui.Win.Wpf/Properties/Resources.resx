@@ -310,4 +310,16 @@
     <value>Reload Harvester</value>
     <comment>harvester</comment>
   </data>
+  <data name="Settings_Update" xml:space="preserve">
+    <value>Update</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_CheckForUpdates" xml:space="preserve">
+    <value>Check for updates</value>
+    <comment>settings</comment>
+  </data>
+  <data name="Settings_UpdateInterval" xml:space="preserve">
+    <value>Update interval</value>
+    <comment>settings</comment>
+  </data>
 </root>
