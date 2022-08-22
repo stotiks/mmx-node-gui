@@ -92,10 +92,10 @@ namespace Mmx.Gui.Win.Common
                 //TODO
                 model.AddItem(CefMenuCommand.Reload, //Properties.Resources.reload
                                                      "Reload");
-#if DEBUG
+//#if DEBUG
                 model.AddSeparator();
                 model.AddItem((CefMenuCommand)26501, "Show DevTools");
-#endif
+//#endif
             }
 
             public bool OnContextMenuCommand(IWebBrowser browserControl, IBrowser browser, IFrame frame, IContextMenuParams parameters,
