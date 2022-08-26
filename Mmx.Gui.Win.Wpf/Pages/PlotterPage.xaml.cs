@@ -92,8 +92,8 @@ namespace Mmx.Gui.Win.Wpf.Pages
             processStartInfo.Arguments = PlotterOptions.PlotterArguments;
 
 #if DEBUG
-            processStartInfo.FileName = "ping";
-            processStartInfo.Arguments = "google.com -n 20";
+            //processStartInfo.FileName = "ping";
+            //processStartInfo.Arguments = "google.com -n 20";
 #endif
 
             processStartInfo.UseShellExecute = false;
@@ -150,11 +150,15 @@ namespace Mmx.Gui.Win.Wpf.Pages
             PlotterDialog.ProcessSuspended = false;
         }
 
+        private readonly object logLock = new object();
         internal void WriteLog(string value)
         {
-            var txt = string.Format("[{0}] {1}\r\n", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), value);
-            PlotterDialog.LogTxt += txt;
-            File.AppendAllText(Path.Combine(logFolder, logFileName), txt);
+            lock (logLock)
+            {
+                var txt = string.Format("[{0}] {1}\r\n", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), value);
+                PlotterDialog.LogTxt += txt;
+                File.AppendAllText(Path.Combine(logFolder, logFileName), txt);
+            }
         }
 
     }
