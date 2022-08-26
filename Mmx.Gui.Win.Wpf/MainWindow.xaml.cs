@@ -109,7 +109,7 @@ namespace Mmx.Gui.Win.Wpf
                     Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.LanguageCode);
 
                     LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo(Settings.Default.LanguageCode);
-                    mmxBoundObject.Locale = Settings.Default.LanguageCode;
+                    //mmxBoundObject.Locale = Settings.Default.LanguageCode;
                 }
             };
         }

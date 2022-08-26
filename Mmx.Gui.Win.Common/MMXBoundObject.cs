@@ -2,7 +2,14 @@
 {
     public class MMXBoundObject
     {
-        public string Locale { get; set; } = Properties.Settings.Default.LanguageCode;
+        public string Locale 
+        {
+            get => Properties.Settings.Default.LanguageCode;
+        }
+        public bool Theme_dark
+        {
+            get => Properties.Settings.IsDarkTheme;
+        }
 
         public delegate void CopyKeysToPlotterEventHandler(string json);
 

@@ -45,11 +45,22 @@ namespace Mmx.Gui.Win.Common
 
         private static string logoutJS = GetResource("logout.js");
         private static string waitStartJS = GetResource("waitStart.js");
-        public static string loadingHtml = GetResource("loading.html");
-        private static string jsString = "//javascript";
-        public static string logoutHtml = loadingHtml.Replace(jsString, logoutJS);
-        public static string waitStartHtml = loadingHtml.Replace(jsString, waitStartJS);
 
+        private static string loadingHtmlTemplate = GetResource("loading.html");
+        public static string loadingHtml
+        {
+            get => loadingHtmlTemplate.Replace("#background-color", !Properties.Settings.IsDarkTheme ? "#f2f2f2" : "#121212");
+        }
+
+        private static string jsString = "//javascript";
+        public static string logoutHtml
+        {
+            get => loadingHtml.Replace(jsString, logoutJS);
+        }
+        public static string waitStartHtml
+        {
+            get => loadingHtml.Replace(jsString, waitStartJS);
+        }
 
         private static string _xApiToken = GetRandomHexNumber(64);
         public static readonly string XApiTokenName = "x-api-token";
