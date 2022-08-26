@@ -44,7 +44,7 @@
                         SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=LanguageCode}"/>
                 </GroupBox>
 
-                <GroupBox Header="{lex:Loc Settings_Theme}" IsEnabled="False">
+                <GroupBox Header="{lex:Loc Settings_Theme}" IsEnabled="True">
                     <ComboBox 
                         MinWidth="180"
                         ItemsSource="{Binding Themes}"
