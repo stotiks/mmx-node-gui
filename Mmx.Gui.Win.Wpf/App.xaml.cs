@@ -47,6 +47,11 @@ namespace Mmx.Gui.Win.Wpf
             //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
             notifyIcon.DoubleClick += notifyIcon_Click;
 
+            this.Exit += (sender, e) => {
+                notifyIcon.Visible = false;
+                notifyIcon.Dispose();
+            };
+            
             notifyIcon.ContextMenu = notifyIconContextMenu;
             var menuItem1 = new System.Windows.Forms.MenuItem();
             menuItem1.Index = 0;
