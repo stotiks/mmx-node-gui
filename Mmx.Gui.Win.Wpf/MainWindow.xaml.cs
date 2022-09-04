@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Interop;
+using System.Windows.Navigation;
 using WPFLocalizeExtension.Engine;
 using static Mmx.Gui.Win.Common.NativeMethods;
 
@@ -245,6 +246,14 @@ namespace Mmx.Gui.Win.Wpf
                 {
                     Hide();
                 }));
+            }
+        }
+
+        private void contentFrame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.Back)
+    {
+                e.Cancel = true;
             }
         }
     }
