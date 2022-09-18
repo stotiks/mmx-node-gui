@@ -181,10 +181,32 @@ namespace Mmx.Gui.Win.Wpf
             if (!closePending)
             {
                 closePending = true;
+                Restore();
+
+                if (plotterPage.PlotterIsRunning == true)
+                {
+                    nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
+
+                    var dialog = new ContentDialog();
+                    dialog.Title = "Stop plotter before exit!";
+                    dialog.PrimaryButtonText = "OK";
+                    dialog.DefaultButton = ContentDialogButton.Primary;
+
+                    var result = await dialog.ShowAsync();
+
+                    dialog.Hide();
+                    closePending = false;
+                    return;
+                }
+
                 if (Settings.Default.ConfirmationOnExit)
-                { 
-                    Restore();
-                    var dialog = new CloseDialog();
+                {
+                    var dialog = new ContentDialog();
+                    dialog.Title = "Do you want to close the application?";
+                    dialog.PrimaryButtonText = "Yes";
+                    dialog.SecondaryButtonText = "No";
+                    dialog.DefaultButton = ContentDialogButton.Secondary;
+
                     var result = await dialog.ShowAsync();
 
                     if (result != ContentDialogResult.Primary)
@@ -193,6 +215,7 @@ namespace Mmx.Gui.Win.Wpf
                         closePending = false;
                         return;
                     }
+
                 }
 
                 closeCancel = false;

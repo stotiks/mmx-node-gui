@@ -15,7 +15,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
     ///     
     public partial class PlotterPage
     {
-        Process process;
+        private Process process;
 
         private PlotterOptions _plotterOptions = new PlotterOptions();
         private string logFileName;
@@ -23,10 +23,17 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
         public PlotterOptions PlotterOptions { get => _plotterOptions; }
 
+        public bool PlotterIsRunning { get => process != null && !process.HasExited; }
+
         public PlotterPage()
         {
             InitializeComponent();
             DataContext = this;
+
+            //NFT PLOTS DISABLED
+            PlotterOptions.nftplot.Value = false;
+            createPlotNFT.IsEnabled = false;
+
 
             PlotterDialog.StopButtonConfirm.Click += (s, e) =>
             {
@@ -36,7 +43,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
                     f.Hide();
                 }
 
-                if (process != null && !process.HasExited)
+                if (this.PlotterIsRunning)
                 {
                     process.Kill();
                 }
@@ -44,7 +51,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
             PlotterDialog.PauseButton.Click += (s, e) =>
             {
-                if (process != null && !process.HasExited)
+                if (this.PlotterIsRunning)
                 {
                     if (!PlotterDialog.ProcessSuspended)
                     {
@@ -92,8 +99,8 @@ namespace Mmx.Gui.Win.Wpf.Pages
             processStartInfo.Arguments = PlotterOptions.PlotterArguments;
 
 #if DEBUG
-            //processStartInfo.FileName = "ping";
-            //processStartInfo.Arguments = "google.com -n 20";
+            processStartInfo.FileName = "ping";
+            processStartInfo.Arguments = "google.com -n 20";
 #endif
 
             processStartInfo.UseShellExecute = false;

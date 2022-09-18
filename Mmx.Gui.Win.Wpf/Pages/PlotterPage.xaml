@@ -264,6 +264,7 @@
             Grid.Row="1"
             FullSizeDesired="True"
             Margin="0,0,25,25"
+            d:Visibility="Hidden"
             x:Name="PlotterDialog"/>
         
     </Grid>
