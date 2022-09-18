@@ -322,4 +322,8 @@
     <value>Update interval</value>
     <comment>settings</comment>
   </data>
+  <data name="Settings_DisableOpenCL" xml:space="preserve">
+    <value>Disable OpenCL</value>
+    <comment>settings</comment>
+  </data>
 </root>

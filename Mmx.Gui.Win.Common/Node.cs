@@ -286,11 +286,15 @@ namespace Mmx.Gui.Win.Common
         }
 
 
-        private Process GetProcess(string cmd)
+        private Process GetProcess(string cmd, string args = null)
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = workingDirectory;
             processStartInfo.FileName = cmd;
+            if(!String.IsNullOrEmpty(args))
+            {
+                processStartInfo.Arguments = args;
+            }
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = true;
@@ -333,7 +337,12 @@ namespace Mmx.Gui.Win.Common
 
         private void StartProcess()
         {
-            process = GetProcess(runNodeCMDPath);
+            string args = "";
+            if (Settings.Default.DisableOpenCL)
+            {
+                args += " --Node.opencl_device -1";
+            }
+            process = GetProcess(runNodeCMDPath, args);
         }
 
         private void WriteProcessLog(string text)
