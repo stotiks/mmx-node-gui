@@ -24,7 +24,17 @@ namespace Mmx.Gui.Win.Wpf.Pages
         private ObservableCollection<Directory> _dirs;
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            _dirs = await Directory.GetDirectoriesAsync();
+            try
+            {
+                _dirs = await Directory.GetDirectoriesAsync();
+            } catch (Exception ex)
+            {
+                AddButton.IsEnabled = false;
+                RemoveButton.IsEnabled = false;
+
+                MessageBox.Show(String.Format("Can not read or parse {0}\n\n{1}", Node.harvesterConfigPath, ex.ToString()), "Error!");
+            }
+
             DirListView.ItemsSource = _dirs;
         }
 

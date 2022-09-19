@@ -85,12 +85,14 @@
                     x:Name="DirCommandBar"
                     HorizontalAlignment="Stretch">
 
-                    <ui:AppBarButton 
+                    <ui:AppBarButton
+                        x:Name="AddButton"
                         Icon="Add" 
                         Label="{lex:Loc Harvester_Add}"
                         Click="AddButton_Click"/>
 
                     <ui:AppBarButton
+                        x:Name="RemoveButton"
                         Icon="Remove" 
                         Label="{lex:Loc Harvester_Remove}"
                         IsEnabled="{Binding Source={x:Reference DirListView}, Path=SelectedItems.Count}"
