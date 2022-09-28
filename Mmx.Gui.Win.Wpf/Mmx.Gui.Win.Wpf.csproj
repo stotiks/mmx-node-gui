@@ -177,7 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf">
-      <Version>104.4.240</Version>
+      <Version>105.3.390</Version>
     </PackageReference>
     <PackageReference Include="ModernWpfUI">
       <Version>0.9.6</Version>
