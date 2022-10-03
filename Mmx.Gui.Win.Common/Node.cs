@@ -25,6 +25,8 @@ namespace Mmx.Gui.Win.Common
         public static string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".mmx") : MMX_HOME_ENV;
         public static string configPath = Path.Combine(MMX_HOME, @"config\local");
         public static string harvesterConfigPath = Path.Combine(configPath, "Harvester.json");
+        public static string walletConfigPath = Path.Combine(configPath, "Wallet.json");
+        
         public static string plotterConfigPath = Path.Combine(configPath, "Plotter.json");
         public static string httpServerConfigPath = Path.Combine(configPath, "HttpServer.json");
 
@@ -330,6 +332,15 @@ namespace Mmx.Gui.Win.Common
             {
                 Process process = GetProcess(activateCMDPath);
                 process.WaitForExit();
+
+                var json = File.ReadAllText(Node.walletConfigPath);
+
+                JObject walletConfig = JsonConvert.DeserializeObject<JObject>(json);
+                walletConfig.Property("key_files+").Remove();
+                walletConfig.Add(new JProperty("key_files", new JArray()));                
+
+                json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
+                File.WriteAllText(Node.walletConfigPath, json);
             }
 
             InitXToken();
