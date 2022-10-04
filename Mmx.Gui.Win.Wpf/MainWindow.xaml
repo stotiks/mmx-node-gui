@@ -40,12 +40,12 @@
         SelectionChanged="NavigationView_SelectionChanged">
 
         <ui:NavigationView.MenuItems>
-            <ui:NavigationViewItem Content="{lex:Loc Node_Title}" Tag="NodePage" Icon="Globe" />
-            <ui:NavigationViewItem Content="{lex:Loc Harvester_Title}" Tag="HarvesterPage" Icon="NewFolder" />
-            <ui:NavigationViewItem Content="{lex:Loc Plotter_Title}" Icon="Contact" Tag="PlotterPage" />
+            <ui:NavigationViewItem Tag="NodePage" Content="{lex:Loc Node_Title}" Icon="Globe" />
+            <ui:NavigationViewItem Tag="HarvesterPage" Content="{lex:Loc Harvester_Title}" Icon="NewFolder" />
+            <ui:NavigationViewItem Tag="PlotterPage" Content="{lex:Loc Plotter_Title}" Icon="Library" />
             <ui:NavigationViewItemHeader Height="50" />
             <!--ui:NavigationViewItemSeparator/-->
-            <ui:NavigationViewItem Content="{lex:Loc Settings_Title}" Icon="Setting" Tag="SettingsPage" />
+            <ui:NavigationViewItem Tag="SettingsPage" Content="{lex:Loc Settings_Title}" Icon="Setting" />
         </ui:NavigationView.MenuItems>
 
         <ui:NavigationView.Content>
