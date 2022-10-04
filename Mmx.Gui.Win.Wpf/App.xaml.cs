@@ -3,7 +3,6 @@ using Mmx.Gui.Win.Common.Properties;
 using System;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
@@ -38,9 +37,11 @@ namespace Mmx.Gui.Win.Wpf
 
             PowerManagement.ApplyPowerManagementSettings(Settings.Default.InhibitSystemSleep);
 
+            InitNotifyIcon();
+        }
 
-            //string path = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString();
-            //notifyIcon.Icon = new Icon(Path.Combine(path, @"mmx.ico"));
+        private void InitNotifyIcon()
+        {
             notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
 
             notifyIcon.Visible = Settings.Default.ShowInNotifitation;
@@ -51,12 +52,12 @@ namespace Mmx.Gui.Win.Wpf
                 notifyIcon.Visible = false;
                 notifyIcon.Dispose();
             };
-            
+
             notifyIcon.ContextMenu = notifyIconContextMenu;
             var menuItem1 = new System.Windows.Forms.MenuItem();
             menuItem1.Index = 0;
             menuItem1.Text = "S&how";
-            menuItem1.Click += new System.EventHandler(notifyIcon_Click);
+            menuItem1.Click += notifyIcon_Click;
 
             var menuItem3 = new System.Windows.Forms.MenuItem();
             menuItem3.Index = 1;
@@ -69,9 +70,9 @@ namespace Mmx.Gui.Win.Wpf
             };
 
             notifyIconContextMenu.MenuItems.AddRange(
-               new System.Windows.Forms.MenuItem[] { 
-                   menuItem1, 
-                   new System.Windows.Forms.MenuItem("-"), 
+               new System.Windows.Forms.MenuItem[] {
+                   menuItem1,
+                   new System.Windows.Forms.MenuItem("-"),
                    menuItem3
                });
 
@@ -83,8 +84,7 @@ namespace Mmx.Gui.Win.Wpf
                 }
             };
 
-
-        }            
+        }
 
         void notifyIcon_Click(object sender, EventArgs e)
         {
