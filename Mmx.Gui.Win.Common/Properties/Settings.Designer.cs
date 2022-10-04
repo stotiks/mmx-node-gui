@@ -166,17 +166,5 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["UpdateInterval"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DisableOpenCL {
-            get {
-                return ((bool)(this["DisableOpenCL"]));
-            }
-            set {
-                this["DisableOpenCL"] = value;
-            }
-        }
     }
 }

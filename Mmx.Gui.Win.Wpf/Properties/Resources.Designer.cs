@@ -403,15 +403,6 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable OpenCL.
-        /// </summary>
-        public static string Settings_DisableOpenCL {
-            get {
-                return ResourceManager.GetString("Settings_DisableOpenCL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Inhibit system sleep.
         /// </summary>
         public static string Settings_InhibitSystemSleep {

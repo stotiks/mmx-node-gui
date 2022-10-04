@@ -110,15 +110,9 @@
                 </GroupBox>
                 
                 <GroupBox Header="{lex:Loc Settings_Debug}">
-                    <ui:SimpleStackPanel>
-                        <ui:ToggleSwitch 
-                            Header="{lex:Loc Settings_ShowConsole}"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ShowConsole}"/>
-
-                        <ui:ToggleSwitch 
-                            Header="{lex:Loc Settings_DisableOpenCL}"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=DisableOpenCL}"/>
-                    </ui:SimpleStackPanel>
+                    <ui:ToggleSwitch 
+                        Header="{lex:Loc Settings_ShowConsole}"
+                        IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ShowConsole}"/>
 
                 </GroupBox>
             </ui:SimpleStackPanel>
