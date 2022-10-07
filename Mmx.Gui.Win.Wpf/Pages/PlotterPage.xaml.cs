@@ -100,7 +100,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
 #if DEBUG
             processStartInfo.FileName = "ping";
-            processStartInfo.Arguments = "google.com -n 20";
+            processStartInfo.Arguments = "google.com -n 30";
 #endif
 
             processStartInfo.UseShellExecute = false;
@@ -128,10 +128,12 @@ namespace Mmx.Gui.Win.Wpf.Pages
                 {
                     OnProcessExit();
                 }));
-            };
+            };           
+
+            process.Start();
+            process.PriorityClass = (ProcessPriorityClass)PlotterOptions.priority.Value;
 
             OnProcessStart();
-            process.Start();
 
             if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
