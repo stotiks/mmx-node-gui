@@ -142,6 +142,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Plotter_Close {
+            get {
+                return ResourceManager.GetString("Plotter_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pool Contract Address (62 chars).
         /// </summary>
         public static string Plotter_contract {
@@ -174,6 +183,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Plotter_directout {
             get {
                 return ResourceManager.GetString("Plotter_directout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to continue?.
+        /// </summary>
+        public static string Plotter_Do_You_Want_To_Continue {
+            get {
+                return ResourceManager.GetString("Plotter_Do_You_Want_To_Continue", resourceCulture);
             }
         }
         
@@ -219,6 +237,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Plotter_nftplot {
             get {
                 return ResourceManager.GetString("Plotter_nftplot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        public static string Plotter_Pause {
+            get {
+                return ResourceManager.GetString("Plotter_Pause", resourceCulture);
             }
         }
         
@@ -304,6 +331,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string Plotter_Stop {
+            get {
+                return ResourceManager.GetString("Plotter_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of threads.
         /// </summary>
         public static string Plotter_threads {
@@ -363,6 +399,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Plotter_waitforcopy {
             get {
                 return ResourceManager.GetString("Plotter_waitforcopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes, stop plotting.
+        /// </summary>
+        public static string Plotter_Yes_Stop_Plotting {
+            get {
+                return ResourceManager.GetString("Plotter_Yes_Stop_Plotting", resourceCulture);
             }
         }
         

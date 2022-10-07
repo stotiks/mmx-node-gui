@@ -273,4 +273,19 @@
   <data name="Harvester_Reload" xml:space="preserve">
     <value>Перезагрузить комбайн</value>
   </data>
+  <data name="Plotter_Pause" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="Plotter_Stop" xml:space="preserve">
+    <value>Стоп</value>
+  </data>
+  <data name="Plotter_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Plotter_Do_You_Want_To_Continue" xml:space="preserve">
+    <value>Вы хотите продолжить?</value>
+  </data>
+  <data name="Plotter_Yes_Stop_Plotting" xml:space="preserve">
+    <value>Да, остановить плоттинг</value>
+  </data>
 </root>

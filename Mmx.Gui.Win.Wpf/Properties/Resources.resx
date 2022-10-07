@@ -322,4 +322,24 @@
     <value>Update interval</value>
     <comment>settings</comment>
   </data>
+  <data name="Plotter_Pause" xml:space="preserve">
+    <value>Pause</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_Stop" xml:space="preserve">
+    <value>Stop</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_Yes_Stop_Plotting" xml:space="preserve">
+    <value>Yes, stop plotting</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_Do_You_Want_To_Continue" xml:space="preserve">
+    <value>Do you want to continue?</value>
+    <comment>plotter</comment>
+  </data>
 </root>

@@ -3,6 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.modernwpf.com/2019"
+
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="MmxGui"
+    lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
+    
     Closing="ContentDialog_Closing"
 >
 
@@ -35,7 +41,7 @@
                 x:Name="PauseButton"
                 Grid.Column="0" 
                 HorizontalAlignment="Stretch"
-                Content="Pause"/>
+                Content="{lex:Loc Plotter_Pause}"/>
 
             <Button
                 x:Name="StopButton"
@@ -43,7 +49,7 @@
                 HorizontalAlignment="Stretch"
                 Margin="5,0,5,0"
                 IsEnabled="{Binding ElementName=StopButton, Path=IsEnabled}"
-                Content="Stop">
+                Content="{lex:Loc Plotter_Stop}">
                 <ui:FlyoutService.Flyout>
                     <ui:Flyout x:Name="Flyout1">
                         <Grid>
@@ -55,14 +61,14 @@
                             <TextBlock 
                                 Grid.Row="0"
                                 Style="{StaticResource BaseTextBlockStyle}"
-                                Text="Do you want to continue?"
+                                Text="{lex:Loc Plotter_Do_You_Want_To_Continue}"
                                 Margin="0,0,0,12" />
                             
                             <Button 
                                 Grid.Row="1"
                                 x:Name="StopButtonConfirm"
                                 HorizontalAlignment="Stretch"
-                                Content="Yes, stop plotting"/>
+                                Content="{lex:Loc Plotter_Yes_Stop_Plotting}"/>
                         </Grid>
                     </ui:Flyout>
                 </ui:FlyoutService.Flyout>
@@ -73,7 +79,7 @@
                 Grid.Column="2" 
                 HorizontalAlignment="Stretch"
                 Style="{StaticResource AccentButtonStyle}"
-                Content="Close"
+                Content="{lex:Loc Plotter_Close}"
                 Click="CloseButton_Click"/>
 
 
