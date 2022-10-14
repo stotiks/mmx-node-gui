@@ -56,9 +56,9 @@
                             Background="{DynamicResource NavigationViewExpandedPaneBackground}">
                     <StatusBarItem>
                         <ui:HyperlinkButton x:Name="newVersionTextBlock" 
-                                            NavigateUri="https://github.com/stotiks/mmx-node/releases" 
-                                            Content="New version available!" 
-                                            Visibility="{Binding Path=UpdateChecker.IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                            NavigateUri="{Binding Source={x:Static common:UpdateChecker.releaseUri}}"
+                                            Content="{lex:Loc New_Version_Available}"
+                                            Visibility="{Binding UpdateChecker.IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}"
                                             Padding="0,0,0,0" />
                     </StatusBarItem>
                     <StatusBarItem HorizontalAlignment="Right">

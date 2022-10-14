@@ -14,6 +14,8 @@ namespace Mmx.Gui.Win.Common
     {
         //TODO
         private static Uri releasesUri = new Uri("https://api.github.com/repos/stotiks/mmx-node/releases");
+        public static Uri releaseUri = new Uri("https://github.com/stotiks/mmx-node/releases");
+
         private readonly HttpClient httpClient = new HttpClient();
         private readonly Timer timer = new Timer();
         private bool _isUpdateAvailable = false;

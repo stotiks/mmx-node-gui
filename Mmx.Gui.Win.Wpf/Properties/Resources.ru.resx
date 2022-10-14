@@ -288,4 +288,10 @@
   <data name="Plotter_Yes_Stop_Plotting" xml:space="preserve">
     <value>Да, остановить плоттинг</value>
   </data>
+  <data name="Console_Title" xml:space="preserve">
+    <value>Консоль</value>
+  </data>
+  <data name="New_Version_Available" xml:space="preserve">
+    <value>Доступна новая версия!</value>
+  </data>
 </root>

@@ -61,6 +61,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Console.
+        /// </summary>
+        public static string Console_Title {
+            get {
+                return ResourceManager.GetString("Console_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Harvester_Add {
@@ -102,6 +111,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string harvesterPlots {
             get {
                 return ResourceManager.GetString("harvesterPlots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New version available!.
+        /// </summary>
+        public static string New_Version_Available {
+            get {
+                return ResourceManager.GetString("New_Version_Available", resourceCulture);
             }
         }
         
