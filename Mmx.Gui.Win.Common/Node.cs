@@ -305,6 +305,11 @@ namespace Mmx.Gui.Win.Common
                 //processStartInfo.RedirectStandardOutput = true;
                 //processStartInfo.RedirectStandardError = true;
                 processStartInfo.RedirectStandardInput = false;
+            } else
+            {
+#if !DEBUG
+                processStartInfo.Arguments = "--PauseOnExit " + processStartInfo.Arguments;
+#endif
             }
 
             Process process = new Process();
