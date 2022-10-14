@@ -61,11 +61,29 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Another instance of this program is already running by other user.
+        /// </summary>
+        public static string Another_Instance_Running {
+            get {
+                return ResourceManager.GetString("Another_Instance_Running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Console.
         /// </summary>
         public static string Console_Title {
             get {
                 return ResourceManager.GetString("Console_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E&amp;xit.
+        /// </summary>
+        public static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
         
@@ -165,6 +183,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Plotter_Close {
             get {
                 return ResourceManager.GetString("Plotter_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command line.
+        /// </summary>
+        public static string Plotter_CommandLine {
+            get {
+                return ResourceManager.GetString("Plotter_CommandLine", resourceCulture);
             }
         }
         
@@ -300,6 +327,15 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Plotter_ProcessHeader {
             get {
                 return ResourceManager.GetString("Plotter_ProcessHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        public static string Plotter_Resume {
+            get {
+                return ResourceManager.GetString("Plotter_Resume", resourceCulture);
             }
         }
         
@@ -588,6 +624,24 @@ namespace Mmx.Gui.Win.Wpf.Properties {
         public static string Settings_UpdateInterval {
             get {
                 return ResourceManager.GetString("Settings_UpdateInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S&amp;how.
+        /// </summary>
+        public static string Show {
+            get {
+                return ResourceManager.GetString("Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning!.
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
     }

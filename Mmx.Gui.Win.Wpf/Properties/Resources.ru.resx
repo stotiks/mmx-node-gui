@@ -294,4 +294,22 @@
   <data name="New_Version_Available" xml:space="preserve">
     <value>Доступна новая версия!</value>
   </data>
+  <data name="Plotter_Resume" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="Another_Instance_Running" xml:space="preserve">
+    <value>Другой экземпляр этой программы уже запущен другим пользователем</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Предупреждение!</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>&amp;Показать</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>&amp;Выйти</value>
+  </data>
+  <data name="Plotter_CommandLine" xml:space="preserve">
+    <value>Командная строка</value>
+  </data>
 </root>

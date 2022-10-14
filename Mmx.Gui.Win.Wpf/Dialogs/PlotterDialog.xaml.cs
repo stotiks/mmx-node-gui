@@ -25,11 +25,11 @@ namespace Mmx.Gui.Win.Wpf.Dialogs
                     case "ProcessSuspended":
                         if (_processSuspended)
                         {
-                            PauseButton.Content = "Resume";
+                            PauseButton.Content = Properties.Resources.Plotter_Resume;
                         }
                         else
                         {
-                            PauseButton.Content = "Pause";
+                            PauseButton.Content = Properties.Resources.Plotter_Pause;
                         }
                         break;
                 }

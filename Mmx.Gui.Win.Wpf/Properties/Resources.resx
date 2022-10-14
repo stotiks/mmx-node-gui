@@ -348,5 +348,31 @@
   </data>
   <data name="New_Version_Available" xml:space="preserve">
     <value>New version available!</value>
+    <comment>main</comment>
+  </data>
+  <data name="Plotter_Resume" xml:space="preserve">
+    <value>Resume</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Another_Instance_Running" xml:space="preserve">
+    <value>Another instance of this program is already running by other user</value>
+    <comment>main</comment>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning!</value>
+    
+    <comment>main</comment>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>S&amp;how</value>
+    <comment>notifyIcon</comment>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>E&amp;xit</value>
+    <comment>notifyIcon</comment>
+  </data>
+  <data name="Plotter_CommandLine" xml:space="preserve">
+    <value>Command line</value>
+    <comment>plotter</comment>
   </data>
 </root>

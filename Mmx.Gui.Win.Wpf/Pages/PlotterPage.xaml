@@ -81,7 +81,7 @@
                             Value="{Binding PlotterOptions.count.Value}"/>
                         
                         <TextBox
-                            ui:ControlHelper.Header="Command line"
+                            ui:ControlHelper.Header="{lex:Loc Plotter_CommandLine}"
                             HorizontalAlignment="Left"
                             Width="{StaticResource keyWidth}"
                             IsReadOnly="True"
