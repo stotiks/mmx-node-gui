@@ -176,6 +176,7 @@ namespace Mmx.Gui.Win.Common
             OnBeforeStarted();
 
             Activate();
+            InitXToken();
 
             if (!IsRunning)
             {
@@ -339,7 +340,6 @@ namespace Mmx.Gui.Win.Common
                 File.WriteAllText(Node.walletConfigPath, json);
             }
 
-            InitXToken();
         }
 
         private void StartProcess()
