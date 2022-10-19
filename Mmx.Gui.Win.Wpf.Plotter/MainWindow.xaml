@@ -14,7 +14,7 @@
         lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
         
         mc:Ignorable="d"
-        Title="Plotter"     
+        Title="MMX Plotter"     
         Width="1200" Height="650"
         MinWidth="1040" MinHeight="650">
     <Grid>
