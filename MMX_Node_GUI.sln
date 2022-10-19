@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Common", "Mmx.G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Plotter", "Mmx.Gui.Win.Wpf.Plotter\Mmx.Gui.Win.Wpf.Plotter.csproj", "{ED48F56C-DD61-4768-9A85-FC1699BC5D93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Common", "Mmx.Gui.Win.Wpf.Common\Mmx.Gui.Win.Wpf.Common.csproj", "{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{ED48F56C-DD61-4768-9A85-FC1699BC5D93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED48F56C-DD61-4768-9A85-FC1699BC5D93}.Release|x64.ActiveCfg = Release|Any CPU
 		{ED48F56C-DD61-4768-9A85-FC1699BC5D93}.Release|x64.Build.0 = Release|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Debug|x64.Build.0 = Debug|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Release|x64.ActiveCfg = Release|Any CPU
+		{B711FED1-CFBD-4FD8-AF66-7DB31FBF7FA7}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

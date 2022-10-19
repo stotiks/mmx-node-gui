@@ -1,11 +1,10 @@
 ﻿using Mmx.Gui.Win.Common;
 using System;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Data;
 
-namespace Mmx.Gui.Win.Wpf.Converters
-{ 
+namespace Mmx.Gui.Win.Wpf.Common.Converters
+{
     public class PathFixConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Mmx.Gui.Win.Wpf.Converters
+namespace Mmx.Gui.Win.Wpf.Common.Converters
 {
     public class BooleanInverter : IValueConverter
     {

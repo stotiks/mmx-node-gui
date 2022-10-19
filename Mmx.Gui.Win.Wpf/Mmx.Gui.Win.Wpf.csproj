@@ -85,8 +85,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\BooleanInverter.cs" />
-    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,7 +97,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Converters\PathFixConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -214,6 +211,10 @@
     <ProjectReference Include="..\Mmx.Gui.Win.Common\Mmx.Gui.Win.Common.csproj">
       <Project>{d59b1b6c-6b96-4491-9ee9-610be8e13598}</Project>
       <Name>Mmx.Gui.Win.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mmx.Gui.Win.Wpf.Common\Mmx.Gui.Win.Wpf.Common.csproj">
+      <Project>{b711fed1-cfbd-4fd8-af66-7db31fbf7fa7}</Project>
+      <Name>Mmx.Gui.Win.Wpf.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Mmx.Gui.Win.Wpf.Converters
+namespace Mmx.Gui.Win.Wpf.Common.Converters
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
     public class BooleanToVisibilityConverter : IValueConverter
