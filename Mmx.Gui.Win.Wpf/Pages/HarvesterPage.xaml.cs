@@ -45,7 +45,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
             SaveHavesterConfig();
             Node.RemovePlotDirTask(dir.Path).ContinueWith(task =>
             {
-                Dispatcher.BeginInvoke(new System.Windows.Forms.MethodInvoker(delegate
+                Dispatcher.BeginInvoke(new Action(delegate
                 {
                     var flayout = new ModernWpf.Controls.Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom };
                     flayout.Content = new TextBlock() { Text = "Harvester reloaded" };
@@ -67,7 +67,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
                 SaveHavesterConfig();
                 Node.AddPlotDirTask(dirName).ContinueWith(task =>
                 {
-                    Dispatcher.BeginInvoke(new System.Windows.Forms.MethodInvoker(delegate
+                    Dispatcher.BeginInvoke(new Action(delegate
                     {
                         var x = new ModernWpf.Controls.Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom };
                         x.Content = new TextBlock() { Text = "Harvester reloaded" };
@@ -93,7 +93,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
         {
             Node.ReloadHarvester().ContinueWith(task =>
             {
-                Dispatcher.BeginInvoke(new System.Windows.Forms.MethodInvoker( delegate
+                Dispatcher.BeginInvoke(new Action( delegate
                 {
                     var x = new ModernWpf.Controls.Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom };
                     x.Content = new TextBlock() { Text = "Harvester reloaded" };

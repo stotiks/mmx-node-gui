@@ -10,7 +10,7 @@
     
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
-    lex:ResxLocalizationProvider.DefaultAssembly="MmxGui"
+    lex:ResxLocalizationProvider.DefaultAssembly="Mmx.Gui.Win.Wpf.Common"
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
     mc:Ignorable="d"

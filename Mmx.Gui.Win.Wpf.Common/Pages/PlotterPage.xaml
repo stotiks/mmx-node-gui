@@ -1,18 +1,18 @@
 ﻿<Page 
-    x:Class="Mmx.Gui.Win.Wpf.Pages.PlotterPage"
+    x:Class="Mmx.Gui.Win.Wpf.Common.Pages.PlotterPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Pages"
-    xmlns:dialogs="clr-namespace:Mmx.Gui.Win.Wpf.Dialogs"
-    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
+    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Common.Pages"
+    xmlns:dialogs="clr-namespace:Mmx.Gui.Win.Wpf.Common.Dialogs"
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters"
     
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
-    lex:ResxLocalizationProvider.DefaultAssembly="MmxGui"
+    lex:ResxLocalizationProvider.DefaultAssembly="Mmx.Gui.Win.Wpf.Common"
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
     mc:Ignorable="d" 
@@ -53,6 +53,8 @@
 
         <TabControl 
             x:Name="tabControl"
+            x:FieldModifier="public"
+            
         	Style="{StaticResource TabControlPivotStyle}"
         	Grid.Row="1">
 
@@ -100,14 +102,16 @@
                 </ScrollViewer>
             </TabItem>
 
-            
-            <TabItem Header="{lex:Loc Plotter_KeysTab}" x:Name="tabItemKeys">
+
+            <TabItem Header="{lex:Loc Plotter_KeysTab}" 
+                     x:Name="tabItemKeys" 
+                     x:FieldModifier="public">
                 <ScrollViewer Margin="0,12,0,0">
                     <ui:SimpleStackPanel 
                         Spacing="{StaticResource spacing}" 
                         HorizontalAlignment="Left">
 
-                        <TextBox x:Name="farmerKeyTextBox"
+                        <TextBox x:Name="farmerKeyTextBox" x:FieldModifier="public"
                             ui:ControlHelper.Header="{lex:Loc Plotter_farmerkey}"
                             Width="{StaticResource keyWidth}"
                             Text="{Binding PlotterOptions.farmerkey.Value}"/>

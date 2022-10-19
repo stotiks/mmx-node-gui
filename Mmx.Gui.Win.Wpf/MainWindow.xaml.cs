@@ -2,8 +2,8 @@
 using CefSharp.Wpf;
 using Mmx.Gui.Win.Common;
 using Mmx.Gui.Win.Common.Properties;
-using Mmx.Gui.Win.Wpf.Dialogs;
 using Mmx.Gui.Win.Wpf.Pages;
+using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
 using Newtonsoft.Json;
 using System;
@@ -117,7 +117,7 @@ namespace Mmx.Gui.Win.Wpf
 
         private void CopyKeysToPlotter(string json)
         {
-            Dispatcher.BeginInvoke(new MethodInvoker(async delegate
+            Dispatcher.BeginInvoke(new Action(async delegate
             {
                 nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
                 plotterPage.tabControl.SelectedItem = plotterPage.tabItemKeys;
@@ -265,7 +265,7 @@ namespace Mmx.Gui.Win.Wpf
             if (Settings.MinimizeToNotification && 
                 WindowState == WindowState.Minimized)
             {
-                Dispatcher.BeginInvoke(new MethodInvoker(delegate
+                Dispatcher.BeginInvoke(new Action(delegate
                 {
                     Hide();
                 }));

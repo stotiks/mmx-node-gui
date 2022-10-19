@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace Mmx.Gui.Win.Wpf.Dialogs
+namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 {
     /// <summary>
     /// Interaction logic for PlotterDialog.xaml

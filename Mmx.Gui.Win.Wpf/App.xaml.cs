@@ -30,7 +30,7 @@ namespace Mmx.Gui.Win.Wpf
             {
                 if (!SingleInstance.ShowFirstInstance())
                 {
-                    MessageBox.Show(Mmx.Gui.Win.Wpf.Properties.Resources.Another_Instance_Running, Mmx.Gui.Win.Wpf.Properties.Resources.Warning);
+                    MessageBox.Show(Common.Properties.Resources.Another_Instance_Running, Common.Properties.Resources.Warning);
                 }
                 Application.Current.Shutdown();
             }
@@ -56,12 +56,12 @@ namespace Mmx.Gui.Win.Wpf
             notifyIcon.ContextMenu = notifyIconContextMenu;
             var menuItem1 = new System.Windows.Forms.MenuItem();
             menuItem1.Index = 0;
-            menuItem1.Text = Mmx.Gui.Win.Wpf.Properties.Resources.Show;
+            menuItem1.Text = Wpf.Common.Properties.Resources.Show;
             menuItem1.Click += notifyIcon_Click;
 
             var menuItem3 = new System.Windows.Forms.MenuItem();
             menuItem3.Index = 1;
-            menuItem3.Text = Mmx.Gui.Win.Wpf.Properties.Resources.Exit;
+            menuItem3.Text = Wpf.Common.Properties.Resources.Exit;
             menuItem3.Click += (s, e) =>
             {
                 MainWindow win = Window.GetWindow(App.Current.MainWindow) as MainWindow;

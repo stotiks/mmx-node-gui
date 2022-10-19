@@ -1,13 +1,13 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common;
-using Mmx.Gui.Win.Wpf.Dialogs;
+using Mmx.Gui.Win.Wpf.Common.Dialogs;
 using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
 
-namespace Mmx.Gui.Win.Wpf.Pages
+namespace Mmx.Gui.Win.Wpf.Common.Pages
 {
     /// <summary>
     /// Interaction logic for PlotterPage.xaml
@@ -124,7 +124,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
             process.Exited += (sender1, args) =>
             {
-                Dispatcher.BeginInvoke(new System.Windows.Forms.MethodInvoker(delegate
+                Dispatcher.BeginInvoke(new Action(delegate
                 {
                     OnProcessExit();
                 }));
