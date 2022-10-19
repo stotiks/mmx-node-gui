@@ -18,7 +18,8 @@
         Title="MMX Plotter"     
         Width="1200" Height="650"
         MinWidth="1040" MinHeight="650"
-        ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
+        ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}" 
+        Closing="Window_Closing">
     <Grid>
         <ui:Frame x:Name="contentFrame" MinWidth="1000" Navigating="contentFrame_Navigating"/>
     </Grid>

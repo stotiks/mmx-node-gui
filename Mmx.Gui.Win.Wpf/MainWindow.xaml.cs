@@ -129,7 +129,7 @@ namespace Mmx.Gui.Win.Wpf
 
                 await Task.Delay(400);
                 var x = new Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom};
-                x.Content = new TextBlock() { Text = "Keys copied succesfully" };
+                x.Content = new TextBlock() { Text = "Keys copied succesfully" }; //TODO i18n
                 x.ShowAt(plotterPage.farmerKeyTextBox);
 
             }));
@@ -188,8 +188,8 @@ namespace Mmx.Gui.Win.Wpf
                     nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
 
                     var dialog = new ContentDialog();
-                    dialog.Title = "Stop plotter before exit!";
-                    dialog.PrimaryButtonText = "OK";
+                    dialog.Title = "Stop plotter before exit!"; //TODO i18n
+                    dialog.PrimaryButtonText = "OK"; //TODO i18n
                     dialog.DefaultButton = ContentDialogButton.Primary;
 
                     var result = await dialog.ShowAsync();
@@ -202,9 +202,9 @@ namespace Mmx.Gui.Win.Wpf
                 if (Settings.Default.ConfirmationOnExit)
                 {
                     var dialog = new ContentDialog();
-                    dialog.Title = "Do you want to close the application?";
-                    dialog.PrimaryButtonText = "Yes";
-                    dialog.SecondaryButtonText = "No";
+                    dialog.Title = "Do you want to close the application?"; //TODO i18n
+                    dialog.PrimaryButtonText = "Yes"; //TODO i18n
+                    dialog.SecondaryButtonText = "No"; //TODO i18n
                     dialog.DefaultButton = ContentDialogButton.Secondary;
 
                     var result = await dialog.ShowAsync();
