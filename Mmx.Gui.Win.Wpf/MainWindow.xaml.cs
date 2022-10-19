@@ -275,7 +275,7 @@ namespace Mmx.Gui.Win.Wpf
         private void contentFrame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
         {
             if (e.NavigationMode == NavigationMode.Back)
-    {
+            {
                 e.Cancel = true;
             }
         }
