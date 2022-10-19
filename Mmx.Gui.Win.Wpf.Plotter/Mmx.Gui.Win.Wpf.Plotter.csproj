@@ -16,7 +16,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +26,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -110,9 +110,9 @@
       <Project>{d59b1b6c-6b96-4491-9ee9-610be8e13598}</Project>
       <Name>Mmx.Gui.Win.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mmx.Gui.Win.Wpf\Mmx.Gui.Win.Wpf.csproj">
-      <Project>{32d659cb-76b5-4d04-a1b2-a021a2878e83}</Project>
-      <Name>Mmx.Gui.Win.Wpf</Name>
+    <ProjectReference Include="..\Mmx.Gui.Win.Wpf.Common\Mmx.Gui.Win.Wpf.Common.csproj">
+      <Project>{b2f0a2b6-daeb-4d1a-af35-2d7eda8757e7}</Project>
+      <Name>Mmx.Gui.Win.Wpf.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

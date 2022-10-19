@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Properties;
+using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace Mmx.Gui.Win.Wpf.Plotter
@@ -13,5 +12,28 @@ namespace Mmx.Gui.Win.Wpf.Plotter
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+            AppDomain.CurrentDomain.AssemblyResolve += CefUtils.CurrentDomain_AssemblyResolve;
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.LanguageCode);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.LanguageCode);
+
+            if (!SingleInstance.IsFirstInstance())
+            {
+                if (!SingleInstance.ShowFirstInstance())
+                {
+                    MessageBox.Show(Common.Properties.Resources.Another_Instance_Running, Common.Properties.Resources.Warning);
+                }
+                Application.Current.Shutdown();
+            }
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show((e.ExceptionObject as Exception).ToString(), "Warning! UnhandledException");
+        }
     }
 }
