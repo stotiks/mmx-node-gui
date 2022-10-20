@@ -220,8 +220,10 @@ namespace Mmx.Gui.Win.Wpf
 
                 closeCancel = false;
                 nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
-                await node.StopAsync();
-                Close();
+                {
+                    await node.StopAsync();
+                    Close();
+                }
 
             }
         }

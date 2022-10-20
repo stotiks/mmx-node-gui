@@ -225,7 +225,7 @@
 (
 ROBOCOPY $(TargetDir) %25OUT%25\gui\langs "*.resources.dll"  /S /XD langs /IS /IT
 ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config"
-ROBOCOPY  $(TargetDir) %25OUT%25\gui\libs Mmx.Gui.Win.Common.dll ModernWpf.Controls.dll ModernWpf.dll System.ValueTuple.dll Newtonsoft.Json.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll WPFLocalizeExtension.dll XAMLMarkupExtensions.dll
+ROBOCOPY  $(TargetDir) %25OUT%25\gui\libs Mmx.Gui.Win.Common.dll Open.Nat.dll ModernWpf.Controls.dll ModernWpf.dll System.ValueTuple.dll Newtonsoft.Json.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll WPFLocalizeExtension.dll XAMLMarkupExtensions.dll
 ROBOCOPY  $(TargetDir)\locales %25OUT%25\gui\cefsharp\locales
 ROBOCOPY  $(TargetDir) %25OUT%25\gui\cefsharp CefSharp.BrowserSubprocess.Core.dll CefSharp.BrowserSubprocess.exe CefSharp.Core.dll CefSharp.Core.Runtime.dll CefSharp.dll CefSharp.Wpf.dll chrome_100_percent.pak chrome_200_percent.pak chrome_elf.dll d3dcompiler_47.dll icudtl.dat libcef.dll libEGL.dll libGLESv2.dll LICENSE.txt resources.pak snapshot_blob.bin v8_context_snapshot.bin vk_swiftshader.dll vk_swiftshader_icd.json vulkan-1.dll
 ) ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
