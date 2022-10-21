@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -106,6 +107,39 @@ namespace Mmx.Gui.Win.Common
 
         public Node()
         {
+            if (Settings.Default.UseUPnP)
+            {
+                BeforeStarted += (sender, args) =>
+                {
+                    NetworkChange.NetworkAvailabilityChanged += (s, a) => UPnPCreatePortMap();
+                    NetworkChange.NetworkAddressChanged += (s, a) => UPnPCreatePortMap();
+                    UPnPCreatePortMap();
+                };
+                Stoped += (sender, args) => Task.Run(() => UPnPDeletePortMapAsync());
+            };
+        }
+
+        private void UPnPCreatePortMap()
+        {
+            Task.Run(() => UPnPCreatePortMapAsync());
+        }
+
+        private async Task UPnPCreatePortMapAsync()
+        {
+            var discoverer = new NatDiscoverer();
+            var cts = new CancellationTokenSource(10000);
+            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
+
+            await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, NetworkPort, NetworkPort, ProductName));
+        }
+
+        private async Task UPnPDeletePortMapAsync()
+        {
+            var discoverer = new NatDiscoverer();
+            var cts = new CancellationTokenSource(10000);
+            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
+
+            await device.DeletePortMapAsync(new Mapping(Protocol.Tcp, NetworkPort, NetworkPort));
         }
 
         public static Task RemovePlotDirTask(string dirName)
@@ -186,11 +220,6 @@ namespace Mmx.Gui.Win.Common
             Activate();
             InitXToken();
 
-            if (Settings.Default.UseUPnP)
-            {
-                Task.Run(() => UPnPPortMapperAsync());
-            }
-
             if (!IsRunning)
             {
                 StartProcess();
@@ -206,15 +235,6 @@ namespace Mmx.Gui.Win.Common
             }
 
             OnStart();
-        }
-
-        private async Task UPnPPortMapperAsync()
-        {
-            var discoverer = new NatDiscoverer();
-            var cts = new CancellationTokenSource(10000);
-            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
-
-            await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, NetworkPort, NetworkPort, $"{ProductName} {VersionTag}"));
         }
 
         public static string GetRandomHexNumber(int digits)
@@ -424,14 +444,6 @@ namespace Mmx.Gui.Win.Common
             }
 
             //processStarted = false;
-
-            Task.Run(async () =>
-            {
-                var discoverer = new NatDiscoverer();
-                var cts = new CancellationTokenSource(10000);
-                var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
-                await device.DeletePortMapAsync(new Mapping(Protocol.Tcp, NetworkPort, NetworkPort));
-            });
 
             OnStop();
         }
