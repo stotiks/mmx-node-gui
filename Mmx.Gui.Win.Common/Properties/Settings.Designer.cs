@@ -178,5 +178,17 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["DisableOpenCL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseUPnP {
+            get {
+                return ((bool)(this["UseUPnP"]));
+            }
+            set {
+                this["UseUPnP"] = value;
+            }
+        }
     }
 }

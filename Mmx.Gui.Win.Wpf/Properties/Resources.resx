@@ -325,7 +325,7 @@
   <data name="Settings_DisableOpenCL" xml:space="preserve">
     <value>Disable OpenCL</value>
     <comment>settings</comment>
-  </data>  
+  </data>
   <data name="Plotter_Pause" xml:space="preserve">
     <value>Pause</value>
     <comment>plotter</comment>
@@ -378,5 +378,9 @@
   <data name="Plotter_CommandLine" xml:space="preserve">
     <value>Command line</value>
     <comment>plotter</comment>
+  </data>
+  <data name="Settings_Network" xml:space="preserve">
+    <value>Network</value>
+    <comment>settings</comment>
   </data>
 </root>

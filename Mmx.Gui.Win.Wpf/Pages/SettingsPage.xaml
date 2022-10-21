@@ -90,6 +90,12 @@
                         IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=InhibitSystemSleep}"/>
                 </GroupBox>
 
+                <GroupBox Header="{lex:Loc Settings_Network}">
+                    <ui:ToggleSwitch 
+                        Header="UPnP"
+                        IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=UseUPnP}"/>
+                </GroupBox>
+
                 <GroupBox Header="{lex:Loc Settings_Update}">
                     <ui:SimpleStackPanel>
                         <ui:ToggleSwitch

@@ -186,7 +186,10 @@ namespace Mmx.Gui.Win.Common
             Activate();
             InitXToken();
 
-            Task.Run(() => UPnPPortMapperAsync());
+            if (Settings.Default.UseUPnP)
+            {
+                Task.Run(() => UPnPPortMapperAsync());
+            }
 
             if (!IsRunning)
             {
