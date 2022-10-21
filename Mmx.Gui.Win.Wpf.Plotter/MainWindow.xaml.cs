@@ -34,13 +34,14 @@ namespace Mmx.Gui.Win.Wpf.Plotter
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = closeCancel;
+
             if (!closePending)
             {
-                closePending = true;
-                Restore();
-
                 if (plotterPage.PlotterIsRunning == true)
                 {
+                    closePending = true;
+                    Restore();
+
                     var dialog = new ContentDialog();
                     dialog.Title = "Stop plotter before exit!"; //TODO i18n
                     dialog.PrimaryButtonText = "OK"; //TODO i18n
@@ -54,7 +55,9 @@ namespace Mmx.Gui.Win.Wpf.Plotter
                 }
 
                 closeCancel = false;
+                e.Cancel = closeCancel;
             }
+
         }
 
         public void Restore()
