@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -63,7 +64,28 @@ namespace Mmx.Gui.Win.Wpf
 
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "NodePage").First();
 
+            Console.WriteLine(NetworkInterface.GetIsNetworkAvailable());
+
+            NetworkChange.NetworkAvailabilityChanged += (o, e) =>
+            {
+                Console.WriteLine(e.IsAvailable);
+            };
+            NetworkChange.NetworkAddressChanged += OnNetworkAddressChanged;
         }
+
+static void OnNetworkAddressChanged(
+    object sender, EventArgs args)
+        {
+            foreach ((string name, OperationalStatus status) in
+                NetworkInterface.GetAllNetworkInterfaces()
+                    .Select(networkInterface =>
+                        (networkInterface.Name, networkInterface.OperationalStatus)))
+            {
+                Console.WriteLine(
+                    $"{name} is {status}");
+            }
+        }
+
 
         private void InitializeNode()
         {
