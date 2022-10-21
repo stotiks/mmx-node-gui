@@ -18,6 +18,14 @@ namespace Mmx.Gui.Win.Common.Properties {
         static public bool IsDarkTheme => Settings.Default.Theme == "Dark";
 
         public Settings() {
+
+            if (this.SettingsUpgradeRequired)
+            {
+                this.Upgrade();
+                this.SettingsUpgradeRequired = false;
+                this.Save();
+            }
+
             // // To add event handlers for saving and changing settings, uncomment the lines below:
             //
             // this.SettingChanging += this.SettingChangingEventHandler;
