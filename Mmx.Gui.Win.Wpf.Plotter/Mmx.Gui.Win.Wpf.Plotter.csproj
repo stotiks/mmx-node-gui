@@ -83,6 +83,11 @@
     <PackageReference Include="ModernWpfUI">
       <Version>0.9.6</Version>
     </PackageReference>
+    <PackageReference Include="MSBuilder.GenerateAssemblyInfo">
+      <Version>0.2.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="WPFLocalizeExtension">
       <Version>3.9.4</Version>
     </PackageReference>
