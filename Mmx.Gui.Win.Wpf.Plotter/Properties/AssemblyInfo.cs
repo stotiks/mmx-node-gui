@@ -9,7 +9,7 @@ using System.Windows;
 // associated with an assembly.
 [assembly: AssemblyTitle("MMX Plotter")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+//[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("madMAx43v3r")]
 [assembly: AssemblyProduct("MMX Plotter")]
 [assembly: AssemblyCopyright("Copyright © 2022")]
