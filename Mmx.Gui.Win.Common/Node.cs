@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Management;
 using System.Net.Http;
 using System.Net.NetworkInformation;
@@ -109,13 +110,26 @@ namespace Mmx.Gui.Win.Common
         {
             if (Settings.Default.UseUPnP)
             {
+
                 BeforeStarted += (sender, args) =>
                 {
                     NetworkChange.NetworkAvailabilityChanged += (s, a) => UPnPCreatePortMap();
                     NetworkChange.NetworkAddressChanged += (s, a) => UPnPCreatePortMap();
                     UPnPCreatePortMap();
                 };
-                Stoped += (sender, args) => Task.Run(() => UPnPDeletePortMapAsync());
+
+                Stoped += (sender, args) =>
+                {
+                    try
+                    {
+                        Task.Run(() => UPnPDeletePortMapAsync()).Wait();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                };
+
             };
         }
 
