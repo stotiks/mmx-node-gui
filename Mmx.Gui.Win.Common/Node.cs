@@ -1,19 +1,26 @@
 ﻿using Mmx.Gui.Win.Common.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Open.Nat;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Management;
 using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common
 {
     public class Node
     {
+        //private int NetworkPort = 11337; // mainnet
+        private int NetworkPort = 12338; // testnet8
+
         public static string workingDirectory =
 #if !DEBUG
     		Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
@@ -81,6 +88,8 @@ namespace Mmx.Gui.Win.Common
 
         public static string VersionTag { get; set; }
 
+        public static string ProductName { get; set; }
+
         static Node()
         {
             httpClient.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
@@ -88,6 +97,7 @@ namespace Mmx.Gui.Win.Common
             try
             {
                 var productVersion = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductVersion;
+                ProductName = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductName;
                 Version = new Version(productVersion);
             } catch {
                 Version = new Version();
@@ -98,6 +108,52 @@ namespace Mmx.Gui.Win.Common
 
         public Node()
         {
+            if (Settings.Default.UseUPnP)
+            {
+
+                BeforeStarted += (sender, args) =>
+                {
+                    NetworkChange.NetworkAvailabilityChanged += (s, a) => UPnPCreatePortMap();
+                    NetworkChange.NetworkAddressChanged += (s, a) => UPnPCreatePortMap();
+                    UPnPCreatePortMap();
+                };
+
+                Stoped += (sender, args) =>
+                {
+                    try
+                    {
+                        Task.Run(() => UPnPDeletePortMapAsync()).Wait();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                };
+
+            };
+        }
+
+        private void UPnPCreatePortMap()
+        {
+            Task.Run(() => UPnPCreatePortMapAsync());
+        }
+
+        private async Task UPnPCreatePortMapAsync()
+        {
+            var discoverer = new NatDiscoverer();
+            var cts = new CancellationTokenSource(10000);
+            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
+
+            await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, NetworkPort, NetworkPort, ProductName));
+        }
+
+        private async Task UPnPDeletePortMapAsync()
+        {
+            var discoverer = new NatDiscoverer();
+            var cts = new CancellationTokenSource(10000);
+            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
+
+            await device.DeletePortMapAsync(new Mapping(Protocol.Tcp, NetworkPort, NetworkPort));
         }
 
         public static Task RemovePlotDirTask(string dirName)
@@ -200,7 +256,7 @@ namespace Mmx.Gui.Win.Common
             byte[] buffer = new byte[digits / 2];
             Random random = new Random();
             random.NextBytes(buffer);
-            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            string result = string.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
             if (digits % 2 == 0)
                 return result;
             return result + random.Next(16).ToString("X");
