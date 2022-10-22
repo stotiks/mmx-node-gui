@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -63,6 +62,7 @@ namespace Mmx.Gui.Win.Wpf
             InitializeNode();
 
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "NodePage").First();
+
         }
 
         private void InitializeNode()

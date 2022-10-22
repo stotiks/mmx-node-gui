@@ -538,15 +538,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Network.
-        /// </summary>
-        public static string Settings_Network {
-            get {
-                return ResourceManager.GetString("Settings_Network", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Notification area.
         /// </summary>
         public static string Settings_NotificationArea {

@@ -312,7 +312,4 @@
   <data name="Plotter_CommandLine" xml:space="preserve">
     <value>Командная строка</value>
   </data>
-  <data name="Settings_Network" xml:space="preserve">
-    <value>Сеть</value>
-  </data>
 </root>

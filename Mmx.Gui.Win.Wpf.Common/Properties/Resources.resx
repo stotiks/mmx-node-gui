@@ -379,8 +379,4 @@
     <value>Command line</value>
     <comment>plotter</comment>
   </data>
-  <data name="Settings_Network" xml:space="preserve">
-    <value>Network</value>
-    <comment>settings</comment>
-  </data>
 </root>
