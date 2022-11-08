@@ -18,6 +18,11 @@ namespace Mmx.Gui.Win.Wpf.Plotter
         {
             InitializeComponent();
             contentFrame.Content = plotterPage;
+
+#if DEBUG
+            System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
+#endif
+
         }
 
         private void contentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
