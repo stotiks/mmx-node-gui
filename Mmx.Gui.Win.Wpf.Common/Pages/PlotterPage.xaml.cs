@@ -142,9 +142,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         private void OnProcessExit()
         {
-            PlotterDialog.CloseButton.IsEnabled = true;
-            PlotterDialog.PauseButton.IsEnabled = false;
-            PlotterDialog.StopButton.IsEnabled = false;
+            PlotterDialog.PlotterIsRunning = false;
             WriteLog("Process has exited.");
         }
 
@@ -153,10 +151,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             PlotterDialog.LogTxt = "";
             WriteLog(string.Format("{0} {1}", process.StartInfo.FileName, process.StartInfo.Arguments));
 
-            PlotterDialog.CloseButton.IsEnabled = false;
-            PlotterDialog.PauseButton.IsEnabled = true;
-            PlotterDialog.StopButton.IsEnabled = true;
-            PlotterDialog.ProcessSuspended = false;
+            PlotterDialog.PlotterIsRunning = true;
         }
 
         private readonly object logLock = new object();

@@ -62,6 +62,23 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             }
         }
 
+        private bool _plotterIsRunning = false;
+        public bool PlotterIsRunning
+        {
+            get => _plotterIsRunning;
+
+            set
+            {
+                _plotterIsRunning = value;
+                NotifyPropertyChanged();
+
+                if (value)
+                {
+                    ProcessSuspended = false;
+                }                
+            }
+        }
+
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)

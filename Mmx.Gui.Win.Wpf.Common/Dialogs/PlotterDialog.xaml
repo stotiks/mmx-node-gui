@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.modernwpf.com/2019"
+    
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters"
 
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -11,7 +13,10 @@
     
     Closing="ContentDialog_Closing"
 >
-
+    <ui:ContentDialog.Resources>
+        <cv:BooleanInverter x:Key="BooleanInverter"/>
+    </ui:ContentDialog.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -41,14 +46,15 @@
                 x:Name="PauseButton"
                 Grid.Column="0" 
                 HorizontalAlignment="Stretch"
-                Content="{lex:Loc Plotter_Pause}"/>
+                Content="{lex:Loc Plotter_Pause}"
+                IsEnabled="{Binding PlotterIsRunning}"/>
 
             <Button
                 x:Name="StopButton"
                 Grid.Column="1" 
                 HorizontalAlignment="Stretch"
                 Margin="5,0,5,0"
-                IsEnabled="{Binding ElementName=StopButton, Path=IsEnabled}"
+                IsEnabled="{Binding PlotterIsRunning}"
                 Content="{lex:Loc Plotter_Stop}">
                 <ui:FlyoutService.Flyout>
                     <ui:Flyout x:Name="Flyout1">
@@ -80,7 +86,8 @@
                 HorizontalAlignment="Stretch"
                 Style="{StaticResource AccentButtonStyle}"
                 Content="{lex:Loc Plotter_Close}"
-                Click="CloseButton_Click"/>
+                Click="CloseButton_Click"
+                IsEnabled="{Binding PlotterIsRunning, Converter={StaticResource BooleanInverter}}"/>
 
 
         </Grid>
