@@ -277,6 +277,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kill.
+        /// </summary>
+        public static string Plotter_Kill {
+            get {
+                return ResourceManager.GetString("Plotter_Kill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create NFT plot.
         /// </summary>
         public static string Plotter_nftplot {
@@ -453,6 +462,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Plotter_waitforcopy {
             get {
                 return ResourceManager.GetString("Plotter_waitforcopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes, kill plotter.
+        /// </summary>
+        public static string Plotter_Yes_Kill {
+            get {
+                return ResourceManager.GetString("Plotter_Yes_Kill", resourceCulture);
             }
         }
         

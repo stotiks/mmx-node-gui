@@ -20,19 +20,21 @@ namespace Mmx.Gui.Win.Wpf.Common.Converters
                 Nullable<bool> tmp = (Nullable<bool>)value;
                 bValue = tmp.HasValue ? tmp.Value : false;
             }
+            bValue = (parameter != null) ? !bValue : bValue;
             return (bValue) ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Visibility)
-            {
-                return (Visibility)value == Visibility.Visible;
-            }
-            else
-            {
-                return false;
-            }
+            throw new NotImplementedException();
+            //if (value is Visibility)
+            //{
+            //    return (Visibility)value == Visibility.Visible;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
     }
 }

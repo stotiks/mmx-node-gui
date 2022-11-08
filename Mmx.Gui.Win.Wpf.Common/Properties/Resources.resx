@@ -379,4 +379,12 @@
     <value>Command line</value>
     <comment>plotter</comment>
   </data>
+  <data name="Plotter_Kill" xml:space="preserve">
+    <value>Kill</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_Yes_Kill" xml:space="preserve">
+    <value>Yes, kill plotter</value>
+    <comment>plotter</comment>
+  </data>
 </root>

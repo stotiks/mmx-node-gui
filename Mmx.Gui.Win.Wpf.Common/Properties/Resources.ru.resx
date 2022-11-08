@@ -312,4 +312,10 @@
   <data name="Plotter_CommandLine" xml:space="preserve">
     <value>Командная строка</value>
   </data>
+  <data name="Plotter_Kill" xml:space="preserve">
+    <value>Прибить</value>
+  </data>
+  <data name="Plotter_Yes_Kill" xml:space="preserve">
+    <value>Да, прибить плоттер</value>
+  </data>
 </root>

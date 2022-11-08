@@ -187,7 +187,7 @@ namespace Mmx.Gui.Win.Wpf
                 closePending = true;
                 Restore();
 
-                if (plotterPage.PlotterIsRunning == true)
+                if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
                 {
                     nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
 
