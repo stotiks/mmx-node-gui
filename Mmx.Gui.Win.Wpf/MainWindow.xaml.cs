@@ -127,9 +127,9 @@ namespace Mmx.Gui.Win.Wpf
                 plotterPage.tabControl.SelectedItem = plotterPage.tabItemKeys;
 
                 dynamic keys = JsonConvert.DeserializeObject(json);
-                plotterPage.PlotterOptions.farmerkey.Value = keys["farmer_public_key"];
-                plotterPage.PlotterOptions.nftplot.Value = false;
-                plotterPage.PlotterOptions.poolkey.Value = keys["pool_public_key"];
+                PlotterOptions.Instance.farmerkey.Value = keys["farmer_public_key"];
+                PlotterOptions.Instance.nftplot.Value = false;
+                PlotterOptions.Instance.poolkey.Value = keys["pool_public_key"];
 
                 await Task.Delay(400);
                 var x = new Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom};

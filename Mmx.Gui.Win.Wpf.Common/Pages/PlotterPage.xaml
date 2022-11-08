@@ -269,6 +269,7 @@
             FullSizeDesired="True"
             Margin="0,0,25,25"
             d:Visibility="Hidden"
+            x:FieldModifier="public"
             x:Name="PlotterDialog"/>
         
     </Grid>

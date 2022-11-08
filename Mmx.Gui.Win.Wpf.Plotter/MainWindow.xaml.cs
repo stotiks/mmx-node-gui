@@ -42,7 +42,7 @@ namespace Mmx.Gui.Win.Wpf.Plotter
 
             if (!closePending)
             {
-                if (plotterPage.PlotterIsRunning == true)
+                if (plotterPage.PlotterDialog.PlotterIsRunning == true)
                 {
                     closePending = true;
                     Restore();
