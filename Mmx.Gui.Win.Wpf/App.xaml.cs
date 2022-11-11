@@ -3,6 +3,7 @@ using Mmx.Gui.Win.Common.Properties;
 using System;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace Mmx.Gui.Win.Wpf
 
         public App()
         {
+            Environment.CurrentDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
             AppDomain.CurrentDomain.AssemblyResolve += CefUtils.CurrentDomain_AssemblyResolve;
