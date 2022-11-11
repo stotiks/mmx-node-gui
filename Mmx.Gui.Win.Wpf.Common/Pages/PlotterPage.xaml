@@ -23,8 +23,8 @@
         <cv:BooleanInverter x:Key="BooleanInverter"/>
         <cv:PathFixConverter x:Key="PathFixConverter"/>
 
-        <sys:Double x:Key="mainWidth">400</sys:Double>
-        <sys:Double x:Key="keyWidth">760</sys:Double>
+        <sys:Double x:Key="mainWidth">500</sys:Double>
+        <sys:Double x:Key="keyWidth">800</sys:Double>
         <sys:Double x:Key="spacing">7</sys:Double>
         
         <ui:FontIcon x:Key="FolderGlyph" x:Shared="False" Glyph="&#xED25;"/>
