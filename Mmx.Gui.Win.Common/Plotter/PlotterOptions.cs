@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Plotter
 {
     public class Item<T> : INotifyPropertyChanged
     {

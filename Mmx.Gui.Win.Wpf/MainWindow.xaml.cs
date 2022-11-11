@@ -18,6 +18,7 @@ using System.Windows.Interop;
 using System.Windows.Navigation;
 using WPFLocalizeExtension.Engine;
 using static Mmx.Gui.Win.Common.NativeMethods;
+using Mmx.Gui.Win.Common.Plotter;
 
 namespace Mmx.Gui.Win.Wpf
 {

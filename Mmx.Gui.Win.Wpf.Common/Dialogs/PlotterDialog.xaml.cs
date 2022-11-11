@@ -1,4 +1,5 @@
 ﻿using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Plotter;
 using ModernWpf.Controls;
 using System;
 using System.ComponentModel;

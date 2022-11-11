@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Plotter
 {
     public class PlotterProcess : INotifyPropertyChanged
     {
@@ -20,8 +22,8 @@ namespace Mmx.Gui.Win.Common
             processStartInfo.Arguments = PlotterOptions.Instance.PlotterArguments;
 
 #if DEBUG
-            processStartInfo.FileName = "ping";
-            processStartInfo.Arguments = "google.com -n 30";
+            //processStartInfo.FileName = "ping";
+            //processStartInfo.Arguments = "google.com -n 30";
 #endif
 
             processStartInfo.UseShellExecute = false;
@@ -55,17 +57,74 @@ namespace Mmx.Gui.Win.Common
 
         public event PlotterProcessEventHandler ProcessExit;
         private void OnProcessExit(object sender, EventArgs e)
-        {
+        {            
+            CleanFS(); 
             IsRunning = false;
             ProcessExit?.Invoke(this, null);
         }
 
-        public event DataReceivedEventHandler OutputDataReceived;
-        void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        private void CleanFS()
         {
-            OutputDataReceived?.Invoke(this, e);
+            var deletedCount = 0;
+
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value);
+
+            if (deletedCount > 0)
+            {
+                OnOutputDataReceived(this, new CustomDataReceivedEventArgs(""));
+                OnOutputDataReceived(this, new CustomDataReceivedEventArgs(string.Format("Temp files deleted: {0}", deletedCount)));
+            }
         }
 
+        private int DeleteTempFiles(string dir)
+        {
+            var result = 0;
+            if (!string.IsNullOrEmpty(currentPlotName) && !string.IsNullOrEmpty(dir) && Directory.Exists(dir))
+            {
+                Regex reg = new Regex(string.Format(@"^({0})", currentPlotName));
+                var files = Directory.GetFiles(dir, "*.tmp")
+                                     .Where(path => reg.IsMatch(Path.GetFileName(path)))
+                                     .ToList();
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                }
+
+                result = files.Count;
+            }
+
+            return result;
+        }
+
+        public delegate void CustomEventHandler(object o, CustomDataReceivedEventArgs e);
+        public event CustomEventHandler OutputDataReceived;
+        void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            var x = new CustomDataReceivedEventArgs(e);
+            OnOutputDataReceived(sender, x);
+        }
+        string currentPlotName = null;
+        Regex plotNameRegex = new Regex(@"^Plot Name: (plot-.*)");
+        void OnOutputDataReceived(object sender, CustomDataReceivedEventArgs e)
+        {
+            var str = e.Data;
+            
+            if(!string.IsNullOrEmpty(str))
+            {
+                var r = plotNameRegex.Match(str);
+                if(r.Success)
+                {
+                    currentPlotName = r.Groups[1].Value;
+                    //Console.WriteLine(currentPlotName);
+                }
+                
+            }
+
+            OutputDataReceived?.Invoke(sender, e);
+        }
         public event DataReceivedEventHandler ErrorDataReceived;
         void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
