@@ -132,12 +132,12 @@ namespace Mmx.Gui.Win.Common
         static extern bool FreeConsole();
 
         [DllImport("kernel32.dll")]
-        static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate HandlerRoutine, bool Add);
+        public static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate HandlerRoutine, bool Add);
         // Delegate type to be used as the Handler Routine for SCCH
-        delegate Boolean ConsoleCtrlDelegate(CtrlTypes CtrlType);
+        public delegate Boolean ConsoleCtrlDelegate(CtrlTypes CtrlType);
 
         // Enumerated type for the control messages sent to the handler routine
-        enum CtrlTypes : uint
+        public enum CtrlTypes : uint
         {
             CTRL_C_EVENT = 0,
             CTRL_BREAK_EVENT,
@@ -165,7 +165,7 @@ namespace Mmx.Gui.Win.Common
                 FreeConsole();
 
                 //Re-enable Ctrl-C handling or any subsequently started programs will inherit the disabled state.
-                SetConsoleCtrlHandler(null, false);
+                //SetConsoleCtrlHandler(null, false);
             }
         }
 

@@ -47,6 +47,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             process.Exited += OnProcessExit;
 
+            NativeMethods.SetConsoleCtrlHandler(null, false);
             process.Start();
             process.PriorityClass = (ProcessPriorityClass)PlotterOptions.Instance.priority.Value;
             OnProcessStart();
@@ -57,7 +58,8 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public event PlotterProcessEventHandler ProcessExit;
         private void OnProcessExit(object sender, EventArgs e)
-        {            
+        {
+            NativeMethods.SetConsoleCtrlHandler(null, false);
             CleanFS(); 
             IsRunning = false;
             ProcessExit?.Invoke(this, null);
