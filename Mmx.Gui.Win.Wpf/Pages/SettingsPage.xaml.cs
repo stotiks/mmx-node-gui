@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -40,7 +41,10 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
         public Array Themes
         {
-            get => Enum.GetValues(typeof(ModernWpf.ElementTheme));
+            get => Enum
+                .GetValues(typeof(ModernWpf.ElementTheme))
+                .Cast<ModernWpf.ElementTheme>()
+                .Where(value => value == ModernWpf.ElementTheme.Light || value == ModernWpf.ElementTheme.Dark).ToArray();
         }
 
         public SettingsPage()
