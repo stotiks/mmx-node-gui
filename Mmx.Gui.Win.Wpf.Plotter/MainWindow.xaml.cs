@@ -1,16 +1,14 @@
-﻿using Mmx.Gui.Win.Wpf.Common.Pages;
+﻿using Mmx.Gui.Win.Wpf.Common;
+using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
-using System.Windows;
-using System.Windows.Interop;
-using System.Windows.Navigation;
-using static Mmx.Gui.Win.Common.NativeMethods;
+using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Wpf.Plotter
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WpfMainWindow
     {
         private PlotterPage plotterPage = new PlotterPage();
 
@@ -18,66 +16,26 @@ namespace Mmx.Gui.Win.Wpf.Plotter
         {
             InitializeComponent();
             contentFrame.Content = plotterPage;
-
-#if DEBUG
-            System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
-#endif
-
         }
 
-        private void contentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        protected override async Task<bool> CanClose()
         {
-            if (e.NavigationMode == NavigationMode.Back)
+            await Task.Yield();
+
+            if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
             {
-                e.Cancel = true;
+                var dialog = new ContentDialog();
+                dialog.Title = "Stop plotter before exit!"; //TODO i18n
+                dialog.PrimaryButtonText = "OK"; //TODO i18n
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                var result = await dialog.ShowAsync();
+
+                dialog.Hide();
+                return false;
             }
+
+            return true;
         }
-
-        private bool closeCancel = true;
-        private bool closePending = false;
-
-        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = closeCancel;
-
-            if (!closePending)
-            {
-                if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
-                {
-                    closePending = true;
-                    Restore();
-
-                    var dialog = new ContentDialog();
-                    dialog.Title = "Stop plotter before exit!"; //TODO i18n
-                    dialog.PrimaryButtonText = "OK"; //TODO i18n
-                    dialog.DefaultButton = ContentDialogButton.Primary;
-
-                    var result = await dialog.ShowAsync();
-
-                    dialog.Hide();
-                    closePending = false;
-                    return;
-                }
-
-                closeCancel = false;
-                e.Cancel = closeCancel;
-            }
-
-        }
-
-        public void Restore()
-        {
-            if (!closePending)
-            {
-                Show();
-            }
-
-            if (WindowState == WindowState.Minimized)
-            {
-                WindowState = WindowState.Normal;
-            }
-            SetForegroundWindow(new WindowInteropHelper(this).Handle);
-        }
-
     }
 }

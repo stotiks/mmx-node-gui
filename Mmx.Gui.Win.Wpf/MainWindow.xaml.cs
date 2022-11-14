@@ -13,19 +13,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Interop;
-using System.Windows.Navigation;
 using WPFLocalizeExtension.Engine;
-using static Mmx.Gui.Win.Common.NativeMethods;
 using Mmx.Gui.Win.Common.Plotter;
+using Mmx.Gui.Win.Wpf.Common;
 
 namespace Mmx.Gui.Win.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WpfMainWindow
     {
         private readonly Node node = new Node();
         private readonly MMXBoundObject mmxBoundObject = new MMXBoundObject();
@@ -55,14 +52,16 @@ namespace Mmx.Gui.Win.Wpf
             InitializeComponent();
             DataContext = this;
 
-#if DEBUG
-            System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
-#endif
-
             InitializeCef();
             InitializeNode();
 
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "NodePage").First();
+
+            BeforeClose += async (o, e) =>
+            {
+                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
+                await node.StopAsync();
+            };
 
         }
 
@@ -82,13 +81,6 @@ namespace Mmx.Gui.Win.Wpf
             };
 
             node.StartAsync();
-        }
-
-        internal new void Close()
-        {
-            disableCloseToNotification = true;
-            base.Close();
-            disableCloseToNotification = false;
         }
 
         private void InitializeCef()
@@ -169,122 +161,45 @@ namespace Mmx.Gui.Win.Wpf
             }
         }
 
-        private bool closeCancel = true;
-        private bool disableCloseToNotification = false;
-        private bool closePending = false;
-
-        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        protected override async Task<bool> CanClose()
         {
-            if (Settings.CloseToNotification && !disableCloseToNotification)
+            await Task.Yield();
+
+            if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
             {
-                Hide();
-                e.Cancel = true;
-                return;
+                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
+
+                var dialog = new ContentDialog();
+                dialog.Title = "Stop plotter before exit!"; //TODO i18n
+                dialog.PrimaryButtonText = "OK"; //TODO i18n
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                var result = await dialog.ShowAsync();
+
+                dialog.Hide();
+                return false;
             }
 
-            e.Cancel = closeCancel;
-            if (!closePending)
+            if (Settings.Default.ConfirmationOnExit)
             {
-                closePending = true;
-                Restore();
+                var dialog = new ContentDialog();
+                dialog.Title = "Do you want to close the application?"; //TODO i18n
+                dialog.PrimaryButtonText = "Yes"; //TODO i18n
+                dialog.SecondaryButtonText = "No"; //TODO i18n
+                dialog.DefaultButton = ContentDialogButton.Secondary;
 
-                if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
+                var result = await dialog.ShowAsync();
+                dialog.Hide();
+
+                if (result != ContentDialogResult.Primary)
                 {
-                    nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
-
-                    var dialog = new ContentDialog();
-                    dialog.Title = "Stop plotter before exit!"; //TODO i18n
-                    dialog.PrimaryButtonText = "OK"; //TODO i18n
-                    dialog.DefaultButton = ContentDialogButton.Primary;
-
-                    var result = await dialog.ShowAsync();
-
-                    dialog.Hide();
-                    closePending = false;
-                    return;
-                }
-
-                if (Settings.Default.ConfirmationOnExit)
-                {
-                    var dialog = new ContentDialog();
-                    dialog.Title = "Do you want to close the application?"; //TODO i18n
-                    dialog.PrimaryButtonText = "Yes"; //TODO i18n
-                    dialog.SecondaryButtonText = "No"; //TODO i18n
-                    dialog.DefaultButton = ContentDialogButton.Secondary;
-
-                    var result = await dialog.ShowAsync();
-
-                    if (result != ContentDialogResult.Primary)
-                    {
-                        dialog.Hide();
-                        closePending = false;
-                        return;
-                    }
-
-                }
-
-                closeCancel = false;
-                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
-                {
-                    await node.StopAsync();
-                    Close();
+                    return false;
                 }
 
             }
+
+            return true;
         }
 
-        public void Restore()
-        {
-            if (!closePending)
-            {
-                Show();
-            }
-
-            if (WindowState == WindowState.Minimized)
-            {
-                WindowState = WindowState.Normal;
-            }
-            SetForegroundWindow(new WindowInteropHelper(this).Handle);
-        }
-
-
-        //-------------------
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-            HwndSource source = PresentationSource.FromVisual(this) as HwndSource;
-            source.AddHook(WndProc);
-        }
-
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            if (msg == SingleInstance.WM_SHOWFIRSTINSTANCE)
-            {
-                Show();
-                Restore();
-            }
-
-            return IntPtr.Zero;
-        }
-
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            if (Settings.MinimizeToNotification && 
-                WindowState == WindowState.Minimized)
-            {
-                Dispatcher.BeginInvoke(new Action(delegate
-                {
-                    Hide();
-                }));
-            }
-        }
-
-        private void contentFrame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
-        {
-            if (e.NavigationMode == NavigationMode.Back)
-            {
-                e.Cancel = true;
-            }
-        }
     }
 }

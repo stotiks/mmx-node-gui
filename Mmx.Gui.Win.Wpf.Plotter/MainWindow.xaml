@@ -1,4 +1,5 @@
-﻿<Window x:Class="Mmx.Gui.Win.Wpf.Plotter.MainWindow"
+﻿<mw:WpfMainWindow x:Class="Mmx.Gui.Win.Wpf.Plotter.MainWindow"
+        xmlns:mw="clr-namespace:Mmx.Gui.Win.Wpf.Common;assembly=Mmx.Gui.Win.Wpf.Common"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,9 +21,8 @@
         MinWidth="1040" MinHeight="650"
         WindowStartupLocation="CenterScreen"
         ui:WindowHelper.UseModernWindowStyle="True"        
-        ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}" 
-        Closing="Window_Closing">
+        ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
     <Grid>
         <ui:Frame x:Name="contentFrame" MinWidth="1000" Navigating="contentFrame_Navigating"/>
     </Grid>
-</Window>
+</mw:WpfMainWindow>
