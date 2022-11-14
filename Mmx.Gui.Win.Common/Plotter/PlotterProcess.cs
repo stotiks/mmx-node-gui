@@ -69,10 +69,10 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             var deletedCount = 0;
 
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value, currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value, currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, currentPlotName);
 
             if (deletedCount > 0)
             {
@@ -81,12 +81,12 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        private int DeleteTempFiles(string dir)
+        private int DeleteTempFiles(string dir, string plotName)
         {
             var result = 0;
-            if (!string.IsNullOrEmpty(currentPlotName) && !string.IsNullOrEmpty(dir) && Directory.Exists(dir))
+            if (!string.IsNullOrEmpty(plotName) && !string.IsNullOrEmpty(dir) && Directory.Exists(dir))
             {
-                Regex reg = new Regex(string.Format(@"^({0})", currentPlotName));
+                Regex reg = new Regex(string.Format(@"^({0})", plotName));
                 var files = Directory.GetFiles(dir, "*.tmp")
                                      .Where(path => reg.IsMatch(Path.GetFileName(path)))
                                      .ToList();
