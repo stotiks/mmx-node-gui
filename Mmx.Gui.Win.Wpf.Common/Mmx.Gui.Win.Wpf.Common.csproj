@@ -56,6 +56,9 @@
     <Compile Include="Dialogs\PlotterDialog.xaml.cs">
       <DependentUpon>PlotterDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HarvesterPage.xaml.cs">
+      <DependentUpon>HarvesterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PlotterPage.xaml.cs">
       <DependentUpon>PlotterPage.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Dialogs\PlotterDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\HarvesterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

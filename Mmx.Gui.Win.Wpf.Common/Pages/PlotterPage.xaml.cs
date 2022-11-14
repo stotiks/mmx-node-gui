@@ -1,11 +1,7 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Mmx.Gui.Win.Common;
 using Mmx.Gui.Win.Common.Plotter;
 using Mmx.Gui.Win.Wpf.Common.Dialogs;
 using ModernWpf.Controls;
-using System;
-using System.Diagnostics;
-using System.IO;
 using System.Windows.Controls;
 
 namespace Mmx.Gui.Win.Wpf.Common.Pages

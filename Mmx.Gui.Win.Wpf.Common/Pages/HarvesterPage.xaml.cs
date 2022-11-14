@@ -3,13 +3,12 @@ using Mmx.Gui.Win.Common;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Mmx.Gui.Win.Wpf.Pages
+namespace Mmx.Gui.Win.Wpf.Common.Pages
 {
     /// <summary>
     /// Interaction logic for HarvesterPage.xaml
