@@ -1,8 +1,10 @@
 ﻿using Mmx.Gui.Win.Wpf.Common;
 using Mmx.Gui.Win.Wpf.Common.Pages;
+using Mmx.Gui.Win.Wpf.Harvester.Pages;
 using ModernWpf.Controls;
 using Open.Nat;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,35 +16,13 @@ namespace Mmx.Gui.Win.Wpf.Harvester
     public partial class MainWindow : WpfMainWindow
     {
         private HarvesterPage harvesterPage = new HarvesterPage();
+        private ConnectionPage connectionPage = new ConnectionPage();
         public MainWindow()
         {
             InitializeComponent();
-            contentFrame.Content = harvesterPage;
-            Task.Run( async () =>
-            {
-                var mapping = await GetMapping();
-                Console.WriteLine(mapping);
-            });
-        }
+            contentFrame.Content = connectionPage;
 
-        public async Task<Mapping> GetMapping()
-        {
-            Mapping result = null;
-
-            var discoverer = new NatDiscoverer();
-            var cts = new CancellationTokenSource(10000);
-            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
-            var mappings = await device.GetAllMappingsAsync();
-            foreach (var mapping in mappings)
-            {                
-                if(mapping.Description == "MMX Node")
-                {
-                    result = mapping;
-                    break;
-                }
-            }
-
-            return result;
+            //nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "ConnectionPage").First();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -51,8 +31,8 @@ namespace Mmx.Gui.Win.Wpf.Harvester
 
             switch (selectedItem.Tag)
             {
-                case "ConnectPage":
-                    contentFrame.Content = null;
+                case "ConnectionPage":
+                    contentFrame.Content = connectionPage;
                     break;
                 case "HarvesterPage":
                     contentFrame.Content = harvesterPage;

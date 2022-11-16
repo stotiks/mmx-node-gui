@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CefUtils.cs" />
+    <Compile Include="HarversterOptions.cs" />
     <Compile Include="Plotter\CustomDataReceivedEventArgs.cs" />
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />
@@ -72,6 +73,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Open.Nat">
+      <Version>2.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

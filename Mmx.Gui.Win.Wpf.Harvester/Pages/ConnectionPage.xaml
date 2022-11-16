@@ -1,0 +1,90 @@
+﻿<Page 
+    x:Class="Mmx.Gui.Win.Wpf.Harvester.Pages.ConnectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Harvester"
+      
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:dialogs="clr-namespace:Mmx.Gui.Win.Wpf.Common.Dialogs"
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters"
+    
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="Mmx.Gui.Win.Wpf.Common"
+    lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
+      
+    mc:Ignorable="d" 
+    d:DesignHeight="650" d:DesignWidth="1200"
+    Title="ConnectionPage">
+
+    <Grid Margin="25,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock  
+            Grid.Row="0"
+            Text="Connect"
+            Style="{StaticResource TitleTextBlockStyle}"
+            FontSize="28"
+            Margin="0,8,0,12" />
+
+        <ui:SimpleStackPanel 
+            x:Name="ConnectionGroup"
+            Grid.Row="1"
+            Orientation="Horizontal">
+
+            <TextBox
+                x:Name="HostTextBox"
+                ui:ControlHelper.Header="Host"
+                Width="300"
+                Text="{Binding HarversterOptions.Host}"/>
+
+            <Label
+                Content=""
+                VerticalAlignment="Center"
+                Margin="2,0,2,0"></Label>
+            
+            <ui:NumberBox
+                x:Name="PortNumberBox"
+                Width="200"
+                Header="Port"
+                Minimum="1"
+                Maximum="65535"
+                SpinButtonPlacementMode="Inline"
+                Value="{Binding HarversterOptions.Port}"/>
+
+            <Label
+                Content=""
+                VerticalAlignment="Center"
+                Margin="2,0,2,0"></Label>
+
+            <Button
+                x:Name="DetectButton"
+                Width="100"
+                Content="Detect"               
+                VerticalAlignment="Bottom" Click="DetectButton_Click"/>
+            
+            <Label
+                Content=""
+                VerticalAlignment="Center"
+                Margin="2,0,2,0"></Label>
+            
+            <Button
+                x:Name="ConnectButton"
+                Width="200"
+                Content="Connect"
+                Style="{StaticResource AccentButtonStyle}"
+                VerticalAlignment="Bottom"/>
+            
+        </ui:SimpleStackPanel>
+
+
+        
+    </Grid>
+</Page>

@@ -296,9 +296,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             // Explicit static constructor to tell C# compiler
             // not to mark type as beforefieldinit
-            static Nested()
-            {
-            }
+            static Nested(){}
 
             internal static readonly PlotterOptions instance = new PlotterOptions();
         }

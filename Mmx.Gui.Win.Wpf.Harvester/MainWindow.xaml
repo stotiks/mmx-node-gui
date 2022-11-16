@@ -33,7 +33,7 @@
         SelectionChanged="NavigationView_SelectionChanged">
 
         <ui:NavigationView.MenuItems>
-            <ui:NavigationViewItem Tag="ConnectPage" Content="Connect" Icon="Globe" />
+            <ui:NavigationViewItem Tag="ConnectionPage" Content="Connect" Icon="Globe" />
             <ui:NavigationViewItem Tag="HarvesterPage" Content="{lex:Loc Harvester_Title}" Icon="NewFolder" />
         </ui:NavigationView.MenuItems>
         

@@ -29,7 +29,7 @@ namespace Mmx.Gui.Win.Wpf.Plotter
                 dialog.PrimaryButtonText = "OK"; //TODO i18n
                 dialog.DefaultButton = ContentDialogButton.Primary;
 
-                var result = await dialog.ShowAsync();
+                await dialog.ShowAsync();
 
                 dialog.Hide();
                 return false;
