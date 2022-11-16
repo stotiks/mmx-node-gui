@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Plotter", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Common", "Mmx.Gui.Win.Wpf.Common\Mmx.Gui.Win.Wpf.Common.csproj", "{B2F0A2B6-DAEB-4D1A-AF35-2D7EDA8757E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Harvester", "Mmx.Gui.Win.Wpf.Harvester\Mmx.Gui.Win.Wpf.Harvester.csproj", "{EFA920E8-8560-497B-8A10-E5C68EF3DE57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{B2F0A2B6-DAEB-4D1A-AF35-2D7EDA8757E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2F0A2B6-DAEB-4D1A-AF35-2D7EDA8757E7}.Release|x64.ActiveCfg = Release|Any CPU
 		{B2F0A2B6-DAEB-4D1A-AF35-2D7EDA8757E7}.Release|x64.Build.0 = Release|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Debug|x64.Build.0 = Debug|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Release|x64.ActiveCfg = Release|Any CPU
+		{EFA920E8-8560-497B-8A10-E5C68EF3DE57}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
