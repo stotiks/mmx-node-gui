@@ -22,7 +22,9 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        private int _port = 11337;
+        const int defaultPort = 11330;
+
+        private int _port = defaultPort;
         public int Port { 
             get => _port; 
             set
@@ -77,7 +79,7 @@ namespace Mmx.Gui.Win.Common
 
             if (mapping != null)
             {
-                Port = mapping.PrivatePort;
+                Port = defaultPort;
                 Host = mapping.PrivateIP.ToString();
             }
         }
