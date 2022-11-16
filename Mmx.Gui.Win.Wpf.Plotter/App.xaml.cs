@@ -16,8 +16,6 @@ namespace Mmx.Gui.Win.Wpf.Plotter
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-            AppDomain.CurrentDomain.AssemblyResolve += CefUtils.CurrentDomain_AssemblyResolve;
-
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.LanguageCode);
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.LanguageCode);
 
