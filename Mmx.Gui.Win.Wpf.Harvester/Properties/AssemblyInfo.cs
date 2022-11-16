@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -9,11 +7,11 @@ using System.Windows;
 // associated with an assembly.
 [assembly: AssemblyTitle("Mmx.Gui.Win.Wpf.Harvester")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Mmx.Gui.Win.Wpf.Harvester")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
+//[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("madMAx43v3r")]
+[assembly: AssemblyProduct("MMX Plotter")]
+[assembly: AssemblyCopyright("Copyright © 2022")]
+[assembly: AssemblyTrademark("madMAx43v3r (C) Copyright 2022")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
