@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Management;
 using System.Runtime.InteropServices;
 
 namespace Mmx.Gui.Win.Common
@@ -166,6 +167,33 @@ namespace Mmx.Gui.Win.Common
 
                 //Re-enable Ctrl-C handling or any subsequently started programs will inherit the disabled state.
                 //SetConsoleCtrlHandler(null, false);
+            }
+        }
+
+        public static void KillProcessAndChildren(int pid)
+        {
+            // Cannot close 'system idle process'.
+            if (pid == 0)
+            {
+                return;
+            }
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher
+                    ("Select * From Win32_Process Where ParentProcessID=" + pid);
+            ManagementObjectCollection moc = searcher.Get();
+            foreach (ManagementObject mo in moc)
+            {
+                KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
+            }
+
+            try
+            {
+                Process process = Process.GetProcessById(pid);
+                process.Kill();
+                process.WaitForExit();
+            }
+            catch (Exception)
+            {
+                // Process already exited.
             }
         }
 

@@ -380,8 +380,7 @@ namespace Mmx.Gui.Win.Common
 
                 if (!process.HasExited)
                 {
-                    //process.Kill();
-                    KillProcessAndChildren(process.Id);
+                    NativeMethods.KillProcessAndChildren(process.Id);
                 }
             }
             else
