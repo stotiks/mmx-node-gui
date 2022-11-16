@@ -22,7 +22,21 @@
         WindowStartupLocation="CenterScreen"
         ui:WindowHelper.UseModernWindowStyle="True"        
         >
-    <Grid>
+    <ui:NavigationView 
+        x:Name="nav"
+        PaneDisplayMode="Auto"
+        IsBackButtonVisible="Collapsed"
+        IsBackEnabled="False"
+        OpenPaneLength="200"
+        ExpandedModeThresholdWidth="1190"
+        IsSettingsVisible="False"
+        SelectionChanged="NavigationView_SelectionChanged">
+
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem Tag="ConnectPage" Content="Connect" Icon="Globe" />
+            <ui:NavigationViewItem Tag="HarvesterPage" Content="{lex:Loc Harvester_Title}" Icon="NewFolder" />
+        </ui:NavigationView.MenuItems>
+        
         <ui:Frame x:Name="contentFrame" MinWidth="1000" Navigating="contentFrame_Navigating"/>
-    </Grid>
+    </ui:NavigationView>
 </mw:WpfMainWindow>
