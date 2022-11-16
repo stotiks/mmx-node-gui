@@ -44,5 +44,11 @@
     <Setting Name="SettingsUpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="GitHubApi_Releases" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.github.com/repos/madMAx43v3r/mmx-node/releases</Value>
+    </Setting>
+    <Setting Name="GitHubReleasesUrl" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://github.com/madMAx43v3r/mmx-node/releases</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -55,7 +55,7 @@
                             Background="{DynamicResource NavigationViewExpandedPaneBackground}">
                     <StatusBarItem>
                         <ui:HyperlinkButton x:Name="newVersionTextBlock" 
-                                            NavigateUri="{Binding Source={x:Static common:UpdateChecker.releaseUri}}"
+                                            NavigateUri="{Binding Source={x:Static properties:Settings.Default}, Path=GitHubReleasesUrl}"
                                             Content="{lex:Loc New_Version_Available}"
                                             Visibility="{Binding UpdateChecker.IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}"
                                             Padding="0,0,0,0" />

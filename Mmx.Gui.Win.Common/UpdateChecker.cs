@@ -12,10 +12,6 @@ namespace Mmx.Gui.Win.Common
 {
     public class UpdateChecker : INotifyPropertyChanged
     {
-        //TODO
-        private static Uri releasesUri = new Uri("https://api.github.com/repos/madMAx43v3r/mmx-node/releases");
-        public static Uri releaseUri = new Uri("https://github.com/madMAx43v3r/mmx-node/releases");
-
         private readonly HttpClient httpClient = new HttpClient();
         private readonly System.Timers.Timer timer = new System.Timers.Timer();
         private bool _isUpdateAvailable = false;
@@ -82,7 +78,7 @@ namespace Mmx.Gui.Win.Common
         {
             try
             {
-                var response = await httpClient.GetAsync(releasesUri);
+                var response = await httpClient.GetAsync(Properties.Settings.Default.GitHubApi_Releases);
                 var body = await response.Content.ReadAsStringAsync();
                 JArray releases = JsonConvert.DeserializeObject<JArray>(body);
                 var lastRelease = releases[0];
@@ -100,7 +96,7 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
             {
