@@ -5,7 +5,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Management;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -29,6 +28,7 @@ namespace Mmx.Gui.Win.Common
         
         public static string plotterConfigPath = Path.Combine(configPath, "Plotter.json");
         public static string httpServerConfigPath = Path.Combine(configPath, "HttpServer.json");
+        public static string nodeFilePath = Path.Combine(configPath, "node");
 
         public static string activateCMDPath = Path.Combine(workingDirectory, "activate.cmd");
         public static string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
@@ -71,7 +71,6 @@ namespace Mmx.Gui.Win.Common
         public event AsyncEventHandler<EventArgs> StartedAsync;
 
         public event EventHandler BeforeStarted;
-        //public event EventHandler Started;
         public event EventHandler BeforeStop;
         public event EventHandler Stoped;
 
@@ -415,33 +414,6 @@ namespace Mmx.Gui.Win.Common
         private void OnStop()
         {
             Stoped?.Invoke(this, EventArgs.Empty);
-        }
-
-        private static void KillProcessAndChildren(int pid)
-        {
-            // Cannot close 'system idle process'.
-            if (pid == 0)
-            {
-                return;
-            }
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher
-                    ("Select * From Win32_Process Where ParentProcessID=" + pid);
-            ManagementObjectCollection moc = searcher.Get();
-            foreach (ManagementObject mo in moc)
-            {
-                KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
-            }
-
-            try
-            {
-                Process process = Process.GetProcessById(pid);
-                process.Kill();
-                process.WaitForExit();
-            }
-            catch (Exception)
-            {
-                // Process already exited.
-            }
         }
 
         private static string GetResource(string resName)

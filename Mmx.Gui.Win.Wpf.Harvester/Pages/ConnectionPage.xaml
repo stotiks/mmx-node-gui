@@ -80,7 +80,7 @@
                 Width="200"
                 Content="Connect"
                 Style="{StaticResource AccentButtonStyle}"
-                VerticalAlignment="Bottom"/>
+                VerticalAlignment="Bottom" Click="ConnectButton_Click"/>
             
         </ui:SimpleStackPanel>
 

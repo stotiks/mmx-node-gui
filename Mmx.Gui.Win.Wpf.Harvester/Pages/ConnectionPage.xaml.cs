@@ -1,9 +1,6 @@
 ﻿using Mmx.Gui.Win.Common;
-using Mmx.Gui.Win.Common.Plotter;
-using Open.Nat;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -32,8 +29,13 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
                     ConnectionGroup.IsEnabled = true;
                 }));
             });
+        }
 
-            }
+        private void ConnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dnsEndPoint = new DnsEndPoint(HostTextBox.Text, (int)PortNumberBox.Value);
+            HarversterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
+        }
 
 
     }
