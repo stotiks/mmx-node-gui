@@ -98,10 +98,7 @@ namespace Mmx.Gui.Win.Wpf.Common
                 if (await CanClose())
                 {
                     await OnBeforeClose();
-                    //mre.WaitOne();
-                    //mre.Reset();
                     Close();
-
                 }
 
                 closePending = false;

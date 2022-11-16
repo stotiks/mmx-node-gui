@@ -5,8 +5,8 @@ using System;
 using System.ComponentModel;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace Mmx.Gui.Win.Common
 {
@@ -17,14 +17,14 @@ namespace Mmx.Gui.Win.Common
         public static Uri releaseUri = new Uri("https://github.com/madMAx43v3r/mmx-node/releases");
 
         private readonly HttpClient httpClient = new HttpClient();
-        private readonly Timer timer = new Timer();
+        private readonly System.Timers.Timer timer = new System.Timers.Timer();
         private bool _isUpdateAvailable = false;
 
         public UpdateChecker()
         {
             httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClient");
             
-            timer.Elapsed += (o, e) => CheckAsync();
+            timer.Elapsed += async (o, e) => await CheckAsync();
             timer.AutoReset = true;
 
             timer.Interval = Settings.Default.UpdateInterval * 1000;
@@ -43,7 +43,7 @@ namespace Mmx.Gui.Win.Common
 
                     if(Settings.Default.CheckForUpdates)
                     {
-                        CheckAsync();
+                        Task.Run(() => CheckAsync());
                     }
                 }
             };
@@ -78,30 +78,26 @@ namespace Mmx.Gui.Win.Common
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Task CheckAsync()
+        public async Task CheckAsync()
         {
-            return Task.Run(async () =>
+            try
             {
-                try
-                {
-                    var response = await httpClient.GetAsync(releasesUri);
-                    var body = await response.Content.ReadAsStringAsync();
-                    JArray releases = JsonConvert.DeserializeObject<JArray>(body);
-                    var lastRelease = releases[0];
-                    var versionTag = lastRelease["tag_name"].ToString();
-                    var version = new Version(versionTag.Replace("v", ""));
+                var response = await httpClient.GetAsync(releasesUri);
+                var body = await response.Content.ReadAsStringAsync();
+                JArray releases = JsonConvert.DeserializeObject<JArray>(body);
+                var lastRelease = releases[0];
+                var versionTag = lastRelease["tag_name"].ToString();
+                var version = new Version(versionTag.Replace("v", ""));
 
-                    if (Node.Version < version)
-                    {
-                        IsUpdateAvailable = true;
-                    }
-                }
-                catch (Exception e)
+                if (Node.Version < version)
                 {
-                    Console.WriteLine("UpdateChecker: " + e.Message);
+                    IsUpdateAvailable = true;
                 }
-
-            });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("UpdateChecker: " + e.Message);
+            }
         }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

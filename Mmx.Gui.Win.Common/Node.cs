@@ -67,8 +67,11 @@ namespace Mmx.Gui.Win.Common
         private static string _xApiToken = GetRandomHexNumber(64);
         public static readonly string XApiTokenName = "x-api-token";
 
+        public delegate Task AsyncEventHandler<TEventArgs>(object sender, TEventArgs e);
+        public event AsyncEventHandler<EventArgs> StartedAsync;
+
         public event EventHandler BeforeStarted;
-        public event EventHandler Started;
+        //public event EventHandler Started;
         public event EventHandler BeforeStop;
         public event EventHandler Stoped;
 
@@ -100,45 +103,34 @@ namespace Mmx.Gui.Win.Common
         {
         }
 
-        public static Task RemovePlotDirTask(string dirName)
+        public static async Task RemovePlotDirTask(string dirName)
         {
-            return Task.Run(async () =>
-            {
-                dynamic data = new JObject();
-                data.path = dirName;
+            dynamic data = new JObject();
+            data.path = dirName;
 
-                var myContent = JsonConvert.SerializeObject(data);
-                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-                var byteContent = new ByteArrayContent(buffer);
-                var res = await httpClient.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
-                var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
-            });
-
+            var myContent = JsonConvert.SerializeObject(data);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            var byteContent = new ByteArrayContent(buffer);
+            var res = await httpClient.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
+            var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
         }
 
-        public static Task AddPlotDirTask(string dirName)
+        public static async Task AddPlotDirTask(string dirName)
         {
-            return Task.Run(async () =>
-            {
-                dynamic data = new JObject();
-                data.path = dirName;
+            dynamic data = new JObject();
+            data.path = dirName;
 
-                var myContent = JsonConvert.SerializeObject(data);
-                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-                var byteContent = new ByteArrayContent(buffer);
-                var res = await httpClient.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
-                var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
-            });
+            var myContent = JsonConvert.SerializeObject(data);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            var byteContent = new ByteArrayContent(buffer);
+            var res = await httpClient.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
+            var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
         }
 
-        public static Task ReloadHarvester()
+        public static async Task ReloadHarvester()
         {
-            return Task.Run(async () =>
-            {
-                var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
-            });
+            await httpClient.GetAsync(baseUri + "api/harvester/reload");
         }
-
 
         public static bool IsRunning
         {
@@ -192,7 +184,7 @@ namespace Mmx.Gui.Win.Common
                 Task.Delay(delay).Wait();
             }
 
-            OnStart();
+            Task.Run(async () => { await OnStartedAsync(); });
         }
 
         public static string GetRandomHexNumber(int digits)
@@ -411,9 +403,9 @@ namespace Mmx.Gui.Win.Common
             BeforeStarted?.Invoke(this, EventArgs.Empty);
         }
 
-        private void OnStart()
+        private async Task OnStartedAsync()
         {
-            Started?.Invoke(this, EventArgs.Empty);
+            if (!(StartedAsync is null)) await StartedAsync(this, EventArgs.Empty);
         }
 
         private void OnBeforeStop()

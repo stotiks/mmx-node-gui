@@ -72,11 +72,11 @@ namespace Mmx.Gui.Win.Wpf
             node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
             node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(Node.logoutHtml, Node.dummyUri.ToString());
 
-            node.Started += (sender, e) =>
+            node.StartedAsync += async (sender, e) =>
             {
                 if (Settings.Default.CheckForUpdates)
                 {
-                    UpdateChecker.CheckAsync();
+                    await UpdateChecker.CheckAsync();
                 }                
             };
 

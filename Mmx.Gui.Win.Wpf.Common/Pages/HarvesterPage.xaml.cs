@@ -104,7 +104,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     }
 
 
-    public class Directory// : INotifyPropertyChanged
+    public class Directory
     {
         public string Path { get; private set; }
 
@@ -112,8 +112,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         {
             Path = path;
         }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
 
         public static Task<ObservableCollection<Directory>> GetDirectoriesAsync()
         {
