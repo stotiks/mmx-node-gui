@@ -55,7 +55,7 @@ namespace Mmx.Gui.Win.Wpf
             InitializeCef();
             InitializeNode();
 
-            nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "NodePage").First();
+            nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
 
             BeforeClose += async (o, e) =>
             {

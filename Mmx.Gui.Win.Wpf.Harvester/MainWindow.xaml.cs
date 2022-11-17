@@ -22,7 +22,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester
             InitializeComponent();
             contentFrame.Content = connectionPage;
 
-            //nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "ConnectionPage").First();
+            nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
