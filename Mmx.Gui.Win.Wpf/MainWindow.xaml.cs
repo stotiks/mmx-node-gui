@@ -27,7 +27,8 @@ namespace Mmx.Gui.Win.Wpf
         private readonly Node node = new Node();
         private readonly MMXBoundObject mmxBoundObject = new MMXBoundObject();
 
-        private UpdateChecker updateChecker = new UpdateChecker();
+        private UpdateChecker _updateChecker = new UpdateChecker();
+        public UpdateChecker UpdateChecker { get => _updateChecker; }
 
         ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser();
         private NodePage nodePage = new NodePage();
@@ -75,7 +76,7 @@ namespace Mmx.Gui.Win.Wpf
             {
                 if (Settings.Default.CheckForUpdates)
                 {
-                    await updateChecker.CheckAsync();
+                    await _updateChecker.CheckAsync();
                 }                
             };
 
