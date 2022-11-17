@@ -91,7 +91,6 @@ namespace Mmx.Gui.Win.Wpf
         void notifyIcon_Click(object sender, EventArgs e)
         {
             MainWindow win = Window.GetWindow(App.Current.MainWindow) as MainWindow;
-            win.Show();
             win.Restore();
         }
 

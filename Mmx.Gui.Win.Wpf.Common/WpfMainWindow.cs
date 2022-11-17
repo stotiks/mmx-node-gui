@@ -70,7 +70,6 @@ namespace Mmx.Gui.Win.Wpf.Common
         {
             if (msg == SingleInstance.WM_SHOWFIRSTINSTANCE)
             {
-                Show();
                 Restore();
             }
 
