@@ -2,11 +2,7 @@
 using Mmx.Gui.Win.Wpf.Common.Pages;
 using Mmx.Gui.Win.Wpf.Harvester.Pages;
 using ModernWpf.Controls;
-using Open.Nat;
-using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Wpf.Harvester
 {
