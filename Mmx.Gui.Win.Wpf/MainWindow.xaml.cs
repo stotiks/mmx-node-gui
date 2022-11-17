@@ -16,6 +16,7 @@ using System.Windows.Controls;
 using WPFLocalizeExtension.Engine;
 using Mmx.Gui.Win.Common.Plotter;
 using Mmx.Gui.Win.Wpf.Common;
+using System.ComponentModel;
 
 namespace Mmx.Gui.Win.Wpf
 {
@@ -62,6 +63,8 @@ namespace Mmx.Gui.Win.Wpf
                 nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
                 await node.StopAsync();
             };
+
+            Closing += MainWindow_Closing;
 
         }
 
@@ -161,9 +164,10 @@ namespace Mmx.Gui.Win.Wpf
             }
         }
 
-        protected override async Task<bool> CanClose()
+        protected async Task MainWindow_Closing(object sender, CancelEventArgs args)
         {
             await Task.Yield();
+            args.Cancel = false;
 
             if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
             {
@@ -177,7 +181,8 @@ namespace Mmx.Gui.Win.Wpf
                 var result = await dialog.ShowAsync();
 
                 dialog.Hide();
-                return false;
+                args.Cancel = true;
+                return;
             }
 
             if (Settings.Default.ConfirmationOnExit)
@@ -193,12 +198,11 @@ namespace Mmx.Gui.Win.Wpf
 
                 if (result != ContentDialogResult.Primary)
                 {
-                    return false;
+                    args.Cancel = true;
+                    return;
                 }
 
             }
-
-            return true;
         }
 
     }

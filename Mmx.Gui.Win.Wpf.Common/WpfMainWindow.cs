@@ -1,8 +1,7 @@
 ﻿using Mmx.Gui.Win.Common;
 using Mmx.Gui.Win.Common.Properties;
 using System;
-using System.Management;
-using System.Threading;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
@@ -21,11 +20,11 @@ namespace Mmx.Gui.Win.Wpf.Common
 #if DEBUG
             System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
 #endif
-            StateChanged += Window_StateChanged;
-            Closing += Window_Closing;
+            StateChanged += WpfMainWindow_StateChanged;
+            base.Closing += Window_Closing;
         }
 
-        private void Window_StateChanged(object sender, EventArgs e)
+        private void WpfMainWindow_StateChanged(object sender, EventArgs e)
         {
             if (Settings.MinimizeToNotification &&
                 WindowState == WindowState.Minimized)
@@ -76,7 +75,7 @@ namespace Mmx.Gui.Win.Wpf.Common
             return IntPtr.Zero;
         }
 
-        protected async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs args)
+        protected async void Window_Closing(object sender, CancelEventArgs args)
         {
 
             if (Settings.CloseToNotification && !disableCloseToNotification)
@@ -94,7 +93,10 @@ namespace Mmx.Gui.Win.Wpf.Common
                 await Task.Yield();
                 Restore();
 
-                if (await CanClose())
+                var cancelEventArgs = new CancelEventArgs();
+                if (!(Closing is null)) await Closing(this, cancelEventArgs);
+
+                if(cancelEventArgs.Cancel == false)
                 {
                     await OnBeforeClose();
                     Close();
@@ -112,6 +114,7 @@ namespace Mmx.Gui.Win.Wpf.Common
 
         public delegate Task AsyncEventHandler<TEventArgs>(object sender, TEventArgs e);
         public event AsyncEventHandler<EventArgs> BeforeClose;
+        public new event AsyncEventHandler<CancelEventArgs> Closing;
 
         protected virtual async Task<bool> CanClose()
         {
