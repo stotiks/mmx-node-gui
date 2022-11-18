@@ -1,5 +1,4 @@
-﻿using Mmx.Gui.Win.Wpf.Common;
-using Mmx.Gui.Win.Wpf.Common.Pages;
+﻿using Mmx.Gui.Win.Wpf.Common.Pages;
 using Mmx.Gui.Win.Wpf.Harvester.Pages;
 using ModernWpf.Controls;
 using System.Linq;
@@ -9,14 +8,14 @@ namespace Mmx.Gui.Win.Wpf.Harvester
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : WpfMainWindow
+    public partial class MainWindow
     {
-        private HarvesterPage harvesterPage = new HarvesterPage();
-        private ConnectionPage connectionPage = new ConnectionPage();
+        private readonly HarvesterPage _harvesterPage = new HarvesterPage();
+        private readonly ConnectionPage _connectionPage = new ConnectionPage();
         public MainWindow()
         {
             InitializeComponent();
-            contentFrame.Content = connectionPage;
+            ContentFrame.Content = _connectionPage;
 
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
         }
@@ -28,14 +27,13 @@ namespace Mmx.Gui.Win.Wpf.Harvester
             switch (selectedItem.Tag)
             {
                 case "ConnectionPage":
-                    contentFrame.Content = connectionPage;
+                    ContentFrame.Content = _connectionPage;
                     break;
                 case "HarvesterPage":
-                    contentFrame.Content = harvesterPage;
+                    ContentFrame.Content = _harvesterPage;
                     break;
             }
 
         }
-
     }
 }

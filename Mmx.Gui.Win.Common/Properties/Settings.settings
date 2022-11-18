@@ -11,7 +11,7 @@
     <Setting Name="StartMinimized" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ShowInNotifitation" Type="System.Boolean" Scope="User">
+    <Setting Name="ShowInNotification" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="_MinimizeToNotification" Type="System.Boolean" Scope="User">

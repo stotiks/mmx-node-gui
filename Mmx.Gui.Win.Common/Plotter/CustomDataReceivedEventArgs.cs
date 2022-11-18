@@ -9,14 +9,14 @@ namespace Mmx.Gui.Win.Common.Plotter
         public string Data { get; set; }
 
 
-        public CustomDataReceivedEventArgs(string Data)
+        public CustomDataReceivedEventArgs(string data)
         {
-            this.Data = Data;
+            this.Data = data;
         }
 
-        public CustomDataReceivedEventArgs(DataReceivedEventArgs Source)
+        public CustomDataReceivedEventArgs(DataReceivedEventArgs source)
         {
-            Data = Source.Data;
+            Data = source.Data;
         }
     }
 }

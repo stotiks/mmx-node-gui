@@ -71,14 +71,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="WpfMainWindow.cs" />
-    <EmbeddedResource Include="Properties\Resources.de.resx" />
-    <EmbeddedResource Include="Properties\Resources.es.resx" />
-    <EmbeddedResource Include="Properties\Resources.id.resx" />
+    <EmbeddedResource Include="Properties\Resources.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.id.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Resources.pt.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
     <EmbeddedResource Include="Properties\Resources.uk.resx" />

@@ -5,41 +5,40 @@ using System;
 using System.ComponentModel;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common
 {
     public class UpdateChecker : INotifyPropertyChanged
     {
-        private readonly HttpClient httpClient = new HttpClient();
-        private readonly System.Timers.Timer timer = new System.Timers.Timer();
-        private bool _isUpdateAvailable = false;
+        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly System.Timers.Timer _timer = new System.Timers.Timer();
+        private bool _isUpdateAvailable;
 
         public UpdateChecker()
         {
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClient");
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClient");
             
-            timer.Elapsed += async (o, e) => await CheckAsync();
-            timer.AutoReset = true;
+            _timer.Elapsed += async (o, e) => await CheckAsync();
+            _timer.AutoReset = true;
 
-            timer.Interval = Settings.Default.UpdateInterval * 1000;
-            timer.Enabled = Settings.Default.CheckForUpdates;
+            _timer.Interval = Settings.Default.UpdateInterval * 1000;
+            _timer.Enabled = Settings.Default.CheckForUpdates;
 
             Settings.Default.PropertyChanged += (o, e) =>
             {
                 if (e.PropertyName == nameof(Settings.Default.UpdateInterval))
                 {
-                    timer.Interval = Settings.Default.UpdateInterval * 1000;
+                    _timer.Interval = Settings.Default.UpdateInterval * 1000;
                 }
 
                 if (e.PropertyName == nameof(Settings.Default.CheckForUpdates))
                 {
-                    timer.Enabled = Settings.Default.CheckForUpdates;
+                    _timer.Enabled = Settings.Default.CheckForUpdates;
 
                     if(Settings.Default.CheckForUpdates)
                     {
-                        Task.Run(() => CheckAsync());
+                        Task.Run(CheckAsync);
                     }
                 }
             };
@@ -47,9 +46,7 @@ namespace Mmx.Gui.Win.Common
         }
 
         public bool IsUpdateAvailable {
-            get {
-                return _isUpdateAvailable;
-            }
+            get => _isUpdateAvailable;
             private set 
             {
                 _isUpdateAvailable = value;
@@ -66,10 +63,7 @@ namespace Mmx.Gui.Win.Common
 
         private void OnUpdateAvailable()
         {
-            if (UpdateAvailable != null)
-            {
-                UpdateAvailable(this, EventArgs.Empty);
-            }
+            UpdateAvailable?.Invoke(this, EventArgs.Empty);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -78,7 +72,7 @@ namespace Mmx.Gui.Win.Common
         {
             try
             {
-                var response = await httpClient.GetAsync(Properties.Settings.Default.GitHubApi_Releases);
+                var response = await _httpClient.GetAsync(Settings.Default.GitHubApi_Releases);
                 var body = await response.Content.ReadAsStringAsync();
                 JArray releases = JsonConvert.DeserializeObject<JArray>(body);
                 var lastRelease = releases[0];
@@ -98,10 +92,7 @@ namespace Mmx.Gui.Win.Common
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common.Plotter;
-using Mmx.Gui.Win.Wpf.Common.Dialogs;
 using ModernWpf.Controls;
 using System.Windows.Controls;
 
@@ -12,7 +11,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     ///     
     public partial class PlotterPage
     {
-        public PlotterOptions PlotterOptions { get => PlotterOptions.Instance; }
+        public PlotterOptions PlotterOptions => PlotterOptions.Instance;
 
         public PlotterPage()
         {

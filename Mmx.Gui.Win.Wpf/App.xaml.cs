@@ -13,15 +13,15 @@ namespace Mmx.Gui.Win.Wpf
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
-        System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
-        System.Windows.Forms.ContextMenu notifyIconContextMenu = new System.Windows.Forms.ContextMenu();
+        readonly System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
+        readonly System.Windows.Forms.ContextMenu notifyIconContextMenu = new System.Windows.Forms.ContextMenu();
 
         public App()
         {
             Environment.CurrentDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             AppDomain.CurrentDomain.AssemblyResolve += CefUtils.CurrentDomain_AssemblyResolve;
 
@@ -46,7 +46,7 @@ namespace Mmx.Gui.Win.Wpf
         {
             notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
 
-            notifyIcon.Visible = Settings.Default.ShowInNotifitation;
+            notifyIcon.Visible = Settings.Default.ShowInNotification;
             //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
             notifyIcon.DoubleClick += notifyIcon_Click;
 
@@ -58,12 +58,12 @@ namespace Mmx.Gui.Win.Wpf
             notifyIcon.ContextMenu = notifyIconContextMenu;
             var menuItem1 = new System.Windows.Forms.MenuItem();
             menuItem1.Index = 0;
-            menuItem1.Text = Wpf.Common.Properties.Resources.Show;
+            menuItem1.Text = Common.Properties.Resources.Show;
             menuItem1.Click += notifyIcon_Click;
 
             var menuItem3 = new System.Windows.Forms.MenuItem();
             menuItem3.Index = 1;
-            menuItem3.Text = Wpf.Common.Properties.Resources.Exit;
+            menuItem3.Text = Common.Properties.Resources.Exit;
             menuItem3.Click += (s, e) =>
             {
                 MainWindow win = Window.GetWindow(App.Current.MainWindow) as MainWindow;
@@ -72,7 +72,7 @@ namespace Mmx.Gui.Win.Wpf
             };
 
             notifyIconContextMenu.MenuItems.AddRange(
-               new System.Windows.Forms.MenuItem[] {
+               new[] {
                    menuItem1,
                    new System.Windows.Forms.MenuItem("-"),
                    menuItem3
@@ -80,9 +80,9 @@ namespace Mmx.Gui.Win.Wpf
 
             Settings.Default.PropertyChanged += (o, e) =>
             {
-                if (e.PropertyName == nameof(Settings.Default.ShowInNotifitation))
+                if (e.PropertyName == nameof(Settings.Default.ShowInNotification))
                 {
-                    notifyIcon.Visible = Settings.Default.ShowInNotifitation;
+                    notifyIcon.Visible = Settings.Default.ShowInNotification;
                 }
             };
 

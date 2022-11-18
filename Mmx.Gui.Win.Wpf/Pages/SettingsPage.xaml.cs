@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -10,10 +9,10 @@ namespace Mmx.Gui.Win.Wpf.Pages
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class SettingsPage : Page, INotifyPropertyChanged
+    public partial class SettingsPage : INotifyPropertyChanged
     {
 
-        private Dictionary<string, string> _launguages = new Dictionary<string, string>(){
+        private readonly Dictionary<string, string> _languages = new Dictionary<string, string>(){
             { "en", "English" },
             { "id", "Bahasa Indonesia" },
             { "de", "Deutsch" },
@@ -25,30 +24,22 @@ namespace Mmx.Gui.Win.Wpf.Pages
             { "zh", "简体中文" },
         };
 
-        public Dictionary<string, string> Languages
-        {
-            get => _launguages;
-        }
+        public Dictionary<string, string> Languages => _languages;
 
 
-        private Dictionary<int, string> _updateIntervals = new Dictionary<int, string>(){
+        private readonly Dictionary<int, string> _updateIntervals = new Dictionary<int, string>(){
             { 60 * 60, "hourly" },
             { 24 * 60 * 60, "daily" },
         };
 
-        public Dictionary<int, string> UpdateIntervals
-        {
-            get => _updateIntervals;
-        }
+        public Dictionary<int, string> UpdateIntervals => _updateIntervals;
 
 
-        public Array Themes
-        {
-            get => Enum
+        public Array Themes =>
+            Enum
                 .GetValues(typeof(ModernWpf.ElementTheme))
                 .Cast<ModernWpf.ElementTheme>()
                 .Where(value => value == ModernWpf.ElementTheme.Light || value == ModernWpf.ElementTheme.Dark).ToArray();
-        }
 
         public SettingsPage()
         {
@@ -56,7 +47,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
             DataContext = this;
         }
 
-        private bool _debugGroupBoxIsEnabled = false;
+        private bool _debugGroupBoxIsEnabled;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -72,10 +63,7 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void DebugGroupBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

@@ -11,19 +11,18 @@ namespace Mmx.Gui.Win.Common
         {
             var tcs = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
 
-            EventHandler<LoadingStateChangedEventArgs> handler = null;
-            handler = (sender, args) =>
+            void Handler(object sender, LoadingStateChangedEventArgs args)
             {
                 //Wait for while page to finish loading not just the first frame
                 if (!args.IsLoading)
                 {
-                    browser.LoadingStateChanged -= handler;
+                    browser.LoadingStateChanged -= Handler;
                     //Important that the continuation runs async using TaskCreationOptions.RunContinuationsAsynchronously
                     tcs.TrySetResult(true);
                 }
-            };
+            }
 
-            browser.LoadingStateChanged += handler;
+            browser.LoadingStateChanged += Handler;
 
             if (!string.IsNullOrEmpty(address))
             {
@@ -36,23 +35,22 @@ namespace Mmx.Gui.Win.Common
         {
             var tcs = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
 
-            EventHandler<LoadingStateChangedEventArgs> handler = null;
-            handler = (sender, args) =>
+            void Handler(object sender, LoadingStateChangedEventArgs args)
             {
                 //Wait for while page to finish loading not just the first frame
                 if (!args.IsLoading)
                 {
-                    browser.LoadingStateChanged -= handler;
+                    browser.LoadingStateChanged -= Handler;
                     //Important that the continuation runs async using TaskCreationOptions.RunContinuationsAsynchronously
                     tcs.TrySetResult(true);
                 }
-            };
+            }
 
-            browser.LoadingStateChanged += handler;
+            browser.LoadingStateChanged += Handler;
 
             if (!string.IsNullOrEmpty(address))
             {
-                CefSharp.WebBrowserExtensions.LoadHtml(browser, html, address);
+                browser.LoadHtml(html, address);
             }
 
             return tcs.Task;

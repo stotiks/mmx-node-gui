@@ -62,12 +62,12 @@ namespace Mmx.Gui.Win.Common.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ShowInNotifitation {
+        public bool ShowInNotification {
             get {
-                return ((bool)(this["ShowInNotifitation"]));
+                return ((bool)(this["ShowInNotification"]));
             }
             set {
-                this["ShowInNotifitation"] = value;
+                this["ShowInNotification"] = value;
             }
         }
         

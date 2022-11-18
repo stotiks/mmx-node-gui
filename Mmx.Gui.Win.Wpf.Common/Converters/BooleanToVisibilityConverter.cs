@@ -11,9 +11,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool bValue = false;
-            if (value is bool)
+            if (value is bool b)
             {
-                bValue = (bool)value;
+                bValue = b;
             }
             else if (value is Nullable<bool>)
             {

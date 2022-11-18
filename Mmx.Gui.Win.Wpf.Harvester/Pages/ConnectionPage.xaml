@@ -43,13 +43,13 @@
                 x:Name="HostTextBox"
                 ui:ControlHelper.Header="Host"
                 Width="300"
-                Text="{Binding HarversterOptions.Host}"/>
+                Text="{Binding HarvesterOptions.Host}"/>
 
             <Label
                 Content=""
                 VerticalAlignment="Center"
-                Margin="2,0,2,0"></Label>
-            
+                Margin="2,0,2,0" />
+
             <ui:NumberBox
                 x:Name="PortNumberBox"
                 Width="200"
@@ -57,12 +57,12 @@
                 Minimum="1"
                 Maximum="65535"
                 SpinButtonPlacementMode="Inline"
-                Value="{Binding HarversterOptions.Port}"/>
+                Value="{Binding HarvesterOptions.Port}"/>
 
             <Label
                 Content=""
                 VerticalAlignment="Center"
-                Margin="2,0,2,0"></Label>
+                Margin="2,0,2,0" />
 
             <Button
                 x:Name="DetectButton"

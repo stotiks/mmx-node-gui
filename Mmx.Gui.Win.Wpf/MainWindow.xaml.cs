@@ -15,7 +15,6 @@ using System.Windows;
 using System.Windows.Controls;
 using WPFLocalizeExtension.Engine;
 using Mmx.Gui.Win.Common.Plotter;
-using Mmx.Gui.Win.Wpf.Common;
 using System.ComponentModel;
 
 namespace Mmx.Gui.Win.Wpf
@@ -23,19 +22,19 @@ namespace Mmx.Gui.Win.Wpf
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : WpfMainWindow
+    public partial class MainWindow
     {
         private readonly Node node = new Node();
         private readonly MMXBoundObject mmxBoundObject = new MMXBoundObject();
 
-        private UpdateChecker _updateChecker = new UpdateChecker();
-        public UpdateChecker UpdateChecker { get => _updateChecker; }
+        private readonly UpdateChecker updateChecker = new UpdateChecker();
+        public UpdateChecker UpdateChecker => updateChecker;
 
-        ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser();
-        private NodePage nodePage = new NodePage();
-        private HarvesterPage harvesterPage = new HarvesterPage();
-        private PlotterPage plotterPage = new PlotterPage();
-        private SettingsPage settingsPage = new SettingsPage();
+        readonly ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser();
+        private readonly NodePage nodePage = new NodePage();
+        private readonly HarvesterPage harvesterPage = new HarvesterPage();
+        private readonly PlotterPage plotterPage = new PlotterPage();
+        private readonly SettingsPage settingsPage = new SettingsPage();
 
         public MainWindow()
         {
@@ -79,7 +78,7 @@ namespace Mmx.Gui.Win.Wpf
             {
                 if (Settings.Default.CheckForUpdates)
                 {
-                    await _updateChecker.CheckAsync();
+                    await updateChecker.CheckAsync();
                 }                
             };
 
@@ -95,7 +94,7 @@ namespace Mmx.Gui.Win.Wpf
             chromiumWebBrowser.MenuHandler = new CefUtils.SearchContextMenuHandler();
             chromiumWebBrowser.RequestHandler = new CefUtils.CustomRequestHandler();
 
-            mmxBoundObject.KeysToPlotter += (json) => CopyKeysToPlotter(json);
+            mmxBoundObject.KeysToPlotter += CopyKeysToPlotter;
         }
 
         private void InitializeLocalization()
@@ -117,9 +116,9 @@ namespace Mmx.Gui.Win.Wpf
 
         private void CopyKeysToPlotter(string json)
         {
-            Dispatcher.BeginInvoke(new Action(async delegate
+            Dispatcher.BeginInvoke( new Func<Task>(async delegate
             {
-                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
+                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First(item => item.Tag.ToString() == "PlotterPage");
                 plotterPage.tabControl.SelectedItem = plotterPage.tabItemKeys;
 
                 dynamic keys = JsonConvert.DeserializeObject(json);
@@ -128,8 +127,11 @@ namespace Mmx.Gui.Win.Wpf
                 PlotterOptions.Instance.poolkey.Value = keys["pool_public_key"];
 
                 await Task.Delay(400);
-                var x = new Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom};
-                x.Content = new TextBlock() { Text = "Keys copied succesfully" }; //TODO i18n
+                var x = new Flyout
+                {
+                    Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                    Content = new TextBlock() { Text = "Keys copied successfully" } //TODO i18n
+                };
                 x.ShowAt(plotterPage.farmerKeyTextBox);
 
             }));
@@ -139,7 +141,7 @@ namespace Mmx.Gui.Win.Wpf
         {
             if (args.IsSettingsSelected)
             {
-                contentFrame.Content = settingsPage;
+                ContentFrame.Content = settingsPage;
             }
             else
             {
@@ -148,37 +150,39 @@ namespace Mmx.Gui.Win.Wpf
                 switch (selectedItem.Tag)
                 {
                     case "NodePage":
-                        contentFrame.Content = nodePage;
+                        ContentFrame.Content = nodePage;
                         break;
                     case "HarvesterPage":
-                        contentFrame.Content = harvesterPage;
+                        ContentFrame.Content = harvesterPage;
                         break;
                     case "PlotterPage":
-                        contentFrame.Content = plotterPage;
+                        ContentFrame.Content = plotterPage;
                         break;
                     case "SettingsPage":
-                        contentFrame.Content = settingsPage;
+                        ContentFrame.Content = settingsPage;
                         break;
                 }
 
             }
         }
 
-        protected async Task MainWindow_Closing(object sender, CancelEventArgs args)
+        private async Task MainWindow_Closing(object sender, CancelEventArgs args)
         {
             await Task.Yield();
             args.Cancel = false;
 
-            if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
+            if (plotterPage.PlotterDialog.PlotterProcess.IsRunning)
             {
-                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().Where(item => item.Tag.ToString() == "PlotterPage").First();
+                nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First(item => item.Tag.ToString() == "PlotterPage");
 
-                var dialog = new ContentDialog();
-                dialog.Title = "Stop plotter before exit!"; //TODO i18n
-                dialog.PrimaryButtonText = "OK"; //TODO i18n
-                dialog.DefaultButton = ContentDialogButton.Primary;
+                var dialog = new ContentDialog
+                {
+                    Title = "Stop plotter before exit!", //TODO i18n
+                    PrimaryButtonText = "OK", //TODO i18n
+                    DefaultButton = ContentDialogButton.Primary
+                };
 
-                var result = await dialog.ShowAsync();
+                await dialog.ShowAsync();
 
                 dialog.Hide();
                 args.Cancel = true;
@@ -187,11 +191,13 @@ namespace Mmx.Gui.Win.Wpf
 
             if (Settings.Default.ConfirmationOnExit)
             {
-                var dialog = new ContentDialog();
-                dialog.Title = "Do you want to close the application?"; //TODO i18n
-                dialog.PrimaryButtonText = "Yes"; //TODO i18n
-                dialog.SecondaryButtonText = "No"; //TODO i18n
-                dialog.DefaultButton = ContentDialogButton.Secondary;
+                var dialog = new ContentDialog
+                {
+                    Title = "Do you want to close the application?", //TODO i18n
+                    PrimaryButtonText = "Yes", //TODO i18n
+                    SecondaryButtonText = "No", //TODO i18n
+                    DefaultButton = ContentDialogButton.Secondary
+                };
 
                 var result = await dialog.ShowAsync();
                 dialog.Hide();
@@ -199,7 +205,6 @@ namespace Mmx.Gui.Win.Wpf
                 if (result != ContentDialogResult.Primary)
                 {
                     args.Cancel = true;
-                    return;
                 }
 
             }

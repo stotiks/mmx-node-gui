@@ -13,7 +13,7 @@ namespace Mmx.Gui.Win.Common
 {
     public class Node
     {
-        public static string workingDirectory =
+        public static readonly string workingDirectory =
 #if !DEBUG
     		Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
 #else
@@ -21,18 +21,18 @@ namespace Mmx.Gui.Win.Common
             @"C:\dev\mmx\MMX";
 #endif
         private static string MMX_HOME_ENV = Environment.GetEnvironmentVariable("MMX_HOME");
-        public static string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".mmx") : MMX_HOME_ENV;
-        public static string configPath = Path.Combine(MMX_HOME, @"config\local");
-        public static string harvesterConfigPath = Path.Combine(configPath, "Harvester.json");
-        public static string walletConfigPath = Path.Combine(configPath, "Wallet.json");
+        public static readonly string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".mmx") : MMX_HOME_ENV;
+        public static readonly string configPath = Path.Combine(MMX_HOME, @"config\local");
+        public static readonly string harvesterConfigPath = Path.Combine(configPath, "Harvester.json");
+        public static readonly string walletConfigPath = Path.Combine(configPath, "Wallet.json");
         
-        public static string plotterConfigPath = Path.Combine(configPath, "Plotter.json");
-        public static string httpServerConfigPath = Path.Combine(configPath, "HttpServer.json");
-        public static string nodeFilePath = Path.Combine(configPath, "node");
+        public static readonly string plotterConfigPath = Path.Combine(configPath, "Plotter.json");
+        public static readonly string httpServerConfigPath = Path.Combine(configPath, "HttpServer.json");
+        public static readonly string nodeFilePath = Path.Combine(configPath, "node");
 
-        public static string activateCMDPath = Path.Combine(workingDirectory, "activate.cmd");
-        public static string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
-        public static string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
+        public static readonly string activateCMDPath = Path.Combine(workingDirectory, "activate.cmd");
+        public static readonly string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
+        public static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
         public static readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
         public static readonly Uri guiUri = new Uri(baseUri, "/gui/");
@@ -49,35 +49,27 @@ namespace Mmx.Gui.Win.Common
         private static string waitStartJS = GetResource("waitStart.js");
 
         private static string loadingHtmlTemplate = GetResource("loading.html");
-        public static string loadingHtml
-        {
-            get => loadingHtmlTemplate.Replace("#background-color", !Properties.Settings.IsDarkTheme ? "#f2f2f2" : "#121212");
-        }
+        public static string loadingHtml => loadingHtmlTemplate.Replace("#background-color", !Settings.IsDarkTheme ? "#f2f2f2" : "#121212");
 
         private static string jsString = "//javascript";
-        public static string logoutHtml
-        {
-            get => loadingHtml.Replace(jsString, logoutJS);
-        }
-        public static string waitStartHtml
-        {
-            get => loadingHtml.Replace(jsString, waitStartJS);
-        }
+        public static string logoutHtml => loadingHtml.Replace(jsString, logoutJS);
+
+        public static string waitStartHtml => loadingHtml.Replace(jsString, waitStartJS);
 
         private static string _xApiToken = GetRandomHexNumber(64);
         public static readonly string XApiTokenName = "x-api-token";
 
-        public delegate Task AsyncEventHandler<TEventArgs>(object sender, TEventArgs e);
+        public delegate Task AsyncEventHandler<in TEventArgs>(object sender, TEventArgs e);
         public event AsyncEventHandler<EventArgs> StartedAsync;
 
         public event EventHandler BeforeStarted;
         public event EventHandler BeforeStop;
-        public event EventHandler Stoped;
+        public event EventHandler Stopped;
 
 
         private static readonly HttpClient httpClient = new HttpClient();
 
-        private Process process;
+        private Process _process;
 
         public static Version Version { get; set; }
 
@@ -95,7 +87,7 @@ namespace Mmx.Gui.Win.Common
                 Version = new Version();
             }
 
-            VersionTag = "v" + Version.ToString();
+            VersionTag = "v" + Version;
         }
 
         public Node()
@@ -110,8 +102,8 @@ namespace Mmx.Gui.Win.Common
             var myContent = JsonConvert.SerializeObject(data);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
-            var res = await httpClient.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
-            var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
+            _ = await httpClient.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
+            _ = await httpClient.GetAsync(baseUri + "api/harvester/reload");
         }
 
         public static async Task AddPlotDirTask(string dirName)
@@ -122,13 +114,13 @@ namespace Mmx.Gui.Win.Common
             var myContent = JsonConvert.SerializeObject(data);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
-            var res = await httpClient.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
-            var res2 = await httpClient.GetAsync(baseUri + "api/harvester/reload");
+            _ = await httpClient.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
+            _ = await httpClient.GetAsync(baseUri + "api/harvester/reload");
         }
 
         public static async Task ReloadHarvester()
         {
-            await httpClient.GetAsync(baseUri + "api/harvester/reload");
+            _ = await httpClient.GetAsync(baseUri + "api/harvester/reload");
         }
 
         public static bool IsRunning
@@ -145,7 +137,7 @@ namespace Mmx.Gui.Win.Common
         {
             try
             {
-                var result = await httpClient.GetAsync(sessionUri);
+                _ = await httpClient.GetAsync(sessionUri);
                 return true;
             }
             catch (Exception)
@@ -159,7 +151,7 @@ namespace Mmx.Gui.Win.Common
 
         public Task StartAsync()
         {
-            return Task.Run(() => Start());
+            return Task.Run(Start);
         }
 
         public void Start()
@@ -186,7 +178,7 @@ namespace Mmx.Gui.Win.Common
             Task.Run(async () => { await OnStartedAsync(); });
         }
 
-        public static string GetRandomHexNumber(int digits)
+        private static string GetRandomHexNumber(int digits)
         {
             byte[] buffer = new byte[digits / 2];
             Random random = new Random();
@@ -199,12 +191,9 @@ namespace Mmx.Gui.Win.Common
 
         public static string XApiToken
         {
-            get
-            {
-                return _xApiToken;
-            }
+            get => _xApiToken;
 
-            set
+            private set
             {
                 _xApiToken = value;
                 httpClient.DefaultRequestHeaders.Remove(XApiTokenName);
@@ -212,7 +201,7 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        static private void InitXToken()
+        private static void InitXToken()
         {
             string json = "{}";
             try
@@ -259,8 +248,7 @@ namespace Mmx.Gui.Win.Common
                 {
                     if (tokenMap == null)
                     {
-                        var jObject = new JObject();
-                        jObject.Add(property);
+                        var jObject = new JObject { property };
                         httpServerConfig["token_map"] = jObject;
                     }
                     else
@@ -282,10 +270,10 @@ namespace Mmx.Gui.Win.Common
 
         private Process GetProcess(string cmd, string args = null)
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            var processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = workingDirectory;
             processStartInfo.FileName = cmd;
-            if(!String.IsNullOrEmpty(args))
+            if(!string.IsNullOrEmpty(args))
             {
                 processStartInfo.Arguments = args;
             }
@@ -307,7 +295,7 @@ namespace Mmx.Gui.Win.Common
 #endif
             }
 
-            Process process = new Process();
+            var process = new Process();
             process.StartInfo = processStartInfo;
             process.EnableRaisingEvents = true;
 
@@ -323,7 +311,7 @@ namespace Mmx.Gui.Win.Common
         }
 
 
-        internal void Activate()
+        private void Activate()
         {
             if (!Directory.Exists(configPath))
             {
@@ -349,7 +337,7 @@ namespace Mmx.Gui.Win.Common
             {
                 args += " --Node.opencl_device -1";
             }
-            process = GetProcess(runNodeCMDPath, args);
+            _process = GetProcess(runNodeCMDPath, args);
         }
 
         private void WriteProcessLog(string text)
@@ -359,7 +347,7 @@ namespace Mmx.Gui.Win.Common
 
         public Task StopAsync()
         {
-            return Task.Run(() => Stop());
+            return Task.Run(Stop);
         }
 
         public void Stop()
@@ -369,17 +357,17 @@ namespace Mmx.Gui.Win.Common
             var delay = 100;
             var timeout = 10000;
 
-            if (process != null)
+            if (_process != null)
             {
-                while (!process.HasExited && timeout >= 0)
+                while (!_process.HasExited && timeout >= 0)
                 {
                     timeout -= delay;
                     Task.Delay(delay).Wait();
                 }
 
-                if (!process.HasExited)
+                if (!_process.HasExited)
                 {
-                    NativeMethods.KillProcessAndChildren(process.Id);
+                    NativeMethods.KillProcessAndChildren(_process.Id);
                 }
             }
             else
@@ -413,7 +401,7 @@ namespace Mmx.Gui.Win.Common
 
         private void OnStop()
         {
-            Stoped?.Invoke(this, EventArgs.Empty);
+            Stopped?.Invoke(this, EventArgs.Empty);
         }
 
         private static string GetResource(string resName)

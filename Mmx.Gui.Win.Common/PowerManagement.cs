@@ -2,7 +2,7 @@
 
 namespace Mmx.Gui.Win.Common
 {
-    public class PowerManagement
+    public static class PowerManagement
     {
         public static void ApplyPowerManagementSettings(bool inhibitSystemSleep)
         {

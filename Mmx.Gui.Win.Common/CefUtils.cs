@@ -12,14 +12,14 @@ namespace Mmx.Gui.Win.Common
         // The subfolder, where the cefsharp files will be moved to
         private static string cefSubFolder = @"gui\cefsharp";
         // If the assembly resolver loads cefsharp from another folder, set this to true
-        private static bool resolved = false;
+        private static bool _resolved;
 
 
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void InitializeCefSharp(CefSettingsBase settings)
         {
             // Set BrowserSubProcessPath when cefsharp moved to the subfolder
-            if (resolved)
+            if (_resolved)
             {
                 settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, cefSubFolder, "CefSharp.BrowserSubprocess.exe");
             }
@@ -38,7 +38,7 @@ namespace Mmx.Gui.Win.Common
         {
             if (args.Name.StartsWith("CefSharp"))
             {
-                resolved = true; // Set to true, so BrowserSubprocessPath will be set
+                _resolved = true; // Set to true, so BrowserSubprocessPath will be set
 
                 string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
                 string subfolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, cefSubFolder, assemblyName);
@@ -49,7 +49,7 @@ namespace Mmx.Gui.Win.Common
         }
 
 
-        public class XApiTokenResourceRequestHandler : ResourceRequestHandler
+        private class XApiTokenResourceRequestHandler : ResourceRequestHandler
         {
 
             protected override CefReturnValue OnBeforeResourceLoad(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback)

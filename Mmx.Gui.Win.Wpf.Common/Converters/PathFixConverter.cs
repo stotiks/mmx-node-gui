@@ -1,5 +1,4 @@
-﻿using Mmx.Gui.Win.Common;
-using Mmx.Gui.Win.Common.Plotter;
+﻿using Mmx.Gui.Win.Common.Plotter;
 using System;
 using System.Globalization;
 using System.Windows.Data;

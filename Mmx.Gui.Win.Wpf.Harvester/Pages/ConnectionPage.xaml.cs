@@ -2,16 +2,15 @@
 using System;
 using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Mmx.Gui.Win.Wpf.Harvester.Pages
 {
     /// <summary>
     /// Interaction logic for ConnectionPage.xaml
     /// </summary>
-    public partial class ConnectionPage : Page
+    public partial class ConnectionPage
     {
-        public HarversterOptions HarversterOptions { get => HarversterOptions.Instance; }
+        public HarvesterOptions HarvesterOptions => HarvesterOptions.Instance;
 
         public ConnectionPage()
         {
@@ -22,7 +21,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         private void DetectButton_Click(object sender, RoutedEventArgs e)
         {
             ConnectionGroup.IsEnabled = false;
-            HarversterOptions.Detect().ContinueWith(task =>
+            HarvesterOptions.Detect().ContinueWith(task =>
             {
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
@@ -34,7 +33,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
             var dnsEndPoint = new DnsEndPoint(HostTextBox.Text, (int)PortNumberBox.Value);
-            HarversterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
+            HarvesterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
         }
 
 

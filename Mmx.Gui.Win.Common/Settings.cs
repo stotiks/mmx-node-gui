@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Reflection;
 
 namespace Mmx.Gui.Win.Common.Properties {
@@ -12,12 +11,12 @@ namespace Mmx.Gui.Win.Common.Properties {
     //  The SettingsSaving event is raised before the setting values are saved.
     public sealed partial class Settings {
 
-        static public bool MinimizeToNotification => Settings.Default.ShowInNotifitation && Settings.Default._MinimizeToNotification;
-        static public bool CloseToNotification => Settings.Default.ShowInNotifitation && Settings.Default._CloseToNotification;
+        public static bool MinimizeToNotification => Settings.Default.ShowInNotification && Settings.Default._MinimizeToNotification;
+        public static bool CloseToNotification => Settings.Default.ShowInNotification && Settings.Default._CloseToNotification;
 
-        static public bool IsDarkTheme => Settings.Default.Theme == "Dark";
+        public static bool IsDarkTheme => Settings.Default.Theme == "Dark";
 
-        public Settings() {
+        private Settings() {
 
             if (this.SettingsUpgradeRequired)
             {
@@ -68,12 +67,12 @@ namespace Mmx.Gui.Win.Common.Properties {
             }
         }
 
-        private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e) {
-            // Add code to handle the SettingChangingEvent event here.
-        }
+        //private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e) {
+        //    // Add code to handle the SettingChangingEvent event here.
+        //}
         
-        private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
-            // Add code to handle the SettingsSaving event here.
-        }
+        //private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
+        //    // Add code to handle the SettingsSaving event here.
+        //}
     }
 }

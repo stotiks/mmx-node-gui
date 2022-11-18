@@ -16,28 +16,24 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public void Start()
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo();
-            processStartInfo.WorkingDirectory = Node.workingDirectory;
-            processStartInfo.FileName = Path.Combine(Node.workingDirectory, PlotterOptions.Instance.PlotterExe);
-            processStartInfo.Arguments = PlotterOptions.Instance.PlotterArguments;
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                WorkingDirectory = Node.workingDirectory,
+                FileName = Path.Combine(Node.workingDirectory, PlotterOptions.Instance.PlotterExe),
+                Arguments = PlotterOptions.Instance.PlotterArguments,
+
+                UseShellExecute = false,
+                CreateNoWindow = true,
+
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                RedirectStandardInput = false
+        };
 
 #if DEBUG
             //processStartInfo.FileName = "ping";
             //processStartInfo.Arguments = "google.com -n 30";
 #endif
-
-            processStartInfo.UseShellExecute = false;
-            //processStartInfo.ErrorDialog = true;
-
-            //if (!Settings.Default.ShowConsole)
-            {
-                processStartInfo.CreateNoWindow = true;
-
-                processStartInfo.RedirectStandardOutput = true;
-                processStartInfo.RedirectStandardError = true;
-                processStartInfo.RedirectStandardInput = false;
-            }
-
             process = new Process();
             process.StartInfo = processStartInfo;
             process.EnableRaisingEvents = true;
@@ -60,33 +56,33 @@ namespace Mmx.Gui.Win.Common.Plotter
         private void OnProcessExit(object sender, EventArgs e)
         {
             NativeMethods.SetConsoleCtrlHandler(null, false);
-            CleanFS(); 
+            CleanFs(); 
             IsRunning = false;
             ProcessExit?.Invoke(this, null);
         }
 
-        private void CleanFS()
+        private void CleanFs()
         {
             var deletedCount = 0;
 
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value, currentPlotName);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value, currentPlotName);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, currentPlotName);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value, _currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value, _currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, _currentPlotName);
+            deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, _currentPlotName);
 
             if (deletedCount > 0)
             {
                 OnOutputDataReceived(this, new CustomDataReceivedEventArgs(""));
-                OnOutputDataReceived(this, new CustomDataReceivedEventArgs(string.Format("Temp files deleted: {0}", deletedCount)));
+                OnOutputDataReceived(this, new CustomDataReceivedEventArgs($"Temp files deleted: {deletedCount}"));
             }
         }
 
         private int DeleteTempFiles(string dir, string plotName)
         {
             var result = 0;
+            var reg = new Regex($@"^({plotName})");
             if (!string.IsNullOrEmpty(plotName) && !string.IsNullOrEmpty(dir) && Directory.Exists(dir))
             {
-                Regex reg = new Regex(string.Format(@"^({0})", plotName));
                 var files = Directory.GetFiles(dir, "*.tmp")
                                      .Where(path => reg.IsMatch(Path.GetFileName(path)))
                                      .ToList();
@@ -103,23 +99,26 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public delegate void CustomEventHandler(object o, CustomDataReceivedEventArgs e);
         public event CustomEventHandler OutputDataReceived;
-        void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+
+        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             var x = new CustomDataReceivedEventArgs(e);
             OnOutputDataReceived(sender, x);
         }
-        string currentPlotName = null;
-        Regex plotNameRegex = new Regex(@"^Plot Name: (plot-.*)");
-        void OnOutputDataReceived(object sender, CustomDataReceivedEventArgs e)
+
+        private string _currentPlotName;
+        private readonly Regex _plotNameRegex = new Regex(@"^Plot Name: (plot-.*)");
+
+        private void OnOutputDataReceived(object sender, CustomDataReceivedEventArgs e)
         {
             var str = e.Data;
             
             if(!string.IsNullOrEmpty(str))
             {
-                var r = plotNameRegex.Match(str);
+                var r = _plotNameRegex.Match(str);
                 if(r.Success)
                 {
-                    currentPlotName = r.Groups[1].Value;
+                    _currentPlotName = r.Groups[1].Value;
                     //Console.WriteLine(currentPlotName);
                 }
                 
@@ -128,7 +127,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             OutputDataReceived?.Invoke(sender, e);
         }
         public event DataReceivedEventHandler ErrorDataReceived;
-        void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
+
+        private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             ErrorDataReceived?.Invoke(this, e);
         }
@@ -144,28 +144,28 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private bool _processSuspended = false;
+        private bool _processSuspended;
         public bool Suspended
         {
             get => _processSuspended;
 
-            set
+            private set
             {
                 _processSuspended = value;
                 NotifyPropertyChanged();
             }
         }
 
-        private bool _isRunning = false;
+        private bool _isRunning;
         public bool IsRunning
         {
             get => _isRunning;
 
-            set
+            private set
             {
                 _isRunning = value;
                 NotifyPropertyChanged();
-                NotifyPropertyChanged("TryKill");
+                NotifyPropertyChanged(nameof(TryKill));
 
                 if (value)
                 {
@@ -174,14 +174,11 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        public ProcessStartInfo StartInfo { get => process.StartInfo; }
+        public ProcessStartInfo StartInfo => process.StartInfo;
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void Suspend()
@@ -202,7 +199,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        private int _stopTry = 0;
+        private int _stopTry;
         private int StopTry
         {
             get => _stopTry;
@@ -210,13 +207,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 _stopTry = value;
                 NotifyPropertyChanged();
-                NotifyPropertyChanged("TryKill");
+                NotifyPropertyChanged(nameof(TryKill));
             }            
         }
-        public bool TryKill
-        {
-            get => IsRunning && StopTry > 0;
-        }
+        public bool TryKill => IsRunning && StopTry > 0;
 
         public void Stop()
         {

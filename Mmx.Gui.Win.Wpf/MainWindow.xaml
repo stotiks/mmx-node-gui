@@ -65,7 +65,7 @@
                     </StatusBarItem>
                 </StatusBar>
 
-                <ui:Frame x:Name="contentFrame" MinWidth="1000" Navigating="contentFrame_Navigating"/>
+                <ui:Frame x:Name="ContentFrame" MinWidth="1000" Navigating="ContentFrame_Navigating"/>
 
             </DockPanel>
 

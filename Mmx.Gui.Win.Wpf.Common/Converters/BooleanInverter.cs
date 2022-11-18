@@ -8,9 +8,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null && value is bool)
+            if (value is bool b)
             {
-                return !((bool)value);
+                return !b;
             }
 
             return true;

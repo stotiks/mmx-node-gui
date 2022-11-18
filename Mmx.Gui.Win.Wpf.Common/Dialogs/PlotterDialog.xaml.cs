@@ -16,11 +16,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
     /// </summary>
     public partial class PlotterDialog : INotifyPropertyChanged
     {        
-        private PlotterProcess plotterProcess = new PlotterProcess();
-        public PlotterProcess PlotterProcess { get => plotterProcess; }
+        private readonly PlotterProcess plotterProcess = new PlotterProcess();
+        public PlotterProcess PlotterProcess => plotterProcess;
 
-        private string logFileName;
-        private string logFolder = Path.Combine(Node.MMX_HOME, "plotter");
+        private string _logFileName;
+        private readonly string _logFolder = Path.Combine(Node.MMX_HOME, "plotter");
 
         public PlotterDialog()
         {
@@ -37,11 +37,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         public void StartPlotter()
         {
-            if (!System.IO.Directory.Exists(logFolder))
+            if (!Directory.Exists(_logFolder))
             {
-                System.IO.Directory.CreateDirectory(logFolder);
+                Directory.CreateDirectory(_logFolder);
             }
-            logFileName = "ploter_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+            _logFileName = $"plotter_{DateTime.Now:yyyyMMdd_HHmmss}.log";
 
             plotterProcess.Start();
 
@@ -55,18 +55,19 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
         private void ProcessStart(object sender, EventArgs e)
         {
             LogTxt = "";
-            WriteLog(string.Format("{0} {1}", plotterProcess.StartInfo.FileName, plotterProcess.StartInfo.Arguments));
+            WriteLog($"{plotterProcess.StartInfo.FileName} {plotterProcess.StartInfo.Arguments}");
         }
 
 
-        private readonly object logLock = new object();
-        internal void WriteLog(string value)
+        private readonly object _logLock = new object();
+
+        private void WriteLog(string value)
         {
-            lock (logLock)
+            lock (_logLock)
             {
-                var txt = string.Format("[{0}] {1}\r\n", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), value);
+                var txt = $"[{DateTime.Now:yyyy/MM/dd HH:mm:ss}] {value}\r\n";
                 LogTxt += txt;
-                File.AppendAllText(Path.Combine(logFolder, logFileName), txt);
+                File.AppendAllText(Path.Combine(_logFolder, _logFileName), txt);
             }
         }
 
@@ -86,10 +87,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public override void OnApplyTemplate()
@@ -152,8 +150,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         private void StopButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Flyout f = FlyoutService.GetFlyout(StopButton) as Flyout;
-            if (f != null)
+            if (FlyoutService.GetFlyout(StopButton) is Flyout f)
             {
                 f.Hide();
             }
@@ -163,8 +160,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         private void KillButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Flyout f = FlyoutService.GetFlyout(KillButton) as Flyout;
-            if (f != null)
+            if (FlyoutService.GetFlyout(KillButton) is Flyout f)
             {
                 f.Hide();
             }

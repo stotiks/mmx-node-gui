@@ -24,16 +24,16 @@
         <cv:BooleanInverter x:Key="BooleanInverter"/>
         <cv:PathFixConverter x:Key="PathFixConverter"/>
 
-        <sys:Double x:Key="mainWidth">500</sys:Double>
-        <sys:Double x:Key="keyWidth">800</sys:Double>
-        <sys:Double x:Key="spacing">7</sys:Double>
+        <sys:Double x:Key="MainWidth">500</sys:Double>
+        <sys:Double x:Key="KeyWidth">800</sys:Double>
+        <sys:Double x:Key="Spacing">7</sys:Double>
         
         <ui:FontIcon x:Key="FolderGlyph" x:Shared="False" Glyph="&#xED25;"/>
         
         <Style x:Key="ChooseFolderButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Background" Value="Transparent"/>
-            <EventSetter Event="Button.Click" Handler="ChooseFolderButton_Click"/>
+            <EventSetter Event="Click" Handler="ChooseFolderButton_Click"/>
             <Setter Property="Content" Value="{StaticResource FolderGlyph}"/>
         </Style>
         
@@ -61,12 +61,12 @@
 
             <TabItem Header="{lex:Loc Plotter_GeneralTab}">
                 <ScrollViewer Margin="0,12,0,0">
-                    <ui:SimpleStackPanel Spacing="{StaticResource spacing}">
+                    <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                         <ui:SimpleStackPanel Orientation="Horizontal">
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_finaldir}"
-                                Width="{StaticResource mainWidth}"
+                                Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.finaldir.Value, Converter={StaticResource PathFixConverter}}"/>
                             <Button 
                                 Style="{StaticResource ChooseFolderButton}"
@@ -86,7 +86,7 @@
                         <TextBox
                             ui:ControlHelper.Header="{lex:Loc Plotter_CommandLine}"
                             HorizontalAlignment="Left"
-                            Width="{StaticResource keyWidth}"
+                            Width="{StaticResource KeyWidth}"
                             IsReadOnly="True"
                             MinLines="5"
                             VerticalScrollBarVisibility="Auto"
@@ -108,12 +108,12 @@
                      x:FieldModifier="public">
                 <ScrollViewer Margin="0,12,0,0">
                     <ui:SimpleStackPanel 
-                        Spacing="{StaticResource spacing}" 
+                        Spacing="{StaticResource Spacing}" 
                         HorizontalAlignment="Left">
 
                         <TextBox x:Name="farmerKeyTextBox" x:FieldModifier="public"
                             ui:ControlHelper.Header="{lex:Loc Plotter_farmerkey}"
-                            Width="{StaticResource keyWidth}"
+                            Width="{StaticResource KeyWidth}"
                             Text="{Binding PlotterOptions.farmerkey.Value}"/>
                         
                         <ui:ToggleSwitch  
@@ -123,13 +123,13 @@
                         
                         <TextBox
                             ui:ControlHelper.Header="{lex:Loc Plotter_poolkey}"
-                            Width="{StaticResource keyWidth}"
+                            Width="{StaticResource KeyWidth}"
                             IsEnabled="{Binding IsOn, Converter={StaticResource BooleanInverter}, ElementName=createPlotNFT}"
                             Text="{Binding PlotterOptions.poolkey.Value}"/>
                         
                         <TextBox
                             ui:ControlHelper.Header="{lex:Loc Plotter_contract}"
-                            Width="{StaticResource keyWidth}"
+                            Width="{StaticResource KeyWidth}"
                             IsEnabled="{Binding IsOn, ElementName=createPlotNFT}"
                             Text="{Binding PlotterOptions.contract.Value}"/>
                         
@@ -140,10 +140,10 @@
             <TabItem Header="{lex:Loc Plotter_PerfomanceTab}">
                 <ScrollViewer Margin="0,12,0,0">
 
-                    <ui:SimpleStackPanel Spacing="{StaticResource spacing}">
+                    <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                         <GroupBox Header="{lex:Loc Plotter_SizeHeader}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource spacing}">
+                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
                                 
                             <ComboBox
                                 Width="250"
@@ -156,7 +156,7 @@
                         </GroupBox>
 
                         <GroupBox Header="{lex:Loc Plotter_ProcessHeader}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource spacing}">
+                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                                 <ComboBox
                                     Width="250"
@@ -188,7 +188,7 @@
                         </GroupBox>
 
                         <GroupBox Header="{lex:Loc Plotter_BucketsHeader}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource spacing}">
+                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                                 <ComboBox
                                     Width="250"
@@ -215,12 +215,12 @@
 
             <TabItem Header="{lex:Loc Plotter_DirectoriesTab}">
                 <ScrollViewer Margin="0,12,0,0">
-                    <ui:SimpleStackPanel Spacing="{StaticResource spacing}">
+                    <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                         <ui:SimpleStackPanel Orientation="Horizontal">
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_tmpdir}"
-                                Width="{StaticResource mainWidth}"
+                                Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.tmpdir.Value, Converter={StaticResource PathFixConverter}}"/>
                             <Button 
                                 Style="{StaticResource ChooseFolderButton}"
@@ -231,7 +231,7 @@
                         <ui:SimpleStackPanel Orientation="Horizontal">
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_tmpdir2}"
-                                Width="{StaticResource mainWidth}"
+                                Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.tmpdir2.Value, Converter={StaticResource PathFixConverter}}"/>
                             <Button 
                                 Style="{StaticResource ChooseFolderButton}"
@@ -241,7 +241,7 @@
                         <ui:SimpleStackPanel Orientation="Horizontal">
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_stagedir}"
-                                Width="{StaticResource mainWidth}"
+                                Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.stagedir.Value, Converter={StaticResource PathFixConverter}}"/>
                             <Button 
                                 Style="{StaticResource ChooseFolderButton}"

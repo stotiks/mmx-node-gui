@@ -17,7 +17,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public string Name { get; set; }
         public string LongName { get; set; }
 
-        private bool _valueInitialized = false;
+        private bool _valueInitialized;
         private T _value;
         public T Value
         {
@@ -52,10 +52,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public string GetParam()
@@ -66,14 +63,14 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 if (typeof(T) == typeof(bool))
                 {
-                    if ((bool)(object)Value == true)
+                    if ((bool)(object)Value)
                     {
-                        result = string.Format("-{0}", Name); ;
+                        result = $"-{Name}";
                     }
                 }
                 else if (!string.IsNullOrEmpty(Value.ToString()))
                 {
-                    result = string.Format("-{0} {1}", Name, Value);
+                    result = $"-{Name} {Value}";
                 }
             }
 
@@ -140,33 +137,33 @@ namespace Mmx.Gui.Win.Common.Plotter
             Maximum = 8
         };
 
-        static private int bucketsDefaultValue = 256;
+        private const int BucketsDefaultValue = 256;
+
         [Order]
         public Item<int> buckets { get; set; } = new Item<int>
         {
             Name = "u",
             LongName = "buckets",
-            DefaultValue = bucketsDefaultValue,
+            DefaultValue = BucketsDefaultValue,
             Items = new ObservableCollection<Item<int>>(
                 Enumerable.Range(4, 7).Select(i => {
                     var value = (int)Math.Pow(2, i);
-                    var isDefault = value == bucketsDefaultValue;
+                    var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList())
         };
 
-        static private int buckets3DefaultValue = bucketsDefaultValue;
         [Order]
         public Item<int> buckets3 { get; set; } = new Item<int>
         {
             Name = "v",
             LongName = "buckets3",
-            DefaultValue = 256,
+            DefaultValue = BucketsDefaultValue,
             Items = new ObservableCollection<Item<int>>(
                 Enumerable.Range(4, 7).Select(i => {
                     var value = (int)Math.Pow(2, i);
-                    var isDefault = value == bucketsDefaultValue;
+                    var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList())
@@ -281,16 +278,12 @@ namespace Mmx.Gui.Win.Common.Plotter
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                PropertyChanged(this, new PropertyChangedEventArgs("PlotterCmd"));
-                Save();
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PlotterCmd"));
+            Save();
         }
 
-
-        public static PlotterOptions Instance { get { return Nested.instance; } }
+        public static PlotterOptions Instance => Nested.instance;
 
         private class Nested
         {
@@ -306,7 +299,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             foreach (PropertyInfo property in GetItemProperties())
             {
-                (property.GetValue(this) as INotifyPropertyChanged).PropertyChanged += (sender, e) => NotifyPropertyChanged();
+                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged();
             }
 
             string json = "{}";
@@ -323,7 +316,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             LoadJSON(json);
         }
 
-        internal void LoadJSON(string json)
+        private void LoadJSON(string json)
         {
             dynamic config = JsonConvert.DeserializeObject(json);
             foreach (var configItem in config)
@@ -351,13 +344,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             File.WriteAllText(Node.plotterConfigPath, json);
         }
 
-        public string PlotterCmd
-        {
-            get
-            {
-                return string.Format("{0} {1}", PlotterExe, PlotterArguments);
-            }
-        }
+        public string PlotterCmd => $"{PlotterExe} {PlotterArguments}";
 
         public string PlotterExe
         {
@@ -409,7 +396,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                                 .Single()).Order);
         }
 
-        static public string FixDir(string dir)
+        public static string FixDir(string dir)
         {   
             if (string.IsNullOrEmpty(dir)) return "";
 
@@ -428,13 +415,12 @@ namespace Mmx.Gui.Win.Common.Plotter
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public sealed class OrderAttribute : Attribute
     {
-        private readonly int order_;
         public OrderAttribute([CallerLineNumber] int order = 0)
         {
-            order_ = order;
+            Order = order;
         }
 
-        public int Order { get { return order_; } }
+        public int Order { get; }
     }
 
 }

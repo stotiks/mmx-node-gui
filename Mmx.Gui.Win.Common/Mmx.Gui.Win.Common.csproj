@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CefUtils.cs" />
-    <Compile Include="HarversterOptions.cs" />
+    <Compile Include="HarvesterOptions.cs" />
     <Compile Include="Plotter\CustomDataReceivedEventArgs.cs" />
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />

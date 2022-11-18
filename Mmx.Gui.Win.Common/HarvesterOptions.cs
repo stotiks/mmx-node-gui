@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common
 {
-    public class HarversterOptions : INotifyPropertyChanged
+    public class HarvesterOptions : INotifyPropertyChanged
     {
         private string _host = "localhost";
         public string Host {
@@ -22,9 +22,9 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        const int defaultPort = 11330;
+        private const int DefaultPort = 11330;
 
-        private int _port = defaultPort;
+        private int _port = DefaultPort;
         public int Port { 
             get => _port; 
             set
@@ -34,7 +34,7 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        HarversterOptions()
+        private HarvesterOptions()
         {
             var dnsEndPoint = LoadNodeDnsEndPoint();
             if (dnsEndPoint != null)
@@ -44,14 +44,14 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        public static DnsEndPoint LoadNodeDnsEndPoint()
+        private static DnsEndPoint LoadNodeDnsEndPoint()
         {
             DnsEndPoint result = null;
 
+            var reg = new Regex(@"([a-zA-Z0-9\-_\.]+):([0-9]{1,5})");
             try
             {
                 string line1 = File.ReadLines(Node.nodeFilePath).First();
-                Regex reg = new Regex(@"([a-zA-Z0-9\-_\.]+):([0-9]{1,5})");
                 var match = reg.Match(line1);
                 if (match.Groups.Count >= 3)
                 {
@@ -62,7 +62,7 @@ namespace Mmx.Gui.Win.Common
             }
             catch
             {
-                Console.WriteLine(string.Format("{0} not found", Node.nodeFilePath));
+                Console.WriteLine($"{Node.nodeFilePath} not found");
             }
 
             return result;
@@ -70,7 +70,7 @@ namespace Mmx.Gui.Win.Common
 
         public static void SaveNodeDnsEndPoint(DnsEndPoint dnsEndPoint)
         {
-            File.WriteAllText(Node.nodeFilePath, string.Concat(dnsEndPoint.Host, ":", dnsEndPoint.Port));
+            File.WriteAllText(Node.nodeFilePath, $"{dnsEndPoint.Host}:{dnsEndPoint.Port}");
         }
 
         public async Task Detect()
@@ -79,7 +79,7 @@ namespace Mmx.Gui.Win.Common
 
             if (mapping != null)
             {
-                Port = defaultPort;
+                Port = DefaultPort;
                 Host = mapping.PrivateIP.ToString();
             }
         }
@@ -110,13 +110,10 @@ namespace Mmx.Gui.Win.Common
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static HarversterOptions Instance { get { return Nested.instance; } }
+        public static HarvesterOptions Instance => Nested.instance;
 
         private class Nested
         {
@@ -124,7 +121,7 @@ namespace Mmx.Gui.Win.Common
             // not to mark type as beforefieldinit
             static Nested() { }
 
-            internal static readonly HarversterOptions instance = new HarversterOptions();
+            internal static readonly HarvesterOptions instance = new HarvesterOptions();
         }
     }
 }

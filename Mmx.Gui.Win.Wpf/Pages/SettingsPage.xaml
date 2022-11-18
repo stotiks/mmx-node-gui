@@ -70,9 +70,9 @@
                 <GroupBox Header="{lex:Loc Settings_NotificationArea}">
                     <ui:SimpleStackPanel>
                         <ui:ToggleSwitch 
-                            x:Name="ShowInNotifitationCheckBox" 
-                            Header="{lex:Loc Settings_ShowInNotifitation}"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ShowInNotifitation}"/>
+                            x:Name="ShowInNotificationCheckBox" 
+                            Header="{lex:Loc Settings_ShowInNotification}"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ShowInNotification}"/>
                         <ui:ToggleSwitch
                             Header="{lex:Loc Settings_MinimizeToNotification}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=_MinimizeToNotification}"

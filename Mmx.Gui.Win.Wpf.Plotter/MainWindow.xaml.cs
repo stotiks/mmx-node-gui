@@ -1,4 +1,4 @@
-﻿using Mmx.Gui.Win.Wpf.Common;
+﻿using System.ComponentModel;
 using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
 using System.Threading.Tasks;
@@ -8,34 +8,36 @@ namespace Mmx.Gui.Win.Wpf.Plotter
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : WpfMainWindow
+    public partial class MainWindow
     {
-        private PlotterPage plotterPage = new PlotterPage();
+        private readonly PlotterPage _plotterPage = new PlotterPage();
 
         public MainWindow()
         {
             InitializeComponent();
-            contentFrame.Content = plotterPage;
+            ContentFrame.Content = _plotterPage;
+
+            Closing += MainWindow_Closing;
         }
 
-        protected override async Task<bool> CanClose()
+        private async Task MainWindow_Closing(object sender, CancelEventArgs args)
         {
             await Task.Yield();
 
-            if (plotterPage.PlotterDialog.PlotterProcess.IsRunning == true)
+            if (_plotterPage.PlotterDialog.PlotterProcess.IsRunning)
             {
-                var dialog = new ContentDialog();
-                dialog.Title = "Stop plotter before exit!"; //TODO i18n
-                dialog.PrimaryButtonText = "OK"; //TODO i18n
-                dialog.DefaultButton = ContentDialogButton.Primary;
+                var dialog = new ContentDialog
+                {
+                    Title = "Stop plotter before exit!", //TODO i18n
+                    PrimaryButtonText = "OK", //TODO i18n
+                    DefaultButton = ContentDialogButton.Primary
+                };
 
                 await dialog.ShowAsync();
 
                 dialog.Hide();
-                return false;
+                args.Cancel = true;
             }
-
-            return true;
         }
     }
 }

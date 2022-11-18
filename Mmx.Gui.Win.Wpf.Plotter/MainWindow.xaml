@@ -23,6 +23,6 @@
         ui:WindowHelper.UseModernWindowStyle="True"        
         ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
     <Grid>
-        <ui:Frame x:Name="contentFrame" MinWidth="1000" Navigating="contentFrame_Navigating"/>
+        <ui:Frame x:Name="ContentFrame" MinWidth="1000" Navigating="ContentFrame_Navigating"/>
     </Grid>
 </mw:WpfMainWindow>

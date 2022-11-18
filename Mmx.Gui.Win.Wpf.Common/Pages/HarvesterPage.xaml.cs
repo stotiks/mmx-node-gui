@@ -13,7 +13,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     /// <summary>
     /// Interaction logic for HarvesterPage.xaml
     /// </summary>
-    public partial class HarvesterPage : Page
+    public partial class HarvesterPage
     {
         public HarvesterPage()
         {
@@ -31,7 +31,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
                 AddButton.IsEnabled = false;
                 RemoveButton.IsEnabled = false;
 
-                MessageBox.Show(String.Format("Can not read or parse {0}\n\n{1}", Node.harvesterConfigPath, ex.ToString()), "Error!");
+                MessageBox.Show($"Can not read or parse {Node.harvesterConfigPath}\n\n{ex}", "Error!");
             }
 
             DirListView.ItemsSource = _dirs;
@@ -41,14 +41,17 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         {
             var dir = (sender as FrameworkElement).Tag as Directory;
             _dirs.Remove(dir);
-            SaveHavesterConfig();
+            SaveHarvesterConfig();
             Node.RemovePlotDirTask(dir.Path).ContinueWith(task =>
             {
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
-                    var flayout = new ModernWpf.Controls.Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom };
-                    flayout.Content = new TextBlock() { Text = "Harvester reloaded" };
-                    flayout.ShowAt((FrameworkElement)DirCommandBar);
+                    var flyout = new ModernWpf.Controls.Flyout
+                    {
+                        Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                        Content = new TextBlock() { Text = "Harvester reloaded" }
+                    };
+                    flyout.ShowAt(DirCommandBar);
                     Console.WriteLine("Harvester reloaded");
                 }));
             });
@@ -56,34 +59,37 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            var dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 var dirName = dialog.FileName;
                 _dirs.Add(new Directory(dirName));
-                SaveHavesterConfig();
+                SaveHarvesterConfig();
                 Node.AddPlotDirTask(dirName).ContinueWith(task =>
                 {
                     Dispatcher.BeginInvoke(new Action(delegate
                     {
-                        var x = new ModernWpf.Controls.Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom };
-                        x.Content = new TextBlock() { Text = "Harvester reloaded" };
-                        x.ShowAt(DirCommandBar);
+                        new ModernWpf.Controls.Flyout
+                        {
+                            Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                            Content = new TextBlock() { Text = "Harvester reloaded" }
+                        }.ShowAt(DirCommandBar);
+
                         Console.WriteLine("Harvester reloaded");
                     }));
                 });
             }
         }
-        private void SaveHavesterConfig()
+        private void SaveHarvesterConfig()
         {
-            string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
+            var harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
             var harvesterConfig = JObject.Parse(harvesterJson);
             ((JArray)harvesterConfig["plot_dirs"]).Clear();
-            for (int i = 0; i < _dirs.Count; i++)
+            foreach (var dir in _dirs)
             {
-                ((JArray)harvesterConfig["plot_dirs"]).Add(_dirs[i].Path);
+                ((JArray)harvesterConfig["plot_dirs"]).Add(dir.Path);
             }
             File.WriteAllText(Node.harvesterConfigPath, harvesterConfig.ToString());
         }
@@ -94,9 +100,12 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             {
                 Dispatcher.BeginInvoke(new Action( delegate
                 {
-                    var x = new ModernWpf.Controls.Flyout() { Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom };
-                    x.Content = new TextBlock() { Text = "Harvester reloaded" };
-                    x.ShowAt(DirCommandBar);
+                    new ModernWpf.Controls.Flyout
+                    {
+                        Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                        Content = new TextBlock() { Text = "Harvester reloaded" }
+                    }.ShowAt(DirCommandBar);
+
                     Console.WriteLine("Harvester reloaded");
                 }));
             });
@@ -117,12 +126,12 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         {
             string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
             var harvesterConfig = JObject.Parse(harvesterJson);
-            JArray plot_dirs = harvesterConfig.Value<JArray>("plot_dirs");
+            JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
 
             var dirs = new ObservableCollection<Directory>();
-            for (int i = 0; i < plot_dirs.Count; i++)
+            foreach (var dir in plotDirs)
             {
-                dirs.Add(new Directory(plot_dirs[i].ToString()));
+                dirs.Add(new Directory(dir.ToString()));
             }
 
             return Task.FromResult(dirs);

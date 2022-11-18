@@ -29,7 +29,7 @@ namespace Mmx.Gui.Win.Common
 
 
         [DllImport("user32.dll")]
-        public static extern int RegisterWindowMessage(string message);
+        private static extern int RegisterWindowMessage(string message);
         public static int RegisterWindowMessage(string format, params object[] args)
         {
             string message = String.Format(format, args);
@@ -58,7 +58,7 @@ namespace Mmx.Gui.Win.Common
 
         //---------------
         [Flags]
-        public enum ThreadAccess : int
+        private enum ThreadAccess
         {
             TERMINATE = (0x0001),
             SUSPEND_RESUME = (0x0002),
@@ -116,7 +116,7 @@ namespace Mmx.Gui.Win.Common
                     continue;
                 }
 
-                var suspendCount = 0;
+                int suspendCount;
                 do
                 {
                     suspendCount = ResumeThread(pOpenThread);
@@ -180,8 +180,9 @@ namespace Mmx.Gui.Win.Common
             ManagementObjectSearcher searcher = new ManagementObjectSearcher
                     ("Select * From Win32_Process Where ParentProcessID=" + pid);
             ManagementObjectCollection moc = searcher.Get();
-            foreach (ManagementObject mo in moc)
+            foreach (var o in moc)
             {
+                var mo = (ManagementObject)o;
                 KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
             }
 

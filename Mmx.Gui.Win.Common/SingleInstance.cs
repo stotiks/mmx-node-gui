@@ -7,20 +7,20 @@ using static Mmx.Gui.Win.Common.NativeMethods;
 
 namespace Mmx.Gui.Win.Common
 {
-    public class SingleInstance
+    public static class SingleInstance
     {
-        static public readonly int WM_SHOWFIRSTINSTANCE = RegisterWindowMessage("WM_SHOWFIRSTINSTANCE|{0}", ProgramGuid);
+        public static readonly int WM_SHOWFIRSTINSTANCE = RegisterWindowMessage("WM_SHOWFIRSTINSTANCE|{0}", ProgramGuid);
 
-        static public bool IsFirstInstance()
+        public static bool IsFirstInstance()
         {                       
             return !(GetProcesses().Length > 1);
         }
 
-        static public bool ProcessAccessibleForCurrentUser(Process process)
+        private static bool ProcessAccessibleForCurrentUser(Process process)
         {
             try
             {
-                var ptr = process.Handle;
+                _ = process.Handle;
                 return true;
             }
             catch
@@ -29,7 +29,7 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        static public bool ShowFirstInstance()
+        public static bool ShowFirstInstance()
         {
             foreach(var process in GetProcesses())
             {
@@ -44,11 +44,12 @@ namespace Mmx.Gui.Win.Common
             
         }
 
-        static private Process[] GetProcesses()
+        private static Process[] GetProcesses()
         {
             return Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location));
         }
-        static public string ProgramGuid
+
+        private static string ProgramGuid
         {
             get
             {

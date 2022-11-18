@@ -9,13 +9,12 @@ using System.Windows.Navigation;
 
 namespace Mmx.Gui.Win.Wpf.Common
 {
-    abstract public class WpfMainWindow: Window
+    public abstract class WpfMainWindow: Window
     {
-        protected bool closeCancel = true;
-        protected bool closePending = false;
-        protected bool disableCloseToNotification = false;
+        private bool _closePending;
+        private bool _disableCloseToNotification;
 
-        public WpfMainWindow()
+        protected WpfMainWindow()
         {
 #if DEBUG
             System.Diagnostics.PresentationTraceSources.DataBindingSource.Switch.Level = System.Diagnostics.SourceLevels.Critical;
@@ -29,16 +28,13 @@ namespace Mmx.Gui.Win.Wpf.Common
             if (Settings.MinimizeToNotification &&
                 WindowState == WindowState.Minimized)
             {
-                Dispatcher.BeginInvoke(new Action(delegate
-                {
-                    Hide();
-                }));
+                Dispatcher.BeginInvoke(new Action(Hide));
             }
         }
 
         public void Restore()
         {
-            if (!closePending)
+            if (!_closePending)
             {
                 Show();
             }
@@ -50,7 +46,7 @@ namespace Mmx.Gui.Win.Wpf.Common
             NativeMethods.SetForegroundWindow(new WindowInteropHelper(this).Handle);
         }
 
-        protected void contentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        protected void ContentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
             if (e.NavigationMode == NavigationMode.Back)
             {
@@ -75,20 +71,20 @@ namespace Mmx.Gui.Win.Wpf.Common
             return IntPtr.Zero;
         }
 
-        protected async void Window_Closing(object sender, CancelEventArgs args)
+        private async void Window_Closing(object sender, CancelEventArgs args)
         {
 
-            if (Settings.CloseToNotification && !disableCloseToNotification)
+            if (Settings.CloseToNotification && !_disableCloseToNotification)
             {
                 Hide();
                 args.Cancel = true;
                 return;
             }
 
-            if (!closePending)
+            if (!_closePending)
             {
                 args.Cancel = true;
-                closePending = true;
+                _closePending = true;
 
                 await Task.Yield();
                 Restore();
@@ -102,7 +98,7 @@ namespace Mmx.Gui.Win.Wpf.Common
                     Close();
                 }
 
-                closePending = false;
+                _closePending = false;
             }
 
         }
@@ -112,21 +108,15 @@ namespace Mmx.Gui.Win.Wpf.Common
             if (!(BeforeClose is null)) await BeforeClose(this, EventArgs.Empty);
         }
 
-        public delegate Task AsyncEventHandler<TEventArgs>(object sender, TEventArgs e);
+        public delegate Task AsyncEventHandler<in TEventArgs>(object sender, TEventArgs e);
         public event AsyncEventHandler<EventArgs> BeforeClose;
         public new event AsyncEventHandler<CancelEventArgs> Closing;
 
-        protected virtual async Task<bool> CanClose()
-        {
-            await Task.Yield();
-            return true;
-        }
-
         internal new void Close()
         {
-            disableCloseToNotification = true;
+            _disableCloseToNotification = true;
             base.Close();
-            disableCloseToNotification = false;
+            _disableCloseToNotification = false;
         }
 
     }
