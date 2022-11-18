@@ -8,8 +8,8 @@
       
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:dialogs="clr-namespace:Mmx.Gui.Win.Wpf.Common.Dialogs"
-    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters"
+    xmlns:dialogs="clr-namespace:Mmx.Gui.Win.Wpf.Common.Dialogs;assembly=Mmx.Gui.Win.Wpf.Common"
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
     
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
