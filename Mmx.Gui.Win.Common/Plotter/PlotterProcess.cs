@@ -137,6 +137,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         private void OnProcessStart()
         {
             IsRunning = true;
+            Suspended = false;
+            Killing = false;
             StopTry = 0;
 
             ProcessStart?.Invoke(this, null);
@@ -165,7 +167,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 _isRunning = value;
                 NotifyPropertyChanged();
-                NotifyPropertyChanged(nameof(TryKill));
+                NotifyPropertyChanged(nameof(ShowKillButton));
 
                 if (value)
                 {
@@ -207,10 +209,22 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 _stopTry = value;
                 NotifyPropertyChanged();
-                NotifyPropertyChanged(nameof(TryKill));
+                NotifyPropertyChanged(nameof(ShowKillButton));
             }            
         }
-        public bool TryKill => IsRunning && StopTry > 0;
+        public bool ShowKillButton => IsRunning && StopTry > 0;
+
+        private bool _killing;
+
+        public bool Killing
+        {
+            get => _killing;
+            set
+            {
+                _killing= value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public void Stop()
         {
@@ -231,6 +245,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public void Kill()
         {
+            Killing = true;
             process.Kill();
         }
     }

@@ -61,7 +61,7 @@
                 HorizontalAlignment="Stretch"
                 Margin="5,0,5,0"
                 IsEnabled="{Binding PlotterProcess.IsRunning}"
-                Visibility="{Binding PlotterProcess.TryKill, Converter={StaticResource BoolToVis}, ConverterParameter='negate'}"
+                Visibility="{Binding PlotterProcess.ShowKillButton, Converter={StaticResource BoolToVis}, ConverterParameter='negate'}"
                 Content="{lex:Loc Plotter_Stop}">
                 <ui:FlyoutService.Flyout>
                     <ui:Flyout>
@@ -93,8 +93,8 @@
                 Grid.Column="1" 
                 HorizontalAlignment="Stretch"
                 Margin="5,0,5,0"
-                IsEnabled="{Binding PlotterProcess.IsRunning}"
-                Visibility="{Binding PlotterProcess.TryKill, Converter={StaticResource BoolToVis} }"
+                IsEnabled="{Binding PlotterProcess.Killing, Converter={StaticResource BooleanInverter} }"
+                Visibility="{Binding PlotterProcess.ShowKillButton, Converter={StaticResource BoolToVis} }"
                 d:Visibility="Hidden"
                 Content="{lex:Loc Plotter_Kill}">
                 <ui:FlyoutService.Flyout>

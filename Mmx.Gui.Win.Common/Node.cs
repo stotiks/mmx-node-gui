@@ -90,10 +90,6 @@ namespace Mmx.Gui.Win.Common
             VersionTag = "v" + Version;
         }
 
-        public Node()
-        {
-        }
-
         public static async Task RemovePlotDirTask(string dirName)
         {
             dynamic data = new JObject();
