@@ -585,9 +585,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Show in notification area.
         /// </summary>
-        public static string Settings_ShowInNotifitation {
+        public static string Settings_ShowInNotification {
             get {
-                return ResourceManager.GetString("Settings_ShowInNotifitation", resourceCulture);
+                return ResourceManager.GetString("Settings_ShowInNotification", resourceCulture);
             }
         }
         

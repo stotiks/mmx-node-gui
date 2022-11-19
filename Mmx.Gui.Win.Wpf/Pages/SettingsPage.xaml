@@ -76,11 +76,11 @@
                         <ui:ToggleSwitch
                             Header="{lex:Loc Settings_MinimizeToNotification}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=_MinimizeToNotification}"
-                            IsEnabled="{Binding ElementName=ShowInNotifitationCheckBox, Path=IsOn}"/>
+                            IsEnabled="{Binding ElementName=ShowInNotificationCheckBox, Path=IsOn}"/>
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Settings_CloseToNotification}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=_CloseToNotification}"
-                            IsEnabled="{Binding ElementName=ShowInNotifitationCheckBox, Path=IsOn}"/>
+                            IsEnabled="{Binding ElementName=ShowInNotificationCheckBox, Path=IsOn}"/>
                     </ui:SimpleStackPanel>
                 </GroupBox>
 

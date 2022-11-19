@@ -12,7 +12,8 @@ namespace Mmx.Gui.Win.Wpf.Pages
     public partial class SettingsPage : INotifyPropertyChanged
     {
 
-        private readonly Dictionary<string, string> _languages = new Dictionary<string, string>(){
+        private readonly Dictionary<string, string> _languages = new Dictionary<string, string>
+        {
             { "en", "English" },
             { "id", "Bahasa Indonesia" },
             { "de", "Deutsch" },
@@ -27,7 +28,8 @@ namespace Mmx.Gui.Win.Wpf.Pages
         public Dictionary<string, string> Languages => _languages;
 
 
-        private readonly Dictionary<int, string> _updateIntervals = new Dictionary<int, string>(){
+        private readonly Dictionary<int, string> _updateIntervals = new Dictionary<int, string>
+        {
             { 60 * 60, "hourly" },
             { 24 * 60 * 60, "daily" },
         };

@@ -135,7 +135,7 @@
   <data name="Settings_PowerManagement" xml:space="preserve">
     <value>Pengelolaan Daya</value>
   </data>
-  <data name="Settings_ShowInNotifitation" xml:space="preserve">
+  <data name="Settings_ShowInNotification" xml:space="preserve">
     <value>Tampilkan di area notifikasi</value>
   </data>
   <data name="Settings_CloseToNotification" xml:space="preserve">

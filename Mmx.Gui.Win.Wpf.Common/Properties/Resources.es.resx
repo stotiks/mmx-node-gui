@@ -120,7 +120,7 @@
   <data name="Settings_PowerManagement" xml:space="preserve">
     <value>Administración de energía</value>
   </data>
-  <data name="Settings_ShowInNotifitation" xml:space="preserve">
+  <data name="Settings_ShowInNotification" xml:space="preserve">
     <value>Mostrar en el área de notificación</value>
   </data>
   <data name="Settings_CloseToNotification" xml:space="preserve">

@@ -138,7 +138,7 @@
     <value>Power Management</value>
     <comment>settings</comment>
   </data>
-  <data name="Settings_ShowInNotifitation" xml:space="preserve">
+  <data name="Settings_ShowInNotification" xml:space="preserve">
     <value>Show in notification area</value>
     <comment>settings</comment>
   </data>
