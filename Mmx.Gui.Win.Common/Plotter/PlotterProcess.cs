@@ -12,7 +12,7 @@ namespace Mmx.Gui.Win.Common.Plotter
     {
         public delegate void PlotterProcessEventHandler(object sender, EventArgs args);
 
-        private Process process;
+        private Process process = new Process();
 
         public void Start()
         {
@@ -56,13 +56,21 @@ namespace Mmx.Gui.Win.Common.Plotter
         private void OnProcessExit(object sender, EventArgs e)
         {
             NativeMethods.SetConsoleCtrlHandler(null, false);
-            CleanFs(); 
-            IsRunning = false;
+
+            NotifyPropertyChanged(nameof(ShowKillButton));
+
+            CleanFs();
+
             ProcessExit?.Invoke(this, null);
+
+            IsRunning = false;
         }
 
         private void CleanFs()
         {
+            OnOutputDataReceived(this, new CustomDataReceivedEventArgs(""));
+            OnOutputDataReceived(this, new CustomDataReceivedEventArgs("Temp files cleaning"));
+
             var deletedCount = 0;
 
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value, _currentPlotName);
@@ -70,11 +78,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, _currentPlotName);
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, _currentPlotName);
 
-            if (deletedCount > 0)
-            {
-                OnOutputDataReceived(this, new CustomDataReceivedEventArgs(""));
-                OnOutputDataReceived(this, new CustomDataReceivedEventArgs($"Temp files deleted: {deletedCount}"));
-            }
+            OnOutputDataReceived(this, new CustomDataReceivedEventArgs($"Temp files deleted: {deletedCount}"));
         }
 
         private int DeleteTempFiles(string dir, string plotName)
@@ -185,7 +189,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public void Suspend()
         {
-            if (IsRunning)
+            if (!process.HasExited)
             {
                 NativeMethods.SuspendProcess(process.Id);
                 Suspended = true;
@@ -194,7 +198,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public void Resume()
         {
-            if (IsRunning)
+            if (!process.HasExited)
             {
                 NativeMethods.ResumeProcess(process.Id);
                 Suspended = false;
@@ -212,7 +216,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 NotifyPropertyChanged(nameof(ShowKillButton));
             }            
         }
-        public bool ShowKillButton => IsRunning && StopTry > 0;
+        public bool ShowKillButton => !process.HasExited && StopTry > 0;
 
         private bool _killing;
 
@@ -228,7 +232,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public void Stop()
         {
-            if (IsRunning)
+            if (!process.HasExited)
             {
                 if (StopTry == 0)
                 {
@@ -245,8 +249,11 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public void Kill()
         {
-            Killing = true;
-            process.Kill();
+            if (!process.HasExited)
+            {
+                Killing = true;
+                process.Kill();
+            }
         }
     }
 }
