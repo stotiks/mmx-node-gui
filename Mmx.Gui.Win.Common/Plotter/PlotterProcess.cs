@@ -10,9 +10,10 @@ namespace Mmx.Gui.Win.Common.Plotter
 {
     public class PlotterProcess : INotifyPropertyChanged
     {
-        public delegate void PlotterProcessEventHandler(object sender, EventArgs args);
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private Process process = new Process();
+        public ProcessStartInfo StartInfo => process.StartInfo;
 
         public void Start()
         {
@@ -28,7 +29,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 RedirectStandardInput = false
-        };
+            };
 
 #if DEBUG
             //processStartInfo.FileName = "ping";
@@ -52,19 +53,32 @@ namespace Mmx.Gui.Win.Common.Plotter
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
         }
 
-        public event PlotterProcessEventHandler ProcessExit;
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event EventHandler ProcessStart;
+
+        private void OnProcessStart()
+        {
+            IsRunning = true;
+            Suspended = false;
+            StopTry = 0;
+
+            ProcessStart?.Invoke(this, null);
+        }
+
+        public event EventHandler ProcessExit;
+
         private void OnProcessExit(object sender, EventArgs e)
         {
             NativeMethods.SetConsoleCtrlHandler(null, false);
-
-            NotifyPropertyChanged(nameof(ShowKillButton));
-
             CleanFs();
-
             ProcessExit?.Invoke(this, null);
-
             IsRunning = false;
         }
+
 
         private void CleanFs()
         {
@@ -88,8 +102,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             if (!string.IsNullOrEmpty(plotName) && !string.IsNullOrEmpty(dir) && Directory.Exists(dir))
             {
                 var files = Directory.GetFiles(dir, "*.tmp")
-                                     .Where(path => reg.IsMatch(Path.GetFileName(path)))
-                                     .ToList();
+                    .Where(path => reg.IsMatch(Path.GetFileName(path)))
+                    .ToList();
                 foreach (string file in files)
                 {
                     File.Delete(file);
@@ -102,6 +116,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
 
         public delegate void CustomEventHandler(object o, CustomDataReceivedEventArgs e);
+
         public event CustomEventHandler OutputDataReceived;
 
         private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -116,20 +131,21 @@ namespace Mmx.Gui.Win.Common.Plotter
         private void OnOutputDataReceived(object sender, CustomDataReceivedEventArgs e)
         {
             var str = e.Data;
-            
-            if(!string.IsNullOrEmpty(str))
+
+            if (!string.IsNullOrEmpty(str))
             {
                 var r = _plotNameRegex.Match(str);
-                if(r.Success)
+                if (r.Success)
                 {
                     _currentPlotName = r.Groups[1].Value;
                     //Console.WriteLine(currentPlotName);
                 }
-                
+
             }
 
             OutputDataReceived?.Invoke(sender, e);
         }
+
         public event DataReceivedEventHandler ErrorDataReceived;
 
         private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
@@ -137,20 +153,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             ErrorDataReceived?.Invoke(this, e);
         }
 
-        public event PlotterProcessEventHandler ProcessStart;
-        private void OnProcessStart()
-        {
-            IsRunning = true;
-            Suspended = false;
-            Killing = false;
-            StopTry = 0;
-
-            ProcessStart?.Invoke(this, null);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private bool _processSuspended;
+
         public bool Suspended
         {
             get => _processSuspended;
@@ -163,6 +167,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
 
         private bool _isRunning;
+
         public bool IsRunning
         {
             get => _isRunning;
@@ -171,20 +176,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 _isRunning = value;
                 NotifyPropertyChanged();
-                NotifyPropertyChanged(nameof(ShowKillButton));
+
 
                 if (value)
                 {
                     Suspended = false;
                 }
             }
-        }
-
-        public ProcessStartInfo StartInfo => process.StartInfo;
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void Suspend()
@@ -206,6 +204,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
 
         private int _stopTry;
+
         private int StopTry
         {
             get => _stopTry;
@@ -213,46 +212,33 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 _stopTry = value;
                 NotifyPropertyChanged();
-                NotifyPropertyChanged(nameof(ShowKillButton));
-            }            
-        }
-        public bool ShowKillButton => !process.HasExited && StopTry > 0;
-
-        private bool _killing;
-
-        public bool Killing
-        {
-            get => _killing;
-            set
-            {
-                _killing= value;
-                NotifyPropertyChanged();
             }
         }
 
         public void Stop()
         {
-            if (!process.HasExited)
+            if (StopTry++ <= 2)
             {
-                if (StopTry == 0)
-                {
-                    StopTry++;
-                    NativeMethods.StopProgramByAttachingToItsConsoleAndIssuingCtrlCEvent(process);
-                }
-                else
-                {
-                    Kill();
-                }
+                NativeMethods.StopProgramByAttachingToItsConsoleAndIssuingCtrlCEvent(process);
             }
-
+            else
+            {
+                Kill();
+            }
         }
 
         public void Kill()
         {
             if (!process.HasExited)
             {
-                Killing = true;
-                process.Kill();
+                try
+                {
+                    process.Kill();
+                }
+                catch
+                {
+                    // ignored
+                }
             }
         }
     }

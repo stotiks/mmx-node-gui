@@ -26,14 +26,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
         {
             InitializeComponent();
             DataContext = this;
-
+            
             plotterProcess.ProcessStart += ProcessStart;
             plotterProcess.ProcessExit += ProcessExit;
             plotterProcess.OutputDataReceived += (sender, args) => WriteLog(args.Data);
             plotterProcess.ErrorDataReceived += (sender, args) => WriteLog(args.Data);
             
         }
-
 
         public void StartPlotter()
         {
@@ -158,14 +157,5 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             plotterProcess.Stop();
         }
 
-        private void KillButtonConfirm_Click(object sender, RoutedEventArgs e)
-        {
-            if (FlyoutService.GetFlyout(KillButton) is Flyout f)
-            {
-                f.Hide();
-            }
-
-            plotterProcess.Kill();
-        }
     }
 }

@@ -151,17 +151,17 @@ namespace Mmx.Gui.Win.Common
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GenerateConsoleCtrlEvent(CtrlTypes dwCtrlEvent, uint dwProcessGroupId);
 
-        public static void StopProgramByAttachingToItsConsoleAndIssuingCtrlCEvent(Process proc)
+        public static void StopProgramByAttachingToItsConsoleAndIssuingCtrlCEvent(Process process)
         {
             //This does not require the console window to be visible.
-            if (AttachConsole((uint)proc.Id))
+            if (!process.HasExited && AttachConsole((uint)process.Id))
             {
                 //Disable Ctrl-C handling for our program
                 SetConsoleCtrlHandler(null, true);
                 GenerateConsoleCtrlEvent(CtrlTypes.CTRL_C_EVENT, 0);
 
                 //Must wait here. If we don't and re-enable Ctrl-C handling below too fast, we might terminate ourselves.
-                //proc.WaitForExit();
+                //process.WaitForExit();
 
                 FreeConsole();
 
