@@ -32,7 +32,7 @@ namespace Mmx.Gui.Win.Wpf
 
         private ChromiumWebBrowser chromiumWebBrowser;
 
-        private readonly NodePage nodePage = new NodePage();
+        private System.Windows.Controls.Page nodePage = new System.Windows.Controls.Page();
         private readonly HarvesterPage harvesterPage = new HarvesterPage();
         private readonly PlotterPage plotterPage = new PlotterPage();
         private readonly SettingsPage settingsPage = new SettingsPage();
@@ -53,7 +53,14 @@ namespace Mmx.Gui.Win.Wpf
             InitializeComponent();
             DataContext = this;
 
-            InitializeCef();
+            if (Settings.Default.LightMode)
+            {
+                nodePage = new LightModePage();
+            } else
+            {
+                InitializeCef();
+            }
+
             InitializeNode();
 
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
@@ -65,14 +72,10 @@ namespace Mmx.Gui.Win.Wpf
             };
 
             Closing += MainWindow_Closing;
-
         }
 
         private void InitializeNode()
         {            
-            node.BeforeStarted += (sender, e) => chromiumWebBrowser?.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
-            node.BeforeStop += (sender, e) => chromiumWebBrowser?.LoadHtml(Node.logoutHtml, Node.dummyUri.ToString());
-
             node.StartedAsync += async (sender, e) =>
             {
                 if (Settings.Default.CheckForUpdates)
@@ -84,12 +87,14 @@ namespace Mmx.Gui.Win.Wpf
             node.StartAsync();
         }
 
-        private void InitializeCef()
+        public void InitializeCef()
         {
             CefUtils.InitializeCefSharp(new CefSettings());
 
             chromiumWebBrowser = new ChromiumWebBrowser();
+            nodePage = new System.Windows.Controls.Page();
             nodePage.Content = chromiumWebBrowser;
+            ContentFrame.Content = nodePage;
 
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
@@ -99,6 +104,11 @@ namespace Mmx.Gui.Win.Wpf
             chromiumWebBrowser.RequestHandler = new CefUtils.CustomRequestHandler();
 
             mmxBoundObject.KeysToPlotter += CopyKeysToPlotter;
+
+            //node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
+            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(Node.logoutHtml, Node.dummyUri.ToString());
+
+            chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
         }
 
         private void InitializeLocalization()
