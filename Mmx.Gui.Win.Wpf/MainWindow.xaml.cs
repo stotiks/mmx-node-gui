@@ -86,6 +86,8 @@ namespace Mmx.Gui.Win.Wpf
 
         private void InitializeCef()
         {
+            CefUtils.InitializeCefSharp(new CefSettings());
+
             chromiumWebBrowser = new ChromiumWebBrowser();
             nodePage.Content = chromiumWebBrowser;
 
