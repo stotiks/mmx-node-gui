@@ -210,5 +210,17 @@ namespace Mmx.Gui.Win.Common.Properties {
                 return ((string)(this["GitHubReleasesUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LightMode {
+            get {
+                return ((bool)(this["LightMode"]));
+            }
+            set {
+                this["LightMode"] = value;
+            }
+        }
     }
 }

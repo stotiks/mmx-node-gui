@@ -111,6 +111,11 @@
                 <GroupBox Header="{lex:Loc Settings_Debug}" Margin="0,0,0,-40" x:Name="DebugGroupBox" MouseDown="DebugGroupBox_MouseDown"/>
                 <GroupBox IsEnabled="{Binding DebugGroupBoxIsEnabled}">
                     <ui:SimpleStackPanel>
+                        
+                        <ui:ToggleSwitch
+                            Header="{lex:Loc Settings_LightMode}"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}"/>                        
+
                         <ui:ToggleSwitch
                             Header="{lex:Loc Settings_ShowConsole}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ShowConsole}"/>
@@ -118,6 +123,7 @@
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Settings_DisableOpenCL}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=DisableOpenCL}"/>
+                        
                     </ui:SimpleStackPanel>
 
                 </GroupBox>

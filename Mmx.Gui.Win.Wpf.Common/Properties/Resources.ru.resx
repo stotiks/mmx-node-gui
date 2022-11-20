@@ -318,4 +318,7 @@
   <data name="Plotter_Yes_Kill" xml:space="preserve">
     <value>Да, прибить плоттер</value>
   </data>
+  <data name="Settings_LightMode" xml:space="preserve">
+    <value>Облегченный режим</value>
+  </data>
 </root>

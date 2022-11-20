@@ -387,4 +387,8 @@
     <value>Yes, kill plotter</value>
     <comment>plotter</comment>
   </data>
+  <data name="Settings_LightMode" xml:space="preserve">
+    <value>Light mode</value>
+    <comment>settings</comment>
+  </data>
 </root>

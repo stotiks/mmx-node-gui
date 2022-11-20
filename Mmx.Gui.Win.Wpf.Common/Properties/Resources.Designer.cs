@@ -547,6 +547,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Light mode.
+        /// </summary>
+        public static string Settings_LightMode {
+            get {
+                return ResourceManager.GetString("Settings_LightMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimize to notification area.
         /// </summary>
         public static string Settings_MinimizeToNotification {
