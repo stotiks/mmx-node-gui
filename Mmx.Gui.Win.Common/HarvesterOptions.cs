@@ -1,9 +1,11 @@
 ﻿using Open.Nat;
 using System;
+using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -73,15 +75,78 @@ namespace Mmx.Gui.Win.Common
             File.WriteAllText(Node.nodeFilePath, $"{dnsEndPoint.Host}:{dnsEndPoint.Port}");
         }
 
-        public async Task Detect()
+        public async Task DetectNodeIP(int port = DefaultPort)
         {
             var mapping = await GetMapping();
 
             if (mapping != null)
             {
-                Port = DefaultPort;
-                Host = mapping.PrivateIP.ToString();
+                var isOpen = IsPortOpen(mapping.PrivateIP, port, 20);
+                if (isOpen)
+                {
+                    Port = port;
+                    Host = mapping.PrivateIP.ToString();
+                    return;
+                }
             }
+
+            var localIpAddress = GetLocalIPAddress();
+            if (localIpAddress != null)
+            {
+                var addressBytes = localIpAddress.GetAddressBytes();
+
+                var addressesWithOpenPort = new ConcurrentBag<IPAddress>();
+                Parallel.For(1, 256, i =>
+                {
+                    addressBytes[3] = Convert.ToByte(i);
+                    IPAddress ipAddress = new IPAddress(addressBytes);
+                    var isOpen = IsPortOpen(ipAddress, port, 20);
+                    if(isOpen)
+                    {
+                        addressesWithOpenPort.Add(ipAddress);
+                    }
+                });
+                    
+                if(addressesWithOpenPort.Count() > 0)
+                {
+                    Port = port;
+                    Host = addressesWithOpenPort.First().ToString();
+                    return;
+                }
+            }
+
+        }
+
+        private bool IsPortOpen(IPAddress host, int port, int timeout)
+        {
+
+            using (var tcp = new TcpClient())
+            {
+                var ar = tcp.BeginConnect(host, port, null, null);
+                using (ar.AsyncWaitHandle)
+                {
+                    if (ar.AsyncWaitHandle.WaitOne(timeout, false))
+                    {
+                        try
+                        {
+                            tcp.EndConnect(ar);
+                            //Connect was successful.
+                            return true;
+                        }
+                        catch
+                        {
+                            //EndConnect threw an exception.
+                            //Most likely means the server refused the connection.
+                        }
+                    }
+                    else
+                    {
+                        //Connection timed out.
+                    }
+                }
+            }
+
+            return false;
         }
 
         private async Task<Mapping> GetMapping()
@@ -104,7 +169,20 @@ namespace Mmx.Gui.Win.Common
             return result;
         }
 
+        private static IPAddress GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip;
+                }
+            }
 
+            return null;
+            //throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

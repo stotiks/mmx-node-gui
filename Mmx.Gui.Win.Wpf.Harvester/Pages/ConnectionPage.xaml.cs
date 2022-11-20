@@ -21,7 +21,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         private void DetectButton_Click(object sender, RoutedEventArgs e)
         {
             ConnectionGroup.IsEnabled = false;
-            HarvesterOptions.Detect().ContinueWith(task =>
+            HarvesterOptions.DetectNodeIP().ContinueWith(task =>
             {
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
