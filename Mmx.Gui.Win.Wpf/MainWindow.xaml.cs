@@ -30,7 +30,8 @@ namespace Mmx.Gui.Win.Wpf
         private readonly UpdateChecker updateChecker = new UpdateChecker();
         public UpdateChecker UpdateChecker => updateChecker;
 
-        readonly ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser();
+        private ChromiumWebBrowser chromiumWebBrowser;
+
         private readonly NodePage nodePage = new NodePage();
         private readonly HarvesterPage harvesterPage = new HarvesterPage();
         private readonly PlotterPage plotterPage = new PlotterPage();
@@ -68,11 +69,9 @@ namespace Mmx.Gui.Win.Wpf
         }
 
         private void InitializeNode()
-        {
-            nodePage.Content = chromiumWebBrowser;
-
-            node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
-            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(Node.logoutHtml, Node.dummyUri.ToString());
+        {            
+            node.BeforeStarted += (sender, e) => chromiumWebBrowser?.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
+            node.BeforeStop += (sender, e) => chromiumWebBrowser?.LoadHtml(Node.logoutHtml, Node.dummyUri.ToString());
 
             node.StartedAsync += async (sender, e) =>
             {
@@ -87,6 +86,9 @@ namespace Mmx.Gui.Win.Wpf
 
         private void InitializeCef()
         {
+            chromiumWebBrowser = new ChromiumWebBrowser();
+            nodePage.Content = chromiumWebBrowser;
+
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Register("mmx", mmxBoundObject, isAsync: false, options: BindingOptions.DefaultBinder);
