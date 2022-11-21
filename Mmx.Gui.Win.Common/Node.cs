@@ -1,4 +1,5 @@
-﻿using Mmx.Gui.Win.Common.Properties;
+﻿using Mmx.Gui.Win.Common.Plotter;
+using Mmx.Gui.Win.Common.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common
@@ -48,9 +50,7 @@ namespace Mmx.Gui.Win.Common
         public static string VersionTag { get; set; }
 
         static Node()
-        {
-            //httpClient.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
-            
+        {            
             try
             {
                 var productVersion = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductVersion;
@@ -60,6 +60,24 @@ namespace Mmx.Gui.Win.Common
             }
 
             VersionTag = "v" + Version;
+        }
+
+        private static void Activate()
+        {
+            if (!Directory.Exists(configPath))
+            {
+                Process process = GetProcess(activateCMDPath);
+                process.WaitForExit();
+
+                var json = File.ReadAllText(Node.walletConfigPath);
+
+                JObject walletConfig = JsonConvert.DeserializeObject<JObject>(json);
+                walletConfig.Property("key_files+").Remove();
+                walletConfig.Add(new JProperty("key_files", new JArray()));
+
+                json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
+                File.WriteAllText(Node.walletConfigPath, json);
+            }
         }
 
         public Task StartAsync()
@@ -91,6 +109,17 @@ namespace Mmx.Gui.Win.Common
             Task.Run(async () => { await OnStartedAsync(); });
         }
 
+        private void StartProcess()
+        {
+            string args = "";
+            if (Settings.Default.DisableOpenCL)
+            {
+                args += " --Node.opencl_device -1";
+            }
+            _process = GetProcess(runNodeCMDPath, args);
+        }
+
+
         private static Process GetProcess(string cmd, string args = null)
         {
             var processStartInfo = new ProcessStartInfo();
@@ -105,8 +134,8 @@ namespace Mmx.Gui.Win.Common
             {
                 processStartInfo.CreateNoWindow = true;            
                 
-                //processStartInfo.RedirectStandardOutput = true;
-                //processStartInfo.RedirectStandardError = true;
+                processStartInfo.RedirectStandardOutput = true;
+                processStartInfo.RedirectStandardError = true;
                 processStartInfo.RedirectStandardInput = false;
             } else
             {
@@ -119,8 +148,8 @@ namespace Mmx.Gui.Win.Common
             process.StartInfo = processStartInfo;
             process.EnableRaisingEvents = true;
 
-            //process.OutputDataReceived += (sender1, args) => WriteProcessLog(args.Data);
-            //process.ErrorDataReceived += (sender1, args) => WriteProcessLog(args.Data);
+            process.OutputDataReceived += OutputDataReceived;
+            process.ErrorDataReceived += ErrorDataReceived;
 
             process.Start();
 
@@ -131,39 +160,6 @@ namespace Mmx.Gui.Win.Common
         }
 
 
-        private static void Activate()
-        {
-            if (!Directory.Exists(configPath))
-            {
-                Process process = GetProcess(activateCMDPath);
-                process.WaitForExit();
-
-                var json = File.ReadAllText(Node.walletConfigPath);
-
-                JObject walletConfig = JsonConvert.DeserializeObject<JObject>(json);
-                walletConfig.Property("key_files+").Remove();
-                walletConfig.Add(new JProperty("key_files", new JArray()));                
-
-                json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
-                File.WriteAllText(Node.walletConfigPath, json);
-            }
-        }
-
-        private void StartProcess()
-        {
-            string args = "";
-            if (Settings.Default.DisableOpenCL)
-            {
-                args += " --Node.opencl_device -1";
-            }
-            _process = GetProcess(runNodeCMDPath, args);
-        }
-
-        private void WriteProcessLog(string text)
-        {
-            Console.WriteLine(text);
-        }
-
         public Task StopAsync()
         {
             return Task.Run(Stop);
@@ -172,7 +168,7 @@ namespace Mmx.Gui.Win.Common
         public void Stop()
         {
             OnBeforeStop();
-            
+
             _ = NodeApi.Exit();
 
             var delay = 100;
@@ -202,6 +198,20 @@ namespace Mmx.Gui.Win.Common
 
             OnStop();
         }
+
+        public static event DataReceivedEventHandler OutputDataReceived;
+
+        //private static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        //{
+        //    OutputDataReceived?.Invoke(sender, e);
+        //}
+
+        public static event DataReceivedEventHandler ErrorDataReceived;
+
+        //private static void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
+        //{
+        //    ErrorDataReceived?.Invoke(sender, e);
+        //}
 
         private void OnBeforeStarted()
         {

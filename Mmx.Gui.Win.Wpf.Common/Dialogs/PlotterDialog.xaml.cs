@@ -110,7 +110,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         private void TextBoxLog_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBoxLog.ScrollToEnd();
+            (sender as TextBox).ScrollToEnd();
         }
 
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
