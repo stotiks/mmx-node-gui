@@ -34,45 +34,12 @@ namespace Mmx.Gui.Win.Common
         public static readonly string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
         public static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
-        public static readonly Uri baseUri = new Uri("http://127.0.0.1:11380");
-        public static readonly Uri guiUri = new Uri(baseUri, "/gui/");
-
-        public static readonly Uri apiUri = new Uri(baseUri, "/api/");
-        public static readonly Uri wapiUri = new Uri(baseUri, "/wapi/");
-
-        public static readonly Uri nodeExitUri = new Uri(baseUri, "/wapi/node/exit");
-
-        public static readonly Uri harvesterRemPlotDirUri = new Uri(baseUri, "/api/harvester/rem_plot_dir");
-        public static readonly Uri harvesterAddPlotDirUri = new Uri(baseUri, "/api/harvester/add_plot_dir");
-        public static readonly Uri harvesterReloadUri = new Uri(baseUri, "api/harvester/reload");
-
-        private static readonly Uri sessionUri = new Uri(baseUri, "/server/session");
-
-        public static readonly Uri dummyUri = new Uri(baseUri, "/dummyUri/");
-
-        private static string logoutJS = GetResource("logout.js");
-        private static string waitStartJS = GetResource("waitStart.js");
-
-        private static string loadingHtmlTemplate = GetResource("loading.html");
-        public static string loadingHtml => loadingHtmlTemplate.Replace("#background-color", !Settings.IsDarkTheme ? "#f2f2f2" : "#121212");
-
-        private static string jsString = "//javascript";
-        public static string logoutHtml => loadingHtml.Replace(jsString, logoutJS);
-
-        public static string waitStartHtml => loadingHtml.Replace(jsString, waitStartJS);
-
-        private static string _xApiToken = GetRandomHexNumber(64);
-        public static readonly string XApiTokenName = "x-api-token";
-
         public delegate Task AsyncEventHandler<in TEventArgs>(object sender, TEventArgs e);
         public event AsyncEventHandler<EventArgs> StartedAsync;
 
         public event EventHandler BeforeStarted;
         public event EventHandler BeforeStop;
         public event EventHandler Stopped;
-
-
-        private static readonly HttpClient httpClient = new HttpClient();
 
         private Process _process;
 
@@ -95,61 +62,6 @@ namespace Mmx.Gui.Win.Common
             VersionTag = "v" + Version;
         }
 
-        public static async Task RemovePlotDirTask(string dirName)
-        {
-            dynamic data = new JObject();
-            data.path = dirName;
-
-            var myContent = JsonConvert.SerializeObject(data);
-            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-            var byteContent = new ByteArrayContent(buffer);
-            _ = await httpClient.PostAsync(harvesterRemPlotDirUri, byteContent);
-            _ = await ReloadHarvester();
-        }
-
-        public static async Task AddPlotDirTask(string dirName)
-        {
-            dynamic data = new JObject();
-            data.path = dirName;
-
-            var myContent = JsonConvert.SerializeObject(data);
-            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-            var byteContent = new ByteArrayContent(buffer);
-            _ = await httpClient.PostAsync(harvesterAddPlotDirUri, byteContent);
-            _ = await ReloadHarvester();
-        }
-
-        public static Task<HttpResponseMessage> ReloadHarvester()
-        {
-            return httpClient.GetAsync(harvesterReloadUri);
-        }
-
-        public static bool IsRunning
-        {
-            get
-            {
-                var task = Task.Run(CheckRunning);
-                task.Wait();
-                return task.Result;
-            }
-        }
-
-        private static async Task<bool> CheckRunning()
-        {
-            try
-            {
-                _ = await httpClient.GetAsync(sessionUri);
-                return true;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Node not running");
-            }
-
-            return false;
-        }
-
-
         public Task StartAsync()
         {
             return Task.Run(Start);
@@ -160,9 +72,9 @@ namespace Mmx.Gui.Win.Common
             OnBeforeStarted();
 
             Activate();
-            InitXToken();
+            NodeApi.InitXToken();
 
-            if (!IsRunning)
+            if (!NodeApi.IsRunning)
             {
                 StartProcess();
             }
@@ -170,7 +82,7 @@ namespace Mmx.Gui.Win.Common
             var delay = 100;
             var timeout = 2000;
 
-            while (IsRunning && timeout >= 0)
+            while (NodeApi.IsRunning && timeout >= 0)
             {
                 timeout -= delay;
                 Task.Delay(delay).Wait();
@@ -179,104 +91,12 @@ namespace Mmx.Gui.Win.Common
             Task.Run(async () => { await OnStartedAsync(); });
         }
 
-        private static string GetRandomHexNumber(int digits)
-        {
-            byte[] buffer = new byte[digits / 2];
-            Random random = new Random();
-            random.NextBytes(buffer);
-            string result = string.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
-            if (digits % 2 == 0)
-                return result;
-            return result + random.Next(16).ToString("X");
-        }
-
-        public static string XApiToken
-        {
-            get => _xApiToken;
-
-            private set
-            {
-                _xApiToken = value;
-                httpClient.DefaultRequestHeaders.Remove(XApiTokenName);
-                httpClient.DefaultRequestHeaders.Add(XApiTokenName, _xApiToken);
-            }
-        }
-
-        private static void InitXToken()
-        {
-            string json = "{}";
-            try
-            {
-                json = File.ReadAllText(Node.httpServerConfigPath);
-            }
-            catch
-            {
-                Console.WriteLine(@"config not found");
-            }
-
-            JObject httpServerConfig = JsonConvert.DeserializeObject<JObject>(json);
-            var tokenMap = httpServerConfig["token_map"] as JObject;
-            JProperty firstAdminToken = null;
-
-            if (tokenMap != null)
-            {
-                foreach (JProperty prop in tokenMap.Properties())
-                {
-                    if (prop.Value.ToString() == "ADMIN")
-                    {
-                        firstAdminToken = prop;
-                        break;
-                    }
-                }
-            }
-
-            if (IsRunning)
-            {
-                if (firstAdminToken != null)
-                {
-                    XApiToken = firstAdminToken.Name;
-                }
-                else
-                {
-                    //throw new Exception("Can not get XApiToken");
-                }
-            }
-            else
-            {
-                var property = new JProperty(XApiToken, "ADMIN");
-
-                if (firstAdminToken == null)
-                {
-                    if (tokenMap == null)
-                    {
-                        var jObject = new JObject { property };
-                        httpServerConfig["token_map"] = jObject;
-                    }
-                    else
-                    {
-                        tokenMap.Add(property);
-                    }
-
-                }
-                else
-                {
-                    firstAdminToken.Replace(property);
-                }
-
-                json = JsonConvert.SerializeObject(httpServerConfig, Formatting.Indented);
-                File.WriteAllText(Node.httpServerConfigPath, json);
-            }
-        }
-
         private static Process GetProcess(string cmd, string args = null)
         {
             var processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = workingDirectory;
             processStartInfo.FileName = cmd;
-            if(!string.IsNullOrEmpty(args))
-            {
-                processStartInfo.Arguments = args;
-            }
+            processStartInfo.Arguments = args;
 
             processStartInfo.UseShellExecute = false;
             //processStartInfo.ErrorDialog = true;
@@ -353,7 +173,7 @@ namespace Mmx.Gui.Win.Common
         {
             OnBeforeStop();
             
-            _ = httpClient.GetAsync(nodeExitUri);
+            _ = NodeApi.Exit();
 
             var delay = 100;
             var timeout = 10000;
@@ -373,7 +193,7 @@ namespace Mmx.Gui.Win.Common
             }
             else
             {
-                while (IsRunning && timeout >= 0)
+                while (NodeApi.IsRunning && timeout >= 0)
                 {
                     timeout -= delay;
                     Task.Delay(delay).Wait();
@@ -403,16 +223,7 @@ namespace Mmx.Gui.Win.Common
             Stopped?.Invoke(this, EventArgs.Empty);
         }
 
-        private static string GetResource(string resName)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resName));
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
-        }
+
 
     }
 }

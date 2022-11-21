@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CefUtils.cs" />
     <Compile Include="HarvesterOptions.cs" />
+    <Compile Include="NodeApi.cs" />
     <Compile Include="Plotter\CustomDataReceivedEventArgs.cs" />
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />

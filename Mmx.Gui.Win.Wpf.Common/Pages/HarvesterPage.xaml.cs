@@ -42,7 +42,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             var dir = (sender as FrameworkElement).Tag as Directory;
             _dirs.Remove(dir);
             SaveHarvesterConfig();
-            Node.RemovePlotDirTask(dir.Path).ContinueWith(task =>
+            NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(task =>
             {
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
@@ -67,7 +67,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
                 var dirName = dialog.FileName;
                 _dirs.Add(new Directory(dirName));
                 SaveHarvesterConfig();
-                Node.AddPlotDirTask(dirName).ContinueWith(task =>
+                NodeApi.AddPlotDirTask(dirName).ContinueWith(task =>
                 {
                     Dispatcher.BeginInvoke(new Action(delegate
                     {
@@ -96,7 +96,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         private void ReloadHarvesterButton_Click(object sender, RoutedEventArgs e)
         {
-            Node.ReloadHarvester().ContinueWith(task =>
+            NodeApi.ReloadHarvester().ContinueWith(task =>
             {
                 Dispatcher.BeginInvoke(new Action( delegate
                 {

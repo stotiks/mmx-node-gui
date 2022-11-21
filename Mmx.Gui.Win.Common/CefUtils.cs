@@ -54,7 +54,7 @@ namespace Mmx.Gui.Win.Common
 
             protected override CefReturnValue OnBeforeResourceLoad(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback)
             {
-                request.SetHeaderByName(Node.XApiTokenName, Node.XApiToken, true);
+                request.SetHeaderByName(NodeApi.XApiTokenName, NodeApi.XApiToken, true);
                 //request.SetHeaderByName("User-Agent", request.GetHeaderByName("User-Agent") + " (mmx.gui.win)", true);
 
                 return CefReturnValue.Continue;
@@ -66,8 +66,8 @@ namespace Mmx.Gui.Win.Common
             protected override IResourceRequestHandler GetResourceRequestHandler(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, bool isNavigation, bool isDownload, string requestInitiator, ref bool disableDefaultHandling)
             {
 
-                if ( request.Url.StartsWith(Node.baseUri.ToString()) 
-                    && request.Url != Node.dummyUri.ToString() )
+                if ( request.Url.StartsWith(NodeApi.baseUri.ToString()) 
+                    && request.Url != NodeApi.dummyUri.ToString() )
                 {
                     return new XApiTokenResourceRequestHandler();
                 }
