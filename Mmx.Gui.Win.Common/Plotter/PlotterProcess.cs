@@ -150,7 +150,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            ErrorDataReceived?.Invoke(this, e);
+            ErrorDataReceived?.Invoke(sender, e);
         }
 
         private bool _processSuspended;
