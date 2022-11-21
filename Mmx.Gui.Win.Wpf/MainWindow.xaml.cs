@@ -92,6 +92,7 @@ namespace Mmx.Gui.Win.Wpf
             CefUtils.InitializeCefSharp(new CefSettings());
 
             chromiumWebBrowser = new ChromiumWebBrowser();
+
             nodePage = new System.Windows.Controls.Page();
             nodePage.Content = chromiumWebBrowser;
             ContentFrame.Content = nodePage;
@@ -106,9 +107,9 @@ namespace Mmx.Gui.Win.Wpf
             mmxBoundObject.KeysToPlotter += CopyKeysToPlotter;
 
             //node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
-            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(Win.Common.NodeApi.loadingHtml, Win.Common.NodeApi.dummyUri.ToString());
+            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(NodeApi.loadingHtml, NodeApi.dummyUri.ToString());
 
-            chromiumWebBrowser.LoadHtml(Win.Common.NodeApi.waitStartHtml, Win.Common.NodeApi.dummyUri.ToString());
+            chromiumWebBrowser.LoadHtml(NodeApi.waitStartHtml, NodeApi.dummyUri.ToString());
         }
 
         private void InitializeLocalization()
