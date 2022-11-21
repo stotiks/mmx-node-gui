@@ -41,10 +41,14 @@ namespace Mmx.Gui.Win.Common
         public static readonly Uri wapiUri = new Uri(baseUri, "/wapi/");
 
         public static readonly Uri nodeExitUri = new Uri(baseUri, "/wapi/node/exit");
+
+        public static readonly Uri harvesterRemPlotDirUri = new Uri(baseUri, "/api/harvester/rem_plot_dir");
+        public static readonly Uri harvesterAddPlotDirUri = new Uri(baseUri, "/api/harvester/add_plot_dir");
+        public static readonly Uri harvesterReloadUri = new Uri(baseUri, "api/harvester/reload");
+
         private static readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
         public static readonly Uri dummyUri = new Uri(baseUri, "/dummyUri/");
-
 
         private static string logoutJS = GetResource("logout.js");
         private static string waitStartJS = GetResource("waitStart.js");
@@ -78,7 +82,7 @@ namespace Mmx.Gui.Win.Common
 
         static Node()
         {
-            httpClient.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
+            //httpClient.DefaultRequestHeaders.Add(XApiTokenName, XApiToken);
             
             try
             {
@@ -99,8 +103,8 @@ namespace Mmx.Gui.Win.Common
             var myContent = JsonConvert.SerializeObject(data);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
-            _ = await httpClient.PostAsync(baseUri + "api/harvester/rem_plot_dir", byteContent);
-            _ = await httpClient.GetAsync(baseUri + "api/harvester/reload");
+            _ = await httpClient.PostAsync(harvesterRemPlotDirUri, byteContent);
+            _ = await ReloadHarvester();
         }
 
         public static async Task AddPlotDirTask(string dirName)
@@ -111,13 +115,13 @@ namespace Mmx.Gui.Win.Common
             var myContent = JsonConvert.SerializeObject(data);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
-            _ = await httpClient.PostAsync(baseUri + "api/harvester/add_plot_dir", byteContent);
-            _ = await httpClient.GetAsync(baseUri + "api/harvester/reload");
+            _ = await httpClient.PostAsync(harvesterAddPlotDirUri, byteContent);
+            _ = await ReloadHarvester();
         }
 
-        public static async Task ReloadHarvester()
+        public static Task<HttpResponseMessage> ReloadHarvester()
         {
-            _ = await httpClient.GetAsync(baseUri + "api/harvester/reload");
+            return httpClient.GetAsync(harvesterReloadUri);
         }
 
         public static bool IsRunning
@@ -264,8 +268,7 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-
-        private Process GetProcess(string cmd, string args = null)
+        private static Process GetProcess(string cmd, string args = null)
         {
             var processStartInfo = new ProcessStartInfo();
             processStartInfo.WorkingDirectory = workingDirectory;
@@ -308,7 +311,7 @@ namespace Mmx.Gui.Win.Common
         }
 
 
-        private void Activate()
+        private static void Activate()
         {
             if (!Directory.Exists(configPath))
             {
@@ -324,7 +327,6 @@ namespace Mmx.Gui.Win.Common
                 json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
                 File.WriteAllText(Node.walletConfigPath, json);
             }
-
         }
 
         private void StartProcess()
@@ -350,7 +352,7 @@ namespace Mmx.Gui.Win.Common
         public void Stop()
         {
             OnBeforeStop();
-
+            
             _ = httpClient.GetAsync(nodeExitUri);
 
             var delay = 100;
@@ -377,8 +379,6 @@ namespace Mmx.Gui.Win.Common
                     Task.Delay(delay).Wait();
                 }
             }
-
-            //processStarted = false;
 
             OnStop();
         }
