@@ -105,10 +105,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NodePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>    
     <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,10 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\LightModePage.xaml.cs">
-     <DependentUpon>LightModePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\NodePage.xaml.cs">
-      <DependentUpon>NodePage.xaml</DependentUpon>
+      <DependentUpon>LightModePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
