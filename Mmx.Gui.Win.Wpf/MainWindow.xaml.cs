@@ -106,7 +106,7 @@ namespace Mmx.Gui.Win.Wpf
             mmxBoundObject.KeysToPlotter += CopyKeysToPlotter;
 
             //node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
-            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(Node.logoutHtml, Node.dummyUri.ToString());
+            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(Node.loadingHtml, Node.dummyUri.ToString());
 
             chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
         }

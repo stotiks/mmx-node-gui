@@ -40,6 +40,7 @@ namespace Mmx.Gui.Win.Common
         public static readonly Uri apiUri = new Uri(baseUri, "/api/");
         public static readonly Uri wapiUri = new Uri(baseUri, "/wapi/");
 
+        public static readonly Uri nodeExitUri = new Uri(baseUri, "/wapi/node/exit");
         private static readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
         public static readonly Uri dummyUri = new Uri(baseUri, "/dummyUri/");
@@ -349,6 +350,8 @@ namespace Mmx.Gui.Win.Common
         public void Stop()
         {
             OnBeforeStop();
+
+            _ = httpClient.GetAsync(nodeExitUri);
 
             var delay = 100;
             var timeout = 10000;
