@@ -45,7 +45,7 @@
         <TextBox 
             Grid.Row="1"
             x:Name="TextBoxLog"
-            Text="{Binding LogTxt}"
+            Text="{Binding Logger.Text, Mode=OneWay}"
             HorizontalAlignment="Stretch"
             IsReadOnly="True"
             FontFamily="Courier New"

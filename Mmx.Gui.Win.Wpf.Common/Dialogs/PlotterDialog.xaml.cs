@@ -14,10 +14,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
     /// <summary>
     /// Interaction logic for PlotterDialog.xaml
     /// </summary>
-    public partial class PlotterDialog : INotifyPropertyChanged
+    public partial class PlotterDialog
     {        
         private readonly PlotterProcess plotterProcess = new PlotterProcess();
         public PlotterProcess PlotterProcess => plotterProcess;
+
+        private readonly UILogger _logger = new UILogger();
+        public UILogger Logger => _logger;
 
         private string _logFileName;
         private readonly string _logFolder = Path.Combine(Node.MMX_HOME, "plotter");
@@ -31,7 +34,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             plotterProcess.ProcessExit += ProcessExit;
             plotterProcess.OutputDataReceived += (sender, args) => WriteLog(args.Data);
             plotterProcess.ErrorDataReceived += (sender, args) => WriteLog(args.Data);
-            
         }
 
         public void StartPlotter()
@@ -53,7 +55,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         private void ProcessStart(object sender, EventArgs e)
         {
-            LogTxt = "";
+            Logger.Clear();
             WriteLog($"{plotterProcess.StartInfo.FileName} {plotterProcess.StartInfo.Arguments}");
         }
 
@@ -64,29 +66,10 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
         {
             lock (_logLock)
             {
-                var txt = $"[{DateTime.Now:yyyy/MM/dd HH:mm:ss}] {value}\r\n";
-                LogTxt += txt;
+                var txt = $"[{DateTime.Now:yyyy/MM/dd HH:mm:ss}] {value}";
+                Logger.Write(txt);
                 File.AppendAllText(Path.Combine(_logFolder, _logFileName), txt);
             }
-        }
-
-        private string _logTxt;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string LogTxt
-        {
-            get => _logTxt;
-            set
-            {
-                _logTxt = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public override void OnApplyTemplate()

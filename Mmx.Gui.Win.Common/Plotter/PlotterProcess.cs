@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
@@ -35,9 +36,11 @@ namespace Mmx.Gui.Win.Common.Plotter
             //processStartInfo.FileName = "ping";
             //processStartInfo.Arguments = "google.com -n 30";
 #endif
-            process = new Process();
-            process.StartInfo = processStartInfo;
-            process.EnableRaisingEvents = true;
+            process = new Process
+            {
+                StartInfo = processStartInfo,
+                EnableRaisingEvents = true
+            };
 
             process.OutputDataReceived += OnOutputDataReceived;
             process.ErrorDataReceived += OnErrorDataReceived;
@@ -79,11 +82,20 @@ namespace Mmx.Gui.Win.Common.Plotter
             IsRunning = false;
         }
 
+        public static T CreateInstance<T>(params object[] args)
+        {
+            var type = typeof(T);
+            var instance = type.Assembly.CreateInstance(
+                type.FullName, false,
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                null, args, null, null);
+            return (T)instance;
+        }
 
         private void CleanFs()
         {
-            OnOutputDataReceived(this, new CustomDataReceivedEventArgs(""));
-            OnOutputDataReceived(this, new CustomDataReceivedEventArgs("Temp files cleaning"));
+            //OnOutputDataReceived(this, CreateInstance<DataReceivedEventArgs>(""));
+            OnOutputDataReceived(this, CreateInstance<DataReceivedEventArgs>("Temp files cleaning"));
 
             var deletedCount = 0;
 
@@ -92,7 +104,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, _currentPlotName);
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, _currentPlotName);
 
-            OnOutputDataReceived(this, new CustomDataReceivedEventArgs($"Temp files deleted: {deletedCount}"));
+            OnOutputDataReceived(this, CreateInstance<DataReceivedEventArgs>($"Temp files deleted: {deletedCount}"));
         }
 
         private int DeleteTempFiles(string dir, string plotName)
@@ -115,20 +127,12 @@ namespace Mmx.Gui.Win.Common.Plotter
             return result;
         }
 
-        public delegate void CustomEventHandler(object o, CustomDataReceivedEventArgs e);
-
-        public event CustomEventHandler OutputDataReceived;
-
-        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            var x = new CustomDataReceivedEventArgs(e);
-            OnOutputDataReceived(sender, x);
-        }
+        public event DataReceivedEventHandler OutputDataReceived;
 
         private string _currentPlotName;
         private readonly Regex _plotNameRegex = new Regex(@"^Plot Name: (plot-.*)");
 
-        private void OnOutputDataReceived(object sender, CustomDataReceivedEventArgs e)
+        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             var str = e.Data;
 

@@ -52,6 +52,7 @@ namespace Mmx.Gui.Win.Wpf
 
             InitializeComponent();
             DataContext = this;
+            //nodePage = new LightModePage();
 
             InitializeCef();
 

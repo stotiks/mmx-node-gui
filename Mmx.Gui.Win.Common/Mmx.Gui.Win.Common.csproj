@@ -50,7 +50,6 @@
     <Compile Include="CefUtils.cs" />
     <Compile Include="HarvesterOptions.cs" />
     <Compile Include="NodeApi.cs" />
-    <Compile Include="Plotter\CustomDataReceivedEventArgs.cs" />
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Node.cs" />
@@ -65,6 +64,8 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SingleInstance.cs" />
+    <Compile Include="UILogger.cs" />
+    <Compile Include="UILoggerHelpers.cs" />
     <Compile Include="UpdateChecker.cs" />
     <Compile Include="WebBrowserExtensions.cs" />
   </ItemGroup>
