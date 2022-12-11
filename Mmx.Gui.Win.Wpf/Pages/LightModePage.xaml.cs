@@ -1,6 +1,5 @@
-﻿using CefSharp.DevTools.Accessibility;
-using Mmx.Gui.Win.Common;
-using System;
+﻿using Mmx.Gui.Win.Common;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -24,19 +23,19 @@ namespace Mmx.Gui.Win.Wpf.Pages
             Node.ErrorDataReceived += WriteLog;
         }
 
-        ~LightModePage()
-        {
-            Node.OutputDataReceived -= WriteLog;
-            Node.ErrorDataReceived -= WriteLog;
-        }
-
         private readonly object _logLock = new object();
+        Queue myQueue = new Queue();
         private void WriteLog(object sender, DataReceivedEventArgs args)
         {
             lock (_logLock)
             {
                 var txt = args.Data;
-                LogTxt += $"{txt}\r\n";
+                myQueue.Enqueue(txt);
+                if (myQueue.Count > 100)
+                {
+                    myQueue.Dequeue();
+                }
+                LogTxt = string.Join("\r\n", myQueue.ToArray());
             }
         }
 
