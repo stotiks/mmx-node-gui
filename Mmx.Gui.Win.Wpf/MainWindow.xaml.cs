@@ -53,13 +53,15 @@ namespace Mmx.Gui.Win.Wpf
             InitializeComponent();
             DataContext = this;
 
-            if (Settings.Default.LightMode)
-            {
-                nodePage = new LightModePage();
-            } else
-            {
-                InitializeCef();
-            }
+            //if (Settings.Default.LightMode)
+            //{
+            //    nodePage = new LightModePage();
+            //} else
+            //{
+                
+            //}
+
+            InitializeCef();
 
             InitializeNode();
 
@@ -92,10 +94,7 @@ namespace Mmx.Gui.Win.Wpf
             CefUtils.InitializeCefSharp(new CefSettings());
 
             chromiumWebBrowser = new ChromiumWebBrowser();
-
-            nodePage = new System.Windows.Controls.Page();
             nodePage.Content = chromiumWebBrowser;
-            ContentFrame.Content = nodePage;
 
             CefSharpSettings.WcfEnabled = true;
             chromiumWebBrowser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
