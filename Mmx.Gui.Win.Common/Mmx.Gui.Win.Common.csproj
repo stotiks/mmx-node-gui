@@ -54,7 +54,6 @@
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Node\NodeProcess.cs" />
-    <Compile Include="Node\NodeBase.cs" />
     <Compile Include="Node\NodeHelpers.cs" />
     <Compile Include="Plotter\PlotterOptions.cs" />
     <Compile Include="Plotter\PlotterProcess.cs" />
