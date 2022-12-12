@@ -11,18 +11,45 @@ namespace Mmx.Gui.Win.Common.Plotter
 {
     public class PlotterProcess : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private Process process = new Process();
         public ProcessStartInfo StartInfo => process.StartInfo;
 
         public void Start()
         {
+            var fileName = Path.Combine(Node.workingDirectory, PlotterOptions.Instance.PlotterExe);
+            var arguments = PlotterOptions.Instance.PlotterArguments;
+
+#if DEBUG
+            //fileName = "ping";
+            //arguments = "google.com -n 30";
+#endif
+
+            BeforeStart += (s,o) => 
+            {
+                NativeMethods.SetConsoleCtrlHandler(null, false);
+            };
+
+            ProcessStart += (s, o) =>
+            {
+                process.PriorityClass = (ProcessPriorityClass)PlotterOptions.Instance.priority.Value;
+            };
+
+            ProcessExit += (s, o) =>
+            {
+                NativeMethods.SetConsoleCtrlHandler(null, false);
+                CleanFs();
+            };
+
+            Start(fileName, arguments);
+        }
+
+        public void Start(string fileName, string arguments)
+        {
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
                 WorkingDirectory = Node.workingDirectory,
-                FileName = Path.Combine(Node.workingDirectory, PlotterOptions.Instance.PlotterExe),
-                Arguments = PlotterOptions.Instance.PlotterArguments,
+                FileName = fileName,
+                Arguments = arguments,
 
                 UseShellExecute = false,
                 CreateNoWindow = true,
@@ -32,10 +59,6 @@ namespace Mmx.Gui.Win.Common.Plotter
                 RedirectStandardInput = false
             };
 
-#if DEBUG
-            //processStartInfo.FileName = "ping";
-            //processStartInfo.Arguments = "google.com -n 30";
-#endif
             process = new Process
             {
                 StartInfo = processStartInfo,
@@ -46,23 +69,28 @@ namespace Mmx.Gui.Win.Common.Plotter
             process.ErrorDataReceived += OnErrorDataReceived;
 
             process.Exited += OnProcessExit;
-
-            NativeMethods.SetConsoleCtrlHandler(null, false);
-            process.Start();
-            process.PriorityClass = (ProcessPriorityClass)PlotterOptions.Instance.priority.Value;
+            
+            OnBeforeStart();
+            process.Start();            
             OnProcessStart();
 
             if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public event EventHandler ProcessStart;
+        public event EventHandler BeforeStart;
+        private void OnBeforeStart()
+        {
+            BeforeStart?.Invoke(this, null);
+        }
 
+        public event EventHandler ProcessStart;
         private void OnProcessStart()
         {
             IsRunning = true;
@@ -76,8 +104,6 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private void OnProcessExit(object sender, EventArgs e)
         {
-            NativeMethods.SetConsoleCtrlHandler(null, false);
-            CleanFs();
             ProcessExit?.Invoke(this, null);
             IsRunning = false;
         }
