@@ -24,7 +24,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <TextBlock  
@@ -83,7 +83,17 @@
                 VerticalAlignment="Bottom" Click="ConnectButton_Click"/>
             
         </ui:SimpleStackPanel>
-
+        <TextBox 
+            Grid.Row="3"
+            x:Name="TextBoxLog"
+            Text="{Binding Logger.Text, Mode=OneWay}"
+            HorizontalAlignment="Stretch"
+            IsReadOnly="True"
+            FontFamily="Courier New"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            TextChanged="TextBoxLog_TextChanged">
+        </TextBox>
 
         
     </Grid>

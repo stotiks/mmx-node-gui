@@ -29,7 +29,8 @@ namespace Mmx.Gui.Win.Common
 
         public static readonly string activateCMDPath = Path.Combine(workingDirectory, "activate.cmd");
         public static readonly string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
-        public static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
+        public static readonly string runHarvesterCMDPath = Path.Combine(workingDirectory, "run_harvester.cmd");
+        private static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
         public delegate Task AsyncEventHandler<in TEventArgs>(object sender, TEventArgs e);
         public event AsyncEventHandler<EventArgs> StartedAsync;
