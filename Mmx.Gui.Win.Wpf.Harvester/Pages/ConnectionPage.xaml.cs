@@ -1,4 +1,5 @@
 ﻿using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Harvester;
 using System;
 using System.Net;
 using System.Windows;
@@ -12,18 +13,18 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
     public partial class ConnectionPage
     {
         public HarvesterOptions HarvesterOptions => HarvesterOptions.Instance;
-        private Mmx.Gui.Win.Common.Harvester _harvester;
+        private HarvesterProcess _harvesterProcess;
         private readonly UILogger _logger = new UILogger();
         public UILogger Logger => _logger;
 
-        public ConnectionPage(Mmx.Gui.Win.Common.Harvester harvester)
+        public ConnectionPage(HarvesterProcess harvesterProcess)
         {
             InitializeComponent();
             DataContext = this;
 
-            _harvester = harvester;
-            _harvester.OutputDataReceived += _logger.OutputDataReceived;
-            _harvester.ErrorDataReceived += _logger.ErrorDataReceived;
+            _harvesterProcess = harvesterProcess;
+            _harvesterProcess.OutputDataReceived += _logger.OutputDataReceived;
+            _harvesterProcess.ErrorDataReceived += _logger.ErrorDataReceived;
         }
 
         private void DetectButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         {
             var dnsEndPoint = new DnsEndPoint(HostTextBox.Text, (int)PortNumberBox.Value);
             HarvesterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
-            _harvester.StartAsync();
+            _harvesterProcess.StartAsync();
         }
 
         private void TextBoxLog_TextChanged(object sender, TextChangedEventArgs e)

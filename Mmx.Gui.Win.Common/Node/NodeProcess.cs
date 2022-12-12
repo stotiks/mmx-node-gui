@@ -5,31 +5,32 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Node
 {
-    public class Node : NodeBase
+    public class NodeProcess : ProcessWrapper
     {
         private void Activate()
         {
-            if (!Directory.Exists(configPath))
+            if (!Directory.Exists(NodeHelpers.configPath))
             {
-                var process = GetProcess(activateCMDPath);
-                process.WaitForExit();
+                //TODO
+                //var process = GetProcess(NodeHelpers.activateCMDPath);
+                //process.WaitForExit();
 
-                var json = File.ReadAllText(walletConfigPath);
+                var json = File.ReadAllText(NodeHelpers.walletConfigPath);
 
                 JObject walletConfig = JsonConvert.DeserializeObject<JObject>(json);
                 walletConfig.Property("key_files+").Remove();
                 walletConfig.Add(new JProperty("key_files", new JArray()));
 
                 json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
-                File.WriteAllText(walletConfigPath, json);
+                File.WriteAllText(NodeHelpers.walletConfigPath, json);
             }
         }
 
         public override void Start()
         {
-            OnBeforeStarted();
+            OnBeforeStart();
 
             Activate();
             NodeApi.InitXToken();
@@ -47,18 +48,28 @@ namespace Mmx.Gui.Win.Common
                 timeout -= delay;
                 Task.Delay(delay).Wait();
             }
-
+            
             Task.Run(async () => { await OnStartedAsync(); });
+            OnStarted();
         }
+
 
         private void StartProcess()
         {
-            string args = "";
+            string arguments = "";
             if (Settings.Default.DisableOpenCL)
             {
-                args += " --Node.opencl_device -1";
+                arguments += " --Node.opencl_device -1";
             }
-            _process = GetProcess(runNodeCMDPath, args);
+
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = NodeHelpers.runNodeCMDPath,
+                Arguments = arguments,
+                CreateNoWindow = true
+            };
+
+            Start(processStartInfo);
         }
 
         public override void Stop()
@@ -70,14 +81,14 @@ namespace Mmx.Gui.Win.Common
             var delay = 100;
             var timeout = 10000;
 
-            if (_process != null)
+            if (process != null)
             {
-                while (_process.IsRunning && timeout >= 0)
+                while (!process.HasExited && timeout >= 0)
                 {
                     timeout -= delay;
                     Task.Delay(delay).Wait();
                 }
-                _process.Stop();
+                Kill();
             }
             else
             {

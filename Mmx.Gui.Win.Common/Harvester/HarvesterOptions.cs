@@ -1,4 +1,5 @@
-﻿using Open.Nat;
+﻿using Mmx.Gui.Win.Common.Node;
+using Open.Nat;
 using System;
 using System.Collections.Concurrent;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Harvester
 {
     public class HarvesterOptions : INotifyPropertyChanged
     {
@@ -53,7 +54,7 @@ namespace Mmx.Gui.Win.Common
             var reg = new Regex(@"([a-zA-Z0-9\-_\.]+):([0-9]{1,5})");
             try
             {
-                string line1 = File.ReadLines(Node.nodeFilePath).First();
+                string line1 = File.ReadLines(NodeHelpers.nodeFilePath).First();
                 var match = reg.Match(line1);
                 if (match.Groups.Count >= 3)
                 {
@@ -64,7 +65,7 @@ namespace Mmx.Gui.Win.Common
             }
             catch
             {
-                Console.WriteLine($"{Node.nodeFilePath} not found");
+                Console.WriteLine($"{NodeHelpers.nodeFilePath} not found");
             }
 
             return result;
@@ -72,7 +73,7 @@ namespace Mmx.Gui.Win.Common
 
         public static void SaveNodeDnsEndPoint(DnsEndPoint dnsEndPoint)
         {
-            File.WriteAllText(Node.nodeFilePath, $"{dnsEndPoint.Host}:{dnsEndPoint.Port}");
+            File.WriteAllText(NodeHelpers.nodeFilePath, $"{dnsEndPoint.Host}:{dnsEndPoint.Port}");
         }
 
         public async Task DetectNodeIP(int port = DefaultPort)

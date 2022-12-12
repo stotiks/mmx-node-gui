@@ -1,4 +1,5 @@
 ﻿using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Node;
 using Mmx.Gui.Win.Common.Plotter;
 using ModernWpf.Controls;
 using System;
@@ -21,15 +22,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
         public UILogger Logger => _logger;
 
         private string _logFileName;
-        private readonly string _logFolder = Path.Combine(Node.MMX_HOME, "plotter");
+        private readonly string _logFolder = Path.Combine(NodeHelpers.MMX_HOME, "plotter");
 
         public PlotterDialog()
         {
             InitializeComponent();
             DataContext = this;
             
-            plotterProcess.ProcessStart += ProcessStart;
-            plotterProcess.ProcessExit += ProcessExit;
+            plotterProcess.Started += ProcessStarted;
+            plotterProcess.Stopped += ProcessStopped;
             plotterProcess.OutputDataReceived += (sender, args) => WriteLog(args.Data);
             plotterProcess.ErrorDataReceived += (sender, args) => WriteLog(args.Data);
         }
@@ -45,12 +46,12 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             plotterProcess.Start();
         }
 
-        private void ProcessExit(object sender, EventArgs e)
+        private void ProcessStopped(object sender, EventArgs e)
         {
             WriteLog("Process has exited.");
         }
 
-        private void ProcessStart(object sender, EventArgs e)
+        private void ProcessStarted(object sender, EventArgs e)
         {
             Logger.Clear();
             WriteLog($"{plotterProcess.StartInfo.FileName} {plotterProcess.StartInfo.Arguments}");

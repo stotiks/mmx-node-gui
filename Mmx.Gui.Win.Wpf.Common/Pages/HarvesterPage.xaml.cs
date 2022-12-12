@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Node;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
@@ -31,7 +32,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
                 AddButton.IsEnabled = false;
                 RemoveButton.IsEnabled = false;
 
-                MessageBox.Show($"Can not read or parse {Node.harvesterConfigPath}\n\n{ex}", "Error!");
+                MessageBox.Show($"Can not read or parse {NodeHelpers.harvesterConfigPath}\n\n{ex}", "Error!");
             }
 
             DirListView.ItemsSource = _dirs;
@@ -84,14 +85,14 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         }
         private void SaveHarvesterConfig()
         {
-            var harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
+            var harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
             var harvesterConfig = JObject.Parse(harvesterJson);
             ((JArray)harvesterConfig["plot_dirs"]).Clear();
             foreach (var dir in _dirs)
             {
                 ((JArray)harvesterConfig["plot_dirs"]).Add(dir.Path);
             }
-            File.WriteAllText(Node.harvesterConfigPath, harvesterConfig.ToString());
+            File.WriteAllText(NodeHelpers.harvesterConfigPath, harvesterConfig.ToString());
         }
 
         private void ReloadHarvesterButton_Click(object sender, RoutedEventArgs e)
@@ -124,7 +125,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         public static Task<ObservableCollection<Directory>> GetDirectoriesAsync()
         {
-            string harvesterJson = File.ReadAllText(Node.harvesterConfigPath);
+            string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
             var harvesterConfig = JObject.Parse(harvesterJson);
             JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
 

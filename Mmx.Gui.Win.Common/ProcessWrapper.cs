@@ -3,16 +3,19 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Node
 {
-    public class ProcessBase: INotifyPropertyChanged
+    public abstract class ProcessWrapper: INotifyPropertyChanged
     {
+        public event DataReceivedEventHandler ErrorDataReceived;
+        public event DataReceivedEventHandler OutputDataReceived;
+
         private bool _isRunning;
 
         private bool _processSuspended;
         protected Process process = new Process();
-        //public Process Process => process;
 
         public Action WaitForExit => process.WaitForExit;
 
@@ -44,16 +47,9 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        public event EventHandler BeforeStart;
-        public event DataReceivedEventHandler ErrorDataReceived;
-        public event DataReceivedEventHandler OutputDataReceived;
-        public event EventHandler ProcessExit;
-        public event EventHandler ProcessStart;
-        public event PropertyChangedEventHandler PropertyChanged;
-
         protected void Kill()
         {
-            if (!process.HasExited)
+            if (process != null && !process.HasExited)
             {
                 try
                 {
@@ -75,21 +71,19 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        public void Start(string fileName, string arguments)
+        public abstract void Start();
+
+        protected void Start(ProcessStartInfo processStartInfo)
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
-            {
-                WorkingDirectory = Node.workingDirectory,
-                FileName = fileName,
-                Arguments = arguments,
+            OnBeforeStart();
 
-                UseShellExecute = false,
-                CreateNoWindow = true,
+            processStartInfo.WorkingDirectory = NodeHelpers.workingDirectory;
+            processStartInfo.UseShellExecute = false;
+            //processStartInfo.CreateNoWindow = true;
 
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                RedirectStandardInput = false
-            };
+            processStartInfo.RedirectStandardOutput = true;
+            processStartInfo.RedirectStandardError = true;
+            processStartInfo.RedirectStandardInput = false;
 
             process = new Process
             {
@@ -100,19 +94,30 @@ namespace Mmx.Gui.Win.Common
             process.OutputDataReceived += OnOutputDataReceived;
             process.ErrorDataReceived += OnErrorDataReceived;
 
-            process.Exited += OnProcessExit;
-
-            OnBeforeStart();
-            process.Start();
-            OnProcessStart();
+            process.Exited += OnProcessExit;            
+            process.Start();            
 
             if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
+
+            OnStarted();
         }
 
-        public void Stop()
+        public Task StartAsync()
         {
+            return Task.Run(Start);
+        }
+
+        public virtual void Stop()
+        {
+            OnBeforeStop();
             Kill();
+            OnStop();
+        }
+
+        public Task StopAsync()
+        {
+            return Task.Run(Stop);
         }
 
         public void Suspend()
@@ -123,16 +128,20 @@ namespace Mmx.Gui.Win.Common
                 Suspended = true;
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        private void OnBeforeStart()
+
+        public event EventHandler BeforeStart;
+        protected void OnBeforeStart()
         {
             BeforeStart?.Invoke(this, null);
         }
 
-        private void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
+        protected void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             ErrorDataReceived?.Invoke(sender, e);
         }
@@ -154,17 +163,41 @@ namespace Mmx.Gui.Win.Common
         {
             OnOutputDataReceived(sender, CreateInstance<DataReceivedEventArgs>(msg));
         }
+
+        protected event EventHandler ProcessExit;
         protected void OnProcessExit(object sender, EventArgs e)
         {
             ProcessExit?.Invoke(this, null);
             IsRunning = false;
+            OnStop();
         }
-        protected void OnProcessStart()
+
+        public event EventHandler Started;
+        protected void OnStarted()
         {
             IsRunning = true;
             Suspended = false;            
 
-            ProcessStart?.Invoke(this, null);
+            Started?.Invoke(this, null);
+        }
+
+        public delegate Task AsyncEventHandler<in TEventArgs>(object sender, TEventArgs e);
+        public event AsyncEventHandler<EventArgs> StartedAsync;
+        protected async Task OnStartedAsync()
+        {
+            if (!(StartedAsync is null)) await StartedAsync(this, EventArgs.Empty);
+        }
+
+        public event EventHandler BeforeStop;
+        protected void OnBeforeStop()
+        {
+            BeforeStop?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler Stopped;
+        protected void OnStop()
+        {
+            Stopped?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Harvester;
 using Mmx.Gui.Win.Wpf.Common.Pages;
 using Mmx.Gui.Win.Wpf.Harvester.Pages;
 using ModernWpf.Controls;
@@ -15,18 +16,18 @@ namespace Mmx.Gui.Win.Wpf.Harvester
         private readonly HarvesterPage _harvesterPage = new HarvesterPage();
         private readonly ConnectionPage _connectionPage;
 
-        private readonly Mmx.Gui.Win.Common.Harvester harvester = new Mmx.Gui.Win.Common.Harvester();
+        private readonly HarvesterProcess harvesterProcess = new HarvesterProcess();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _connectionPage = new ConnectionPage(harvester);
+            _connectionPage = new ConnectionPage(harvesterProcess);
             ContentFrame.Content = _connectionPage;
 
             BeforeClose += async (o, e) =>
             {
-                await harvester.StopAsync();
+                await harvesterProcess.StopAsync();
             };
 
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();

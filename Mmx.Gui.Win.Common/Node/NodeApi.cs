@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Node
 {
     public static class NodeApi
     {
@@ -138,7 +138,7 @@ namespace Mmx.Gui.Win.Common
             string json = "{}";
             try
             {
-                json = File.ReadAllText(Node.httpServerConfigPath);
+                json = File.ReadAllText(NodeHelpers.httpServerConfigPath);
             }
             catch
             {
@@ -195,7 +195,7 @@ namespace Mmx.Gui.Win.Common
                 }
 
                 json = JsonConvert.SerializeObject(httpServerConfig, Formatting.Indented);
-                File.WriteAllText(Node.httpServerConfigPath, json);
+                File.WriteAllText(NodeHelpers.httpServerConfigPath, json);
             }
         }
 

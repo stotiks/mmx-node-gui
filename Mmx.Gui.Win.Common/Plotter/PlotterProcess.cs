@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Mmx.Gui.Win.Common.Node;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -6,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
-    public class PlotterProcess : ProcessBase
+    public class PlotterProcess : ProcessWrapper
     {
         private readonly Regex _plotNameRegex = new Regex(@"^Plot Name: (plot-.*)");
 
@@ -20,7 +21,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 NativeMethods.SetConsoleCtrlHandler(null, false);
             };
 
-            ProcessStart += (s, e) =>
+            Started += (s, e) =>
             {
                 process.PriorityClass = (ProcessPriorityClass)PlotterOptions.Instance.priority.Value;
             };
@@ -49,9 +50,9 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         }
 
-        public void Start()
+        public override void Start()
         {
-            var fileName = Path.Combine(Node.workingDirectory, PlotterOptions.Instance.PlotterExe);
+            var fileName = Path.Combine(NodeHelpers.workingDirectory, PlotterOptions.Instance.PlotterExe);
             var arguments = PlotterOptions.Instance.PlotterArguments;
 
 #if DEBUG
@@ -59,7 +60,14 @@ namespace Mmx.Gui.Win.Common.Plotter
             //arguments = "google.com -n 30";
 #endif
 
-            Start(fileName, arguments);
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                CreateNoWindow = true
+            };
+
+            Start(processStartInfo);
         }
 
 
@@ -120,6 +128,5 @@ namespace Mmx.Gui.Win.Common.Plotter
                 Kill();
             }
         }
-
     }
 }

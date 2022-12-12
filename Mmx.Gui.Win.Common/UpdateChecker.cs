@@ -1,4 +1,5 @@
-﻿using Mmx.Gui.Win.Common.Properties;
+﻿using Mmx.Gui.Win.Common.Node;
+using Mmx.Gui.Win.Common.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -79,7 +80,7 @@ namespace Mmx.Gui.Win.Common
                 var versionTag = lastRelease["tag_name"].ToString();
                 var version = new Version(versionTag.Replace("v", ""));
 
-                if (Node.Version < version)
+                if (NodeHelpers.Version < version)
                 {
                     IsUpdateAvailable = true;
                 }

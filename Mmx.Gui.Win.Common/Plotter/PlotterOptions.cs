@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Mmx.Gui.Win.Common.Node;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -306,7 +307,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             try
             {
-                json = File.ReadAllText(Node.plotterConfigPath);               
+                json = File.ReadAllText(NodeHelpers.plotterConfigPath);               
             }
             catch
             {
@@ -341,7 +342,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
 
             var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-            File.WriteAllText(Node.plotterConfigPath, json);
+            File.WriteAllText(NodeHelpers.plotterConfigPath, json);
         }
 
         public string PlotterCmd => $"{PlotterExe} {PlotterArguments}";
