@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace Mmx.Gui.Win.Common
@@ -138,7 +139,19 @@ namespace Mmx.Gui.Win.Common
         {
             OutputDataReceived?.Invoke(sender, e);
         }
-
+        private  static T CreateInstance<T>(params object[] args)
+        {
+            var type = typeof(T);
+            var instance = type.Assembly.CreateInstance(
+                type.FullName, false,
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                null, args, null, null);
+            return (T)instance;
+        }
+        protected void OnOutputDataReceived(object sender, string msg)
+        {
+            OnOutputDataReceived(sender, CreateInstance<DataReceivedEventArgs>(msg));
+        }
         protected void OnProcessExit(object sender, EventArgs e)
         {
             ProcessExit?.Invoke(this, null);

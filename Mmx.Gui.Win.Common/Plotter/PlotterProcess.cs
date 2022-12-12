@@ -62,19 +62,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             Start(fileName, arguments);
         }
 
-        public static T CreateInstance<T>(params object[] args)
-        {
-            var type = typeof(T);
-            var instance = type.Assembly.CreateInstance(
-                type.FullName, false,
-                BindingFlags.Instance | BindingFlags.NonPublic,
-                null, args, null, null);
-            return (T)instance;
-        }
 
         private void CleanFs()
         {
-            OnOutputDataReceived(this, CreateInstance<System.Diagnostics.DataReceivedEventArgs>("Temp files cleaning"));
+            OnOutputDataReceived(this, "Temp files cleaning");
 
             var deletedCount = 0;
 
@@ -83,7 +74,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, _currentPlotName);
             deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, _currentPlotName);
 
-            OnOutputDataReceived(this, CreateInstance<DataReceivedEventArgs>($"Temp files deleted: {deletedCount}"));
+            OnOutputDataReceived(this, $"Temp files deleted: {deletedCount}");
         }
 
         private int DeleteTempFiles(string dir, string plotName)
