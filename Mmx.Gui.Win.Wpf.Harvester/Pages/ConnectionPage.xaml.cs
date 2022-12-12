@@ -14,6 +14,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
     {
         public HarvesterOptions HarvesterOptions => HarvesterOptions.Instance;
         private HarvesterProcess _harvesterProcess;
+        public HarvesterProcess HarvesterProcess => _harvesterProcess;
         private readonly UILogger _logger = new UILogger();
         public UILogger Logger => _logger;
 

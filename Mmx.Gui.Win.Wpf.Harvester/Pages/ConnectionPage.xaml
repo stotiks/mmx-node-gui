@@ -19,8 +19,12 @@
     mc:Ignorable="d" 
     d:DesignHeight="650" d:DesignWidth="1200"
     Title="ConnectionPage">
+    
+    <Page.Resources>
+        <cv:BooleanInverter x:Key="BooleanInverter"/>
+    </Page.Resources>
 
-    <Grid Margin="25,0,0,0">
+    <Grid Margin="25,0,25,25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -34,9 +38,10 @@
             FontSize="28"
             Margin="0,8,0,12" />
 
-        <ui:SimpleStackPanel 
-            x:Name="ConnectionGroup"
+        <ui:SimpleStackPanel
             Grid.Row="1"
+            x:Name="ConnectionGroup"                        
+            IsEnabled="{Binding HarvesterProcess.IsRunning, Converter={StaticResource BooleanInverter}}"
             Orientation="Horizontal">
 
             <TextBox
@@ -83,8 +88,10 @@
                 VerticalAlignment="Bottom" Click="ConnectButton_Click"/>
             
         </ui:SimpleStackPanel>
+
         <TextBox 
             Grid.Row="3"
+            Margin="0,15,0,0"
             x:Name="TextBoxLog"
             Text="{Binding Logger.Text, Mode=OneWay}"
             HorizontalAlignment="Stretch"
@@ -92,9 +99,9 @@
             FontFamily="Courier New"
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Auto"
+            ScrollViewer.CanContentScroll="True"
             TextChanged="TextBoxLog_TextChanged">
         </TextBox>
 
-        
     </Grid>
 </Page>
