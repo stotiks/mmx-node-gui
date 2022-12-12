@@ -12,7 +12,9 @@ namespace Mmx.Gui.Win.Common
 
         private bool _processSuspended;
         protected Process process = new Process();
-        public Process Process => process;
+        //public Process Process => process;
+
+        public Action WaitForExit => process.WaitForExit;
 
         public bool IsRunning
         {

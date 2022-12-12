@@ -14,7 +14,7 @@ namespace Mmx.Gui.Win.Common
             if (!Directory.Exists(configPath))
             {
                 var process = GetProcess(activateCMDPath);
-                process.Process.WaitForExit();
+                process.WaitForExit();
 
                 var json = File.ReadAllText(walletConfigPath);
 
