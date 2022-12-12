@@ -2,9 +2,7 @@
 using Mmx.Gui.Win.Common.Plotter;
 using ModernWpf.Controls;
 using System;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -45,7 +43,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             _logFileName = $"plotter_{DateTime.Now:yyyyMMdd_HHmmss}.log";
 
             plotterProcess.Start();
-
         }
 
         private void ProcessExit(object sender, EventArgs e)
@@ -58,7 +55,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             Logger.Clear();
             WriteLog($"{plotterProcess.StartInfo.FileName} {plotterProcess.StartInfo.Arguments}");
         }
-
 
         private readonly object _logLock = new object();
 
@@ -104,15 +100,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             }
         }
 
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
         }
 
         private void PauseButton_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {         
             if (plotterProcess.IsRunning)
             {
                 if (!plotterProcess.Suspended)

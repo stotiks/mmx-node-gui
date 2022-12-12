@@ -6,7 +6,8 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace Mmx.Gui.Win.Wpf
 {
@@ -15,16 +16,18 @@ namespace Mmx.Gui.Win.Wpf
     /// </summary>
     public partial class App
     {
-        readonly System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
-        readonly System.Windows.Forms.ContextMenu notifyIconContextMenu = new System.Windows.Forms.ContextMenu();
+        readonly NotifyIcon notifyIcon = new NotifyIcon();
+        readonly ContextMenu notifyIconContextMenu = new ContextMenu();
 
         public App()
-        {
-            Environment.CurrentDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+        {   
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+
+            Environment.CurrentDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
 
             AppDomain.CurrentDomain.AssemblyResolve += CefUtils.CurrentDomain_AssemblyResolve;
-
+            
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.LanguageCode);
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.LanguageCode);
 
@@ -34,7 +37,7 @@ namespace Mmx.Gui.Win.Wpf
                 {
                     MessageBox.Show(Common.Properties.Resources.Another_Instance_Running, Common.Properties.Resources.Warning);
                 }
-                Application.Current.Shutdown();
+                Current.Shutdown();
             }
 
             PowerManagement.ApplyPowerManagementSettings(Settings.Default.InhibitSystemSleep);
@@ -48,7 +51,7 @@ namespace Mmx.Gui.Win.Wpf
 
             notifyIcon.Visible = Settings.Default.ShowInNotification;
             //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
-            notifyIcon.DoubleClick += notifyIcon_Click;
+            notifyIcon.DoubleClick += NotifyIcon_Click;
 
             this.Exit += (sender, e) => {
                 notifyIcon.Visible = false;
@@ -56,17 +59,21 @@ namespace Mmx.Gui.Win.Wpf
             };
 
             notifyIcon.ContextMenu = notifyIconContextMenu;
-            var menuItem1 = new System.Windows.Forms.MenuItem();
-            menuItem1.Index = 0;
-            menuItem1.Text = Common.Properties.Resources.Show;
-            menuItem1.Click += notifyIcon_Click;
+            var menuItem1 = new MenuItem
+            {
+                Index = 0,
+                Text = Common.Properties.Resources.Show
+            };
+            menuItem1.Click += NotifyIcon_Click;
 
-            var menuItem3 = new System.Windows.Forms.MenuItem();
-            menuItem3.Index = 1;
-            menuItem3.Text = Common.Properties.Resources.Exit;
+            var menuItem3 = new MenuItem
+            {
+                Index = 1,
+                Text = Common.Properties.Resources.Exit
+            };
             menuItem3.Click += (s, e) =>
             {
-                MainWindow win = Window.GetWindow(App.Current.MainWindow) as MainWindow;
+                MainWindow win = System.Windows.Window.GetWindow(App.Current.MainWindow) as MainWindow;
                 win.Restore();
                 win.Close();
             };
@@ -74,9 +81,10 @@ namespace Mmx.Gui.Win.Wpf
             notifyIconContextMenu.MenuItems.AddRange(
                new[] {
                    menuItem1,
-                   new System.Windows.Forms.MenuItem("-"),
+                   new MenuItem("-"),
                    menuItem3
-               });
+               }
+            );
 
             Settings.Default.PropertyChanged += (o, e) =>
             {
@@ -88,9 +96,9 @@ namespace Mmx.Gui.Win.Wpf
 
         }
 
-        void notifyIcon_Click(object sender, EventArgs e)
+        void NotifyIcon_Click(object sender, EventArgs e)
         {
-            MainWindow win = Window.GetWindow(App.Current.MainWindow) as MainWindow;
+            MainWindow win = System.Windows.Window.GetWindow(App.Current.MainWindow) as MainWindow;
             win.Restore();
         }
 
@@ -98,6 +106,23 @@ namespace Mmx.Gui.Win.Wpf
         {
             MessageBox.Show((e.ExceptionObject as Exception).ToString(), "Warning! UnhandledException");
         }
+
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            using (ThreadExceptionDialog dlg = new ThreadExceptionDialog(e.Exception))
+            {
+                DialogResult result = dlg.ShowDialog();
+                if (result == DialogResult.Abort)
+                {
+                    Environment.Exit(-1);
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
     }
 
 }

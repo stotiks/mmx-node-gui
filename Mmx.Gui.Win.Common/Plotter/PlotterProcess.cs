@@ -109,10 +109,10 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private int DeleteTempFiles(string dir, string plotName)
         {
-            var result = 0;
-            var reg = new Regex($@"^({plotName})");
+            var result = 0; 
             if (!string.IsNullOrEmpty(plotName) && !string.IsNullOrEmpty(dir) && Directory.Exists(dir))
             {
+                var reg = new Regex($@"^({plotName})");
                 var files = Directory.GetFiles(dir, "*.tmp")
                     .Where(path => reg.IsMatch(Path.GetFileName(path)))
                     .ToList();

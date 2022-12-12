@@ -30,9 +30,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             var property = typeof(PlotterOptions).GetProperty(button.Tag as string);
             dynamic item = property.GetValue(PlotterOptions.Instance);
 
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = string.IsNullOrEmpty(item.Value) ? "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}" : item.Value;
-            dialog.IsFolderPicker = true;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = string.IsNullOrEmpty(item.Value) ? "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}" : item.Value,
+                IsFolderPicker = true
+            };
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 item.Value = PlotterOptions.FixDir(dialog.FileName);

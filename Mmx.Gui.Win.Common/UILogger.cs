@@ -46,7 +46,7 @@ namespace Mmx.Gui.Win.Common
         public void Clear()
         {
             logQueue.Clear();
-            DebounceNotifyTextChanged();
+            NotifyTextChanged();
         }
 
         public void NotifyTextChanged()
