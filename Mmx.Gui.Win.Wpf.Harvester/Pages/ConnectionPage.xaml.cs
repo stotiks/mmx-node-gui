@@ -45,11 +45,6 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
             _harvester.StartAsync();
         }
 
-        private void OnProcessExit(object sender, EventArgs e)
-        {
-            //throw new Exception();
-        }
-
         private void TextBoxLog_TextChanged(object sender, TextChangedEventArgs e)
         {
             (sender as TextBox).ScrollToEnd();

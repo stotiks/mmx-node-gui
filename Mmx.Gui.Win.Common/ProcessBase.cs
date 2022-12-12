@@ -7,11 +7,11 @@ namespace Mmx.Gui.Win.Common
 {
     public class ProcessBase: INotifyPropertyChanged
     {
-
         private bool _isRunning;
 
         private bool _processSuspended;
         protected Process process = new Process();
+        public Process Process => process;
 
         public bool IsRunning
         {

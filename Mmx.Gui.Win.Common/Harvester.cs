@@ -8,7 +8,7 @@ namespace Mmx.Gui.Win.Common
         {
             OnBeforeStarted();
             
-            if (!NodeApi.IsRunning)
+            //if (!NodeApi.IsRunning)
             {
                 _process = GetProcess(runHarvesterCMDPath);
             }
@@ -19,12 +19,7 @@ namespace Mmx.Gui.Win.Common
         public override void Stop()
         {
             OnBeforeStop();
-
-            if (_process != null && !_process.HasExited)
-            {
-                NativeMethods.KillProcessAndChildren(_process.Id);
-            }
-
+            _process.Stop();
             OnStop();
         }
     }

@@ -31,7 +31,7 @@ namespace Mmx.Gui.Win.Common
         private static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
 
-        protected Process _process;
+        protected ProcessBase _process;
 
         public static Version Version { get; private set; }
 
@@ -60,46 +60,50 @@ namespace Mmx.Gui.Win.Common
             }
         }
 
-        protected Process GetProcess(string cmd, string args = null)
+        protected ProcessBase GetProcess(string cmd, string args = null)
         {
-            var processStartInfo = new ProcessStartInfo
-            {
-                WorkingDirectory = workingDirectory,
-                FileName = cmd,
-                Arguments = args,
+//            var processStartInfo = new ProcessStartInfo
+//            {
+//                WorkingDirectory = workingDirectory,
+//                FileName = cmd,
+//                Arguments = args,
 
-                UseShellExecute = false
-            };
-            //processStartInfo.ErrorDialog = true;
+//                UseShellExecute = false
+//            };
+//            //processStartInfo.ErrorDialog = true;
 
-            if (!Settings.Default.ShowConsole)
-            {
-                processStartInfo.CreateNoWindow = true;            
+//            if (!Settings.Default.ShowConsole)
+//            {
+//                processStartInfo.CreateNoWindow = true;            
                 
-                processStartInfo.RedirectStandardOutput = true;
-                processStartInfo.RedirectStandardError = true;
-                processStartInfo.RedirectStandardInput = false;
-            } else
-            {
-#if !DEBUG
-                processStartInfo.Arguments = "--PauseOnExit " + processStartInfo.Arguments;
-#endif
-            }
+//                processStartInfo.RedirectStandardOutput = true;
+//                processStartInfo.RedirectStandardError = true;
+//                processStartInfo.RedirectStandardInput = false;
+//            } else
+//            {
+//#if !DEBUG
+//                processStartInfo.Arguments = "--PauseOnExit " + processStartInfo.Arguments;
+//#endif
+//            }
 
-            var process = new Process
-            {
-                StartInfo = processStartInfo,
-                EnableRaisingEvents = true
-            };
+//            var process = new Process
+//            {
+//                StartInfo = processStartInfo,
+//                EnableRaisingEvents = true
+//            };
 
+//            process.OutputDataReceived += OutputDataReceived;
+//            process.ErrorDataReceived += ErrorDataReceived;
+
+//            process.Start();
+
+//            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
+//            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
+
+            var process = new ProcessBase();
             process.OutputDataReceived += OutputDataReceived;
             process.ErrorDataReceived += ErrorDataReceived;
-
-            process.Start();
-
-            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
-
+            process.Start(cmd, args);
             return process;
         }
 

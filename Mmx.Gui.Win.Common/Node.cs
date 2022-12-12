@@ -13,8 +13,8 @@ namespace Mmx.Gui.Win.Common
         {
             if (!Directory.Exists(configPath))
             {
-                Process process = GetProcess(activateCMDPath);
-                process.WaitForExit();
+                var process = GetProcess(activateCMDPath);
+                process.Process.WaitForExit();
 
                 var json = File.ReadAllText(walletConfigPath);
 
@@ -72,16 +72,12 @@ namespace Mmx.Gui.Win.Common
 
             if (_process != null)
             {
-                while (!_process.HasExited && timeout >= 0)
+                while (_process.IsRunning && timeout >= 0)
                 {
                     timeout -= delay;
                     Task.Delay(delay).Wait();
                 }
-
-                if (!_process.HasExited)
-                {
-                    NativeMethods.KillProcessAndChildren(_process.Id);
-                }
+                _process.Stop();
             }
             else
             {
