@@ -1,87 +1,33 @@
 ﻿using Mmx.Gui.Win.Common.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common
 {
-    public class Node
+    public class Node : NodeBase
     {
-        public static readonly string workingDirectory =
-#if !DEBUG
-    		Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-#else
-            //@"C:\Program Files\MMX";
-            @"C:\dev\mmx\MMX";
-#endif
-        private static string MMX_HOME_ENV = Environment.GetEnvironmentVariable("MMX_HOME");
-        public static readonly string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".mmx") : MMX_HOME_ENV;
-        public static readonly string configPath = Path.Combine(MMX_HOME, @"config\local");
-        public static readonly string harvesterConfigPath = Path.Combine(configPath, "Harvester.json");
-        public static readonly string walletConfigPath = Path.Combine(configPath, "Wallet.json");
-        
-        public static readonly string plotterConfigPath = Path.Combine(configPath, "Plotter.json");
-        public static readonly string httpServerConfigPath = Path.Combine(configPath, "HttpServer.json");
-        public static readonly string nodeFilePath = Path.Combine(configPath, "node");
-
-        public static readonly string activateCMDPath = Path.Combine(workingDirectory, "activate.cmd");
-        public static readonly string runNodeCMDPath = Path.Combine(workingDirectory, "run_node.cmd");
-        public static readonly string runHarvesterCMDPath = Path.Combine(workingDirectory, "run_harvester.cmd");
-        private static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
-
-        public delegate Task AsyncEventHandler<in TEventArgs>(object sender, TEventArgs e);
-        public event AsyncEventHandler<EventArgs> StartedAsync;
-
-        public event EventHandler BeforeStarted;
-        public event EventHandler BeforeStop;
-        public event EventHandler Stopped;
-
-        private Process _process;
-
-        public static Version Version { get; set; }
-
-        public static string VersionTag { get; set; }
-
-        static Node()
-        {            
-            try
-            {
-                var productVersion = FileVersionInfo.GetVersionInfo(mmxNodeEXEPath).ProductVersion;
-                Version = new Version(productVersion);
-            } catch {
-                Version = new Version();
-            }
-
-            VersionTag = "v" + Version;
-        }
-
-        private static void Activate()
+        private void Activate()
         {
             if (!Directory.Exists(configPath))
             {
                 Process process = GetProcess(activateCMDPath);
                 process.WaitForExit();
 
-                var json = File.ReadAllText(Node.walletConfigPath);
+                var json = File.ReadAllText(walletConfigPath);
 
                 JObject walletConfig = JsonConvert.DeserializeObject<JObject>(json);
                 walletConfig.Property("key_files+").Remove();
                 walletConfig.Add(new JProperty("key_files", new JArray()));
 
                 json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
-                File.WriteAllText(Node.walletConfigPath, json);
+                File.WriteAllText(walletConfigPath, json);
             }
         }
 
-        public Task StartAsync()
-        {
-            return Task.Run(Start);
-        }
-
-        public void Start()
+        public override void Start()
         {
             OnBeforeStarted();
 
@@ -115,53 +61,7 @@ namespace Mmx.Gui.Win.Common
             _process = GetProcess(runNodeCMDPath, args);
         }
 
-
-        private static Process GetProcess(string cmd, string args = null)
-        {
-            var processStartInfo = new ProcessStartInfo();
-            processStartInfo.WorkingDirectory = workingDirectory;
-            processStartInfo.FileName = cmd;
-            processStartInfo.Arguments = args;
-
-            processStartInfo.UseShellExecute = false;
-            //processStartInfo.ErrorDialog = true;
-
-            if (!Settings.Default.ShowConsole)
-            {
-                processStartInfo.CreateNoWindow = true;            
-                
-                processStartInfo.RedirectStandardOutput = true;
-                processStartInfo.RedirectStandardError = true;
-                processStartInfo.RedirectStandardInput = false;
-            } else
-            {
-#if !DEBUG
-                processStartInfo.Arguments = "--PauseOnExit " + processStartInfo.Arguments;
-#endif
-            }
-
-            var process = new Process();
-            process.StartInfo = processStartInfo;
-            process.EnableRaisingEvents = true;
-
-            process.OutputDataReceived += OutputDataReceived;
-            process.ErrorDataReceived += ErrorDataReceived;
-
-            process.Start();
-
-            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
-
-            return process;
-        }
-
-
-        public Task StopAsync()
-        {
-            return Task.Run(Stop);
-        }
-
-        public void Stop()
+        public override void Stop()
         {
             OnBeforeStop();
 
@@ -194,42 +94,5 @@ namespace Mmx.Gui.Win.Common
 
             OnStop();
         }
-
-        public static event DataReceivedEventHandler OutputDataReceived;
-
-        //private static void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        //{
-        //    OutputDataReceived?.Invoke(sender, e);
-        //}
-
-        public static event DataReceivedEventHandler ErrorDataReceived;
-
-        //private static void OnErrorDataReceived(object sender, DataReceivedEventArgs e)
-        //{
-        //    ErrorDataReceived?.Invoke(sender, e);
-        //}
-
-        private void OnBeforeStarted()
-        {
-            BeforeStarted?.Invoke(this, EventArgs.Empty);
-        }
-
-        private async Task OnStartedAsync()
-        {
-            if (!(StartedAsync is null)) await StartedAsync(this, EventArgs.Empty);
-        }
-
-        private void OnBeforeStop()
-        {
-            BeforeStop?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void OnStop()
-        {
-            Stopped?.Invoke(this, EventArgs.Empty);
-        }
-
-
-
     }
 }

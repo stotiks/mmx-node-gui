@@ -1,7 +1,5 @@
 ﻿using Mmx.Gui.Win.Common;
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,15 +11,19 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
     /// </summary>
     public partial class ConnectionPage
     {
+        public HarvesterOptions HarvesterOptions => HarvesterOptions.Instance;
+        private Mmx.Gui.Win.Common.Harvester _harvester;
         private readonly UILogger _logger = new UILogger();
         public UILogger Logger => _logger;
 
-        public HarvesterOptions HarvesterOptions => HarvesterOptions.Instance;
-
-        public ConnectionPage()
+        public ConnectionPage(Mmx.Gui.Win.Common.Harvester harvester)
         {
             InitializeComponent();
             DataContext = this;
+
+            _harvester = harvester;
+            _harvester.OutputDataReceived += _logger.OutputDataReceived;
+            _harvester.ErrorDataReceived += _logger.ErrorDataReceived;
         }
 
         private void DetectButton_Click(object sender, RoutedEventArgs e)
@@ -40,39 +42,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         {
             var dnsEndPoint = new DnsEndPoint(HostTextBox.Text, (int)PortNumberBox.Value);
             HarvesterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
-
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
-            {
-                WorkingDirectory = Node.workingDirectory,
-                FileName = Path.Combine(Node.workingDirectory, Node.runHarvesterCMDPath),
-
-                UseShellExecute = false,
-                CreateNoWindow = true,
-
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                RedirectStandardInput = false
-            };
-
-#if DEBUG
-            //processStartInfo.FileName = "ping";
-            //processStartInfo.Arguments = "google.com -n 3";
-#endif
-            Process process = new Process
-            {
-                StartInfo = processStartInfo,
-                EnableRaisingEvents = true
-            };
-
-            process.OutputDataReceived += Logger.OutputDataReceived;
-            process.ErrorDataReceived += Logger.ErrorDataReceived;
-
-            process.Exited += OnProcessExit;
-            process.Start();
-            //OnProcessStart();
-
-            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
+            _harvester.StartAsync();
         }
 
         private void OnProcessExit(object sender, EventArgs e)

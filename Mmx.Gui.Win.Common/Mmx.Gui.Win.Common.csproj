@@ -48,11 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CefUtils.cs" />
+    <Compile Include="Harvester.cs" />
     <Compile Include="HarvesterOptions.cs" />
     <Compile Include="NodeApi.cs" />
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="NodeBase.cs" />
     <Compile Include="Plotter\PlotterOptions.cs" />
     <Compile Include="Plotter\PlotterProcess.cs" />
     <Compile Include="PowerManagement.cs" />

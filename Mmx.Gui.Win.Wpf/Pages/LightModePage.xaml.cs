@@ -16,8 +16,8 @@ namespace Mmx.Gui.Win.Wpf.Pages
             InitializeComponent();
             DataContext = this;
 
-            Node.OutputDataReceived += Logger.OutputDataReceived;
-            Node.ErrorDataReceived += Logger.ErrorDataReceived;
+            //Node.OutputDataReceived += Logger.OutputDataReceived;
+            //Node.ErrorDataReceived += Logger.ErrorDataReceived;
         }
 
         private void FullModeButton_Click(object sender, RoutedEventArgs e)
