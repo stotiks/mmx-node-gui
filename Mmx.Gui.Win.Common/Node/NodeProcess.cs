@@ -9,25 +9,6 @@ namespace Mmx.Gui.Win.Common.Node
 {
     public class NodeProcess : ProcessWrapper
     {
-        private void Activate()
-        {
-            if (!Directory.Exists(NodeHelpers.configPath))
-            {
-                //TODO
-                //var process = GetProcess(NodeHelpers.activateCMDPath);
-                //process.WaitForExit();
-
-                var json = File.ReadAllText(NodeHelpers.walletConfigPath);
-
-                JObject walletConfig = JsonConvert.DeserializeObject<JObject>(json);
-                walletConfig.Property("key_files+").Remove();
-                walletConfig.Add(new JProperty("key_files", new JArray()));
-
-                json = JsonConvert.SerializeObject(walletConfig, Formatting.Indented);
-                File.WriteAllText(NodeHelpers.walletConfigPath, json);
-            }
-        }
-
         public override void Start()
         {
             OnBeforeStart();
@@ -48,11 +29,18 @@ namespace Mmx.Gui.Win.Common.Node
                 timeout -= delay;
                 Task.Delay(delay).Wait();
             }
-            
+
             Task.Run(async () => { await OnStartedAsync(); });
             OnStarted();
         }
 
+        private void Activate()
+        {
+            var aProcess = new ActivateProcess();
+            aProcess.OutputDataReceived += OnOutputDataReceived;
+            aProcess.ErrorDataReceived += OnErrorDataReceived;
+            aProcess.Start();
+        }
 
         private void StartProcess()
         {

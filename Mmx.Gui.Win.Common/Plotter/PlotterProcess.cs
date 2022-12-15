@@ -73,7 +73,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private void CleanFs()
         {
-            OnOutputDataReceived(this, "Temp files cleaning");
+            OnOutputDataReceived(this, "Temp files cleaning...");
 
             var deletedCount = 0;
 

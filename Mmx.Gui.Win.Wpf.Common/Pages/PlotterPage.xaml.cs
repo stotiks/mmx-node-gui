@@ -19,7 +19,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             DataContext = this;
 
             //NFT PLOTS DISABLED
-            PlotterOptions.Instance.nftplot.Value = false;
+            //PlotterOptions.Instance.nftplot.Value = false;
             createPlotNFT.IsEnabled = false;
 
         }

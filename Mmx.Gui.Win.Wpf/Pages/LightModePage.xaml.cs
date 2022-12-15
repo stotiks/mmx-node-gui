@@ -11,13 +11,13 @@ namespace Mmx.Gui.Win.Wpf.Pages
     {
         private readonly UILogger _logger = new UILogger();
         public UILogger Logger => _logger;
-        public LightModePage()
+        public LightModePage(Win.Common.Node.NodeProcess nodeProcess)
         {
             InitializeComponent();
             DataContext = this;
 
-            //Node.OutputDataReceived += Logger.OutputDataReceived;
-            //Node.ErrorDataReceived += Logger.ErrorDataReceived;
+            nodeProcess.OutputDataReceived += Logger.OutputDataReceived;
+            nodeProcess.ErrorDataReceived += Logger.ErrorDataReceived;
         }
 
         private void FullModeButton_Click(object sender, RoutedEventArgs e)

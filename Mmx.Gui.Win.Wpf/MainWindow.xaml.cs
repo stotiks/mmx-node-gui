@@ -25,7 +25,7 @@ namespace Mmx.Gui.Win.Wpf
     /// </summary>
     public partial class MainWindow
     {
-        private readonly NodeProcess node = new NodeProcess();
+        private readonly NodeProcess nodeProcess = new NodeProcess();
         private readonly MMXBoundObject mmxBoundObject = new MMXBoundObject();
 
         private readonly UpdateChecker updateChecker = new UpdateChecker();
@@ -53,7 +53,7 @@ namespace Mmx.Gui.Win.Wpf
 
             InitializeComponent();
             DataContext = this;
-            //nodePage = new LightModePage();
+            //nodePage = new LightModePage(nodeProcess);
 
             InitializeCef();
 
@@ -64,7 +64,7 @@ namespace Mmx.Gui.Win.Wpf
             BeforeClose += async (o, e) =>
             {
                 nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
-                await node.StopAsync();
+                await nodeProcess.StopAsync();
             };
 
             Closing += MainWindow_Closing;
@@ -72,7 +72,7 @@ namespace Mmx.Gui.Win.Wpf
 
         private void InitializeNode()
         {            
-            node.StartedAsync += async (sender, e) =>
+            nodeProcess.StartedAsync += async (sender, e) =>
             {
                 if (Settings.Default.CheckForUpdates)
                 {
@@ -80,7 +80,7 @@ namespace Mmx.Gui.Win.Wpf
                 }                
             };
 
-            node.StartAsync();
+            nodeProcess.StartAsync();
         }
 
         public void InitializeCef()
@@ -100,7 +100,7 @@ namespace Mmx.Gui.Win.Wpf
             mmxBoundObject.KeysToPlotter += CopyKeysToPlotter;
 
             //node.BeforeStarted += (sender, e) => chromiumWebBrowser.LoadHtml(Node.waitStartHtml, Node.dummyUri.ToString());
-            node.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(NodeApi.loadingHtml, NodeApi.dummyUri.ToString());
+            nodeProcess.BeforeStop += (sender, e) => chromiumWebBrowser.LoadHtml(NodeApi.loadingHtml, NodeApi.dummyUri.ToString());
 
             chromiumWebBrowser.LoadHtml(NodeApi.waitStartHtml, NodeApi.dummyUri.ToString());
         }

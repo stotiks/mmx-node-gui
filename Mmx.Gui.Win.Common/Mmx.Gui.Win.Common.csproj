@@ -50,6 +50,7 @@
     <Compile Include="CefUtils.cs" />
     <Compile Include="Harvester\HarvesterProcess.cs" />
     <Compile Include="Harvester\HarvesterOptions.cs" />
+    <Compile Include="Node\ActivateProcess.cs" />
     <Compile Include="Node\NodeApi.cs" />
     <Compile Include="MMXBoundObject.cs" />
     <Compile Include="NativeMethods.cs" />
