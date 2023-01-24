@@ -45,6 +45,7 @@
             <ui:NavigationViewItem Tag="PlotterPage" Content="{lex:Loc Plotter_Title}" Icon="Library" />
             <ui:NavigationViewItemHeader Height="100" />
             <!--ui:NavigationViewItemSeparator/-->
+            <ui:NavigationViewItem Tag="ConsoleLogsPage" Content="{lex:Loc ConsoleLogs_Title}" Icon="ShowResults" />
             <ui:NavigationViewItem Tag="SettingsPage" Content="{lex:Loc Settings_Title}" Icon="Setting" />
         </ui:NavigationView.MenuItems>
 

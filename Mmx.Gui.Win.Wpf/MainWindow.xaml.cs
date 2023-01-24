@@ -37,6 +37,7 @@ namespace Mmx.Gui.Win.Wpf
         private readonly HarvesterPage harvesterPage = new HarvesterPage();
         private readonly PlotterPage plotterPage = new PlotterPage();
         private readonly SettingsPage settingsPage = new SettingsPage();
+        private readonly ConsoleLogsPage consoleLogsPage;
 
         public MainWindow()
         {
@@ -53,9 +54,10 @@ namespace Mmx.Gui.Win.Wpf
 
             InitializeComponent();
             DataContext = this;
-            //nodePage = new LightModePage(nodeProcess);
+            nodePage = new LightModePage(nodeProcess);
+            consoleLogsPage = new ConsoleLogsPage(nodeProcess);
 
-            InitializeCef();
+            //InitializeCef();
 
             InitializeNode();
 
@@ -165,6 +167,9 @@ namespace Mmx.Gui.Win.Wpf
                         break;
                     case "PlotterPage":
                         ContentFrame.Content = plotterPage;
+                        break;
+                    case "ConsoleLogsPage":
+                        ContentFrame.Content = consoleLogsPage;
                         break;
                     case "SettingsPage":
                         ContentFrame.Content = settingsPage;

@@ -15,16 +15,17 @@ namespace Mmx.Gui.Win.Common.Properties {
         public static bool CloseToNotification => Settings.Default.ShowInNotification && Settings.Default._CloseToNotification;
 
         public static bool IsDarkTheme => Settings.Default.Theme == "Dark";
-
-        private Settings() {
-
-            if (this.SettingsUpgradeRequired)
+        static Settings()
+        {
+            if (Settings.Default.SettingsUpgradeRequired)
             {
-                this.Upgrade();
-                this.SettingsUpgradeRequired = false;
-                this.Save();
-            }
-
+                Settings.Default.Upgrade();
+                Settings.Default.SettingsUpgradeRequired = false;
+                Settings.Default.Save();
+            }        
+        }
+        private Settings() 
+        {
             // // To add event handlers for saving and changing settings, uncomment the lines below:
             //
             // this.SettingChanging += this.SettingChangingEventHandler;
@@ -70,7 +71,7 @@ namespace Mmx.Gui.Win.Common.Properties {
         //private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e) {
         //    // Add code to handle the SettingChangingEvent event here.
         //}
-        
+
         //private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
         //    // Add code to handle the SettingsSaving event here.
         //}

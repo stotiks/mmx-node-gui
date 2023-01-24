@@ -94,6 +94,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 var files = Directory.GetFiles(dir, "*.tmp")
                     .Where(path => reg.IsMatch(Path.GetFileName(path)))
                     .ToList();
+
                 foreach (string file in files)
                 {
                     File.Delete(file);

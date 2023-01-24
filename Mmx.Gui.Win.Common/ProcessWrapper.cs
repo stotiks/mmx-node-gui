@@ -15,7 +15,7 @@ namespace Mmx.Gui.Win.Common.Node
         private bool _isRunning;
 
         private bool _processSuspended;
-        protected Process process = new Process();
+        protected Process process;
 
         public Action WaitForExit => process.WaitForExit;
 
