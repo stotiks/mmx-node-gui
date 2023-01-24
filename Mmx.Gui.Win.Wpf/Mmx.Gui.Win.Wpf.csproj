@@ -101,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ConsoleLogsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LightModePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +115,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\ConsoleLogsPage.xaml.cs">
+      <DependentUpon>ConsoleLogsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LightModePage.xaml.cs">
       <DependentUpon>LightModePage.xaml</DependentUpon>
     </Compile>
@@ -127,7 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf">
-      <Version>108.4.130</Version>
+      <Version>109.1.110</Version>
     </PackageReference>
     <PackageReference Include="ModernWpfUI">
       <Version>0.9.6</Version>
