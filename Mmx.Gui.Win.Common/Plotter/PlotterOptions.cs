@@ -49,6 +49,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public ObservableCollection<Item<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
         public T Maximum { get; internal set; }
+        public bool AddQuotes { get; internal set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -71,7 +72,13 @@ namespace Mmx.Gui.Win.Common.Plotter
                 }
                 else if (!string.IsNullOrEmpty(Value.ToString()))
                 {
-                    result = $"-{Name} {Value}";
+                    var value = Value.ToString();
+                    if(AddQuotes && value.Contains(" "))
+                    {
+                        value = $"\"{value}\"";
+                        value = value.Replace("\\\"", "\\\\\"");
+                    }
+                    result = $"-{Name} {value}";
                 }
             }
 
@@ -175,7 +182,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "d",
             LongName = "finaldir",
-            DefaultValue = ""
+            DefaultValue = "",
+            AddQuotes = true
         };
 
         [Order]
@@ -183,7 +191,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "t",
             LongName = "tmpdir",
-            DefaultValue = ""
+            DefaultValue = "",
+            AddQuotes = true
         };
 
         [Order]
@@ -191,7 +200,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "2",
             LongName = "tmpdir2",
-            DefaultValue = ""
+            DefaultValue = "",
+            AddQuotes = true
         };
 
         [Order]
@@ -199,7 +209,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "s",
             LongName = "stagedir",
-            DefaultValue = ""
+            DefaultValue = "",
+            AddQuotes = true
         };
 
         [Order]
