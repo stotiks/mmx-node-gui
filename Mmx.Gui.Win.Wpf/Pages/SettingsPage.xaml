@@ -108,7 +108,11 @@
                     </ui:SimpleStackPanel>
                 </GroupBox>
 
-                <GroupBox Header="{lex:Loc Settings_Debug}" Margin="0,0,0,-40" x:Name="DebugGroupBox" MouseDown="DebugGroupBox_MouseDown"/>
+                <GroupBox Header="{lex:Loc Settings_Debug}" Margin="0,0,0,-40" x:Name="DebugGroupBox" MouseDown="DebugGroupBox_MouseDown">
+                    <GroupBox.ToolTip>
+                        <TextBlock Text="{lex:Loc Settings_Debug_Tooltip}"/>
+                    </GroupBox.ToolTip>
+                </GroupBox>
                 <GroupBox IsEnabled="{Binding DebugGroupBoxIsEnabled}">
                     <ui:SimpleStackPanel>
                         

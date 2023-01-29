@@ -529,6 +529,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Triple click to enable.
+        /// </summary>
+        public static string Settings_Debug_Tooltip {
+            get {
+                return ResourceManager.GetString("Settings_Debug_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disable OpenCL.
         /// </summary>
         public static string Settings_DisableOpenCL {

@@ -395,4 +395,8 @@
     <value>Logs</value>
     <comment>main</comment>
   </data>
+  <data name="Settings_Debug_Tooltip" xml:space="preserve">
+    <value>Triple click to enable</value>
+    <comment>settings</comment>
+  </data>
 </root>
