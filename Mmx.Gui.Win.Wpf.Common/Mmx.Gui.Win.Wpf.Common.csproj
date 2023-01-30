@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Converters\BooleanInverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverterInverted.cs" />
     <Compile Include="Converters\PathFixConverter.cs" />
     <Compile Include="Dialogs\PlotterDialog.xaml.cs">
       <DependentUpon>PlotterDialog.xaml</DependentUpon>

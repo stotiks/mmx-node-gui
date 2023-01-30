@@ -22,6 +22,8 @@
     
     <Page.Resources>
         <cv:BooleanInverter x:Key="BooleanInverter"/>
+        <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <cv:BooleanToVisibilityConverterInverted x:Key="BooleanToVisibilityConverterInverted"/>
     </Page.Resources>
 
     <Grid Margin="25,0,25,25">
@@ -31,32 +33,34 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <TextBlock  
+        <TextBlock
             Grid.Row="0"
             Text="Connect"
             Style="{StaticResource TitleTextBlockStyle}"
             FontSize="28"
             Margin="0,8,0,12" />
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-        <ui:SimpleStackPanel
-            Grid.Row="1"
-            x:Name="ConnectionGroup"                        
-            IsEnabled="{Binding HarvesterProcess.IsRunning, Converter={StaticResource BooleanInverter}}"
-            Orientation="Horizontal">
-
-            <TextBox
+            <TextBox Grid.Column="0"
                 x:Name="HostTextBox"
+                IsEnabled="{Binding ConnectElementsEnabled}"
                 ui:ControlHelper.Header="Host"
-                Width="300"
+                HorizontalAlignment="Stretch"
                 Text="{Binding HarvesterOptions.Host}"/>
 
-            <Label
-                Content=""
-                VerticalAlignment="Center"
-                Margin="2,0,2,0" />
-
-            <ui:NumberBox
+            <ui:NumberBox Grid.Column="2"
                 x:Name="PortNumberBox"
+                IsEnabled="{Binding ConnectElementsEnabled}"                
                 Width="200"
                 Header="Port"
                 Minimum="1"
@@ -64,30 +68,32 @@
                 SpinButtonPlacementMode="Inline"
                 Value="{Binding HarvesterOptions.Port}"/>
 
-            <Label
-                Content=""
-                VerticalAlignment="Center"
-                Margin="2,0,2,0" />
 
-            <Button
+            <Button Grid.Column="4"
                 x:Name="DetectButton"
+                IsEnabled="{Binding ConnectElementsEnabled}"
                 Width="100"
                 Content="Detect"               
                 VerticalAlignment="Bottom" Click="DetectButton_Click"/>
-            
-            <Label
-                Content=""
-                VerticalAlignment="Center"
-                Margin="2,0,2,0"></Label>
-            
-            <Button
+
+            <Button Grid.Column="36"
                 x:Name="ConnectButton"
+                Visibility="{Binding HarvesterProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverterInverted}}"
+                IsEnabled="{Binding ConnectElementsEnabled}"
                 Width="200"
                 Content="Connect"
                 Style="{StaticResource AccentButtonStyle}"
                 VerticalAlignment="Bottom" Click="ConnectButton_Click"/>
-            
-        </ui:SimpleStackPanel>
+
+            <Button Grid.Column="36"
+                x:Name="DisconnectButton"
+                Visibility="{Binding HarvesterProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Width="200"
+                Content="Disconnect"
+                VerticalAlignment="Bottom" Click="DisconnectButton_Click"/>
+
+        </Grid>
+
 
         <TextBox 
             Grid.Row="3"
