@@ -399,4 +399,8 @@
     <value>Triple click to enable</value>
     <comment>settings</comment>
   </data>
+  <data name="FullModeButton_Text" xml:space="preserve">
+    <value>Full Mode</value>
+    <comment>main</comment>
+  </data>
 </root>

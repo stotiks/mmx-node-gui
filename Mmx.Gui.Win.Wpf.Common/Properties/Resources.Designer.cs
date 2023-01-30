@@ -97,6 +97,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full Mode.
+        /// </summary>
+        public static string FullModeButton_Text {
+            get {
+                return ResourceManager.GetString("FullModeButton_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Harvester_Add {

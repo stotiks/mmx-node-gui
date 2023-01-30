@@ -33,7 +33,7 @@ namespace Mmx.Gui.Win.Wpf
 
         private ChromiumWebBrowser chromiumWebBrowser;
 
-        private System.Windows.Controls.Page nodePage = new System.Windows.Controls.Page();
+        private System.Windows.Controls.Page nodePage;// = new System.Windows.Controls.Page();
         private readonly HarvesterPage harvesterPage = new HarvesterPage();
         private readonly PlotterPage plotterPage = new PlotterPage();
         private readonly SettingsPage settingsPage = new SettingsPage();
@@ -53,11 +53,16 @@ namespace Mmx.Gui.Win.Wpf
             InitializeLocalization();
 
             InitializeComponent();
-            DataContext = this;
-            nodePage = new LightModePage(nodeProcess);
+            DataContext = this;            
             consoleLogsPage = new ConsoleLogsPage(nodeProcess);
 
-            //InitializeCef();
+            if (!Settings.Default.LightMode)
+            {
+                InitializeCef();
+            } else
+            {
+                nodePage = new LightModePage(nodeProcess);
+            }
 
             InitializeNode();
 
@@ -90,6 +95,7 @@ namespace Mmx.Gui.Win.Wpf
             CefUtils.InitializeCefSharp(new CefSettings());
 
             chromiumWebBrowser = new ChromiumWebBrowser();
+            nodePage = new System.Windows.Controls.Page();
             nodePage.Content = chromiumWebBrowser;
 
             CefSharpSettings.WcfEnabled = true;

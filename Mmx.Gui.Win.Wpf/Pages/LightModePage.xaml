@@ -20,36 +20,12 @@
     d:DesignHeight="650" d:DesignWidth="1200"
     Title="Light Node Page">
 
-    <TabControl
-            x:Name="TabView4"
-            SelectedIndex="0" 
-            Grid.Row="0"
-            TabStripPlacement="Bottom"
-        ui:ThemeManager.HasThemeResources="True">
-
-
-        <TabControl.Items>
-            <TabItem Header="Node">
-                <Button
-                        x:Name="FullModeButton"
-                        Width="200"
-                        Content="Full Mode"
-                        HorizontalAlignment="Center"
-                        Style="{StaticResource AccentButtonStyle}"
-                        Click="FullModeButton_Click"/>
-            </TabItem>
-            <TabItem Header="CMD">
-                <TextBox
-                        x:Name="TextBoxLog"
-                        Text="{Binding Logger.Text, Mode=OneWay}"
-                        HorizontalAlignment="Stretch"
-                        IsReadOnly="True"
-                        FontFamily="Courier New"
-                        VerticalScrollBarVisibility="Auto"
-                        HorizontalScrollBarVisibility="Auto"
-                        TextChanged="TextBoxLog_TextChanged">
-                </TextBox>
-            </TabItem>
-        </TabControl.Items>
-    </TabControl>
+    <Button
+        x:Name="FullModeButton"
+        MinWidth="200"
+        Content="{lex:Loc FullModeButton_Text}"
+        HorizontalAlignment="Center"
+        Style="{StaticResource AccentButtonStyle}"
+        Click="FullModeButton_Click"/>
+    
 </Page>

@@ -116,9 +116,9 @@
                 <GroupBox IsEnabled="{Binding DebugGroupBoxIsEnabled}">
                     <ui:SimpleStackPanel>
                         
-                        <!--ui:ToggleSwitch
+                        <ui:ToggleSwitch
                             Header="{lex:Loc Settings_LightMode}"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}"/-->                        
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}"/>                        
 
                         <ui:ToggleSwitch
                             Header="{lex:Loc Settings_ShowConsole}"
