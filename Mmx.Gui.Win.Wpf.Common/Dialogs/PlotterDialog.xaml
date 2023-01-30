@@ -19,7 +19,6 @@
 >
     <ui:ContentDialog.Resources>
         <cv:BooleanInverter x:Key="BooleanInverter"/>
-        <cv:BooleanToVisibilityConverter x:Key="BoolToVis" />
     </ui:ContentDialog.Resources>
     
     <Grid>
