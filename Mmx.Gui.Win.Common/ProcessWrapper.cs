@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -44,6 +45,15 @@ namespace Mmx.Gui.Win.Common.Node
             {
                 _processSuspended = value;
                 NotifyPropertyChanged();
+            }
+        }
+        protected static void KillByProcessName(string name)
+        {
+            var processes = Process.GetProcesses().Where(pr => pr.ProcessName == name);
+
+            foreach (var process in processes)
+            {
+                process.Kill();
             }
         }
 

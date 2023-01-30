@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common.Node
@@ -31,7 +32,10 @@ namespace Mmx.Gui.Win.Common.Node
         private static readonly Uri sessionUri = new Uri(baseUri, "/server/session");
 
 
-        private static readonly HttpClient httpClient = new HttpClient();
+        private static readonly HttpClient httpClient = new HttpClient()
+        {
+            Timeout = TimeSpan.FromSeconds(10)
+        };
 
         private static string logoutJS = GetResource("logout.js");
         private static string waitStartJS = GetResource("waitStart.js");
@@ -116,7 +120,7 @@ namespace Mmx.Gui.Win.Common.Node
             }
             catch (Exception)
             {
-                Console.WriteLine("Node not running");
+                Console.WriteLine("Node is not running");
             }
 
             return false;

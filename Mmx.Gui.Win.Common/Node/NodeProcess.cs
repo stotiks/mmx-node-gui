@@ -1,8 +1,6 @@
 ﻿using Mmx.Gui.Win.Common.Properties;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Diagnostics;
-using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common.Node
@@ -85,6 +83,7 @@ namespace Mmx.Gui.Win.Common.Node
                     timeout -= delay;
                     Task.Delay(delay).Wait();
                 }
+                KillByProcessName("mmx_node");
             }
 
             OnStop();
