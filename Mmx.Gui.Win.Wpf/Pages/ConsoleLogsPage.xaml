@@ -8,16 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConsoleLogsPage">
 
-    <Grid>
+    <Grid Margin="0,0,5,0">
         <TextBox
-                        x:Name="TextBoxLog"
-                        Text="{Binding Logger.Text, Mode=OneWay}"
-                        HorizontalAlignment="Stretch"
-                        IsReadOnly="True"
-                        FontFamily="Courier New"
-                        VerticalScrollBarVisibility="Auto"
-                        HorizontalScrollBarVisibility="Auto"
-                        TextChanged="TextBoxLog_TextChanged">
+            x:Name="TextBoxLog"
+            Text="{Binding Logger.Text, Mode=OneWay}"
+            HorizontalAlignment="Stretch"
+            IsReadOnly="True"
+            FontFamily="Courier New"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            TextChanged="TextBoxLog_TextChanged">
         </TextBox>
     </Grid>
 </Page>

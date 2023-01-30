@@ -89,11 +89,13 @@ namespace Mmx.Gui.Win.Common.Node
 
             processStartInfo.WorkingDirectory = NodeHelpers.workingDirectory;
             processStartInfo.UseShellExecute = false;
-            //processStartInfo.CreateNoWindow = true;
 
-            processStartInfo.RedirectStandardOutput = true;
-            processStartInfo.RedirectStandardError = true;
-            processStartInfo.RedirectStandardInput = false;
+            if (processStartInfo.CreateNoWindow)
+            {
+                processStartInfo.RedirectStandardOutput = true;
+                processStartInfo.RedirectStandardError = true;
+                processStartInfo.RedirectStandardInput = false;
+            }
 
             process = new Process
             {

@@ -52,8 +52,15 @@ namespace Mmx.Gui.Win.Common.Node
             {
                 FileName = NodeHelpers.runNodeCMDPath,
                 Arguments = arguments,
-                CreateNoWindow = true
+                CreateNoWindow = !Settings.Default.ShowConsole
             };
+
+            if (Settings.Default.ShowConsole)
+            {
+#if !DEBUG
+                processStartInfo.Arguments = "--PauseOnExit " + processStartInfo.Arguments;
+#endif
+            }
 
             Start(processStartInfo);
         }
