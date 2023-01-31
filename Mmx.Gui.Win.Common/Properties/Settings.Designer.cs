@@ -222,5 +222,17 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["LightMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConnectOnStart {
+            get {
+                return ((bool)(this["ConnectOnStart"]));
+            }
+            set {
+                this["ConnectOnStart"] = value;
+            }
+        }
     }
 }

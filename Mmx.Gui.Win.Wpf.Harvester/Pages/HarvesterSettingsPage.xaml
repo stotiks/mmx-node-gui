@@ -1,0 +1,78 @@
+﻿<Page 
+    x:Class="Mmx.Gui.Win.Wpf.Harvester.Pages.HarvesterSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:properties="clr-namespace:Mmx.Gui.Win.Common.Properties;assembly=Mmx.Gui.Win.Common"
+    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Harvester.Pages"
+    
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="Mmx.Gui.Win.Wpf.Common"
+    lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
+    
+    mc:Ignorable="d"
+    d:DesignHeight="1450" 
+    d:DesignWidth="800"
+    Title="HarvesterSettingsPage">
+
+    <Grid Margin="25,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+            Text="{lex:Loc Settings_Title}"
+            Style="{StaticResource TitleTextBlockStyle}"
+            FontSize="28"
+            Margin="0,8,0,12" />
+        
+        <ScrollViewer Grid.Row="1">
+            <ui:SimpleStackPanel>
+                <GroupBox Header="{lex:Loc Settings_StartUp}">
+                    <ui:SimpleStackPanel>
+                        <ui:ToggleSwitch 
+                            Header="{lex:Loc Settings_ConnectOnStart}"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ConnectOnStart}"/>                        
+                        <ui:ToggleSwitch 
+                                Header="{lex:Loc Settings_StartOnStartup}"
+                                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=StartOnStartup}"/>
+                        <ui:ToggleSwitch 
+                                Header="{lex:Loc Settings_StartMinimized}"
+                                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=StartMinimized}"/>
+                        <ui:ToggleSwitch 
+                                Header="{lex:Loc Settings_ConfirmationOnExit}"
+                                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ConfirmationOnExit}"/>
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{lex:Loc Settings_NotificationArea}">
+                    <ui:SimpleStackPanel>
+                        <ui:ToggleSwitch 
+                                x:Name="ShowInNotificationCheckBox" 
+                                Header="{lex:Loc Settings_ShowInNotification}"
+                                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ShowInNotification}"/>
+                        <ui:ToggleSwitch
+                                Header="{lex:Loc Settings_MinimizeToNotification}"
+                                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=_MinimizeToNotification}"
+                                IsEnabled="{Binding ElementName=ShowInNotificationCheckBox, Path=IsOn}"/>
+                        <ui:ToggleSwitch 
+                                Header="{lex:Loc Settings_CloseToNotification}"
+                                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=_CloseToNotification}"
+                                IsEnabled="{Binding ElementName=ShowInNotificationCheckBox, Path=IsOn}"/>
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{lex:Loc Settings_PowerManagement}">
+                    <ui:ToggleSwitch 
+                            Header="{lex:Loc Settings_InhibitSystemSleep}"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=InhibitSystemSleep}"/>
+                </GroupBox>
+            </ui:SimpleStackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

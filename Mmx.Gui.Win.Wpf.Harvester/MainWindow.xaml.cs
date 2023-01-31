@@ -1,9 +1,12 @@
-﻿using Mmx.Gui.Win.Common;
-using Mmx.Gui.Win.Common.Harvester;
+﻿using Mmx.Gui.Win.Common.Harvester;
+using Mmx.Gui.Win.Common.Properties;
 using Mmx.Gui.Win.Wpf.Common.Pages;
 using Mmx.Gui.Win.Wpf.Harvester.Pages;
 using ModernWpf.Controls;
+using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace Mmx.Gui.Win.Wpf.Harvester
 {
@@ -12,17 +15,26 @@ namespace Mmx.Gui.Win.Wpf.Harvester
     /// </summary>
     public partial class MainWindow
     {
-
         private readonly HarvesterProcess harvesterProcess = new HarvesterProcess();
-        private readonly HarvesterPage _harvesterPage;
-        private readonly ConnectionPage _connectionPage;
 
-        public MainWindow()
+        private readonly ConnectionPage _connectionPage;
+        private readonly HarvesterPage _harvesterPage;
+        private readonly HarvesterSettingsPage _harvesterSettingsPage = new HarvesterSettingsPage();
+
+        public MainWindow(): base()
         {
-            _harvesterPage = new HarvesterPage(harvesterProcess);
+            if (Settings.Default.StartMinimized)
+            {
+                WindowState = WindowState.Minimized;
+                if (Settings.MinimizeToNotification)
+                {
+                    Hide();
+                }
+            }
 
             InitializeComponent();
 
+            _harvesterPage = new HarvesterPage(harvesterProcess);
             _connectionPage = new ConnectionPage(harvesterProcess);
             ContentFrame.Content = _connectionPage;
 
@@ -31,7 +43,14 @@ namespace Mmx.Gui.Win.Wpf.Harvester
                 await harvesterProcess.StopAsync();
             };
 
+            Closing += MainWindow_Closing;
+
             nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
+
+            if(Settings.Default.ConnectOnStart)
+            {
+                harvesterProcess.Start();
+            }
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -46,8 +65,37 @@ namespace Mmx.Gui.Win.Wpf.Harvester
                 case "HarvesterPage":
                     ContentFrame.Content = _harvesterPage;
                     break;
+                case "HarvesterSettingsPage":
+                    ContentFrame.Content = _harvesterSettingsPage;
+                    break;
             }
 
+        }
+
+        private async Task MainWindow_Closing(object sender, CancelEventArgs args)
+        {
+            await Task.Yield();
+            args.Cancel = false;
+
+            if (Settings.Default.ConfirmationOnExit)
+            {
+                var dialog = new ContentDialog
+                {
+                    Title = "Do you want to close the application?", //TODO i18n
+                    PrimaryButtonText = "Yes", //TODO i18n
+                    SecondaryButtonText = "No", //TODO i18n
+                    DefaultButton = ContentDialogButton.Secondary
+                };
+
+                var result = await dialog.ShowAsync();
+                dialog.Hide();
+
+                if (result != ContentDialogResult.Primary)
+                {
+                    args.Cancel = true;
+                }
+
+            }
         }
     }
 }

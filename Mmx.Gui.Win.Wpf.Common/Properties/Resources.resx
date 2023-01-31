@@ -403,4 +403,8 @@
     <value>Full Mode</value>
     <comment>main</comment>
   </data>
+  <data name="Settings_ConnectOnStart" xml:space="preserve">
+    <value>Connect on start</value>
+    <comment>harvester_settings</comment>
+  </data>
 </root>

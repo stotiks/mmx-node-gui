@@ -35,6 +35,10 @@
         <ui:NavigationView.MenuItems>
             <ui:NavigationViewItem Tag="ConnectionPage" Content="Connect" Icon="Globe" />
             <ui:NavigationViewItem Tag="HarvesterPage" Content="{lex:Loc Harvester_Title}" Icon="NewFolder" />
+            
+            <ui:NavigationViewItemHeader Height="100" />
+            
+            <ui:NavigationViewItem Tag="HarvesterSettingsPage" Content="{lex:Loc Settings_Title}" Icon="Setting" />
         </ui:NavigationView.MenuItems>
         
         <ui:Frame x:Name="ContentFrame" MinWidth="1000" Navigating="ContentFrame_Navigating"/>

@@ -1,8 +1,10 @@
 ﻿using Mmx.Gui.Win.Common;
 using Mmx.Gui.Win.Common.Properties;
 using System;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -32,7 +34,70 @@ namespace Mmx.Gui.Win.Wpf.Harvester
                 }
                 Current.Shutdown();
             }
+
+            InitNotifyIcon();
         }
+
+        readonly NotifyIcon notifyIcon = new NotifyIcon();
+        readonly ContextMenu notifyIconContextMenu = new ContextMenu();
+
+        private void InitNotifyIcon()
+        {
+            notifyIcon.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+
+            notifyIcon.Visible = Settings.Default.ShowInNotification;
+            //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
+            notifyIcon.DoubleClick += NotifyIcon_Click;
+
+            this.Exit += (sender, e) => {
+                notifyIcon.Visible = false;
+                notifyIcon.Dispose();
+            };
+
+            notifyIcon.ContextMenu = notifyIconContextMenu;
+            var menuItem1 = new MenuItem
+            {
+                Index = 0,
+                Text = Common.Properties.Resources.Show
+            };
+            menuItem1.Click += NotifyIcon_Click;
+
+            var menuItem3 = new MenuItem
+            {
+                Index = 1,
+                Text = Common.Properties.Resources.Exit
+            };
+            menuItem3.Click += (s, e) =>
+            {
+                MainWindow win = System.Windows.Window.GetWindow(App.Current.MainWindow) as MainWindow;
+                win.Restore();
+                win.Close();
+            };
+
+            notifyIconContextMenu.MenuItems.AddRange(
+               new[] {
+                   menuItem1,
+                   new MenuItem("-"),
+                   menuItem3
+               }
+            );
+
+            Settings.Default.PropertyChanged += (o, e) =>
+            {
+                if (e.PropertyName == nameof(Settings.Default.ShowInNotification))
+                {
+                    notifyIcon.Visible = Settings.Default.ShowInNotification;
+                }
+            };
+
+        }
+
+        void NotifyIcon_Click(object sender, EventArgs e)
+        {
+            MainWindow win = System.Windows.Window.GetWindow(App.Current.MainWindow) as MainWindow;
+            win.Restore();
+        }
+
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             using (ThreadExceptionDialog dlg = new ThreadExceptionDialog(e.Exception))

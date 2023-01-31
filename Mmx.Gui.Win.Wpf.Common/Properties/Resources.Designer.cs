@@ -529,6 +529,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connect on start.
+        /// </summary>
+        public static string Settings_ConnectOnStart {
+            get {
+                return ResourceManager.GetString("Settings_ConnectOnStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         public static string Settings_Debug {
