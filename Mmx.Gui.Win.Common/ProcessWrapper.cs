@@ -60,7 +60,7 @@ namespace Mmx.Gui.Win.Common.Node
 
         protected void Kill()
         {
-            if (process != null && !process.HasExited)
+            if (IsRunning)
             {
                 try
                 {
@@ -109,14 +109,23 @@ namespace Mmx.Gui.Win.Common.Node
 
             process.Exited += (o, e) => OnOutputDataReceived(this, "Process has exited.");
             process.Exited += OnProcessExit;
-            
-            process.Start();
 
-            if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-            if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
-            OnStarted();
+            try
+            {
+                OnOutputDataReceived(this, $"{process.StartInfo.FileName} {process.StartInfo.Arguments}");
 
-            OnOutputDataReceived(this, $"{process.StartInfo.FileName} {process.StartInfo.Arguments}");
+                process.Start();
+
+                if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
+                if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
+                OnStarted();
+            }
+            catch (Exception ex)
+            {
+                OnOutputDataReceived(this, ex.Message);
+            }
+
+
         }
 
         public Task StartAsync()
