@@ -30,7 +30,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             DataContext = this;
             
             plotterProcess.Started += ProcessStarted;
-            plotterProcess.Stopped += ProcessStopped;
+            //plotterProcess.Stopped += ProcessStopped;
             plotterProcess.OutputDataReceived += (sender, args) => WriteLog(args.Data);
             plotterProcess.ErrorDataReceived += (sender, args) => WriteLog(args.Data);
         }
@@ -48,13 +48,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
 
         private void ProcessStopped(object sender, EventArgs e)
         {
-            WriteLog("Process has exited.");
+            //WriteLog("Process has exited.");
         }
 
         private void ProcessStarted(object sender, EventArgs e)
         {
             Logger.Clear();
-            WriteLog($"{plotterProcess.StartInfo.FileName} {plotterProcess.StartInfo.Arguments}");
+            //WriteLog($"{plotterProcess.StartInfo.FileName} {plotterProcess.StartInfo.Arguments}");
         }
 
         private readonly object _logLock = new object();
@@ -114,13 +114,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
                 {
                     plotterProcess.Suspend();
                     PauseButton.Content = Properties.Resources.Plotter_Resume;
-                    WriteLog("Process has suspended.");                    
+                    WriteLog("Process has suspended.");      
                 }
                 else
                 {
                     plotterProcess.Resume();
                     PauseButton.Content = Properties.Resources.Plotter_Pause;
-                    WriteLog("Process has resumed.");                    
+                    WriteLog("Process has resumed.");
                 }
             }
         }

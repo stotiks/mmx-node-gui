@@ -13,13 +13,14 @@ namespace Mmx.Gui.Win.Wpf.Harvester
     public partial class MainWindow
     {
 
-        private readonly HarvesterPage _harvesterPage = new HarvesterPage();
-        private readonly ConnectionPage _connectionPage;
-
         private readonly HarvesterProcess harvesterProcess = new HarvesterProcess();
+        private readonly HarvesterPage _harvesterPage;
+        private readonly ConnectionPage _connectionPage;
 
         public MainWindow()
         {
+            _harvesterPage = new HarvesterPage(harvesterProcess);
+
             InitializeComponent();
 
             _connectionPage = new ConnectionPage(harvesterProcess);

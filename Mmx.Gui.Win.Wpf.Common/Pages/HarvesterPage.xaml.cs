@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Harvester;
 using Mmx.Gui.Win.Common.Node;
 using Newtonsoft.Json.Linq;
 using System;
@@ -21,7 +22,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             InitializeComponent();
             DataContext = this;
         }
+
+        public HarvesterPage(HarvesterProcess harvesterProcess) : this()
+        {
+            this.harvesterProcess = harvesterProcess;
+        }
+
         private ObservableCollection<Directory> _dirs;
+        private HarvesterProcess harvesterProcess;
+
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
             try
@@ -43,19 +52,27 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             var dir = (sender as FrameworkElement).Tag as Directory;
             _dirs.Remove(dir);
             SaveHarvesterConfig();
-            NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(task =>
+
+            if (harvesterProcess != null) 
             {
-                Dispatcher.BeginInvoke(new Action(delegate
+                harvesterProcess.Restart();
+            } else
+            {
+                NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(task =>
                 {
-                    var flyout = new ModernWpf.Controls.Flyout
+                    Dispatcher.BeginInvoke(new Action(delegate
                     {
-                        Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
-                        Content = new TextBlock() { Text = "Harvester reloaded" }
-                    };
-                    flyout.ShowAt(DirCommandBar);
-                    Console.WriteLine("Harvester reloaded");
-                }));
-            });
+                        var flyout = new ModernWpf.Controls.Flyout
+                        {
+                            Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                            Content = new TextBlock() { Text = "Harvester reloaded" }
+                        };
+                        flyout.ShowAt(DirCommandBar);
+                        Console.WriteLine("Harvester reloaded");
+                    }));
+                });
+            }
+
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -68,19 +85,27 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
                 var dirName = dialog.FileName;
                 _dirs.Add(new Directory(dirName));
                 SaveHarvesterConfig();
-                NodeApi.AddPlotDirTask(dirName).ContinueWith(task =>
-                {
-                    Dispatcher.BeginInvoke(new Action(delegate
-                    {
-                        new ModernWpf.Controls.Flyout
-                        {
-                            Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
-                            Content = new TextBlock() { Text = "Harvester reloaded" }
-                        }.ShowAt(DirCommandBar);
 
-                        Console.WriteLine("Harvester reloaded");
-                    }));
-                });
+                if (harvesterProcess != null)
+                {
+                    harvesterProcess.Restart();
+                }
+                else
+                {
+                    NodeApi.AddPlotDirTask(dirName).ContinueWith(task =>
+                    {
+                        Dispatcher.BeginInvoke(new Action(delegate
+                        {
+                            new ModernWpf.Controls.Flyout
+                            {
+                                Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                                Content = new TextBlock() { Text = "Harvester reloaded" }
+                            }.ShowAt(DirCommandBar);
+
+                            Console.WriteLine("Harvester reloaded");
+                        }));
+                    });
+                }
             }
         }
         private void SaveHarvesterConfig()
@@ -97,19 +122,27 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         private void ReloadHarvesterButton_Click(object sender, RoutedEventArgs e)
         {
-            NodeApi.ReloadHarvester().ContinueWith(task =>
+            if (harvesterProcess != null)
             {
-                Dispatcher.BeginInvoke(new Action( delegate
-                {
-                    new ModernWpf.Controls.Flyout
-                    {
-                        Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
-                        Content = new TextBlock() { Text = "Harvester reloaded" }
-                    }.ShowAt(DirCommandBar);
+                harvesterProcess.Restart();
+            }
+            else
+            {
 
-                    Console.WriteLine("Harvester reloaded");
-                }));
-            });
+                NodeApi.ReloadHarvester().ContinueWith(task =>
+                {
+                    Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        new ModernWpf.Controls.Flyout
+                        {
+                            Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                            Content = new TextBlock() { Text = "Harvester reloaded" }
+                        }.ShowAt(DirCommandBar);
+
+                        Console.WriteLine("Harvester reloaded");
+                    }));
+                });
+            }
         }
     }
 

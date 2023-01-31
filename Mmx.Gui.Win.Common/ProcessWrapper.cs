@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mmx.Gui.Win.Common.Plotter;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -53,7 +54,7 @@ namespace Mmx.Gui.Win.Common.Node
 
             foreach (var process in processes)
             {
-                process.Kill();
+                NativeMethods.KillProcessAndChildren(process.Id);
             }
         }
 
@@ -63,7 +64,7 @@ namespace Mmx.Gui.Win.Common.Node
             {
                 try
                 {
-                    process.Kill();
+                    NativeMethods.KillProcessAndChildren(process.Id);
                 }
                 catch
                 {
@@ -106,13 +107,16 @@ namespace Mmx.Gui.Win.Common.Node
             process.OutputDataReceived += OnOutputDataReceived;
             process.ErrorDataReceived += OnErrorDataReceived;
 
-            process.Exited += OnProcessExit;            
-            process.Start();            
+            process.Exited += (o, e) => OnOutputDataReceived(this, "Process has exited.");
+            process.Exited += OnProcessExit;
+            
+            process.Start();
 
             if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
             if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
-
             OnStarted();
+
+            OnOutputDataReceived(this, $"{process.StartInfo.FileName} {process.StartInfo.Arguments}");
         }
 
         public Task StartAsync()
