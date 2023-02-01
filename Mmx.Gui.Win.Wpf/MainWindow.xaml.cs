@@ -17,6 +17,7 @@ using WPFLocalizeExtension.Engine;
 using Mmx.Gui.Win.Common.Plotter;
 using System.ComponentModel;
 using Mmx.Gui.Win.Common.Node;
+using ModernWpf;
 
 namespace Mmx.Gui.Win.Wpf
 {
@@ -26,7 +27,7 @@ namespace Mmx.Gui.Win.Wpf
     public partial class MainWindow
     {
         private readonly NodeProcess nodeProcess = new NodeProcess();
-        private readonly MMXBoundObject mmxBoundObject = new MMXBoundObject();
+        private readonly MMXBoundObject mmxBoundObject = new WpfMMXBoundObject();
 
         private readonly UpdateChecker updateChecker = new UpdateChecker();
         public UpdateChecker UpdateChecker => updateChecker;

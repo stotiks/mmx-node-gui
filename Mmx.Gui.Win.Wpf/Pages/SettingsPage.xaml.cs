@@ -36,12 +36,10 @@ namespace Mmx.Gui.Win.Wpf.Pages
 
         public Dictionary<int, string> UpdateIntervals => _updateIntervals;
 
-
-        public Array Themes =>
-            Enum
-                .GetValues(typeof(ModernWpf.ElementTheme))
-                .Cast<ModernWpf.ElementTheme>()
-                .Where(value => value == ModernWpf.ElementTheme.Light || value == ModernWpf.ElementTheme.Dark).ToArray();
+        public Array Themes
+        {
+            get => Enum.GetValues(typeof(ModernWpf.ElementTheme));
+        }
 
         public SettingsPage()
         {

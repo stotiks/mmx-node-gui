@@ -1,10 +1,15 @@
-﻿namespace Mmx.Gui.Win.Common
-{
-    public class MMXBoundObject
-    {
-        public string Locale => Properties.Settings.Default.LanguageCode;
+﻿using Mmx.Gui.Win.Common.Properties;
 
-        public bool Theme_dark => Properties.Settings.IsDarkTheme;
+namespace Mmx.Gui.Win.Common
+{
+    public abstract class MMXBoundObject
+    {
+        public string Locale => Settings.Default.LanguageCode;
+
+        public abstract bool Theme_dark
+        {
+            get;
+        }
 
         public delegate void CopyKeysToPlotterEventHandler(string json);
 

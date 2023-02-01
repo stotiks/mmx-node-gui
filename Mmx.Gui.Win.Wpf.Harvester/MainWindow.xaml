@@ -21,7 +21,7 @@
         MinWidth="1040" MinHeight="650"
         WindowStartupLocation="CenterScreen"
         ui:WindowHelper.UseModernWindowStyle="True"        
-        >
+        ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
     <ui:NavigationView 
         x:Name="nav"
         PaneDisplayMode="Auto"
