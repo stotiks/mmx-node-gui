@@ -14,7 +14,6 @@ namespace Mmx.Gui.Win.Common.Properties {
         public static bool MinimizeToNotification => Settings.Default.ShowInNotification && Settings.Default._MinimizeToNotification;
         public static bool CloseToNotification => Settings.Default.ShowInNotification && Settings.Default._CloseToNotification;
 
-        public static bool IsDarkTheme => Settings.Default.Theme == "Dark";
         static Settings()
         {
             if (Settings.Default.SettingsUpgradeRequired)

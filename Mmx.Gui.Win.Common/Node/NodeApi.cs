@@ -45,7 +45,7 @@ namespace Mmx.Gui.Win.Common.Node
         private static string jsString = "//javascript";
 
         private static string _xApiToken;
-        public static string loadingHtml => loadingHtmlTemplate.Replace("#background-color", !Settings.IsDarkTheme ? "#f2f2f2" : "#121212");
+        public static string loadingHtml => loadingHtmlTemplate;
         public static string logoutHtml => loadingHtml.Replace(jsString, logoutJS);
 
         public static string waitStartHtml => loadingHtml.Replace(jsString, waitStartJS);
