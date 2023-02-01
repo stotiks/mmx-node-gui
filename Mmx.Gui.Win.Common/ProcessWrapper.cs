@@ -1,5 +1,4 @@
-﻿using Mmx.Gui.Win.Common.Plotter;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
