@@ -343,11 +343,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 0x20,
             IsPlotterParam = false,
             Items = new ObservableCollection<Item<int>>(
-                ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(i => {
-                    var value = i;
-                    var isDefault = value == 0x20;
+                ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value => {
+                    var isDefault = value == (int)ProcessPriorityClass.Normal;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), i) + isDefaultString, Value = value };
+                    return new Item<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.None
         };
