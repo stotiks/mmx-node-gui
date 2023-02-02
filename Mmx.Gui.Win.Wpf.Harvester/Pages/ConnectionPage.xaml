@@ -23,7 +23,7 @@
     <Page.Resources>
         <cv:BooleanInverter x:Key="BooleanInverter"/>
         <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-        <cv:BooleanToVisibilityConverterInverted x:Key="BooleanToVisibilityConverterInverted"/>
+        <cv:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
     </Page.Resources>
 
     <Grid Margin="25,0,25,25">
@@ -78,7 +78,7 @@
 
             <Button Grid.Column="36"
                 x:Name="ConnectButton"
-                Visibility="{Binding HarvesterProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverterInverted}}"
+                Visibility="{Binding HarvesterProcess.IsRunning, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
                 IsEnabled="{Binding ConnectElementsEnabled}"
                 Width="200"
                 Content="Connect"

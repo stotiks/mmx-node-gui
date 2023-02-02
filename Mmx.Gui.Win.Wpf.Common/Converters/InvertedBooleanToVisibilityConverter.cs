@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace Mmx.Gui.Win.Wpf.Common.Converters
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
-    public class BooleanToVisibilityConverterInverted : IValueConverter
+    public class InvertedBooleanToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
