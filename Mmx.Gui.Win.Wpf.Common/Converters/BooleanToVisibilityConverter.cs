@@ -21,7 +21,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Converters
                 bValue = tmp.HasValue ? tmp.Value : false;
             }
             bValue = (parameter != null) ? !bValue : bValue;
-            return (bValue) ? Visibility.Visible : Visibility.Hidden;
+            return (bValue) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
