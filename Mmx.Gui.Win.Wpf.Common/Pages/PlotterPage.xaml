@@ -45,12 +45,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <ui:SimpleStackPanel Grid.Row="0" Margin="0,8,0,12">
+
         <TextBlock  
-            Grid.Row="0"
             Text="{lex:Loc Plotter_Title}"
             Style="{StaticResource TitleTextBlockStyle}"
-            FontSize="28"
-            Margin="0,8,0,12" />
+                FontSize="28"/>
+
+            <ComboBox Width="250" Margin="10,12,0,0"
+                ItemsSource="{Binding PlotterOptions.plotter.Items}"
+                DisplayMemberPath="Name"
+                SelectedValuePath="Value"
+                SelectedValue="{Binding PlotterOptions.plotter.Value}"/>
+
+        </ui:SimpleStackPanel>
 
         <TabControl 
             x:Name="tabControl"

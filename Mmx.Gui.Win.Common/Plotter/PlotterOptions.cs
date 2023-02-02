@@ -120,6 +120,20 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "plotter",
             DefaultValue = Plotters.MmxPlotter.ToString(),
             IsPlotterParam = false,
+            Items = new ObservableCollection<Item<string>>(
+                (Enum.GetNames(typeof(Plotters))).AsEnumerable().Select(value =>
+                {
+                    var isDefault = value == Plotters.MmxPlotter.ToString();
+                    var isDefaultString = isDefault ? " (default)" : "";
+
+                    Debug.WriteLine(value);
+                    return new Item<string>
+                    {
+                        Name = value + isDefaultString,
+                        Value = value
+                    };
+
+                }).ToList()),
             Scope = Scopes.Common
         };
 
@@ -329,7 +343,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 0x20,
             IsPlotterParam = false,
             Items = new ObservableCollection<Item<int>>(
-                //ProcessPriorityClass.
                 ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(i => {
                     var value = i;
                     var isDefault = value == 0x20;
@@ -360,7 +373,6 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private PlotterOptions()
         {
-
             foreach (PropertyInfo property in GetItemProperties())
             {
                 ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged();
