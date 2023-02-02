@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 namespace Mmx.Gui.Win.Common.Plotter
 {
 
-    public enum Plotters : short
+    public enum Plotters : int
     {
         MmxPlotter           = 1 << 0,
         MmxPlotterCompressed = 1 << 1,
@@ -114,25 +114,17 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<string> plotter { get; set; } = new Item<string>
+        public Item<int> plotter { get; set; } = new Item<int>
         {
             Name = "plotter",
             LongName = "plotter",
-            DefaultValue = Plotters.MmxPlotter.ToString(),
+            DefaultValue = (int)Plotters.MmxPlotter,
             IsPlotterParam = false,
-            Items = new ObservableCollection<Item<string>>(
-                (Enum.GetNames(typeof(Plotters))).AsEnumerable().Select(value =>
-                {
-                    var isDefault = value == Plotters.MmxPlotter.ToString();
+            Items = new ObservableCollection<Item<int>>(
+                ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable().Select(value => {
+                    var isDefault = value == (int)Plotters.MmxPlotter;
                     var isDefaultString = isDefault ? " (default)" : "";
-
-                    Debug.WriteLine(value);
-                    return new Item<string>
-                    {
-                        Name = value + isDefaultString,
-                        Value = value
-                    };
-
+                    return new Item<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.Common
         };
@@ -443,7 +435,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     dynamic item = property.GetValue(this);
 
-                    Scopes plotterScopeEnum = (Scopes)Enum.Parse(typeof(Scopes), plotter.Value);
+                    Scopes plotterScopeEnum = (Scopes) plotter.Value;
 
                     if ((item.Scope & plotterScopeEnum) != plotterScopeEnum)
                     {
