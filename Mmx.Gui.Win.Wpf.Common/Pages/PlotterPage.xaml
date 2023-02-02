@@ -23,6 +23,7 @@
     <Page.Resources>
         <cv:BooleanInverter x:Key="BooleanInverter"/>
         <cv:PathFixConverter x:Key="PathFixConverter"/>
+        <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
         <sys:Double x:Key="MainWidth">500</sys:Double>
         <sys:Double x:Key="KeyWidth">800</sys:Double>
@@ -63,7 +64,6 @@
         <TabControl 
             x:Name="tabControl"
             x:FieldModifier="public"
-            
         	Style="{StaticResource TabControlPivotStyle}"
         	Grid.Row="1">
 
@@ -259,12 +259,15 @@
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_waitforcopy}"
                             IsOn="{Binding PlotterOptions.waitforcopy.Value}"/>
+                        
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_tmptoggle}"
                             IsOn="{Binding PlotterOptions.tmptoggle.Value}"/>
+                        
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_directout}"
-                            IsOn="{Binding PlotterOptions.directout.Value}"/>
+                            IsOn="{Binding PlotterOptions.directout.Value}"
+                            Visibility="{Binding PlotterOptions.directout.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                     </ui:SimpleStackPanel>
                 </ScrollViewer>

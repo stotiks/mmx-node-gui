@@ -19,7 +19,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         MmxPlotter           = 1 << 0,
         MmxPlotterCompressed = 1 << 1,
         MmxCudaPlotter       = 1 << 2,
-        MmxBladebit          = 1 << 3,
+        MmxBladebit          = 1 << 8,
     };
 
     public class Item<T> : INotifyPropertyChanged
@@ -53,8 +53,16 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        public bool IsPlotterParam { get; set; } = true;
-        public PlotterOptions.Scopes Scope { get; set; } = PlotterOptions.Scopes.None;
+        private bool _isVisible;
+        public bool IsVisible { 
+            get => _isVisible;
+            internal set
+            {
+                _isVisible = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public bool IsPlotterParam { get; internal set; } = true;
         public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
 
@@ -371,6 +379,16 @@ namespace Mmx.Gui.Win.Common.Plotter
                 ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged();
             }
 
+            plotter.PropertyChanged += (sender, e) =>
+            {
+                foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter)))
+                {
+                    dynamic item = property.GetValue(this);
+                    Scopes plotterScopeEnum = (Scopes)plotter.Value;
+                    item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
+                }
+            };
+
             string json = "{}";
 
             try
@@ -463,10 +481,10 @@ namespace Mmx.Gui.Win.Common.Plotter
         private IEnumerable<PropertyInfo> GetItemProperties()
         {
             return GetType().GetProperties()
-                            .Where(property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>))
-                            .OrderBy(property => ((OrderAttribute)property
-                                .GetCustomAttributes(typeof(OrderAttribute))
-                                .Single()).Order);
+                                .Where(property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>))
+                                .OrderBy(property => ((OrderAttribute)property
+                                    .GetCustomAttributes(typeof(OrderAttribute))
+                                    .Single()).Order);
         }
 
         public static string FixDir(string dir)
