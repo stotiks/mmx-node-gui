@@ -13,6 +13,15 @@ using System.Runtime.CompilerServices;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
+
+    public enum Plotters : short
+    {
+        MmxPlotter           = 1 << 0,
+        MmxPlotterCompressed = 1 << 1,
+        MmxCudaPlotter       = 1 << 2,
+        MmxBladebit          = 1 << 3,
+    };
+
     public class Item<T> : INotifyPropertyChanged
     {
         public string Name { get; set; }
@@ -45,6 +54,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
 
         public bool IsPlotterParam { get; set; } = true;
+        public PlotterOptions.Scopes Scope { get; set; } = PlotterOptions.Scopes.None;
 
         public ObservableCollection<Item<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
@@ -89,6 +99,30 @@ namespace Mmx.Gui.Win.Common.Plotter
 
     public class PlotterOptions : INotifyPropertyChanged
     {
+        [Flags]
+        public enum Scopes : short
+        {
+            None = 0,
+            MmxPlotter = Plotters.MmxPlotter,
+            MmxPlotterCompressed = Plotters.MmxPlotterCompressed,
+            MmxCudaPlotter = Plotters.MmxCudaPlotter,
+            MmxBladebit = Plotters.MmxBladebit,
+
+            MadMaxCpuPlotters = MmxPlotter | MmxPlotterCompressed,
+            MadMaxPlotters = MmxPlotter | MmxPlotterCompressed | MmxCudaPlotter,
+            Common = MmxPlotter | MmxPlotterCompressed | MmxCudaPlotter | MmxBladebit
+        };
+
+        [Order]
+        public Item<string> plotter { get; set; } = new Item<string>
+        {
+            Name = "plotter",
+            LongName = "plotter",
+            DefaultValue = Plotters.MmxPlotter.ToString(),
+            IsPlotterParam = false,
+            Scope = Scopes.Common
+        };
+
         [Order]
         public Item<int> count { get; set; } = new Item<int>
         {
@@ -96,9 +130,9 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "count",
             DefaultValue = -1,
             Minimum = -1,
-            Maximum = 999
+            Maximum = 999,
+            Scope = Scopes.Common
         };
-
 
         [Order]
         public Item<int> size { get; set; } = new Item<int>
@@ -114,7 +148,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefault = value == 32;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
-                }).ToList())
+                }).ToList()),
+            Scope = Scopes.Common ^ Scopes.MmxBladebit
         };
 
         [Order]
@@ -122,7 +157,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "x",
             LongName = "port",
-            DefaultValue = 11337
+            DefaultValue = 11337,
+            Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
@@ -132,7 +168,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "threads",
             DefaultValue = Environment.ProcessorCount,
             Minimum = 1,
-            Maximum = 128
+            Maximum = 128,
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -142,7 +179,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "rmulti2",
             DefaultValue = 1,
             Minimum = 1,
-            Maximum = 8
+            Maximum = 8,
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         private const int BucketsDefaultValue = 256;
@@ -159,7 +197,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
-                }).ToList())
+                }).ToList()),
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -174,7 +213,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
-                }).ToList())
+                }).ToList()),
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -183,7 +223,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "finaldir",
             DefaultValue = "",
-            AddQuotes = true
+            AddQuotes = true,
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -192,7 +233,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "t",
             LongName = "tmpdir",
             DefaultValue = "",
-            AddQuotes = true
+            AddQuotes = true,
+            Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
@@ -201,7 +243,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "2",
             LongName = "tmpdir2",
             DefaultValue = "",
-            AddQuotes = true
+            AddQuotes = true,
+            Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
@@ -210,7 +253,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "s",
             LongName = "stagedir",
             DefaultValue = "",
-            AddQuotes = true
+            AddQuotes = true,
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -218,7 +262,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "w",
             LongName = "waitforcopy",
-            DefaultValue = false
+            DefaultValue = false,
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -226,7 +271,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "G",
             LongName = "tmptoggle",
-            DefaultValue = false
+            DefaultValue = false,
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -235,6 +281,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "D",
             LongName = "directout",
             DefaultValue = false,
+            Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
@@ -242,7 +289,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "f",
             LongName = "farmerkey",
-            DefaultValue = ""
+            DefaultValue = "",
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -250,7 +298,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "p",
             LongName = "poolkey",
-            DefaultValue = ""
+            DefaultValue = "",
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -258,7 +307,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "c",
             LongName = "contract",
-            DefaultValue = ""
+            DefaultValue = "",
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -267,7 +317,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "nftplot",
             LongName = "nftplot",
             DefaultValue = false,
-            IsPlotterParam = false
+            IsPlotterParam = false,
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -284,7 +335,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefault = value == 0x20;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), i) + isDefaultString, Value = value };
-                }).ToList())
+                }).ToList()),
+            Scope = Scopes.None
         };
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -380,10 +432,14 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     dynamic item = property.GetValue(this);
 
-                    if ( !item.IsPlotterParam ||
-                         nftplot.Value && property.Name == nameof(poolkey) ||
-                         !nftplot.Value && property.Name == nameof(contract)
-                       )
+                    Scopes plotterScopeEnum = (Scopes)Enum.Parse(typeof(Scopes), plotter.Value);
+
+                    if ((item.Scope & plotterScopeEnum) != plotterScopeEnum)
+                    {
+                        continue;
+                    }
+
+                    if ( !item.IsPlotterParam || nftplot.Value && property.Name == nameof(poolkey) || !nftplot.Value && property.Name == nameof(contract) )
                     {
                         continue;
                     }
