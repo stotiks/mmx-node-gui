@@ -55,6 +55,8 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public bool IsPlotterParam { get; set; } = true;
         public PlotterOptions.Scopes Scope { get; set; } = PlotterOptions.Scopes.None;
+        public bool IsPlotterParam { get; internal set; } = true;
+        public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
 
         public ObservableCollection<Item<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
@@ -344,10 +346,10 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PlotterCmd"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PlotterCmd)));
             Save();
         }
 
