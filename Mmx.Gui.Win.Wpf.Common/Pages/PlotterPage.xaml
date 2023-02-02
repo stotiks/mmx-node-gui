@@ -34,7 +34,7 @@
         <Style x:Key="ChooseFolderButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Background" Value="Transparent"/>
-            <EventSetter Event="Click" Handler="ChooseFolderButton_Click"/>
+            <!--EventSetter Event="Click" Handler="ChooseFolderButton_Click"/-->
             <Setter Property="Content" Value="{StaticResource FolderGlyph}"/>
         </Style>
         
@@ -48,7 +48,7 @@
 
         <ui:SimpleStackPanel Grid.Row="0" Margin="0,8,0,12">
 
-        <TextBlock  
+            <TextBlock  
             Text="{lex:Loc Plotter_Title}"
             Style="{StaticResource TitleTextBlockStyle}"
                 FontSize="28"/>
@@ -150,16 +150,26 @@
 
                     <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
-                        <GroupBox Header="{lex:Loc Plotter_SizeHeader}">
+                        <GroupBox Header="{lex:Loc Plotter_PlotHeader}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
                                 
                             <ComboBox
                                 Width="250"
+                                ui:ControlHelper.Header="{lex:Loc Plotter_SizeHeader}"
                                 ItemsSource="{Binding PlotterOptions.size.Items}"
                                 DisplayMemberPath="Name"
                                 SelectedValuePath="Value"                                    
                                 SelectedValue="{Binding PlotterOptions.size.Value}"/>
-                                
+
+                            <ComboBox
+                                Width="250"
+                                ui:ControlHelper.Header="{lex:Loc Plotter_LevelHeader}"
+                                ItemsSource="{Binding PlotterOptions.level.Items}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="Value"                                    
+                                SelectedValue="{Binding PlotterOptions.level.Value}"
+                                Visibility="{Binding PlotterOptions.level.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
                             </ui:SimpleStackPanel>
                         </GroupBox>
 

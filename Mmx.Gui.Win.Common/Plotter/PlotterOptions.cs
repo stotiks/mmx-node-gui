@@ -120,6 +120,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             MadMaxCpuPlotters = MmxPlotter | MmxPlotterCompressed,
             MadMaxPlotters = MmxPlotter | MmxPlotterCompressed | MmxCudaPlotter,
+            MadMaxPlottersCompressed = MmxPlotterCompressed | MmxCudaPlotter,
             Common = MmxPlotter | MmxPlotterCompressed | MmxCudaPlotter | MmxBladebit
         };
 
@@ -166,6 +167,25 @@ namespace Mmx.Gui.Win.Common.Plotter
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.Common ^ Scopes.MmxBladebit
+        };
+
+        [Order]
+        public Item<int> level { get; set; } = new Item<int>
+        {
+            Name = "C",
+            LongName = "level",
+            DefaultValue = 1,
+            Minimum = 1,
+            Maximum = 9,
+            Items = new ObservableCollection<Item<int>>(
+                Enumerable.Range(1, 9).Select(i =>
+                {
+                    var value = i;
+                    var isDefault = value == 1;
+                    var isDefaultString = isDefault ? " (default)" : "";
+                    return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
+                }).ToList()),
+            Scope = Scopes.MadMaxPlottersCompressed
         };
 
         [Order]
