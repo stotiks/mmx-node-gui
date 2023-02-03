@@ -38,12 +38,10 @@ namespace Mmx.Gui.Win.Common.Plotter
         protected IEnumerable<PropertyInfo> GetItemProperties()
         {
             return GetType().GetProperties()
-                                .Where(
-                                       property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>)
-                                    || property.PropertyType.BaseType.IsGenericType && property.PropertyType.BaseType.GetGenericTypeDefinition() == typeof(Item<>)
-                                 ).OrderBy(property => ((OrderAttribute)property
-                                    .GetCustomAttributes(typeof(OrderAttribute))
-                                    .Single()).Order);
+                                .Where(property => 
+                                           property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>)
+                                        || property.PropertyType.BaseType.IsGenericType && property.PropertyType.BaseType.GetGenericTypeDefinition() == typeof(Item<>)
+                                 ).OrderBy(property => ((OrderAttribute)property.GetCustomAttributes(typeof(OrderAttribute)).Single()).Order);
         }
 
 
