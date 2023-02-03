@@ -41,12 +41,12 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "plotter",
             DefaultValue = (int)Plotters.MmxPlotter,
             Type = ItemType.Other,
-            Items = new ObservableCollection<Item<int>>(
+            Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable().Select(value =>
                 {
                     var isDefault = value == (int)Plotters.MmxPlotter;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new IntItem { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.Common
         };
@@ -70,13 +70,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 32,
             Minimum = 30,
             Maximum = 34,
-            Items = new ObservableCollection<Item<int>>(
+            Items = new ObservableCollection<ItemBase<int>>(
                 Enumerable.Range(30, 5).Select(i =>
                 {
                     var value = i;
                     var isDefault = value == 32;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxPlotters
         };
@@ -89,13 +89,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = 9,
-            Items = new ObservableCollection<Item<int>>(
+            Items = new ObservableCollection<ItemBase<int>>(
                 Enumerable.Range(1, 9).Select(i =>
                 {
                     var value = i;
                     var isDefault = value == 1;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxPlottersCompressed
         };
@@ -139,13 +139,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "u",
             LongName = "buckets",
             DefaultValue = BucketsDefaultValue,
-            Items = new ObservableCollection<Item<int>>(
+            Items = new ObservableCollection<ItemBase<int>>(
                 Enumerable.Range(4, 7).Select(i =>
                 {
                     var value = (int)Math.Pow(2, i);
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxCpuPlotters
         };
@@ -156,13 +156,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "v",
             LongName = "buckets3",
             DefaultValue = BucketsDefaultValue,
-            Items = new ObservableCollection<Item<int>>(
+            Items = new ObservableCollection<ItemBase<int>>(
                 Enumerable.Range(4, 7).Select(i =>
                 {
                     var value = (int)Math.Pow(2, i);
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxCpuPlotters
         };
@@ -274,12 +274,12 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "priority",
             DefaultValue = (int)ProcessPriorityClass.Normal,
             Type = ItemType.Other,
-            Items = new ObservableCollection<Item<int>>(
+            Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value =>
                 {
                     var isDefault = value == (int)ProcessPriorityClass.Normal;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new IntItem { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.Common
         };
@@ -385,19 +385,6 @@ namespace Mmx.Gui.Win.Common.Plotter
                             result += string.Format(" {0}", param);
                         }
                     }
-
-                    //if ((item.Scope & plotterScopeEnum) != plotterScopeEnum)
-                    //{
-                    //    continue;
-                    //}
-
-                    //if (!item.IsPlotterParam || nftplot.Value && property.Name == nameof(poolkey) || !nftplot.Value && property.Name == nameof(contract))
-                    //{
-                    //    continue;
-                    //}
-
-
-
                 }
 
                 return result;

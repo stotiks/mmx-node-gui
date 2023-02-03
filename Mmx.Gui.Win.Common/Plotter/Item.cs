@@ -63,22 +63,33 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
     }
 
-    public abstract class Item<T> : INotifyPropertyChanged
+    public class ItemBase<T>: INotifyPropertyChanged
     {
-        public string Name { get; set; }
-        public string LongName { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-        private bool _valueInitialized;
-        private T _value;
+        protected bool _valueInitialized;
+        protected T _value;
+
+        public string Name { get; set; }
         public T Value
         {
             get => _value;
-            set {
+            set
+            {
                 _value = value;
                 _valueInitialized = true;
                 NotifyPropertyChanged();
             }
         }
+    }
+
+    public abstract class Item<T> : ItemBase<T>
+    {
+        public string LongName { get; set; }
 
         public void SetValue(object obj)
         {
@@ -110,20 +121,15 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
 
         public ItemType Type { get; internal set; } = ItemType.CmdParameter;
-        //public bool IsPlotterParam { get; internal set; } = true;
+
         public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
 
-        public ObservableCollection<Item<T>> Items { get; internal set; }
+        public ObservableCollection<ItemBase<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
         public T Maximum { get; internal set; }
         public bool SkipName { get; internal set; }
         public bool SkipValue { get; internal set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public string GetParam()
         {
