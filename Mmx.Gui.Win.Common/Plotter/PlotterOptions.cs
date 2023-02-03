@@ -21,6 +21,13 @@ namespace Mmx.Gui.Win.Common.Plotter
         MmxCudaPlotter       = 1 << 2,
         MmxBladebit          = 1 << 8,
     };
+    public class PathItem : Item<string>
+    {
+        public new string GetParam()
+        {
+            return base.GetParam() + "!!!!!!!!!!!";
+        }
+    }
 
     public class Item<T> : INotifyPropertyChanged
     {
@@ -259,7 +266,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<string> finaldir { get; set; } = new Item<string>
+        public PathItem finaldir { get; set; } = new PathItem
         {
             Name = "d",
             LongName = "finaldir",
@@ -524,9 +531,19 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private IEnumerable<PropertyInfo> GetItemProperties()
         {
+            foreach (PropertyInfo property in GetType().GetProperties())
+            {
+                if (property.PropertyType == typeof(PathItem))
+                {
+                    Debug.WriteLine(property.PropertyType);
+                }
+            }
+
             return GetType().GetProperties()
-                                .Where(property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>))
-                                .OrderBy(property => ((OrderAttribute)property
+                                .Where(
+                                       property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>)
+                                    || property.PropertyType.BaseType.IsGenericType && property.PropertyType.BaseType.GetGenericTypeDefinition() == typeof(Item<>)
+                                 ).OrderBy(property => ((OrderAttribute)property
                                     .GetCustomAttributes(typeof(OrderAttribute))
                                     .Single()).Order);
         }
