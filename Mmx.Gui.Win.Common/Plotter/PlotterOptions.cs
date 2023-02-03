@@ -69,7 +69,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.Common ^ Scopes.MmxBladebit
+            Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
@@ -272,7 +272,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.None
+            Scope = Scopes.Common
         };
 
 
