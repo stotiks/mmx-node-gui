@@ -25,11 +25,5 @@ namespace Mmx.Gui.Win.Common.Harvester
 
             Start(processStartInfo);
         }
-
-        //public override void Stop()
-        //{
-        //    Kill();
-        //    KillByProcessName("mmx_harvester");
-        //}
     }
 }
