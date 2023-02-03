@@ -21,6 +21,9 @@ namespace Mmx.Gui.Win.Common.Plotter
         Other
     };
 
+    public class IntItem : Item<int> {}
+    public class StringItem : Item<string> { }
+
     public class PathItem : Item<string>
     {
         public new string GetParam()
@@ -60,7 +63,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
     }
 
-    public class Item<T> : INotifyPropertyChanged
+    public abstract class Item<T> : INotifyPropertyChanged
     {
         public string Name { get; set; }
         public string LongName { get; set; }

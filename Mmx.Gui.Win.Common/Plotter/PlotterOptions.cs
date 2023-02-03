@@ -26,7 +26,16 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<int> plotter { get; set; } = new Item<int>
+        public BoolItem bb_mmx { get; set; } = new BoolItem
+        {
+            Name = "-mmx",
+            LongName = "bb_mmx",
+            DefaultValue = true,
+            Scope = Scopes.MmxBladebit
+        };
+
+        [Order]
+        public IntItem plotter { get; set; } = new IntItem
         {
             Name = "plotter",
             LongName = "plotter",
@@ -37,13 +46,13 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     var isDefault = value == (int)Plotters.MmxPlotter;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
+                    return new IntItem { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.Common
         };
 
         [Order]
-        public Item<int> count { get; set; } = new Item<int>
+        public IntItem count { get; set; } = new IntItem
         {
             Name = "n",
             LongName = "count",
@@ -54,7 +63,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<int> size { get; set; } = new Item<int>
+        public IntItem size { get; set; } = new IntItem
         {
             Name = "k",
             LongName = "size",
@@ -67,13 +76,13 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var value = i;
                     var isDefault = value == 32;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
+                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
-        public Item<int> level { get; set; } = new Item<int>
+        public IntItem level { get; set; } = new IntItem
         {
             Name = "C",
             LongName = "level",
@@ -86,13 +95,13 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var value = i;
                     var isDefault = value == 1;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
+                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxPlottersCompressed
         };
 
         [Order]
-        public Item<int> port { get; set; } = new Item<int>
+        public IntItem port { get; set; } = new IntItem
         {
             Name = "x",
             LongName = "port",
@@ -101,7 +110,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<int> threads { get; set; } = new Item<int>
+        public IntItem threads { get; set; } = new IntItem
         {
             Name = "r",
             LongName = "threads",
@@ -112,7 +121,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<int> rmulti2 { get; set; } = new Item<int>
+        public IntItem rmulti2 { get; set; } = new IntItem
         {
             Name = "K",
             LongName = "rmulti2",
@@ -125,7 +134,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         private const int BucketsDefaultValue = 256;
 
         [Order]
-        public Item<int> buckets { get; set; } = new Item<int>
+        public IntItem buckets { get; set; } = new IntItem
         {
             Name = "u",
             LongName = "buckets",
@@ -136,13 +145,13 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var value = (int)Math.Pow(2, i);
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
+                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
-        public Item<int> buckets3 { get; set; } = new Item<int>
+        public IntItem buckets3 { get; set; } = new IntItem
         {
             Name = "v",
             LongName = "buckets3",
@@ -153,7 +162,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var value = (int)Math.Pow(2, i);
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = value.ToString() + isDefaultString, Value = value };
+                    return new IntItem { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxCpuPlotters
         };
@@ -222,7 +231,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<string> farmerkey { get; set; } = new Item<string>
+        public StringItem farmerkey { get; set; } = new StringItem
         {
             Name = "f",
             LongName = "farmerkey",
@@ -231,7 +240,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<string> poolkey { get; set; } = new Item<string>
+        public StringItem poolkey { get; set; } = new StringItem
         {
             Name = "p",
             LongName = "poolkey",
@@ -240,7 +249,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<string> contract { get; set; } = new Item<string>
+        public StringItem contract { get; set; } = new StringItem
         {
             Name = "c",
             LongName = "contract",
@@ -259,7 +268,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<int> priority { get; set; } = new Item<int>
+        public IntItem priority { get; set; } = new IntItem
         {
             Name = "priority",
             LongName = "priority",
@@ -270,7 +279,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     var isDefault = value == (int)ProcessPriorityClass.Normal;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new Item<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
+                    return new IntItem { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.Common
         };
@@ -278,16 +287,16 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private PlotterOptions() : base()
         {
+            foreach (PropertyInfo property in GetItemProperties())
+            {
+                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged(nameof(PlotterCmd));
+            }
+
             PlotterChanged();
             plotter.PropertyChanged += (sender, e) => PlotterChanged();
 
             NftPlotChanged();
             nftplot.PropertyChanged += (sender, e) => NftPlotChanged();
-
-            foreach (PropertyInfo property in GetItemProperties())
-            {
-                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged(nameof(PlotterCmd));
-            }
         }
 
         private void NftPlotChanged()
