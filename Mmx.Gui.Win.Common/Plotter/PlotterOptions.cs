@@ -25,7 +25,37 @@ namespace Mmx.Gui.Win.Common.Plotter
     {
         public new string GetParam()
         {
-            return base.GetParam() + "!!!!!!!!!!!";
+            var result = "";
+
+            if (Value != null)
+            {
+                var value = Value.ToString();
+
+                if (value.Contains(" "))
+                {
+                    value = $"\"{value}\"";
+                    value = value.Replace("\\\"", "\\\\\"");
+                }
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    result = FormatParam(value);
+                }
+
+            }
+
+            return result;
+        }
+    }
+
+    public class BoolItem : Item<bool>
+    {
+        public BoolItem() { 
+            SkipValue = true;
+        }
+        public new string GetParam()
+        {
+            return Value ? base.GetParam() : "";
         }
     }
 
@@ -81,7 +111,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         public ObservableCollection<Item<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
         public T Maximum { get; internal set; }
-        public bool AddQuotes { get; internal set; }
+        public bool SkipName { get; internal set; }
+        public bool SkipValue { get; internal set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -95,23 +126,32 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             if (Value != null)
             {
-                if (typeof(T) == typeof(bool))
-                {
-                    if ((bool)(object)Value)
-                    {
-                        result = $"-{Name}";
-                    }
+                var value = Value.ToString();
+                if (!string.IsNullOrEmpty(value))
+                {                    
+                    result = FormatParam(value);
                 }
-                else if (!string.IsNullOrEmpty(Value.ToString()))
+            }
+
+            return result;
+        }
+
+        protected string FormatParam(string value)
+        {
+            string result;
+
+            if (SkipName)
+            {
+                result = value;
+            } else
+            {
+                if(SkipValue)
                 {
-                    var value = Value.ToString();
-                    if(AddQuotes && value.Contains(" "))
-                    {
-                        value = $"\"{value}\"";
-                        value = value.Replace("\\\"", "\\\\\"");
-                    }
+                    result = $"-{Name}";
+                } else
+                {
                     result = $"-{Name} {value}";
-                }
+                }                
             }
 
             return result;
@@ -271,42 +311,38 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "finaldir",
             DefaultValue = "",
-            AddQuotes = true,
             Scope = Scopes.Common
         };
 
         [Order]
-        public Item<string> tmpdir { get; set; } = new Item<string>
+        public PathItem tmpdir { get; set; } = new PathItem
         {
             Name = "t",
             LongName = "tmpdir",
             DefaultValue = "",
-            AddQuotes = true,
             Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
-        public Item<string> tmpdir2 { get; set; } = new Item<string>
+        public PathItem tmpdir2 { get; set; } = new PathItem
         {
             Name = "2",
             LongName = "tmpdir2",
             DefaultValue = "",
-            AddQuotes = true,
             Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
-        public Item<string> stagedir { get; set; } = new Item<string>
+        public PathItem stagedir { get; set; } = new PathItem
         {
             Name = "s",
             LongName = "stagedir",
             DefaultValue = "",
-            AddQuotes = true,
             Scope = Scopes.MadMaxCpuPlotters
         };
 
         [Order]
-        public Item<bool> waitforcopy { get; set; } = new Item<bool>
+        public BoolItem waitforcopy { get; set; } = new BoolItem
         {
             Name = "w",
             LongName = "waitforcopy",
@@ -315,7 +351,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<bool> tmptoggle { get; set; } = new Item<bool>
+        public BoolItem tmptoggle { get; set; } = new BoolItem
         {
             Name = "G",
             LongName = "tmptoggle",
@@ -324,7 +360,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<bool> directout { get; set; } = new Item<bool>
+        public BoolItem directout { get; set; } = new BoolItem
         {
             Name = "D",
             LongName = "directout",
@@ -360,7 +396,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public Item<bool> nftplot { get; set; } = new Item<bool>
+        public BoolItem nftplot { get; set; } = new BoolItem
         {
             Name = "nftplot",
             LongName = "nftplot",
@@ -419,6 +455,14 @@ namespace Mmx.Gui.Win.Common.Plotter
                     Scopes plotterScopeEnum = (Scopes)plotter.Value;
                     item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
                 }
+
+                if(plotter.Value == (int)Plotters.MmxBladebit)
+                {
+                    finaldir.SkipName = true;
+                } else
+                {
+                    finaldir.SkipName = false;
+                }
             };
 
             string json = "{}";
@@ -444,7 +488,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 if (property != null)
                 {
                     dynamic item = property.GetValue(this);
-                    item.SetValue(configItem.Value);                    
+                    item.SetValue(configItem.Value);
                 }
             }
         }
@@ -531,14 +575,6 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private IEnumerable<PropertyInfo> GetItemProperties()
         {
-            foreach (PropertyInfo property in GetType().GetProperties())
-            {
-                if (property.PropertyType == typeof(PathItem))
-                {
-                    Debug.WriteLine(property.PropertyType);
-                }
-            }
-
             return GetType().GetProperties()
                                 .Where(
                                        property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>)
