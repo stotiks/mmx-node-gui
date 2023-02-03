@@ -17,7 +17,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
     mc:Ignorable="d"
-    d:DesignHeight="650" d:DesignWidth="1200"
+    d:DesignHeight="1650" d:DesignWidth="1200"
     Title="PlotterPage">
 
     <Page.Resources>
@@ -150,7 +150,8 @@
 
                     <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
-                        <GroupBox Header="{lex:Loc Plotter_PlotHeader}">
+                        <GroupBox Header="{lex:Loc Plotter_PlotHeader}"
+                                  Visibility="{Binding PlotterOptions.size.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
                                 
                             <ComboBox
@@ -191,7 +192,8 @@
                                     Maximum="{Binding PlotterOptions.threads.Maximum}"
                                     Value="{Binding PlotterOptions.threads.Value}"
                                     SpinButtonPlacementMode="Inline"
-                                    HorizontalAlignment="Left"/>
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding PlotterOptions.threads.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                 <ui:NumberBox
                                     Width="250"
@@ -200,12 +202,14 @@
                                     Maximum="{Binding PlotterOptions.rmulti2.Maximum}"
                                     Value="{Binding PlotterOptions.rmulti2.Value}"
                                     SpinButtonPlacementMode="Inline"
-                                    HorizontalAlignment="Left"/>
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding PlotterOptions.rmulti2.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                 
                             </ui:SimpleStackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="{lex:Loc Plotter_BucketsHeader}">
+                        <GroupBox Header="{lex:Loc Plotter_BucketsHeader}"
+                                  Visibility="{Binding PlotterOptions.buckets.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                                 <ComboBox
@@ -256,7 +260,8 @@
                                 Tag="tmpdir2"/>
                         </ui:SimpleStackPanel>
 
-                        <ui:SimpleStackPanel Orientation="Horizontal">
+                        <ui:SimpleStackPanel Orientation="Horizontal"
+                                             Visibility="{Binding PlotterOptions.stagedir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_stagedir}"
                                 Width="{StaticResource MainWidth}"
@@ -268,11 +273,13 @@
 
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_waitforcopy}"
-                            IsOn="{Binding PlotterOptions.waitforcopy.Value}"/>
+                            IsOn="{Binding PlotterOptions.waitforcopy.Value}"
+                            Visibility="{Binding PlotterOptions.waitforcopy.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_tmptoggle}"
-                            IsOn="{Binding PlotterOptions.tmptoggle.Value}"/>
+                            IsOn="{Binding PlotterOptions.tmptoggle.Value}"
+                            Visibility="{Binding PlotterOptions.tmptoggle.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         
                         <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_directout}"
