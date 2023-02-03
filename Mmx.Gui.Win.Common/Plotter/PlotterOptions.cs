@@ -39,6 +39,11 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
+        public void SetValue(object obj)
+        {
+            Value = (T)Convert.ChangeType(obj, typeof(T));
+        }
+
         private T _defaultValue;
         public T DefaultValue
         {  
@@ -432,7 +437,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 if (property != null)
                 {
                     dynamic item = property.GetValue(this);
-                    item.Value = Convert.ChangeType(configItem.Value, property.PropertyType.GenericTypeArguments[0]);
+                    item.SetValue(configItem.Value);                    
                 }
             }
         }
