@@ -1,165 +1,14 @@
-﻿using Mmx.Gui.Win.Common.Node;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
-
-    public enum Plotters : int
-    {
-        MmxPlotter           = 1 << 0,
-        MmxPlotterCompressed = 1 << 1,
-        MmxCudaPlotter       = 1 << 2,
-        MmxBladebit          = 1 << 8,
-    };
-    public class PathItem : Item<string>
-    {
-        public new string GetParam()
-        {
-            var result = "";
-
-            if (Value != null)
-            {
-                var value = Value.ToString();
-
-                if (value.Contains(" "))
-                {
-                    value = $"\"{value}\"";
-                    value = value.Replace("\\\"", "\\\\\"");
-                }
-
-                if (!string.IsNullOrEmpty(value))
-                {
-                    result = FormatParam(value);
-                }
-
-            }
-
-            return result;
-        }
-    }
-
-    public class BoolItem : Item<bool>
-    {
-        public BoolItem() { 
-            SkipValue = true;
-        }
-        public new string GetParam()
-        {
-            return Value ? base.GetParam() : "";
-        }
-    }
-
-    public class Item<T> : INotifyPropertyChanged
-    {
-        public string Name { get; set; }
-        public string LongName { get; set; }
-
-        private bool _valueInitialized;
-        private T _value;
-        public T Value
-        {
-            get => _value;
-            set {
-                _value = value;
-                _valueInitialized = true;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public void SetValue(object obj)
-        {
-            Value = (T)Convert.ChangeType(obj, typeof(T));
-        }
-
-        private T _defaultValue;
-        public T DefaultValue
-        {  
-            get => _defaultValue;
-            internal set {
-                _defaultValue = value;
-                if (_valueInitialized == false)
-                {
-                    _value = _defaultValue;
-                }
-                NotifyPropertyChanged();
-            }
-        }
-
-        private bool _isVisible;
-        public bool IsVisible { 
-            get => _isVisible;
-            internal set
-            {
-                _isVisible = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public bool IsPlotterParam { get; internal set; } = true;
-        public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
-
-        public ObservableCollection<Item<T>> Items { get; internal set; }
-        public T Minimum { get; internal set; }
-        public T Maximum { get; internal set; }
-        public bool SkipName { get; internal set; }
-        public bool SkipValue { get; internal set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public string GetParam()
-        {
-            var result = "";
-
-            if (Value != null)
-            {
-                var value = Value.ToString();
-                if (!string.IsNullOrEmpty(value))
-                {                    
-                    result = FormatParam(value);
-                }
-            }
-
-            return result;
-        }
-
-        protected string FormatParam(string value)
-        {
-            string result;
-
-            if (SkipName)
-            {
-                result = value;
-            } else
-            {
-                if(SkipValue)
-                {
-                    result = $"-{Name}";
-                } else
-                {
-                    result = $"-{Name} {value}";
-                }                
-            }
-
-            return result;
-        }
-
-    }
-
-    public class PlotterOptions : INotifyPropertyChanged
+    public class PlotterOptions : PlotterOptionsBase
     {
         [Flags]
         public enum Scopes : short
@@ -184,7 +33,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = (int)Plotters.MmxPlotter,
             IsPlotterParam = false,
             Items = new ObservableCollection<Item<int>>(
-                ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable().Select(value => {
+                ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable().Select(value =>
+                {
                     var isDefault = value == (int)Plotters.MmxPlotter;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
@@ -212,7 +62,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Minimum = 30,
             Maximum = 34,
             Items = new ObservableCollection<Item<int>>(
-                Enumerable.Range(30, 5).Select(i => {
+                Enumerable.Range(30, 5).Select(i =>
+                {
                     var value = i;
                     var isDefault = value == 32;
                     var isDefaultString = isDefault ? " (default)" : "";
@@ -280,7 +131,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "buckets",
             DefaultValue = BucketsDefaultValue,
             Items = new ObservableCollection<Item<int>>(
-                Enumerable.Range(4, 7).Select(i => {
+                Enumerable.Range(4, 7).Select(i =>
+                {
                     var value = (int)Math.Pow(2, i);
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
@@ -296,7 +148,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "buckets3",
             DefaultValue = BucketsDefaultValue,
             Items = new ObservableCollection<Item<int>>(
-                Enumerable.Range(4, 7).Select(i => {
+                Enumerable.Range(4, 7).Select(i =>
+                {
                     var value = (int)Math.Pow(2, i);
                     var isDefault = value == BucketsDefaultValue;
                     var isDefaultString = isDefault ? " (default)" : "";
@@ -413,7 +266,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 0x20,
             IsPlotterParam = false,
             Items = new ObservableCollection<Item<int>>(
-                ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value => {
+                ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value =>
+                {
                     var isDefault = value == (int)ProcessPriorityClass.Normal;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new Item<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
@@ -421,97 +275,43 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.None
         };
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+
+        private PlotterOptions() : base()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PlotterCmd)));
-            Save();
-        }
+            InitPlotter();
+            plotter.PropertyChanged += (sender, e) => InitPlotter();
 
-        public static PlotterOptions Instance => Nested.instance;
-
-        private class Nested
-        {
-            // Explicit static constructor to tell C# compiler
-            // not to mark type as beforefieldinit
-            static Nested(){}
-
-            internal static readonly PlotterOptions instance = new PlotterOptions();
-        }
-
-        private PlotterOptions()
-        {
             foreach (PropertyInfo property in GetItemProperties())
             {
-                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged();
-            }
-
-            plotter.PropertyChanged += (sender, e) =>
-            {
-                foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter)))
-                {
-                    dynamic item = property.GetValue(this);
-                    Scopes plotterScopeEnum = (Scopes)plotter.Value;
-                    item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
-                }
-
-                if(plotter.Value == (int)Plotters.MmxBladebit)
-                {
-                    finaldir.SkipName = true;
-                } else
-                {
-                    finaldir.SkipName = false;
-                }
-            };
-
-            string json = "{}";
-
-            try
-            {
-                json = File.ReadAllText(NodeHelpers.plotterConfigPath);               
-            }
-            catch
-            {
-                //System.Console.WriteLine(@"config not found");
-            }
-
-            LoadJSON(json);
-        }
-
-        private void LoadJSON(string json)
-        {
-            dynamic config = JsonConvert.DeserializeObject(json);
-            foreach (var configItem in config)
-            {
-                var property = typeof(PlotterOptions).GetProperty(configItem.Name);
-                if (property != null)
-                {
-                    dynamic item = property.GetValue(this);
-                    item.SetValue(configItem.Value);
-                }
+                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged(nameof(PlotterCmd));
             }
         }
 
-        private void Save()
+        private void InitPlotter()
         {
-            dynamic jObject = new JObject();
-
-            foreach (PropertyInfo property in GetItemProperties())
+            foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter)))
             {
                 dynamic item = property.GetValue(this);
-                jObject.Add(item.LongName, item.Value);
+                Scopes plotterScopeEnum = (Scopes)plotter.Value;
+                item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
             }
 
-            var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-            File.WriteAllText(NodeHelpers.plotterConfigPath, json);
+            if (plotter.Value == (int)Plotters.MmxBladebit)
+            {
+                finaldir.SkipName = true;
+            }
+            else
+            {
+                finaldir.SkipName = false;
+            }
         }
 
         public string PlotterCmd => $"{PlotterExe} {PlotterArguments}";
 
         public string PlotterExe
         {
-            get {
+            get
+            {
                 var exe = "";
                 switch (plotter.Value)
                 {
@@ -536,7 +336,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                         exe = "mmx_bladebit.exe";
                         break;
                 }
-   
+
                 return exe;
             }
         }
@@ -550,14 +350,14 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     dynamic item = property.GetValue(this);
 
-                    Scopes plotterScopeEnum = (Scopes) plotter.Value;
+                    Scopes plotterScopeEnum = (Scopes)plotter.Value;
 
                     if ((item.Scope & plotterScopeEnum) != plotterScopeEnum)
                     {
                         continue;
                     }
 
-                    if ( !item.IsPlotterParam || nftplot.Value && property.Name == nameof(poolkey) || !nftplot.Value && property.Name == nameof(contract) )
+                    if (!item.IsPlotterParam || nftplot.Value && property.Name == nameof(poolkey) || !nftplot.Value && property.Name == nameof(contract))
                     {
                         continue;
                     }
@@ -573,42 +373,17 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        private IEnumerable<PropertyInfo> GetItemProperties()
+        private class Nested
         {
-            return GetType().GetProperties()
-                                .Where(
-                                       property => property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Item<>)
-                                    || property.PropertyType.BaseType.IsGenericType && property.PropertyType.BaseType.GetGenericTypeDefinition() == typeof(Item<>)
-                                 ).OrderBy(property => ((OrderAttribute)property
-                                    .GetCustomAttributes(typeof(OrderAttribute))
-                                    .Single()).Order);
+            // Explicit static constructor to tell C# compiler
+            // not to mark type as beforefieldinit
+            static Nested() { }
+
+            internal static readonly PlotterOptions instance = new PlotterOptions();
         }
 
-        public static string FixDir(string dir)
-        {   
-            if (string.IsNullOrEmpty(dir)) return "";
+        public static PlotterOptions Instance => Nested.instance;
 
-            dir = dir.Replace('/', '\\');
-
-            if (dir.Length > 0 && dir.Last() != '\\')
-            {
-                dir += '\\';
-            }
-
-            return dir;
-        }
-
-    }
-
-    [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-    public sealed class OrderAttribute : Attribute
-    {
-        public OrderAttribute([CallerLineNumber] int order = 0)
-        {
-            Order = order;
-        }
-
-        public int Order { get; }
     }
 
 }
