@@ -12,6 +12,15 @@ namespace Mmx.Gui.Win.Common.Plotter
         MmxCudaPlotter = 1 << 2,
         MmxBladebit = 1 << 8,
     };
+
+    public enum ItemType
+    {
+        CmdParameter,
+        EnvParameter,
+        Hidden,
+        Other
+    };
+
     public class PathItem : Item<string>
     {
         public new string GetParam()
@@ -97,7 +106,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        public bool IsPlotterParam { get; internal set; } = true;
+        public ItemType Type { get; internal set; } = ItemType.CmdParameter;
+        //public bool IsPlotterParam { get; internal set; } = true;
         public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
 
         public ObservableCollection<Item<T>> Items { get; internal set; }

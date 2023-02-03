@@ -31,7 +31,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "plotter",
             LongName = "plotter",
             DefaultValue = (int)Plotters.MmxPlotter,
-            IsPlotterParam = false,
+            Type = ItemType.Other,
             Items = new ObservableCollection<Item<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable().Select(value =>
                 {
@@ -254,7 +254,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "nftplot",
             LongName = "nftplot",
             DefaultValue = false,
-            IsPlotterParam = false,
+            Type = ItemType.Other,
             Scope = Scopes.Common
         };
 
@@ -264,7 +264,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "priority",
             LongName = "priority",
             DefaultValue = (int)ProcessPriorityClass.Normal,
-            IsPlotterParam = false,
+            Type = ItemType.Other,
             Items = new ObservableCollection<Item<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value =>
                 {
@@ -278,8 +278,11 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private PlotterOptions() : base()
         {
-            InitPlotter();
-            plotter.PropertyChanged += (sender, e) => InitPlotter();
+            PlotterChanged();
+            plotter.PropertyChanged += (sender, e) => PlotterChanged();
+
+            NftPlotChanged();
+            nftplot.PropertyChanged += (sender, e) => NftPlotChanged();
 
             foreach (PropertyInfo property in GetItemProperties())
             {
@@ -287,7 +290,20 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        private void InitPlotter()
+        private void NftPlotChanged()
+        {
+            if(nftplot.Value)
+            {
+                contract.Type = ItemType.CmdParameter;
+                poolkey.Type = ItemType.Hidden;
+            } else
+            {
+                contract.Type = ItemType.Hidden;
+                poolkey.Type = ItemType.CmdParameter;
+            }
+        }
+
+        private void PlotterChanged()
         {
             foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter)))
             {
@@ -352,20 +368,26 @@ namespace Mmx.Gui.Win.Common.Plotter
 
                     Scopes plotterScopeEnum = (Scopes)plotter.Value;
 
-                    if ((item.Scope & plotterScopeEnum) != plotterScopeEnum)
+                    if( (item.Scope & plotterScopeEnum) == plotterScopeEnum && item.Type == ItemType.CmdParameter )
                     {
-                        continue;
+                        var param = item.GetParam();
+                        if (!string.IsNullOrEmpty(param))
+                        {
+                            result += string.Format(" {0}", param);
+                        }
                     }
 
-                    if (!item.IsPlotterParam || nftplot.Value && property.Name == nameof(poolkey) || !nftplot.Value && property.Name == nameof(contract))
-                    {
-                        continue;
-                    }
+                    //if ((item.Scope & plotterScopeEnum) != plotterScopeEnum)
+                    //{
+                    //    continue;
+                    //}
 
-                    if (!string.IsNullOrEmpty(item.GetParam()))
-                    {
-                        result += string.Format(" {0}", item.GetParam());
-                    }
+                    //if (!item.IsPlotterParam || nftplot.Value && property.Name == nameof(poolkey) || !nftplot.Value && property.Name == nameof(contract))
+                    //{
+                    //    continue;
+                    //}
+
+
 
                 }
 
