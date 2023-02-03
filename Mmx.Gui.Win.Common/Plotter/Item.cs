@@ -89,7 +89,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
     public abstract class Item<T> : ItemBase<T>
     {
-        public string LongName { get; set; }
+        public string LongName { get; internal set; }
 
         public void SetValue(object obj)
         {
@@ -129,7 +129,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public T Maximum { get; internal set; }
         public bool SkipName { get; internal set; }
         public bool SkipValue { get; internal set; }
-
+        public bool Persistent { get; internal set; } = true;
 
         public string GetParam()
         {

@@ -82,7 +82,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             foreach (PropertyInfo property in GetItemProperties())
             {
                 dynamic item = property.GetValue(this);
-                jObject.Add(item.LongName, item.Value);
+                if (item.Persistent)
+                {
+                    jObject.Add(item.LongName, item.Value);
+                }
             }
 
             var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);

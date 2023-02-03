@@ -31,7 +31,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "-mmx",
             LongName = "bb_mmx",
             DefaultValue = true,
-            Scope = Scopes.MmxBladebit
+            Persistent = false,
+            Scope = Scopes.MmxBladebit            
         };
 
         [Order]
