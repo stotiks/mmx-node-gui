@@ -111,13 +111,15 @@ namespace Mmx.Gui.Win.Common.Node
 
             try
             {
-                OnOutputDataReceived(this, $"{process.StartInfo.FileName} {process.StartInfo.Arguments}");
 
                 process.Start();
 
                 if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
-                if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
-                OnStarted();
+                if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();                
+
+                OnStarted();                
+                OnOutputDataReceived(this, $"{process.StartInfo.FileName} {process.StartInfo.Arguments}");
+
             }
             catch (Exception ex)
             {
