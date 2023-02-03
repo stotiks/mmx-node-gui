@@ -456,12 +456,31 @@ namespace Mmx.Gui.Win.Common.Plotter
         public string PlotterExe
         {
             get {
-                var exe = "mmx_plot.exe";
-                if (size.Value > 32)
+                var exe = "";
+                switch (plotter.Value)
                 {
-                    exe = "mmx_plot_k34.exe";
+                    case (int)Plotters.MmxPlotter:
+                        exe = "mmx_plot.exe";
+                        if (size.Value > 32)
+                        {
+                            exe = "mmx_plot_k34.exe";
+                        }
+                        break;
+                    case (int)Plotters.MmxPlotterCompressed:
+                        exe = "mmx_plot_c.exe";
+                        if (size.Value > 32)
+                        {
+                            exe = "mmx_plot_k34_c.exe";
+                        }
+                        break;
+                    case (int)Plotters.MmxCudaPlotter:
+                        exe = $"mmx_cuda_plot_k{size.Value}.exe";
+                        break;
+                    case (int)Plotters.MmxBladebit:
+                        exe = "mmx_bladebit.exe";
+                        break;
                 }
-
+   
                 return exe;
             }
         }
