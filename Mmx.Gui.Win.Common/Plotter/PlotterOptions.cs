@@ -263,7 +263,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "priority",
             LongName = "priority",
-            DefaultValue = 0x20,
+            DefaultValue = (int)ProcessPriorityClass.Normal,
             IsPlotterParam = false,
             Items = new ObservableCollection<Item<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value =>
