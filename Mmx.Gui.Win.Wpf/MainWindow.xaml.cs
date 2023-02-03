@@ -1,12 +1,16 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
 using Mmx.Gui.Win.Common;
+using Mmx.Gui.Win.Common.Cef;
+using Mmx.Gui.Win.Common.Node;
+using Mmx.Gui.Win.Common.Plotter;
 using Mmx.Gui.Win.Common.Properties;
-using Mmx.Gui.Win.Wpf.Pages;
 using Mmx.Gui.Win.Wpf.Common.Pages;
+using Mmx.Gui.Win.Wpf.Pages;
 using ModernWpf.Controls;
 using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -14,10 +18,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using WPFLocalizeExtension.Engine;
-using Mmx.Gui.Win.Common.Plotter;
-using System.ComponentModel;
-using Mmx.Gui.Win.Common.Node;
-using ModernWpf;
 
 namespace Mmx.Gui.Win.Wpf
 {

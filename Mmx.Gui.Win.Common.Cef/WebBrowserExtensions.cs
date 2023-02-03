@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Cef
 {
 
     public static class WebBrowserExtensions

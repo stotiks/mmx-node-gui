@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Mmx.Gui.Win.Common
+namespace Mmx.Gui.Win.Common.Cef
 {
     public static class CefUtils
     {
@@ -29,7 +29,7 @@ namespace Mmx.Gui.Win.Common
             settings.Locale = Properties.Settings.Default.LanguageCode;
 
             // Make sure you set performDependencyCheck false
-            Cef.Initialize(settings, performDependencyCheck: false);
+            CefSharp.Cef.Initialize(settings, performDependencyCheck: false);
         }
 
         /// <summary>
