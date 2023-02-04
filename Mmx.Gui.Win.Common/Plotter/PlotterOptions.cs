@@ -26,16 +26,6 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
-        public BoolItem bb_mmx { get; set; } = new BoolItem
-        {
-            Name = "-mmx",
-            LongName = "bb_mmx",
-            DefaultValue = true,
-            Persistent = false,
-            Scope = Scopes.MmxBladebit            
-        };
-
-        [Order]
         public IntItem plotter { get; set; } = new IntItem
         {
             Name = "plotter",
@@ -43,13 +33,26 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = (int)Plotters.MmxPlotter,
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
-                ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable().Select(value =>
-                {
-                    var isDefault = value == (int)Plotters.MmxPlotter;
-                    var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
-                }).ToList()),
+                ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
+                    .Where(value => value != (int)Plotters.MmxBladebit)
+                    .Select(value =>
+                        {
+                            var isDefault = value == (int)Plotters.MmxPlotter;
+                            var isDefaultString = isDefault ? " (default)" : "";
+                            return new ItemBase<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
+                        })
+                    .ToList()),
             Scope = Scopes.Common
+        };
+
+        [Order]
+        public BoolItem bb_mmx { get; set; } = new BoolItem
+        {
+            Name = "-mmx",
+            LongName = "bb_mmx",
+            DefaultValue = true,
+            Persistent = false,
+            Scope = Scopes.MmxBladebit            
         };
 
         [Order]
