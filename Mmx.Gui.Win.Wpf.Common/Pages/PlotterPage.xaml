@@ -173,7 +173,42 @@
 
                             </ui:SimpleStackPanel>
                         </GroupBox>
+                        
+                        <GroupBox Header="{lex:Loc Plotter_CUDAHeader}">
+                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
+                                <ComboBox
+                                    Width="250"
+                                    ui:ControlHelper.Header="{lex:Loc Plotter_device}"
+                                    ItemsSource="{Binding PlotterOptions.device.Items}"
+                                    DisplayMemberPath="Name"
+                                    SelectedValuePath="Value"
+                                    SelectedValue="{Binding PlotterOptions.device.Value}"
+                                    Visibility="{Binding PlotterOptions.device.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                                <ui:NumberBox
+                                    Width="250"
+                                    Header="{lex:Loc Plotter_ndevices}"
+                                    Minimum="{Binding PlotterOptions.ndevices.Minimum}"
+                                    Maximum="{Binding PlotterOptions.ndevices.Maximum}"
+                                    Value="{Binding PlotterOptions.ndevices.Value}"
+                                    SpinButtonPlacementMode="Inline"
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding PlotterOptions.ndevices.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                                <ui:NumberBox
+                                    Width="250"
+                                    Header="{lex:Loc Plotter_streams}"
+                                    Minimum="{Binding PlotterOptions.streams.Minimum}"
+                                    Maximum="{Binding PlotterOptions.streams.Maximum}"
+                                    Value="{Binding PlotterOptions.streams.Value}"
+                                    SpinButtonPlacementMode="Inline"
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding PlotterOptions.streams.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                            </ui:SimpleStackPanel>
+                        </GroupBox>
+                        
                         <GroupBox Header="{lex:Loc Plotter_ProcessHeader}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 

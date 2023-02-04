@@ -232,6 +232,24 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CUDA.
+        /// </summary>
+        public static string Plotter_CUDAHeader {
+            get {
+                return ResourceManager.GetString("Plotter_CUDAHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CUDA device.
+        /// </summary>
+        public static string Plotter_device {
+            get {
+                return ResourceManager.GetString("Plotter_device", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directories.
         /// </summary>
         public static string Plotter_DirectoriesTab {
@@ -309,6 +327,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Plotter_LevelHeader {
             get {
                 return ResourceManager.GetString("Plotter_LevelHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of CUDA devices.
+        /// </summary>
+        public static string Plotter_ndevices {
+            get {
+                return ResourceManager.GetString("Plotter_ndevices", resourceCulture);
             }
         }
         
@@ -435,6 +462,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Plotter_Stop {
             get {
                 return ResourceManager.GetString("Plotter_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of parallel streams.
+        /// </summary>
+        public static string Plotter_streams {
+            get {
+                return ResourceManager.GetString("Plotter_streams", resourceCulture);
             }
         }
         

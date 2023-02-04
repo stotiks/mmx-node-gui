@@ -415,4 +415,20 @@
     <value>Plot</value>
     <comment>plotter</comment>
   </data>
+  <data name="Plotter_CUDAHeader" xml:space="preserve">
+    <value>CUDA</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_device" xml:space="preserve">
+    <value>CUDA device</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_ndevices" xml:space="preserve">
+    <value>Number of CUDA devices</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_streams" xml:space="preserve">
+    <value>Number of parallel streams</value>
+    <comment>plotter</comment>
+  </data>
 </root>

@@ -60,11 +60,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.Common
         };
 
-//  -g, --device arg     CUDA device(default = 0)
-//  -r, --ndevices arg   Number of CUDA devices(default = 1)
-//  -S, --streams arg    Number of parallel streams(default = 4, must be >= 2)
-//  -M, --memory arg     Max shared / pinned memory in GiB(default =
-
         [Order]
         public IntItem size { get; set; } = new IntItem
         {
@@ -74,9 +69,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Minimum = 30,
             Maximum = 34,
             Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(30, 5).Select(i =>
+                Enumerable.Range(30, 5).Select(value =>
                 {
-                    var value = i;
                     var isDefault = value == 32;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
@@ -93,9 +87,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Minimum = 1,
             Maximum = 9,
             Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(1, 9).Select(i =>
+                Enumerable.Range(1, 9).Select(value =>
                 {
-                    var value = i;
                     var isDefault = value == 1;
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
@@ -111,6 +104,52 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 11337,
             Scope = Scopes.MadMaxPlotters
         };
+
+
+        [Order]
+        public IntItem device { get; set; } = new IntItem
+        {
+            Name = "g",
+            LongName = "device",
+            DefaultValue = 0,
+            Minimum = 0,
+            Maximum = 9,
+            Items = new ObservableCollection<ItemBase<int>>(
+                Enumerable.Range(0, 9).Select(value =>
+                {
+                    var isDefault = value == 0;
+                    var isDefaultString = isDefault ? " (default)" : "";
+                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
+                }).ToList()),
+            Scope = Scopes.CudaPlotter
+        };
+
+        [Order]
+        public IntItem ndevices { get; set; } = new IntItem
+        {
+            Name = "r",
+            LongName = "ndevices",
+            DefaultValue = 1,
+            Minimum = 1,
+            Maximum = 9,
+            Scope = Scopes.CudaPlotter
+        };
+
+        [Order]
+        public IntItem streams { get; set; } = new IntItem
+        {
+            Name = "S",
+            LongName = "streams",
+            DefaultValue = 4,
+            Minimum = 2,
+            Maximum = 16,
+            Scope = Scopes.CudaPlotter
+        };
+
+        //  -g, --device arg     CUDA device(default = 0)
+        //  -r, --ndevices arg   Number of CUDA devices(default = 1)
+        //  -S, --streams arg    Number of parallel streams(default = 4, must be >= 2)
+        //  -M, --memory arg     Max shared / pinned memory in GiB(default =
 
         [Order]
         public IntItem threads { get; set; } = new IntItem
