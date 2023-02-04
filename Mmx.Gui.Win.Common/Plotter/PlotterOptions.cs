@@ -411,10 +411,10 @@ namespace Mmx.Gui.Win.Common.Plotter
                         }
                         break;
                     case (int)Plotters.ChiaPlotterWithCompression:
-                        exe = "mmx_plot_c.exe";
+                        exe = "mmx_plot_comp.exe";
                         if (size.Value > 32)
                         {
-                            exe = "mmx_plot_k34_c.exe";
+                            exe = "mmx_plot_k34_comp.exe";
                         }
                         break;
                     case (int)Plotters.CudaPlotter:
