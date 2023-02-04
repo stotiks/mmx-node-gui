@@ -81,7 +81,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
@@ -100,7 +100,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.ChiaPlotterWithCompression
+            Scope = Scopes.MadMaxPlottersWithCompression
         };
 
         [Order]
