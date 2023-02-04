@@ -169,7 +169,7 @@
     <value>Temporäres Verzeichnis</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Temporäres Verzeichnis 2 [Hauptspeicher]</value>
+    <value>Temporäres Verzeichnis 2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>Zwischenverzeichnis zum Schreiben der Plotdatei</value>

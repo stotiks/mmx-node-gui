@@ -169,7 +169,7 @@
     <value>Тимчасовий каталог</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Тимчасовий каталог 2 (Бажано для RAM)</value>
+    <value>Тимчасовий каталог 2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>Проміжна директорія для запису файлів плоту</value>

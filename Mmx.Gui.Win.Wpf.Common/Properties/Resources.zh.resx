@@ -169,7 +169,7 @@
     <value>缓存目录</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>缓存目录2 [RAM]</value>
+    <value>缓存目录2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>写入plot文件的阶段目录</value>

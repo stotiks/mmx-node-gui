@@ -169,7 +169,7 @@
     <value>Directório temporário</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Directório temporário 2 [RAM]</value>
+    <value>Directório temporário 2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>Directório de Stage para escrever o ficheiro do Plot</value>

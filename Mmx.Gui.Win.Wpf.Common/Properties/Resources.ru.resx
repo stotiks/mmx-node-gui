@@ -169,7 +169,7 @@
     <value>Временная папка</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Временная папка 2 [ОЗУ]</value>
+    <value>Временная папка 2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>Промежуточная директория для участка</value>

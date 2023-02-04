@@ -169,7 +169,7 @@
     <value>Direktori sementara</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Direktori sementara 2 [RAM]</value>
+    <value>Direktori sementara 2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>Direktori panggung untuk menulis file plot</value>

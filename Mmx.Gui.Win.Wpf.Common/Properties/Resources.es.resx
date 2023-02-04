@@ -199,7 +199,7 @@
     <value>Ditectorio temporal donde escribir el plot</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Ditectorio temporal num. 2 [RAM]</value>
+    <value>Ditectorio temporal num. 2</value>
   </data>
   <data name="Plotter_tmpdir" xml:space="preserve">
     <value>Directorio temporal</value>

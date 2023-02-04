@@ -304,6 +304,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compression level.
+        /// </summary>
+        public static string Plotter_LevelHeader {
+            get {
+                return ResourceManager.GetString("Plotter_LevelHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create NFT plot.
         /// </summary>
         public static string Plotter_nftplot {
@@ -327,6 +336,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Plotter_PerfomanceTab {
             get {
                 return ResourceManager.GetString("Plotter_PerfomanceTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plot.
+        /// </summary>
+        public static string Plotter_PlotHeader {
+            get {
+                return ResourceManager.GetString("Plotter_PlotHeader", resourceCulture);
             }
         }
         
@@ -385,7 +403,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Plot size.
+        ///   Looks up a localized string similar to Size.
         /// </summary>
         public static string Plotter_SizeHeader {
             get {
@@ -457,7 +475,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Temporary directory 2 [RAM].
+        ///   Looks up a localized string similar to Temporary directory 2.
         /// </summary>
         public static string Plotter_tmpdir2 {
             get {

@@ -169,7 +169,7 @@
     <value>Tijdelijk map</value>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Tijdelijke map 2 [Geheugen]</value>
+    <value>Tijdelijke map 2</value>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
     <value>Stage map om plotbestand te schrijven</value>

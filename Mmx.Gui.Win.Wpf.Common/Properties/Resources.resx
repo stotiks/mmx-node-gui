@@ -183,7 +183,7 @@
     <comment>plotter</comment>
   </data>
   <data name="Plotter_tmpdir2" xml:space="preserve">
-    <value>Temporary directory 2 [RAM]</value>
+    <value>Temporary directory 2</value>
     <comment>plotter</comment>
   </data>
   <data name="Plotter_stagedir" xml:space="preserve">
@@ -295,7 +295,7 @@
     <comment>settings</comment>
   </data>
   <data name="Plotter_SizeHeader" xml:space="preserve">
-    <value>Plot size</value>
+    <value>Size</value>
     <comment>plotter</comment>
   </data>
   <data name="Plotter_priority" xml:space="preserve">
@@ -406,5 +406,13 @@
   <data name="Settings_ConnectOnStart" xml:space="preserve">
     <value>Connect on start</value>
     <comment>harvester_settings</comment>
+  </data>
+  <data name="Plotter_LevelHeader" xml:space="preserve">
+    <value>Compression level</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_PlotHeader" xml:space="preserve">
+    <value>Plot</value>
+    <comment>plotter</comment>
   </data>
 </root>
