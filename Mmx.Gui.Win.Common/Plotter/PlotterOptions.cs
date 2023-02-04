@@ -121,7 +121,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.CudaPlotter
+            Scope = Scopes.CudaPlotter,
+            SuppressDefaultValue = true
         };
 
         [Order]
@@ -132,7 +133,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = 9,
-            Scope = Scopes.CudaPlotter
+            Scope = Scopes.CudaPlotter,
+            SuppressDefaultValue = true
         };
 
         [Order]
@@ -143,7 +145,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 4,
             Minimum = 2,
             Maximum = 16,
-            Scope = Scopes.CudaPlotter
+            Scope = Scopes.CudaPlotter,
+            SuppressDefaultValue = true
         };
 
         //  -g, --device arg     CUDA device(default = 0)
@@ -170,7 +173,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = 8,
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.MadMaxCpuPlotters,
+            SuppressDefaultValue = true
         };
 
         private const int BucketsDefaultValue = 256;

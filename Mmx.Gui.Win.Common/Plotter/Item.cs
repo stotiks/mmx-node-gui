@@ -134,6 +134,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public bool SkipName { get; internal set; }
         public bool SkipValue { get; internal set; }
         public bool Persistent { get; internal set; } = true;
+        public bool SuppressDefaultValue { get; internal set; } = false;        
 
         public string GetParam()
         {
@@ -153,7 +154,12 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         protected string FormatParam(string value)
         {
-            string result;
+            string result = "";
+
+            if(SuppressDefaultValue && value == DefaultValue.ToString())
+            {
+                return result;
+            }
 
             if (SkipName)
             {
