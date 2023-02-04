@@ -174,7 +174,8 @@
                             </ui:SimpleStackPanel>
                         </GroupBox>
                         
-                        <GroupBox Header="{lex:Loc Plotter_CUDAHeader}">
+                        <GroupBox Header="{lex:Loc Plotter_CUDAHeader}"
+                                  Visibility="{Binding PlotterOptions.device.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                                 <ComboBox

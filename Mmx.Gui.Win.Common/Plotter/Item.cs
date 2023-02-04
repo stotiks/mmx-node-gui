@@ -30,28 +30,15 @@ namespace Mmx.Gui.Win.Common.Plotter
 
     public class PathItem : Item<string>
     {
-        public new string GetParam()
+        protected override string FormatValue(string value)
         {
-            var result = "";
-
-            if (Value != null)
+            if (value.Contains(" "))
             {
-                var value = Value.ToString();
-
-                if (value.Contains(" "))
-                {
-                    value = $"\"{value}\"";
-                    value = value.Replace("\\\"", "\\\\\"");
-                }
-
-                if (!string.IsNullOrEmpty(value))
-                {
-                    result = FormatParam(value);
-                }
-
+                value = $"\"{value}\"";
+                value = value.Replace("\\\"", "\\\\\"");
             }
 
-            return result;
+            return value;
         }
     }
 
@@ -144,12 +131,18 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 var value = Value.ToString();
                 if (!string.IsNullOrEmpty(value))
-                {                    
+                {
+                    value = FormatValue(value);
                     result = FormatParam(value);
                 }
             }
 
             return result;
+        }
+
+        protected virtual string FormatValue(string value)
+        {
+            return value;
         }
 
         protected string FormatParam(string value)
