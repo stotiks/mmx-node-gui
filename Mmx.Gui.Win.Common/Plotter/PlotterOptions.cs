@@ -112,14 +112,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "g",
             LongName = "device",
             DefaultValue = 0,
-            Minimum = 0,
-            Maximum = 9,
             Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(0, 9).Select(value =>
+                Enumerable.Range(0, CudaInfo.Instance.Devices.Count).Select(value =>
                 {
                     var isDefault = value == 0;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
+                    var name = CudaInfo.Instance.Devices[value]["Name"];
+                    return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.CudaPlotter,
             SuppressDefaultValue = true
@@ -132,7 +131,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "ndevices",
             DefaultValue = 1,
             Minimum = 1,
-            Maximum = 9,
+            Maximum = CudaInfo.Instance.Devices.Count,
             Scope = Scopes.CudaPlotter,
             SuppressDefaultValue = true
         };

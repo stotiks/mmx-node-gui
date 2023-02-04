@@ -55,6 +55,7 @@
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Node\NodeProcess.cs" />
     <Compile Include="Node\NodeHelpers.cs" />
+    <Compile Include="Plotter\CudaInfo.cs" />
     <Compile Include="Plotter\Item.cs" />
     <Compile Include="Plotter\PlotterOptions.cs" />
     <Compile Include="Plotter\PlotterOptionsBase.cs" />
