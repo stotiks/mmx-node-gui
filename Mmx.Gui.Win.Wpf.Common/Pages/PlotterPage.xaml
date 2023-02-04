@@ -207,6 +207,23 @@
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.streams.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
+                                <ui:ToggleSwitch
+                                    x:Name="PinMemory"
+                                    Header="{lex:Loc Plotter_pin_memory}"
+                                    IsOn="{Binding PlotterOptions.pin_memory.Value}"
+                                    Visibility="{Binding PlotterOptions.pin_memory.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                                <ui:NumberBox
+                                    Width="250"
+                                    Header="{lex:Loc Plotter_memory}"
+                                    Minimum="{Binding PlotterOptions.memory.Minimum}"
+                                    Maximum="{Binding PlotterOptions.memory.Maximum}"
+                                    Value="{Binding PlotterOptions.memory.Value}"
+                                    SpinButtonPlacementMode="Inline"
+                                    HorizontalAlignment="Left"
+                                    IsEnabled="{Binding IsOn, ElementName=PinMemory}"
+                                    Visibility="{Binding PlotterOptions.memory.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
                             </ui:SimpleStackPanel>
                         </GroupBox>
                         

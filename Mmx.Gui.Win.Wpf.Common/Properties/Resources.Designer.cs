@@ -331,6 +331,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max shared / pinned memory in GiB.
+        /// </summary>
+        public static string Plotter_memory {
+            get {
+                return ResourceManager.GetString("Plotter_memory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of CUDA devices.
         /// </summary>
         public static string Plotter_ndevices {
@@ -363,6 +372,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Plotter_PerfomanceTab {
             get {
                 return ResourceManager.GetString("Plotter_PerfomanceTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin memory.
+        /// </summary>
+        public static string Plotter_pin_memory {
+            get {
+                return ResourceManager.GetString("Plotter_pin_memory", resourceCulture);
             }
         }
         

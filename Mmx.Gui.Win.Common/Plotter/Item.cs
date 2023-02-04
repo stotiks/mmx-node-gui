@@ -111,6 +111,17 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
+        private bool _skip;
+        public bool Skip
+        {
+            get => _skip;
+            internal set
+            {
+                _skip = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public ItemType Type { get; internal set; } = ItemType.CmdParameter;
 
         public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
@@ -118,7 +129,6 @@ namespace Mmx.Gui.Win.Common.Plotter
         public ObservableCollection<ItemBase<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
         public T Maximum { get; internal set; }
-        public bool Skip { get; internal set; }
         public bool SkipName { get; internal set; }
         public bool SkipValue { get; internal set; }
         public bool Persistent { get; internal set; } = true;

@@ -149,10 +149,26 @@ namespace Mmx.Gui.Win.Common.Plotter
             SuppressDefaultValue = true
         };
 
-        //  -g, --device arg     CUDA device(default = 0)
-        //  -r, --ndevices arg   Number of CUDA devices(default = 1)
-        //  -S, --streams arg    Number of parallel streams(default = 4, must be >= 2)
-        //  -M, --memory arg     Max shared / pinned memory in GiB(default =
+        [Order]
+        public BoolItem pin_memory { get; set; } = new BoolItem
+        {
+            Name = "pin_memory",
+            LongName = "pin_memory",
+            DefaultValue = true,
+            Scope = Scopes.CudaPlotter,
+            Skip = true   
+        };
+
+        [Order]
+        public IntItem memory { get; set; } = new IntItem
+        {
+            Name = "M",
+            LongName = "memory",
+            DefaultValue = Convert.ToInt32(NativeMethods.GetTotalMemoryInGigaBytes() / 2.0),
+            Minimum = 0,
+            Maximum = NativeMethods.GetTotalMemoryInGigaBytes(),
+            Scope = Scopes.CudaPlotter
+        };
 
         [Order]
         public IntItem threads { get; set; } = new IntItem
@@ -337,12 +353,20 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged(nameof(PlotterCmd));
             }
-
-            PlotterChanged();
+            
             plotter.PropertyChanged += (sender, e) => PlotterChanged();
-
-            NftPlotChanged();
+            PlotterChanged();
+            
             nftplot.PropertyChanged += (sender, e) => NftPlotChanged();
+            NftPlotChanged();
+            
+            pin_memory.PropertyChanged += (sender, e) => PinMemoryChanged();
+            PinMemoryChanged();
+        }
+
+        private void PinMemoryChanged()
+        {
+            memory.Skip = !pin_memory.Value;
         }
 
         private void NftPlotChanged()

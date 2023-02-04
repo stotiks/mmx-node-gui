@@ -431,4 +431,12 @@
     <value>Number of parallel streams</value>
     <comment>plotter</comment>
   </data>
+  <data name="Plotter_memory" xml:space="preserve">
+    <value>Max shared / pinned memory in GiB</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_pin_memory" xml:space="preserve">
+    <value>Pin memory</value>
+    <comment>plotter</comment>
+  </data>
 </root>
