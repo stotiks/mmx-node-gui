@@ -37,7 +37,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             };
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                item.Value = PlotterOptions.FixDir(dialog.FileName);
+                item.Value = PlotterOptionsHelpers.FixDir(dialog.FileName);
             }
         }
 

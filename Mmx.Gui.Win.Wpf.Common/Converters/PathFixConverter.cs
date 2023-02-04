@@ -10,7 +10,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var dir = value as string;
-            return PlotterOptions.FixDir(dir);
+            return PlotterOptionsHelpers.FixDir(dir);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

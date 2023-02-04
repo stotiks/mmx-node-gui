@@ -14,15 +14,17 @@ namespace Mmx.Gui.Win.Common.Plotter
         public enum Scopes : short
         {
             None = 0,
-            MmxPlotter = Plotters.MmxPlotter,
-            MmxPlotterCompressed = Plotters.MmxPlotterCompressed,
-            MmxCudaPlotter = Plotters.MmxCudaPlotter,
-            MmxBladebit = Plotters.MmxBladebit,
 
-            MadMaxCpuPlotters = MmxPlotter | MmxPlotterCompressed,
-            MadMaxPlotters = MmxPlotter | MmxPlotterCompressed | MmxCudaPlotter,
-            MadMaxPlottersCompressed = MmxPlotterCompressed | MmxCudaPlotter,
-            Common = MmxPlotter | MmxPlotterCompressed | MmxCudaPlotter | MmxBladebit
+            ChiaPlotter = Plotters.ChiaPlotter,
+            ChiaPlotterWithCompression = Plotters.ChiaPlotterWithCompression,
+            CudaPlotter = Plotters.CudaPlotter,
+            Bladebit = Plotters.Bladebit,
+
+            MadMaxCpuPlotters = ChiaPlotter | ChiaPlotterWithCompression,
+            MadMaxPlotters = ChiaPlotter | ChiaPlotterWithCompression | CudaPlotter,
+            MadMaxPlottersWithCompression = ChiaPlotterWithCompression | CudaPlotter,
+
+            Common = ChiaPlotter | ChiaPlotterWithCompression | CudaPlotter | Bladebit
         };
 
         [Order]
@@ -30,29 +32,21 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "plotter",
             LongName = "plotter",
-            DefaultValue = (int)Plotters.MmxPlotter,
+            DefaultValue = (int)Plotters.ChiaPlotter,
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => value != (int)Plotters.MmxBladebit)
+                    .Where(value => value != (int)Plotters.Bladebit)
                     .Select(value =>
                         {
-                            var isDefault = value == (int)Plotters.MmxPlotter;
+                            var isDefault = value == (int)Plotters.ChiaPlotter;
                             var isDefaultString = isDefault ? " (default)" : "";
-                            return new ItemBase<int> { Name = Enum.GetName(typeof(Plotters), value) + isDefaultString, Value = value };
+                            Plotters plotterEnum = (Plotters)Enum.ToObject(typeof(Plotters), value);
+                            var name = PlotterOptionsHelpers.GetDescription(plotterEnum);
+                            return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                         })
                     .ToList()),
             Scope = Scopes.Common
-        };
-
-        [Order]
-        public BoolItem bb_mmx { get; set; } = new BoolItem
-        {
-            Name = "-mmx",
-            LongName = "bb_mmx",
-            DefaultValue = true,
-            Persistent = false,
-            Scope = Scopes.MmxBladebit            
         };
 
         [Order]
@@ -65,6 +59,11 @@ namespace Mmx.Gui.Win.Common.Plotter
             Maximum = 999,
             Scope = Scopes.Common
         };
+
+//  -g, --device arg     CUDA device(default = 0)
+//  -r, --ndevices arg   Number of CUDA devices(default = 1)
+//  -S, --streams arg    Number of parallel streams(default = 4, must be >= 2)
+//  -M, --memory arg     Max shared / pinned memory in GiB(default =
 
         [Order]
         public IntItem size { get; set; } = new IntItem
@@ -101,7 +100,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxPlottersCompressed
+            Scope = Scopes.ChiaPlotterWithCompression
         };
 
         [Order]
@@ -213,7 +212,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "w",
             LongName = "waitforcopy",
             DefaultValue = false,
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.MadMaxPlotters
         };
 
         [Order]
@@ -325,7 +324,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
             }
 
-            if (plotter.Value == (int)Plotters.MmxBladebit)
+            if (plotter.Value == (int)Plotters.Bladebit)
             {
                 finaldir.SkipName = true;
             }
@@ -344,24 +343,24 @@ namespace Mmx.Gui.Win.Common.Plotter
                 var exe = "";
                 switch (plotter.Value)
                 {
-                    case (int)Plotters.MmxPlotter:
+                    case (int)Plotters.ChiaPlotter:
                         exe = "mmx_plot.exe";
                         if (size.Value > 32)
                         {
                             exe = "mmx_plot_k34.exe";
                         }
                         break;
-                    case (int)Plotters.MmxPlotterCompressed:
+                    case (int)Plotters.ChiaPlotterWithCompression:
                         exe = "mmx_plot_c.exe";
                         if (size.Value > 32)
                         {
                             exe = "mmx_plot_k34_c.exe";
                         }
                         break;
-                    case (int)Plotters.MmxCudaPlotter:
-                        exe = $"mmx_cuda_plot_k{size.Value}.exe";
+                    case (int)Plotters.CudaPlotter:
+                        exe = $"cuda_plot_k{size.Value}.exe";
                         break;
-                    case (int)Plotters.MmxBladebit:
+                    case (int)Plotters.Bladebit:
                         exe = "mmx_bladebit.exe";
                         break;
                 }

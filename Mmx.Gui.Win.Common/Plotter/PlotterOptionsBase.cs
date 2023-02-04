@@ -101,19 +101,5 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             public int Order { get; }
         }
-
-        public static string FixDir(string dir)
-        {
-            if (string.IsNullOrEmpty(dir)) return "";
-
-            dir = dir.Replace('/', '\\');
-
-            if (dir.Length > 0 && dir.Last() != '\\')
-            {
-                dir += '\\';
-            }
-
-            return dir;
-        }
     }
 }

@@ -7,10 +7,14 @@ namespace Mmx.Gui.Win.Common.Plotter
 {
     public enum Plotters : int
     {
-        MmxPlotter = 1 << 0,
-        MmxPlotterCompressed = 1 << 1,
-        MmxCudaPlotter = 1 << 2,
-        MmxBladebit = 1 << 8,
+        [Description("CPU Plotter")]
+        ChiaPlotter = 1 << 0,
+        [Description("CPU Plotter with compression")]
+        ChiaPlotterWithCompression = 1 << 1,
+        [Description("Gigahorse GPU Plotter")]
+        CudaPlotter = 1 << 2,
+        [Description("Bladebit")]
+        Bladebit = 1 << 8,
     };
 
     public enum ItemType

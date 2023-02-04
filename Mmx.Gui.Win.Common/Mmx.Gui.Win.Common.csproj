@@ -58,6 +58,7 @@
     <Compile Include="Plotter\Item.cs" />
     <Compile Include="Plotter\PlotterOptions.cs" />
     <Compile Include="Plotter\PlotterOptionsBase.cs" />
+    <Compile Include="Plotter\PlotterOptionsHelpers.cs" />
     <Compile Include="Plotter\PlotterProcess.cs" />
     <Compile Include="ProcessWrapper.cs" />
     <Compile Include="PowerManagement.cs" />
