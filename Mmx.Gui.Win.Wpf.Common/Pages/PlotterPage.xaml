@@ -34,7 +34,7 @@
         <Style x:Key="ChooseFolderButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Background" Value="Transparent"/>
-            <!--EventSetter Event="Click" Handler="ChooseFolderButton_Click"/-->
+            <EventSetter Event="Click" Handler="ChooseFolderButton_Click"/>
             <Setter Property="Content" Value="{StaticResource FolderGlyph}"/>
         </Style>
         
