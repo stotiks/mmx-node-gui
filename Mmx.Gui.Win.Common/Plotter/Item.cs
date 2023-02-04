@@ -118,6 +118,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public ObservableCollection<ItemBase<T>> Items { get; internal set; }
         public T Minimum { get; internal set; }
         public T Maximum { get; internal set; }
+        public bool Skip { get; internal set; }
         public bool SkipName { get; internal set; }
         public bool SkipValue { get; internal set; }
         public bool Persistent { get; internal set; } = true;
@@ -149,7 +150,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             string result = "";
 
-            if(SuppressDefaultValue && value == DefaultValue.ToString())
+            if(Skip || SuppressDefaultValue && value == DefaultValue.ToString())
             {
                 return result;
             }

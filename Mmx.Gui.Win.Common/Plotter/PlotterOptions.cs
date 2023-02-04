@@ -367,14 +367,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                 item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
             }
 
-            if (plotter.Value == (int)Plotters.Bladebit)
-            {
-                finaldir.SkipName = true;
-            }
-            else
-            {
-                finaldir.SkipName = false;
-            }
+            var isCudaPlotter = plotter.Value == (int)Plotters.CudaPlotter;
+            size.Skip = isCudaPlotter;
         }
 
         public string PlotterCmd => $"{PlotterExe} {PlotterArguments}";
