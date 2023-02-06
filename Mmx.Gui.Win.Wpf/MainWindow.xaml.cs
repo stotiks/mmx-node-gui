@@ -3,7 +3,7 @@ using CefSharp.Wpf;
 using Mmx.Gui.Win.Common;
 using Mmx.Gui.Win.Common.Cef;
 using Mmx.Gui.Win.Common.Node;
-using Mmx.Gui.Win.Common.Plotter.Options;
+using Mmx.Gui.Win.Common.Plotter;
 using Mmx.Gui.Win.Common.Properties;
 using Mmx.Gui.Win.Wpf.Common.Pages;
 using Mmx.Gui.Win.Wpf.Pages;
