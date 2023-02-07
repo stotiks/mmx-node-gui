@@ -201,7 +201,7 @@
                                         <Style TargetType="ui:NumberBox">
                                             <Setter Property="IsEnabled" Value="True" />
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding PlotterOptions.ndevices.Value}" Value="1">
+                                                <DataTrigger Binding="{Binding PlotterOptions.ndevices.Maximum}" Value="1">
                                                     <Setter Property="IsEnabled" Value="False" />
                                                 </DataTrigger>
                                             </Style.Triggers>
