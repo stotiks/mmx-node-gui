@@ -637,6 +637,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment variables.
+        /// </summary>
+        public static string Settings_EnvVariables {
+            get {
+                return ResourceManager.GetString("Settings_EnvVariables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inhibit system sleep.
         /// </summary>
         public static string Settings_InhibitSystemSleep {

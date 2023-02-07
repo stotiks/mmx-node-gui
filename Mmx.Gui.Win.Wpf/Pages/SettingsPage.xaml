@@ -105,6 +105,42 @@
                     </ui:SimpleStackPanel>
                 </GroupBox>
 
+                <GroupBox Header="{lex:Loc Settings_EnvVariables}">
+                    <ui:SimpleStackPanel>
+                        
+                        <ui:ToggleSwitch
+                            x:Name="CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch"
+                            OnContent="CHIAPOS_MAX_CUDA_DEVICES"
+                            OffContent="CHIAPOS_MAX_CUDA_DEVICES"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=SetCHIAPOS_MAX_CUDA_DEVICES}"/>
+                        
+                        <ui:NumberBox
+                            Width="250"
+                            Minimum="{Binding PlotterOptions.ndevices.Minimum}"
+                            Maximum="{Binding PlotterOptions.ndevices.Maximum}"
+                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES}"
+                            SpinButtonPlacementMode="Inline"
+                            HorizontalAlignment="Left"
+                            IsEnabled="{Binding ElementName=CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch, Path=IsOn}"/>
+ 
+                        <ui:ToggleSwitch Margin="0,25,0,0"
+                            x:Name="CHIAPOS_MAX_CORES_ToggleSwitch"
+                            OnContent="CHIAPOS_MAX_CORES"
+                            OffContent="CHIAPOS_MAX_CORES"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=SetCHIAPOS_MAX_CORES}"/>
+
+                        <ui:NumberBox
+                            Width="250"
+                            Minimum="{Binding PlotterOptions.ndevices.Minimum}"
+                            Maximum="{Binding PlotterOptions.ndevices.Maximum}"
+                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES}"
+                            SpinButtonPlacementMode="Inline"
+                            HorizontalAlignment="Left"
+                            IsEnabled="{Binding ElementName=CHIAPOS_MAX_CORES_ToggleSwitch, Path=IsOn}"/>
+   
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
                 <GroupBox Header="{lex:Loc Settings_Debug}" Margin="0,0,0,-40" x:Name="DebugGroupBox" MouseDown="DebugGroupBox_MouseDown">
                     <GroupBox.ToolTip>
                         <TextBlock Text="{lex:Loc Settings_Debug_Tooltip}"/>

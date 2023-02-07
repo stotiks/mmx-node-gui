@@ -196,18 +196,7 @@
                                     SpinButtonPlacementMode="Inline"
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.ndevices.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                    >
-                                    <ui:NumberBox.Style>
-                                        <Style TargetType="ui:NumberBox">
-                                            <Setter Property="IsEnabled" Value="True" />
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding PlotterOptions.ndevices.Maximum}" Value="1">
-                                                    <Setter Property="IsEnabled" Value="False" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ui:NumberBox.Style>
-                                </ui:NumberBox>
+                                    />
 
                                 <ui:NumberBox
                                     Width="250"
