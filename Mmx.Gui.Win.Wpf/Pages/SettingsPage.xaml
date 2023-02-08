@@ -112,12 +112,12 @@
                             x:Name="CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch"
                             OnContent="CHIAPOS_MAX_CUDA_DEVICES"
                             OffContent="CHIAPOS_MAX_CUDA_DEVICES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=SetCHIAPOS_MAX_CUDA_DEVICES}"/>
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES_Enabled}"/>
                         
                         <ui:NumberBox
                             Width="250"
-                            Minimum="{Binding PlotterOptions.ndevices.Minimum}"
-                            Maximum="{Binding PlotterOptions.ndevices.Maximum}"
+                            Minimum="{Binding CHIAPOS_MAX_CUDA_DEVICES_Minimum}"
+                            Maximum="{Binding CHIAPOS_MAX_CUDA_DEVICES_Maximum}"
                             Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES}"
                             SpinButtonPlacementMode="Inline"
                             HorizontalAlignment="Left"
@@ -127,12 +127,12 @@
                             x:Name="CHIAPOS_MAX_CORES_ToggleSwitch"
                             OnContent="CHIAPOS_MAX_CORES"
                             OffContent="CHIAPOS_MAX_CORES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=SetCHIAPOS_MAX_CORES}"/>
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES_Enabled}"/>
 
                         <ui:NumberBox
                             Width="250"
-                            Minimum="{Binding PlotterOptions.ndevices.Minimum}"
-                            Maximum="{Binding PlotterOptions.ndevices.Maximum}"
+                            Minimum="{Binding CHIAPOS_MAX_CORES_Minimum}"
+                            Maximum="{Binding CHIAPOS_MAX_CORES_Maximum}"
                             Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES}"
                             SpinButtonPlacementMode="Inline"
                             HorizontalAlignment="Left"

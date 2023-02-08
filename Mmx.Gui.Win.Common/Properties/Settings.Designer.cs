@@ -234,5 +234,53 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["ConnectOnStart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int CHIAPOS_MAX_CORES {
+            get {
+                return ((int)(this["CHIAPOS_MAX_CORES"]));
+            }
+            set {
+                this["CHIAPOS_MAX_CORES"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int CHIAPOS_MAX_CUDA_DEVICES {
+            get {
+                return ((int)(this["CHIAPOS_MAX_CUDA_DEVICES"]));
+            }
+            set {
+                this["CHIAPOS_MAX_CUDA_DEVICES"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_MAX_CORES_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_MAX_CORES_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_MAX_CORES_Enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_MAX_CUDA_DEVICES_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_MAX_CUDA_DEVICES_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_MAX_CUDA_DEVICES_Enabled"] = value;
+            }
+        }
     }
 }
