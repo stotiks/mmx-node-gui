@@ -55,6 +55,16 @@ namespace Mmx.Gui.Win.Common.Node
                 CreateNoWindow = !Settings.Default.ShowConsole
             };
 
+            if(Settings.Default.CHIAPOS_MAX_CORES_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add("CHIAPOS_MAX_CORES", Settings.Default.CHIAPOS_MAX_CORES.ToString());
+            }
+
+            if (Settings.Default.CHIAPOS_MAX_CUDA_DEVICES_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add("CHIAPOS_MAX_CUDA_DEVICES", Settings.Default.CHIAPOS_MAX_CUDA_DEVICES.ToString());
+            }
+
             if (Settings.Default.ShowConsole)
             {
 #if !DEBUG
