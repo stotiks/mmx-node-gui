@@ -411,14 +411,14 @@ namespace Mmx.Gui.Win.Common.Plotter
                         }
                         break;
                     case (int)Plotters.ChiaPlotterWithCompression:
-                        exe = "mmx_plot_comp.exe";
+                        exe = "./gigahorse/chia_plot.exe";
                         if (size.Value > 32)
                         {
-                            exe = "mmx_plot_k34_comp.exe";
+                            exe = "./gigahorse/chia_plot.exe";
                         }
                         break;
                     case (int)Plotters.CudaPlotter:
-                        exe = $"cuda_plot_k{size.Value}.exe";
+                        exe = $"./gigahorse/cuda_plot_k{size.Value}.exe";
                         break;
                     case (int)Plotters.Bladebit:
                         exe = "mmx_bladebit.exe";
