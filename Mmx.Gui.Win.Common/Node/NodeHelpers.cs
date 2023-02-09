@@ -4,6 +4,13 @@ using System.IO;
 
 namespace Mmx.Gui.Win.Common.Node
 {
+
+    public enum NodeBuildType
+    {
+        Classic,
+        Gigahorse
+    }
+
     public static class NodeHelpers
     {
         public static readonly string workingDirectory =
@@ -29,6 +36,7 @@ namespace Mmx.Gui.Win.Common.Node
         public static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
         public static Version Version { get; private set; }
+        public static NodeBuildType BuildType { get; private set; }
 
         public static string VersionTag => "v" + Version;
 
@@ -36,8 +44,18 @@ namespace Mmx.Gui.Win.Common.Node
         {
             try
             {
-                var productVersion = FileVersionInfo.GetVersionInfo(NodeHelpers.mmxNodeEXEPath).ProductVersion;
+                var versionInfo = FileVersionInfo.GetVersionInfo(NodeHelpers.mmxNodeEXEPath);
+                var productVersion = versionInfo.ProductVersion;
                 Version = new Version(productVersion);
+
+                var productName = versionInfo.ProductName;
+                if (productName.Contains(nameof(NodeBuildType.Classic)))
+                {
+                    BuildType = NodeBuildType.Classic;
+                } else
+                {
+                    BuildType = NodeBuildType.Gigahorse;
+                }
             }
             catch
             {
