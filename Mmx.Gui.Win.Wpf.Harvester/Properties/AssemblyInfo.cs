@@ -5,13 +5,13 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mmx.Gui.Win.Wpf.Harvester")]
+[assembly: AssemblyTitle("MMX Harvester GUI")]
 [assembly: AssemblyDescription("")]
 //[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("madMAx43v3r")]
-[assembly: AssemblyProduct("MMX Plotter")]
-[assembly: AssemblyCopyright("Copyright © 2022")]
-[assembly: AssemblyTrademark("madMAx43v3r (C) Copyright 2022")]
+[assembly: AssemblyProduct("MMX Harvester GUI")]
+[assembly: AssemblyCopyright("madMAx43v3r (C) Copyright 2022")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
