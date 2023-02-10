@@ -379,6 +379,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 contract.Type = ItemType.Hidden;
                 poolkey.Type = ItemType.CmdParameter;
             }
+            NotifyPropertyChanged(nameof(PlotterCmd));
         }
 
         private void PlotterChanged()
