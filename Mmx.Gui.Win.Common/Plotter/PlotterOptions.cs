@@ -400,6 +400,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             get
             {
+                var gigahorsePath = "gigahorse\\";
                 var exe = "";
                 switch (plotter.Value)
                 {
@@ -411,14 +412,14 @@ namespace Mmx.Gui.Win.Common.Plotter
                         }
                         break;
                     case (int)Plotters.ChiaPlotterWithCompression:
-                        exe = "./gigahorse/chia_plot.exe";
+                        exe = "{gigahorsePath}chia_plot.exe";
                         if (size.Value > 32)
                         {
-                            exe = "./gigahorse/chia_plot.exe";
+                            exe = "{gigahorsePath}chia_plot.exe";
                         }
                         break;
                     case (int)Plotters.CudaPlotter:
-                        exe = $"./gigahorse/cuda_plot_k{size.Value}.exe";
+                        exe = $"{gigahorsePath}cuda_plot_k{size.Value}.exe";
                         break;
                     case (int)Plotters.Bladebit:
                         exe = "mmx_bladebit.exe";
