@@ -10,7 +10,7 @@ namespace Mmx.Gui.Win.Wpf.Plotter.Chia
     /// </summary>
     public partial class MainWindow
     {
-        private readonly PlotterPage _plotterPage = new PlotterPage();
+        private readonly PlotterPage _plotterPage = new PlotterPage(false);
 
         public MainWindow()
         {

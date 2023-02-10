@@ -403,13 +403,14 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 var gigahorsePath = "gigahorse\\";
                 var exe = "";
+                var chia_plot_name = IsMmx ? "mmx_plot" : "chia_plot";
                 switch (plotter.Value)
                 {
                     case (int)Plotters.ChiaPlotter:
-                        exe = "mmx_plot.exe";
+                        exe = $"{chia_plot_name}.exe";
                         if (size.Value > 32)
                         {
-                            exe = "mmx_plot_k34.exe";
+                            exe = $"{chia_plot_name}_k34.exe";
                         }
                         break;
                     case (int)Plotters.ChiaPlotterWithCompression:

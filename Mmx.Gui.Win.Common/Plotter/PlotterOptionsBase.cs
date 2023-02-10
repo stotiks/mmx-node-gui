@@ -15,6 +15,8 @@ namespace Mmx.Gui.Win.Common.Plotter
     {
         private string plotterConfigPath = NodeHelpers.plotterConfigPath;
 
+        public bool IsMmx { get; set; } = true;
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
