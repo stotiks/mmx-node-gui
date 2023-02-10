@@ -13,6 +13,8 @@ namespace Mmx.Gui.Win.Common.Plotter
 {
     public class PlotterOptionsBase : INotifyPropertyChanged
     {
+        private string plotterConfigPath = NodeHelpers.plotterConfigPath;
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -50,7 +52,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             string json = "{}";
             try
             {
-                json = File.ReadAllText(NodeHelpers.plotterConfigPath);
+                json = File.ReadAllText(plotterConfigPath);
             } 
             catch
             {
@@ -87,7 +89,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
 
             var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-            File.WriteAllText(NodeHelpers.plotterConfigPath, json);
+            File.WriteAllText(plotterConfigPath, json);
         }
 
 
