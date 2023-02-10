@@ -38,7 +38,7 @@ namespace Mmx.Gui.Win.Common.Node
         public static Version Version { get; private set; }
         public static NodeBuildType BuildType { get; private set; }
 
-        public static string VersionTag => "v" + Version;
+        public static string VersionTag => $"v{Version} - ({BuildType})";
 
         static NodeHelpers()
         {
