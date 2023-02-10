@@ -412,10 +412,10 @@ namespace Mmx.Gui.Win.Common.Plotter
                         }
                         break;
                     case (int)Plotters.ChiaPlotterWithCompression:
-                        exe = "{gigahorsePath}chia_plot.exe";
+                        exe = $"{gigahorsePath}chia_plot.exe";
                         if (size.Value > 32)
                         {
-                            exe = "{gigahorsePath}chia_plot.exe";
+                            exe = $"{gigahorsePath}chia_plot.exe";
                         }
                         break;
                     case (int)Plotters.CudaPlotter:
