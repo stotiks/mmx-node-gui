@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Mmx.Gui.Win.Common;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Mmx.Gui.Win.Wpf.Harvester.Pages
 {
@@ -24,5 +14,11 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         {
             InitializeComponent();
         }
+
+        public int CHIAPOS_MAX_CUDA_DEVICES_Minimum => 0;
+        public int CHIAPOS_MAX_CUDA_DEVICES_Maximum => CudaInfo.Instance.Devices.Count();
+
+        public int CHIAPOS_MAX_CORES_Minimum => 1;
+        public int CHIAPOS_MAX_CORES_Maximum => Environment.ProcessorCount;
     }
 }
