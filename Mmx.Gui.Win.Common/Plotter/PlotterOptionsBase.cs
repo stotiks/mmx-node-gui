@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -13,9 +14,24 @@ namespace Mmx.Gui.Win.Common.Plotter
 {
     public class PlotterOptionsBase : INotifyPropertyChanged
     {
-        private string plotterConfigPath = NodeHelpers.plotterConfigPath;
 
-        public bool IsMmx { get; set; } = true;
+        public static readonly string MM_PLOTER_HOME_ENV = Environment.GetEnvironmentVariable("MM_PLOTER_HOME");
+        public static readonly string MM_PLOTER_HOME = string.IsNullOrEmpty(MM_PLOTER_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".plotterGui") : MM_PLOTER_HOME_ENV;
+
+        static private string plotterConfigPath;
+
+        static PlotterOptionsBase()
+        {
+            if(IsMmx)
+            {
+                plotterConfigPath = NodeHelpers.plotterConfigPath;
+            } else
+            {
+                plotterConfigPath = Path.Combine(MM_PLOTER_HOME, "Plotter.json");
+            }
+        }
+
+        public static bool IsMmx { get; set; } = !Convert.ToBoolean(ConfigurationManager.AppSettings["ChiaPlotter"]);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -23,21 +39,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public PlotterOptionsBase()
-        {
-            foreach (PropertyInfo property in GetItemProperties())
-            {
-                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged();
-            }
-
-            LoadJSON();
-
-            foreach (PropertyInfo property in GetItemProperties())
-            {
-                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => Save();
-            }
-            
-        }
 
         protected IEnumerable<PropertyInfo> GetItemProperties()
         {
@@ -49,7 +50,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
 
 
-        private void LoadJSON()
+        protected void LoadJSON()
         {
             string json = "{}";
             try
@@ -63,7 +64,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             LoadJSON(json);
         }
 
-        private void LoadJSON(string json)
+        protected void LoadJSON(string json)
         {
             dynamic config = JsonConvert.DeserializeObject(json);
             foreach (var configItem in config)
@@ -77,7 +78,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        private void Save()
+        protected void Save()
         {
             dynamic jObject = new JObject();
 
@@ -91,6 +92,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
 
             var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+
+            var plotterConfigDir = Path.GetDirectoryName(plotterConfigPath);
+            if (!System.IO.Directory.Exists(plotterConfigDir))
+            {
+                System.IO.Directory.CreateDirectory(plotterConfigDir);
+            }
+
             File.WriteAllText(plotterConfigPath, json);
         }
 

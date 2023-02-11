@@ -351,9 +351,12 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             foreach (PropertyInfo property in GetItemProperties())
             {
+                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged();
                 ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => NotifyPropertyChanged(nameof(PlotterCmd));
             }
-            
+
+            LoadJSON();
+
             plotter.PropertyChanged += (sender, e) => PlotterChanged();
             PlotterChanged();
             
@@ -362,6 +365,11 @@ namespace Mmx.Gui.Win.Common.Plotter
             
             pin_memory.PropertyChanged += (sender, e) => PinMemoryChanged();
             PinMemoryChanged();
+
+            foreach (PropertyInfo property in GetItemProperties())
+            {
+                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => Save();
+            }
         }
 
         private void PinMemoryChanged()
