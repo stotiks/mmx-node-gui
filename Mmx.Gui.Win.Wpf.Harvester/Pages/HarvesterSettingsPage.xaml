@@ -13,11 +13,20 @@
     lex:ResxLocalizationProvider.DefaultAssembly="Mmx.Gui.Win.Wpf.Common"
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
+    xmlns:node="clr-namespace:Mmx.Gui.Win.Common.Node;assembly=Mmx.Gui.Win.Common"    
+    
     mc:Ignorable="d"
     d:DesignHeight="1450" 
     d:DesignWidth="800"
     Title="HarvesterSettingsPage">
 
+    <Page.Resources>
+        <cv:BooleanInverter x:Key="BooleanInverter"/>
+        <cv:PathFixConverter x:Key="PathFixConverter"/>
+        <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+    
     <Grid Margin="25,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -72,7 +81,8 @@
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=InhibitSystemSleep}"/>
                 </GroupBox>
 
-                <GroupBox Header="{lex:Loc Settings_EnvVariables}">
+                <GroupBox Header="{lex:Loc Settings_EnvVariables}"
+                          Visibility="{Binding Source={x:Static node:NodeHelpers.IsGigahorse}, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <ui:SimpleStackPanel>
 
                         <ui:ToggleSwitch

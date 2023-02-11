@@ -6,17 +6,26 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:properties="clr-namespace:Mmx.Gui.Win.Common.Properties;assembly=Mmx.Gui.Win.Common"
-    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Pages"
+    xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Pages"    
     
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="Mmx.Gui.Win.Wpf.Common"
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
+    xmlns:node="clr-namespace:Mmx.Gui.Win.Common.Node;assembly=Mmx.Gui.Win.Common"
+    
     mc:Ignorable="d"
     d:DesignHeight="1450" 
     d:DesignWidth="800"
     Title="SettingsPage">
+
+    <Page.Resources>
+        <cv:BooleanInverter x:Key="BooleanInverter"/>
+        <cv:PathFixConverter x:Key="PathFixConverter"/>
+        <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
 
     <Grid Margin="25,0,0,0">
         <Grid.RowDefinitions>
@@ -105,7 +114,8 @@
                     </ui:SimpleStackPanel>
                 </GroupBox>
 
-                <GroupBox Header="{lex:Loc Settings_EnvVariables}">
+                <GroupBox Header="{lex:Loc Settings_EnvVariables}"
+                          Visibility="{Binding Source={x:Static node:NodeHelpers.IsGigahorse}, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <ui:SimpleStackPanel>
                         
                         <ui:ToggleSwitch

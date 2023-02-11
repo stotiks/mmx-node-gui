@@ -62,5 +62,7 @@ namespace Mmx.Gui.Win.Common.Node
                 Version = new Version();
             }
         }
+
+        public static bool IsGigahorse => BuildType == NodeBuildType.Gigahorse;
     }
 }
