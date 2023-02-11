@@ -37,7 +37,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => value != (int)Plotters.Bladebit && !(NodeHelpers.IsGigahorse == false && (value == (int)Plotters.CudaPlotter || value == (int)Plotters.ChiaPlotterWithCompression)) )
+                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmx && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.CudaPlotter || value == (int)Plotters.ChiaPlotterWithCompression)) )
                     .Select(value =>
                         {
                             var isDefault = value == (int)Plotters.ChiaPlotter;
