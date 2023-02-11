@@ -97,13 +97,36 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.MadMaxPlottersWithCompression
         };
 
+        enum Ports
+        {
+            [Description("Chia [8444]")]
+            Chia = 8444,
+            //[Description("Chives [9699]")]
+            //Chives = 9699,
+            [Description("MMX [11337]")]
+            MMX = 11337
+        }
+
+        static int PortDefaultValue = IsMmx ? (int)Ports.MMX : (int)Ports.Chia;
         [Order]
         public IntItem port { get; set; } = new IntItem
         {
             Name = "x",
             LongName = "port",
-            DefaultValue = 11337,
-            Scope = Scopes.MadMaxPlotters
+            DefaultValue = PortDefaultValue,
+            Items = new ObservableCollection<ItemBase<int>>(
+                ((IEnumerable<int>)Enum.GetValues(typeof(Ports))).AsEnumerable()                    
+                    .Select(value =>
+                    {
+                        var isDefault = value == PortDefaultValue;
+                        var isDefaultString = isDefault ? " (default)" : "";
+                        Ports portEnum = (Ports)Enum.ToObject(typeof(Ports), value);
+                        var name = PlotterOptionsHelpers.GetDescription(portEnum);
+                        return new ItemBase<int> { Name = name + isDefaultString, Value = value };
+                    })
+                    .ToList()),            
+            Scope = Scopes.MadMaxPlotters,
+            IsVisible = !IsMmx
         };
 
 
@@ -366,6 +389,12 @@ namespace Mmx.Gui.Win.Common.Plotter
             pin_memory.PropertyChanged += (sender, e) => PinMemoryChanged();
             PinMemoryChanged();
 
+            if(IsMmx)
+            {
+                port.Value = (int)Ports.MMX;
+                NotifyPropertyChanged(nameof(PlotterCmd));
+            }
+
             foreach (PropertyInfo property in GetItemProperties())
             {
                 ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => Save();
@@ -393,7 +422,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private void PlotterChanged()
         {
-            foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter)))
+            foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter) && property.Name != nameof(port)))
             {
                 dynamic item = property.GetValue(this);
                 Scopes plotterScopeEnum = (Scopes)plotter.Value;

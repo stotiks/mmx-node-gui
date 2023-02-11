@@ -443,4 +443,8 @@
     <value>Environment variables</value>
     <comment>settings</comment>
   </data>
+  <data name="Plotter_Port" xml:space="preserve">
+    <value>Port</value>
+    <comment>plotter</comment>
+  </data>
 </root>

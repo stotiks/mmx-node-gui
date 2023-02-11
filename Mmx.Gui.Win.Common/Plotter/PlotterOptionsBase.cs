@@ -31,7 +31,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             }
         }
 
-        public static bool IsMmx { get; set; } = !Convert.ToBoolean(ConfigurationManager.AppSettings["ChiaPlotter"]);
+        public static bool IsMmx = !Convert.ToBoolean(ConfigurationManager.AppSettings["ChiaPlotter"]);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
