@@ -547,6 +547,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Temporary directory 3.
+        /// </summary>
+        public static string Plotter_tmpdir3 {
+            get {
+                return ResourceManager.GetString("Plotter_tmpdir3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alternate tmpdir/tmpdir2.
         /// </summary>
         public static string Plotter_tmptoggle {

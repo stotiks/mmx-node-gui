@@ -323,6 +323,17 @@
                         </ui:SimpleStackPanel>
 
                         <ui:SimpleStackPanel Orientation="Horizontal"
+                                             Visibility="{Binding PlotterOptions.tmpdir3.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <TextBox
+                                ui:ControlHelper.Header="{lex:Loc Plotter_tmpdir3}"
+                                Width="{StaticResource MainWidth}"
+                                Text="{Binding PlotterOptions.tmpdir3.Value, Converter={StaticResource PathFixConverter}}"/>
+                            <Button 
+                                Style="{StaticResource ChooseFolderButton}"
+                                Tag="tmpdir3"/>
+                        </ui:SimpleStackPanel>
+
+                        <ui:SimpleStackPanel Orientation="Horizontal"
                                              Visibility="{Binding PlotterOptions.stagedir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_stagedir}"

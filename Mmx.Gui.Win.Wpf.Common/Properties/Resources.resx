@@ -447,4 +447,8 @@
     <value>Port</value>
     <comment>plotter</comment>
   </data>
+  <data name="Plotter_tmpdir3" xml:space="preserve">
+    <value>Temporary directory 3</value>
+    <comment>plotter</comment>
+  </data>
 </root>

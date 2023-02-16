@@ -37,10 +37,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.CudaPlotter || value == (int)Plotters.ChiaPlotterWithCompression)) )
+                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.MadMaxCudaPlotter || value == (int)Plotters.MadMaxChiaPlotterWithCompression)) )
                     .Select(value =>
                         {
-                            var isDefault = value == (int)Plotters.ChiaPlotter;
+                            var isDefault = value == (int)Plotters.MadMaxChiaPlotter;
                             var isDefaultString = isDefault ? " (default)" : "";
                             Plotters plotterEnum = (Plotters)Enum.ToObject(typeof(Plotters), value);
                             var name = PlotterOptionsHelpers.GetDescription(plotterEnum);
@@ -277,6 +277,15 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "tmpdir2",
             DefaultValue = "",
             Scope = Scopes.MadMaxPlotters
+        };
+
+        [Order]
+        public PathItem tmpdir3 { get; set; } = new PathItem
+        {
+            Name = "3",
+            LongName = "tmpdir3",
+            DefaultValue = "",
+            Scope = Scopes.MadMaxCudaPlotter
         };
 
         [Order]
