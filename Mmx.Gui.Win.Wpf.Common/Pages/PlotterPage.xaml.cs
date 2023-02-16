@@ -13,14 +13,14 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     {
         public PlotterOptions PlotterOptions => PlotterOptions.Instance;
 
-        public PlotterPage(bool isMmx = true)
+        public PlotterPage(bool IsMmxOnly = true)
         {
-            PlotterOptions.IsMmx = isMmx;
+            PlotterOptions.IsMmxOnly = IsMmxOnly;
 
             InitializeComponent();
             DataContext = this;
 
-            if (PlotterOptions.IsMmx)
+            if (PlotterOptions.IsMmxOnly)
             {
                 //NFT PLOTS DISABLED
                 PlotterOptions.Instance.nftplot.Value = false;

@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Harvester",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Common.Cef", "Mmx.Gui.Win.Common.Cef\Mmx.Gui.Win.Common.Cef.csproj", "{4F34B952-265A-4044-8011-82918749EDE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Wpf.Plotter.Chia", "Mmx.Gui.Win.Wpf.Plotter.Chia\Mmx.Gui.Win.Wpf.Plotter.Chia.csproj", "{57085E57-C18F-468D-B0C3-151040A7FA1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlotManager", "PlotManager\PlotManager.csproj", "{57085E57-C18F-468D-B0C3-151040A7FA1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

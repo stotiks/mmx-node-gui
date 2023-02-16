@@ -3,7 +3,7 @@ using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
 using System.Threading.Tasks;
 
-namespace Mmx.Gui.Win.Wpf.Plotter.Chia
+namespace PlotManager
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

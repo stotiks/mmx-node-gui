@@ -15,23 +15,23 @@ namespace Mmx.Gui.Win.Common.Plotter
     public class PlotterOptionsBase : INotifyPropertyChanged
     {
 
-        public static readonly string MM_PLOTER_HOME_ENV = Environment.GetEnvironmentVariable("MM_PLOTER_HOME");
-        public static readonly string MM_PLOTER_HOME = string.IsNullOrEmpty(MM_PLOTER_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".plotterGui") : MM_PLOTER_HOME_ENV;
+        public static readonly string PLOT_MANAGER_HOME_ENV = Environment.GetEnvironmentVariable("MM_PLOTER_HOME");
+        public static readonly string PLOT_MANAGER_HOME = string.IsNullOrEmpty(PLOT_MANAGER_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".plotManager") : PLOT_MANAGER_HOME_ENV;
 
         static private string plotterConfigPath;
 
         static PlotterOptionsBase()
         {
-            if(IsMmx)
+            if(IsMmxOnly)
             {
                 plotterConfigPath = NodeHelpers.plotterConfigPath;
             } else
             {
-                plotterConfigPath = Path.Combine(MM_PLOTER_HOME, "Plotter.json");
+                plotterConfigPath = Path.Combine(PLOT_MANAGER_HOME, "Plotter.json");
             }
         }
 
-        public static bool IsMmx = !Convert.ToBoolean(ConfigurationManager.AppSettings["ChiaPlotter"]);
+        public static bool IsMmxOnly = !Convert.ToBoolean(ConfigurationManager.AppSettings["PlotManager"]);
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

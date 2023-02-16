@@ -37,7 +37,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmx && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.CudaPlotter || value == (int)Plotters.ChiaPlotterWithCompression)) )
+                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.CudaPlotter || value == (int)Plotters.ChiaPlotterWithCompression)) )
                     .Select(value =>
                         {
                             var isDefault = value == (int)Plotters.ChiaPlotter;
@@ -107,7 +107,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             MMX = 11337
         }
 
-        static int PortDefaultValue = IsMmx ? (int)Ports.MMX : (int)Ports.Chia;
+        static int PortDefaultValue = IsMmxOnly ? (int)Ports.MMX : (int)Ports.Chia;
         [Order]
         public IntItem port { get; set; } = new IntItem
         {
@@ -126,7 +126,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     })
                     .ToList()),            
             Scope = Scopes.MadMaxPlotters,
-            IsVisible = !IsMmx
+            IsVisible = !IsMmxOnly
         };
 
 
@@ -389,7 +389,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             pin_memory.PropertyChanged += (sender, e) => PinMemoryChanged();
             PinMemoryChanged();
 
-            if(IsMmx)
+            if(IsMmxOnly)
             {
                 port.Value = (int)Ports.MMX;
                 NotifyPropertyChanged(nameof(PlotterCmd));
@@ -441,7 +441,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 var gigahorsePath = "gigahorse\\";
                 var exe = "";
-                var chia_plot_name = IsMmx ? "mmx_plot" : "chia_plot";
+                var chia_plot_name = IsMmxOnly ? "mmx_plot" : "chia_plot";
                 switch (plotter.Value)
                 {
                     case (int)Plotters.ChiaPlotter:
