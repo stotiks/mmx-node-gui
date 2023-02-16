@@ -28,16 +28,16 @@
         <sys:Double x:Key="MainWidth">500</sys:Double>
         <sys:Double x:Key="KeyWidth">800</sys:Double>
         <sys:Double x:Key="Spacing">7</sys:Double>
-        
+
         <ui:FontIcon x:Key="FolderGlyph" x:Shared="False" Glyph="&#xED25;"/>
-        
+
         <Style x:Key="ChooseFolderButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Background" Value="Transparent"/>
             <EventSetter Event="Click" Handler="ChooseFolderButton_Click"/>
             <Setter Property="Content" Value="{StaticResource FolderGlyph}"/>
         </Style>
-        
+
     </Page.Resources>
 
     <Grid Margin="25,0,0,0">
@@ -46,43 +46,40 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:SimpleStackPanel Grid.Row="0" Margin="0,8,0,12">
-
-            <TextBlock  
+        <TextBlock Grid.Row="0" Margin="0,8,0,12"
             Text="{lex:Loc Plotter_Title}"
             Style="{StaticResource TitleTextBlockStyle}"
-                FontSize="28"/>
+            FontSize="28"/>
 
+        <ui:SimpleStackPanel Grid.Row="1">
+            
             <ComboBox Width="350" Margin="10,12,0,0"
                 ItemsSource="{Binding PlotterOptions.plotter.Items}"
                 DisplayMemberPath="Name"
                 SelectedValuePath="Value"
                 SelectedValue="{Binding PlotterOptions.plotter.Value}"/>
+            
+            <TabControl 
+                x:Name="tabControl"
+                x:FieldModifier="public"
+        	    Style="{StaticResource TabControlPivotStyle}">
 
-        </ui:SimpleStackPanel>
+                <TabItem Header="{lex:Loc Plotter_GeneralTab}">
+                    <ScrollViewer Margin="0,12,0,0">
+                        <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
-        <TabControl 
-            x:Name="tabControl"
-            x:FieldModifier="public"
-        	Style="{StaticResource TabControlPivotStyle}"
-        	Grid.Row="1">
-
-            <TabItem Header="{lex:Loc Plotter_GeneralTab}">
-                <ScrollViewer Margin="0,12,0,0">
-                    <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
-
-                        <ui:SimpleStackPanel Orientation="Horizontal">
-                            <TextBox
+                            <ui:SimpleStackPanel Orientation="Horizontal">
+                                <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_finaldir}"
                                 Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.finaldir.Value, Converter={StaticResource PathFixConverter}}"/>
-                            <Button 
+                                <Button 
                                 Style="{StaticResource ChooseFolderButton}"
                                 Tag="finaldir">
-                            </Button>
-                        </ui:SimpleStackPanel>
+                                </Button>
+                            </ui:SimpleStackPanel>
 
-                        <ui:NumberBox
+                            <ui:NumberBox
                             Width="200"
                             Header="{lex:Loc Plotter_count}"
                             Minimum="{Binding PlotterOptions.count.Minimum}"
@@ -90,8 +87,8 @@
                             SpinButtonPlacementMode="Inline" 
                             HorizontalAlignment="Left"                            
                             Value="{Binding PlotterOptions.count.Value}"/>
-                        
-                        <TextBox
+
+                            <TextBox
                             ui:ControlHelper.Header="{lex:Loc Plotter_CommandLine}"
                             HorizontalAlignment="Left"
                             Width="{StaticResource KeyWidth}"
@@ -100,69 +97,69 @@
                             VerticalScrollBarVisibility="Auto"
                             TextWrapping="WrapWithOverflow"
                             Text="{Binding PlotterOptions.PlotterCmd, Mode=OneWay}"/>
-                        
-                        <Button Width="200"
+
+                            <Button Width="200"
                             Content="{lex:Loc Plotter_Start}"
                             Style="{StaticResource AccentButtonStyle}"
                             Click="StartButton_Click"/>
 
-                    </ui:SimpleStackPanel>
-                </ScrollViewer>
-            </TabItem>
+                        </ui:SimpleStackPanel>
+                    </ScrollViewer>
+                </TabItem>
 
 
-            <TabItem Header="{lex:Loc Plotter_KeysTab}" 
+                <TabItem Header="{lex:Loc Plotter_KeysTab}" 
                      x:Name="tabItemKeys" 
                      x:FieldModifier="public">
-                <ScrollViewer Margin="0,12,0,0">
-                    <ui:SimpleStackPanel 
+                    <ScrollViewer Margin="0,12,0,0">
+                        <ui:SimpleStackPanel 
                         Spacing="{StaticResource Spacing}" 
                         HorizontalAlignment="Left">
 
-                        <ComboBox Width="250"
+                            <ComboBox Width="250"
                             ui:ControlHelper.Header="{lex:Loc Plotter_Port}"
                             ItemsSource="{Binding PlotterOptions.port.Items}"
                             DisplayMemberPath="Name"
                             SelectedValuePath="Value"
                             SelectedValue="{Binding PlotterOptions.port.Value}"
                             Visibility="{Binding PlotterOptions.port.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                        
-                        <TextBox x:Name="farmerKeyTextBox" x:FieldModifier="public"
+
+                            <TextBox x:Name="farmerKeyTextBox" x:FieldModifier="public"
                             ui:ControlHelper.Header="{lex:Loc Plotter_farmerkey}"
                             Width="{StaticResource KeyWidth}"
                             Text="{Binding PlotterOptions.farmerkey.Value}"/>
-                        
-                        <ui:ToggleSwitch  
+
+                            <ui:ToggleSwitch  
                             x:Name="createPlotNFT"
                             Header="{lex:Loc Plotter_nftplot}"
                             IsOn="{Binding PlotterOptions.nftplot.Value}"/>
-                        
-                        <TextBox
+
+                            <TextBox
                             ui:ControlHelper.Header="{lex:Loc Plotter_poolkey}"
                             Width="{StaticResource KeyWidth}"
                             IsEnabled="{Binding IsOn, Converter={StaticResource BooleanInverter}, ElementName=createPlotNFT}"
                             Text="{Binding PlotterOptions.poolkey.Value}"/>
-                        
-                        <TextBox
+
+                            <TextBox
                             ui:ControlHelper.Header="{lex:Loc Plotter_contract}"
                             Width="{StaticResource KeyWidth}"
                             IsEnabled="{Binding IsOn, ElementName=createPlotNFT}"
                             Text="{Binding PlotterOptions.contract.Value}"/>
-                        
-                    </ui:SimpleStackPanel>                    
-                </ScrollViewer>
-            </TabItem>
 
-            <TabItem Header="{lex:Loc Plotter_PerfomanceTab}">
-                <ScrollViewer Margin="0,12,0,0">
+                        </ui:SimpleStackPanel>
+                    </ScrollViewer>
+                </TabItem>
 
-                    <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+                <TabItem Header="{lex:Loc Plotter_PerfomanceTab}">
+                    <ScrollViewer Margin="0,12,0,0">
 
-                        <GroupBox Header="{lex:Loc Plotter_PlotHeader}"
+                        <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+
+                            <GroupBox Header="{lex:Loc Plotter_PlotHeader}"
                                   Visibility="{Binding PlotterOptions.size.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
-                                
-                            <ComboBox
+                                <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+
+                                    <ComboBox
                                 Width="250"
                                 ui:ControlHelper.Header="{lex:Loc Plotter_SizeHeader}"
                                 ItemsSource="{Binding PlotterOptions.size.Items}"
@@ -170,7 +167,7 @@
                                 SelectedValuePath="Value"                                    
                                 SelectedValue="{Binding PlotterOptions.size.Value}"/>
 
-                            <ComboBox
+                                    <ComboBox
                                 Width="250"
                                 ui:ControlHelper.Header="{lex:Loc Plotter_LevelHeader}"
                                 ItemsSource="{Binding PlotterOptions.level.Items}"
@@ -179,14 +176,14 @@
                                 SelectedValue="{Binding PlotterOptions.level.Value}"
                                 Visibility="{Binding PlotterOptions.level.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                            </ui:SimpleStackPanel>
-                        </GroupBox>
-                        
-                        <GroupBox Header="{lex:Loc Plotter_CUDAHeader}"
-                                  Visibility="{Binding PlotterOptions.device.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+                                </ui:SimpleStackPanel>
+                            </GroupBox>
 
-                                <ComboBox
+                            <GroupBox Header="{lex:Loc Plotter_CUDAHeader}"
+                                  Visibility="{Binding PlotterOptions.device.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+
+                                    <ComboBox
                                     Width="250"
                                     ui:ControlHelper.Header="{lex:Loc Plotter_device}"
                                     ItemsSource="{Binding PlotterOptions.device.Items}"
@@ -195,7 +192,7 @@
                                     SelectedValue="{Binding PlotterOptions.device.Value}"
                                     Visibility="{Binding PlotterOptions.device.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                                <ui:NumberBox
+                                    <ui:NumberBox
                                     Width="250"
                                     Header="{lex:Loc Plotter_ndevices}"
                                     Minimum="{Binding PlotterOptions.ndevices.Minimum}"
@@ -206,7 +203,7 @@
                                     Visibility="{Binding PlotterOptions.ndevices.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                     />
 
-                                <ui:NumberBox
+                                    <ui:NumberBox
                                     Width="250"
                                     Header="{lex:Loc Plotter_streams}"
                                     Minimum="{Binding PlotterOptions.streams.Minimum}"
@@ -216,13 +213,13 @@
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.streams.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                                <ui:ToggleSwitch
+                                    <ui:ToggleSwitch
                                     x:Name="PinMemory"
                                     Header="{lex:Loc Plotter_pin_memory}"
                                     IsOn="{Binding PlotterOptions.pin_memory.Value}"
                                     Visibility="{Binding PlotterOptions.pin_memory.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                                <ui:NumberBox
+                                    <ui:NumberBox
                                     Width="250"
                                     Header="{lex:Loc Plotter_memory}"
                                     Minimum="{Binding PlotterOptions.memory.Minimum}"
@@ -233,13 +230,13 @@
                                     IsEnabled="{Binding IsOn, ElementName=PinMemory}"
                                     Visibility="{Binding PlotterOptions.memory.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                            </ui:SimpleStackPanel>
-                        </GroupBox>
-                        
-                        <GroupBox Header="{lex:Loc Plotter_ProcessHeader}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+                                </ui:SimpleStackPanel>
+                            </GroupBox>
 
-                                <ComboBox
+                            <GroupBox Header="{lex:Loc Plotter_ProcessHeader}">
+                                <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+
+                                    <ComboBox
                                     Width="250"
                                     ui:ControlHelper.Header="{lex:Loc Plotter_priority}"
                                     ItemsSource="{Binding PlotterOptions.priority.Items}"
@@ -247,7 +244,7 @@
                                     SelectedValuePath="Value"
                                     SelectedValue="{Binding PlotterOptions.priority.Value}"/>
 
-                                <ui:NumberBox
+                                    <ui:NumberBox
                                     Width="250"
                                     Header="{lex:Loc Plotter_threads}"
                                     Minimum="{Binding PlotterOptions.threads.Minimum}"
@@ -257,7 +254,7 @@
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.threads.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                                <ui:NumberBox
+                                    <ui:NumberBox
                                     Width="250"
                                     Header="{lex:Loc Plotter_rmulti2}"
                                     Minimum="{Binding PlotterOptions.rmulti2.Minimum}"
@@ -266,15 +263,15 @@
                                     SpinButtonPlacementMode="Inline"
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.rmulti2.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                
-                            </ui:SimpleStackPanel>
-                        </GroupBox>
 
-                        <GroupBox Header="{lex:Loc Plotter_BucketsHeader}"
+                                </ui:SimpleStackPanel>
+                            </GroupBox>
+
+                            <GroupBox Header="{lex:Loc Plotter_BucketsHeader}"
                                   Visibility="{Binding PlotterOptions.buckets.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+                                <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
-                                <ComboBox
+                                    <ComboBox
                                     Width="250"
                                     ui:ControlHelper.Header="{lex:Loc Plotter_buckets}"
                                     ItemsSource="{Binding PlotterOptions.buckets.Items}"
@@ -282,7 +279,7 @@
                                     SelectedValuePath="Value"
                                     SelectedValue="{Binding PlotterOptions.buckets.Value}"/>
 
-                                <ComboBox
+                                    <ComboBox
                                     Width="250"
                                     ui:ControlHelper.Header="{lex:Loc Plotter_buckets3}"
                                     ItemsSource="{Binding PlotterOptions.buckets3.Items}"
@@ -290,80 +287,82 @@
                                     SelectedValuePath="Value"                                    
                                     SelectedValue="{Binding PlotterOptions.buckets3.Value}"/>
 
-                            </ui:SimpleStackPanel>
-                        </GroupBox>
+                                </ui:SimpleStackPanel>
+                            </GroupBox>
 
-                    </ui:SimpleStackPanel>                    
-                </ScrollViewer>
-            </TabItem>
+                        </ui:SimpleStackPanel>
+                    </ScrollViewer>
+                </TabItem>
 
-            <TabItem Header="{lex:Loc Plotter_DirectoriesTab}">
-                <ScrollViewer Margin="0,12,0,0">
-                    <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+                <TabItem Header="{lex:Loc Plotter_DirectoriesTab}">
+                    <ScrollViewer Margin="0,12,0,0">
+                        <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
-                        <ui:SimpleStackPanel Orientation="Horizontal">
-                            <TextBox
+                            <ui:SimpleStackPanel Orientation="Horizontal">
+                                <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_tmpdir}"
                                 Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.tmpdir.Value, Converter={StaticResource PathFixConverter}}"/>
-                            <Button 
+                                <Button 
                                 Style="{StaticResource ChooseFolderButton}"
                                 Tag="tmpdir"/>
 
-                        </ui:SimpleStackPanel>
+                            </ui:SimpleStackPanel>
 
-                        <ui:SimpleStackPanel Orientation="Horizontal">
-                            <TextBox
+                            <ui:SimpleStackPanel Orientation="Horizontal">
+                                <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_tmpdir2}"
                                 Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.tmpdir2.Value, Converter={StaticResource PathFixConverter}}"/>
-                            <Button 
+                                <Button 
                                 Style="{StaticResource ChooseFolderButton}"
                                 Tag="tmpdir2"/>
-                        </ui:SimpleStackPanel>
+                            </ui:SimpleStackPanel>
 
-                        <ui:SimpleStackPanel Orientation="Horizontal"
+                            <ui:SimpleStackPanel Orientation="Horizontal"
                                              Visibility="{Binding PlotterOptions.tmpdir3.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <TextBox
+                                <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_tmpdir3}"
                                 Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.tmpdir3.Value, Converter={StaticResource PathFixConverter}}"/>
-                            <Button 
+                                <Button 
                                 Style="{StaticResource ChooseFolderButton}"
                                 Tag="tmpdir3"/>
-                        </ui:SimpleStackPanel>
+                            </ui:SimpleStackPanel>
 
-                        <ui:SimpleStackPanel Orientation="Horizontal"
+                            <ui:SimpleStackPanel Orientation="Horizontal"
                                              Visibility="{Binding PlotterOptions.stagedir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <TextBox
+                                <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_stagedir}"
                                 Width="{StaticResource MainWidth}"
                                 Text="{Binding PlotterOptions.stagedir.Value, Converter={StaticResource PathFixConverter}}"/>
-                            <Button 
+                                <Button 
                                 Style="{StaticResource ChooseFolderButton}"
                                 Tag="stagedir"/>
-                        </ui:SimpleStackPanel>
+                            </ui:SimpleStackPanel>
 
-                        <ui:ToggleSwitch 
+                            <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_waitforcopy}"
                             IsOn="{Binding PlotterOptions.waitforcopy.Value}"
                             Visibility="{Binding PlotterOptions.waitforcopy.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                        
-                        <ui:ToggleSwitch 
+
+                            <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_tmptoggle}"
                             IsOn="{Binding PlotterOptions.tmptoggle.Value}"
                             Visibility="{Binding PlotterOptions.tmptoggle.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                        
-                        <ui:ToggleSwitch 
+
+                            <ui:ToggleSwitch 
                             Header="{lex:Loc Plotter_directout}"
                             IsOn="{Binding PlotterOptions.directout.Value}"
                             Visibility="{Binding PlotterOptions.directout.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                    </ui:SimpleStackPanel>
-                </ScrollViewer>
-            </TabItem>
-            
-        </TabControl>
+                        </ui:SimpleStackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+            </TabControl>
+
+        </ui:SimpleStackPanel>
         
         <dialogs:PlotterDialog 
             Grid.Row="1"
