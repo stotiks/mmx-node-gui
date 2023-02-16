@@ -16,16 +16,16 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             None = 0,
 
-            ChiaPlotter = Plotters.ChiaPlotter,
-            ChiaPlotterWithCompression = Plotters.ChiaPlotterWithCompression,
-            CudaPlotter = Plotters.CudaPlotter,
+            MadMaxChiaPlotter = Plotters.MadMaxChiaPlotter,
+            MadMaxChiaPlotterWithCompression = Plotters.MadMaxChiaPlotterWithCompression,
+            MadMaxCudaPlotter = Plotters.MadMaxCudaPlotter,
             Bladebit = Plotters.Bladebit,
 
-            MadMaxCpuPlotters = ChiaPlotter | ChiaPlotterWithCompression,
-            MadMaxPlotters = ChiaPlotter | ChiaPlotterWithCompression | CudaPlotter,
-            MadMaxPlottersWithCompression = ChiaPlotterWithCompression | CudaPlotter,
+            MadMaxCpuPlotters = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression,
+            MadMaxPlotters = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression | MadMaxCudaPlotter,
+            MadMaxPlottersWithCompression = MadMaxChiaPlotterWithCompression | MadMaxCudaPlotter,
 
-            Common = ChiaPlotter | ChiaPlotterWithCompression | CudaPlotter | Bladebit
+            Common = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression | MadMaxCudaPlotter | Bladebit
         };
 
         [Order]
@@ -33,7 +33,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "plotter",
             LongName = "plotter",
-            DefaultValue = (int)Plotters.ChiaPlotter,
+            DefaultValue = (int)Plotters.MadMaxChiaPlotter,
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
@@ -144,7 +144,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var name = CudaInfo.Instance.Devices[value]["Name"];
                     return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.CudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotter,
             SuppressDefaultValue = true
         };
 
@@ -156,7 +156,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = CudaInfo.Instance.Devices.Count,
-            Scope = Scopes.CudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotter,
             SuppressDefaultValue = true
         };
 
@@ -168,7 +168,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 4,
             Minimum = 2,
             Maximum = 16,
-            Scope = Scopes.CudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotter,
             SuppressDefaultValue = true
         };
 
@@ -178,7 +178,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "pin_memory",
             LongName = "pin_memory",
             DefaultValue = true,
-            Scope = Scopes.CudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotter,
             Skip = true   
         };
 
@@ -190,7 +190,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = Convert.ToInt32(NativeMethods.GetTotalMemoryInGigaBytes() / 2.0),
             Minimum = 0,
             Maximum = NativeMethods.GetTotalMemoryInGigaBytes(),
-            Scope = Scopes.CudaPlotter
+            Scope = Scopes.MadMaxCudaPlotter
         };
 
         [Order]
@@ -429,7 +429,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
             }
 
-            var isCudaPlotter = plotter.Value == (int)Plotters.CudaPlotter;
+            var isCudaPlotter = plotter.Value == (int)Plotters.MadMaxCudaPlotter;
             size.Skip = isCudaPlotter;
         }
 
@@ -444,21 +444,21 @@ namespace Mmx.Gui.Win.Common.Plotter
                 var chia_plot_name = IsMmxOnly ? "mmx_plot" : "chia_plot";
                 switch (plotter.Value)
                 {
-                    case (int)Plotters.ChiaPlotter:
+                    case (int)Plotters.MadMaxChiaPlotter:
                         exe = $"{chia_plot_name}.exe";
                         if (size.Value > 32)
                         {
                             exe = $"{chia_plot_name}_k34.exe";
                         }
                         break;
-                    case (int)Plotters.ChiaPlotterWithCompression:
+                    case (int)Plotters.MadMaxChiaPlotterWithCompression:
                         exe = $"{gigahorsePath}chia_plot.exe";
                         if (size.Value > 32)
                         {
                             exe = $"{gigahorsePath}chia_plot.exe";
                         }
                         break;
-                    case (int)Plotters.CudaPlotter:
+                    case (int)Plotters.MadMaxCudaPlotter:
                         exe = $"{gigahorsePath}cuda_plot_k{size.Value}.exe";
                         break;
                     case (int)Plotters.Bladebit:

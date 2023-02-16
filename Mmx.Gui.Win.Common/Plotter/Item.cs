@@ -8,11 +8,11 @@ namespace Mmx.Gui.Win.Common.Plotter
     public enum Plotters : int
     {
         [Description("CPU Plotter")]
-        ChiaPlotter = 1 << 0,
+        MadMaxChiaPlotter = 1 << 0,
         [Description("CPU Plotter with compression")]
-        ChiaPlotterWithCompression = 1 << 1,
+        MadMaxChiaPlotterWithCompression = 1 << 1,
         [Description("Gigahorse GPU Plotter")]
-        CudaPlotter = 1 << 2,
+        MadMaxCudaPlotter = 1 << 2,
         [Description("Bladebit")]
         Bladebit = 1 << 8,
     };
