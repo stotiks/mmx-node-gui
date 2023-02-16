@@ -141,7 +141,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     var isDefault = value == 0;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    var name = CudaInfo.Instance.Devices[value]["Name"];
+                    var name = CudaInfo.Instance.Devices[value];
                     return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxCudaPlotter,
