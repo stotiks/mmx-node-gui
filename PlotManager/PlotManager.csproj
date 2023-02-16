@@ -110,7 +110,7 @@
     <PostBuildEvent>SET OUT=$(TargetDir)\..\CPack_Chia_$(ConfigurationName)
 (
 ROBOCOPY $(TargetDir) %25OUT%25\gui\langs "*.resources.dll"  /S /XD langs /IS /IT
-ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config" PlotterGUI.exe PlotterGUI.config
+ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config"
 ROBOCOPY  $(TargetDir) %25OUT%25\gui\libs Mmx.Gui.Win.Common.dll Mmx.Gui.Win.Wpf.Common.dll ModernWpf.Controls.dll ModernWpf.dll System.ValueTuple.dll Newtonsoft.Json.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll WPFLocalizeExtension.dll XAMLMarkupExtensions.dll
 ) ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
