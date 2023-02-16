@@ -9,9 +9,9 @@ namespace Mmx.Gui.Win.Common.Plotter
     {
         [Description("CPU Plotter")]
         MadMaxChiaPlotter = 1 << 0,
-        [Description("CPU Plotter with compression")]
+        [Description("CPU Plotter v2.4 with compression")]
         MadMaxChiaPlotterWithCompression = 1 << 1,
-        [Description("Gigahorse GPU Plotter")]
+        [Description("Gigahorse GPU Plotter v2.4 with compression")]
         MadMaxCudaPlotter = 1 << 2,
         [Description("Bladebit")]
         Bladebit = 1 << 8,

@@ -53,7 +53,7 @@
             Style="{StaticResource TitleTextBlockStyle}"
                 FontSize="28"/>
 
-            <ComboBox Width="250" Margin="10,12,0,0"
+            <ComboBox Width="350" Margin="10,12,0,0"
                 ItemsSource="{Binding PlotterOptions.plotter.Items}"
                 DisplayMemberPath="Name"
                 SelectedValuePath="Value"
