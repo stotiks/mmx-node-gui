@@ -15,10 +15,10 @@ namespace Mmx.Gui.Win.Common.Plotter
     public class PlotterOptionsBase : INotifyPropertyChanged
     {
 
-        public static readonly string PLOT_MANAGER_HOME_ENV = Environment.GetEnvironmentVariable("MM_PLOTER_HOME");
+        public static readonly string PLOT_MANAGER_HOME_ENV = Environment.GetEnvironmentVariable("PLOT_MANAGER_HOME");
         public static readonly string PLOT_MANAGER_HOME = string.IsNullOrEmpty(PLOT_MANAGER_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".plotManager") : PLOT_MANAGER_HOME_ENV;
 
-        static private string plotterConfigPath;
+        private static string plotterConfigPath;
 
         static PlotterOptionsBase()
         {
