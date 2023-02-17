@@ -22,7 +22,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
         public UILogger Logger => _logger;
 
         private string _logFileName;
-        private readonly string _logFolder = Path.Combine(NodeHelpers.MMX_HOME, "plotter");
+        private readonly string _logFolder = PlotterOptions.plotterLogFolder;
 
         public PlotterDialog()
         {

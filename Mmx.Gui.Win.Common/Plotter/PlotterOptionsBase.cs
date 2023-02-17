@@ -18,16 +18,19 @@ namespace Mmx.Gui.Win.Common.Plotter
         public static readonly string PLOT_MANAGER_HOME_ENV = Environment.GetEnvironmentVariable("PLOT_MANAGER_HOME");
         public static readonly string PLOT_MANAGER_HOME = string.IsNullOrEmpty(PLOT_MANAGER_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".plotManager") : PLOT_MANAGER_HOME_ENV;
 
-        private static string plotterConfigPath;
+        public static readonly string plotterConfigPath;
+        public static readonly string plotterLogFolder;
 
         static PlotterOptionsBase()
         {
             if(IsMmxOnly)
             {
-                plotterConfigPath = NodeHelpers.plotterConfigPath;
+                plotterConfigPath = Path.Combine(NodeHelpers.configPath, "Plotter.json");
+                plotterLogFolder = Path.Combine(NodeHelpers.MMX_HOME, "plotter");
             } else
             {
                 plotterConfigPath = Path.Combine(PLOT_MANAGER_HOME, "Plotter.json");
+                plotterLogFolder = Path.Combine(PLOT_MANAGER_HOME, "logs");
             }
         }
 
