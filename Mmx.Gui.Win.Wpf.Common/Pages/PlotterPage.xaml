@@ -43,29 +43,26 @@
     <Grid Margin="25,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:SimpleStackPanel Grid.Row="0" Margin="0,8,0,12">
-
-            <TextBlock  
+        <TextBlock Grid.Row="0" Margin="0,8,0,12"
             Text="{lex:Loc Plotter_Title}"
             Style="{StaticResource TitleTextBlockStyle}"
-                FontSize="28"/>
+            FontSize="28"/>
 
-            <ComboBox Width="350" Margin="10,12,0,0"
+        <ComboBox Grid.Row="1" Width="350" Margin="10,12,0,0"
                 ItemsSource="{Binding PlotterOptions.plotter.Items}"
                 DisplayMemberPath="Name"
                 SelectedValuePath="Value"
                 SelectedValue="{Binding PlotterOptions.plotter.Value}"/>
 
-        </ui:SimpleStackPanel>
-
         <TabControl 
             x:Name="tabControl"
             x:FieldModifier="public"
         	Style="{StaticResource TabControlPivotStyle}"
-        	Grid.Row="1">
+        	Grid.Row="2">
 
             <TabItem Header="{lex:Loc Plotter_GeneralTab}">
                 <ScrollViewer Margin="0,12,0,0">
@@ -366,7 +363,7 @@
         </TabControl>
         
         <dialogs:PlotterDialog 
-            Grid.Row="1"
+            Grid.Row="1" Grid.RowSpan="2"
             FullSizeDesired="True"
             Margin="0,0,25,25"
             d:Visibility="Hidden"
