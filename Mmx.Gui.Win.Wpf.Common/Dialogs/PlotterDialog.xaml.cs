@@ -65,7 +65,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Dialogs
             {
                 var txt = $"[{DateTime.Now:yyyy/MM/dd HH:mm:ss}] {value}";
                 Logger.Write(txt);
-                File.AppendAllText(Path.Combine(_logFolder, _logFileName), txt + "\r\n");
+                File.AppendAllText(Path.Combine(_logFolder, _logFileName), txt + Environment.NewLine);
             }
         }
 
