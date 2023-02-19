@@ -101,8 +101,8 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             [Description("Chia [8444]")]
             Chia = 8444,
-            //[Description("Chives [9699]")]
-            //Chives = 9699,
+            [Description("Chives [9699]")]
+            Chives = 9699,
             [Description("MMX [11337]")]
             MMX = 11337
         }
