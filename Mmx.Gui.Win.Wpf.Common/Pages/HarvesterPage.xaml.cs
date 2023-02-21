@@ -55,22 +55,10 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
             if (harvesterProcess != null) 
             {
-                harvesterProcess.Restart();
+                Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
             } else
             {
-                NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(task =>
-                {
-                    Dispatcher.BeginInvoke(new Action(delegate
-                    {
-                        var flyout = new ModernWpf.Controls.Flyout
-                        {
-                            Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
-                            Content = new TextBlock() { Text = "Harvester reloaded" }
-                        };
-                        flyout.ShowAt(DirCommandBar);
-                        Console.WriteLine("Harvester reloaded");
-                    }));
-                });
+                NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(ShowFlyoutTask());
             }
 
         }
@@ -88,26 +76,32 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
                 if (harvesterProcess != null)
                 {
-                    harvesterProcess.Restart();
+                    Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
                 }
                 else
                 {
-                    NodeApi.AddPlotDirTask(dirName).ContinueWith(task =>
-                    {
-                        Dispatcher.BeginInvoke(new Action(delegate
-                        {
-                            new ModernWpf.Controls.Flyout
-                            {
-                                Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
-                                Content = new TextBlock() { Text = "Harvester reloaded" }
-                            }.ShowAt(DirCommandBar);
-
-                            Console.WriteLine("Harvester reloaded");
-                        }));
-                    });
+                    NodeApi.AddPlotDirTask(dirName).ContinueWith(ShowFlyoutTask());
                 }
             }
         }
+
+        private Action<Task> ShowFlyoutTask()
+        {
+            return task =>
+            {
+                Dispatcher.BeginInvoke(new Action(delegate
+                {
+                    new ModernWpf.Controls.Flyout
+                    {
+                        Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
+                        Content = new TextBlock() { Text = "Harvester reloaded" }
+                    }.ShowAt(DirCommandBar);
+
+                    Console.WriteLine("Harvester reloaded");
+                }));
+            };
+        }
+
         private void SaveHarvesterConfig()
         {
             var harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
@@ -124,24 +118,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         {
             if (harvesterProcess != null)
             {
-                harvesterProcess.Restart();
+                Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
             }
             else
             {
-
-                NodeApi.ReloadHarvester().ContinueWith(task =>
-                {
-                    Dispatcher.BeginInvoke(new Action(delegate
-                    {
-                        new ModernWpf.Controls.Flyout
-                        {
-                            Placement = ModernWpf.Controls.Primitives.FlyoutPlacementMode.Bottom,
-                            Content = new TextBlock() { Text = "Harvester reloaded" }
-                        }.ShowAt(DirCommandBar);
-
-                        Console.WriteLine("Harvester reloaded");
-                    }));
-                });
+                NodeApi.ReloadHarvester().ContinueWith(ShowFlyoutTask());
             }
         }
     }
