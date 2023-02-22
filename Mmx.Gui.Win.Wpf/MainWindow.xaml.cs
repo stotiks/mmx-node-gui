@@ -38,7 +38,7 @@ namespace Mmx.Gui.Win.Wpf
         private readonly HarvesterPage harvesterPage = new HarvesterPage();
         private readonly PlotterPage plotterPage = new PlotterPage();
         private readonly SettingsPage settingsPage = new SettingsPage();
-        private readonly ConsoleLogsPage consoleLogsPage;
+        //private readonly ConsoleLogsPage consoleLogsPage;
 
         public MainWindow()
         {
@@ -56,13 +56,13 @@ namespace Mmx.Gui.Win.Wpf
             InitializeComponent();
             DataContext = this;
 
-            if (Settings.Default.ShowConsole)
-            {
-                ConsoleLogsNavigationViewItem.Visibility = Visibility.Hidden;                
-            } else
-            {
-                consoleLogsPage = new ConsoleLogsPage(nodeProcess);
-            }
+            //if (Settings.Default.ShowConsole)
+            //{
+            //    ConsoleLogsNavigationViewItem.Visibility = Visibility.Hidden;                
+            //} else
+            //{
+            //    consoleLogsPage = new ConsoleLogsPage(nodeProcess);
+            //}
 
             if (!Settings.Default.LightMode)
             {
@@ -181,9 +181,9 @@ namespace Mmx.Gui.Win.Wpf
                     case "PlotterPage":
                         ContentFrame.Content = plotterPage;
                         break;
-                    case "ConsoleLogsPage":
-                        ContentFrame.Content = consoleLogsPage;
-                        break;
+                    //case "ConsoleLogsPage":
+                    //    ContentFrame.Content = consoleLogsPage;
+                    //    break;
                     case "SettingsPage":
                         ContentFrame.Content = settingsPage;
                         break;
