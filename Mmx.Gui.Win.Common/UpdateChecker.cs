@@ -73,7 +73,7 @@ namespace Mmx.Gui.Win.Common
         {
             try
             {
-                var response = await _httpClient.GetAsync(Settings.Default.GitHubApi_Releases);
+                var response = await _httpClient.GetAsync(Settings.GitHubApi_Releases);
                 var body = await response.Content.ReadAsStringAsync();
                 JArray releases = JsonConvert.DeserializeObject<JArray>(body);
                 var lastRelease = releases[0];
