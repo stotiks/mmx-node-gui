@@ -12,7 +12,7 @@ namespace Mmx.Gui.Win.Common.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -237,7 +237,7 @@ namespace Mmx.Gui.Win.Common.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9999")]
         public int CHIAPOS_MAX_CORES {
             get {
                 return ((int)(this["CHIAPOS_MAX_CORES"]));
@@ -249,7 +249,7 @@ namespace Mmx.Gui.Win.Common.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9999")]
         public int CHIAPOS_MAX_CUDA_DEVICES {
             get {
                 return ((int)(this["CHIAPOS_MAX_CUDA_DEVICES"]));
@@ -280,6 +280,30 @@ namespace Mmx.Gui.Win.Common.Properties {
             }
             set {
                 this["CHIAPOS_MAX_CUDA_DEVICES_Enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("21")]
+        public int CHIAPOS_MIN_CUDA_LOG_ENTRIES {
+            get {
+                return ((int)(this["CHIAPOS_MIN_CUDA_LOG_ENTRIES"]));
+            }
+            set {
+                this["CHIAPOS_MIN_CUDA_LOG_ENTRIES"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled"] = value;
             }
         }
     }

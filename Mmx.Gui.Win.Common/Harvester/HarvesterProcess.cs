@@ -24,6 +24,11 @@ namespace Mmx.Gui.Win.Common.Harvester
                 CreateNoWindow = true
             };
 
+            if (Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add("CHIAPOS_MIN_CUDA_LOG_ENTRIES", Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES.ToString());
+            }
+
             if (Settings.Default.CHIAPOS_MAX_CORES_Enabled)
             {
                 processStartInfo.EnvironmentVariables.Add("CHIAPOS_MAX_CORES", Settings.Default.CHIAPOS_MAX_CORES.ToString());

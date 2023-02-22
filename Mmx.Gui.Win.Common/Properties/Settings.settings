@@ -57,15 +57,21 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CORES" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">-1</Value>
+      <Value Profile="(Default)">9999</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CUDA_DEVICES" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">-1</Value>
+      <Value Profile="(Default)">9999</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CORES_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CUDA_DEVICES_Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">21</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

@@ -117,8 +117,23 @@
                 <GroupBox Header="{lex:Loc Settings_EnvVariables}"
                           Visibility="{Binding Source={x:Static node:NodeHelpers.IsGigahorse}, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <ui:SimpleStackPanel>
-                        
+
                         <ui:ToggleSwitch
+                            x:Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch"
+                            OnContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
+                            OffContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled}"/>
+
+                        <ui:NumberBox
+                            Width="250"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MIN_CUDA_LOG_ENTRIES}"
+                            SpinButtonPlacementMode="Inline"
+                            HorizontalAlignment="Left"
+                            IsEnabled="{Binding ElementName=CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch, Path=IsOn}"/>
+
+                        <ui:ToggleSwitch Margin="0,25,0,0"
                             x:Name="CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch"
                             OnContent="CHIAPOS_MAX_CUDA_DEVICES"
                             OffContent="CHIAPOS_MAX_CUDA_DEVICES"
