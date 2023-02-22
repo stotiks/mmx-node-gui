@@ -369,11 +369,24 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = (int)ProcessPriorityClass.Normal,
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
-                ((IEnumerable<int>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable().Select(value =>
+                ((IEnumerable<ProcessPriorityClass>)Enum.GetValues(typeof(ProcessPriorityClass))).AsEnumerable()
+                .OrderBy(value => {
+                    switch (value)
+                    {
+                        case ProcessPriorityClass.Idle: return 10;
+                        case ProcessPriorityClass.BelowNormal: return 20;
+                        case ProcessPriorityClass.Normal: return 30;
+                        case ProcessPriorityClass.AboveNormal: return 40;
+                        case ProcessPriorityClass.High: return 50;
+                        case ProcessPriorityClass.RealTime: return 60;
+                        default: return 30;
+                    }
+                })
+                .Select(value =>
                 {
-                    var isDefault = value == (int)ProcessPriorityClass.Normal;
+                    var isDefault = value == ProcessPriorityClass.Normal;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = Enum.GetName(typeof(ProcessPriorityClass), value) + isDefaultString, Value = (int)value };
                 }).ToList()),
             Scope = Scopes.Common
         };
