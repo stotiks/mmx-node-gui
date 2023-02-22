@@ -57,10 +57,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CORES" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9999</Value>
+      <Value Profile="(Default)">-1</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CUDA_DEVICES" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9999</Value>
+      <Value Profile="(Default)">-1</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_CORES_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

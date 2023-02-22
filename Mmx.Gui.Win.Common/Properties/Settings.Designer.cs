@@ -237,7 +237,7 @@ namespace Mmx.Gui.Win.Common.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9999")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int CHIAPOS_MAX_CORES {
             get {
                 return ((int)(this["CHIAPOS_MAX_CORES"]));
@@ -249,7 +249,7 @@ namespace Mmx.Gui.Win.Common.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9999")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int CHIAPOS_MAX_CUDA_DEVICES {
             get {
                 return ((int)(this["CHIAPOS_MAX_CUDA_DEVICES"]));
