@@ -23,7 +23,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             if (PlotterOptions.IsMmxOnly)
             {
                 //NFT PLOTS DISABLED
-                PlotterOptions.Instance.nftplot.Value = false;
                 createPlotNFT.IsEnabled = false;
             }
 
