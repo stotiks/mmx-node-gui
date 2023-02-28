@@ -137,11 +137,11 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "device",
             DefaultValue = 0,
             Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(0, CudaInfo.Instance.Devices.Count).Select(value =>
+                Enumerable.Range(0, VideoDeviceInfo.Instance.CudaDevices.Count).Select(value =>
                 {
                     var isDefault = value == 0;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    var name = CudaInfo.Instance.Devices[value];
+                    var name = VideoDeviceInfo.Instance.CudaDevices[value];
                     return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxCudaPlotter,
@@ -155,7 +155,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "ndevices",
             DefaultValue = 1,
             Minimum = 1,
-            Maximum = CudaInfo.Instance.Devices.Count,
+            Maximum = VideoDeviceInfo.Instance.CudaDevices.Count,
             Scope = Scopes.MadMaxCudaPlotter,
             SuppressDefaultValue = true
         };

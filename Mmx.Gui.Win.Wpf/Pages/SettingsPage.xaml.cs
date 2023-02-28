@@ -42,12 +42,6 @@ namespace Mmx.Gui.Win.Wpf.Pages
             get => Enum.GetValues(typeof(ModernWpf.ElementTheme));
         }
 
-        public int CHIAPOS_MAX_CUDA_DEVICES_Minimum => 0;
-        public int CHIAPOS_MAX_CUDA_DEVICES_Maximum => CudaInfo.Instance.Devices.Count();
-
-        public int CHIAPOS_MAX_CORES_Minimum => 1;
-        public int CHIAPOS_MAX_CORES_Maximum => Environment.ProcessorCount;
-
         public SettingsPage()
         {
             InitializeComponent();

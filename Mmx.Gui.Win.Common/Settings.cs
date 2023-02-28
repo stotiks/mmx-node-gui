@@ -26,17 +26,6 @@ namespace Mmx.Gui.Win.Common.Properties {
                 Settings.Default.SettingsUpgradeRequired = false;
                 Settings.Default.Save();
             }
-
-            if (Settings.Default.CHIAPOS_MAX_CUDA_DEVICES == -1)
-            {
-                Settings.Default.CHIAPOS_MAX_CUDA_DEVICES = CudaInfo.Instance.Devices.Count();
-            }
-
-            if (Settings.Default.CHIAPOS_MAX_CORES == -1)
-            {
-                Settings.Default.CHIAPOS_MAX_CORES = Environment.ProcessorCount;
-            }
-
         }
         private Settings() 
         {

@@ -326,5 +326,29 @@ namespace Mmx.Gui.Win.Common.Properties {
                 return ((string)(this["Gigahorse_GitHubReleasesUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int CHIAPOS_MAX_OPENCL_DEVICES {
+            get {
+                return ((int)(this["CHIAPOS_MAX_OPENCL_DEVICES"]));
+            }
+            set {
+                this["CHIAPOS_MAX_OPENCL_DEVICES"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_MAX_OPENCL_DEVICES_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_MAX_OPENCL_DEVICES_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_MAX_OPENCL_DEVICES_Enabled"] = value;
+            }
+        }
     }
 }

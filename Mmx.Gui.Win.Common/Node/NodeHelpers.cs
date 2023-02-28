@@ -70,17 +70,22 @@ namespace Mmx.Gui.Win.Common.Node
         {
             if (Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled)
             {
-                processStartInfo.EnvironmentVariables.Add("CHIAPOS_MIN_CUDA_LOG_ENTRIES", Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES.ToString());
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES), Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES.ToString());
             }
 
             if (Settings.Default.CHIAPOS_MAX_CORES_Enabled)
             {
-                processStartInfo.EnvironmentVariables.Add("CHIAPOS_MAX_CORES", Settings.Default.CHIAPOS_MAX_CORES.ToString());
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_CORES), Settings.Default.CHIAPOS_MAX_CORES.ToString());
             }
 
             if (Settings.Default.CHIAPOS_MAX_CUDA_DEVICES_Enabled)
             {
-                processStartInfo.EnvironmentVariables.Add("CHIAPOS_MAX_CUDA_DEVICES", Settings.Default.CHIAPOS_MAX_CUDA_DEVICES.ToString());
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_CUDA_DEVICES), Settings.Default.CHIAPOS_MAX_CUDA_DEVICES.ToString());
+            }
+
+            if (Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES), Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES.ToString());
             }
         }
     }
