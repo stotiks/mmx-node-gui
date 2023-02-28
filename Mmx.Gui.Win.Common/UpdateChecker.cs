@@ -15,9 +15,14 @@ namespace Mmx.Gui.Win.Common
         private readonly HttpClient _httpClient = new HttpClient();
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
         private bool _isUpdateAvailable;
+        private string _url;
+        private Version _currentVersion;
 
-        public UpdateChecker()
+        public UpdateChecker(string url, Version currentVersion)
         {
+            _url = url;
+            _currentVersion = currentVersion;
+
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "HttpClient");
             
             _timer.Elapsed += async (o, e) => await CheckAsync();
@@ -73,14 +78,14 @@ namespace Mmx.Gui.Win.Common
         {
             try
             {
-                var response = await _httpClient.GetAsync(Settings.GitHubApi_Releases);
+                var response = await _httpClient.GetAsync(_url);
                 var body = await response.Content.ReadAsStringAsync();
                 JArray releases = JsonConvert.DeserializeObject<JArray>(body);
                 var lastRelease = releases[0];
                 var versionTag = lastRelease["tag_name"].ToString();
                 var version = new Version(versionTag.Replace("v", ""));
 
-                if (NodeHelpers.Version < version)
+                if (_currentVersion < version)
                 {
                     IsUpdateAvailable = true;
                 }

@@ -86,5 +86,11 @@
     <Setting Name="CHIAPOS_MAX_OPENCL_DEVICES_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="PlotManager_GitHubApi_Releases" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.github.com/repos/stotiks/chia-plot-manager/releases</Value>
+    </Setting>
+    <Setting Name="PlotManager_GitHubReleasesUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/stotiks/chia-plot-manager/releases</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

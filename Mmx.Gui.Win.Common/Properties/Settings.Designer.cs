@@ -350,5 +350,29 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["CHIAPOS_MAX_OPENCL_DEVICES_Enabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.github.com/repos/stotiks/chia-plot-manager/releases")]
+        public string PlotManager_GitHubApi_Releases {
+            get {
+                return ((string)(this["PlotManager_GitHubApi_Releases"]));
+            }
+            set {
+                this["PlotManager_GitHubApi_Releases"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/stotiks/chia-plot-manager/releases")]
+        public string PlotManager_GitHubReleasesUrl {
+            get {
+                return ((string)(this["PlotManager_GitHubReleasesUrl"]));
+            }
+            set {
+                this["PlotManager_GitHubReleasesUrl"] = value;
+            }
+        }
     }
 }
