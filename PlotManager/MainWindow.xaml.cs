@@ -4,7 +4,9 @@ using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Threading.Tasks;
+using PlotManager.ExtensionMethods;
 
 namespace PlotManager
 {
@@ -14,14 +16,14 @@ namespace PlotManager
     public partial class MainWindow
     {
         private readonly PlotterPage _plotterPage = new PlotterPage(false);
-        private static Version AssemblyVersion =
+        private static readonly Version FileVersion =
 #if DEBUG
-    new Version("0.0.4");
+        new Version("0.0.4");
 #else
-    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+    Assembly.GetExecutingAssembly().GetFileVersion();
 #endif
-        public string VersionTag => "v" + AssemblyVersion.ToString();
-        private readonly UpdateChecker updateChecker = new UpdateChecker(Settings.Default.PlotManager_GitHubApi_Releases, AssemblyVersion);
+        public string VersionTag => "v" + FileVersion.ToString();
+        private readonly UpdateChecker updateChecker = new UpdateChecker(Settings.Default.PlotManager_GitHubApi_Releases, FileVersion);
         public UpdateChecker UpdateChecker => updateChecker;
 
         public MainWindow()
