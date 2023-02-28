@@ -80,6 +80,11 @@ namespace Mmx.Gui.Win.Common
             {
                 Debug.WriteLine("OpenCL device detection failed");
             }
+
+            //if (OpenCLDevices.Count == 0)
+            //{
+            //    OpenCLDevices.Add("Default device");
+            //}
         }
 
         private void GetCudaDevices()
