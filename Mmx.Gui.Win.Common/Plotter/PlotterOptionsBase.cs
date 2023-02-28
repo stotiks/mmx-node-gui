@@ -24,9 +24,16 @@ namespace Mmx.Gui.Win.Common.Plotter
         static PlotterOptionsBase()
         {
             if(IsMmxOnly)
-            {
-                plotterConfigPath = Path.Combine(NodeHelpers.configPath, "Plotter.json");
-                plotterLogFolder = Path.Combine(NodeHelpers.MMX_HOME, "plotter");
+            {                
+                plotterConfigPath = Path.Combine(NodeHelpers.MMX_HOME, "plotter/Plotter.json");
+                plotterLogFolder = Path.Combine(NodeHelpers.MMX_HOME, "plotter/logs");
+
+                var plotterOldConfigPath = Path.Combine(NodeHelpers.configPath, "Plotter.json");
+                if (File.Exists(plotterOldConfigPath) && !File.Exists(plotterConfigPath))
+                {
+                    File.Move(plotterOldConfigPath, plotterConfigPath);
+                }
+
             } else
             {
                 plotterConfigPath = Path.Combine(PLOT_MANAGER_HOME, "Plotter.json");
