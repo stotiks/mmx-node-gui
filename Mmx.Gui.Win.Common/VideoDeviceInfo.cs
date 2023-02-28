@@ -109,6 +109,12 @@ namespace Mmx.Gui.Win.Common
             {
                 CudaDevices.Add("Default device");
             }
+#if DEBUG
+            for(int i = 0; i < 11; i++)
+            {
+                CudaDevices.Add("DEBUG device " + CudaDevices.Count());
+            }
+#endif
         }
 
         private void InitSettings()
@@ -126,6 +132,11 @@ namespace Mmx.Gui.Win.Common
             if (Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES == -1)
             {
                 Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES = OpenCLDevices.Count();
+            }
+
+            if (Settings.Default.CUDA_VISIBLE_DEVICES == null)
+            {
+                Settings.Default.CUDA_VISIBLE_DEVICES = Enumerable.Range(0, CudaDevices.Count()).ToArray();
             }
         }
 

@@ -92,5 +92,11 @@
     <Setting Name="PlotManager_GitHubReleasesUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/stotiks/chia-plot-manager/releases</Value>
     </Setting>
+    <Setting Name="CUDA_VISIBLE_DEVICES" Type="System.Int32[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CUDA_VISIBLE_DEVICES_Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -374,5 +374,28 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["PlotManager_GitHubReleasesUrl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public int[] CUDA_VISIBLE_DEVICES {
+            get {
+                return ((int[])(this["CUDA_VISIBLE_DEVICES"]));
+            }
+            set {
+                this["CUDA_VISIBLE_DEVICES"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CUDA_VISIBLE_DEVICES_Enabled {
+            get {
+                return ((bool)(this["CUDA_VISIBLE_DEVICES_Enabled"]));
+            }
+            set {
+                this["CUDA_VISIBLE_DEVICES_Enabled"] = value;
+            }
+        }
     }
 }

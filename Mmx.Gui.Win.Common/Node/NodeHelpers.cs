@@ -87,6 +87,11 @@ namespace Mmx.Gui.Win.Common.Node
             {
                 processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES), Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES.ToString());
             }
+
+            if (Settings.Default.CUDA_VISIBLE_DEVICES_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CUDA_VISIBLE_DEVICES), string.Join(",", Settings.Default.CUDA_VISIBLE_DEVICES));
+            }
         }
     }
 }

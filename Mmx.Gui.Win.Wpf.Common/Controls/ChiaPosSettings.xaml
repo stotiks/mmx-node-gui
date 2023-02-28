@@ -61,6 +61,34 @@
                             IsEnabled="{Binding ElementName=CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch, Path=IsOn}"/>
 
                 <ui:ToggleSwitch Margin="0,25,0,0"
+                            x:Name="CUDA_VISIBLE_DEVICES_ToggleSwitch"
+                            OnContent="CUDA_VISIBLE_DEVICES"
+                            OffContent="CUDA_VISIBLE_DEVICES"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CUDA_VISIBLE_DEVICES_Enabled}"/>
+
+
+                <ItemsControl 
+                    x:Name="CUDA_VISIBLE_DEVICES_ItemsControl" 
+                    IsEnabled="{Binding ElementName=CUDA_VISIBLE_DEVICES_ToggleSwitch, Path=IsOn}">
+                    
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4" Width="250" HorizontalAlignment="Left"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox 
+                                IsChecked="{Binding Enabled}" 
+                                Content="{Binding Index}"
+                                ToolTip="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+                <ui:ToggleSwitch Margin="0,25,0,0"
                             x:Name="CHIAPOS_MAX_CORES_ToggleSwitch"
                             OnContent="CHIAPOS_MAX_CORES"
                             OffContent="CHIAPOS_MAX_CORES"
