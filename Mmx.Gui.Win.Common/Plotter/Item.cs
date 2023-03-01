@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -19,6 +20,50 @@ namespace Mmx.Gui.Win.Common.Plotter
 
     public class PathItem : Item<string>
     {
+        protected override string FormatValue(string value)
+        {
+            if (value.Contains(" "))
+            {
+                value = $"\"{value}\"";
+                value = value.Replace("\\\"", "\\\\\"");
+            }
+
+            return value;
+        }
+    }
+
+    public class MultiPathItem : Item<List<string>>
+    {
+        public override JToken JValue => new JArray(Value);
+
+        public override void SetValue(object obj)
+        {
+            Value = (obj as JArray).ToObject<List<string>>();
+        }
+
+        public override string GetParam()
+        {
+            var result = "";
+
+            if (Value != null && Value.Count > 0)
+            {
+                for (int i = 0; i < Value.Count; i++)
+                {
+                    if (Value[i] != null)
+                    {
+                        var value = Value[i].ToString();
+                        if (!string.IsNullOrEmpty(value))
+                        {
+                            value = FormatValue(value);
+                            result += (i == 0? "" : " ") + FormatParam(value);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
         protected override string FormatValue(string value)
         {
             if (value.Contains(" "))
