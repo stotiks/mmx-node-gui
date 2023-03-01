@@ -18,8 +18,12 @@ namespace Mmx.Gui.Win.Common.Properties {
         public static bool CloseToNotification => Settings.Default.ShowInNotification && Settings.Default._CloseToNotification;
         public static string GitHubApi_Releases => NodeHelpers.IsGigahorse ? Settings.Default.Gigahorse_GitHubApi_Releases : Settings.Default.Classic_GitHubApi_Releases;
         public static string GitHubReleasesUrl => NodeHelpers.IsGigahorse ? Settings.Default.Gigahorse_GitHubReleasesUrl : Settings.Default.Classic_GitHubReleasesUrl;
+        public static Action DebouncedSave;
+        
         static Settings()
         {
+            DebouncedSave = ((Action)Settings.Default.Save).Debounce(500);
+
             if (Settings.Default.SettingsUpgradeRequired)
             {
                 Settings.Default.Upgrade();
@@ -27,8 +31,10 @@ namespace Mmx.Gui.Win.Common.Properties {
                 Settings.Default.Save();
             }
         }
+
         private Settings() 
         {
+            
             // // To add event handlers for saving and changing settings, uncomment the lines below:
             //
             // this.SettingChanging += this.SettingChangingEventHandler;
@@ -48,7 +54,7 @@ namespace Mmx.Gui.Win.Common.Properties {
                     RegisterInStartup(Settings.Default.StartOnStartup);
                 }
 
-                Settings.Default.Save();
+                Settings.DebouncedSave();
             };
             
         }

@@ -23,7 +23,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public PlotterOptionsBase()
         {
-            DebouncedSave = ((Action)Save).Debounce(1000);
+            DebouncedSave = ((Action)Save).Debounce(500);
         }
 
         static PlotterOptionsBase()

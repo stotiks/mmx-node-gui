@@ -21,6 +21,7 @@ namespace Mmx.Gui.Win.Wpf.Common
 #endif
             StateChanged += WpfMainWindow_StateChanged;
             base.Closing += Window_Closing;
+            //BeforeClose += async (o, e) => await Task.Run(Settings.Default.Save);
         }
 
         private void WpfMainWindow_StateChanged(object sender, EventArgs e)
