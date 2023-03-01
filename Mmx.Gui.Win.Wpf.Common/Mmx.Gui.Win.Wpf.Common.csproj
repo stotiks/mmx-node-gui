@@ -62,6 +62,9 @@
     <Compile Include="Dialogs\PlotterDialog.xaml.cs">
       <DependentUpon>PlotterDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MultiFolder.xaml.cs">
+      <DependentUpon>MultiFolder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HarvesterPage.xaml.cs">
       <DependentUpon>HarvesterPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
     <Page Include="Dialogs\PlotterDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MultiFolder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HarvesterPage.xaml">
       <Generator>MSBuild:Compile</Generator>

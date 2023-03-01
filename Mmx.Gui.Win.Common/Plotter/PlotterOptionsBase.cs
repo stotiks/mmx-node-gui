@@ -24,10 +24,14 @@ namespace Mmx.Gui.Win.Common.Plotter
         public PlotterOptionsBase()
         {
             DebouncedSave = ((Action)Save).Debounce(500);
+#if DEBUG
+            DebouncedSave = Save;
+#endif            
         }
 
         static PlotterOptionsBase()
         {
+
             if(IsMmxOnly)
             {                
                 plotterConfigPath = Path.Combine(NodeHelpers.MMX_HOME, "plotter/Plotter.json");
@@ -96,34 +100,29 @@ namespace Mmx.Gui.Win.Common.Plotter
                 }
             }
         }
-        //static object _lock = new object();
-
         protected Action DebouncedSave;
         protected void Save()
         {
-            //lock (_lock)
+            var jObject = new JObject();
+
+            foreach (PropertyInfo property in GetItemProperties())
             {
-                var jObject = new JObject();
-
-                foreach (PropertyInfo property in GetItemProperties())
+                dynamic item = property.GetValue(this);
+                if (item.Persistent)
                 {
-                    dynamic item = property.GetValue(this);
-                    if (item.Persistent)
-                    {
-                        jObject.Add(item.LongName, item.JValue);
-                    }
+                    jObject.Add(item.LongName, item.JValue);
                 }
-
-                var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-
-                var plotterConfigDir = Path.GetDirectoryName(plotterConfigPath);
-                if (!System.IO.Directory.Exists(plotterConfigDir))
-                {
-                    System.IO.Directory.CreateDirectory(plotterConfigDir);
-                }
-
-                File.WriteAllText(plotterConfigPath, json);
             }
+
+            var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+
+            var plotterConfigDir = Path.GetDirectoryName(plotterConfigPath);
+            if (!System.IO.Directory.Exists(plotterConfigDir))
+            {
+                System.IO.Directory.CreateDirectory(plotterConfigDir);
+            }
+
+            File.WriteAllText(plotterConfigPath, json);
         }
 
 

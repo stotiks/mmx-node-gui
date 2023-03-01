@@ -10,6 +10,7 @@
     xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Common.Pages"
     xmlns:dialogs="clr-namespace:Mmx.Gui.Win.Wpf.Common.Dialogs"
     xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters"
+    xmlns:ctrls="clr-namespace:Mmx.Gui.Win.Wpf.Common.Controls;assembly="
     
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -24,6 +25,7 @@
         <cv:BooleanInverter x:Key="BooleanInverter"/>
         <cv:PathFixConverter x:Key="PathFixConverter"/>
         <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <cv:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
 
         <sys:Double x:Key="MainWidth">500</sys:Double>
         <sys:Double x:Key="KeyWidth">800</sys:Double>
@@ -68,7 +70,10 @@
                 <ScrollViewer Margin="0,12,0,0">
                     <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
-                        <ui:SimpleStackPanel Orientation="Horizontal">
+                        <ui:SimpleStackPanel 
+                            Orientation="Horizontal" 
+                            Visibility="{Binding PlotterOptions.finaldir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            
                             <TextBox
                                 ui:ControlHelper.Header="{lex:Loc Plotter_finaldir}"
                                 Width="{StaticResource MainWidth}"
@@ -78,6 +83,8 @@
                                 Tag="finaldir">
                             </Button>
                         </ui:SimpleStackPanel>
+
+                        <ctrls:MultiFolder/>
 
                         <ui:NumberBox
                             Width="200"
