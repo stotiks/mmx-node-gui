@@ -56,8 +56,7 @@ namespace Mmx.Gui.Win.Common
         {
             try
             {
-                uint numberOfAvailablePlatforms;
-                int result = OpenCL.clGetPlatformIDs(0, null, out numberOfAvailablePlatforms);
+                int result = OpenCL.clGetPlatformIDs(0, null, out uint numberOfAvailablePlatforms);
                 if (result != 0)
                 {
                     throw new Exception(string.Format("The number of platforms could not be queried. [{0}]", result));
