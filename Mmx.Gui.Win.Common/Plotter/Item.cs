@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -48,7 +49,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             SkipValue = true;
         }
-        public new string GetParam()
+        public override string GetParam()
         {
             return Value ? base.GetParam() : "";
         }
@@ -71,18 +72,24 @@ namespace Mmx.Gui.Win.Common.Plotter
             get => _value;
             set
             {
-                _value = value;
                 _valueInitialized = true;
-                NotifyPropertyChanged();
+                if (!_value.Equals(value))
+                {
+                    _value = value;
+                    NotifyPropertyChanged();
+                }
+                
             }
         }
+
+        public virtual JToken JValue => new JValue(Value);
     }
 
     public abstract class Item<T> : ItemBase<T>
     {
         public string LongName { get; internal set; }
 
-        public void SetValue(object obj)
+        public virtual void SetValue(object obj)
         {
             Value = (T)Convert.ChangeType(obj, typeof(T));
         }
@@ -134,7 +141,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public bool Persistent { get; internal set; } = true;
         public bool SuppressDefaultValue { get; internal set; } = false;        
 
-        public string GetParam()
+        public virtual string GetParam()
         {
             var result = "";
 

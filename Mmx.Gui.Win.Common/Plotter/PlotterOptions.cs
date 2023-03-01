@@ -419,7 +419,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             foreach (PropertyInfo property in GetItemProperties())
             {
-                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => Save();
+                ((INotifyPropertyChanged)property.GetValue(this)).PropertyChanged += (sender, e) => DebouncedSave();
             }
         }
 
