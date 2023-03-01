@@ -31,6 +31,11 @@ namespace Mmx.Gui.Win.Common.Plotter
                 var plotterOldConfigPath = Path.Combine(NodeHelpers.configPath, "Plotter.json");
                 if (File.Exists(plotterOldConfigPath) && !File.Exists(plotterConfigPath))
                 {
+                    var plotterConfigDir = Path.GetDirectoryName(plotterConfigPath);
+                    if (!System.IO.Directory.Exists(plotterConfigDir))
+                    {
+                        System.IO.Directory.CreateDirectory(plotterConfigDir);
+                    }
                     File.Move(plotterOldConfigPath, plotterConfigPath);
                 }
 
