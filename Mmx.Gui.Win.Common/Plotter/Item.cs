@@ -6,18 +6,6 @@ using System.Runtime.CompilerServices;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
-    public enum Plotters : int
-    {
-        [Description("CPU Plotter")]
-        MadMaxChiaPlotter = 1 << 0,
-        [Description("CPU Plotter v2.4 with compression")]
-        MadMaxChiaPlotterWithCompression = 1 << 1,
-        [Description("Gigahorse GPU Plotter v2.4 with compression")]
-        MadMaxCudaPlotter = 1 << 2,
-        [Description("Bladebit")]
-        Bladebit = 1 << 8,
-    };
-
     public enum ItemType
     {
         CmdParameter,
