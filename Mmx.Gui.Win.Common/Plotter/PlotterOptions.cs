@@ -270,7 +270,16 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "finaldir",
             DefaultValue = "",
-            Scope = Scopes.Common
+            Scope = Scopes.Common ^ Scopes.MadMaxCudaPlotter
+        };
+
+        [Order]
+        public MultiPathItem multifinaldir { get; set; } = new MultiPathItem
+        {
+            Name = "d",
+            LongName = "multifinaldir",
+            DefaultValue = new List<string> { "" },
+            Scope = Scopes.MadMaxCudaPlotter
         };
 
         [Order]
