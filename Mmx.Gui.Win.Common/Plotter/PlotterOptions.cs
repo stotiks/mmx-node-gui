@@ -6,18 +6,33 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Activation;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
     public class PlotterOptions : PlotterOptionsBase
     {
+
+        [AttributeUsage(AttributeTargets.All)]
+        public class UrlAttribute : System.Attribute
+        {
+            private string url;
+            public double version;
+
+            public UrlAttribute(string url)
+            {
+                this.url = url;
+                version = 1.0;
+            }
+        }
+
         public enum Plotters : int
         {
-            [Description("CPU Plotter")]
+            [Description("CPU Plotter"), Url("https://github.com/madMAx43v3r/chia-plotter")]
             MadMaxChiaPlotter = 1 << 0,
-            [Description("CPU Plotter v2.4 with compression")]
+            [Description("CPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
             MadMaxChiaPlotterWithCompression = 1 << 1,
-            [Description("Gigahorse GPU Plotter v2.4 with compression")]
+            [Description("Gigahorse GPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
             MadMaxCudaPlotter = 1 << 2,
             [Description("Bladebit")]
             Bladebit = 1 << 8,
