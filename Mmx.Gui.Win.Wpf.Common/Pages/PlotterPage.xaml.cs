@@ -1,7 +1,12 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common.Plotter;
 using ModernWpf.Controls;
+using System;
+using System.ComponentModel;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using static Mmx.Gui.Win.Common.Plotter.PlotterOptions;
 
 namespace Mmx.Gui.Win.Wpf.Common.Pages
 {
@@ -9,7 +14,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     /// Interaction logic for PlotterPage.xaml
     /// </summary>
     ///     
-    public partial class PlotterPage
+    public partial class PlotterPage: INotifyPropertyChanged
     {
         public PlotterOptions PlotterOptions => PlotterOptions.Instance;
 
@@ -25,6 +30,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
                 //NFT PLOTS DISABLED
                 createPlotNFT.IsEnabled = false;
             }
+
+            PlotterOptions.plotter.PropertyChanged += (o, e) => UpdatePlotterUrl();
 
         }
 
@@ -49,6 +56,31 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         {
             PlotterDialog.ShowAsync(ContentDialogPlacement.InPlace);
             PlotterDialog.StartPlotter();
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        public string PlotterUrl
+        {
+            get {
+                var value = PlotterOptions.plotter.Value;
+                Plotters plotterEnum = (Plotters)Enum.ToObject(typeof(Plotters), value);
+
+                var memberInfo = typeof(Plotters).GetMember(plotterEnum.ToString())[0];
+                var urlAttribute = memberInfo.GetCustomAttribute<UrlAttribute>();
+                return urlAttribute.Url;
+            }
+        }
+
+        public void UpdatePlotterUrl()
+        {
+            NotifyPropertyChanged(nameof(PlotterUrl));
         }
 
     }

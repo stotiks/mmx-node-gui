@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Activation;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
@@ -16,12 +15,12 @@ namespace Mmx.Gui.Win.Common.Plotter
         [AttributeUsage(AttributeTargets.All)]
         public class UrlAttribute : System.Attribute
         {
-            private string url;
+            public string Url { get; private set; }
             public double version;
 
             public UrlAttribute(string url)
             {
-                this.url = url;
+                this.Url = url;
                 version = 1.0;
             }
         }

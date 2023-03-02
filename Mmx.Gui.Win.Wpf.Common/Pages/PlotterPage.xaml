@@ -54,12 +54,20 @@
             Style="{StaticResource TitleTextBlockStyle}"
             FontSize="28"/>
 
-        <ComboBox Grid.Row="1" Width="350" Margin="10,12,0,0"
+        <ui:SimpleStackPanel Grid.Row="1" Margin="10,12,0,10" HorizontalAlignment="Left" Orientation="Horizontal">
+            <ComboBox Width="350"
                 ItemsSource="{Binding PlotterOptions.plotter.Items}"
                 DisplayMemberPath="Name"
                 SelectedValuePath="Value"
                 SelectedValue="{Binding PlotterOptions.plotter.Value}"/>
 
+            <ui:HyperlinkButton  Margin="10,0,0,0"
+                Content="GitHub" 
+                NavigateUri="{Binding PlotterUrl}"
+                ToolTip="{Binding PlotterUrl}"/>
+            
+        </ui:SimpleStackPanel>
+      
         <TabControl 
             x:Name="tabControl"
             x:FieldModifier="public"
