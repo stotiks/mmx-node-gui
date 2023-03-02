@@ -56,7 +56,7 @@
 
     </UserControl.Resources>
 
-    <Grid Visibility="{Binding PlotterOptions.finaldir.IsVisible, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
