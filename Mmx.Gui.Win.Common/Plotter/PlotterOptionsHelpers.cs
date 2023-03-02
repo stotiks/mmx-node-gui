@@ -11,6 +11,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         public static string FixDir(string dir)
         {
             if (string.IsNullOrEmpty(dir)) return "";
+            if (dir.StartsWith("@")) return dir;
 
             dir = dir.Replace('/', '\\');
 
