@@ -1,6 +1,4 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Mmx.Gui.Win.Common.Plotter;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -114,11 +112,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         public ObservableCollection<Dir> FinalDirs = new ObservableCollection<Dir>();
 
-        public PlotterOptions PlotterOptions => PlotterOptions.Instance;
         public MultiFolder()
         {
             InitializeComponent();
-            DataContext = this;
 
             if (FinalDirs.Count == 0)
             {
@@ -129,7 +125,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
             MultiFolderItemsControl.ItemsSource = FinalDirs;
 
-            PlotterOptions.Instance.finaldir.PropertyChanged += (o, e) => FinalDirs.First().Path = PlotterOptions.Instance.finaldir.Value;
+            //TODO
+            //PlotterOptions.Instance.finaldir.PropertyChanged += (o, e) => FinalDirs.First().Path = PlotterOptions.Instance.finaldir.Value;
         }
 
         private void UpdateItems()
@@ -159,7 +156,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 var dir = (sender as Dir);
                 if (dir.IsFirst)
                 {
-                    PlotterOptions.Instance.finaldir.Value = dir.Path;
+                    //TODO
+                    //PlotterOptions.Instance.finaldir.Value = dir.Path;
                 }
                 UpdateItems();
             }
@@ -176,7 +174,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             };
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                dir.Path = PlotterOptionsHelpers.FixDir(dialog.FileName);
+                dir.Path = Win.Common.Plotter.PlotterOptionsHelpers.FixDir(dialog.FileName);
             }
         }
 
