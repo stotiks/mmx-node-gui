@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -85,16 +86,16 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         private void OnDirectoriesPropertyChanged()
         {
-            FinalDirs.CollectionChanged -= NewMethod();
-            FinalDirs.Clear();
-            FinalDirs.AddRange(Directories.Select(path => new Dir(path)).ToList());
+            Dirs.CollectionChanged -= UpdateItems;
+            Dirs.Clear();
+            Dirs.AddRange(Directories.Select(path => new Dir(path)).ToList());
             RecalcItems();
-            FinalDirs.CollectionChanged += NewMethod();
+            Dirs.CollectionChanged += UpdateItems;
         }
 
-        private NotifyCollectionChangedEventHandler NewMethod()
+        private void UpdateItems(object sender, NotifyCollectionChangedEventArgs e)
         {
-            return (o, e) => UpdateItems();
+            UpdateItems();
         }
 
         public List<string> Directories {
@@ -110,20 +111,20 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             }
         }
 
-        public ObservableCollection<Dir> FinalDirs = new ObservableCollection<Dir>();
+        public ObservableCollection<Dir> Dirs = new ObservableCollection<Dir>();
 
         public MultiFolder()
         {
             InitializeComponent();
 
-            if (FinalDirs.Count == 0)
+            if (Dirs.Count == 0)
             {
                 AddDir(new Dir());
             }
 
             RecalcItems();
 
-            MultiFolderItemsControl.ItemsSource = FinalDirs;
+            MultiFolderItemsControl.ItemsSource = Dirs;
 
             //TODO
             //PlotterOptions.Instance.finaldir.PropertyChanged += (o, e) => FinalDirs.First().Path = PlotterOptions.Instance.finaldir.Value;
@@ -132,20 +133,20 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         private void UpdateItems()
         {
             RecalcItems();
-            Directories = FinalDirs.Select(x => x.Path).ToList();
+            Directories = Dirs.Select(x => x.Path).ToList();
         }
 
         private void RecalcItems()
         {
-            for (int i = 0; i < FinalDirs.Count; i++)
+            for (int i = 0; i < Dirs.Count; i++)
             {
-                Dir dir = FinalDirs[i];
+                Dir dir = Dirs[i];
                 dir.PropertyChanged -= DirPathPropertyChanged;
                 dir.PropertyChanged += DirPathPropertyChanged;
 
-                dir.IsAlone = FinalDirs.Count == 1;
+                dir.IsAlone = Dirs.Count == 1;
                 dir.IsFirst = i == 0;
-                dir.IsLastAndNotEmpty = (i == FinalDirs.Count - 1) && !string.IsNullOrEmpty(dir.Path);
+                dir.IsLastAndNotEmpty = (i == Dirs.Count - 1) && !string.IsNullOrEmpty(dir.Path);
             }
         }
 
@@ -196,7 +197,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             var button = sender as Button;
             var dir = button.DataContext as Dir;
 
-            if(FinalDirs.Count > 1)
+            if(Dirs.Count > 1)
             {
                 RemoveDir(dir);                
             }            
@@ -204,13 +205,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         private void AddDir(Dir dir)
         {
-            FinalDirs.Add(dir);
+            Dirs.Add(dir);
             dir.PropertyChanged += DirPathPropertyChanged;
         }
 
         private void RemoveDir(Dir dir)
         {
-            FinalDirs.Remove(dir);
+            Dirs.Remove(dir);
             dir.PropertyChanged -= DirPathPropertyChanged;
         }
     }
