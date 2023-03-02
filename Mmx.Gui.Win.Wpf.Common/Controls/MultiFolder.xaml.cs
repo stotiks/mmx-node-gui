@@ -1,9 +1,11 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common.Plotter;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Mmx.Gui.Win.Wpf.Common.Controls
@@ -77,6 +79,19 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         }
 
+        public static readonly DependencyProperty DirectoriesProperty =
+           DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder), 
+               new FrameworkPropertyMetadata(new List<string>(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public List<string> Directories {
+            get { 
+                return (List<string>)GetValue(DirectoriesProperty); 
+            }
+            set { 
+                SetValue(DirectoriesProperty, value);
+            }
+        }
+
         ObservableCollection<Dir> _finalDirs;
         public ObservableCollection<Dir> FinalDirs => _finalDirs;
 
@@ -105,7 +120,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         private void UpdateItems()
         {
             RecalcItems();
-            PlotterOptions.Instance.multifinaldir.Value = FinalDirs.Select(x => x.Path).ToList();
+            Directories = FinalDirs.Select(x => x.Path).ToList();
+            //PlotterOptions.Instance.multifinaldir.Value = FinalDirs.Select(x => x.Path).ToList();
         }
 
         private void RecalcItems()

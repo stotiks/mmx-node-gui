@@ -93,7 +93,8 @@
                         </ui:SimpleStackPanel>
 
                         <ctrls:MultiFolder
-                            Visibility="{Binding PlotterOptions.multifinaldir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            Visibility="{Binding PlotterOptions.multifinaldir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"                            
+                            Directories="{Binding PlotterOptions.multifinaldir.Value}"/>
 
                         <ui:NumberBox
                             Width="200"
