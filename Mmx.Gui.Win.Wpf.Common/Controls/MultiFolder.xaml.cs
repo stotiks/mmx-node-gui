@@ -1,7 +1,9 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using Mmx.Gui.Win.Common.Plotter;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -80,30 +82,43 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         }
 
         public static readonly DependencyProperty DirectoriesProperty =
-           DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder), 
-               new FrameworkPropertyMetadata(new List<string>(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+           DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder),
+               new FrameworkPropertyMetadata(new List<string>(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (o, e) => ((MultiFolder)o).OnDirectoriesPropertyChanged()));
+
+        private void OnDirectoriesPropertyChanged()
+        {
+            FinalDirs.CollectionChanged -= NewMethod();
+            FinalDirs.Clear();
+            FinalDirs.AddRange(Directories.Select(path => new Dir(path)).ToList());
+            RecalcItems();
+            FinalDirs.CollectionChanged += NewMethod();
+        }
+
+        private NotifyCollectionChangedEventHandler NewMethod()
+        {
+            return (o, e) => UpdateItems();
+        }
 
         public List<string> Directories {
             get { 
                 return (List<string>)GetValue(DirectoriesProperty); 
             }
-            set { 
-                SetValue(DirectoriesProperty, value);
+            set {
+                if ( value != (List<string>)GetValue(DirectoriesProperty) )
+                {
+                    SetValue(DirectoriesProperty, value);
+                }
+                
             }
         }
 
-        ObservableCollection<Dir> _finalDirs;
-        public ObservableCollection<Dir> FinalDirs => _finalDirs;
+        public ObservableCollection<Dir> FinalDirs = new ObservableCollection<Dir>();
 
         public PlotterOptions PlotterOptions => PlotterOptions.Instance;
         public MultiFolder()
         {
             InitializeComponent();
             DataContext = this;
-
-            _finalDirs = new ObservableCollection<Dir>(PlotterOptions.Instance.multifinaldir.Value.Select(path => new Dir(path)).ToList());
-                        
-            FinalDirs.CollectionChanged += (o, e) => UpdateItems();
 
             if (FinalDirs.Count == 0)
             {
@@ -121,7 +136,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         {
             RecalcItems();
             Directories = FinalDirs.Select(x => x.Path).ToList();
-            //PlotterOptions.Instance.multifinaldir.Value = FinalDirs.Select(x => x.Path).ToList();
         }
 
         private void RecalcItems()
@@ -201,5 +215,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             FinalDirs.Remove(dir);
             dir.PropertyChanged -= DirPathPropertyChanged;
         }
+    }
+
+    internal static class ObservableCollectionExtensions
+    {
+
+        public static void AddRange<T>(this ObservableCollection<T> collection, IEnumerable<T> items) => items.ToList().ForEach(collection.Add);
     }
 }
