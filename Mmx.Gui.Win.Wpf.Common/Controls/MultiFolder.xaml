@@ -1,5 +1,6 @@
 ﻿<UserControl 
     x:Class="Mmx.Gui.Win.Wpf.Common.Controls.MultiFolder"
+    x:Name="multiFolder"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -68,7 +69,7 @@
                     <ui:SimpleStackPanel Orientation="Vertical" Margin="0,0,0,12" >
 
                         <TextBlock Margin="0,0,0,4"
-                            Text="{lex:Loc Plotter_finaldir}" 
+                            Text="{Binding HeaderText, ElementName=multiFolder}" 
                             Visibility="{Binding IsFirst, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                         <ui:SimpleStackPanel Orientation="Horizontal">

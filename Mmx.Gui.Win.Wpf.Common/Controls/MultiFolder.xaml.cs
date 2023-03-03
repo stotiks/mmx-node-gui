@@ -166,9 +166,27 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             public event PropertyChangedEventHandler ItemChanged;
         }
 
+        public static readonly DependencyProperty HeaderTextProperty =
+            DependencyProperty.Register(nameof(HeaderTextProperty), typeof(string), typeof(MultiFolder), new PropertyMetadata(string.Empty));
+
+        public string HeaderText
+        {
+            get
+            {
+                return (string)GetValue(HeaderTextProperty);
+            }
+            set
+            {
+                if (value != (string)GetValue(HeaderTextProperty))
+                {
+                    SetValue(HeaderTextProperty, value);
+                }
+            }
+        }
+
         public static readonly DependencyProperty FirstDirectoryProperty =
             DependencyProperty.Register(nameof(FirstDirectory), typeof(string), typeof(MultiFolder),
-                new FrameworkPropertyMetadata("", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, FirstDirectoryPropertyChangedCallback));
+                new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, FirstDirectoryPropertyChangedCallback));
 
         private static void FirstDirectoryPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
         {
@@ -192,7 +210,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 {
                     SetValue(FirstDirectoryProperty, value);
                 }
-
             }
         }
 
@@ -230,7 +247,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 {
                     SetValue(DirectoriesProperty, value);
                 }
-
             }
         }
 
