@@ -28,7 +28,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 }
             }
 
-
             bool _isFirst;
             public bool IsFirst
             {
@@ -50,6 +49,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                     NotifyPropertyChanged();
                 }
             }
+
             public Dir()
             {
             }
@@ -59,13 +59,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 Path = path;
             }
 
-            bool _isLast;
+            bool _isLastAndNotEmpty;
             public bool IsLastAndNotEmpty
             {
-                get => _isLast;
+                get => _isLastAndNotEmpty;
                 internal set
                 {
-                    _isLast = value;
+                    _isLastAndNotEmpty = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -83,11 +83,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             public DirObservableCollection() : base()
             {
                 CollectionChanged += RecalcItems;
+                CollectionChanged += DirCollectionChanged;
             }
 
             public DirObservableCollection(List<Dir> list) : base(list)
             {
+                RecalcItems();
+                this.ToList().ForEach(item => item.PropertyChanged += ItemPropertyChanged);
                 CollectionChanged += RecalcItems;
+                CollectionChanged += DirCollectionChanged;
             }
 
             protected override void ClearItems()
@@ -135,13 +139,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                         NotifyItemChanged("FirstItem");
                     }
                     RecalcItems();
-                    OnCollectionChanged(NotifyCollectionChangedAction.Add, this[0], 0); //TODO
+                    OnDirCollectionChanged();
                 }
-            }
-
-            private void OnCollectionChanged(NotifyCollectionChangedAction action, object item, int index)
-            {
-                OnCollectionChanged(new NotifyCollectionChangedEventArgs(action, item, index));
             }
 
             public void AddRange(IEnumerable<Dir> items)
@@ -164,6 +163,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             }
 
             public event PropertyChangedEventHandler ItemChanged;
+
+            private void OnDirCollectionChanged()
+            {
+                DirCollectionChanged?.Invoke(this,null);
+            }
+
+            public event NotifyCollectionChangedEventHandler DirCollectionChanged;
         }
 
         public static readonly DependencyProperty HeaderTextProperty =
@@ -225,9 +231,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         private void OnDirectoriesPropertyChanged()
         {
-            _directories.CollectionChanged -= UpdateDirectories;
+            _directories.DirCollectionChanged -= UpdateDirectories;
             _directories.Recreate(Directories.Select(path => new Dir(path)).ToList());
-            _directories.CollectionChanged += UpdateDirectories;
+            _directories.DirCollectionChanged += UpdateDirectories;
         }
 
         private void UpdateDirectories(object sender, NotifyCollectionChangedEventArgs e)
@@ -256,7 +262,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         {
             InitializeComponent();
 
-            _directories.CollectionChanged += UpdateDirectories;
+            _directories.DirCollectionChanged += UpdateDirectories;
             _directories.ItemChanged += (o, e) =>
             {
                 if (e.PropertyName == "FirstItem")
