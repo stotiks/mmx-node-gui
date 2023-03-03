@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using Windows.Foundation.Collections;
 
 namespace Mmx.Gui.Win.Wpf.Common.Controls
 {
@@ -79,14 +78,14 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             public event PropertyChangedEventHandler PropertyChanged;
 
         }
-        class DirObservableCollection : ObservableCollection<Dir>
+        class DirObservableCollection : ObservableCollection<Dir>, INotifyPropertyChanged
         {
             public DirObservableCollection() : base()
             {
                 CollectionChanged += RecalcItems;
             }
 
-            public DirObservableCollection(List<Dir> list) : base(list) 
+            public DirObservableCollection(List<Dir> list) : base(list)
             {
                 CollectionChanged += RecalcItems;
             }
@@ -133,8 +132,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                     var dir = (sender as Dir);
                     if (dir.IsFirst)
                     {
-                        //TODO
-                        //PlotterOptions.Instance.finaldir.Value = dir.Path;
+                        NotifyItemChanged("FirstItem");
                     }
                     RecalcItems();
                     OnCollectionChanged(NotifyCollectionChangedAction.Add, this[0], 0); //TODO
@@ -159,7 +157,45 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 CollectionChanged += RecalcItems;
                 RecalcItems();
             }
+
+            private void NotifyItemChanged([CallerMemberName] string propertyName = "")
+            {
+                ItemChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+            public event PropertyChangedEventHandler ItemChanged;
         }
+
+        public static readonly DependencyProperty FirstDirectoryProperty =
+            DependencyProperty.Register(nameof(FirstDirectory), typeof(string), typeof(MultiFolder),
+                new FrameworkPropertyMetadata("", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, FirstDirectoryPropertyChangedCallback));
+
+        private static void FirstDirectoryPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
+        {
+            (d as MultiFolder).OnFirstDirectoryPropertyChanged();
+        }
+
+        private void OnFirstDirectoryPropertyChanged()
+        {
+            _directories.First().Path = FirstDirectory;
+        }
+
+        public string FirstDirectory
+        {
+            get
+            {
+                return (string)GetValue(FirstDirectoryProperty);
+            }
+            set
+            {
+                if (value != (string)GetValue(FirstDirectoryProperty))
+                {
+                    SetValue(FirstDirectoryProperty, value);
+                }
+
+            }
+        }
+
 
         public static readonly DependencyProperty DirectoriesProperty =
            DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder),
@@ -205,11 +241,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             InitializeComponent();
 
             _directories.CollectionChanged += UpdateDirectories;
+            _directories.ItemChanged += (o, e) =>
+            {
+                if (e.PropertyName == "FirstItem")
+                {
+                    FirstDirectory = _directories.FirstOrDefault().Path;
+                }
+            };
 
             MultiFolderItemsControl.ItemsSource = _directories;
-
-            //TODO
-            //PlotterOptions.Instance.finaldir.PropertyChanged += (o, e) => FinalDirs.First().Path = PlotterOptions.Instance.finaldir.Value;
         }
 
         private void ChooseFolderButton_Click(object sender, RoutedEventArgs e)
@@ -247,8 +287,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
             if (_directories.Count > 1)
             {
-                _directories.Remove(dir);                
-            }            
+                _directories.Remove(dir);
+            }
         }
 
     }
