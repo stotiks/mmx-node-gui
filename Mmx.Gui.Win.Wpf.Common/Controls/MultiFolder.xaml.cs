@@ -1,14 +1,13 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using Windows.Foundation.Collections;
 
 namespace Mmx.Gui.Win.Wpf.Common.Controls
 {
@@ -80,46 +79,21 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             public event PropertyChangedEventHandler PropertyChanged;
 
         }
-
-        public static readonly DependencyProperty DirectoriesProperty =
-           DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder),
-               new FrameworkPropertyMetadata(new List<string>(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (o, e) => ((MultiFolder)o).OnDirectoriesPropertyChanged()));
-
-        private void OnDirectoriesPropertyChanged()
-        {
-            _directories.CollectionChanged -= UpdateItems;
-            _directories.Recreate(Directories.Select(path => new Dir(path)).ToList());
-            _directories.CollectionChanged += UpdateItems;
-        }
-
-        private void UpdateItems(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            Directories = _directories.Select(x => x.Path).ToList();            
-        }
-
-        public List<string> Directories {
-            get { 
-                return (List<string>)GetValue(DirectoriesProperty); 
-            }
-            set {
-                if ( value != (List<string>)GetValue(DirectoriesProperty) )
-                {
-                    SetValue(DirectoriesProperty, value);
-                }
-                
-            }
-        }
-
         class DirObservableCollection : ObservableCollection<Dir>
         {
-            public DirObservableCollection(): base()
+            public DirObservableCollection() : base()
+            {
+                CollectionChanged += RecalcItems;
+            }
+
+            public DirObservableCollection(List<Dir> list) : base(list) 
             {
                 CollectionChanged += RecalcItems;
             }
 
             protected override void ClearItems()
             {
-                this.ToList().ForEach( item => item.PropertyChanged -= ItemPropertyChanged );
+                this.ToList().ForEach(item => item.PropertyChanged -= ItemPropertyChanged);
                 base.ClearItems();
             }
 
@@ -145,8 +119,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 for (int i = 0; i < Count; i++)
                 {
                     Dir dir = this[i];
-                    //dir.PropertyChanged -= ItemPropertyChanged;
-                    //dir.PropertyChanged += ItemPropertyChanged;
 
                     dir.IsAlone = Count == 1;
                     dir.IsFirst = i == 0;
@@ -174,12 +146,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 OnCollectionChanged(new NotifyCollectionChangedEventArgs(action, item, index));
             }
 
-            //public void UpdateItems()
-            //{
-            //    RecalcItems();
-            //    //Directories = _directories.Select(x => x.Path).ToList();
-            //}
-
             public void AddRange(IEnumerable<Dir> items)
             {
                 items.ToList().ForEach(Add);
@@ -195,18 +161,50 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             }
         }
 
-        private readonly DirObservableCollection _directories = new DirObservableCollection();
+        public static readonly DependencyProperty DirectoriesProperty =
+           DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder),
+               new FrameworkPropertyMetadata(new List<string>(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, DirectoriesPropertyChangedCallback));
+
+        private static void DirectoriesPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
+        {
+            (d as MultiFolder).OnDirectoriesPropertyChanged();
+        }
+
+        private void OnDirectoriesPropertyChanged()
+        {
+            _directories.CollectionChanged -= UpdateDirectories;
+            _directories.Recreate(Directories.Select(path => new Dir(path)).ToList());
+            _directories.CollectionChanged += UpdateDirectories;
+        }
+
+        private void UpdateDirectories(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Directories = _directories.Select(x => x.Path).ToList();
+        }
+
+        public List<string> Directories
+        {
+            get
+            {
+                return (List<string>)GetValue(DirectoriesProperty);
+            }
+            set
+            {
+                if (value != (List<string>)GetValue(DirectoriesProperty))
+                {
+                    SetValue(DirectoriesProperty, value);
+                }
+
+            }
+        }
+
+        private readonly DirObservableCollection _directories = new DirObservableCollection(new List<Dir> { new Dir() });
 
         public MultiFolder()
         {
             InitializeComponent();
 
-            if (_directories.Count == 0)
-            {
-                _directories.Add(new Dir());
-            }
-
-            //_directories.CollectionChanged += UpdateItems;
+            _directories.CollectionChanged += UpdateDirectories;
 
             MultiFolderItemsControl.ItemsSource = _directories;
 
@@ -214,7 +212,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             //PlotterOptions.Instance.finaldir.PropertyChanged += (o, e) => FinalDirs.First().Path = PlotterOptions.Instance.finaldir.Value;
         }
 
-        private void ChooseFolderButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ChooseFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var dir = button.DataContext as Dir;
@@ -229,7 +227,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             }
         }
 
-        private void AddFolderButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void AddFolderButton_Click(object sender, RoutedEventArgs e)
         {
             string path;
             var button = sender as Button;
@@ -242,12 +240,12 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             }
         }
 
-        private void RemoveFolderButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void RemoveFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var dir = button.DataContext as Dir;
 
-            if(_directories.Count > 1)
+            if (_directories.Count > 1)
             {
                 _directories.Remove(dir);                
             }            
