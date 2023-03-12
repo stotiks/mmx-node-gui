@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmx.Gui.Win.Common.Cef", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlotManager", "PlotManager\PlotManager.csproj", "{57085E57-C18F-468D-B0C3-151040A7FA1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlotSincGui", "PlotSincGui\PlotSincGui.csproj", "{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,14 @@ Global
 		{57085E57-C18F-468D-B0C3-151040A7FA1E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57085E57-C18F-468D-B0C3-151040A7FA1E}.Release|x64.ActiveCfg = Release|Any CPU
 		{57085E57-C18F-468D-B0C3-151040A7FA1E}.Release|x64.Build.0 = Release|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Debug|x64.Build.0 = Debug|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Release|x64.ActiveCfg = Release|Any CPU
+		{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
