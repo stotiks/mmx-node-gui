@@ -36,6 +36,8 @@ namespace Mmx.Gui.Win.Common.Node
         public static readonly string runHarvesterCMDPath = Path.Combine(workingDirectory, "run_harvester.cmd");
         public static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
+        public static readonly string plotSincEXEPath = Path.Combine(workingDirectory, "gigahorse\\chia_plot_sink.exe");
+
         public static Version Version { get; private set; }
         public static NodeBuildType BuildType { get; private set; }
 
