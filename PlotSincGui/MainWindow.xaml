@@ -10,6 +10,7 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"        
         xmlns:common="clr-namespace:Mmx.Gui.Win.Common;assembly=Mmx.Gui.Win.Common"
         xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
+        xmlns:ctrls="clr-namespace:Mmx.Gui.Win.Wpf.Common.Controls;assembly=Mmx.Gui.Win.Wpf.Common"
         xmlns:properties="clr-namespace:Mmx.Gui.Win.Common.Properties;assembly=Mmx.Gui.Win.Common"
         
         xmlns:lex="http://wpflocalizeextension.codeplex.com"
@@ -24,9 +25,22 @@
         WindowStartupLocation="CenterScreen"
         ui:WindowHelper.UseModernWindowStyle="True"        
         ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
-    
-    <Grid>
+
+    <Grid Margin="25,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <TextBlock Grid.Row="0" Margin="0,8,0,12"
+            Text="Plot Sinc"
+            Style="{StaticResource TitleTextBlockStyle}"
+            FontSize="28"/>
+
+        <ctrls:MultiFolder Grid.Row="1"
+            HeaderText="{lex:Loc PlotSink_destinations}"                          
+            Directories="{Binding Source={x:Static properties:Settings.Default}, Path=PlotSincDirectories}"/>
     </Grid>
     
 </mw:WpfMainWindow>

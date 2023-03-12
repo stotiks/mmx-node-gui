@@ -1,12 +1,15 @@
 ﻿using Microsoft.Win32;
 using Mmx.Gui.Win.Common.Node;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Documents;
 
-namespace Mmx.Gui.Win.Common.Properties {
-    
-    
+namespace Mmx.Gui.Win.Common.Properties
+{
+
+
     // This class allows you to handle specific events on the settings class:
     //  The SettingChanging event is raised before a setting's value is changed.
     //  The PropertyChanged event is raised after a setting's value is changed.
@@ -84,6 +87,15 @@ namespace Mmx.Gui.Win.Common.Properties {
 
         //private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
         //    // Add code to handle the SettingsSaving event here.
+        //}
+
+        //public List<string> PlotSincDirectoriesList
+        //{
+        //    get => Settings.Default.PlotSincDirectories.Cast<string>.ToList();
+        //    set
+        //    {
+        //        Settings.Default.PlotSincDirectories = value.;
+        //    }
         //}
     }
 }

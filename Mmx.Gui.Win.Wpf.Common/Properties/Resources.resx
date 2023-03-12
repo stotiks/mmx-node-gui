@@ -451,4 +451,8 @@
     <value>Temporary directory 3</value>
     <comment>plotter</comment>
   </data>
+  <data name="PlotSink_destinations" xml:space="preserve">
+    <value>Destinations</value>
+    <comment>plotsinc</comment>
+  </data>
 </root>

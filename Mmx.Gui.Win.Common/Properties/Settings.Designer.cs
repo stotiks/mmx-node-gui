@@ -397,5 +397,16 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["CUDA_VISIBLE_DEVICES_Enabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.ArrayList PlotSincDirectories {
+            get {
+                return ((global::System.Collections.ArrayList)(this["PlotSincDirectories"]));
+            }
+            set {
+                this["PlotSincDirectories"] = value;
+            }
+        }
     }
 }

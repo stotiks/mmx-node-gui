@@ -169,6 +169,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Destinations.
+        /// </summary>
+        public static string PlotSink_destinations {
+            get {
+                return ResourceManager.GetString("PlotSink_destinations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of buckets.
         /// </summary>
         public static string Plotter_buckets {
