@@ -5,11 +5,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("madMAx43v3r Plotter GUI")]
+[assembly: AssemblyTitle("Plot Manager")]
 [assembly: AssemblyDescription("")]
 //[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("madMAx43v3r")]
-[assembly: AssemblyProduct("madMAx43v3r Plotter GUI")]
+[assembly: AssemblyProduct("Plot Manager")]
 [assembly: AssemblyCopyright("madMAx43v3r (C) Copyright 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
