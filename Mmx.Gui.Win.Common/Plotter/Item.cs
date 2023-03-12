@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -32,13 +33,13 @@ namespace Mmx.Gui.Win.Common.Plotter
         }
     }
 
-    public class MultiPathItem : Item<List<string>>
+    public class MultiPathItem : Item<ArrayList>
     {
         public override JToken JValue => new JArray(Value);
 
         public override void SetValue(object obj)
         {
-            Value = (obj as JArray).ToObject<List<string>>();
+            Value = (obj as JArray).ToObject<ArrayList>();
         }
 
         public override string GetParam()

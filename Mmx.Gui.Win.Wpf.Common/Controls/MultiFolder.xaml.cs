@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -80,18 +81,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         }
         class DirObservableCollection : ObservableCollection<Dir>, INotifyPropertyChanged
         {
-            public DirObservableCollection() : base()
-            {
-                CollectionChanged += RecalcItems;
-                CollectionChanged += DirCollectionChanged;
-            }
-
             public DirObservableCollection(List<Dir> list) : base(list)
             {
                 RecalcItems();
                 this.ToList().ForEach(item => item.PropertyChanged += ItemPropertyChanged);
                 CollectionChanged += RecalcItems;
-                CollectionChanged += DirCollectionChanged;
             }
 
             protected override void ClearItems()
@@ -115,6 +109,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             private void RecalcItems(object sender, NotifyCollectionChangedEventArgs e)
             {
                 RecalcItems();
+                OnDirCollectionChanged();
             }
 
             private void RecalcItems()
@@ -221,8 +216,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
 
         public static readonly DependencyProperty DirectoriesProperty =
-           DependencyProperty.Register(nameof(Directories), typeof(List<string>), typeof(MultiFolder),
-               new FrameworkPropertyMetadata(new List<string>(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, DirectoriesPropertyChangedCallback));
+           DependencyProperty.Register(nameof(Directories), typeof(ArrayList), typeof(MultiFolder),
+               new FrameworkPropertyMetadata(new ArrayList(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, DirectoriesPropertyChangedCallback));
 
         private static void DirectoriesPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
         {
@@ -231,25 +226,28 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         private void OnDirectoriesPropertyChanged()
         {
-            _directories.DirCollectionChanged -= UpdateDirectories;
-            _directories.Recreate(Directories.Select(path => new Dir(path)).ToList());
-            _directories.DirCollectionChanged += UpdateDirectories;
+            //if (Directories != null)
+            {
+                _directories.DirCollectionChanged -= UpdateDirectories;
+                _directories.Recreate(Directories.ToArray().Select(path => new Dir(path as string)).ToList());
+                _directories.DirCollectionChanged += UpdateDirectories;
+            }
         }
 
         private void UpdateDirectories(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Directories = _directories.Select(x => x.Path).ToList();
+            Directories = new ArrayList(_directories.Select(x => x.Path).ToList());
         }
 
-        public List<string> Directories
+        public ArrayList Directories
         {
             get
             {
-                return (List<string>)GetValue(DirectoriesProperty);
+                return (ArrayList)GetValue(DirectoriesProperty);
             }
             set
             {
-                if (value != (List<string>)GetValue(DirectoriesProperty))
+                if (value != (ArrayList)GetValue(DirectoriesProperty))
                 {
                     SetValue(DirectoriesProperty, value);
                 }

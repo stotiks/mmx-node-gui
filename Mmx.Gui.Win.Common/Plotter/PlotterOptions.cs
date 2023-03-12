@@ -1,5 +1,6 @@
 ﻿using Mmx.Gui.Win.Common.Node;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -292,7 +293,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "d",
             LongName = "multifinaldir",
-            DefaultValue = new List<string> { "" },
+            DefaultValue = new ArrayList(),
             Scope = Scopes.MadMaxCudaPlotter
         };
 
