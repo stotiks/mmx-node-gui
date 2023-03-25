@@ -14,7 +14,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
     /// </summary>
     public partial class ConnectionPage : INotifyPropertyChanged
     {
-        public HarvesterOptions HarvesterOptions => HarvesterOptions.Instance;
+        public RemoteHarvesterOptions HarvesterOptions => RemoteHarvesterOptions.Instance;
         private HarvesterProcess _harvesterProcess;
         public HarvesterProcess HarvesterProcess => _harvesterProcess;
         private readonly UILogger _logger = new UILogger();
@@ -123,7 +123,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
             var dnsEndPoint = new DnsEndPoint(HostTextBox.Text, (int)PortNumberBox.Value);
-            HarvesterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
+            RemoteHarvesterOptions.SaveNodeDnsEndPoint(dnsEndPoint);
             _harvesterProcess.StartAsync();
         }
 

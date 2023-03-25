@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common.Harvester
 {
-    public class HarvesterOptions : INotifyPropertyChanged
+    public class RemoteHarvesterOptions : INotifyPropertyChanged
     {
         private string _host = "localhost";
         public string Host {
@@ -37,7 +37,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
-        private HarvesterOptions()
+        private RemoteHarvesterOptions()
         {
             var dnsEndPoint = LoadNodeDnsEndPoint();
             if (dnsEndPoint != null)
@@ -192,7 +192,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static HarvesterOptions Instance => Nested.instance;
+        public static RemoteHarvesterOptions Instance => Nested.instance;
 
         private class Nested
         {
@@ -200,7 +200,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             // not to mark type as beforefieldinit
             static Nested() { }
 
-            internal static readonly HarvesterOptions instance = new HarvesterOptions();
+            internal static readonly RemoteHarvesterOptions instance = new RemoteHarvesterOptions();
         }
     }
 }
