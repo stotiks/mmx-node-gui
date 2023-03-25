@@ -226,7 +226,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         private void OnDirectoriesPropertyChanged()
         {
-            //if (Directories != null)
+            if (Directories != null)
             {
                 _directories.DirCollectionChanged -= UpdateDirectories;
                 _directories.Recreate(Directories.ToArray().Select(path => new Dir(path as string)).ToList());
