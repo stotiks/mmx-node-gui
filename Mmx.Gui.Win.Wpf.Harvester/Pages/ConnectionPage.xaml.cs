@@ -15,12 +15,12 @@ namespace Mmx.Gui.Win.Wpf.Harvester.Pages
     public partial class ConnectionPage : INotifyPropertyChanged
     {
         public RemoteHarvesterOptions HarvesterOptions => RemoteHarvesterOptions.Instance;
-        private HarvesterProcess _harvesterProcess;
-        public HarvesterProcess HarvesterProcess => _harvesterProcess;
+        private RemoteHarvesterProcess _harvesterProcess;
+        public RemoteHarvesterProcess HarvesterProcess => _harvesterProcess;
         private readonly UILogger _logger = new UILogger();
         public UILogger Logger => _logger;
 
-        public ConnectionPage(HarvesterProcess harvesterProcess)
+        public ConnectionPage(RemoteHarvesterProcess harvesterProcess)
         {
             InitializeComponent();
             DataContext = this;

@@ -23,13 +23,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             DataContext = this;
         }
 
-        public HarvesterPage(HarvesterProcess harvesterProcess) : this()
+        public HarvesterPage(RemoteHarvesterProcess remoteHarvesterProcess) : this()
         {
-            this.harvesterProcess = harvesterProcess;
+            this.remoteHarvesterProcess = remoteHarvesterProcess;
         }
 
         private ObservableCollection<Directory> _dirs;
-        private HarvesterProcess harvesterProcess;
+        private RemoteHarvesterProcess remoteHarvesterProcess;
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -53,9 +53,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             _dirs.Remove(dir);
             SaveHarvesterConfig();
 
-            if (harvesterProcess != null) 
+            if (remoteHarvesterProcess != null) 
             {
-                Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
+                Task.Run(() => remoteHarvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
             } else
             {
                 NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(ShowFlyoutTask());
@@ -74,9 +74,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
                 _dirs.Add(new Directory(dirName));
                 SaveHarvesterConfig();
 
-                if (harvesterProcess != null)
+                if (remoteHarvesterProcess != null)
                 {
-                    Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
+                    Task.Run(() => remoteHarvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
                 }
                 else
                 {
@@ -116,9 +116,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         private void ReloadHarvesterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (harvesterProcess != null)
+            if (remoteHarvesterProcess != null)
             {
-                Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
+                Task.Run(() => remoteHarvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
             }
             else
             {

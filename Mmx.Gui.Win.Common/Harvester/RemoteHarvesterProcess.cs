@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Mmx.Gui.Win.Common.Harvester
 {
-    public class HarvesterProcess : ProcessWrapper
+    public class RemoteHarvesterProcess : ProcessWrapper
     {
         public override void Start()
         {

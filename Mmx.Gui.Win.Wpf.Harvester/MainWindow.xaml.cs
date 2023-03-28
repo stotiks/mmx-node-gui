@@ -15,7 +15,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester
     /// </summary>
     public partial class MainWindow
     {
-        private readonly HarvesterProcess harvesterProcess = new HarvesterProcess();
+        private readonly RemoteHarvesterProcess harvesterProcess = new RemoteHarvesterProcess();
 
         private readonly ConnectionPage _connectionPage;
         private readonly HarvesterPage _harvesterPage;
