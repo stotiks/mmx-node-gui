@@ -35,10 +35,7 @@ namespace Mmx.Gui.Win.Common.Harvester
 
         private void SaveConfigOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            //if (e.PropertyName == nameof(ReloadInterval) || e.PropertyName == nameof(RecursiveSearch))
-            {
-                SaveConfig();
-            }
+            SaveConfig();
         }
 
         private void Directories_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
