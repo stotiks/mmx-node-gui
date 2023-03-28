@@ -13,7 +13,7 @@ namespace PlotSincGui
         private readonly UILogger _logger = new UILogger();
         public UILogger Logger => _logger;
 
-        private PlotSincProcess _plotSincProcess = new PlotSincProcess();
+        private readonly PlotSincProcess _plotSincProcess = new PlotSincProcess();
         public PlotSincProcess PlotSincProcess => _plotSincProcess;
 
         public MainWindow() : base()
