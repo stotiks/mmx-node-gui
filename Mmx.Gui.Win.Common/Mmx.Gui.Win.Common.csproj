@@ -47,6 +47,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Harvester\HarvesterOptions.cs" />
     <Compile Include="Harvester\RemoteHarvesterProcess.cs" />
     <Compile Include="Harvester\RemoteHarvesterOptions.cs" />
