@@ -115,11 +115,29 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recursive search.
+        /// </summary>
+        public static string Harvester_RecursiveSearch {
+            get {
+                return ResourceManager.GetString("Harvester_RecursiveSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reload Harvester.
         /// </summary>
         public static string Harvester_Reload {
             get {
                 return ResourceManager.GetString("Harvester_Reload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload interval.
+        /// </summary>
+        public static string Harvester_ReloadInterval {
+            get {
+                return ResourceManager.GetString("Harvester_ReloadInterval", resourceCulture);
             }
         }
         

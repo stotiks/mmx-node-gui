@@ -13,14 +13,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     /// </summary>
     public partial class HarvesterPage
     {
-        public HarvesterOptions harvesterOptions = new HarvesterOptions();
+        private readonly HarvesterOptions _harvesterOptions = new HarvesterOptions();
+        public HarvesterOptions HarvesterOptions => _harvesterOptions;
 
         public HarvesterPage()
-        {            
+        {        
             InitializeComponent();
             DataContext = this;
 
-            DirListView.ItemsSource = harvesterOptions.Directories;
+            //DirListView.ItemsSource = _harvesterOptions.Directories;
         }
 
         public HarvesterPage(RemoteHarvesterProcess remoteHarvesterProcess) : this()
@@ -34,7 +35,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         {
             try
             {
-                harvesterOptions.LoadConfig();
+                _harvesterOptions.LoadConfig();
             }
             catch (Exception ex)
             {
@@ -48,8 +49,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         private void DelButton_Click(object sender, RoutedEventArgs e)
         {
             var dir = (sender as FrameworkElement).Tag as HarvesterOptions.Directory;
-            harvesterOptions.Directories.Remove(dir);
-            harvesterOptions.SaveConfig();
+            _harvesterOptions._directories.Remove(dir);
 
             if (remoteHarvesterProcess != null) 
             {
@@ -72,8 +72,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 var dirName = dialog.FileName;
-                harvesterOptions.Directories.Add(new HarvesterOptions.Directory(dirName));
-                harvesterOptions.SaveConfig();
+                _harvesterOptions._directories.Add(new HarvesterOptions.Directory(dirName));
 
                 if (remoteHarvesterProcess != null)
                 {

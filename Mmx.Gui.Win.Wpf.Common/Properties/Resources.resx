@@ -455,4 +455,12 @@
     <value>Destinations</value>
     <comment>plotsinc</comment>
   </data>
+  <data name="Harvester_RecursiveSearch" xml:space="preserve">
+    <value>Recursive search</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_ReloadInterval" xml:space="preserve">
+    <value>Reload interval</value>
+    <comment>harvester</comment>
+  </data>
 </root>
