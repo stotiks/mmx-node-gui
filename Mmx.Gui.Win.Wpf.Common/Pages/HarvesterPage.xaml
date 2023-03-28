@@ -98,13 +98,6 @@
                         IsEnabled="{Binding Source={x:Reference DirListView}, Path=SelectedItems.Count}"
                         Tag="{Binding Source={x:Reference DirListView}, Path=SelectedItem}"
                         Click="DelButton_Click"/>
-
-                    <ui:CommandBar.SecondaryCommands>
-                        <ui:AppBarButton
-                            Icon="Refresh" 
-                            Label="{lex:Loc Harvester_Reload}" 
-                            Click="ReloadHarvesterButton_Click"/>
-                    </ui:CommandBar.SecondaryCommands>
                     
                 </ui:CommandBar>
                 <ui:ListView
@@ -114,7 +107,7 @@
                     BorderThickness="1"
                     BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
                     Width="450"
-                    Height="300"
+                    Height="280"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left" >
                     <ListBox.ItemContainerStyle>
@@ -143,6 +136,13 @@
                     SpinButtonPlacementMode="Inline" 
                     HorizontalAlignment="Left"                        
                     Value="{Binding HarvesterOptions.ReloadInterval}"/>
+
+                <Button Click="ReloadHarvesterButton_Click" Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}">
+                    <ui:SimpleStackPanel Orientation="Horizontal">
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE72C;"/>
+                        <TextBlock Margin="5,0,0,0" Text="{lex:Loc Harvester_Reload}"/>
+                    </ui:SimpleStackPanel>
+                </Button>
 
             </ui:SimpleStackPanel>
         </ScrollViewer>        
