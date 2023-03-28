@@ -34,7 +34,7 @@ namespace Mmx.Gui.Win.Wpf
 
         private ChromiumWebBrowser chromiumWebBrowser;
 
-        private System.Windows.Controls.Page nodePage = new System.Windows.Controls.Page();
+        private readonly System.Windows.Controls.Page nodePage = new System.Windows.Controls.Page();
         private readonly HarvesterPage harvesterPage = new HarvesterPage();
         private readonly PlotterPage plotterPage = new PlotterPage();
         private readonly SettingsPage settingsPage = new SettingsPage();

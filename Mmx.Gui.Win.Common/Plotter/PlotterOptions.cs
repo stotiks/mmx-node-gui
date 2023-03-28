@@ -134,7 +134,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             MMX = 11337
         }
 
-        static int PortDefaultValue = IsMmxOnly ? (int)Ports.MMX : (int)Ports.Chia;
+        static readonly int PortDefaultValue = IsMmxOnly ? (int)Ports.MMX : (int)Ports.Chia;
         [Order]
         public IntItem port { get; set; } = new IntItem
         {

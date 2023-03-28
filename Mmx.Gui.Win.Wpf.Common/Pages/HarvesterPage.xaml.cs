@@ -28,7 +28,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             this.remoteHarvesterProcess = remoteHarvesterProcess;
         }
 
-        private RemoteHarvesterProcess remoteHarvesterProcess;
+        private readonly RemoteHarvesterProcess remoteHarvesterProcess;
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -63,9 +63,12 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
-            dialog.IsFolderPicker = true;
+            var dialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}",
+                IsFolderPicker = true
+            };
+
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 var dirName = dialog.FileName;
