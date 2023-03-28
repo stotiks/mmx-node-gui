@@ -39,8 +39,8 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             }
             catch (Exception ex)
             {
-                AddButton.IsEnabled = false;
-                RemoveButton.IsEnabled = false;
+                //AddButton.IsEnabled = false;
+                //RemoveButton.IsEnabled = false;
 
                 MessageBox.Show($"Can not read or parse {NodeHelpers.harvesterConfigPath}\n\n{ex}", "Error!");
             }

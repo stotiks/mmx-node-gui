@@ -1,4 +1,5 @@
 ﻿using Mmx.Gui.Win.Common.Node;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -88,39 +89,52 @@ namespace Mmx.Gui.Win.Common.Harvester
         {
             lock (_lock)
             {
-                string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
-                var harvesterConfig = JObject.Parse(harvesterJson);
-                JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
+                    string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
+                    var harvesterConfig = JObject.Parse(harvesterJson);
+                    JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
 
-                _directories.CollectionChanged -= Directories_CollectionChanged;
-                _directories.Clear();
-                foreach (var dir in plotDirs)
-                {
-                    _directories.Add(new Directory(dir.ToString()));
+                    _directories.CollectionChanged -= Directories_CollectionChanged;
+                    _directories.Clear();
+                    foreach (var dir in plotDirs)
+                    {
+                        _directories.Add(new Directory(dir.ToString()));
+                    }
+                    _directories.CollectionChanged += Directories_CollectionChanged;
+
+                    ReloadInterval = harvesterConfig.Value<int>("reload_interval");
+                    RecursiveSearch = harvesterConfig.Value<bool>("recursive_search");
+                    NumThreads = harvesterConfig.Value<int>("num_threads");
                 }
-                _directories.CollectionChanged += Directories_CollectionChanged;
-
-                ReloadInterval = harvesterConfig.Value<int>("reload_interval");
-                RecursiveSearch = harvesterConfig.Value<bool>("recursive_search");
-                NumThreads = harvesterConfig.Value<int>("num_threads");
             }
-        }
 
         private void SaveConfig()
         {
             lock (_lock)
             {
-                var harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
-                var harvesterConfig = JObject.Parse(harvesterJson);
-                ((JArray)harvesterConfig["plot_dirs"]).Clear();
+                var harvesterJson = "{}";
+                try
+                {
+                    harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
+                } catch {}
+                   
+                var jObject = JObject.Parse(harvesterJson);
+
+                if(jObject["plot_dirs"] == null)
+                {
+                    jObject["plot_dirs"] = new JArray();
+                }
+
+                ((JArray)jObject["plot_dirs"]).Clear();
                 foreach (var dir in _directories)
                 {
-                    ((JArray)harvesterConfig["plot_dirs"]).Add(dir.Path);
+                    ((JArray)jObject["plot_dirs"]).Add(dir.Path);
                 }
-                harvesterConfig["reload_interval"] = ReloadInterval;
-                harvesterConfig["recursive_search"] = RecursiveSearch;
-                harvesterConfig["num_threads"] = NumThreads;
-                File.WriteAllText(NodeHelpers.harvesterConfigPath, harvesterConfig.ToString());
+                jObject["reload_interval"] = ReloadInterval;
+                jObject["recursive_search"] = RecursiveSearch;
+                jObject["num_threads"] = NumThreads;
+
+                var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                File.WriteAllText(NodeHelpers.harvesterConfigPath, json);
             }
         }
 
