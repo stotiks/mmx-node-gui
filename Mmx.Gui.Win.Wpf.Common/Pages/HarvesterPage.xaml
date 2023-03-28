@@ -4,9 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:ui="http://schemas.modernwpf.com/2019"
-    xmlns:common="clr-namespace:Mmx.Gui.Win.Common;assembly=Mmx.Gui.Win.Common"
     xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Common.Pages"
+    
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly="
     
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -16,8 +17,13 @@
     mc:Ignorable="d"
     d:DesignHeight="650" d:DesignWidth="800"
     Loaded="OnLoaded">
-    
+
     <Page.Resources>
+        
+        <cv:BooleanInverter x:Key="BooleanInverter"/>
+        <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <cv:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+
         <DataTemplate x:Key="BasicListViewTemplate">
             <Grid HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>

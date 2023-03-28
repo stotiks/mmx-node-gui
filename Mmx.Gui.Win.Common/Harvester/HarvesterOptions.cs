@@ -138,9 +138,19 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
-        public class Directory
+        public class Directory: INotifyPropertyChanged
         {
-            public string Path { get; private set; }
+            private string _path;
+            public string Path { 
+                get => _path;
+                set {
+                    if (_path != value)
+                    {
+                        _path = value;
+                        NotifyPropertyChanged();
+                    }                    
+                }
+            }
 
             public Directory(string path)
             {
@@ -152,6 +162,12 @@ namespace Mmx.Gui.Win.Common.Harvester
                 return Path;
             }
 
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
     }
