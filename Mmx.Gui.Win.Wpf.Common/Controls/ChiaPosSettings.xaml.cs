@@ -13,7 +13,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
     /// </summary>
     public partial class ChiaPosSettings
     {
-        private ObservableCollection<CudaVisibleDevice> CudaVisibleDevicesItemsSource = new ObservableCollection<CudaVisibleDevice>();
+        private readonly ObservableCollection<CudaVisibleDevice> CudaVisibleDevicesItemsSource = new ObservableCollection<CudaVisibleDevice>();
 
         public ChiaPosSettings()
         {
