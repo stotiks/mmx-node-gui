@@ -114,7 +114,7 @@
                     BorderThickness="1"
                     BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
                     Width="450"
-                    Height="350"
+                    Height="300"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left" >
                     <ListBox.ItemContainerStyle>
@@ -124,7 +124,15 @@
                     </ListBox.ItemContainerStyle>
                 </ui:ListView>
 
-                <ui:ToggleSwitch Margin="0,10,0,0"
+                <ui:NumberBox Margin="0,10,0,0"
+                    Width="200"
+                    Header="{lex:Loc Harvester_NumThreads}"
+                    Minimum="1"
+                    SpinButtonPlacementMode="Inline" 
+                    HorizontalAlignment="Left"                        
+                    Value="{Binding HarvesterOptions.NumThreads}"/>
+
+                <ui:ToggleSwitch 
                     Header="{lex:Loc Harvester_RecursiveSearch}"
                     IsOn="{Binding HarvesterOptions.RecursiveSearch}"/>
 

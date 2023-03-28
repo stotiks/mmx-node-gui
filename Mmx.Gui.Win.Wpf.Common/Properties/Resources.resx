@@ -463,4 +463,8 @@
     <value>Reload interval</value>
     <comment>harvester</comment>
   </data>
+  <data name="Harvester_NumThreads" xml:space="preserve">
+    <value>Number of threads</value>
+    <comment>harvester</comment>
+  </data>
 </root>

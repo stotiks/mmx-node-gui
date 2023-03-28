@@ -17,6 +17,7 @@ namespace Mmx.Gui.Win.Common.Harvester
 
         public bool _recursiveSearch = true;
         public int _reloadInterval = 3600;
+        public int _numThreads = 16;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,7 +34,7 @@ namespace Mmx.Gui.Win.Common.Harvester
 
         private void SaveConfigOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ReloadInterval) || e.PropertyName == nameof(RecursiveSearch))
+            //if (e.PropertyName == nameof(ReloadInterval) || e.PropertyName == nameof(RecursiveSearch))
             {
                 SaveConfig();
             }
@@ -56,6 +57,18 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
+        public int NumThreads
+        {
+            get => _numThreads;
+            set
+            {
+                if (_numThreads != value)
+                {
+                    _numThreads = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public bool RecursiveSearch
         {
@@ -88,6 +101,7 @@ namespace Mmx.Gui.Win.Common.Harvester
 
                 ReloadInterval = harvesterConfig.Value<int>("reload_interval");
                 RecursiveSearch = harvesterConfig.Value<bool>("recursive_search");
+                NumThreads = harvesterConfig.Value<int>("num_threads");
             }
         }
 
@@ -104,6 +118,7 @@ namespace Mmx.Gui.Win.Common.Harvester
                 }
                 harvesterConfig["reload_interval"] = ReloadInterval;
                 harvesterConfig["recursive_search"] = RecursiveSearch;
+                harvesterConfig["num_threads"] = NumThreads;
                 File.WriteAllText(NodeHelpers.harvesterConfigPath, harvesterConfig.ToString());
             }
         }
