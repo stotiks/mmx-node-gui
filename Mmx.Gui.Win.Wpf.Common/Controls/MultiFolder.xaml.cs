@@ -196,7 +196,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
         private void OnFirstDirectoryPropertyChanged()
         {
-            _directories.First().Path = FirstDirectory;
+            if (_directories.Count > 0)
+            {
+                _directories.First().Path = FirstDirectory;
+            } else
+            {
+                _directories.Add(new Dir(FirstDirectory));
+            }
         }
 
         public string FirstDirectory
