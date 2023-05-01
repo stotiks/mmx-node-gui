@@ -18,7 +18,7 @@ namespace Mmx.Gui.Win.Common
       
         public string Text => string.Join("\r\n", logQueue.ToArray()) + "\r\n";
 
-        private Action DebounceNotifyTextChanged;
+        private readonly Action DebounceNotifyTextChanged;
         public UILogger() 
         {
             DebounceNotifyTextChanged = ((Action)NotifyTextChanged).Debounce(notifyTextChangedDebounceTime);

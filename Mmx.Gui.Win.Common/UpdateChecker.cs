@@ -1,5 +1,4 @@
-﻿using Mmx.Gui.Win.Common.Node;
-using Mmx.Gui.Win.Common.Properties;
+﻿using Mmx.Gui.Win.Common.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
