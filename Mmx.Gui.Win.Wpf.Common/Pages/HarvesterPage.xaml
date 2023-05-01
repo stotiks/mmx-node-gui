@@ -113,7 +113,7 @@
                     BorderThickness="1"
                     BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
                     Width="450"
-                    Height="280"
+                    Height="260"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left" >
                     <ListBox.ItemContainerStyle>
