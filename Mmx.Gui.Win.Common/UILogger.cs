@@ -16,7 +16,7 @@ namespace Mmx.Gui.Win.Common
         private readonly object _logLock = new object();
         private readonly Queue logQueue = new Queue();
       
-        public string Text => string.Join("\r\n", logQueue.ToArray());
+        public string Text => string.Join("\r\n", logQueue.ToArray()) + "\r\n";
 
         private Action DebounceNotifyTextChanged;
         public UILogger() 
