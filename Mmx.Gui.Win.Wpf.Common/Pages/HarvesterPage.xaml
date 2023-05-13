@@ -87,7 +87,7 @@
             Style="{StaticResource TitleTextBlockStyle}"
             FontSize="28"
             Margin="0,8,0,12" />
-        
+
         <TabControl 
             x:Name="tabControl"
             x:FieldModifier="public"
@@ -145,7 +145,7 @@
                             SpinButtonPlacementMode="Inline" 
                             HorizontalAlignment="Left"                        
                             Value="{Binding HarvesterOptions.ReloadInterval}"/>
-                        
+
                         <ui:NumberBox
                             Width="200"
                             Header="{lex:Loc Harvester_NumThreads}"
@@ -168,7 +168,7 @@
                                 <TextBlock Margin="5,0,0,0" Text="{lex:Loc Harvester_Reload}"/>
                             </ui:SimpleStackPanel>
                         </Button>
-                        
+
                     </ui:SimpleStackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -181,7 +181,5 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
-
-    
     </Grid>
 </Page>

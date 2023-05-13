@@ -26,7 +26,7 @@
 
     <Grid>
         <ui:SimpleStackPanel>
-
+            
             <ui:ToggleSwitch
                 x:Name="CHIAPOS_RECOMPUTE_HOST_ToggleSwitch"
                 OnContent="CHIAPOS_RECOMPUTE_HOST"
@@ -41,45 +41,47 @@
 
             <ui:ToggleSwitch 
                 Margin="0,25,0,0"
-                            x:Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch"
-                            OnContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
-                            OffContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled}"/>
+                x:Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch"
+                OnContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
+                OffContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled}"/>
 
             <ui:NumberBox
-                            Width="250"
-                            Minimum="0"
-                            Maximum="100"
-                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MIN_CUDA_LOG_ENTRIES}"
-                            SpinButtonPlacementMode="Inline"
-                            HorizontalAlignment="Left"
-                            IsEnabled="{Binding ElementName=CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch, Path=IsOn}"/>
+                Width="250"
+                Minimum="0"
+                Maximum="100"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MIN_CUDA_LOG_ENTRIES}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch, Path=IsOn}"/>
 
-            <ui:ToggleSwitch Margin="0,25,0,0"
-                            x:Name="CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch"
-                            OnContent="CHIAPOS_MAX_CUDA_DEVICES"
-                            OffContent="CHIAPOS_MAX_CUDA_DEVICES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES_Enabled}"/>
+            <ui:ToggleSwitch 
+                Margin="0,25,0,0"
+                x:Name="CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch"
+                OnContent="CHIAPOS_MAX_CUDA_DEVICES"
+                OffContent="CHIAPOS_MAX_CUDA_DEVICES"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES_Enabled}"/>
 
             <ui:NumberBox
-                            Width="250"
-                            Minimum="{Binding CHIAPOS_MAX_CUDA_DEVICES_Minimum}"
-                            Maximum="{Binding CHIAPOS_MAX_CUDA_DEVICES_Maximum}"
-                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES}"
-                            SpinButtonPlacementMode="Inline"
-                            HorizontalAlignment="Left"
-                            IsEnabled="{Binding ElementName=CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch, Path=IsOn}"/>
+                Width="250"
+                Minimum="{Binding CHIAPOS_MAX_CUDA_DEVICES_Minimum}"
+                Maximum="{Binding CHIAPOS_MAX_CUDA_DEVICES_Maximum}"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CUDA_DEVICES}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_MAX_CUDA_DEVICES_ToggleSwitch, Path=IsOn}"/>
 
-            <ui:ToggleSwitch Margin="0,25,0,0"
-                            x:Name="CUDA_VISIBLE_DEVICES_ToggleSwitch"
-                            OnContent="CUDA_VISIBLE_DEVICES"
-                            OffContent="CUDA_VISIBLE_DEVICES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CUDA_VISIBLE_DEVICES_Enabled}"/>
+            <ui:ToggleSwitch
+                Margin="0,25,0,0"
+                x:Name="CUDA_VISIBLE_DEVICES_ToggleSwitch"
+                OnContent="CUDA_VISIBLE_DEVICES"
+                OffContent="CUDA_VISIBLE_DEVICES"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CUDA_VISIBLE_DEVICES_Enabled}"/>
 
 
             <ItemsControl 
-                    x:Name="CUDA_VISIBLE_DEVICES_ItemsControl" 
-                    IsEnabled="{Binding ElementName=CUDA_VISIBLE_DEVICES_ToggleSwitch, Path=IsOn}">
+                x:Name="CUDA_VISIBLE_DEVICES_ItemsControl" 
+                IsEnabled="{Binding ElementName=CUDA_VISIBLE_DEVICES_ToggleSwitch, Path=IsOn}">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -98,35 +100,37 @@
             </ItemsControl>
 
 
-            <ui:ToggleSwitch Margin="0,25,0,0"
-                            x:Name="CHIAPOS_MAX_CORES_ToggleSwitch"
-                            OnContent="CHIAPOS_MAX_CORES"
-                            OffContent="CHIAPOS_MAX_CORES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES_Enabled}"/>
+            <ui:ToggleSwitch 
+                Margin="0,25,0,0"
+                x:Name="CHIAPOS_MAX_CORES_ToggleSwitch"
+                OnContent="CHIAPOS_MAX_CORES"
+                OffContent="CHIAPOS_MAX_CORES"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES_Enabled}"/>
 
             <ui:NumberBox
-                            Width="250"
-                            Minimum="{Binding CHIAPOS_MAX_CORES_Minimum}"
-                            Maximum="{Binding CHIAPOS_MAX_CORES_Maximum}"
-                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES}"
-                            SpinButtonPlacementMode="Inline"
-                            HorizontalAlignment="Left"
-                            IsEnabled="{Binding ElementName=CHIAPOS_MAX_CORES_ToggleSwitch, Path=IsOn}"/>
+                Width="250"
+                Minimum="{Binding CHIAPOS_MAX_CORES_Minimum}"
+                Maximum="{Binding CHIAPOS_MAX_CORES_Maximum}"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_CORES}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_MAX_CORES_ToggleSwitch, Path=IsOn}"/>
 
-            <ui:ToggleSwitch Margin="0,25,0,0"
-                            x:Name="CHIAPOS_MAX_OPENCL_DEVICES_ToggleSwitch"
-                            OnContent="CHIAPOS_MAX_OPENCL_DEVICES"
-                            OffContent="CHIAPOS_MAX_OPENCL_DEVICES"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_OPENCL_DEVICES_Enabled}"/>
+            <ui:ToggleSwitch 
+                Margin="0,25,0,0"
+                x:Name="CHIAPOS_MAX_OPENCL_DEVICES_ToggleSwitch"
+                OnContent="CHIAPOS_MAX_OPENCL_DEVICES"
+                OffContent="CHIAPOS_MAX_OPENCL_DEVICES"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_OPENCL_DEVICES_Enabled}"/>
 
             <ui:NumberBox
-                            Width="250"
-                            Minimum="{Binding CHIAPOS_MAX_OPENCL_DEVICES_Minimum}"
-                            Maximum="{Binding CHIAPOS_MAX_OPENCL_DEVICES_Maximum}"
-                            Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_OPENCL_DEVICES}"
-                            SpinButtonPlacementMode="Inline"
-                            HorizontalAlignment="Left"
-                            IsEnabled="{Binding ElementName=CHIAPOS_MAX_OPENCL_DEVICES_ToggleSwitch, Path=IsOn}"/>
+                Width="250"
+                Minimum="{Binding CHIAPOS_MAX_OPENCL_DEVICES_Minimum}"
+                Maximum="{Binding CHIAPOS_MAX_OPENCL_DEVICES_Maximum}"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_MAX_OPENCL_DEVICES}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_MAX_OPENCL_DEVICES_ToggleSwitch, Path=IsOn}"/>
 
         </ui:SimpleStackPanel>
     </Grid>
