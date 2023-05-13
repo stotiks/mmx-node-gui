@@ -14,7 +14,6 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
     xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
-    xmlns:ctrls="clr-namespace:Mmx.Gui.Win.Wpf.Common.Controls;assembly=Mmx.Gui.Win.Wpf.Common"
     
     mc:Ignorable="d"
     d:DesignHeight="1450" 
@@ -113,8 +112,6 @@
                             IsEnabled="{Binding ElementName=CheckForUpdatesToggleSwitch, Path=IsOn}"/>
                     </ui:SimpleStackPanel>
                 </GroupBox>
-
-                <ctrls:ChiaPosSettings></ctrls:ChiaPosSettings>
 
                 <GroupBox Header="{lex:Loc Settings_Debug}" Margin="0,0,0,-40" x:Name="DebugGroupBox" MouseDown="DebugGroupBox_MouseDown">
                     <GroupBox.ToolTip>

@@ -467,4 +467,16 @@
     <value>Number of threads</value>
     <comment>harvester</comment>
   </data>
+  <data name="Harvester_Directories" xml:space="preserve">
+    <value>Directories</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_Options" xml:space="preserve">
+    <value>Options</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_GigahorseOptions" xml:space="preserve">
+    <value>Gigahorse Options</value>
+    <comment>harvester</comment>
+  </data>
 </root>

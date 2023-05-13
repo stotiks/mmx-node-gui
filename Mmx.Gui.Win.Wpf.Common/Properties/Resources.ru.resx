@@ -324,4 +324,13 @@
   <data name="Plotter_tmpdir3" xml:space="preserve">
     <value>Временная папка 3</value>
   </data>
+  <data name="Harvester_Directories" xml:space="preserve">
+    <value>Папки</value>
+  </data>
+  <data name="Harvester_Options" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Harvester_GigahorseOptions" xml:space="preserve">
+    <value>Настройки Gigahorse</value>
+  </data>
 </root>
