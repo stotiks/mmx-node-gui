@@ -16,9 +16,6 @@ namespace Mmx.Gui.Win.Common.Harvester
         public readonly ObservableCollection<Directory> _directories = new ObservableCollection<Directory>();
         public ObservableCollection<Directory> Directories => _directories;
 
-        public bool _recursiveSearch = true;
-        public int _reloadInterval = 3600;
-        public int _numThreads = 16;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -43,7 +40,8 @@ namespace Mmx.Gui.Win.Common.Harvester
             NotifyPropertyChanged("Directories");
             SaveConfig();
         }
-
+        
+        public int _reloadInterval = 3600;       
         public int ReloadInterval { 
             get => _reloadInterval;
             set
@@ -56,6 +54,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
+        public int _numThreads = 16;
         public int NumThreads
         {
             get => _numThreads;
@@ -69,6 +68,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
+        public bool _recursiveSearch = true;
         public bool RecursiveSearch
         {
             get => _recursiveSearch;
@@ -82,27 +82,64 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
+        public bool _farmVirtualPlots = true;
+        public bool FarmVirtualPlots
+        {
+            get => _farmVirtualPlots;
+            set
+            {
+                if (_farmVirtualPlots != value)
+                {
+                    _farmVirtualPlots = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        
         public void LoadConfig()
         {
             lock (_lock)
             {
-                    string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
-                    var harvesterConfig = JObject.Parse(harvesterJson);
-                    JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
+                string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
+                var harvesterConfig = JObject.Parse(harvesterJson);
+                JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
 
-                    _directories.CollectionChanged -= Directories_CollectionChanged;
-                    _directories.Clear();
+                _directories.CollectionChanged -= Directories_CollectionChanged;
+                _directories.Clear();
+                if (plotDirs != null)
+                {
                     foreach (var dir in plotDirs)
                     {
                         _directories.Add(new Directory(dir.ToString()));
                     }
-                    _directories.CollectionChanged += Directories_CollectionChanged;
+                }
+                _directories.CollectionChanged += Directories_CollectionChanged;
 
-                    ReloadInterval = harvesterConfig.Value<int>("reload_interval");
-                    RecursiveSearch = harvesterConfig.Value<bool>("recursive_search");
-                    NumThreads = harvesterConfig.Value<int>("num_threads");
+                JToken reload_interval_token = harvesterConfig["reload_interval"];
+                if (reload_interval_token != null)
+                {
+                    ReloadInterval = reload_interval_token.Value<int>();
+                }
+
+                JToken num_threads_token = harvesterConfig["num_threads"];
+                if (num_threads_token != null)
+                {
+                    NumThreads = num_threads_token.Value<int>();
+                }
+
+                JToken recursive_search_token = harvesterConfig["recursive_search"];
+                if (recursive_search_token != null)
+                {
+                    RecursiveSearch = recursive_search_token.Value<bool>();
+                }
+
+                JToken farm_virtual_plots_token = harvesterConfig["farm_virtual_plots"];
+                if (farm_virtual_plots_token != null)
+                {
+                    FarmVirtualPlots = farm_virtual_plots_token.Value<bool>();
                 }
             }
+        }
 
         private void SaveConfig()
         {
@@ -129,6 +166,7 @@ namespace Mmx.Gui.Win.Common.Harvester
                 jObject["reload_interval"] = ReloadInterval;
                 jObject["recursive_search"] = RecursiveSearch;
                 jObject["num_threads"] = NumThreads;
+                jObject["farm_virtual_plots"] = FarmVirtualPlots;
 
                 var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
                 File.WriteAllText(NodeHelpers.harvesterConfigPath, json);
