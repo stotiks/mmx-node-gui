@@ -1,206 +1,209 @@
 ﻿using Mmx.Gui.Win.Common.Node;
-using Open.Nat;
-using System;
-using System.Collections.Concurrent;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common.Harvester
 {
     public class HarvesterOptions : INotifyPropertyChanged
     {
-        private string _host = "localhost";
-        public string Host {
-            get => _host;
-            set { 
-                _host = value;
-                NotifyPropertyChanged();
-            }
-        }
+        private readonly object _lock = new object();
 
-        private const int DefaultPort = 11330;
+        public readonly ObservableCollection<Directory> _directories = new ObservableCollection<Directory>();
+        public ObservableCollection<Directory> Directories => _directories;
 
-        private int _port = DefaultPort;
-        public int Port { 
-            get => _port; 
-            set
-            {
-                _port = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private HarvesterOptions()
-        {
-            var dnsEndPoint = LoadNodeDnsEndPoint();
-            if (dnsEndPoint != null)
-            {
-                Host = dnsEndPoint.Host;
-                Port = dnsEndPoint.Port;
-            }
-        }
-
-        private static DnsEndPoint LoadNodeDnsEndPoint()
-        {
-            DnsEndPoint result = null;
-
-            var reg = new Regex(@"([a-zA-Z0-9\-_\.]+):([0-9]{1,5})");
-            try
-            {
-                string line1 = File.ReadLines(NodeHelpers.nodeFilePath).First();
-                var match = reg.Match(line1);
-                if (match.Groups.Count >= 3)
-                {
-                    var host = match.Groups[1].Value;
-                    var port = int.Parse(match.Groups[2].Value);
-                    result = new DnsEndPoint(host, port);
-                }
-            }
-            catch
-            {
-                Console.WriteLine($"{NodeHelpers.nodeFilePath} not found");
-            }
-
-            return result;
-        }
-
-        public static void SaveNodeDnsEndPoint(DnsEndPoint dnsEndPoint)
-        {
-            File.WriteAllText(NodeHelpers.nodeFilePath, $"{dnsEndPoint.Host}:{dnsEndPoint.Port}");
-        }
-
-        public async Task DetectNodeIP(int port = DefaultPort)
-        {
-            var mapping = await GetMapping();
-
-            if (mapping != null)
-            {
-                var isOpen = IsPortOpen(mapping.PrivateIP, port, 20);
-                if (isOpen)
-                {
-                    Port = port;
-                    Host = mapping.PrivateIP.ToString();
-                    return;
-                }
-            }
-
-            var localIpAddress = GetLocalIPAddress();
-            if (localIpAddress != null)
-            {
-                var addressBytes = localIpAddress.GetAddressBytes();
-
-                var addressesWithOpenPort = new ConcurrentBag<IPAddress>();
-                Parallel.For(1, 256, i =>
-                {
-                    addressBytes[3] = Convert.ToByte(i);
-                    IPAddress ipAddress = new IPAddress(addressBytes);
-                    var isOpen = IsPortOpen(ipAddress, port, 20);
-                    if(isOpen)
-                    {
-                        addressesWithOpenPort.Add(ipAddress);
-                    }
-                });
-                    
-                if(addressesWithOpenPort.Count() > 0)
-                {
-                    Port = port;
-                    Host = addressesWithOpenPort.First().ToString();
-                    return;
-                }
-            }
-
-        }
-
-        private bool IsPortOpen(IPAddress host, int port, int timeout)
-        {
-
-            using (var tcp = new TcpClient())
-            {
-                var ar = tcp.BeginConnect(host, port, null, null);
-                using (ar.AsyncWaitHandle)
-                {
-                    if (ar.AsyncWaitHandle.WaitOne(timeout, false))
-                    {
-                        try
-                        {
-                            tcp.EndConnect(ar);
-                            //Connect was successful.
-                            return true;
-                        }
-                        catch
-                        {
-                            //EndConnect threw an exception.
-                            //Most likely means the server refused the connection.
-                        }
-                    }
-                    else
-                    {
-                        //Connection timed out.
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        private async Task<Mapping> GetMapping()
-        {
-            Mapping result = null;
-
-            var discoverer = new NatDiscoverer();
-            var cts = new CancellationTokenSource(5000);
-            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
-            var mappings = await device.GetAllMappingsAsync();
-            foreach (var mapping in mappings)
-            {
-                if (mapping.Description == "MMX Node")
-                {
-                    result = mapping;
-                    break;
-                }
-            }
-
-            return result;
-        }
-
-        private static IPAddress GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip;
-                }
-            }
-
-            return null;
-            //throw new Exception("No network adapters with an IPv4 address in the system!");
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static HarvesterOptions Instance => Nested.instance;
-
-        private class Nested
+        public HarvesterOptions() 
         {
-            // Explicit static constructor to tell C# compiler
-            // not to mark type as beforefieldinit
-            static Nested() { }
-
-            internal static readonly HarvesterOptions instance = new HarvesterOptions();
+            _directories.CollectionChanged += Directories_CollectionChanged;
+            PropertyChanged += SaveConfigOnPropertyChanged;
         }
+
+        private void SaveConfigOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SaveConfig();
+        }
+
+        private void Directories_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            NotifyPropertyChanged("Directories");
+            SaveConfig();
+        }
+        
+        public int _reloadInterval = 3600;       
+        public int ReloadInterval { 
+            get => _reloadInterval;
+            set
+            {
+                if (_reloadInterval != value)
+                {
+                    _reloadInterval = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int _numThreads = 16;
+        public int NumThreads
+        {
+            get => _numThreads;
+            set
+            {
+                if (_numThreads != value)
+                {
+                    _numThreads = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool _recursiveSearch = true;
+        public bool RecursiveSearch
+        {
+            get => _recursiveSearch;
+            set
+            {
+                if (_recursiveSearch != value)
+                {
+                    _recursiveSearch = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool _farmVirtualPlots = true;
+        public bool FarmVirtualPlots
+        {
+            get => _farmVirtualPlots;
+            set
+            {
+                if (_farmVirtualPlots != value)
+                {
+                    _farmVirtualPlots = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        
+        public void LoadConfig()
+        {
+            lock (_lock)
+            {
+                string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
+                var harvesterConfig = JObject.Parse(harvesterJson);
+                JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
+
+                _directories.CollectionChanged -= Directories_CollectionChanged;
+                _directories.Clear();
+                if (plotDirs != null)
+                {
+                    foreach (var dir in plotDirs)
+                    {
+                        _directories.Add(new Directory(dir.ToString()));
+                    }
+                }
+                _directories.CollectionChanged += Directories_CollectionChanged;
+
+                JToken reload_interval_token = harvesterConfig["reload_interval"];
+                if (reload_interval_token != null)
+                {
+                    ReloadInterval = reload_interval_token.Value<int>();
+                }
+
+                JToken num_threads_token = harvesterConfig["num_threads"];
+                if (num_threads_token != null)
+                {
+                    NumThreads = num_threads_token.Value<int>();
+                }
+
+                JToken recursive_search_token = harvesterConfig["recursive_search"];
+                if (recursive_search_token != null)
+                {
+                    RecursiveSearch = recursive_search_token.Value<bool>();
+                }
+
+                JToken farm_virtual_plots_token = harvesterConfig["farm_virtual_plots"];
+                if (farm_virtual_plots_token != null)
+                {
+                    FarmVirtualPlots = farm_virtual_plots_token.Value<bool>();
+                }
+            }
+        }
+
+        private void SaveConfig()
+        {
+            lock (_lock)
+            {
+                var harvesterJson = "{}";
+                try
+                {
+                    harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
+                } catch {}
+                   
+                var jObject = JObject.Parse(harvesterJson);
+
+                if(jObject["plot_dirs"] == null)
+                {
+                    jObject["plot_dirs"] = new JArray();
+                }
+
+                ((JArray)jObject["plot_dirs"]).Clear();
+                foreach (var dir in _directories)
+                {
+                    ((JArray)jObject["plot_dirs"]).Add(dir.Path);
+                }
+                jObject["reload_interval"] = ReloadInterval;
+                jObject["recursive_search"] = RecursiveSearch;
+                jObject["num_threads"] = NumThreads;
+                jObject["farm_virtual_plots"] = FarmVirtualPlots;
+
+                var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                File.WriteAllText(NodeHelpers.harvesterConfigPath, json);
+            }
+        }
+
+        public class Directory: INotifyPropertyChanged
+        {
+            private string _path;
+            public string Path { 
+                get => _path;
+                set {
+                    if (_path != value)
+                    {
+                        _path = value;
+                        NotifyPropertyChanged();
+                    }                    
+                }
+            }
+
+            public Directory(string path)
+            {
+                Path = path;
+            }
+
+            public override string ToString()
+            {
+                return Path;
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
 }

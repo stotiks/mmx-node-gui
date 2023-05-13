@@ -397,5 +397,40 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["CUDA_VISIBLE_DEVICES_Enabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.ArrayList PlotSincDirectories {
+            get {
+                return ((global::System.Collections.ArrayList)(this["PlotSincDirectories"]));
+            }
+            set {
+                this["PlotSincDirectories"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CHIAPOS_RECOMPUTE_HOST {
+            get {
+                return ((string)(this["CHIAPOS_RECOMPUTE_HOST"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_HOST"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_RECOMPUTE_HOST_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_RECOMPUTE_HOST_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_HOST_Enabled"] = value;
+            }
+        }
     }
 }

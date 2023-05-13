@@ -15,7 +15,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester
     /// </summary>
     public partial class MainWindow
     {
-        private readonly HarvesterProcess harvesterProcess = new HarvesterProcess();
+        private readonly RemoteHarvesterProcess harvesterProcess = new RemoteHarvesterProcess();
 
         private readonly ConnectionPage _connectionPage;
         private readonly HarvesterPage _harvesterPage;
@@ -33,6 +33,7 @@ namespace Mmx.Gui.Win.Wpf.Harvester
             }
 
             InitializeComponent();
+            ActivateNode();
 
             _harvesterPage = new HarvesterPage(harvesterProcess);
             _connectionPage = new ConnectionPage(harvesterProcess);
@@ -45,12 +46,18 @@ namespace Mmx.Gui.Win.Wpf.Harvester
 
             Closing += MainWindow_Closing;
 
-            nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
+            nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();           
 
             if(Settings.Default.ConnectOnStart)
             {
                 harvesterProcess.Start();
             }
+        }
+
+        private void ActivateNode()
+        {
+            var aProcess = new Win.Common.Node.ActivateProcess();
+            aProcess.Start();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

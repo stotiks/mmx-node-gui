@@ -115,11 +115,74 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directories.
+        /// </summary>
+        public static string Harvester_Directories {
+            get {
+                return ResourceManager.GetString("Harvester_Directories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Farm Virtual Plots.
+        /// </summary>
+        public static string Harvester_FarmVirtualPlots {
+            get {
+                return ResourceManager.GetString("Harvester_FarmVirtualPlots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gigahorse Options.
+        /// </summary>
+        public static string Harvester_GigahorseOptions {
+            get {
+                return ResourceManager.GetString("Harvester_GigahorseOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of threads.
+        /// </summary>
+        public static string Harvester_NumThreads {
+            get {
+                return ResourceManager.GetString("Harvester_NumThreads", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string Harvester_Options {
+            get {
+                return ResourceManager.GetString("Harvester_Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recursive search.
+        /// </summary>
+        public static string Harvester_RecursiveSearch {
+            get {
+                return ResourceManager.GetString("Harvester_RecursiveSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reload Harvester.
         /// </summary>
         public static string Harvester_Reload {
             get {
                 return ResourceManager.GetString("Harvester_Reload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload interval.
+        /// </summary>
+        public static string Harvester_ReloadInterval {
+            get {
+                return ResourceManager.GetString("Harvester_ReloadInterval", resourceCulture);
             }
         }
         
@@ -165,6 +228,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Node_Title {
             get {
                 return ResourceManager.GetString("Node_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destinations.
+        /// </summary>
+        public static string PlotSink_destinations {
+            get {
+                return ResourceManager.GetString("PlotSink_destinations", resourceCulture);
             }
         }
         

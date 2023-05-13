@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Mmx.Gui.Win.Common.Node
 {
-    internal class ActivateProcess : ProcessWrapper
+    public class ActivateProcess : ProcessWrapper
     {
         public override void Start()
         {

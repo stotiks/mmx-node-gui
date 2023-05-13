@@ -47,8 +47,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Harvester\HarvesterProcess.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Harvester\HarvesterOptions.cs" />
+    <Compile Include="Harvester\RemoteHarvesterProcess.cs" />
+    <Compile Include="Harvester\RemoteHarvesterOptions.cs" />
     <Compile Include="Node\ActivateProcess.cs" />
     <Compile Include="Node\NodeApi.cs" />
     <Compile Include="MMXBoundObject.cs" />
@@ -77,7 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.2</Version>
+      <Version>13.0.3</Version>
     </PackageReference>
     <PackageReference Include="Open.Nat">
       <Version>2.1.0</Version>

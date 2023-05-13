@@ -92,7 +92,11 @@
                             </Button>
                         </ui:SimpleStackPanel>
 
-                        <ctrls:MultiFolder/>
+                        <ctrls:MultiFolder
+                            HeaderText="{lex:Loc Plotter_finaldir}"
+                            Visibility="{Binding PlotterOptions.multifinaldir.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"                            
+                            Directories="{Binding PlotterOptions.multifinaldir.Value}"
+                            FirstDirectory="{Binding PlotterOptions.finaldir.Value}"/>
 
                         <ui:NumberBox
                             Width="200"

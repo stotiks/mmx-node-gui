@@ -1,11 +1,7 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Mmx.Gui.Win.Common;
 using Mmx.Gui.Win.Common.Harvester;
 using Mmx.Gui.Win.Common.Node;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,70 +13,74 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
     /// </summary>
     public partial class HarvesterPage
     {
+        private readonly HarvesterOptions _harvesterOptions = new HarvesterOptions();
+        public HarvesterOptions HarvesterOptions => _harvesterOptions;
+
         public HarvesterPage()
-        {
+        {        
             InitializeComponent();
             DataContext = this;
+
+            //DirListView.ItemsSource = _harvesterOptions.Directories;
         }
 
-        public HarvesterPage(HarvesterProcess harvesterProcess) : this()
+        public HarvesterPage(RemoteHarvesterProcess remoteHarvesterProcess) : this()
         {
-            this.harvesterProcess = harvesterProcess;
+            this.remoteHarvesterProcess = remoteHarvesterProcess;
         }
 
-        private ObservableCollection<Directory> _dirs;
-        private HarvesterProcess harvesterProcess;
+        private readonly RemoteHarvesterProcess remoteHarvesterProcess;
 
-        private async void OnLoaded(object sender, RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                _dirs = await Directory.GetDirectoriesAsync();
-            } catch (Exception ex)
+                _harvesterOptions.LoadConfig();
+            }
+            catch (Exception ex)
             {
-                AddButton.IsEnabled = false;
-                RemoveButton.IsEnabled = false;
+                //AddButton.IsEnabled = false;
+                //RemoveButton.IsEnabled = false;
 
                 MessageBox.Show($"Can not read or parse {NodeHelpers.harvesterConfigPath}\n\n{ex}", "Error!");
             }
-
-            DirListView.ItemsSource = _dirs;
         }
 
         private void DelButton_Click(object sender, RoutedEventArgs e)
         {
-            var dir = (sender as FrameworkElement).Tag as Directory;
-            _dirs.Remove(dir);
-            SaveHarvesterConfig();
+            var dir = (sender as FrameworkElement).Tag as HarvesterOptions.Directory;
+            _harvesterOptions._directories.Remove(dir);
 
-            if (harvesterProcess != null) 
+            if (remoteHarvesterProcess != null) 
             {
-                Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
+                _ = Task.Run(() => remoteHarvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
             } else
             {
-                NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(ShowFlyoutTask());
+                _ = NodeApi.RemovePlotDirTask(dir.Path).ContinueWith(ShowFlyoutTask());
             }
 
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
-            dialog.IsFolderPicker = true;
+            var dialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}",
+                IsFolderPicker = true
+            };
+
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 var dirName = dialog.FileName;
-                _dirs.Add(new Directory(dirName));
-                SaveHarvesterConfig();
+                _harvesterOptions._directories.Add(new HarvesterOptions.Directory(dirName));
 
-                if (harvesterProcess != null)
+                if (remoteHarvesterProcess != null)
                 {
-                    Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
+                    _ = Task.Run(() => remoteHarvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
                 }
                 else
                 {
-                    NodeApi.AddPlotDirTask(dirName).ContinueWith(ShowFlyoutTask());
+                    _ = NodeApi.AddPlotDirTask(dirName).ContinueWith(ShowFlyoutTask());
                 }
             }
         }
@@ -102,60 +102,19 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             };
         }
 
-        private void SaveHarvesterConfig()
-        {
-            var harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
-            var harvesterConfig = JObject.Parse(harvesterJson);
-            ((JArray)harvesterConfig["plot_dirs"]).Clear();
-            foreach (var dir in _dirs)
-            {
-                ((JArray)harvesterConfig["plot_dirs"]).Add(dir.Path);
-            }
-            File.WriteAllText(NodeHelpers.harvesterConfigPath, harvesterConfig.ToString());
-        }
-
         private void ReloadHarvesterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (harvesterProcess != null)
+            if (remoteHarvesterProcess != null)
             {
-                Task.Run(() => harvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
+                _ = Task.Run(() => remoteHarvesterProcess.Restart()).ContinueWith(ShowFlyoutTask());
             }
             else
             {
-                NodeApi.ReloadHarvester().ContinueWith(ShowFlyoutTask());
+                _ = NodeApi.ReloadHarvester().ContinueWith(ShowFlyoutTask());
             }
         }
+
     }
 
 
-    public class Directory
-    {
-        public string Path { get; private set; }
-
-        public Directory(string path)
-        {
-            Path = path;
-        }
-
-        public static Task<ObservableCollection<Directory>> GetDirectoriesAsync()
-        {
-            string harvesterJson = File.ReadAllText(NodeHelpers.harvesterConfigPath);
-            var harvesterConfig = JObject.Parse(harvesterJson);
-            JArray plotDirs = harvesterConfig.Value<JArray>("plot_dirs");
-
-            var dirs = new ObservableCollection<Directory>();
-            foreach (var dir in plotDirs)
-            {
-                dirs.Add(new Directory(dir.ToString()));
-            }
-
-            return Task.FromResult(dirs);
-        }
-
-        public override string ToString()
-        {
-            return Path;
-        }
-
-    }
 }

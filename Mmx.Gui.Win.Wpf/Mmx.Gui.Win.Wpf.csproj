@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf">
-      <Version>110.0.300</Version>
+      <Version>112.3.0</Version>
     </PackageReference>
     <PackageReference Include="ModernWpfUI">
       <Version>0.9.6</Version>
@@ -182,16 +182,23 @@
       <Project>{ed48f56c-dd61-4768-9a85-fc1699bc5d93}</Project>
       <Name>Mmx.Gui.Win.Wpf.Plotter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PlotSincGui\PlotSincGui.csproj">
+      <Project>{574fc1ef-ab66-45ea-a7fc-adc02d462bce}</Project>
+      <Name>PlotSincGui</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="mmx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>SET OUT=$(TargetDir)\..\CPack_$(ConfigurationName)
 (
 ROBOCOPY $(TargetDir) %25OUT%25\gui\langs "*.resources.dll"  /S /XD langs /IS /IT
-ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config" MmxPlotter.exe MmxPlotter.exe.config MmxHarvester.exe MmxHarvester.exe.config
+ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config" MmxPlotter.exe MmxPlotter.exe.config MmxHarvester.exe MmxHarvester.exe.config PlotSincGui.exe PlotSincGui.exe.config
 ROBOCOPY  $(TargetDir) %25OUT%25\gui\libs Mmx.Gui.Win.Common.dll Mmx.Gui.Win.Common.Cef.dll Mmx.Gui.Win.Wpf.Common.dll ModernWpf.Controls.dll ModernWpf.dll System.ValueTuple.dll Newtonsoft.Json.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll WPFLocalizeExtension.dll XAMLMarkupExtensions.dll Open.Nat.dll
 ROBOCOPY  $(TargetDir)\locales %25OUT%25\gui\cefsharp\locales
 ROBOCOPY  $(TargetDir) %25OUT%25\gui\cefsharp CefSharp.BrowserSubprocess.Core.dll CefSharp.BrowserSubprocess.exe CefSharp.Core.dll CefSharp.Core.Runtime.dll CefSharp.dll CefSharp.Wpf.dll chrome_100_percent.pak chrome_200_percent.pak chrome_elf.dll d3dcompiler_47.dll icudtl.dat libcef.dll libEGL.dll libGLESv2.dll LICENSE.txt resources.pak snapshot_blob.bin v8_context_snapshot.bin vk_swiftshader.dll vk_swiftshader_icd.json vulkan-1.dll

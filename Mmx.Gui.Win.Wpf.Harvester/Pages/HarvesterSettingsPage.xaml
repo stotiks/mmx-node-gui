@@ -14,8 +14,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Properties.Resources"
     
     xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly=Mmx.Gui.Win.Wpf.Common"
-    xmlns:ctrls="clr-namespace:Mmx.Gui.Win.Wpf.Common.Controls;assembly=Mmx.Gui.Win.Wpf.Common"
-
+    
     mc:Ignorable="d"
     d:DesignHeight="1450" 
     d:DesignWidth="800"
@@ -80,9 +79,7 @@
                             Header="{lex:Loc Settings_InhibitSystemSleep}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=InhibitSystemSleep}"/>
                 </GroupBox>
-                
-                <ctrls:ChiaPosSettings></ctrls:ChiaPosSettings>
-                
+
             </ui:SimpleStackPanel>
         </ScrollViewer>
 

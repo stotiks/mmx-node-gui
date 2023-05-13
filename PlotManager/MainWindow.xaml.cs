@@ -4,9 +4,7 @@ using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
 using System;
 using System.ComponentModel;
-using System.Reflection;
 using System.Threading.Tasks;
-using PlotManager.ExtensionMethods;
 
 namespace PlotManager
 {

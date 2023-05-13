@@ -451,4 +451,36 @@
     <value>Temporary directory 3</value>
     <comment>plotter</comment>
   </data>
+  <data name="PlotSink_destinations" xml:space="preserve">
+    <value>Destinations</value>
+    <comment>plotsinc</comment>
+  </data>
+  <data name="Harvester_RecursiveSearch" xml:space="preserve">
+    <value>Recursive search</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_ReloadInterval" xml:space="preserve">
+    <value>Reload interval</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_NumThreads" xml:space="preserve">
+    <value>Number of threads</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_Directories" xml:space="preserve">
+    <value>Directories</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_Options" xml:space="preserve">
+    <value>Options</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_GigahorseOptions" xml:space="preserve">
+    <value>Gigahorse Options</value>
+    <comment>harvester</comment>
+  </data>
+  <data name="Harvester_FarmVirtualPlots" xml:space="preserve">
+    <value>Farm Virtual Plots</value>
+    <comment>harvester</comment>
+  </data>
 </root>

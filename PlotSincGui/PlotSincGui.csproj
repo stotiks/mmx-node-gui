@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57085E57-C18F-468D-B0C3-151040A7FA1E}</ProjectGuid>
+    <ProjectGuid>{574FC1EF-AB66-45EA-A7FC-ADC02D462BCE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Mmx.Gui.Win.Wpf.Plotter.Chia</RootNamespace>
-    <AssemblyName>PlotManager</AssemblyName>
+    <RootNamespace>PlotSincGui</RootNamespace>
+    <AssemblyName>PlotSincGui</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,9 +33,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>harddisk.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -66,33 +63,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AssemblyEx.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlotSincProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mmx.Gui.Win.Common\Mmx.Gui.Win.Common.csproj">
-      <Project>{d59b1b6c-6b96-4491-9ee9-610be8e13598}</Project>
-      <Name>Mmx.Gui.Win.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mmx.Gui.Win.Wpf.Common\Mmx.Gui.Win.Wpf.Common.csproj">
-      <Project>{b2f0a2b6-daeb-4d1a-af35-2d7eda8757e7}</Project>
-      <Name>Mmx.Gui.Win.Wpf.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PlotSincGui\PlotSincGui.csproj">
-      <Project>{574fc1ef-ab66-45ea-a7fc-adc02d462bce}</Project>
-      <Name>PlotSincGui</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ModernWpfUI">
@@ -108,15 +91,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="harddisk.ico" />
+    <ProjectReference Include="..\Mmx.Gui.Win.Common\Mmx.Gui.Win.Common.csproj">
+      <Project>{d59b1b6c-6b96-4491-9ee9-610be8e13598}</Project>
+      <Name>Mmx.Gui.Win.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mmx.Gui.Win.Wpf.Common\Mmx.Gui.Win.Wpf.Common.csproj">
+      <Project>{b2f0a2b6-daeb-4d1a-af35-2d7eda8757e7}</Project>
+      <Name>Mmx.Gui.Win.Wpf.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>SET OUT=$(TargetDir)\..\CPack_PlotManager_$(ConfigurationName)
-(
-ROBOCOPY $(TargetDir) %25OUT%25\gui\langs "*.resources.dll"  /S /XD langs /IS /IT
-ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config" PlotSincGui.exe PlotSincGui.exe.config
-ROBOCOPY  $(TargetDir) %25OUT%25\gui\libs Mmx.Gui.Win.Common.dll Mmx.Gui.Win.Wpf.Common.dll ModernWpf.Controls.dll ModernWpf.dll System.ValueTuple.dll Newtonsoft.Json.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll WPFLocalizeExtension.dll XAMLMarkupExtensions.dll
-) ^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
-  </PropertyGroup>
 </Project>

@@ -87,6 +87,7 @@
 
             <Button Grid.Column="36"
                 x:Name="DisconnectButton"
+                d:Visibility="Collapsed"
                 Visibility="{Binding HarvesterProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}"
                 Width="200"
                 Content="Disconnect"

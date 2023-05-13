@@ -1,9 +1,12 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Mmx.Gui.Win.Common.Plotter;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Mmx.Gui.Win.Wpf.Common.Controls
@@ -26,7 +29,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 }
             }
 
-
             bool _isFirst;
             public bool IsFirst
             {
@@ -48,6 +50,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                     NotifyPropertyChanged();
                 }
             }
+
             public Dir()
             {
             }
@@ -57,13 +60,13 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 Path = path;
             }
 
-            bool _isLast;
+            bool _isLastAndNotEmpty;
             public bool IsLastAndNotEmpty
             {
-                get => _isLast;
+                get => _isLastAndNotEmpty;
                 internal set
                 {
-                    _isLast = value;
+                    _isLastAndNotEmpty = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -76,66 +79,206 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             public event PropertyChangedEventHandler PropertyChanged;
 
         }
+        class DirObservableCollection : ObservableCollection<Dir>, INotifyPropertyChanged
+        {
+            public DirObservableCollection(List<Dir> list) : base(list)
+            {
+                RecalcItems();
+                this.ToList().ForEach(item => item.PropertyChanged += ItemPropertyChanged);
+                CollectionChanged += RecalcItems;
+            }
 
-        ObservableCollection<Dir> _finalDirs;
-        public ObservableCollection<Dir> FinalDirs => _finalDirs;
+            protected override void ClearItems()
+            {
+                this.ToList().ForEach(item => item.PropertyChanged -= ItemPropertyChanged);
+                base.ClearItems();
+            }
 
-        public PlotterOptions PlotterOptions => PlotterOptions.Instance;
+            protected override void InsertItem(int index, Dir item)
+            {
+                item.PropertyChanged += ItemPropertyChanged;
+                base.InsertItem(index, item);
+            }
+
+            protected override void RemoveItem(int index)
+            {
+                this[index].PropertyChanged -= ItemPropertyChanged;
+                base.RemoveItem(index);
+            }
+
+            private void RecalcItems(object sender, NotifyCollectionChangedEventArgs e)
+            {
+                RecalcItems();
+                OnDirCollectionChanged();
+            }
+
+            private void RecalcItems()
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    Dir dir = this[i];
+
+                    dir.IsAlone = Count == 1;
+                    dir.IsFirst = i == 0;
+                    dir.IsLastAndNotEmpty = (i == Count - 1) && !string.IsNullOrEmpty(dir.Path);
+                }
+            }
+
+            private void ItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+            {
+                if (e.PropertyName == nameof(Dir.Path))
+                {
+                    var dir = (sender as Dir);
+                    if (dir.IsFirst)
+                    {
+                        NotifyItemChanged("FirstItem");
+                    }
+                    RecalcItems();
+                    OnDirCollectionChanged();
+                }
+            }
+
+            public void AddRange(IEnumerable<Dir> items)
+            {
+                items.ToList().ForEach(Add);
+            }
+
+            public void Recreate(List<Dir> dirs)
+            {
+                CollectionChanged -= RecalcItems;
+                Clear();
+                AddRange(dirs);
+                CollectionChanged += RecalcItems;
+                RecalcItems();
+            }
+
+            private void NotifyItemChanged([CallerMemberName] string propertyName = "")
+            {
+                ItemChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+            public event PropertyChangedEventHandler ItemChanged;
+
+            private void OnDirCollectionChanged()
+            {
+                DirCollectionChanged?.Invoke(this,null);
+            }
+
+            public event NotifyCollectionChangedEventHandler DirCollectionChanged;
+        }
+
+        public static readonly DependencyProperty HeaderTextProperty =
+            DependencyProperty.Register(nameof(HeaderTextProperty), typeof(string), typeof(MultiFolder), new PropertyMetadata(string.Empty));
+
+        public string HeaderText
+        {
+            get
+            {
+                return (string)GetValue(HeaderTextProperty);
+            }
+            set
+            {
+                if (value != (string)GetValue(HeaderTextProperty))
+                {
+                    SetValue(HeaderTextProperty, value);
+                }
+            }
+        }
+
+        public static readonly DependencyProperty FirstDirectoryProperty =
+            DependencyProperty.Register(nameof(FirstDirectory), typeof(string), typeof(MultiFolder),
+                new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, FirstDirectoryPropertyChangedCallback));
+
+        private static void FirstDirectoryPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
+        {
+            (d as MultiFolder).OnFirstDirectoryPropertyChanged();
+        }
+
+        private void OnFirstDirectoryPropertyChanged()
+        {
+            if (_directories.Count > 0)
+            {
+                _directories.First().Path = FirstDirectory;
+            } else
+            {
+                _directories.Add(new Dir(FirstDirectory));
+            }
+        }
+
+        public string FirstDirectory
+        {
+            get
+            {
+                return (string)GetValue(FirstDirectoryProperty);
+            }
+            set
+            {
+                if (value != (string)GetValue(FirstDirectoryProperty))
+                {
+                    SetValue(FirstDirectoryProperty, value);
+                }
+            }
+        }
+
+
+        public static readonly DependencyProperty DirectoriesProperty =
+           DependencyProperty.Register(nameof(Directories), typeof(ArrayList), typeof(MultiFolder),
+               new FrameworkPropertyMetadata(new ArrayList(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, DirectoriesPropertyChangedCallback));
+
+        private static void DirectoriesPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
+        {
+            (d as MultiFolder).OnDirectoriesPropertyChanged();
+        }
+
+        private void OnDirectoriesPropertyChanged()
+        {
+            if (Directories != null)
+            {
+                _directories.DirCollectionChanged -= UpdateDirectories;
+                _directories.Recreate(Directories.ToArray().Select(path => new Dir(path as string)).ToList());
+                _directories.DirCollectionChanged += UpdateDirectories;
+            }
+        }
+
+        private void UpdateDirectories(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Directories = new ArrayList(_directories.Select(x => x.Path).ToList());
+        }
+
+        public ArrayList Directories
+        {
+            get
+            {
+                return (ArrayList)GetValue(DirectoriesProperty);
+            }
+            set
+            {
+                if (value != (ArrayList)GetValue(DirectoriesProperty))
+                {
+                    SetValue(DirectoriesProperty, value);
+                }
+            }
+        }
+
+        private readonly DirObservableCollection _directories = new DirObservableCollection(new List<Dir> { new Dir() });
+
         public MultiFolder()
         {
             InitializeComponent();
-            DataContext = this;
 
-            _finalDirs = new ObservableCollection<Dir>(PlotterOptions.Instance.multifinaldir.Value.Select(path => new Dir(path)).ToList());
-                        
-            FinalDirs.CollectionChanged += (o, e) => UpdateItems();
-
-            if (FinalDirs.Count == 0)
+            _directories.DirCollectionChanged += UpdateDirectories;
+            _directories.ItemChanged += (o, e) =>
             {
-                AddDir(new Dir());
-            }
-
-            RecalcItems();
-
-            MultiFolderItemsControl.ItemsSource = FinalDirs;
-
-            PlotterOptions.Instance.finaldir.PropertyChanged += (o, e) => FinalDirs.First().Path = PlotterOptions.Instance.finaldir.Value;
-        }
-
-        private void UpdateItems()
-        {
-            RecalcItems();
-            PlotterOptions.Instance.multifinaldir.Value = FinalDirs.Select(x => x.Path).ToList();
-        }
-
-        private void RecalcItems()
-        {
-            for (int i = 0; i < FinalDirs.Count; i++)
-            {
-                Dir dir = FinalDirs[i];
-                dir.PropertyChanged -= DirPathPropertyChanged;
-                dir.PropertyChanged += DirPathPropertyChanged;
-
-                dir.IsAlone = FinalDirs.Count == 1;
-                dir.IsFirst = i == 0;
-                dir.IsLastAndNotEmpty = (i == FinalDirs.Count - 1) && !string.IsNullOrEmpty(dir.Path);
-            }
-        }
-
-        private void DirPathPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(Dir.Path))
-            {
-                var dir = (sender as Dir);
-                if (dir.IsFirst)
+                if (e.PropertyName == "FirstItem")
                 {
-                    PlotterOptions.Instance.finaldir.Value = dir.Path;
+                    FirstDirectory = _directories.FirstOrDefault().Path;
                 }
-                UpdateItems();
-            }
+            };
+
+            MultiFolderItemsControl.ItemsSource = _directories;
         }
 
-        private void ChooseFolderButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ChooseFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var dir = button.DataContext as Dir;
@@ -146,11 +289,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             };
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                dir.Path = PlotterOptionsHelpers.FixDir(dialog.FileName);
+                dir.Path = Win.Common.Plotter.PlotterOptionsHelpers.FixDir(dialog.FileName);
             }
         }
 
-        private void AddFolderButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void AddFolderButton_Click(object sender, RoutedEventArgs e)
         {
             string path;
             var button = sender as Button;
@@ -159,31 +302,21 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             path = dir.Path;
             if (!string.IsNullOrEmpty(path))
             {
-                AddDir(new Dir());
+                _directories.Add(new Dir());
             }
         }
 
-        private void RemoveFolderButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void RemoveFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var dir = button.DataContext as Dir;
 
-            if(FinalDirs.Count > 1)
+            if (_directories.Count > 1)
             {
-                RemoveDir(dir);                
-            }            
+                _directories.Remove(dir);
+            }
         }
 
-        private void AddDir(Dir dir)
-        {
-            FinalDirs.Add(dir);
-            dir.PropertyChanged += DirPathPropertyChanged;
-        }
-
-        private void RemoveDir(Dir dir)
-        {
-            FinalDirs.Remove(dir);
-            dir.PropertyChanged -= DirPathPropertyChanged;
-        }
     }
+
 }

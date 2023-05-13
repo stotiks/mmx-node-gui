@@ -1,13 +1,15 @@
-﻿<common:WpfApplication x:Class="Mmx.Gui.Win.Wpf.Plotter.App"
-             xmlns:common="clr-namespace:Mmx.Gui.Win.Wpf.Common;assembly=Mmx.Gui.Win.Wpf.Common"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Mmx.Gui.Win.Wpf.Plotter" 
-                       
-             xmlns:ui="http://schemas.modernwpf.com/2019"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                       
-             StartupUri="MainWindow.xaml">
+﻿<common:WpfApplication
+    xmlns:common="clr-namespace:Mmx.Gui.Win.Wpf.Common;assembly=Mmx.Gui.Win.Wpf.Common"
+    x:Class="PlotSincGui.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PlotSincGui"
+    
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    
+    StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -32,4 +34,5 @@
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>
+    
 </common:WpfApplication>
