@@ -479,4 +479,8 @@
     <value>Gigahorse Options</value>
     <comment>harvester</comment>
   </data>
+  <data name="Harvester_FarmVirtualPlots" xml:space="preserve">
+    <value>Farm Virtual Plots</value>
+    <comment>harvester</comment>
+  </data>
 </root>

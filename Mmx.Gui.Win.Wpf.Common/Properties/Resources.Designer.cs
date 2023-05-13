@@ -124,6 +124,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Farm Virtual Plots.
+        /// </summary>
+        public static string Harvester_FarmVirtualPlots {
+            get {
+                return ResourceManager.GetString("Harvester_FarmVirtualPlots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gigahorse Options.
         /// </summary>
         public static string Harvester_GigahorseOptions {

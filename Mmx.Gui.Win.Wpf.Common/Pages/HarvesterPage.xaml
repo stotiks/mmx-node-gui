@@ -138,7 +138,14 @@
             <TabItem Header="{lex:Loc Harvester_Options}">
                 <ScrollViewer Margin="0,12,0,0">
                     <ui:SimpleStackPanel HorizontalAlignment="Left">
-
+                        <ui:NumberBox
+                            Width="200"
+                            Header="{lex:Loc Harvester_ReloadInterval}"
+                            Minimum="0"
+                            SpinButtonPlacementMode="Inline" 
+                            HorizontalAlignment="Left"                        
+                            Value="{Binding HarvesterOptions.ReloadInterval}"/>
+                        
                         <ui:NumberBox
                             Width="200"
                             Header="{lex:Loc Harvester_NumThreads}"
@@ -151,13 +158,9 @@
                             Header="{lex:Loc Harvester_RecursiveSearch}"
                             IsOn="{Binding HarvesterOptions.RecursiveSearch}"/>
 
-                        <ui:NumberBox
-                            Width="200"
-                            Header="{lex:Loc Harvester_ReloadInterval}"
-                            Minimum="0"
-                            SpinButtonPlacementMode="Inline" 
-                            HorizontalAlignment="Left"                        
-                            Value="{Binding HarvesterOptions.ReloadInterval}"/>
+                        <ui:ToggleSwitch 
+                            Header="{lex:Loc Harvester_FarmVirtualPlots}"
+                            IsOn="{Binding HarvesterOptions.FarmVirtualPlots}"/>
 
                         <Button Click="ReloadHarvesterButton_Click" Margin="0,10,0,0" Style="{StaticResource AccentButtonStyle}">
                             <ui:SimpleStackPanel Orientation="Horizontal">
