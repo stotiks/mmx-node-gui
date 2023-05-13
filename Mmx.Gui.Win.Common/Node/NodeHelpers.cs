@@ -94,6 +94,11 @@ namespace Mmx.Gui.Win.Common.Node
             {
                 processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CUDA_VISIBLE_DEVICES), string.Join(",", Settings.Default.CUDA_VISIBLE_DEVICES));
             }
+
+            if (Settings.Default.CHIAPOS_RECOMPUTE_HOST_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_HOST), Settings.Default.CHIAPOS_RECOMPUTE_HOST);
+            }
         }
     }
 }

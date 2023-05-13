@@ -28,6 +28,19 @@
         <ui:SimpleStackPanel>
 
             <ui:ToggleSwitch
+                x:Name="CHIAPOS_RECOMPUTE_HOST_ToggleSwitch"
+                OnContent="CHIAPOS_RECOMPUTE_HOST"
+                OffContent="CHIAPOS_RECOMPUTE_HOST"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_HOST_Enabled}"/>
+            <TextBox 
+                Width="250" 
+                HorizontalAlignment="Left"
+                Text="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_HOST}"
+                IsEnabled="{Binding ElementName=CHIAPOS_RECOMPUTE_HOST_ToggleSwitch, Path=IsOn}"
+            />
+
+            <ui:ToggleSwitch 
+                Margin="0,25,0,0"
                             x:Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES_ToggleSwitch"
                             OnContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
                             OffContent="CHIAPOS_MIN_CUDA_LOG_ENTRIES"
