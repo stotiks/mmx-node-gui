@@ -2,8 +2,10 @@
 using Mmx.Gui.Win.Common.Properties;
 using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
+using PlotManager.ExtensionMethods;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace PlotManager
@@ -26,6 +28,8 @@ namespace PlotManager
 
         public MainWindow()
         {
+            var _tmpAssemblyUssage = Assembly.GetExecutingAssembly().GetFileVersion();
+
             InitializeComponent();
             DataContext = this;
 
