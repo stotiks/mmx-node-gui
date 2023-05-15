@@ -293,7 +293,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "d",
             LongName = "multifinaldir",
-            DefaultValue = new ArrayList(),
+            DefaultValue = new ArrayList() { "" },
             Scope = Scopes.MadMaxCudaPlotter
         };
 

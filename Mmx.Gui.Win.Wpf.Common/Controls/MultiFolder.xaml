@@ -88,6 +88,7 @@
                             <Button 
                                 Style="{StaticResource AddFolderButton}"
                                 Visibility="{Binding IsLastAndNotEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            
                         </ui:SimpleStackPanel>
                         
                     </ui:SimpleStackPanel>
