@@ -12,7 +12,7 @@ namespace PlotSincGui
             {
                 FileName = NodeHelpers.plotSincEXEPath,
                 CreateNoWindow = true,
-                Arguments = "-- " + string.Join(" ", Settings.Default.PlotSincDirectories.ToArray())
+                Arguments = "-- " + string.Join(" ", (Settings.Default.PlotSincDirectories ?? new System.Collections.ArrayList()).ToArray())
             };
 
             Start(processStartInfo);

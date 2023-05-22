@@ -44,49 +44,47 @@
             Style="{StaticResource TitleTextBlockStyle}"
             FontSize="28"/>
 
-        <ScrollViewer Grid.Row="1">
-
-            <Grid Margin="0,0,25,25">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <Grid Margin="0,0,25,25" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
 
-                <ctrls:MultiFolder Grid.Row="0"
-                    HeaderText="{lex:Loc PlotSink_destinations}"                          
-                    Directories="{Binding Source={x:Static properties:Settings.Default}, Path=PlotSincDirectories}"/>
+            <ctrls:MultiFolder Grid.Row="0"
+                HeaderText="{lex:Loc PlotSink_destinations}"                          
+                Directories="{Binding Source={x:Static properties:Settings.Default}, Path=PlotSincDirectories}"/>
                 
-                <Button Grid.Row="1"
-                        Visibility="{Binding PlotSincProcess.IsRunning, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
-                        Content="Start"
-                        Style="{StaticResource AccentButtonStyle}"
-                        Click="StartButton_Click"/>
+            <Button Grid.Row="1"
+                    Visibility="{Binding PlotSincProcess.IsRunning, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+                    Content="Start"
+                    Style="{StaticResource AccentButtonStyle}"
+                    Click="StartButton_Click"/>
                 
-                <Button Grid.Row="1"
-                        d:Visibility="Collapsed"
-                        Visibility="{Binding PlotSincProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}"
-                        Content="Stop"
-                        Click="StopButton_Click"/>                
+            <Button Grid.Row="1"
+                    d:Visibility="Collapsed"
+                    Visibility="{Binding PlotSincProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Content="Stop"
+                    Click="StopButton_Click"/>                
 
-                <TextBox 
-                    Grid.Row="2" VerticalAlignment="Top"
-                    Margin="0,15,0,0"
-                    x:Name="TextBoxLog"
-                    MinHeight="200"
-                    Text="{Binding Logger.Text, Mode=OneWay}"
-                    HorizontalAlignment="Stretch"
-                    IsReadOnly="True"
-                    FontFamily="Courier New"
-                    VerticalScrollBarVisibility="Auto"
-                    HorizontalScrollBarVisibility="Auto"
-                    ScrollViewer.CanContentScroll="True"
-                    TextChanged="TextBoxLog_TextChanged">
-                </TextBox>
-            </Grid>
-        </ScrollViewer>
-        
+            <TextBox 
+                Grid.Row="2" VerticalAlignment="Top"
+                Margin="0,15,0,0"
+                x:Name="TextBoxLog"
+                MinHeight="200"
+                Text="{Binding Logger.Text, Mode=OneWay}"
+                HorizontalAlignment="Stretch"
+                IsReadOnly="True"
+                FontFamily="Courier New"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Auto"
+                ScrollViewer.CanContentScroll="True"
+                TextChanged="TextBoxLog_TextChanged">
+            </TextBox>
+          
+        </Grid>
+      
     </Grid>
     
 </mw:WpfMainWindow>
