@@ -99,6 +99,21 @@ namespace Mmx.Gui.Win.Common.Node
             {
                 processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_HOST), Settings.Default.CHIAPOS_RECOMPUTE_HOST);
             }
+
+            if (Settings.Default.CHIAPOS_RECOMPUTE_TIMEOUT_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_TIMEOUT), Settings.Default.CHIAPOS_RECOMPUTE_TIMEOUT.ToString());
+            }
+
+            if (Settings.Default.CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT), Settings.Default.CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT.ToString());
+            }
+
+            if (Settings.Default.CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled)
+            {
+                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_RETRY_INTERVAL), Settings.Default.CHIAPOS_RECOMPUTE_RETRY_INTERVAL.ToString());
+            }
         }
     }
 }

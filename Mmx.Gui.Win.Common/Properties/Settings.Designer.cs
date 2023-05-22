@@ -12,7 +12,7 @@ namespace Mmx.Gui.Win.Common.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -430,6 +430,78 @@ namespace Mmx.Gui.Win.Common.Properties {
             }
             set {
                 this["CHIAPOS_RECOMPUTE_HOST_Enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public int CHIAPOS_RECOMPUTE_TIMEOUT {
+            get {
+                return ((int)(this["CHIAPOS_RECOMPUTE_TIMEOUT"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_TIMEOUT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT {
+            get {
+                return ((int)(this["CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int CHIAPOS_RECOMPUTE_RETRY_INTERVAL {
+            get {
+                return ((int)(this["CHIAPOS_RECOMPUTE_RETRY_INTERVAL"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_RETRY_INTERVAL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_RECOMPUTE_TIMEOUT_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_RECOMPUTE_TIMEOUT_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_TIMEOUT_Enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled {
+            get {
+                return ((bool)(this["CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled"]));
+            }
+            set {
+                this["CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled"] = value;
             }
         }
     }

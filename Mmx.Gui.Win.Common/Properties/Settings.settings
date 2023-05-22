@@ -107,5 +107,23 @@
     <Setting Name="CHIAPOS_RECOMPUTE_HOST_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CHIAPOS_RECOMPUTE_TIMEOUT" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5000</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_RECOMPUTE_RETRY_INTERVAL" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_RECOMPUTE_TIMEOUT_Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

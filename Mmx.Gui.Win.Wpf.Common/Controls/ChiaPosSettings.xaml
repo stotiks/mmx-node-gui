@@ -16,7 +16,7 @@
     xmlns:cv="clr-namespace:Mmx.Gui.Win.Wpf.Common.Converters;assembly="   
     
     mc:Ignorable="d" 
-    d:DesignHeight="450" d:DesignWidth="800">
+    d:DesignHeight="950" d:DesignWidth="800">
 
     <UserControl.Resources>
         <cv:BooleanInverter x:Key="BooleanInverter"/>
@@ -38,6 +38,51 @@
                 Text="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_HOST}"
                 IsEnabled="{Binding ElementName=CHIAPOS_RECOMPUTE_HOST_ToggleSwitch, Path=IsOn}"
             />
+
+            <ui:ToggleSwitch
+                Margin="0,25,0,0"
+                x:Name="CHIAPOS_RECOMPUTE_TIMEOUT_ToggleSwitch"
+                OnContent="CHIAPOS_RECOMPUTE_TIMEOUT"
+                OffContent="CHIAPOS_RECOMPUTE_TIMEOUT"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_TIMEOUT_Enabled}"/>
+            <ui:NumberBox
+                Width="250"
+                Minimum="0"
+                Maximum="99999"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_TIMEOUT}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_RECOMPUTE_TIMEOUT_ToggleSwitch, Path=IsOn}"/>
+
+            <ui:ToggleSwitch
+                Margin="0,25,0,0"
+                x:Name="CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_ToggleSwitch"
+                OnContent="CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT"
+                OffContent="CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled}"/>
+            <ui:NumberBox
+                Width="250"
+                Minimum="0"
+                Maximum="99999"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_ToggleSwitch, Path=IsOn}"/>
+
+            <ui:ToggleSwitch
+                Margin="0,25,0,0"
+                x:Name="CHIAPOS_RECOMPUTE_RETRY_INTERVAL_ToggleSwitch"
+                OnContent="CHIAPOS_RECOMPUTE_RETRY_INTERVAL"
+                OffContent="CHIAPOS_RECOMPUTE_RETRY_INTERVAL"
+                IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled}"/>
+            <ui:NumberBox
+                Width="250"
+                Minimum="0"
+                Maximum="99999"
+                Value="{Binding Source={x:Static properties:Settings.Default}, Path=CHIAPOS_RECOMPUTE_RETRY_INTERVAL}"
+                SpinButtonPlacementMode="Inline"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=CHIAPOS_RECOMPUTE_RETRY_INTERVAL_ToggleSwitch, Path=IsOn}"/>
 
             <ui:ToggleSwitch 
                 Margin="0,25,0,0"
