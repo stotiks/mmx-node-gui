@@ -69,12 +69,12 @@
                     Click="StopButton_Click"/>                
 
             <TextBox 
-                Grid.Row="2" VerticalAlignment="Top"
+                Grid.Row="2" 
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
                 Margin="0,15,0,0"
                 x:Name="TextBoxLog"
-                MinHeight="200"
                 Text="{Binding Logger.Text, Mode=OneWay}"
-                HorizontalAlignment="Stretch"
                 IsReadOnly="True"
                 FontFamily="Courier New"
                 VerticalScrollBarVisibility="Auto"
