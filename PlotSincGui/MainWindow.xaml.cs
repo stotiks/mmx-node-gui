@@ -1,6 +1,7 @@
 ﻿using Mmx.Gui.Win.Wpf.Common.Pages;
 using ModernWpf.Controls;
 using PlotSincGui.Page;
+using System.Linq;
 
 namespace PlotSincGui
 {
@@ -16,7 +17,8 @@ namespace PlotSincGui
         {
             InitializeComponent();
             DataContext = this;
-            ContentFrame.Content = plotSincPage;
+
+            nav.SelectedItem = nav.MenuItems.OfType<NavigationViewItem>().First();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
