@@ -1,5 +1,4 @@
 ﻿using Mmx.Gui.Win.Common;
-using Mmx.Gui.Win.Common.Harvester;
 using System.Windows;
 using System.Windows.Controls;
 
