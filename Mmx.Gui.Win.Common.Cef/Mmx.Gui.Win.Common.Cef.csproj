@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Common">
-      <Version>112.3.0</Version>
+      <Version>113.1.40</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
