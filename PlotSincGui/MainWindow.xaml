@@ -32,59 +32,29 @@
         <cv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <cv:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
     </Window.Resources>
-    
-    <Grid Margin="25,0,0,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <TextBlock Grid.Row="0" Margin="0,8,0,12"
-            Text="Plot Sinc"
-            Style="{StaticResource TitleTextBlockStyle}"
-            FontSize="28"/>
 
-        <Grid Margin="0,0,25,25" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <ui:NavigationView 
+        x:Name="nav"
+        PaneDisplayMode="Auto"
+        IsBackButtonVisible="Collapsed"
+        IsBackEnabled="False"
+        OpenPaneLength="200"
+        ExpandedModeThresholdWidth="1190"
+        IsSettingsVisible="False"
+        SelectionChanged="NavigationView_SelectionChanged">
 
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem Tag="PlotSincPage" Content="{lex:Loc PlotSinc_Title}" Icon="Filter" />
+            <ui:NavigationViewItemHeader Height="100" />
+            <ui:NavigationViewItem Tag="SettingsPage" Content="{lex:Loc Settings_Title}" Icon="Setting" />
+        </ui:NavigationView.MenuItems>
 
-            <ctrls:MultiFolder Grid.Row="0"
-                HeaderText="{lex:Loc PlotSink_destinations}"                          
-                Directories="{Binding Source={x:Static properties:Settings.Default}, Path=PlotSincDirectories}"/>
-                
-            <Button Grid.Row="1"
-                    Visibility="{Binding PlotSincProcess.IsRunning, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
-                    Content="Start"
-                    Style="{StaticResource AccentButtonStyle}"
-                    Click="StartButton_Click"/>
-                
-            <Button Grid.Row="1"
-                    d:Visibility="Collapsed"
-                    Visibility="{Binding PlotSincProcess.IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Content="Stop"
-                    Click="StopButton_Click"/>                
+        <ui:NavigationView.Content>
+            <DockPanel>
+                <ui:Frame x:Name="ContentFrame" MinWidth="1000" Navigating="ContentFrame_Navigating"/>
+            </DockPanel>
 
-            <TextBox 
-                Grid.Row="2" 
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-                Margin="0,15,0,0"
-                x:Name="TextBoxLog"
-                Text="{Binding Logger.Text, Mode=OneWay}"
-                IsReadOnly="True"
-                FontFamily="Courier New"
-                VerticalScrollBarVisibility="Auto"
-                HorizontalScrollBarVisibility="Auto"
-                ScrollViewer.CanContentScroll="True"
-                TextChanged="TextBoxLog_TextChanged">
-            </TextBox>
-          
-        </Grid>
-      
-    </Grid>
-    
+        </ui:NavigationView.Content>
+    </ui:NavigationView>
+
 </mw:WpfMainWindow>

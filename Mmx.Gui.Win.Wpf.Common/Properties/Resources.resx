@@ -483,4 +483,8 @@
     <value>Farm Virtual Plots</value>
     <comment>harvester</comment>
   </data>
+  <data name="PlotSinc_Title" xml:space="preserve">
+    <value>Plot Sinc</value>
+    <comment>plotsinc</comment>
+  </data>
 </root>

@@ -232,6 +232,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plot Sinc.
+        /// </summary>
+        public static string PlotSinc_Title {
+            get {
+                return ResourceManager.GetString("PlotSinc_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Destinations.
         /// </summary>
         public static string PlotSink_destinations {

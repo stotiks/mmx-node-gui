@@ -1,6 +1,6 @@
-﻿using Mmx.Gui.Win.Common;
-using System.Windows;
-using System.Windows.Controls;
+﻿using Mmx.Gui.Win.Wpf.Common.Pages;
+using ModernWpf.Controls;
+using PlotSincGui.Page;
 
 namespace PlotSincGui
 {
@@ -9,38 +9,37 @@ namespace PlotSincGui
     /// </summary>
     public partial class MainWindow
     {
-        private readonly UILogger _logger = new UILogger();
-        public UILogger Logger => _logger;
-
-        private readonly PlotSincProcess _plotSincProcess = new PlotSincProcess();
-        public PlotSincProcess PlotSincProcess => _plotSincProcess;
+        private readonly PlotSincPage plotSincPage = new PlotSincPage();
+        private readonly SimpleSettingsPage settingsPage = new SimpleSettingsPage();
 
         public MainWindow() : base()
         {
             InitializeComponent();
             DataContext = this;
+            ContentFrame.Content = plotSincPage;
+        }
 
-            PlotSincProcess.OutputDataReceived += _logger.OutputDataReceived;
-            PlotSincProcess.ErrorDataReceived += _logger.ErrorDataReceived;
-
-            BeforeClose += async (o, e) =>
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
             {
-                await PlotSincProcess.StopAsync();
-            };
-        }
+                ContentFrame.Content = settingsPage;
+            }
+            else
+            {
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
 
-        private void TextBoxLog_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            (sender as TextBox).ScrollToEnd();
-        }
+                switch (selectedItem.Tag)
+                {
+                    case "PlotSincPage":
+                        ContentFrame.Content = plotSincPage;
+                        break;
+                    case "SettingsPage":
+                        ContentFrame.Content = settingsPage;
+                        break;
+                }
 
-        private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            PlotSincProcess.StartAsync();
-        }
-        private void StopButton_Click(object sender, RoutedEventArgs e)
-        {
-            PlotSincProcess.Stop();
+            }
         }
 
     }
