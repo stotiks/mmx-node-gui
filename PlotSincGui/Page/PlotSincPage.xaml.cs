@@ -24,11 +24,14 @@ namespace PlotSincGui.Page
             PlotSincProcess.OutputDataReceived += _logger.OutputDataReceived;
             PlotSincProcess.ErrorDataReceived += _logger.ErrorDataReceived;
 
-            //WpfMainWindow mainWindow = Application.Current.MainWindow as WpfMainWindow;
-            //mainWindow.BeforeClose += async (o, e) =>
-            //{
-            //    await PlotSincProcess.StopAsync();
-            //};
+            this.Loaded += (s, ev) =>
+            {
+                WpfMainWindow mainWindow = Application.Current.MainWindow as WpfMainWindow;
+                mainWindow.BeforeClose += async (o, e) =>
+                {
+                    await PlotSincProcess.StopAsync();
+                };
+            };
         }
 
         private void TextBoxLog_TextChanged(object sender, TextChangedEventArgs e)
