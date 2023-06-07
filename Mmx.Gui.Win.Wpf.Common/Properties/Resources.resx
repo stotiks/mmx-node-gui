@@ -487,4 +487,8 @@
     <value>Plot Sinc</value>
     <comment>plotsinc</comment>
   </data>
+  <data name="Recompute_Title" xml:space="preserve">
+    <value>Recompute</value>
+    <comment>recompute</comment>
+  </data>
 </root>

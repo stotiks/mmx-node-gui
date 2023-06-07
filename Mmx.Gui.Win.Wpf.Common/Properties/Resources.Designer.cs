@@ -673,6 +673,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recompute.
+        /// </summary>
+        public static string Recompute_Title {
+            get {
+                return ResourceManager.GetString("Recompute_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates.
         /// </summary>
         public static string Settings_CheckForUpdates {
