@@ -57,7 +57,6 @@
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Node\NodeProcess.cs" />
     <Compile Include="Node\NodeHelpers.cs" />
-    <Compile Include="PlotSincProcess.cs" />
     <Compile Include="VideoDeviceInfo.cs" />
     <Compile Include="Plotter\Item.cs" />
     <Compile Include="Plotter\PlotterOptions.cs" />
