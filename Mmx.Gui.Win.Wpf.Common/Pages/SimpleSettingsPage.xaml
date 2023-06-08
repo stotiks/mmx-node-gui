@@ -26,6 +26,11 @@
 
                 <GroupBox Header="{lex:Loc Settings_StartUp}">
                     <ui:SimpleStackPanel>
+                        
+                        <ui:ToggleSwitch 
+                            Header="{lex:Loc Settings_ConnectOnStart}"
+                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=ConnectOnStart}"/>    
+                        
                         <ui:ToggleSwitch 
                                     Header="{lex:Loc Settings_StartOnStartup}"
                                     IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=StartOnStartup}"/>
