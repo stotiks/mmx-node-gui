@@ -58,6 +58,7 @@
     <Compile Include="RecomputePage.xaml.cs">
       <DependentUpon>RecomputePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecomputeProcess.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -37,6 +37,7 @@ namespace Mmx.Gui.Win.Common.Node
         public static readonly string mmxNodeEXEPath = Path.Combine(workingDirectory, "mmx_node.exe");
 
         public static readonly string plotSincEXEPath = Path.Combine(workingDirectory, "gigahorse\\chia_plot_sink.exe");
+        public static readonly string recomputeEXEPath = Path.Combine(workingDirectory, "gigahorse\\chia_recompute_server.exe");
 
         public static Version Version { get; private set; }
         public static NodeBuildType BuildType { get; private set; }
