@@ -93,6 +93,10 @@
       <Project>{574fc1ef-ab66-45ea-a7fc-adc02d462bce}</Project>
       <Name>PlotSincGui</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReComputeServerGui\ReComputeServerGui.csproj">
+      <Project>{e81407a6-f70c-4944-89e5-bf70da0f6cf3}</Project>
+      <Name>ReComputeServerGui</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ModernWpfUI">
