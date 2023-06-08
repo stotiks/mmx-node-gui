@@ -43,6 +43,7 @@ namespace ReComputeServerGui
         {
             RecomputeProcess.StartAsync();
         }
+
         private async void StopButton_Click(object sender, RoutedEventArgs e)
         {
             await RecomputeProcess.StopAsync();

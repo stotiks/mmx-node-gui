@@ -43,9 +43,10 @@ namespace PlotSincGui.Page
         {
             PlotSincProcess.StartAsync();
         }
-        private void StopButton_Click(object sender, RoutedEventArgs e)
+
+        private async void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            PlotSincProcess.Stop();
+            await PlotSincProcess.StopAsync();
         }
     }
 }
