@@ -11,7 +11,7 @@ namespace Mmx.Gui.Win.Common.Cef
     public static class CefUtils
     {
         // The subfolder, where the cefsharp files will be moved to
-        private static string cefSubFolder = @"gui\cefsharp";
+        private static readonly string cefSubFolder = @"gui\cefsharp";
         // If the assembly resolver loads cefsharp from another folder, set this to true
         private static bool _resolved;
 
