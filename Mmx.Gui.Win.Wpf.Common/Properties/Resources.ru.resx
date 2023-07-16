@@ -330,7 +330,7 @@
   <data name="Harvester_Options" xml:space="preserve">
     <value>Настройки</value>
   </data>
-  <data name="Harvester_GigahorseOptions" xml:space="preserve">
+  <data name="Harvester_ChiaPosSettings" xml:space="preserve">
     <value>Настройки Gigahorse</value>
   </data>
 </root>

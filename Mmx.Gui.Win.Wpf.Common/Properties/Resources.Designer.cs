@@ -115,6 +115,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ChiaPos Settings.
+        /// </summary>
+        public static string Harvester_ChiaPosSettings {
+            get {
+                return ResourceManager.GetString("Harvester_ChiaPosSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directories.
         /// </summary>
         public static string Harvester_Directories {
@@ -129,15 +138,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Harvester_FarmVirtualPlots {
             get {
                 return ResourceManager.GetString("Harvester_FarmVirtualPlots", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gigahorse Options.
-        /// </summary>
-        public static string Harvester_GigahorseOptions {
-            get {
-                return ResourceManager.GetString("Harvester_GigahorseOptions", resourceCulture);
             }
         }
         

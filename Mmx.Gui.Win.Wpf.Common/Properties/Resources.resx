@@ -475,8 +475,8 @@
     <value>Options</value>
     <comment>harvester</comment>
   </data>
-  <data name="Harvester_GigahorseOptions" xml:space="preserve">
-    <value>Gigahorse Options</value>
+  <data name="Harvester_ChiaPosSettings" xml:space="preserve">
+    <value>ChiaPos Settings</value>
     <comment>harvester</comment>
   </data>
   <data name="Harvester_FarmVirtualPlots" xml:space="preserve">
