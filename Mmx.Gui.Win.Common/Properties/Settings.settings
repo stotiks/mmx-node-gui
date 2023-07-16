@@ -125,5 +125,8 @@
     <Setting Name="CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CEF_GPU_Disabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -682,6 +682,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable Hardware Acceleration for GUI.
+        /// </summary>
+        public static string Settings_CEF_GPU_Disabled {
+            get {
+                return ResourceManager.GetString("Settings_CEF_GPU_Disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates.
         /// </summary>
         public static string Settings_CheckForUpdates {

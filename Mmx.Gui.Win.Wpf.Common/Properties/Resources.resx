@@ -491,4 +491,8 @@
     <value>Recompute</value>
     <comment>recompute</comment>
   </data>
+  <data name="Settings_CEF_GPU_Disabled" xml:space="preserve">
+    <value>Disable Hardware Acceleration for GUI</value>
+    <comment>settings</comment>
+  </data>
 </root>

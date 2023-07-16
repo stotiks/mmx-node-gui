@@ -504,5 +504,17 @@ namespace Mmx.Gui.Win.Common.Properties {
                 this["CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CEF_GPU_Disabled {
+            get {
+                return ((bool)(this["CEF_GPU_Disabled"]));
+            }
+            set {
+                this["CEF_GPU_Disabled"] = value;
+            }
+        }
     }
 }
