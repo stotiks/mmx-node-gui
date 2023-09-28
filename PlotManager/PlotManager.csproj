@@ -116,7 +116,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>SET OUT=$(TargetDir)\..\CPack_PlotManager_$(ConfigurationName)
+    <PostBuildEvent>rd /s /q "af-ZA", "am-ET", "ar-SA", "az-Latn-AZ", "be-BY", "bg-BG", "bn-BD", "bs-Latn-BA", "ca-ES", "cs-CZ", "da-DK", "##de", "de-DE", "el-GR", "en-GB", "##es", "es-ES", "es-MX", "et-EE", "eu-ES", "fa-IR", "fi-FI", "fr-CA", "fr-FR", "gl-ES", "he-IL", "hi-IN", "hr-HR", "hu-HU", "##id", "id-ID", "is-IS", "it-IT", "ja-JP", "ka-GE", "kk-KZ", "km-KH", "kn-IN", "ko-KR", "lo-LA", "lt-LT", "lv-LV", "mk-MK", "ml-IN", "ms-MY", "nb-NO", "##nl", "nl-NL", "nn-NO", "pl-PL", "##pt", "pt-BR", "pt-PT", "ro-RO", "##ru", "ru-RU", "sk-SK", "sl-SI", "sq-AL", "sr-Latn-RS", "sv-SE", "sw-KE", "ta-IN", "te-IN", "th-TH", "tr-TR", "##uk", "uk-UA", "uz-Latn-UZ", "vi-VN", "##zh"
+SET OUT=$(TargetDir)\..\CPack_PlotManager_$(ConfigurationName)
 (
 ROBOCOPY $(TargetDir) %25OUT%25\gui\langs "*.resources.dll"  /S /XD langs /IS /IT
 ROBOCOPY  $(TargetDir) %25OUT%25 "$(TargetFileName)" "$(TargetFileName).config" PlotSincGui.exe PlotSincGui.exe.config ReComputeServerGui.exe ReComputeServerGui.exe.config
