@@ -18,6 +18,7 @@ namespace Mmx.Gui.Win.Common.Node
         private bool _processSuspended;
         protected Process process;
 
+        private ProcessJobTracker processJobTracker = new ProcessJobTracker();
         public Action WaitForExit => process.WaitForExit;
 
         public bool IsRunning
@@ -123,6 +124,7 @@ namespace Mmx.Gui.Win.Common.Node
                 OnOutputDataReceived(this, $"{process.StartInfo.FileName} {process.StartInfo.Arguments}");
 
                 process.Start();
+                processJobTracker.AddProcess(process.Handle);
 
                 if (process.StartInfo.RedirectStandardOutput) process.BeginOutputReadLine();
                 if (process.StartInfo.RedirectStandardError) process.BeginErrorReadLine();
