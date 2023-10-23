@@ -106,6 +106,16 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.MadMaxPlotters
         };
 
+        static IDictionary<int, double> efficiencies = new Dictionary<int, double>()
+        {
+            {1, 120.4}, {2, 122.8}, {3, 125.2}, {4, 127.7},
+            {5, 130.3}, {6, 133.1}, {7, 135.9}, {8, 142.2}, {9, 148.9},
+
+            {11, 118.3}, {12, 122.9}, {13, 128.5}, {14, 135.7},
+            {15, 141.7}, {16, 156.5}, {17, 160.9}, {18, 170},
+            {19, 179.9}, {20, 190.8}
+
+        };
         [Order]
         public IntItem level { get; set; } = new IntItem
         {
@@ -117,7 +127,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     var isDefault = value == 1;
                     var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
+                    return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
                 }).ToList()),
             Scope = Scopes.MadMaxPlottersWithCompression
         };
