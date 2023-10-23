@@ -112,10 +112,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "C",
             LongName = "level",
             DefaultValue = 1,
-            Minimum = 1,
-            Maximum = 9,
             Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(1, 9).Select(value =>
+                Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10)).Select(value =>
                 {
                     var isDefault = value == 1;
                     var isDefaultString = isDefault ? " (default)" : "";
