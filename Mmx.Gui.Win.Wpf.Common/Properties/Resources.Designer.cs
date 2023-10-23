@@ -277,6 +277,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bucket chunk size in MiB.
+        /// </summary>
+        public static string Plotter_chunksize {
+            get {
+                return ResourceManager.GetString("Plotter_chunksize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Plotter_Close {

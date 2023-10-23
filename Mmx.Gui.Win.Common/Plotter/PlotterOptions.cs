@@ -198,6 +198,18 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
+        public IntItem chunksize { get; set; } = new IntItem
+        {
+            Name = "B",
+            LongName = "chunksize",
+            DefaultValue = 16,
+            Minimum = 1,
+            Maximum = 256,
+            Scope = Scopes.MadMaxCudaPlotter,
+            SuppressDefaultValue = true
+        };
+
+        [Order]
         public BoolItem pin_memory { get; set; } = new BoolItem
         {
             Name = "pin_memory",

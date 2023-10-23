@@ -32,3 +32,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~P:Mmx.Gui.Win.Common.Plotter.PlotterOptions.tmpdir3")]
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~P:Mmx.Gui.Win.Common.Plotter.PlotterOptions.tmptoggle")]
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~P:Mmx.Gui.Win.Common.Plotter.PlotterOptions.waitforcopy")]
+[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~P:Mmx.Gui.Win.Common.Plotter.PlotterOptions.chunksize")]

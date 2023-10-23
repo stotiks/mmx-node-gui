@@ -495,4 +495,8 @@
     <value>Disable Hardware Acceleration for GUI</value>
     <comment>settings</comment>
   </data>
+  <data name="Plotter_chunksize" xml:space="preserve">
+    <value>Bucket chunk size in MiB</value>
+    <comment>plotter</comment>
+  </data>
 </root>

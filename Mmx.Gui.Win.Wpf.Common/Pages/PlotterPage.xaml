@@ -232,6 +232,16 @@
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.streams.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
+                                <ui:NumberBox
+                                    Width="250"
+                                    Header="{lex:Loc Plotter_chunksize}"
+                                    Minimum="{Binding PlotterOptions.chunksize.Minimum}"
+                                    Maximum="{Binding PlotterOptions.chunksize.Maximum}"
+                                    Value="{Binding PlotterOptions.chunksize.Value}"
+                                    SpinButtonPlacementMode="Inline"
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding PlotterOptions.chunksize.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
                                 <ui:ToggleSwitch
                                     x:Name="PinMemory"
                                     Header="{lex:Loc Plotter_pin_memory}"
