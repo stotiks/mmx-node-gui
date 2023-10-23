@@ -192,7 +192,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "S",
             LongName = "streams",
-            DefaultValue = 4,
+            DefaultValue = 3,
             Minimum = 2,
             Maximum = 16,
             Scope = Scopes.MadMaxCudaPlotter,
