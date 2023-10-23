@@ -32,7 +32,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             MadMaxChiaPlotter = 1 << 0,
             [Description("CPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
             MadMaxChiaPlotterWithCompression = 1 << 1,
-            [Description("Gigahorse GPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
+            [Description("Gigahorse CUDA plotter v2.5 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
             MadMaxCudaPlotter = 1 << 2,
             [Description("Bladebit")]
             Bladebit = 1 << 8,
