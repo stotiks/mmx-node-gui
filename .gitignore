@@ -1,8 +1,7 @@
-/.vs
-/obj
-/bin
+.vs
 /packages
 *.bak
 bin
 obj
 *.user
+
