@@ -106,7 +106,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.MadMaxPlotters
         };
 
-        static IDictionary<int, double> efficiencies = new Dictionary<int, double>()
+        static readonly IDictionary<int, double> efficiencies = new Dictionary<int, double>()
         {
             {1, 120.4}, {2, 122.8}, {3, 125.2}, {4, 127.7},
             {5, 130.3}, {6, 133.1}, {7, 135.9}, {8, 142.2}, {9, 148.9},
