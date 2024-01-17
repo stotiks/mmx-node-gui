@@ -45,10 +45,10 @@ namespace Mmx.Gui.Win.Common.Node
         private static readonly string jsString = "//javascript";
 
         private static string _xApiToken;
-        public static string loadingHtml => loadingHtmlTemplate;
-        public static string logoutHtml => loadingHtml.Replace(jsString, logoutJS);
+        public static string LoadingHtml => loadingHtmlTemplate;
+        public static string LogoutHtml => LoadingHtml.Replace(jsString, logoutJS);
 
-        public static string waitStartHtml => loadingHtml.Replace(jsString, waitStartJS);
+        public static string WaitStartHtml => LoadingHtml.Replace(jsString, waitStartJS);
 
         static NodeApi()
         {
