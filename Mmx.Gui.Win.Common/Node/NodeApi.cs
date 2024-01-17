@@ -37,12 +37,12 @@ namespace Mmx.Gui.Win.Common.Node
             Timeout = TimeSpan.FromSeconds(10)
         };
 
-        private static string logoutJS = GetResource("logout.js");
-        private static string waitStartJS = GetResource("waitStart.js");
+        private static readonly string logoutJS = GetResource("logout.js");
+        private static readonly string waitStartJS = GetResource("waitStart.js");
 
-        private static string loadingHtmlTemplate = GetResource("loading.html");
+        private static readonly string loadingHtmlTemplate = GetResource("loading.html");
 
-        private static string jsString = "//javascript";
+        private static readonly string jsString = "//javascript";
 
         private static string _xApiToken;
         public static string loadingHtml => loadingHtmlTemplate;
