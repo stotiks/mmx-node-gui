@@ -84,7 +84,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "count",
             DefaultValue = -1,
             Minimum = -1,
-            Maximum = 999,
+            Maximum = 99999,
             Scope = Scopes.Common
         };
 
