@@ -129,13 +129,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "C",
             LongName = "level",
             DefaultValue = 1,
-            Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10)).Union(Enumerable.Range(30, 4)).Select(value =>
-                {
-                    var isDefault = value == 1;
-                    var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
-                }).ToList()),
+            //Items = new ObservableCollection<ItemBase<int>>(
+            //    Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10)).Union(Enumerable.Range(30, 4)).Select(value =>
+            //    {
+            //        var isDefault = value == 1;
+            //        var isDefaultString = isDefault ? " (default)" : "";
+            //        return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
+            //    }).ToList()),
             Scope = Scopes.MadMaxPlottersWithCompression
         };
 
@@ -516,6 +516,37 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             var isCudaPlotter = plotter.Value == (int)Plotters.MadMaxCudaPlotter_25 || plotter.Value == (int)Plotters.MadMaxCudaPlotter_30;
             size.Skip = isCudaPlotter;
+
+            UpdateLevel();
+        }
+
+        private void UpdateLevel()
+        {
+            IEnumerable<int> level_enum = Enumerable.Range(1, 9);
+            level.DefaultValue = 1;
+
+            if (plotter.Value == (int)Plotters.MadMaxCudaPlotter_30)
+            {
+                level_enum = Enumerable.Range(30, 4);
+                level.DefaultValue = 30;
+            }
+            else if (plotter.Value == (int)Plotters.MadMaxCudaPlotter_25)
+            {
+                level_enum = Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10));
+            }
+
+            level.Items = new ObservableCollection<ItemBase<int>>(
+                level_enum.Select(value =>
+                {
+                    var isDefault = value == level.DefaultValue;
+                    var isDefaultString = isDefault ? " (default)" : "";
+                    return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
+                }).ToList());
+
+            if (!level_enum.Contains(level.Value))
+            {
+                level.Value = level.DefaultValue;
+            }
         }
 
         public string PlotterCmd => $"{PlotterExe} {PlotterArguments}";

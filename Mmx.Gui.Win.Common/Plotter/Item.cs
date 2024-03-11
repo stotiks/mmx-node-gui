@@ -167,7 +167,17 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public PlotterOptions.Scopes Scope { get; internal set; } = PlotterOptions.Scopes.None;
 
-        public ObservableCollection<ItemBase<T>> Items { get; internal set; }
+        private ObservableCollection<ItemBase<T>> _items;
+        public ObservableCollection<ItemBase<T>> Items 
+        {
+            get => _items;
+            internal set
+            {
+                _items = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged(nameof(Value));
+            }
+        }
         public T Minimum { get; internal set; }
         public T Maximum { get; internal set; }
         public bool SkipName { get; internal set; }
