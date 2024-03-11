@@ -32,8 +32,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             MadMaxChiaPlotter = 1 << 0,
             [Description("CPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
             MadMaxChiaPlotterWithCompression = 1 << 1,
-            [Description("Gigahorse CUDA plotter v2.5 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
-            MadMaxCudaPlotter = 1 << 2,
+            [Description("Gigahorse v2.5 CUDA plotter  with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
+            MadMaxCudaPlotter_25 = 1 << 2,
+            [Description("Gigahorse v3.0 K32 CUDA plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
+            MadMaxCudaPlotter_30 = 1 << 3,            
             [Description("Bladebit")]
             Bladebit = 1 << 8,
         };
@@ -45,7 +47,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             MadMaxChiaPlotter = Plotters.MadMaxChiaPlotter,
             MadMaxChiaPlotterWithCompression = Plotters.MadMaxChiaPlotterWithCompression,
-            MadMaxCudaPlotter = Plotters.MadMaxCudaPlotter,
+            MadMaxCudaPlotter = Plotters.MadMaxCudaPlotter_25 | Plotters.MadMaxCudaPlotter_30,
             Bladebit = Plotters.Bladebit,
 
             MadMaxCpuPlotters = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression,
@@ -64,7 +66,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.MadMaxCudaPlotter || value == (int)Plotters.MadMaxChiaPlotterWithCompression)) )
+                    .Where(value => value != (int)Plotters.Bladebit && !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.MadMaxCudaPlotter_25 || value == (int)Plotters.MadMaxCudaPlotter_30 || value == (int)Plotters.MadMaxChiaPlotterWithCompression)) )
                     .Select(value =>
                         {
                             var isDefault = value == (int)Plotters.MadMaxChiaPlotter;
@@ -113,9 +115,12 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             {11, 118.3}, {12, 122.9}, {13, 128.5}, {14, 135.7},
             {15, 141.7}, {16, 156.5}, {17, 160.9}, {18, 170},
-            {19, 179.9}, {20, 190.8}
+            {19, 179.9}, {20, 190.8},
+
+            {30, 234}, {31, 263}, {32, 300}, {33, 350}
 
         };
+
         [Order]
         public IntItem level { get; set; } = new IntItem
         {
@@ -123,7 +128,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             LongName = "level",
             DefaultValue = 1,
             Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10)).Select(value =>
+                Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10)).Union(Enumerable.Range(30, 4)).Select(value =>
                 {
                     var isDefault = value == 1;
                     var isDefaultString = isDefault ? " (default)" : "";
@@ -507,7 +512,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
             }
 
-            var isCudaPlotter = plotter.Value == (int)Plotters.MadMaxCudaPlotter;
+            var isCudaPlotter = plotter.Value == (int)Plotters.MadMaxCudaPlotter_25 || plotter.Value == (int)Plotters.MadMaxCudaPlotter_30;
             size.Skip = isCudaPlotter;
         }
 
@@ -536,8 +541,11 @@ namespace Mmx.Gui.Win.Common.Plotter
                             exe = $"{gigahorsePath}chia_plot.exe";
                         }
                         break;
-                    case (int)Plotters.MadMaxCudaPlotter:
+                    case (int)Plotters.MadMaxCudaPlotter_25:
                         exe = $"{gigahorsePath}cuda_plot_k{size.Value}.exe";
+                        break;
+                    case (int)Plotters.MadMaxCudaPlotter_30:
+                        exe = $"{gigahorsePath}cuda_plot_k32_v3.exe";
                         break;
                     case (int)Plotters.Bladebit:
                         exe = "mmx_bladebit.exe";
