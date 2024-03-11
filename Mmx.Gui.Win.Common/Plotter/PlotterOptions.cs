@@ -47,7 +47,9 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             MadMaxChiaPlotter = Plotters.MadMaxChiaPlotter,
             MadMaxChiaPlotterWithCompression = Plotters.MadMaxChiaPlotterWithCompression,
-            MadMaxCudaPlotter = Plotters.MadMaxCudaPlotter_25 | Plotters.MadMaxCudaPlotter_30,
+            MadMaxCudaPlotter_25 = Plotters.MadMaxCudaPlotter_25,
+            MadMaxCudaPlotter_30 = Plotters.MadMaxCudaPlotter_30,
+            MadMaxCudaPlotter = MadMaxCudaPlotter_25 | MadMaxCudaPlotter_30,
             Bladebit = Plotters.Bladebit,
 
             MadMaxCpuPlotters = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression,
@@ -105,7 +107,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxPlotters
+            Scope = Scopes.MadMaxPlotters ^ Scopes.MadMaxCudaPlotter_30
         };
 
         static readonly IDictionary<int, double> efficiencies = new Dictionary<int, double>()

@@ -175,7 +175,7 @@
                     <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                         <GroupBox Header="{lex:Loc Plotter_PlotHeader}"
-                                  Visibility="{Binding PlotterOptions.size.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                  Visibility="{Binding PlotterOptions.size.IsVisible | PlotterOptions.level.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
                                 
                             <ComboBox
@@ -184,7 +184,8 @@
                                 ItemsSource="{Binding PlotterOptions.size.Items}"
                                 DisplayMemberPath="Name"
                                 SelectedValuePath="Value"                                    
-                                SelectedValue="{Binding PlotterOptions.size.Value}"/>
+                                SelectedValue="{Binding PlotterOptions.size.Value}"
+                                Visibility="{Binding PlotterOptions.size.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                             <ComboBox
                                 Width="250"
