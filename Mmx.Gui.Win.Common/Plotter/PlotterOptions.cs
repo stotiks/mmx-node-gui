@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Input;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
@@ -119,7 +120,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             {15, 141.7}, {16, 156.5}, {17, 160.9}, {18, 170},
             {19, 179.9}, {20, 190.8},
 
-            {30, 234}, {31, 263}, {32, 300}, {33, 350}
+            {29, 211}, {30, 234}, {31, 263}, {32, 300}, {33, 350}
 
         };
 
@@ -527,7 +528,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             if (plotter.Value == (int)Plotters.MadMaxCudaPlotter_30)
             {
-                level_enum = Enumerable.Range(30, 4);
+                level_enum = Enumerable.Range(29, 5);
                 level.DefaultValue = 30;
             }
             else if (plotter.Value == (int)Plotters.MadMaxCudaPlotter_25)
@@ -539,8 +540,11 @@ namespace Mmx.Gui.Win.Common.Plotter
                 level_enum.Select(value =>
                 {
                     var isDefault = value == level.DefaultValue;
-                    var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
+                    var isDefaultStr = isDefault ? " (default)" : "";
+                    double efficiency = 0;
+                    efficiencies.TryGetValue(value, out efficiency);
+                    var efficiencyStr = efficiency > 0 ? $"- [{efficiency}%]" : "";
+                    return new ItemBase<int> { Name = $"{value} {efficiencyStr}{isDefaultStr}", Value = value };
                 }).ToList());
 
             if (!level_enum.Contains(level.Value))
