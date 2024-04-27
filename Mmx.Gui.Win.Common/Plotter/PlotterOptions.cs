@@ -138,7 +138,6 @@ namespace Mmx.Gui.Win.Common.Plotter
         [Order]
         public BoolItem ssdplot { get; set; } = new BoolItem
         {
-            Name = "ssd",
             LongName = "ssd",
             UseCmdLongName = true,
             DefaultValue = false,
