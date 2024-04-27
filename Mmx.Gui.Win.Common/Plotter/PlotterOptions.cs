@@ -1,5 +1,4 @@
-﻿using Mmx.Gui.Win.Common.Node;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +6,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Windows.Input;
 
 namespace Mmx.Gui.Win.Common.Plotter
 {
@@ -18,12 +16,10 @@ namespace Mmx.Gui.Win.Common.Plotter
         public class UrlAttribute : System.Attribute
         {
             public string Url { get; private set; }
-            public double version;
 
             public UrlAttribute(string url)
             {
                 this.Url = url;
-                version = 1.0;
             }
         }
 
