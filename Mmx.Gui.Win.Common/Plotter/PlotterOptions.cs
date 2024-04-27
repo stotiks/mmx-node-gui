@@ -547,7 +547,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultStr = isDefault ? " (default)" : "";
                     double efficiency = 0;
                     efficiencies.TryGetValue(value, out efficiency);
-                    var efficiencyStr = efficiency > 0 ? $"- [{efficiency}%]" : "";
+                    var efficiencyStr = efficiency > 0 && !Scopes.MmxPlotters.HasFlag((Scopes)plotter.Value) ? $"- [{efficiency}%]" : "";
                     return new ItemBase<int> { Name = $"{value} {efficiencyStr}{isDefaultStr}", Value = value };
                 }).ToList());
 
@@ -569,7 +569,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 switch (plotter.Value)
                 {
                     case (int)Plotters.MmxCudaPlotter:
-                        exe = "mmx_cuda_plot_k32.exe";
+                        exe = $"mmx_cuda_plot_k{size.Value}.exe";
                         break;
 
                     case (int)Plotters.ChiaCpuPlotter:
