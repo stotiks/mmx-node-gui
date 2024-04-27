@@ -30,11 +30,14 @@ namespace Mmx.Gui.Win.Common.Plotter
         public enum Plotters : int
         {
             [Description("CPU Plotter"), Url("https://github.com/madMAx43v3r/chia-plotter")]
-            MadMaxChiaPlotter = 1 << 0,
+            MadMaxChiaCpuPlotter = 1 << 0,
+
             [Description("CPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
-            MadMaxChiaPlotterWithCompression = 1 << 1,
+            MadMaxChiaCpuPlotterWithCompression = 1 << 1,
+
             [Description("Gigahorse v2.5 CUDA plotter  with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
             MadMaxCudaPlotter_25 = 1 << 2,
+
             [Description("Gigahorse v3.0 K32 CUDA plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
             MadMaxCudaPlotter_30 = 1 << 3
         };
@@ -44,17 +47,20 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             None = 0,
 
-            MadMaxChiaPlotter = Plotters.MadMaxChiaPlotter,
-            MadMaxChiaPlotterWithCompression = Plotters.MadMaxChiaPlotterWithCompression,
-            MadMaxCudaPlotter_25 = Plotters.MadMaxCudaPlotter_25,
-            MadMaxCudaPlotter_30 = Plotters.MadMaxCudaPlotter_30,
-            MadMaxCudaPlotter = MadMaxCudaPlotter_25 | MadMaxCudaPlotter_30,
+            MadMaxCpuPlotter = Plotters.MadMaxCpuChiaPlotter,
+            MadMaxCpuPlotterWithCompression = Plotters.MadMaxChiaCpuPlotterWithCompression,
+            MadMaxChiaCudaPlotter_25 = Plotters.MadMaxCudaPlotter_25,
+            MadMaxChiaCudaPlotter_30 = Plotters.MadMaxCudaPlotter_30,
 
-            MadMaxCpuPlotters = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression,
-            MadMaxPlotters = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression | MadMaxCudaPlotter,
-            MadMaxPlottersWithCompression = MadMaxChiaPlotterWithCompression | MadMaxCudaPlotter,
+            MadMaxCpuPlotter = Plotters.MadMaxChiaCpuPlotter,
+            MadMaxCpuPlotterWithCompression = Plotters.MadMaxChiaCpuPlotterWithCompression,
 
-            Common = MadMaxChiaPlotter | MadMaxChiaPlotterWithCompression | MadMaxCudaPlotter
+            MadMaxCpuPlotters = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression,
+
+            MadMaxPlotters = MadMaxCpuPlotter | MadMaxCudaPlotter,
+            MadMaxPlottersWithCompression = MadMaxCpuPlotterWithCompression | MadMaxCudaPlotter,
+
+            Common = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression | MadMaxCudaPlotter
         };
 
         [Order]
@@ -62,14 +68,14 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "plotter",
             LongName = "plotter",
-            DefaultValue = (int)Plotters.MadMaxChiaPlotter,
+            DefaultValue = (int)Plotters.MadMaxChiaCpuPlotter,
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.MadMaxCudaPlotter_25 || value == (int)Plotters.MadMaxCudaPlotter_30 || value == (int)Plotters.MadMaxChiaPlotterWithCompression)) )
+                    .Where(value => !( (IsMmxOnly && NodeHelpers.IsGigahorse == false) && (value == (int)Plotters.MadMaxCudaPlotter_25 || value == (int)Plotters.MadMaxCudaPlotter_30 || value == (int)Plotters.MadMaxChiaCpuPlotterWithCompression)) )
                     .Select(value =>
                         {
-                            var isDefault = value == (int)Plotters.MadMaxChiaPlotter;
+                            var isDefault = value == (int)Plotters.MadMaxChiaCpuPlotter;
                             var isDefaultString = isDefault ? " (default)" : "";
                             Plotters plotterEnum = (Plotters)Enum.ToObject(typeof(Plotters), value);
                             var name = PlotterOptionsHelpers.GetDescription(plotterEnum);
@@ -105,7 +111,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxPlotters ^ Scopes.MadMaxCudaPlotter_30
+            Scope = Scopes.MadMaxPlotters ^ Scopes.MadMaxChiaCudaPlotter_30
         };
 
         static readonly IDictionary<int, double> efficiencies = new Dictionary<int, double>()
@@ -561,14 +567,14 @@ namespace Mmx.Gui.Win.Common.Plotter
                 var chia_plot_name = IsMmxOnly ? "mmx_plot" : "chia_plot";
                 switch (plotter.Value)
                 {
-                    case (int)Plotters.MadMaxChiaPlotter:
+                    case (int)Plotters.MadMaxChiaCpuPlotter:
                         exe = $"{chia_plot_name}.exe";
                         if (size.Value > 32)
                         {
                             exe = $"{chia_plot_name}_k34.exe";
                         }
                         break;
-                    case (int)Plotters.MadMaxChiaPlotterWithCompression:
+                    case (int)Plotters.MadMaxChiaCpuPlotterWithCompression:
                         exe = $"{gigahorsePath}chia_plot.exe";
                         if (size.Value > 32)
                         {
