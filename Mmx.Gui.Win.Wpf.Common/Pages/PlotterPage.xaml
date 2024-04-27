@@ -54,7 +54,8 @@
             Style="{StaticResource TitleTextBlockStyle}"
             FontSize="28"/>
 
-        <ui:SimpleStackPanel Grid.Row="1" Margin="10,12,0,10" HorizontalAlignment="Left" Orientation="Horizontal">
+        <ui:SimpleStackPanel Grid.Row="1" Margin="10,12,0,10" HorizontalAlignment="Left" Orientation="Horizontal"
+                             Visibility="{Binding PlotterOptions.plotter.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
             <ComboBox Width="350"
                 ItemsSource="{Binding PlotterOptions.plotter.Items}"
                 DisplayMemberPath="Name"
@@ -158,6 +159,7 @@
                             ui:ControlHelper.Header="{lex:Loc Plotter_poolkey}"
                             Width="{StaticResource KeyWidth}"
                             IsEnabled="{Binding IsOn, Converter={StaticResource BooleanInverter}, ElementName=createPlotNFT}"
+                            Visibility="{Binding PlotterOptions.poolkey.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                             Text="{Binding PlotterOptions.poolkey.Value}"/>
                         
                         <TextBox
