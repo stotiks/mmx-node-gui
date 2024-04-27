@@ -64,6 +64,7 @@
             <ui:HyperlinkButton  Margin="10,0,0,0"
                 Content="GitHub" 
                 NavigateUri="{Binding PlotterUrl}"
+                Visibility="{Binding PlotterUrlIsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                 ToolTip="{Binding PlotterUrl}"/>
             
         </ui:SimpleStackPanel>

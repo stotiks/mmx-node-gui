@@ -74,13 +74,16 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
 
                 var memberInfo = typeof(Plotters).GetMember(plotterEnum.ToString())[0];
                 var urlAttribute = memberInfo.GetCustomAttribute<UrlAttribute>();
-                return urlAttribute.Url;
+                return urlAttribute?.Url;
             }
         }
+
+        public bool PlotterUrlIsVisible => PlotterUrl != null;
 
         public void UpdatePlotterUrl()
         {
             NotifyPropertyChanged(nameof(PlotterUrl));
+            NotifyPropertyChanged(nameof(PlotterUrlIsVisible));
         }
 
     }
