@@ -29,7 +29,7 @@ namespace Mmx.Gui.Win.Wpf
         private readonly NodeProcess nodeProcess = new NodeProcess();
         private readonly MMXBoundObject mmxBoundObject = new WpfMMXBoundObject();
 
-        private readonly UpdateChecker updateChecker = new UpdateChecker(Settings.GitHubApi_Releases, NodeHelpers.Version);
+        private readonly UpdateChecker updateChecker = new UpdateChecker(Settings.Default.GitHubApi_Releases, NodeHelpers.Version);
         public UpdateChecker UpdateChecker => updateChecker;
 
         private ChromiumWebBrowser chromiumWebBrowser;
