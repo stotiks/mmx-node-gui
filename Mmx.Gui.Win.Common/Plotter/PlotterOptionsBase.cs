@@ -110,7 +110,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 dynamic item = property.GetValue(this);
                 if (item.Persistent)
                 {
-                    jObject.Add(item.LongName, item.JValue);
+                    jObject.Add(property.Name, item.JValue);
                 }
             }
 
