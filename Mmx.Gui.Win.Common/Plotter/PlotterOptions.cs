@@ -25,19 +25,19 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         public enum Plotters : int
         {
-            [Description("CPU Plotter"), Url("https://github.com/madMAx43v3r/chia-plotter")]
+            [Description("Chia CPU plotter"), Url("https://github.com/madMAx43v3r/chia-plotter")]
             ChiaCpuPlotter = 1 << 0,
 
-            [Description("CPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
+            [Description("Gigahorse v2.4 CPU plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
             ChiaCpuPlotterWithCompression = 1 << 1,
 
-            [Description("Gigahorse v2.5 CUDA plotter  with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
+            [Description("Gigahorse v2.5 CUDA plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
             ChiaCudaPlotter_25 = 1 << 2,
 
             [Description("Gigahorse v3.0 K32 CUDA plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
             ChiaCudaPlotter_30 = 1 << 3,
 
-            [Description("MMX K32 CUDA plotter")]
+            [Description("MMX CUDA plotter")]
             MmxCudaPlotter = 1 << 4
         };
 
