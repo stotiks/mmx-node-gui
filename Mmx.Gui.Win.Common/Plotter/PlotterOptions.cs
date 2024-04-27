@@ -54,12 +54,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             MadMaxCpuPlotterWithCompression = Plotters.MadMaxChiaCpuPlotterWithCompression,
 
             MadMaxCpuPlotters = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression,
-            MadMaxCudaPlotter = MadMaxChiaCudaPlotter_25 | MadMaxChiaCudaPlotter_30 | MadMaxMmxCudaPlotter,
+            MadMaxCudaPlotters = MadMaxChiaCudaPlotter_25 | MadMaxChiaCudaPlotter_30 | MadMaxMmxCudaPlotter,
 
-            MadMaxPlotters = MadMaxCpuPlotter | MadMaxCudaPlotter,
-            MadMaxPlottersWithCompression = MadMaxCpuPlotterWithCompression | MadMaxCudaPlotter,
+            MadMaxPlotters = MadMaxCpuPlotter | MadMaxCudaPlotters,
+            MadMaxPlottersWithCompression = MadMaxCpuPlotterWithCompression | MadMaxCudaPlotters,
 
-            Common = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression | MadMaxCudaPlotter
+            MadMaxMmxPlotters = MadMaxMmxCudaPlotter,
+            Common = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression | MadMaxCudaPlotters
         };
 
         [Order]
@@ -81,7 +82,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                             return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                         })
                     .ToList()),
-            Scope = Scopes.Common ^ Scopes.MadMaxMmxCudaPlotter
+            Scope = Scopes.Common ^ Scopes.MadMaxMmxPlotters
         };
 
         [Order]
@@ -189,7 +190,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var name = VideoDeviceInfo.Instance.CudaDevices[value];
                     return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxCudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -201,7 +202,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = VideoDeviceInfo.Instance.CudaDevices.Count,
-            Scope = Scopes.MadMaxCudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -213,7 +214,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 3,
             Minimum = 2,
             Maximum = 16,
-            Scope = Scopes.MadMaxCudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -225,7 +226,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 16,
             Minimum = 1,
             Maximum = 256,
-            Scope = Scopes.MadMaxCudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -235,7 +236,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "pin_memory",
             LongName = "pin_memory",
             DefaultValue = true,
-            Scope = Scopes.MadMaxCudaPlotter,
+            Scope = Scopes.MadMaxCudaPlotters,
             Skip = true   
         };
 
@@ -247,7 +248,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = Convert.ToInt32(NativeMethods.GetTotalMemoryInGigaBytes() / 2.0),
             Minimum = 0,
             Maximum = NativeMethods.GetTotalMemoryInGigaBytes(),
-            Scope = Scopes.MadMaxCudaPlotter
+            Scope = Scopes.MadMaxCudaPlotters
         };
 
         [Order]
@@ -315,7 +316,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "finaldir",
             DefaultValue = "",
-            Scope = Scopes.Common ^ Scopes.MadMaxCudaPlotter
+            Scope = Scopes.Common ^ Scopes.MadMaxCudaPlotters
         };
 
         [Order]
@@ -324,7 +325,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "multifinaldir",
             DefaultValue = new ArrayList() { "" },
-            Scope = Scopes.MadMaxCudaPlotter
+            Scope = Scopes.MadMaxCudaPlotters
         };
 
         [Order]
@@ -351,7 +352,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "3",
             LongName = "tmpdir3",
             DefaultValue = "",
-            Scope = Scopes.MadMaxCudaPlotter
+            Scope = Scopes.MadMaxCudaPlotters
         };
 
         [Order]
@@ -405,7 +406,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "p",
             LongName = "poolkey",
             DefaultValue = "",
-            Scope = Scopes.Common
+            Scope = Scopes.Common ^ Scopes.MadMaxMmxPlotters
         };
 
         [Order]
