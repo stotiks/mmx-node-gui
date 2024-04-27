@@ -42,7 +42,7 @@
         <ui:NavigationView.MenuItems>
             <ui:NavigationViewItem Tag="NodePage" Content="{lex:Loc Node_Title}" Icon="Globe" />
             <ui:NavigationViewItem Tag="HarvesterPage" Content="{lex:Loc Harvester_Title}" Icon="NewFolder" />
-            <ui:NavigationViewItem Tag="PlotterPage" Content="{lex:Loc Plotter_Title}" Icon="Library" />
+            <!--<ui:NavigationViewItem Tag="PlotterPage" Content="{lex:Loc Plotter_Title}" Icon="Library" />-->
             <ui:NavigationViewItemHeader Height="100" />
             <!--ui:NavigationViewItemSeparator/-->
             <!--ui:NavigationViewItem x:Name ="ConsoleLogsNavigationViewItem" Tag="ConsoleLogsPage" Content="{lex:Loc ConsoleLogs_Title}" Icon="ShowResults"/-->

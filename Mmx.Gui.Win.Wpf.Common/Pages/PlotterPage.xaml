@@ -19,7 +19,7 @@
     
     mc:Ignorable="d"
     d:DesignHeight="1650" d:DesignWidth="1200"
-    Title="PlotterPage">
+    Title="PlotterPage" IsEnabled="False">
 
     <Page.Resources>
         <cv:BooleanInverter x:Key="BooleanInverter"/>
