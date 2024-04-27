@@ -39,7 +39,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             MadMaxCudaPlotter_25 = 1 << 2,
 
             [Description("Gigahorse v3.0 K32 CUDA plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
-            MadMaxCudaPlotter_30 = 1 << 3
+            MadMaxCudaPlotter_30 = 1 << 3,
+
+            [Description("MMX K32 CUDA plotter")]
+            MadMaxMmxCudaPlotter = 1 << 4
         };
 
         [Flags]
@@ -47,8 +50,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             None = 0,
 
-            MadMaxCpuPlotter = Plotters.MadMaxCpuChiaPlotter,
-            MadMaxCpuPlotterWithCompression = Plotters.MadMaxChiaCpuPlotterWithCompression,
+            MadMaxMmxCudaPlotter = Plotters.MadMaxMmxCudaPlotter,
             MadMaxChiaCudaPlotter_25 = Plotters.MadMaxCudaPlotter_25,
             MadMaxChiaCudaPlotter_30 = Plotters.MadMaxCudaPlotter_30,
 
@@ -56,6 +58,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             MadMaxCpuPlotterWithCompression = Plotters.MadMaxChiaCpuPlotterWithCompression,
 
             MadMaxCpuPlotters = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression,
+            MadMaxCudaPlotter = MadMaxChiaCudaPlotter_25 | MadMaxChiaCudaPlotter_30 | MadMaxMmxCudaPlotter,
 
             MadMaxPlotters = MadMaxCpuPlotter | MadMaxCudaPlotter,
             MadMaxPlottersWithCompression = MadMaxCpuPlotterWithCompression | MadMaxCudaPlotter,
