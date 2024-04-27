@@ -79,6 +79,9 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             public event PropertyChangedEventHandler PropertyChanged;
 
         }
+
+        private const string FirstItem = "FirstItem";
+
         class DirObservableCollection : ObservableCollection<Dir>, INotifyPropertyChanged
         {
             public DirObservableCollection(List<Dir> list) : base(list)
@@ -131,7 +134,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                     var dir = (sender as Dir);
                     if (dir.IsFirst)
                     {
-                        NotifyItemChanged("FirstItem");
+                        NotifyItemChanged(FirstItem);
                     }
                     RecalcItems();
                     OnDirCollectionChanged();
@@ -274,7 +277,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             _directories.DirCollectionChanged += UpdateDirectories;
             _directories.ItemChanged += (o, e) =>
             {
-                if (e.PropertyName == "FirstItem")
+                if (e.PropertyName == FirstItem)
                 {
                     FirstDirectory = _directories.FirstOrDefault().Path;
                 }
