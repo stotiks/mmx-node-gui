@@ -132,13 +132,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "C",
             LongName = "level",
             DefaultValue = 1,
-            //Items = new ObservableCollection<ItemBase<int>>(
-            //    Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10)).Union(Enumerable.Range(30, 4)).Select(value =>
-            //    {
-            //        var isDefault = value == 1;
-            //        var isDefaultString = isDefault ? " (default)" : "";
-            //        return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
-            //    }).ToList()),
             Scope = Scopes.PlottersWithCompression
         };
 
