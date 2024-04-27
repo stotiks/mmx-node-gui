@@ -44,10 +44,10 @@
     <Setting Name="SettingsUpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Classic_GitHubApi_Releases" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="GitHubApi_Releases" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://api.github.com/repos/madMAx43v3r/mmx-node/releases</Value>
     </Setting>
-    <Setting Name="Classic_GitHubReleasesUrl" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="GitHubReleasesUrl" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://github.com/madMAx43v3r/mmx-node/releases</Value>
     </Setting>
     <Setting Name="LightMode" Type="System.Boolean" Scope="User">
@@ -73,12 +73,6 @@
     </Setting>
     <Setting Name="CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Gigahorse_GitHubApi_Releases" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://api.github.com/repos/madMAx43v3r/mmx-binaries/releases</Value>
-    </Setting>
-    <Setting Name="Gigahorse_GitHubReleasesUrl" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://github.com/madMAx43v3r/mmx-binaries/releases</Value>
     </Setting>
     <Setting Name="CHIAPOS_MAX_OPENCL_DEVICES" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">-1</Value>

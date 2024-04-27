@@ -19,8 +19,7 @@ namespace Mmx.Gui.Win.Common.Properties
 
         public static bool MinimizeToNotification => Settings.Default.ShowInNotification && Settings.Default._MinimizeToNotification;
         public static bool CloseToNotification => Settings.Default.ShowInNotification && Settings.Default._CloseToNotification;
-        public static string GitHubApi_Releases => NodeHelpers.IsGigahorse ? Settings.Default.Gigahorse_GitHubApi_Releases : Settings.Default.Classic_GitHubApi_Releases;
-        public static string GitHubReleasesUrl => NodeHelpers.IsGigahorse ? Settings.Default.Gigahorse_GitHubReleasesUrl : Settings.Default.Classic_GitHubReleasesUrl;
+
         public static Action DebouncedSave;
         
         static Settings()

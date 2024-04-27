@@ -173,7 +173,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="{lex:Loc Harvester_ChiaPosSettings}"
-                     Visibility="{Binding Source={x:Static node:NodeHelpers.IsGigahorse}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                     Visibility="Hidden"> <!--TODO-->
                 <ScrollViewer Margin="0,12,0,20">
                     <ui:SimpleStackPanel HorizontalAlignment="Left">
                         <ctrls:ChiaPosSettings></ctrls:ChiaPosSettings>

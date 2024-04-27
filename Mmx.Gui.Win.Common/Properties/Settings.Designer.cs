@@ -12,7 +12,7 @@ namespace Mmx.Gui.Win.Common.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -195,9 +195,9 @@ namespace Mmx.Gui.Win.Common.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("https://api.github.com/repos/madMAx43v3r/mmx-node/releases")]
-        public string Classic_GitHubApi_Releases {
+        public string GitHubApi_Releases {
             get {
-                return ((string)(this["Classic_GitHubApi_Releases"]));
+                return ((string)(this["GitHubApi_Releases"]));
             }
         }
         
@@ -205,9 +205,9 @@ namespace Mmx.Gui.Win.Common.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/madMAx43v3r/mmx-node/releases")]
-        public string Classic_GitHubReleasesUrl {
+        public string GitHubReleasesUrl {
             get {
-                return ((string)(this["Classic_GitHubReleasesUrl"]));
+                return ((string)(this["GitHubReleasesUrl"]));
             }
         }
         
@@ -304,26 +304,6 @@ namespace Mmx.Gui.Win.Common.Properties {
             }
             set {
                 this["CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://api.github.com/repos/madMAx43v3r/mmx-binaries/releases")]
-        public string Gigahorse_GitHubApi_Releases {
-            get {
-                return ((string)(this["Gigahorse_GitHubApi_Releases"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/madMAx43v3r/mmx-binaries/releases")]
-        public string Gigahorse_GitHubReleasesUrl {
-            get {
-                return ((string)(this["Gigahorse_GitHubReleasesUrl"]));
             }
         }
         

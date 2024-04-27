@@ -40,9 +40,8 @@ namespace Mmx.Gui.Win.Common.Node
         public static readonly string recomputeEXEPath = Path.Combine(workingDirectory, "gigahorse\\chia_recompute_server.exe");
 
         public static Version Version { get; private set; }
-        public static NodeBuildType BuildType { get; private set; }
 
-        public static string VersionTag => $"v{Version} - ({BuildType})";
+        public static string VersionTag => $"v{Version}";
 
         static NodeHelpers()
         {
@@ -53,21 +52,12 @@ namespace Mmx.Gui.Win.Common.Node
                 Version = new Version(productVersion);
 
                 var productName = versionInfo.ProductName;
-                if (productName.Contains(nameof(NodeBuildType.Classic)))
-                {
-                    BuildType = NodeBuildType.Classic;
-                } else
-                {
-                    BuildType = NodeBuildType.Gigahorse;
-                }
             }
             catch
             {
                 Version = new Version();
             }
         }
-
-        public static bool IsGigahorse => BuildType == NodeBuildType.Gigahorse;
 
         public static void SetEnvVariables(ProcessStartInfo processStartInfo)
         {
