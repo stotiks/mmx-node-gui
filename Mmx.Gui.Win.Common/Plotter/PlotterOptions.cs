@@ -527,17 +527,22 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private void UpdateLevel()
         {
-            IEnumerable<int> level_enum = Enumerable.Range(1, 9);
-            level.DefaultValue = 1;
-
-            if (plotter.Value == (int)Plotters.ChiaCudaPlotter_30)
+            IEnumerable<int> level_enum;
+            switch ((Plotters)plotter.Value)
             {
-                level_enum = Enumerable.Range(29, 5);
-                level.DefaultValue = 30;
-            }
-            else if (plotter.Value == (int)Plotters.ChiaCudaPlotter_25 || plotter.Value == (int)Plotters.MmxCudaPlotter)
-            {
-                level_enum = Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10));
+                case Plotters.ChiaCudaPlotter_30:
+                    level_enum = Enumerable.Range(29, 5);
+                    level.DefaultValue = 30;
+                    break;
+                case Plotters.ChiaCudaPlotter_25:
+                case Plotters.MmxCudaPlotter:
+                    level_enum = Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10));
+                    level.DefaultValue = 1;
+                    break;
+                default:
+                    level_enum = Enumerable.Range(1, 9);
+                    level.DefaultValue = 1;
+                    break;
             }
 
             level.Items = new ObservableCollection<ItemBase<int>>(
