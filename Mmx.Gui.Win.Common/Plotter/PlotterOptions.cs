@@ -26,41 +26,39 @@ namespace Mmx.Gui.Win.Common.Plotter
         public enum Plotters : int
         {
             [Description("CPU Plotter"), Url("https://github.com/madMAx43v3r/chia-plotter")]
-            MadMaxChiaCpuPlotter = 1 << 0,
+            ChiaCpuPlotter = 1 << 0,
 
             [Description("CPU Plotter v2.4 with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cpu-plotter")]
-            MadMaxChiaCpuPlotterWithCompression = 1 << 1,
+            ChiaCpuPlotterWithCompression = 1 << 1,
 
             [Description("Gigahorse v2.5 CUDA plotter  with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
-            MadMaxCudaPlotter_25 = 1 << 2,
+            ChiaCudaPlotter_25 = 1 << 2,
 
             [Description("Gigahorse v3.0 K32 CUDA plotter with compression"), Url("https://github.com/madMAx43v3r/chia-gigahorse/tree/master/cuda-plotter")]
-            MadMaxCudaPlotter_30 = 1 << 3,
+            ChiaCudaPlotter_30 = 1 << 3,
 
             [Description("MMX K32 CUDA plotter")]
-            MadMaxMmxCudaPlotter = 1 << 4
+            MmxCudaPlotter = 1 << 4
         };
 
         [Flags]
-        public enum Scopes : short
+        public enum Scopes : int
         {
             None = 0,
 
-            MadMaxMmxCudaPlotter = Plotters.MadMaxMmxCudaPlotter,
-            MadMaxChiaCudaPlotter_25 = Plotters.MadMaxCudaPlotter_25,
-            MadMaxChiaCudaPlotter_30 = Plotters.MadMaxCudaPlotter_30,
+            CpuPlotter = Plotters.ChiaCpuPlotter,
+            CpuPlotterWithCompression = Plotters.ChiaCpuPlotterWithCompression,
+            ChiaCudaPlotter_25 = Plotters.ChiaCudaPlotter_25,
+            ChiaCudaPlotter_30 = Plotters.ChiaCudaPlotter_30,
+            MmxCudaPlotter = Plotters.MmxCudaPlotter,
 
-            MadMaxCpuPlotter = Plotters.MadMaxChiaCpuPlotter,
-            MadMaxCpuPlotterWithCompression = Plotters.MadMaxChiaCpuPlotterWithCompression,
+            CpuPlotters = CpuPlotter | CpuPlotterWithCompression,
+            CudaPlotters = ChiaCudaPlotter_25 | ChiaCudaPlotter_30 | MmxCudaPlotter,
+            PlottersWithCompression = CpuPlotterWithCompression | CudaPlotters,
 
-            MadMaxCpuPlotters = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression,
-            MadMaxCudaPlotters = MadMaxChiaCudaPlotter_25 | MadMaxChiaCudaPlotter_30 | MadMaxMmxCudaPlotter,
+            MmxPlotters = MmxCudaPlotter,
 
-            MadMaxPlotters = MadMaxCpuPlotter | MadMaxCudaPlotters,
-            MadMaxPlottersWithCompression = MadMaxCpuPlotterWithCompression | MadMaxCudaPlotters,
-
-            MadMaxMmxPlotters = MadMaxMmxCudaPlotter,
-            Common = MadMaxCpuPlotter | MadMaxCpuPlotterWithCompression | MadMaxCudaPlotters
+            Common = CpuPlotter | CudaPlotters,
         };
 
         [Order]
@@ -68,21 +66,22 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "plotter",
             LongName = "plotter",
-            DefaultValue = (int)Plotters.MadMaxChiaCpuPlotter,
+            DefaultValue = (int)Plotters.ChiaCpuPlotter,
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => (IsMmxOnly && (Scopes.MadMaxMmxCudaPlotter & (Scopes)value) == Scopes.MadMaxMmxCudaPlotter) || !IsMmxOnly)
+                    .Where(value => IsMmxOnly && ((Scopes)value).HasFlag(Scopes.MmxCudaPlotter) || !IsMmxOnly)
                     .Select(value =>
                         {
-                            var isDefault = value == (int)Plotters.MadMaxChiaCpuPlotter;
+                            var isDefault = value == (int)Plotters.ChiaCpuPlotter;
                             var isDefaultString = isDefault ? " (default)" : "";
                             Plotters plotterEnum = (Plotters)Enum.ToObject(typeof(Plotters), value);
                             var name = PlotterOptionsHelpers.GetDescription(plotterEnum);
                             return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                         })
                     .ToList()),
-            Scope = Scopes.Common ^ Scopes.MadMaxMmxPlotters
+            Scope = Scopes.Common,
+            IsVisible = !IsMmxOnly
         };
 
         [Order]
@@ -111,7 +110,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxPlotters ^ Scopes.MadMaxChiaCudaPlotter_30
+            Scope = Scopes.Common ^ Scopes.ChiaCudaPlotter_30
         };
 
         static readonly IDictionary<int, double> efficiencies = new Dictionary<int, double>()
@@ -140,7 +139,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             //        var isDefaultString = isDefault ? " (default)" : "";
             //        return new ItemBase<int> { Name = $"{value} - [{efficiencies[value]}%]{isDefaultString}", Value = value };
             //    }).ToList()),
-            Scope = Scopes.MadMaxPlottersWithCompression
+            Scope = Scopes.PlottersWithCompression
         };
 
         enum Ports
@@ -171,7 +170,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                         return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                     })
                     .ToList()),            
-            Scope = Scopes.MadMaxPlotters,
+            Scope = Scopes.Common,
             IsVisible = !IsMmxOnly
         };
 
@@ -190,7 +189,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var name = VideoDeviceInfo.Instance.CudaDevices[value];
                     return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxCudaPlotters,
+            Scope = Scopes.CudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -202,7 +201,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = VideoDeviceInfo.Instance.CudaDevices.Count,
-            Scope = Scopes.MadMaxCudaPlotters,
+            Scope = Scopes.CudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -214,7 +213,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 3,
             Minimum = 2,
             Maximum = 16,
-            Scope = Scopes.MadMaxCudaPlotters,
+            Scope = Scopes.CudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -226,7 +225,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 16,
             Minimum = 1,
             Maximum = 256,
-            Scope = Scopes.MadMaxCudaPlotters,
+            Scope = Scopes.CudaPlotters,
             SuppressDefaultValue = true
         };
 
@@ -236,7 +235,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "pin_memory",
             LongName = "pin_memory",
             DefaultValue = true,
-            Scope = Scopes.MadMaxCudaPlotters,
+            Scope = Scopes.CudaPlotters,
             Skip = true   
         };
 
@@ -248,7 +247,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = Convert.ToInt32(NativeMethods.GetTotalMemoryInGigaBytes() / 2.0),
             Minimum = 0,
             Maximum = NativeMethods.GetTotalMemoryInGigaBytes(),
-            Scope = Scopes.MadMaxCudaPlotters
+            Scope = Scopes.CudaPlotters
         };
 
         [Order]
@@ -259,7 +258,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = Environment.ProcessorCount,
             Minimum = 1,
             Maximum = 128,
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.CpuPlotters
         };
 
         [Order]
@@ -270,7 +269,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             DefaultValue = 1,
             Minimum = 1,
             Maximum = 8,
-            Scope = Scopes.MadMaxCpuPlotters,
+            Scope = Scopes.CpuPlotters,
             SuppressDefaultValue = true
         };
 
@@ -290,7 +289,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.CpuPlotters
         };
 
         [Order]
@@ -307,7 +306,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                     var isDefaultString = isDefault ? " (default)" : "";
                     return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
                 }).ToList()),
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.CpuPlotters
         };
 
         [Order]
@@ -316,7 +315,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "finaldir",
             DefaultValue = "",
-            Scope = Scopes.Common ^ Scopes.MadMaxCudaPlotters
+            Scope = Scopes.Common ^ Scopes.CudaPlotters
         };
 
         [Order]
@@ -325,7 +324,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "d",
             LongName = "multifinaldir",
             DefaultValue = new ArrayList() { "" },
-            Scope = Scopes.MadMaxCudaPlotters
+            Scope = Scopes.CudaPlotters
         };
 
         [Order]
@@ -334,7 +333,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "t",
             LongName = "tmpdir",
             DefaultValue = "",
-            Scope = Scopes.MadMaxPlotters
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -343,7 +342,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "2",
             LongName = "tmpdir2",
             DefaultValue = "",
-            Scope = Scopes.MadMaxPlotters
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -352,7 +351,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "3",
             LongName = "tmpdir3",
             DefaultValue = "",
-            Scope = Scopes.MadMaxCudaPlotters
+            Scope = Scopes.CudaPlotters
         };
 
         [Order]
@@ -361,7 +360,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "s",
             LongName = "stagedir",
             DefaultValue = "",
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.CpuPlotters
         };
 
         [Order]
@@ -370,7 +369,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "w",
             LongName = "waitforcopy",
             DefaultValue = false,
-            Scope = Scopes.MadMaxPlotters
+            Scope = Scopes.Common
         };
 
         [Order]
@@ -379,7 +378,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "G",
             LongName = "tmptoggle",
             DefaultValue = false,
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.CpuPlotters
         };
 
         [Order]
@@ -388,7 +387,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "D",
             LongName = "directout",
             DefaultValue = false,
-            Scope = Scopes.MadMaxCpuPlotters
+            Scope = Scopes.CpuPlotters
         };
 
         [Order]
@@ -406,7 +405,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Name = "p",
             LongName = "poolkey",
             DefaultValue = "",
-            Scope = Scopes.Common ^ Scopes.MadMaxMmxPlotters
+            Scope = Scopes.Common ^ Scopes.MmxPlotters
         };
 
         [Order]
@@ -480,7 +479,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             if(IsMmxOnly)
             {
-                plotter.Value = (int)Plotters.MadMaxMmxCudaPlotter;
+                plotter.Value = (int)Plotters.MmxCudaPlotter;
                 port.Value = (int)Ports.MMX;
                 NotifyPropertyChanged(nameof(PlotterCmd));
             }
@@ -515,11 +514,10 @@ namespace Mmx.Gui.Win.Common.Plotter
             foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter) && property.Name != nameof(port)))
             {
                 dynamic item = property.GetValue(this);
-                Scopes plotterScopeEnum = (Scopes)plotter.Value;
-                item.IsVisible = (item.Scope & plotterScopeEnum) == plotterScopeEnum;
+                item.IsVisible = item.Scope.HasFlag((Scopes)plotter.Value);
             }
 
-            var isCudaPlotter = plotter.Value == (int)Plotters.MadMaxCudaPlotter_25 || plotter.Value == (int)Plotters.MadMaxCudaPlotter_30;
+            var isCudaPlotter = plotter.Value == (int)Plotters.ChiaCudaPlotter_25 || plotter.Value == (int)Plotters.ChiaCudaPlotter_30;
             size.Skip = isCudaPlotter;
 
             UpdateLevel();
@@ -530,12 +528,12 @@ namespace Mmx.Gui.Win.Common.Plotter
             IEnumerable<int> level_enum = Enumerable.Range(1, 9);
             level.DefaultValue = 1;
 
-            if (plotter.Value == (int)Plotters.MadMaxCudaPlotter_30)
+            if (plotter.Value == (int)Plotters.ChiaCudaPlotter_30)
             {
                 level_enum = Enumerable.Range(29, 5);
                 level.DefaultValue = 30;
             }
-            else if (plotter.Value == (int)Plotters.MadMaxCudaPlotter_25)
+            else if (plotter.Value == (int)Plotters.ChiaCudaPlotter_25 || plotter.Value == (int)Plotters.MmxCudaPlotter)
             {
                 level_enum = Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10));
             }
@@ -568,11 +566,11 @@ namespace Mmx.Gui.Win.Common.Plotter
 
                 switch (plotter.Value)
                 {
-                    case (int)Plotters.MadMaxMmxCudaPlotter:
+                    case (int)Plotters.MmxCudaPlotter:
                         exe = "mmx_cuda_plot_k32.exe";
                         break;
 
-                    case (int)Plotters.MadMaxChiaCpuPlotter:
+                    case (int)Plotters.ChiaCpuPlotter:
                         exe = "chia_plot.exe";
                         if (size.Value > 32)
                         {
@@ -580,7 +578,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                         }
                         break;
 
-                    case (int)Plotters.MadMaxChiaCpuPlotterWithCompression:
+                    case (int)Plotters.ChiaCpuPlotterWithCompression:
                         exe = $"{gigahorsePath}chia_plot.exe";
                         if (size.Value > 32)
                         {
@@ -588,11 +586,11 @@ namespace Mmx.Gui.Win.Common.Plotter
                         }
                         break;
 
-                    case (int)Plotters.MadMaxCudaPlotter_25:
+                    case (int)Plotters.ChiaCudaPlotter_25:
                         exe = $"{gigahorsePath}cuda_plot_k{size.Value}.exe";
                         break;
 
-                    case (int)Plotters.MadMaxCudaPlotter_30:
+                    case (int)Plotters.ChiaCudaPlotter_30:
                         exe = $"{gigahorsePath}cuda_plot_k32_v3.exe";
                         break;
                 }
