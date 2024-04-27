@@ -567,16 +567,21 @@ namespace Mmx.Gui.Win.Common.Plotter
             {
                 var gigahorsePath = "gigahorse\\";
                 var exe = "";
-                var chia_plot_name = IsMmxOnly ? "mmx_plot" : "chia_plot";
+
                 switch (plotter.Value)
                 {
+                    case (int)Plotters.MadMaxMmxCudaPlotter:
+                        exe = "mmx_cuda_plot_k32.exe";
+                        break;
+
                     case (int)Plotters.MadMaxChiaCpuPlotter:
-                        exe = $"{chia_plot_name}.exe";
+                        exe = "chia_plot.exe";
                         if (size.Value > 32)
                         {
-                            exe = $"{chia_plot_name}_k34.exe";
+                            exe = "chia_plot_k34.exe";
                         }
                         break;
+
                     case (int)Plotters.MadMaxChiaCpuPlotterWithCompression:
                         exe = $"{gigahorsePath}chia_plot.exe";
                         if (size.Value > 32)
@@ -584,9 +589,11 @@ namespace Mmx.Gui.Win.Common.Plotter
                             exe = $"{gigahorsePath}chia_plot.exe";
                         }
                         break;
+
                     case (int)Plotters.MadMaxCudaPlotter_25:
                         exe = $"{gigahorsePath}cuda_plot_k{size.Value}.exe";
                         break;
+
                     case (int)Plotters.MadMaxCudaPlotter_30:
                         exe = $"{gigahorsePath}cuda_plot_k32_v3.exe";
                         break;
