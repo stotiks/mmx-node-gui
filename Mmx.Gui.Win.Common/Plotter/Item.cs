@@ -83,6 +83,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             SkipValue = true;
         }
+
         public override string GetParam()
         {
             return Value ? base.GetParam() : "";
@@ -122,6 +123,7 @@ namespace Mmx.Gui.Win.Common.Plotter
     public abstract class Item<T> : ItemBase<T>
     {
         public string LongName { get; internal set; }
+        public bool UseCmdLongName { get; internal set; } = false;
 
         public virtual void SetValue(object obj)
         {
@@ -221,12 +223,19 @@ namespace Mmx.Gui.Win.Common.Plotter
                 result = value;
             } else
             {
+                var name = $"-{Name}";
+
+                if(UseCmdLongName)
+                {
+                    name = $"--{LongName}";
+                }
+
                 if(SkipValue)
                 {
-                    result = $"-{Name}";
+                    result = name;
                 } else
                 {
-                    result = $"-{Name} {value}";
+                    result = $"{name} {value}";
                 }                
             }
 

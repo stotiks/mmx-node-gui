@@ -199,6 +199,12 @@
                                 SelectedValue="{Binding PlotterOptions.level.Value}"
                                 Visibility="{Binding PlotterOptions.level.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
+                                <ui:ToggleSwitch  
+                                x:Name="createSSDPlot"
+                                Header="{lex:Loc Plotter_sddplot}"
+                                IsOn="{Binding PlotterOptions.ssdplot.Value}"
+                                Visibility="{Binding PlotterOptions.ssdplot.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
                             </ui:SimpleStackPanel>
                         </GroupBox>
                         

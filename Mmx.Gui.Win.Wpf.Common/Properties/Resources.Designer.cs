@@ -538,6 +538,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create SSD plot.
+        /// </summary>
+        public static string Plotter_sddplot {
+            get {
+                return ResourceManager.GetString("Plotter_sddplot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to K size.
         /// </summary>
         public static string Plotter_size {

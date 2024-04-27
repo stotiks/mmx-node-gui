@@ -135,6 +135,16 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.PlottersWithCompression
         };
 
+        [Order]
+        public BoolItem ssdplot { get; set; } = new BoolItem
+        {
+            Name = "ssd",
+            LongName = "ssd",
+            UseCmdLongName = true,
+            DefaultValue = false,
+            Scope = Scopes.MmxPlotters
+        };
+
         enum Ports
         {
             [Description("Chia [8444]")]
@@ -601,9 +611,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     dynamic item = property.GetValue(this);
 
-                    Scopes plotterScopeEnum = (Scopes)plotter.Value;
-
-                    if( (item.Scope & plotterScopeEnum) == plotterScopeEnum && item.Type == ItemType.CmdParameter )
+                    if( item.Scope.HasFlag((Scopes)plotter.Value) && item.Type == ItemType.CmdParameter )
                     {
                         var param = item.GetParam();
                         if (!string.IsNullOrEmpty(param))

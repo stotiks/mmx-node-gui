@@ -499,4 +499,8 @@
     <value>Bucket chunk size in MiB</value>
     <comment>plotter</comment>
   </data>
+  <data name="Plotter_sddplot" xml:space="preserve">
+    <value>Create SSD plot</value>
+    <comment>plotter</comment>
+  </data>
 </root>
