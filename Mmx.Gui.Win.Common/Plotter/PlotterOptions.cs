@@ -75,7 +75,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => !( IsMmxOnly  && (value == (int)Plotters.MadMaxCudaPlotter_25 || value == (int)Plotters.MadMaxCudaPlotter_30 || value == (int)Plotters.MadMaxChiaCpuPlotterWithCompression)) )
+                    .Where(value => (IsMmxOnly && (Scopes.MadMaxMmxCudaPlotter & (Scopes)value) == Scopes.MadMaxMmxCudaPlotter) || !IsMmxOnly)
                     .Select(value =>
                         {
                             var isDefault = value == (int)Plotters.MadMaxChiaCpuPlotter;
@@ -85,7 +85,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                             return new ItemBase<int> { Name = name + isDefaultString, Value = value };
                         })
                     .ToList()),
-            Scope = Scopes.Common
+            Scope = Scopes.Common ^ Scopes.MadMaxMmxCudaPlotter
         };
 
         [Order]
@@ -483,6 +483,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             if(IsMmxOnly)
             {
+                plotter.Value = (int)Plotters.MadMaxMmxCudaPlotter;
                 port.Value = (int)Ports.MMX;
                 NotifyPropertyChanged(nameof(PlotterCmd));
             }
