@@ -143,8 +143,8 @@ namespace Mmx.Gui.Win.Common.Plotter
             internal set
             {
                 _items = value;
-                NotifyPropertyChanged();
-                NotifyPropertyChanged(nameof(Value));
+                NotifyPropertyChanged(); //notify [Items] property changed
+                NotifyPropertyChanged(nameof(Value)); //notify [Value] property changed
             }
         }
         public T Minimum { get; internal set; }
