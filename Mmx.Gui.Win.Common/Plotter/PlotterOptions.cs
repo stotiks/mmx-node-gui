@@ -99,8 +99,7 @@ namespace Mmx.Gui.Win.Common.Plotter
                 {
                     var isDefault = value == level.DefaultValue;
                     var isDefaultStr = isDefault ? " (default)" : "";
-                    double efficiency = 0;
-                    _ = efficiencies.TryGetValue(value, out efficiency);
+                    _ = efficiencies.TryGetValue(value, out double efficiency);
                     var efficiencyStr = efficiency > 0 && !Scopes.MmxPlotters.HasFlag((Scopes)plotter.Value) ? $"- [{efficiency}%]" : "";
                     return new ItemBase<int> { Name = $"{value} {efficiencyStr}{isDefaultStr}", Value = value };
                 }).ToList());
