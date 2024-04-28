@@ -46,15 +46,15 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             None = 0,
 
-            CpuPlotter = Plotters.ChiaCpuPlotter,
-            CpuPlotterWithCompression = Plotters.ChiaCpuPlotterWithCompression,
+            ChiaCpuPlotter = Plotters.ChiaCpuPlotter,
+            ChiaCpuPlotterWithCompression = Plotters.ChiaCpuPlotterWithCompression,
             ChiaCudaPlotter_25 = Plotters.ChiaCudaPlotter_25,
             ChiaCudaPlotter_30 = Plotters.ChiaCudaPlotter_30,
             MmxCudaPlotter = Plotters.MmxCudaPlotter,
 
-            CpuPlotters = CpuPlotter | CpuPlotterWithCompression,
+            CpuPlotters = ChiaCpuPlotter | ChiaCpuPlotterWithCompression,
             CudaPlotters = ChiaCudaPlotter_25 | ChiaCudaPlotter_30 | MmxCudaPlotter,
-            PlottersWithCompression = CpuPlotterWithCompression | CudaPlotters,
+            PlottersWithCompression = ChiaCpuPlotterWithCompression | CudaPlotters,
 
             MmxPlotters = MmxCudaPlotter,
 
