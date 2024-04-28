@@ -147,7 +147,6 @@ namespace Mmx.Gui.Win.Wpf
                 dynamic keys = JsonConvert.DeserializeObject(json);
                 PlotterOptions.Instance.farmerkey.Value = keys["farmer_public_key"];
                 PlotterOptions.Instance.nftplot.Value = false;
-                PlotterOptions.Instance.poolkey.Value = keys["pool_public_key"];
 
                 await Task.Delay(400);
                 var x = new Flyout
