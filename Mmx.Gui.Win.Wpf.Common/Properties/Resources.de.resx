@@ -214,7 +214,7 @@
     <value>Anzahl der Buckets für Phase 3+4</value>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>öffenlicher Schlüssel des Farmers (48 bytes)</value>
+    <value>öffenlicher Schlüssel des Farmers</value>
   </data>
   <data name="Plotter_nftplot" xml:space="preserve">
     <value>Erstelle NFT Plot</value>

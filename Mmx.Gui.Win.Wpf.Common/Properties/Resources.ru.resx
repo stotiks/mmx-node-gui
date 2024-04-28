@@ -214,7 +214,7 @@
     <value>Количество корзин для фаз 3+4</value>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>Публичный ключ фермера (48 байт)</value>
+    <value>Публичный ключ фермера</value>
   </data>
   <data name="Plotter_nftplot" xml:space="preserve">
     <value>Создавать NFT участок</value>

@@ -243,7 +243,7 @@
     <comment>plotter</comment>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>Farmer Public Key (48 bytes)</value>
+    <value>Farmer Public Key</value>
     <comment>plotter</comment>
   </data>
   <data name="Plotter_nftplot" xml:space="preserve">

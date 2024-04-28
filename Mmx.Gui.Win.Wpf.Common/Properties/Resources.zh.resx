@@ -214,7 +214,7 @@
     <value>第3、4阶段桶大小</value>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>农民公钥（48字节）</value>
+    <value>农民公钥</value>
   </data>
   <data name="Plotter_nftplot" xml:space="preserve">
     <value>创建NFT图</value>

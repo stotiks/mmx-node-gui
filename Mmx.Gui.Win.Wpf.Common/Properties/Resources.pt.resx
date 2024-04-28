@@ -214,7 +214,7 @@
     <value>Número de Buckets para a fase 3+4</value>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>Chave pública do Farmer (48 bytes)</value>
+    <value>Chave pública do Farmer</value>
   </data>
   <data name="Plotter_nftplot" xml:space="preserve">
     <value>Criar Plot NFT</value>

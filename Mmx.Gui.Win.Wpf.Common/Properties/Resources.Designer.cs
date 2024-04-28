@@ -367,7 +367,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Farmer Public Key (48 bytes).
+        ///   Looks up a localized string similar to Farmer Public Key.
         /// </summary>
         public static string Plotter_farmerkey {
             get {

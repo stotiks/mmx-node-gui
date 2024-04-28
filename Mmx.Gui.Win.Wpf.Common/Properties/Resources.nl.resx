@@ -214,7 +214,7 @@
     <value>Aantal buckets voor fase 3+4</value>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>Farmer Public Key (48 bytes)</value>
+    <value>Farmer Public Key</value>
   </data>
   <data name="Plotter_nftplot" xml:space="preserve">
     <value>Maak NFT plot</value>

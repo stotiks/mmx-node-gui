@@ -148,7 +148,7 @@
     <value>Mostrar consola</value>
   </data>
   <data name="Plotter_farmerkey" xml:space="preserve">
-    <value>Clave Publica granjero (48 bytes)</value>
+    <value>Clave Publica granjero</value>
   </data>
   <data name="Plotter_buckets" xml:space="preserve">
     <value>Numero de buckets (cubos)</value>
