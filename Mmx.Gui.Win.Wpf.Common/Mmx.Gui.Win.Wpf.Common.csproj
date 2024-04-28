@@ -55,6 +55,8 @@
     <Compile Include="Controls\ChiaPosSettings.xaml.cs">
       <DependentUpon>ChiaPosSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MultiFolder.Dir.cs" />
+    <Compile Include="Controls\MultiFolder.DirObservableCollection.cs" />
     <Compile Include="Converters\BooleanInverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InvertedBooleanToVisibilityConverter.cs" />
