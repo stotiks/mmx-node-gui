@@ -24,8 +24,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
                 get => _path;
                 set
                 {
-                    _path = value;
-                    NotifyPropertyChanged();
+                    if (_path != value) 
+                    {
+                        _path = value;
+                        NotifyPropertyChanged();
+                    }
                 }
             }
 
@@ -107,6 +110,10 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             {
                 this[index].PropertyChanged -= ItemPropertyChanged;
                 base.RemoveItem(index);
+                if(index == 0)
+                {
+                    NotifyItemChanged(FirstItem);
+                }    
             }
 
             private void RecalcItems(object sender, NotifyCollectionChangedEventArgs e)
@@ -164,10 +171,11 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
 
             private void OnDirCollectionChanged()
             {
-                DirCollectionChanged?.Invoke(this, null);
+                DirCollectionChanged?.Invoke();
             }
 
-            public event NotifyCollectionChangedEventHandler DirCollectionChanged;
+            public delegate void NotifyDirCollectionChangedEventHandler();
+            public event NotifyDirCollectionChangedEventHandler DirCollectionChanged;
         }
 
         public static readonly DependencyProperty HeaderTextProperty =
@@ -201,7 +209,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
         {
             if (_directories.Count > 0)
             {
-                _directories.First().Path = FirstDirectory;
+                    _directories.First().Path = FirstDirectory;
             } else
             {
                 _directories.Add(new Dir(FirstDirectory));
@@ -248,7 +256,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Controls
             }
         }
 
-        private void UpdateDirectories(object sender, NotifyCollectionChangedEventArgs e)
+        private void UpdateDirectories()
         {
             Directories = new ArrayList(_directories.Select(x => x.Path).ToList());
         }
