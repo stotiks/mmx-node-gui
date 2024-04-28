@@ -58,7 +58,7 @@ namespace Mmx.Gui.Win.Common.Plotter
 
             MmxPlotters = MmxCudaPlotter,
 
-            Common = CpuPlotter | CudaPlotters,
+            Common = CpuPlotters | CudaPlotters,
         };
 
         [Order]
