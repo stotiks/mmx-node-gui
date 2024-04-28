@@ -35,7 +35,7 @@ namespace Mmx.Gui.Win.Common.Plotter
             Type = ItemType.Other,
             Items = new ObservableCollection<ItemBase<int>>(
                 ((IEnumerable<int>)Enum.GetValues(typeof(Plotters))).AsEnumerable()
-                    .Where(value => IsMmxOnly && ((Scopes)value).HasFlag(Scopes.MmxCudaPlotter) || !IsMmxOnly)
+                    .Where(value => IsMmxOnly && ((Scopes)value).HasFlag(Scopes.MmxPlotters) || !IsMmxOnly)
                     .Select(value =>
                         {
                             var isDefault = value == (int)Plotters.ChiaCpuPlotter;
