@@ -144,39 +144,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             Scope = Scopes.MmxPlotters
         };
 
-        enum Ports
-        {
-            [Description("Chia [8444]")]
-            Chia = 8444,
-            [Description("Chives [9699]")]
-            Chives = 9699,
-            [Description("MMX [11337]")]
-            MMX = 11337
-        }
-
-        static readonly int PortDefaultValue = IsMmxOnly ? (int)Ports.MMX : (int)Ports.Chia;
-        [Order]
-        public IntItem port { get; set; } = new IntItem
-        {
-            Name = "x",
-            LongName = "port",
-            DefaultValue = PortDefaultValue,
-            Items = new ObservableCollection<ItemBase<int>>(
-                ((IEnumerable<int>)Enum.GetValues(typeof(Ports))).AsEnumerable()                    
-                    .Select(value =>
-                    {
-                        var isDefault = value == PortDefaultValue;
-                        var isDefaultString = isDefault ? " (default)" : "";
-                        Ports portEnum = (Ports)Enum.ToObject(typeof(Ports), value);
-                        var name = PlotterOptionsHelpers.GetDescription(portEnum);
-                        return new ItemBase<int> { Name = name + isDefaultString, Value = value };
-                    })
-                    .ToList()),            
-            Scope = Scopes.Common,
-            IsVisible = !IsMmxOnly
-        };
-
-
         [Order]
         public IntItem device { get; set; } = new IntItem
         {
@@ -482,7 +449,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             if(IsMmxOnly)
             {
                 plotter.Value = (int)Plotters.MmxCudaPlotter;
-                port.Value = (int)Ports.MMX;
                 NotifyPropertyChanged(nameof(PlotterCmd));
             }
 
@@ -513,14 +479,16 @@ namespace Mmx.Gui.Win.Common.Plotter
 
         private void PlotterChanged()
         {
-            foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter) && property.Name != nameof(port)))
+            foreach (PropertyInfo property in GetItemProperties().Where(property => property.Name != nameof(plotter)))
             {
                 dynamic item = property.GetValue(this);
                 item.IsVisible = item.Scope.HasFlag((Scopes)plotter.Value);
             }
 
-            var isCudaPlotter = plotter.Value == (int)Plotters.ChiaCudaPlotter_25 || plotter.Value == (int)Plotters.ChiaCudaPlotter_30;
-            size.Skip = isCudaPlotter;
+            size.Skip = ((Plotters)plotter.Value) == Plotters.ChiaCudaPlotter_25
+                || ((Plotters)plotter.Value) == Plotters.ChiaCudaPlotter_30
+                || ((Plotters)plotter.Value) == Plotters.MmxCudaPlotter;
+
 
             UpdateLevel();
         }

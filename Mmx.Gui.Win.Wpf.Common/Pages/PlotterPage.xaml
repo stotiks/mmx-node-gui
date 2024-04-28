@@ -137,14 +137,6 @@
                         Spacing="{StaticResource Spacing}" 
                         HorizontalAlignment="Left">
 
-                        <ComboBox Width="250"
-                            ui:ControlHelper.Header="{lex:Loc Plotter_Port}"
-                            ItemsSource="{Binding PlotterOptions.port.Items}"
-                            DisplayMemberPath="Name"
-                            SelectedValuePath="Value"
-                            SelectedValue="{Binding PlotterOptions.port.Value}"
-                            Visibility="{Binding PlotterOptions.port.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                        
                         <TextBox x:Name="farmerKeyTextBox" x:FieldModifier="public"
                             ui:ControlHelper.Header="{lex:Loc Plotter_farmerkey}"
                             Width="{StaticResource KeyWidth}"
