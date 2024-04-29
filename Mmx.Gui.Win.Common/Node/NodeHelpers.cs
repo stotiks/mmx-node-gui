@@ -19,7 +19,7 @@ namespace Mmx.Gui.Win.Common.Node
     		Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
 #else
             //@"C:\Program Files\MMX";
-            @"C:\dev\mmx\MMX_GH";
+            @"C:\dev\mmx\MMX_T11";
 #endif
         public static readonly string MMX_HOME_ENV = Environment.GetEnvironmentVariable("MMX_HOME");
         public static readonly string MMX_HOME = string.IsNullOrEmpty(MMX_HOME_ENV) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".mmx") : MMX_HOME_ENV;
