@@ -16,6 +16,7 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             BeforeStart += (s, e) =>
             {
+                _currentPlotName = null;
                 StopTry = 0;
                 NativeMethods.SetConsoleCtrlHandler(null, false);
             };
@@ -75,11 +76,13 @@ namespace Mmx.Gui.Win.Common.Plotter
             OnOutputDataReceived(this, "Temp files cleaning...");
 
             var deletedCount = 0;
-
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value, _currentPlotName);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value, _currentPlotName);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, _currentPlotName);
-            deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, _currentPlotName);
+            if (!string.IsNullOrEmpty(_currentPlotName = null))
+            {
+                deletedCount += DeleteTempFiles(PlotterOptions.Instance.finaldir.Value, _currentPlotName);
+                deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir.Value, _currentPlotName);
+                deletedCount += DeleteTempFiles(PlotterOptions.Instance.tmpdir2.Value, _currentPlotName);
+                deletedCount += DeleteTempFiles(PlotterOptions.Instance.stagedir.Value, _currentPlotName);
+            }
 
             OnOutputDataReceived(this, $"Temp files deleted: {deletedCount}");
         }
