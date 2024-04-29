@@ -309,6 +309,42 @@ namespace Mmx.Gui.Win.Common.Plotter
         };
 
         [Order]
+        public IntItem maxtmp { get; set; } = new IntItem
+        {
+            Name = "Q",
+            LongName = "maxtmp",
+            SuppressDefaultValue = true,
+            DefaultValue = -1,
+            Minimum = -1,
+            Maximum = 99999,
+            Scope = Scopes.CudaPlotters
+        };
+
+        [Order]
+        public IntItem copylimit { get; set; } = new IntItem
+        {
+            Name = "A",
+            LongName = "copylimit",
+            SuppressDefaultValue = true,
+            DefaultValue = -1,
+            Minimum = -1,
+            Maximum = 99999,
+            Scope = Scopes.CudaPlotters
+        };
+
+        [Order]
+        public IntItem maxcopy { get; set; } = new IntItem
+        {
+            Name = "W",
+            LongName = "maxcopy",
+            SuppressDefaultValue = true,
+            DefaultValue = 1,
+            Minimum = -1,
+            Maximum = 99999,
+            Scope = Scopes.CudaPlotters
+        };
+
+        [Order]
         public StringItem farmerkey { get; set; } = new StringItem
         {
             Name = "f",

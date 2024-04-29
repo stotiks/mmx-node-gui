@@ -56,7 +56,7 @@
 
         <ui:SimpleStackPanel Grid.Row="1" Margin="10,12,0,10" HorizontalAlignment="Left" Orientation="Horizontal"
                              Visibility="{Binding PlotterOptions.plotter.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <ComboBox Width="350"
+            <ComboBox Width="400"
                 ItemsSource="{Binding PlotterOptions.plotter.Items}"
                 DisplayMemberPath="Name"
                 SelectedValuePath="Value"
@@ -388,6 +388,36 @@
                             Header="{lex:Loc Plotter_directout}"
                             IsOn="{Binding PlotterOptions.directout.Value}"
                             Visibility="{Binding PlotterOptions.directout.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                        <ui:NumberBox
+                                   Width="300"
+                                   Header="{lex:Loc Plotter_maxtmp}"
+                                   Minimum="{Binding PlotterOptions.maxtmp.Minimum}"
+                                   Maximum="{Binding PlotterOptions.maxtmp.Maximum}"
+                                   Value="{Binding PlotterOptions.maxtmp.Value}"
+                                   SpinButtonPlacementMode="Inline"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{Binding PlotterOptions.maxtmp.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                        <ui:NumberBox
+                                   Width="300"
+                                   Header="{lex:Loc Plotter_copylimit}"
+                                   Minimum="{Binding PlotterOptions.copylimit.Minimum}"
+                                   Maximum="{Binding PlotterOptions.copylimit.Maximum}"
+                                   Value="{Binding PlotterOptions.copylimit.Value}"
+                                   SpinButtonPlacementMode="Inline"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{Binding PlotterOptions.copylimit.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        
+                        <ui:NumberBox
+                                   Width="300"
+                                   Header="{lex:Loc Plotter_maxcopy}"
+                                   Minimum="{Binding PlotterOptions.maxcopy.Minimum}"
+                                   Maximum="{Binding PlotterOptions.maxcopy.Maximum}"
+                                   Value="{Binding PlotterOptions.maxcopy.Value}"
+                                   SpinButtonPlacementMode="Inline"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{Binding PlotterOptions.maxcopy.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>                        
 
                     </ui:SimpleStackPanel>
                 </ScrollViewer>

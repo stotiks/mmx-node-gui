@@ -503,4 +503,16 @@
     <value>Create SSD plot</value>
     <comment>plotter</comment>
   </data>
+  <data name="Plotter_maxtmp" xml:space="preserve">
+    <value>Max number of plots to cache in tmpdir</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_copylimit" xml:space="preserve">
+    <value>Max number of parallel copies in total</value>
+    <comment>plotter</comment>
+  </data>
+  <data name="Plotter_maxcopy" xml:space="preserve">
+    <value>Max number of parallel copies to same HDD</value>
+    <comment>plotter</comment>
+  </data>
 </root>

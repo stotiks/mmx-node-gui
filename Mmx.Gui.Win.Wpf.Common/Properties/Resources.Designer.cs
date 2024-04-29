@@ -313,6 +313,15 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max number of parallel copies in total.
+        /// </summary>
+        public static string Plotter_copylimit {
+            get {
+                return ResourceManager.GetString("Plotter_copylimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of plots to create.
         /// </summary>
         public static string Plotter_count {
@@ -417,6 +426,24 @@ namespace Mmx.Gui.Win.Wpf.Common.Properties {
         public static string Plotter_LevelHeader {
             get {
                 return ResourceManager.GetString("Plotter_LevelHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max number of parallel copies to same HDD.
+        /// </summary>
+        public static string Plotter_maxcopy {
+            get {
+                return ResourceManager.GetString("Plotter_maxcopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max number of plots to cache in tmpdir.
+        /// </summary>
+        public static string Plotter_maxtmp {
+            get {
+                return ResourceManager.GetString("Plotter_maxtmp", resourceCulture);
             }
         }
         
