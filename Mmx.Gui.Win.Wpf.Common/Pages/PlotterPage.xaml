@@ -233,15 +233,6 @@
                                     HorizontalAlignment="Left"
                                     Visibility="{Binding PlotterOptions.streams.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                                <ui:NumberBox
-                                    Width="250"
-                                    Header="{lex:Loc Plotter_chunksize}"
-                                    Minimum="{Binding PlotterOptions.chunksize.Minimum}"
-                                    Maximum="{Binding PlotterOptions.chunksize.Maximum}"
-                                    Value="{Binding PlotterOptions.chunksize.Value}"
-                                    SpinButtonPlacementMode="Inline"
-                                    HorizontalAlignment="Left"
-                                    Visibility="{Binding PlotterOptions.chunksize.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                 <ui:ToggleSwitch
                                     x:Name="PinMemory"
@@ -263,42 +254,8 @@
                             </ui:SimpleStackPanel>
                         </GroupBox>
                         
-                        <GroupBox Header="{lex:Loc Plotter_ProcessHeader}">
-                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
-
-                                <ComboBox
-                                    Width="250"
-                                    ui:ControlHelper.Header="{lex:Loc Plotter_priority}"
-                                    ItemsSource="{Binding PlotterOptions.priority.Items}"
-                                    DisplayMemberPath="Name"
-                                    SelectedValuePath="Value"
-                                    SelectedValue="{Binding PlotterOptions.priority.Value}"/>
-
-                                <ui:NumberBox
-                                    Width="250"
-                                    Header="{lex:Loc Plotter_threads}"
-                                    Minimum="{Binding PlotterOptions.threads.Minimum}"
-                                    Maximum="{Binding PlotterOptions.threads.Maximum}"
-                                    Value="{Binding PlotterOptions.threads.Value}"
-                                    SpinButtonPlacementMode="Inline"
-                                    HorizontalAlignment="Left"
-                                    Visibility="{Binding PlotterOptions.threads.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-
-                                <ui:NumberBox
-                                    Width="250"
-                                    Header="{lex:Loc Plotter_rmulti2}"
-                                    Minimum="{Binding PlotterOptions.rmulti2.Minimum}"
-                                    Maximum="{Binding PlotterOptions.rmulti2.Maximum}"
-                                    Value="{Binding PlotterOptions.rmulti2.Value}"
-                                    SpinButtonPlacementMode="Inline"
-                                    HorizontalAlignment="Left"
-                                    Visibility="{Binding PlotterOptions.rmulti2.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                
-                            </ui:SimpleStackPanel>
-                        </GroupBox>
-
                         <GroupBox Header="{lex:Loc Plotter_BucketsHeader}"
-                                  Visibility="{Binding PlotterOptions.buckets.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                  Visibility="{Binding BucketsIsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
 
                                 <ComboBox
@@ -307,7 +264,8 @@
                                     ItemsSource="{Binding PlotterOptions.buckets.Items}"
                                     DisplayMemberPath="Name"
                                     SelectedValuePath="Value"
-                                    SelectedValue="{Binding PlotterOptions.buckets.Value}"/>
+                                    SelectedValue="{Binding PlotterOptions.buckets.Value}"
+                                    Visibility="{Binding PlotterOptions.buckets.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                 <ComboBox
                                     Width="250"
@@ -315,7 +273,52 @@
                                     ItemsSource="{Binding PlotterOptions.buckets3.Items}"
                                     DisplayMemberPath="Name"
                                     SelectedValuePath="Value"                                    
-                                    SelectedValue="{Binding PlotterOptions.buckets3.Value}"/>
+                                    SelectedValue="{Binding PlotterOptions.buckets3.Value}"
+                                    Visibility="{Binding PlotterOptions.buckets3.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                                <ui:NumberBox
+                                    Width="250"
+                                    Header="{lex:Loc Plotter_chunksize}"
+                                    Minimum="{Binding PlotterOptions.chunksize.Minimum}"
+                                    Maximum="{Binding PlotterOptions.chunksize.Maximum}"
+                                    Value="{Binding PlotterOptions.chunksize.Value}"
+                                    SpinButtonPlacementMode="Inline"
+                                    HorizontalAlignment="Left"
+                                    Visibility="{Binding PlotterOptions.chunksize.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                            </ui:SimpleStackPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="{lex:Loc Plotter_ProcessHeader}">
+                            <ui:SimpleStackPanel Spacing="{StaticResource Spacing}">
+
+                                <ComboBox
+                                   Width="250"
+                                   ui:ControlHelper.Header="{lex:Loc Plotter_priority}"
+                                   ItemsSource="{Binding PlotterOptions.priority.Items}"
+                                   DisplayMemberPath="Name"
+                                   SelectedValuePath="Value"
+                                   SelectedValue="{Binding PlotterOptions.priority.Value}"/>
+
+                                <ui:NumberBox
+                                   Width="250"
+                                   Header="{lex:Loc Plotter_threads}"
+                                   Minimum="{Binding PlotterOptions.threads.Minimum}"
+                                   Maximum="{Binding PlotterOptions.threads.Maximum}"
+                                   Value="{Binding PlotterOptions.threads.Value}"
+                                   SpinButtonPlacementMode="Inline"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{Binding PlotterOptions.threads.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                                <ui:NumberBox
+                                   Width="250"
+                                   Header="{lex:Loc Plotter_rmulti2}"
+                                   Minimum="{Binding PlotterOptions.rmulti2.Minimum}"
+                                   Maximum="{Binding PlotterOptions.rmulti2.Maximum}"
+                                   Value="{Binding PlotterOptions.rmulti2.Value}"
+                                   SpinButtonPlacementMode="Inline"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{Binding PlotterOptions.rmulti2.IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                             </ui:SimpleStackPanel>
                         </GroupBox>

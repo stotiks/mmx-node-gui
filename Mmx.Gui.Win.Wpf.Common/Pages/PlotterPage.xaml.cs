@@ -79,6 +79,7 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
         }
 
         public bool PlotterUrlIsVisible => PlotterUrl != null;
+        public bool BucketsIsVisible => PlotterOptions.buckets.IsVisible || PlotterOptions.buckets3.IsVisible || PlotterOptions.chunksize.IsVisible;
 
         public void UpdatePlotterUrl()
         {
