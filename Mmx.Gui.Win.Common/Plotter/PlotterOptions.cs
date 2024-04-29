@@ -30,7 +30,6 @@ namespace Mmx.Gui.Win.Common.Plotter
             if(IsMmxOnly)
             {
                 plotter.Value = (int)Plotters.MmxCudaPlotter;
-                NotifyPropertyChanged(nameof(PlotterCmd));
             }
 
             foreach (PropertyInfo property in GetItemProperties())
