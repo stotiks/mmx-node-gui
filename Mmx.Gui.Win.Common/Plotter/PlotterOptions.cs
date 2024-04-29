@@ -83,8 +83,11 @@ namespace Mmx.Gui.Win.Common.Plotter
                     level.DefaultValue = 30;
                     break;
                 case Plotters.ChiaCudaPlotter_25:
-                case Plotters.MmxCudaPlotter:
                     level_enum = Enumerable.Range(1, 9).Union(Enumerable.Range(11, 10));
+                    level.DefaultValue = 1;
+                    break;
+                case Plotters.MmxCudaPlotter:
+                    level_enum = Enumerable.Range(1, 15);
                     level.DefaultValue = 1;
                     break;
                 default:
