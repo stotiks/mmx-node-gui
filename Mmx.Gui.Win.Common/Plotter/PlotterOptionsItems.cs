@@ -64,16 +64,6 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             Name = "k",
             LongName = "size",
-            DefaultValue = 32,
-            Minimum = 30,
-            Maximum = 34,
-            Items = new ObservableCollection<ItemBase<int>>(
-                Enumerable.Range(30, 5).Select(value =>
-                {
-                    var isDefault = value == 32;
-                    var isDefaultString = isDefault ? " (default)" : "";
-                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
-                }).ToList()),
             Scope = Scopes.Common ^ Scopes.ChiaCudaPlotter_30
         };
 

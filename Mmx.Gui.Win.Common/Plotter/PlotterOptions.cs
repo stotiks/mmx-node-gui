@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -71,6 +72,35 @@ namespace Mmx.Gui.Win.Common.Plotter
 
 
             UpdateLevel();
+            UpdateSize();
+        }
+
+        private void UpdateSize()
+        {
+            size.DefaultValue = 32;
+            IEnumerable<int> size_enum;
+            switch ((Plotters)plotter.Value)
+            {
+                case Plotters.MmxCudaPlotter:
+                    size_enum = Enumerable.Range(29, 4);
+                    break;
+                default:
+                    size_enum = Enumerable.Range(30, 5);
+                    break;
+            }
+
+            size.Items = new ObservableCollection<ItemBase<int>>(
+                size_enum.Select(value =>
+                {
+                    var isDefault = value == size.DefaultValue;
+                    var isDefaultString = isDefault ? " (default)" : "";
+                    return new ItemBase<int> { Name = value.ToString() + isDefaultString, Value = value };
+                }).ToList());
+
+            if (!size_enum.Contains(size.Value))
+            {
+                size.Value = size.DefaultValue;
+            }
         }
 
         private void UpdateLevel()
