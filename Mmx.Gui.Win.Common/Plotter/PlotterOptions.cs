@@ -117,8 +117,8 @@ namespace Mmx.Gui.Win.Common.Plotter
                     level.DefaultValue = 1;
                     break;
                 case Plotters.MmxCudaPlotter:
-                    level_enum = Enumerable.Range(1, 15);
-                    level.DefaultValue = 1;
+                    level_enum = Enumerable.Range(0, 16);
+                    level.DefaultValue = 0;
                     break;
                 default:
                     level_enum = Enumerable.Range(1, 9);
