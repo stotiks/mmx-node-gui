@@ -118,13 +118,20 @@ namespace Mmx.Gui.Win.Common.Plotter
         {
             get
             {
-                var gigahorsePath = "gigahorse\\";
+                var gigahorsePlottersPath = "gigahorse\\";
+                var mmxPlottersPath = "";
+
+                if (!IsMmxOnly)
+                {
+                    mmxPlottersPath = "mmx\\";
+                }
+
                 var exe = "";
 
                 switch (plotter.Value)
                 {
                     case (int)Plotters.MmxCudaPlotter:
-                        exe = $"mmx_cuda_plot_k{size.Value}.exe";
+                        exe = $"{mmxPlottersPath}mmx_cuda_plot_k{size.Value}.exe";
                         break;
 
                     case (int)Plotters.ChiaCpuPlotter:
@@ -136,19 +143,19 @@ namespace Mmx.Gui.Win.Common.Plotter
                         break;
 
                     case (int)Plotters.ChiaCpuPlotterWithCompression:
-                        exe = $"{gigahorsePath}chia_plot.exe";
+                        exe = $"{gigahorsePlottersPath}chia_plot.exe";
                         if (size.Value > 32)
                         {
-                            exe = $"{gigahorsePath}chia_plot.exe";
+                            exe = $"{gigahorsePlottersPath}chia_plot.exe";
                         }
                         break;
 
                     case (int)Plotters.ChiaCudaPlotter_25:
-                        exe = $"{gigahorsePath}cuda_plot_k{size.Value}.exe";
+                        exe = $"{gigahorsePlottersPath}cuda_plot_k{size.Value}.exe";
                         break;
 
                     case (int)Plotters.ChiaCudaPlotter_30:
-                        exe = $"{gigahorsePath}cuda_plot_k32_v3.exe";
+                        exe = $"{gigahorsePlottersPath}cuda_plot_k32_v3.exe";
                         break;
                 }
 
