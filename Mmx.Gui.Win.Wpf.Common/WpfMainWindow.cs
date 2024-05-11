@@ -12,7 +12,7 @@ namespace Mmx.Gui.Win.Wpf.Common
     public abstract class WpfMainWindow: Window
     {
         private bool _closePending;
-        private bool _disableCloseToNotification;
+        private bool _closeRunning;
 
         protected WpfMainWindow()
         {
@@ -75,7 +75,7 @@ namespace Mmx.Gui.Win.Wpf.Common
         private async void Window_Closing(object sender, CancelEventArgs args)
         {
 
-            if (Settings.CloseToNotification && !_disableCloseToNotification)
+            if (Settings.CloseToNotification && !_closeRunning)
             {
                 Hide();
                 args.Cancel = true;
@@ -93,13 +93,17 @@ namespace Mmx.Gui.Win.Wpf.Common
                 var cancelEventArgs = new CancelEventArgs();
                 if (!(Closing is null)) await Closing(this, cancelEventArgs);
 
-                if(cancelEventArgs.Cancel == false)
+                if(cancelEventArgs.Cancel != true)
                 {
                     await OnBeforeClose();
                     Close();
                 }
 
                 _closePending = false;
+                   
+            } else
+            {
+                if(!_closeRunning) args.Cancel = true;
             }
 
         }
@@ -115,9 +119,9 @@ namespace Mmx.Gui.Win.Wpf.Common
 
         internal new void Close()
         {
-            _disableCloseToNotification = true;
+            _closeRunning = true;
             base.Close();
-            _disableCloseToNotification = false;
+            _closeRunning = false;
         }
 
     }
