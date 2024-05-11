@@ -41,7 +41,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             SaveConfig();
         }
         
-        public int _reloadInterval = 3600;       
+        private int _reloadInterval = 3600;       
         public int ReloadInterval { 
             get => _reloadInterval;
             set
@@ -54,7 +54,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
-        public int _numThreads = 16;
+        private int _numThreads = 16;
         public int NumThreads
         {
             get => _numThreads;
@@ -68,7 +68,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
-        public bool _recursiveSearch = true;
+        private bool _recursiveSearch = true;
         public bool RecursiveSearch
         {
             get => _recursiveSearch;
@@ -82,7 +82,7 @@ namespace Mmx.Gui.Win.Common.Harvester
             }
         }
 
-        public bool _farmVirtualPlots = true;
+        private bool _farmVirtualPlots = true;
         public bool FarmVirtualPlots
         {
             get => _farmVirtualPlots;
