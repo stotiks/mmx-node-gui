@@ -37,7 +37,7 @@ namespace Mmx.Gui.Win.Common.Harvester
 
         private void Directories_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            NotifyPropertyChanged("Directories");
+            NotifyPropertyChanged(nameof(Directories));
             SaveConfig();
         }
         
