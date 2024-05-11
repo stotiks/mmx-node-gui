@@ -157,7 +157,7 @@ namespace Mmx.Gui.Win.Common.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3600")]
+        [global::System.Configuration.DefaultSettingValueAttribute("86400")]
         public int UpdateInterval {
             get {
                 return ((int)(this["UpdateInterval"]));
