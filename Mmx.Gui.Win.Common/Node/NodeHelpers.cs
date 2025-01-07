@@ -6,12 +6,6 @@ using System.IO;
 namespace Mmx.Gui.Win.Common.Node
 {
 
-    public enum NodeBuildType
-    {
-        Classic,
-        Gigahorse
-    }
-
     public static class NodeHelpers
     {
         public static readonly string workingDirectory =
