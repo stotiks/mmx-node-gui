@@ -25,12 +25,6 @@ namespace Mmx.Gui.Win.Wpf.Common.Pages
             InitializeComponent();
             DataContext = this;
 
-            if (PlotterOptions.IsMmxOnly)
-            {
-                //NFT PLOTS DISABLED
-                createPlotNFT.IsEnabled = false;
-            }
-
             PlotterOptions.plotter.PropertyChanged += (o, e) => UpdatePlotterUrl();
 
         }
