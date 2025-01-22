@@ -1,12 +1,12 @@
-﻿using Mmx.Gui.Win.Common.Properties;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Threading;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Mmx.Gui.Win.Common.Node
@@ -52,7 +52,7 @@ namespace Mmx.Gui.Win.Common.Node
 
         static NodeApi()
         {
-            XApiToken = GetRandomHexNumber(64);
+            XApiToken = GenerateToken();
         }
 
         public static bool IsRunning
@@ -126,15 +126,23 @@ namespace Mmx.Gui.Win.Common.Node
             return false;
         }
 
-        private static string GetRandomHexNumber(int digits)
+        private static string GenerateToken()
         {
-            byte[] buffer = new byte[digits / 2];
-            Random random = new Random();
-            random.NextBytes(buffer);
-            string result = string.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
-            if (digits % 2 == 0)
-                return result;
-            return result + random.Next(16).ToString("X");
+            const int length = 64;
+
+            byte[] tokenData = new byte[length / 2];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetNonZeroBytes(tokenData);
+            }
+
+            StringBuilder hex = new StringBuilder(length);
+            foreach (byte b in tokenData)
+            {
+                hex.AppendFormat("{0:x2}", b);
+            }
+
+            return hex.ToString();
         }
 
         public static void InitXToken()
