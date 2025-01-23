@@ -133,7 +133,7 @@ namespace Mmx.Gui.Win.Common.Node
             byte[] tokenData = new byte[length / 2];
             using (var rng = RandomNumberGenerator.Create())
             {
-                rng.GetNonZeroBytes(tokenData);
+                rng.GetBytes(tokenData);
             }
 
             StringBuilder hex = new StringBuilder(length);
