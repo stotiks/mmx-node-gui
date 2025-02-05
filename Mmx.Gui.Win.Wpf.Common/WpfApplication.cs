@@ -91,8 +91,12 @@ namespace Mmx.Gui.Win.Wpf.Common
 
         void NotifyIcon_Click(object sender, EventArgs e)
         {
-            WpfMainWindow win = System.Windows.Window.GetWindow(Current.MainWindow) as WpfMainWindow;
-            win.Restore();
+            {
+                if (Current.MainWindow is WpfMainWindow win)
+                {
+                    win.Restore();
+                }
+            }
         }
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
