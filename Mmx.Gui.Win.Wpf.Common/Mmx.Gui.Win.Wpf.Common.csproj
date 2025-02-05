@@ -52,9 +52,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\ChiaPosSettings.xaml.cs">
-      <DependentUpon>ChiaPosSettings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\MultiFolder.Dir.cs" />
     <Compile Include="Controls\MultiFolder.DirObservableCollection.cs" />
     <Compile Include="Converters\BooleanInverter.cs" />
@@ -124,10 +121,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\ChiaPosSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialogs\PlotterDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

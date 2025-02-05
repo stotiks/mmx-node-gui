@@ -118,25 +118,7 @@ namespace Mmx.Gui.Win.Common
 
         private void InitSettings()
         {
-            if (Settings.Default.CHIAPOS_MAX_CUDA_DEVICES == -1)
-            {
-                Settings.Default.CHIAPOS_MAX_CUDA_DEVICES = CudaDevices.Count();
-            }
 
-            if (Settings.Default.CHIAPOS_MAX_CORES == -1)
-            {
-                Settings.Default.CHIAPOS_MAX_CORES = Environment.ProcessorCount;
-            }
-
-            if (Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES == -1)
-            {
-                Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES = OpenCLDevices.Count();
-            }
-
-            if (Settings.Default.CUDA_VISIBLE_DEVICES == null)
-            {
-                Settings.Default.CUDA_VISIBLE_DEVICES = Enumerable.Range(0, CudaDevices.Count()).ToArray();
-            }
         }
 
         private class Nested

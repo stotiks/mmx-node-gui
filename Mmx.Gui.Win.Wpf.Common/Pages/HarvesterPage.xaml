@@ -135,14 +135,6 @@
                     </ui:SimpleStackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{lex:Loc Harvester_ChiaPosSettings}"
-                     Visibility="Hidden"> <!--TODO-->
-                <ScrollViewer Margin="0,12,0,20">
-                    <ui:SimpleStackPanel HorizontalAlignment="Left">
-                        <ctrls:ChiaPosSettings></ctrls:ChiaPosSettings>
-                    </ui:SimpleStackPanel>
-                </ScrollViewer>
-            </TabItem>
         </TabControl>
     </Grid>
 </Page>

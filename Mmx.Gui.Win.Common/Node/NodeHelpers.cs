@@ -55,50 +55,7 @@ namespace Mmx.Gui.Win.Common.Node
 
         public static void SetEnvVariables(ProcessStartInfo processStartInfo)
         {
-            if (Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES), Settings.Default.CHIAPOS_MIN_CUDA_LOG_ENTRIES.ToString());
-            }
 
-            if (Settings.Default.CHIAPOS_MAX_CORES_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_CORES), Settings.Default.CHIAPOS_MAX_CORES.ToString());
-            }
-
-            if (Settings.Default.CHIAPOS_MAX_CUDA_DEVICES_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_CUDA_DEVICES), Settings.Default.CHIAPOS_MAX_CUDA_DEVICES.ToString());
-            }
-
-            if (Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES), Settings.Default.CHIAPOS_MAX_OPENCL_DEVICES.ToString());
-            }
-
-            if (Settings.Default.CUDA_VISIBLE_DEVICES_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CUDA_VISIBLE_DEVICES), string.Join(",", Settings.Default.CUDA_VISIBLE_DEVICES));
-            }
-
-            if (Settings.Default.CHIAPOS_RECOMPUTE_HOST_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_HOST), Settings.Default.CHIAPOS_RECOMPUTE_HOST);
-            }
-
-            if (Settings.Default.CHIAPOS_RECOMPUTE_TIMEOUT_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_TIMEOUT), Settings.Default.CHIAPOS_RECOMPUTE_TIMEOUT.ToString());
-            }
-
-            if (Settings.Default.CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT), Settings.Default.CHIAPOS_RECOMPUTE_CONNECT_TIMEOUT.ToString());
-            }
-
-            if (Settings.Default.CHIAPOS_RECOMPUTE_RETRY_INTERVAL_Enabled)
-            {
-                processStartInfo.EnvironmentVariables.Add(nameof(Settings.Default.CHIAPOS_RECOMPUTE_RETRY_INTERVAL), Settings.Default.CHIAPOS_RECOMPUTE_RETRY_INTERVAL.ToString());
-            }
         }
     }
 }
