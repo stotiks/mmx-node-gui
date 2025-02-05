@@ -135,43 +135,6 @@
                     </ui:SimpleStackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{lex:Loc Harvester_Options}">
-                <ScrollViewer Margin="0,12,0,0">
-                    <ui:SimpleStackPanel HorizontalAlignment="Left">
-                        <ui:NumberBox
-                            Width="200"
-                            Header="{lex:Loc Harvester_ReloadInterval}"
-                            Minimum="0"
-                            SpinButtonPlacementMode="Inline" 
-                            HorizontalAlignment="Left"                        
-                            Value="{Binding HarvesterOptions.ReloadInterval}"/>
-
-                        <ui:NumberBox
-                            Width="200"
-                            Header="{lex:Loc Harvester_NumThreads}"
-                            Minimum="1"
-                            SpinButtonPlacementMode="Inline" 
-                            HorizontalAlignment="Left"                        
-                            Value="{Binding HarvesterOptions.NumThreads}"/>
-
-                        <ui:ToggleSwitch 
-                            Header="{lex:Loc Harvester_RecursiveSearch}"
-                            IsOn="{Binding HarvesterOptions.RecursiveSearch}"/>
-
-                        <ui:ToggleSwitch 
-                            Header="{lex:Loc Harvester_FarmVirtualPlots}"
-                            IsOn="{Binding HarvesterOptions.FarmVirtualPlots}"/>
-
-                        <Button Click="ReloadHarvesterButton_Click" Margin="0,10,0,0" Style="{StaticResource AccentButtonStyle}">
-                            <ui:SimpleStackPanel Orientation="Horizontal">
-                                <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE72C;"/>
-                                <TextBlock Margin="5,0,0,0" Text="{lex:Loc Harvester_Reload}"/>
-                            </ui:SimpleStackPanel>
-                        </Button>
-
-                    </ui:SimpleStackPanel>
-                </ScrollViewer>
-            </TabItem>
             <TabItem Header="{lex:Loc Harvester_ChiaPosSettings}"
                      Visibility="Hidden"> <!--TODO-->
                 <ScrollViewer Margin="0,12,0,20">

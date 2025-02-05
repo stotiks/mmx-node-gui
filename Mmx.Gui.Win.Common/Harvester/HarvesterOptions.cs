@@ -41,61 +41,6 @@ namespace Mmx.Gui.Win.Common.Harvester
             SaveConfig();
         }
         
-        private int _reloadInterval = 3600;       
-        public int ReloadInterval { 
-            get => _reloadInterval;
-            set
-            {
-                if (_reloadInterval != value)
-                {
-                    _reloadInterval = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private int _numThreads = 16;
-        public int NumThreads
-        {
-            get => _numThreads;
-            set
-            {
-                if (_numThreads != value)
-                {
-                    _numThreads = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private bool _recursiveSearch = true;
-        public bool RecursiveSearch
-        {
-            get => _recursiveSearch;
-            set
-            {
-                if (_recursiveSearch != value)
-                {
-                    _recursiveSearch = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private bool _farmVirtualPlots = true;
-        public bool FarmVirtualPlots
-        {
-            get => _farmVirtualPlots;
-            set
-            {
-                if (_farmVirtualPlots != value)
-                {
-                    _farmVirtualPlots = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        
         public void LoadConfig()
         {
             lock (_lock)
@@ -114,30 +59,6 @@ namespace Mmx.Gui.Win.Common.Harvester
                     }
                 }
                 _directories.CollectionChanged += Directories_CollectionChanged;
-
-                JToken reload_interval_token = harvesterConfig["reload_interval"];
-                if (reload_interval_token != null)
-                {
-                    ReloadInterval = reload_interval_token.Value<int>();
-                }
-
-                JToken num_threads_token = harvesterConfig["num_threads"];
-                if (num_threads_token != null)
-                {
-                    NumThreads = num_threads_token.Value<int>();
-                }
-
-                JToken recursive_search_token = harvesterConfig["recursive_search"];
-                if (recursive_search_token != null)
-                {
-                    RecursiveSearch = recursive_search_token.Value<bool>();
-                }
-
-                JToken farm_virtual_plots_token = harvesterConfig["farm_virtual_plots"];
-                if (farm_virtual_plots_token != null)
-                {
-                    FarmVirtualPlots = farm_virtual_plots_token.Value<bool>();
-                }
             }
         }
 
@@ -163,10 +84,6 @@ namespace Mmx.Gui.Win.Common.Harvester
                 {
                     ((JArray)jObject["plot_dirs"]).Add(dir.Path);
                 }
-                jObject["reload_interval"] = ReloadInterval;
-                jObject["recursive_search"] = RecursiveSearch;
-                jObject["num_threads"] = NumThreads;
-                jObject["farm_virtual_plots"] = FarmVirtualPlots;
 
                 var json = JsonConvert.SerializeObject(jObject, Formatting.Indented);
                 File.WriteAllText(NodeHelpers.harvesterConfigPath, json);
