@@ -20,7 +20,7 @@
     mc:Ignorable="d"
     Title="MMX Node"
     Width="1200" Height="650"
-    MinWidth="1040" MinHeight="650"
+    MinWidth="1045" MinHeight="650"
     WindowStartupLocation="CenterScreen"
     ui:WindowHelper.UseModernWindowStyle="True"
     ui:ThemeManager.RequestedTheme="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
