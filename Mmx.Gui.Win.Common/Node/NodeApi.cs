@@ -115,14 +115,19 @@ namespace Mmx.Gui.Win.Common.Node
         {
             try
             {
-                _ = await httpClient.GetAsync(sessionUri);
+                var res = await httpClient.GetAsync(sessionUri);
+                if (res.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Node is running");
                 return true;
+            }
             }
             catch (Exception)
             {
-                Console.WriteLine("Node is not running");
+                //Console.WriteLine("Node is not running");
             }
 
+            Console.WriteLine("Node is not running");
             return false;
         }
 
