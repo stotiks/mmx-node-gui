@@ -65,8 +65,5 @@
     <Setting Name="PlotSincDirectories" Type="System.Collections.ArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CEF_GPU_Disabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

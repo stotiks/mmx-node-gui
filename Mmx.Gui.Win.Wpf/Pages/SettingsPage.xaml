@@ -133,10 +133,6 @@
                             Header="{lex:Loc Settings_DisableOpenCL}"
                             IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=DisableOpenCL}"/>
 
-                        <ui:ToggleSwitch 
-                            Header="{lex:Loc Settings_CEF_GPU_Disabled}"
-                            IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=CEF_GPU_Disabled}"/>
-
                     </ui:SimpleStackPanel>
 
                 </GroupBox>
